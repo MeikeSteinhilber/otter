@@ -1,0 +1,546 @@
+---
+editor_options: 
+  markdown: 
+    wrap: sentence
+---
+
+# Willkommen zur Einführung
+
+Was ihr hier lest, ist ein R mark down-Skript.
+Ich habe dieses Skript im Voraus als Vorlage für euch geschrieben.
+Wie ihr sehen könnt, ist das Rmd aufgeteilt.
+Hier, wo diese Schrift steht, kann kein Code laufen.
+D.h.
+hier könnt ihr euch ohne große Gedanken Notizen machen, ohne dass ihr aus Versehen einen Befehl ausführt.
+Schaut euch dieses Dokument oben mit *Visual* einmal an und klickt euch außerdem mal auf *Outline*, um eine Übersicht über das Dokument zu bekommen.
+
+```{r}
+# dieser Teil ist ein Code Chunk. Hier drin passiert die Magie aka. der Code.  Hier könnt ihr auch Text reinschreiben, allerdings müsst ihr davor ein # setzen, damit R nicht versucht, eure Notizen als Code durchlaufen zu lassen
+```
+
+# Erste Schritte in R
+
+## Objekte erstellen und löschen
+
+Zitat des Statistikers John M. Chambers, der das Vorgängerprogramm entwickelt hat:
+
+> To understand computations in R, two slogans are helpful: Everything that exists is an object.
+> Everything that happens is a function call.
+
+Um den Code laufen zu lassen, klickt ihr mit eurem Curser auf die gewünschte Zeile und drückt strg+enter.
+
+```{r}
+Objekt <- "Hello World!"
+print(objekt) #bitte erst ausführen und dann Fehler beheben
+```
+
+Ihr könnt auch Objekte zusammenführen.
+Hier ein Beispiel:
+
+```{r}
+Blumen <- 5
+Sukkulenten <- 7
+
+Zimmerpflanzen <- Blumen + Sukkulenten
+```
+
+Objekte können auch mehr als nur einen Wert beherbergen.
+Hier erstellen wir ein Objekt mit mehreren Zahlen.
+
+```{r}
+Zahlen <- c(1:4, 8, 9, 13)
+```
+
+Erstellt jetzt ein eigenes Objekt mit willkürlichen Zahlen und nennt es *willZahl*!
+Tipp: Ihr erstellt einen Code Chunk, indem ihr die Tastenkombination strg+alt+i drückt.
+
+Jetzt erstellt ein Objekt mit Wörtern:
+
+```{r}
+Obst <- c("Honigmelone", "Mango", "Orangen", "Bananen", "Äpfel", "Erdbeeren", "Pfirsiche")
+```
+
+Erstellt jetzt ein Objekt mit dem Namen *Farbe* und packt dort die Farben der Obstsorten rein (in der Reihenfolge des Obsts).
+
+Wir brauchen das Objekt `willZahl` nicht mehr.
+Um es zu löschen, benutzen wir die Funktion `rm` (remove).
+In die Klammern schreiben wir unser Objekt.
+Löscht das Objekt `willZahl`!
+
+## Klassen bestimmen und verändern
+
+Zahlen und Wörter werden unterschiedlich von R klassifiziert.
+Einige Funktionen können nur mit bestimmten Klassen ausgeführt werden.
+Wenn ihr prüfen wollt, welche `class` euer Objekt hat, könnt ihr das so überprüfen: (Prüft die Klasse des Objekts `Zahlen`)
+
+```{r}
+class(Obst)
+```
+
+### Übersicht der häufigsten Klassen
+
+-   `character`: Buchstaben, Text, Wörter (z.B. "Hallo, wie geht es dir", "Apfel" etc.)
+-   `integer`: ganze Zahlen (z.B. 1, 18, 106 etc.)
+-   `numeric`: Gleitkommazahlen (z.B. 1.57, 187.798, 1.4 etc.)
+-   `logical`: boolesche Werte (wahr/falsch bzw. `TRUE`/`T` oder `FALSE`/`F`)
+
+Ihr könnt die Klasse umwandeln.
+Viele Fehler entstehen dadurch, dass Values in der falschen Klasse vorliegen.
+Hier versuchen wir, den Mittelwert des Vektors `Zahlen` zu bestimmen, während er ein `character` ist.
+
+```{r warning = TRUE}
+Zahlen <- as.numeric(Zahlen)
+
+mean(Zahlen)
+```
+
+Wandelt jetzt die Values `Zahlen` wieder in ein `numeric` um und rechnet dann den Mittelwert aus.
+Die Funktion dafür lautet `as.numeric`.
+
+! Vorsicht !
+Ihr müsst dafür das Objekt `Zahlen` überschreiben (s.o.).
+
+Überprüft durch logische Operatoren (hier `FALSE` oder `TRUE`), ob eine Zahl im Objekt `Zahlen` größer, kleiner oder genauso groß ist wie 4.
+Hier ein Beispiel:
+
+```{r}
+Zahlen > 5
+
+#Ihr könnt das Ergebnis auch in einem eigenen Objekt speichern:
+
+Zahlenüber5 <- Zahlen > 5
+```
+
+Öffnet jetzt das Dokument *Aufgabenblatt.Rmd* und erarbeitet (gemeinsam) die Aufgabe 1.
+
+------------------------------------------------------------------------
+
+# Datenstrukturen
+
+Wir haben gerade einfache Objekte erstellt, die alle dieselbe Klasse haben.
+Häufige Datenstrukturen sind:
+
+-   `vector`: eindimensionale Reihe von Werten derselben Klasse
+-   `factor`: kategoriable Variablen (z.B. Haarfarbe: schwarz, blond, blau etc.)
+-   `matrix`: zweidimensionale Reihe von Werten derselben Klasse
+-   `data frame`: Tabelle mit Spalten, die verschiedene Klassen haben können
+-   `list`: Sammlung von verschiedenen Datenstrukturen
+
+## Vektoren
+
+Wir haben bereits einige Vektoren erstellt.
+Man kann Vektoren allerdings auch mit mehr Informationen versehen.
+Hier ein Beispiel:
+
+```{r}
+Patricia <- c("Patricia Heise", "Frankfurt", "26", "Sozialwissenschaften des Sports")
+
+names(Patricia) <- c("Name", "Wohnort", "Alter", "Studiengang")
+print(Patricia)
+```
+
+Macht jetzt Übung 2.1!
+
+------------------------------------------------------------------------
+
+Wir können auch bereits mit Vektoren rechnen.
+Hier ein Beispiel:
+
+```{r}
+GoetheCard <- c(10, -3.4, -2.30, 5, -2.90)
+sum(GoetheCard)
+
+Sparschwein <- c(15, -3, 5, -5.4, 2)
+sum(Sparschwein)
+```
+
+Macht jetzt Übung 2.2!
+
+## Factors
+
+Wandelt euer Objekt `Farben` mit dem Befehl `as.factor` um und überprüft danach mit dem Befehl `levels(Farben)` eure Kategorien.
+
+```{r}
+class(Farben)
+
+Farben <- as.factor(Farben)
+levels(Farben)
+```
+
+Farben können nicht in eine Reihenfolge gebracht werden.
+Bei anderen Kategorien können wir aber die Ausprägungen sortieren.
+Hier ein Beispiel:
+
+```{r}
+Lautstärke_vector <- c("leise", "leise", "laut", "laut", "mittel", "leise")
+Lautstärke_factor <- factor(Lautstärke_vector, 
+                            ordered = T, 
+                            levels = c("leise", "mittel", "laut"))
+Lautstärke_factor
+```
+
+Macht Aufgaben 1 und 2 bei den Faktoren!
+
+## Matrizen (matrix)
+
+Als nächstes fügen wir das Obst, die Zahlen und die Farben zusammen.
+Dafür benutzen wir den Befehl `cbind`, der für *column bind* steht.
+D.h.
+dass wir die verschiedenen Values (`Zahlen`, `Obst` und `Farben`), die wir erstellt haben, als Spalten (column) behandeln und zusammenfügen.
+Schaut in der Help-Funktion nach, wie der Befehl `cbind` funktioniert.
+
+```{r}
+
+```
+
+Schaut euch jetzt die Klassen der verschiedenen Spalten an.
+Was fällt euch auf?
+
+## Data Frames
+
+Dieses Mal nutzen wir ein `data frame` für unser Obst.
+
+```{r}
+Obst_df <- data.frame(Zahlen, Obst, Farben)
+view(Obst_df) #öffnet das Objekt in einem neuen Tab
+```
+
+Wenn ihr innerhalb von DFs eine bestimmte Spalte ansteuern möchtet, müsst müsst ihr diese (in `base`) mit einem *\$* kennzeichnen.
+Alternativ könnt ihr die Spalte über die Stelle in eckigen Klammern angeben.
+
+```{r, message=TRUE}
+class(Obst_df)
+class(Obst_df$Zahlen)
+
+class(Obst)
+Obst[1:3]
+```
+
+Ihr könnt euch auch die gesamte Struktur mit dem Befehl `str()` anschauen.
+
+```{r}
+str(Obst_df)
+```
+
+Für große Datensätze lohnt es sich auch der Befehl `head()`, mit dem ihr die ersten Einträge sehen könnt.
+
+```{r}
+mtcars #das ist ein fertiger, von R zur Verfügung gestellter Datensatz
+head(mtcars)
+print(mtcars)
+```
+
+Löst jetzt (gemeinsam) die Aufgabe 3!
+
+Als nächstes spielen wir ein bisschen mit unserer Obst-Tabelle herum.
+Zuerst benennen wir den Spaltennamen *Zahlen* in *Anzahl* um.
+Das machen wir mit einer `base`-Funktion, die von R selbst ist.
+
+```{r, message=FALSE}
+colnames(Obst_df)[colnames(Obst_df) == "Zahlen"] <- "Anzahl"
+```
+
+Da das ziemlich umständlich ist, können wir das Package `dplyr` benutzen, das allerhand Funktionen rund um die Datenformatierung ermöglicht.
+Es ist Teil des Packages `tidyverse`, von dem wir noch weitere Unterpackages brauchen, von daher installieren wir das gesamte Package und laden dann `dplyr`.
+
+```{r}
+install.packages("tidyverse")
+library(dplyr)
+```
+
+Hier geht das Umbenennen viel einfacher.
+Schaut im Cheat Sheet nach, wie man mit `dplyr` Spaltennamen umbenennt und ändert der Namen *Obst* zu *Obstsorte*.
+
+```{r}
+
+```
+
+Als nächstes wollen wir alle Zeilen mit rotem Obst in eine gesonderte Tabelle extrahieren.
+
+```{r}
+library(dplyr)
+
+rotesObst <- filter(Obst_df, Farben == "rot")
+View(rotesObst)
+```
+
+Extrahiert jetzt alle Obstsorten mit einer anderen Farbe in eine Tabelle mit dem Namen *keinrotesObst*.
+Der Operator für nicht/kein ist ein Ausrufezeichen.
+
+```{r}
+```
+
+------------------------------------------------------------------------
+
+# Pipes
+
+Der Pipe Operator (`%>%`) kommt aus dem Package `magrittr`, wird aber im gesamten `tidyverse` und darüber hinaus benutzt.
+Die Pipe erlaubt uns, große Verschachtelungen zu vermeiden, indem sie eine Aneinanderreihung von Befehlen ermöglicht.
+Ihr könnt euch das wie eine große Fabrik vorstellen, wo ein Fließband das sich stetig verändernde Objekt von Maschine zu Maschine transportiert.
+
+Wir bleiben bei der Fabrik-Analogie und stellen uns eine Backwarenfabrik vor, in der unser Teig in der Rührmaschine geknetet, als Brezeln geformt und schließlich im Ofen gebacken werden soll.\
+
+Diesen Prozess zeige ich euch in drei verschiedenen Varianten, die ihr *nicht* ausführen könnt.
+
+### 1. Zwischengebnisse speichern und umbenennen
+
+```{r}
+Teig <- c(Zutaten)
+
+Teig_geknetet <- kneten(Teig, in = Rührmaschine)
+Teig_geformt <- formen(Teig_geknetet, als = Brezel)
+Teig_gebacken <- backen(Teig_geformt, im = Ofen)
+```
+
+Ich erstelle hier jedes Mal ein neues Objekt, wenn ich einen Befehl ausführe.
+
+Ich bin nur an der fertigen Brezel interessiert, erstelle aber für jeden einzelnen Arbeitsschritt dorthin eine Arbeitsprobe.
+Ein Nachteil hier ist also, dass meine Environment sehr schnell unübersichtlich wird - weil ich sie mit Objekten zumülle, die ich gar nicht brauche.
+Außerdem muss ich immer genau aufpassen, dass ich das richtige Objekt benutze.
+
+### 2. Objekt überschreiben
+
+```{r}
+Teig <- c(Zutaten)
+
+Teig <- kneten(Teig, in = Rührmaschine)
+Teig <- formen(Teig, als = Brezel)
+Teig <- backen(Teig, im = Ofen)
+```
+
+Hier überschreibe ich mein Objekt mit jedem Befehl.
+
+Ein Vorteil gegenüber der Variante davor ist, dass ich nicht immer ein neues Objekt erstelle, allerdings muss ich alle Befehle neu laufen lassen, wenn ich eine Sache in einem Befehl am Anfang ändere.
+
+### 3. Verschachteln
+
+```{r}
+Teig <- c(Zutaten)
+
+Brezel <- 
+  backen(
+   formen(
+     kneten(Teig, in = Rührmaschine),
+   als = Brezel
+   ),
+  im = Ofen
+  )
+```
+
+(Wenn ihr diese Variante nicht ganz versteht, ist das nicht schlimm, so schreiben nicht mehr viele Leute auf R, aber ihr solltet es zumindest mal gesehen haben und wissen, dass das kein Hexenwerk ist.)
+
+Ich erstelle hier kein neues Objekt, sondern verschachtele hier die Befehle.
+Das funktioniert so wie die Klammern beim Rechnen; wenn ihr 8x(5+(6:2)-2) rechnet, dann müsst ihr zuerst die 6:2 rechnen, dann verwandelt sich euer Term in 8x(5+3-2).
+Die übrige Klammer rechnet ihr danach aus, also 5+3-2, dieses Ergebnis (6) dann schließlich mit der Zahl außerhalb der Klammer, also 8x6.
+
+Hier durchläuft der Teig dieselben Prozesse wie davor und ich erstelle nicht weitere Objekte, die ich nicht brauche, allerdings ist mein Code jetzt extrem schwer zu lesen.
+Ich muss in der Mitte anfangen und nach außen lesen.
+Außerdem werden die Operatoren und die Befehle getrennt, was es noch unübersichtlicher macht.
+
+### 4. mit Pipe
+
+```{r}
+library(magrittr)
+
+Teig <- c(Zutaten)
+
+Produkt <- Teig %>% 
+  kneten(in = Rührmaschine) %>% 
+  formen(als = Brezel) %>% 
+  backen(im = Ofen)
+```
+
+Ich nehme hier das Objekt und reihe danach die Befehle auf, die auf dieses Objekt angewandt werden sollen.
+Die Befehle trenne ich mit einer Pipe (`%>%`).
+
+Hier erstelle ich keine neuen, unnötigen Objekte *und* der Code bleibt übersichtlich.
+Ihr könnt die Pipe wie ein *dann* lesen, also *Ich nehme den Teig, dann knete ich ihn in der Rührmaschine, dann forme ich ihn als Brezel, dann backe ich ihn im Ofen*.
+Daher müssen wir (normalerweise) das Objekt nur am Anfang nennen.
+
+Macht jetzt Übung 4!
+
+## Befehle mit Pipe und relevanter Reihenfolge der Objekte
+
+Es gibt Befehle, wo wir die Reihenfolge festlegen müssen.
+Dort können wir das veränderte Objekt als Punkt (`.`) als Platzhalter darstellen.
+Hier ein Beispiel, wo wir das bräuchten: (Bitte ausführen!)
+
+```{r}
+Satzstück <- ", schön, von dir zu hören! Liebe Grüße!"
+ganzerSatz <- Satzstück %>% paste("Linus", "Patricia")
+ganzerSatz
+```
+
+Leider sind die beiden Namen am Ende des Satzes, weil das Objekt `Satzstück` auf die erste Stelle gesetzt wird.
+Ich möchte aber, dass *Linus* am Anfang als Grußformel steht.
+Um das zu ermöglichen, setzen wir den Platzhalter `.` an die Stelle, wo unser Objekt stehen soll:
+
+```{r}
+Satzstück <- ", schön, von dir zu hören! Liebe Grüße!"
+ganzerSatz <- Satzstück %>% paste("Linus", ., "Patricia")
+ganzerSatz
+```
+
+Hier legen wir fest, dass unser Objekt `Satzstück` zwischen den beiden Namen stehen soll und voíla, der Satz steht!
+
+Macht jetzt Übung 5!
+
+# Fehlende Werte (NAs)
+
+Manchmal kann R etwas nicht ausrechnen oder wir haben bereits ein Datenset mit fehlenden Werten.
+Diese werden bei R mit `NA` (für *not available*) abgekürzt.
+
+```{r}
+LuftQualität <- airquality
+print(LuftQualität)
+```
+
+Wenn wir jetzt mit Daten rechnen wollen, in denen `NA`s vorkommen, kann das zum Problem werden.
+Hier zwei ein Beispiele:
+
+```{r}
+val_1 <- NA
+val_2 <- 5
+
+val_1 + val_2
+
+sum(LuftQualität, LuftQualität$Ozone)
+
+max(LuftQualität$Ozone)
+
+sum(is.na(LuftQualität$Ozone))
+```
+
+Daher ist es oft notwendig, `NA`s durch andere Werte zu ersetzen oder zu löschen.
+
+```{r}
+vek_3 <- as.numeric(c(1, 4, NA, 8, 1, NA, 10, 30, NA))
+print(vek_3)
+
+vek_3_ohneNA <- na.omit(vek_3)
+print(vek_3_ohneNA)
+
+vek_3_mit0 <- vek_3[is.na(vek_3)] <- 0 
+print(vek_3)
+```
+
+Macht jetzt die Aufgaben zu den fehlenden Werten!
+(`Aufgabenblatt_4_Wiederholung`)
+
+------------------------------------------------------------------------
+
+# Datein Importieren und Exportieren
+
+##Importieren
+
+Oft liegen die Datensätze, mit denen man arbeiten möchte, in Excel oder Word vor.
+Ihr könnt diese in R importieren.
+
+```{r}
+library(readxl)
+
+Angriffe_Übersicht <- read_excel("~/DND/Shinya/Adventures/04_05.12.2022/Angriffe_Übersicht.xlsx")
+
+View(Angriffe_Übersicht)
+```
+
+(Passt den Code so an, dass ihr ein eigenes Dokument hochladen könnt.)
+
+## Exportieren
+
+Ihr könnt auch Datensätze, Grafiken oder sonstige Objekte exportieren.
+Hier als csv:
+
+```{r, eval = F}
+write.csv2(Training_df, file = "Training_R")
+```
+
+Oder direkt als Excel-Datei:
+
+```{r, eval = F}
+install.packages("openxlsx")
+library(openxlsx)
+
+write.xlsx(Obst_df, file = "Obst_R.xlsx")
+```
+
+------------------------------------------------------------------------
+
+# R Markdown
+
+Das Format `.rmd` lässt sich gut in PDFs, HTML oder Word überführen.
+Um das zu machen, kann man das Skript *knitten*, also "stricken".
+Dabei läuft der Code von vorne bis hinten durch.
+Wenn wir lange Tabellen haben oder auch Fehlermeldungen, möchten wir teilweise nicht, dass sie angezeigt werden.
+Bei anderen Ergebnissen ist uns das aber wichtig.
+Was angezeigt und welcher Code ausgeführt wird, kann man durch Code bestimmen.
+Schaut im Cheat Sheet für *markdown* nach, was die Möglichkeiten sind.
+
+Vergleicht diese Beispiele, indem ihr versucht, dieses Skript einmal zu knitten.
+Passt die Argumente in dem gesamten Dokument so an, dass ihr das Dokument knitten könnt und dass es übersichtlich ist.
+
+Hier ein Tabellenkopf mit `message = T`...
+
+```{r, error= T, message = T}
+1 = 3
+```
+
+...und mit `message = F`
+
+```{r, error = T, message = F}
+1 = 3 
+```
+
+Hier ist ein Code Chunk mit `echo = T`...
+
+```{r, echo=TRUE}
+Hallo <- "Hello, it's me. Can you hear me?"
+```
+
+... und hier ist kein Code Chunk mit `echo = F`.
+
+```{r, echo = FALSE}
+Darkness <- "Hello darkness, my old friend."
+```
+
+Hier erstellen wir ein Objekt mit `eval = T`...
+
+```{r, eval = T}
+Eval <- "Was geht?"
+print(Eval)
+```
+
+... und was passiert hier mit `eval = F`?
+
+```{r, eval = F}
+Eval <- "Ich nicht."
+print(Eval)
+```
+
+Hier noch mal `eval = T`:
+
+```{r, eval=TRUE}
+print(Eval)
+```
+
+Ein falscher Code mit `error = T`...
+
+```{r, error = TRUE}
+1 = 3
+```
+
+... und mit `error = F`.
+
+```{r, error = T}
+1 = 3
+```
+
+## Packages
+
+```{r}
+citation("tidyverse")
+```
+
+Wickham H, Averick M, Bryan J, Chang W, McGowan LD, François R, Grolemund G, Hayes A, Henry L, Hester J, Kuhn M, Pedersen TL, Miller E, Bache SM, Müller K, Ooms J, Robinson D, Seidel DP, Spinu V, Takahashi K, Vaughan D, Wilke C, Woo K, Yutani H (2019).
+"Welcome to the tidyverse." *Journal of Open Source Software*, *4*(43), 1686.
+<doi:10.21105/joss.01686> <https://doi.org/10.21105/joss.01686>.

@@ -1,0 +1,143 @@
+---
+title: "Tutorial 1"
+tutorial:
+  version: 0.1
+output:
+  learnr::tutorial:
+    lanuage: de
+    # progressive: true
+    allow_skip: true
+    css: css/style.css
+    # highlight: espresso
+    ace_theme: clouds
+    # theme: united
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+# library(studyr)
+knitr::opts_chunk$set(echo = FALSE, class.source="Rchunk", class.output="Rout")
+```
+
+<div class="img-right">
+  <a href="https://meikesteinhilber.github.io/studyr/"> <i class="fa-solid fa-house" aria-label="Link zur studyr Homepage" aria-hidden="true"></i> 
+  </a> 
+</div>
+
+
+
+<!-- <a href="https://meikesteinhilber.github.io/studyr/" class="button-link" target="_blank" rel="noopener noreferrer">Tutorial auf neuer Seite starten (empfohlen)</a></p> -->
+
+## Topic 1
+Test
+
+```{r, child = "sub-tutorial-1.Rmd"}
+
+```
+
+
+## Topic 2
+
+```{r, echo=FALSE}
+sliderInput("bins", "Number of bins:", min = 1, max = 50, value = 30)
+plotOutput("distPlot")
+```
+
+```{r, context="server"}
+output$distPlot <- renderPlot({
+  x <- faithful[, 2]  # Old Faithful Geyser data
+  bins <- seq(min(x), max(x), length.out = input$bins + 1)
+  hist(x, breaks = bins, col = 'darkgray', border = 'white')
+})
+```
+
+
+
+## Topic 3
+
+Quizfragen
+
+```{r letter-a, echo=FALSE}
+question("What number is the letter A in the English alphabet?",
+  answer("8"),
+  answer("14"),
+  answer("1", correct = TRUE),
+  answer("23")
+)
+```
+
+```{r letter-b, echo=FALSE}
+question("What number is the letter A in the English alphabet?",
+  answer("8"),
+  answer("14"),
+  answer("1", correct = TRUE),
+  answer("23")
+)
+```
+
+
+
+## TOPIC 4 is a long a very long very very long long
+
+```{r code-example, exercise=FALSE, echo=TRUE, eval=FALSE}
+open_tutorial <- function(tutorial_name) {
+  if (!is.character(tutorial)) {stop("Invalid input argument: tutorial name must be a charcter string.")}
+  # learnr::run_tutorial(tutorial, package = "studyr")
+}
+NULL
+output$distPlot <- renderPlot({
+  x <- faithful[, 2]  # Old Faithful Geyser data
+  bins <- seq(min(x), max(x), length.out = input$bins + 1)
+  hist(x, breaks = bins, col = 'darkgray', border = 'white')
+})
+```
+
+```{r test-color, exercise=FALSE}
+2+3
+```
+
+
+## Video
+
+VIDEO
+
+![](https://youtu.be/zNzZ1PfUDNk)
+
+
+## Exercise with Hint
+
+*Here's an exercise where the chunk is pre-evaluated via the `exercise.eval` option (so the user can see the default output we'd like them to customize). We also add a "hint" to the correct solution via the chunk immediate below labeled `print-limit-hint`.*
+
+Modify the following code to limit the number of rows printed to 5:
+
+```{r print-limit, exercise=TRUE, exercise.eval=TRUE}
+mtcars
+```
+
+```{r print-limit-hint}
+head(mtcars)
+```
+
+## Quiz
+
+*You can include any number of single or multiple choice questions as a quiz. Use the `question` function to define a question and the `quiz` function for grouping multiple questions together.*
+
+Some questions to verify that you understand the purposes of various base and recommended R packages:
+
+```{r quiz}
+quiz(
+  question("Which package contains functions for installing other R packages?",
+    answer("base"),
+    answer("tools"),
+    answer("utils", correct = TRUE),
+    answer("codetools")
+  ),
+  question("Which of the R packages listed below are used to create plots?",
+    answer("lattice", correct = TRUE),
+    answer("tools"),
+    answer("stats"),
+    answer("grid", correct = TRUE)
+  )
+)
+```

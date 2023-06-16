@@ -1,0 +1,68 @@
+# Wiederholung von Skript 1 
+
+## Übung 1: Grundlegendes
+
+1. Ordne in jeder Zeile zu: Befehl (function call), Objekt, Wert. 
+
+```{r}
+Buchtitel <- c("Emma", "Stolz und Vorurteil", "Sinn und Sinnlichkeit")
+
+print(Buchtitel)
+
+Jahr <- c(1816, 1813, 1811)
+
+Jahr.num <- as.numeric(Jahr)
+```
+
+
+
+1.2 Beschreibe, was in jeder Zeile passiert (in mind. einem Satz pro Zeile).
+
+```{r}
+Z <- c(1:42) # so könnt ihr Kommentare in den Code Chunk schreiben 
+Z2 <- c(10, 48, 100:111, 1080) #mit oder ohne Leerzeichen nach dem Hashtag
+Z2  
+class(Z) 
+Z_mean <- mean(Z) 
+```
+
+
+1.3 Finde den Fehler!
+
+```{r}
+Hunde_vektor <- c(Chihuahua, Dogge, Schäferhund, Border Collie)
+print(Hunde_vektor)
+```
+
+```{r}
+Nummern_vektor <- (1,8,9, 13:29, 49, 92:129)
+mean(Nummern_vektor)
+```
+
+```{r}
+Bsp.Zahlen <- c(1,8,9, 13:29, 31, "49", 92:129)
+sum(Bsp.Zahlen)
+```
+
+```{r}
+Übung <- as.integer(c(1.3, 2.9, 1.7, 3.7, 7.3, 9.2))
+print(Übung)
+```
+
+
+## Übung 2: Objekte erstellen und Klassen anpassen 
+2.1 Erstellt ein Objekt mit den Zahlen 1, 4 bis 11, 15 und 20 und nennt es `rdmZahlen`. 
+2.2 Überprüft diesen Vektor auf seine Klasse. 
+2.3 Ändert die Klasse zu `integer`. 
+2.4 Erstellt daraus einen neuen `logical` Vektor, der die Information beinhaltet, ob die Zahlen aus `rdmZahlen` größer als 6 sind. 
+
+## Übung 3: Vektoren
+
+Erstelle Vektoren mit folgenden Werten:
+- Kartoffeln: 8, -3, -4, 0, 8, -5, -2
+- Eier: 10, -4, -2, -4, 10, -4, -2
+- Zwiebeln: 12, -3, -1, -2, 0, -3, -1
+- Wochentage: Montag bis Sonntag
+
+Ordnet danach die Wochentage den jeweiligen Vektoren zu. 
+

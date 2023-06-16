@@ -1,0 +1,101 @@
+---
+title: "Aufgaben_4_Wiederholung"
+author: "Patricia Heise"
+date: "2023-03-14"
+output: html_document
+---
+
+# Wiederholungsübungen Tag 4
+## Einführung in R
+### Methodenzentrum Goethe Universität Frankfurt
+
+
+## Pipes und Dataframes
+
+Arbeitet mit dem `mtcars`-Datenset. Versucht, wo möglich, eine Pipe (`%>%`) zu nutzen oder verschiedene Möglichkeiten anzugeben. 
+
+
+```{r}
+cars <- mtcars
+head(mtcars)
+```
+
+1.1 Benennt die Spalte `hp` in `PS` um. 
+1.2 Extrahiert alle Zeilen, die einen höheren Wert haben als 110 PS. 
+1.3 Wie viele Autos haben wie viele Zylinder (cyl)?
+1.4 Die Spalte `am` gibt Auskunft darüber, ob das Auto eine manuelle oder automatische Gangschaltung habt. Extrahiert alle Autos, die eine automatische Gangschaltung haben *und* über 3 Tonnen wiegen (`wt`).
+
+
+------------------------------------------------------------------------
+
+## Pipes mit Reihenfolge
+
+Ergänze die Film- und Buchtitel mit `paste`
+
+```{r}
+LotR <- "Der Herr der"
+
+Frankenstein <- "Oder Der Moderne Prometheus."
+
+#hier ergänzen, was ihr möchtet. Beispiele: Stolz und Vorurteil, Harry Potter und die Kammer des Schreckens, Tim und Struppi etc. 
+
+und <- "und"
+```
+
+
+
+
+## Fehlende Werte (NAs)
+
+1. Vergleicht diese beiden Vektoren. Wieso werden unterschiedliche Längen angezeigt? 
+
+
+```{r}
+vek_NA <- NA
+vek_NULL <- NULL
+length(vek_NA)
+length(vek_NULL)
+```
+
+
+2. Erst nachdenken, dann ausführen!
+Was wird als Output für `length` herauskommen?
+
+```{r}
+x <- c(22, 3, 7, NA, NA, 67)
+length(x)
+```
+
+
+3. Ihr habt hier ein Datenset mit `NA`. Gebt alle Reihen mit `NA`aus (z.B. als Subset).
+
+```{r}
+airqualitydata <- airquality
+```
+
+
+4. Entfernt alle Reihen mit `NA`.
+
+```{r}
+airqualitydata2 <- airquality
+```
+
+
+5. Hier ist eine weitere Tabelle mit NAs. Ersetzt hier die NAs durch `5`. (Bitte nicht im Skript ändern, sondern durch einen Befehl. Gerne googeln!)
+
+```{r}
+Name <- c("Azize", "Max", "Willy", "Kim", "Samira", "Benno", "Senay")
+Noten <- c(2, NA, 1, NA, 2, 3, NA)
+ÜbersichtNoten <- cbind(Name, Noten) %>% as.data.frame()
+print(ÜbersichtNoten)
+
+```
+
+
+6. Berechnet den Mittelwert mit `mean`, ohne das `NA` zu berücksichtigen.
+
+```{r}
+A <- c (33, 21, 12, NA, 7, 8)
+```
+
+

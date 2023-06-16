@@ -1,0 +1,30 @@
+---
+output: github_document
+editor_options:
+  markdown:
+    mode: gfm
+---
+
+# Willkomen zu *studyr*
+
+<!-- badges: start -->
+[![CRAN status](https://www.r-pkg.org/badges/version/studyr)](https://cran.r-project.org/package=studyr)
+
+<!-- badges: end -->
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  collapse = TRUE,
+  comment = "#>",
+  # fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+options(tibble.print_min = 5, tibble.print_max = 5)
+```
+
+
+
+Hier findest du eine Reihe an Totorials, die du zum Selbststudium verwenden kannst.
+
+

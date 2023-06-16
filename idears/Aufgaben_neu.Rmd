@@ -1,0 +1,234 @@
+---
+title: "Aufgaben_gesamt"
+output: html_document
+date: "2023-05-05"
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Übungsaufgaben für den Workshop *Einführung in R* vom Methodenzentrum der Goethe Universität
+
+## Klassen
+
+
+### 1. Die richtige Klasse auswählen 
+Diese Code-Schnipsel funktionieren nicht. Beachte die Fehlermeldungen und passe den Code an!
+
+```{r}
+Stühle <- "4"
+Sofa <- "1"
+Sitzgelegenheiten <- Stühle + Sofa
+```
+
+```{r}
+A1 <- as.factor(c(1:4))
+mean(A2)
+```
+
+```{r}
+A2 <- c(TRUE, FALSE, F, "TRUE", T, FALSE, TRUE, F, T)
+mean(A1)
+```
+
+
+### 1.1 Objekte umwandeln und abspeichern
+Erstelle ein Objekt mit den Zahlen 1 bis 50 und nenne es `Aufgabe1`. Jetzt erstelle zwei weitere Objekte mit den Zahlen 1 bis 50, die jeweils die Klassen `integer` und `character` haben und nenne sie `Aufgabe1_int` bzw. `Aufgabe1_cha`. Überlege dir zwei verschiedene Möglichkeiten, die Aufgabe umzusetzen. Arbeitet gerne zusammen!
+
+1.2 Erstelle aus dem Objekt `Aufgabe1` zwei neue Objekte der Klasse `logical`. Einmal mit der Information, ob die Zahlen kleiner als kleiner als 42 sind und ob die Zahlen genauso groß sind wie 7. 
+
+
+------------------------------------------------------------------------
+
+## Vektoren 
+
+### 2.1 Vektor erstellen 
+Erstellt auch einen Vektor mit Informationen *Name*, *Wohnort*, *Alter* und *Studiengang* über euch und eure:n Arbeitspartner:in. 
+
+```{r}
+Niklas <- c("Niklas Schäfer", "Rodenbach", "22", "Politikwissenschaft")
+```
+
+
+2.1.1 Manchmal brauchen wir einen leeren Vektor. Überlege dir, wie man einen Vektor ohne Inhalt erstellen könnte und nenne ihn `Personen`. 
+
+```{r}
+Personen <- c()
+```
+
+
+2.1.2 Schiebe die Personenvektoren, die du erstellt hast, in den leeren Vektor `Personen`. 
+
+```{r}
+Personen <- c(Patricia, Niklas)
+Personen
+```
+
+
+### 2.2 mit Vektoren rechnen
+
+2.2.1 Wir hatten folgenden Code als Beispiel. Weise beiden Vektoren die Wochentage Montag bis Freitag zu. 
+! TIPP ! Erstelle einen Vektor mit Wochentagen und nutze ihn für `GoetheCard` *und* `Sparschwein`. 
+
+```{r}
+GoetheCard <- c(10, -3.4, -2.30, 5, -2.90)
+GoetheCard
+sum(GoetheCard)
+
+Sparschwein <- c(15, -3, 5, -5.4, 2)
+sum(Sparschwein)
+```
+
+
+2.2.2 Was ist die Summe der Ausgaben diese Woche? Erstelle ein neues Objekt `Ausgaben`, indem du `GoetheCard` und `Sparschwein` addierst. 
+
+## Matrix
+
+### 3.1 Mit Matritzen rechnen
+Nutzt die Matrix aus dem Übersichtsskript: 
+
+```{r}
+matrix <- matrix(c(1, 2, 3, 4, 5, 6, 7, 8, 9), nrow = 3, ncol = 3)
+```
+
+1. Was ist die Summe aller Werte in der Matrix?
+
+2. Was ist die Summe der Zeilen 1 und 3?
+
+3. Was ist der Wert, der in Zeile 3, Spalte 1 steht? Bitte mit Code lösen!
+
+### 3.2 Fehler finden
+
+```{r}
+mat <- matrix(c(11, 12, 13, 14, 15, 16), nrow = 2, ncol 3)
+print(mat)
+
+Zeile2mat <- mat[3]
+print(Zeile2mat) #Bonus Frage: Welcher Wert wird hier ausgegeben und wieso?
+```
+
+
+## Data Frames
+### 4.1 Data Frame erstellen.
+Erstelle eine Tabelle mit mind. 6 Zeilen über deinen Bekanntenkreis. Zu den Spalten sollten Namen, Alter, Wohnort, Beziehung (Freund:in, Familie, Uni etc.) und Beziehungsstatus (single oder nicht single) gehören. Bitte nehmt auch eure:n Arbeitspartner:in auf! Die Tabelle sollte als `dataframe` vorliegen.
+
+Bitte die Daten als folgende Klassen abspeichern:
+
+-   Name = character
+-   Alter = integer
+-   Wohnort = character
+-   Beziehung = factor
+-   Beziehungsstatus = logical 
+
+Wer schon früher fertig ist, kann mehr Tabellen oder auch mehr Spalten anlegen.
+
+
+### 4.2 Spalten ansteuern
+
+1.  Welche Klassen haben die verschiedenen Spalten? Findet das mit Code heraus!
+
+2.  Ändert die Spalte `Wohnort` von `character` zu `factor`. Findet dafür mind. zwei verschiedene Lösungen!
+
+3. Erstellt einen Vektor mit der Klasse `logical`, der euch aussagt, ob die Personen alt sind oder nicht und fügt den Vektor dem Dataframe hinzu. Ab wann Personen als alt gelten oder nicht, könnt ihr selbst entscheiden.  
+
+------------------------------------------------------------------------
+
+# Pipes 
+## 5.1 Mit Pipes arbeiten 
+
+Das Datenset, das wir benutzen:
+
+```{r}
+irisdata <- iris
+```
+
+Formuliert die folgenden Prozess so um, dass sie mit Pipe funktionieren:
+(Am besten kurz stichpunktartig beschreiben, was ihr gerade gemacht habt. Was die Befehle machen, könnt ihr bei Help nachschauen!)
+
+```{r}
+irishead <- head(irisdata)
+```
+
+```{r}
+library(dplyr)
+
+iriscount <- count(irisdata, Sepal.Length)
+iriscut <- slice(iriscount, 1:5)
+```
+
+```{r}
+irisfilter <- filter(irisdata, Species == "setosa", Petal.Length < 1.4)
+irisselect <- select(irisfilter, Sepal.Width)
+```
+
+
+## 5.2 Pipes mit Reihenfolge
+
+Ergänze die Film- und Buchtitel mit `paste` 
+
+```{r}
+LotR <- "Der Herr der"
+
+Brian <- "Das Leben des"
+
+#hier ergänzen, was ihr möchtet. Beispiele: Stolz und Vorurteil, Harry Potter und die Kammer des Schreckens, Tim und Struppi etc. 
+
+und <- "und"
+```
+
+
+#Fehlende Werte (NAs)
+
+1. Vergleicht diese beiden Vektoren. Wieso werden unterschiedliche Längen angezeigt? 
+
+```{r}
+vek_NA <- NA
+vek_NULL <- NULL
+length(vek_NA)
+length(vek_NULL)
+```
+
+
+2. Erst nachdenken, dann ausführen!
+Was wird als Output für `length` herauskommen und wieso?
+
+```{r}
+x <- c(22, 3, 7, NA, NA, 67)
+length(x)
+```
+
+
+3. Ihr habt hier ein Datenset mit `NA`. Gebt alle Reihen mit `NA`aus (z.B. als Subset).
+
+```{r}
+airqualitydata <- airquality
+```
+
+
+4. Entfernt alle Reihen mit `NA`.
+
+```{r}
+airqualitydata2 <- airquality
+```
+
+
+5. Hier ist eine weitere Tabelle mit NAs. Ersetzt hier die NAs durch `5`. (Bitte nicht im Skript ändern, sondern durch einen Befehl. Gerne googeln!)
+
+```{r}
+Name <- c("Azize", "Max", "Willy", "Kim", "Samira", "Benno", "Senay")
+Noten <- c(2, NA, 1, NA, 2, 3, NA)
+ÜbersichtNoten <- cbind(Name, Noten) %>% as.data.frame()
+print(ÜbersichtNoten)
+
+```
+
+
+6. Berechnet den Mittelwert mit `mean`, ohne das `NA` zu berücksichtigen.
+
+```{r}
+A <- c (33, 21, 12, NA, 7, 8)
+```
+
+
+
+
