@@ -2,25 +2,26 @@
 original is from: https://github.com/tidymodels/learntidymodels/tree/main/inst/tutorials/pca_recipes/css
 *******/
 
+
 .Rchunk {
-  background-color: white !important;
+  background-color: #f2f2f2;
   /*font-weight: bolder;*/
   font-size: 15px;
+  border-color: #CA225E;
 }
 
 .Rout {
   background-color: white !important;
   /*color: black !important;*/
-  color: #CA225E;
+  color: #CA225E !important;
   font-size: 15px;
+  border-color: #CA225E;
 }
 
 
 /*-------- Google font imports --------*/
 
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap');
-
-
 
 
 /*-------- Background color & body font --------*/
@@ -72,14 +73,14 @@ h2 {
 .topicsContainer {
   margin-right: 0em;
   background-color: white;
-  min-width: 1.5em;
+  min-width: 182px;
   overflow-wrap: break-word;
 }
 
 .topicsList {
   background-color: white;
   overflow-x: auto;
-  min-width: 1.5em;
+  min-width: 200px;
   width: 50%;
   overflow-wrap: break-word;
 }
@@ -100,13 +101,26 @@ h2 {
   background-color: white;
 }
 
+/* current topic in sidebar*/
+.topicsList .topic.current {
+  background-color: #f2f2f2 !important;
+}
+
+/* Text in sidebar*/
+.topicsList .nav-link {
+}
+
 .img-right {
-    display: block;
+    background-color: white;
     margin-left: auto;
     margin-right: auto;
-    background-color: white;
     float: right;
-
+    display: block;
+    /*
+    position:absolute !important;
+    left:100px;
+    top:-10px;
+    */
   }
 
 /* Remove extra space on mobile */
@@ -130,14 +144,14 @@ h2 {
   }
 
   .bandContent band {
-    background-color: orange;
-    color: orange;
+    background-color: #CA225E;
+    color: #CA225E;
     width: 0%;
   }
 
   .bandContent page {
-    background-color: orange;
-    color: orange;
+    background-color: #CA225E;
+    color: #CA225E;
     width: 0%;
   }
 
@@ -169,8 +183,6 @@ h2 {
 
 }
 
-
-
 /*--------- Headers ---------*/
 
 h1, h2, h3 {
@@ -181,18 +193,20 @@ h1, h2, h3 {
 
 h1 {
   color: #CA225E;
+    font-size: 2em;
 }
 
 h2 {
-  font-size: 1.5em;
-  color: #1a162d;
+  color: #CA225E;
   text-transform: uppercase;
 }
 
 h3 {
   font-size: 1.3em;
-  color: #1a162d99;
+  color: #CA225E;
   text-transform: uppercase;
+  /*
+  color: #1a162d99;*/
 }
 
 h4 {
@@ -212,7 +226,7 @@ h2 code,
 h3 code {
   text-transform: none;
   font-size: 100%;
-  background-color: #e8e8e847;
+  background-color: #f2f2f2;
 }
 
 
@@ -239,9 +253,27 @@ h3 code {
 
 }
 
-/*------- Rectangle panels --------*/
+/*------- Rectangle panels, RChunks --------*/
 
 .panel, pre {
+  background-color: #f2f2f2;
+  /*font-weight: bolder;*/
+  font-size: 15px;
+}
+
+.tutorial-exercise .tutorial-exercise-input {
+  margin-bottom: 1em;
+  border-left-color: #CA225E;
+  border-left-width: 5px;
+}
+
+.r {
+  background-color: #f2f2f2;
+  /*font-weight: bolder;*/
+  font-size: 15px;
+  border-left-color: #CA225E;
+  border-left-width: 5px;
+  /*border-color: #CA225E;*/
 }
 
 
@@ -300,7 +332,7 @@ h2.tutorialTitle,
 #doc-metadata {
   margin-bottom: 1.5em;
   padding-bottom: 1.5em;
-  border-bottom: solid 0pt #d9d9d9;
+  border-bottom: solid 0pt #f2f2f2;
 }
 
 #doc-metadata h3,
@@ -347,7 +379,7 @@ h2.tutorialTitle,
     padding: 8px 14px;
     font-size: 14px;
     background-color: #bd2a62;
-    border-bottom: 1px solid #ebebeb;
+    border-bottom: 1px solid #f2f2f2;
     border-radius: 5px 5px 0 0;
     color: white;
     text-shadow: none;
@@ -381,6 +413,7 @@ h2.tutorialTitle,
     text-shadow: none;
     border-radius: 0;
     letter-spacing: 1pt;
+    background-color: #f2f2f2;
 }
 
 .topicActions .btn-primary,
@@ -420,7 +453,7 @@ h2.tutorialTitle,
 
 /*------- Button disabled -------*/
 .btn-primary.disabled {
-    background-color: lightgray;
+    background-color: #f2f2f2;
 }
 
 

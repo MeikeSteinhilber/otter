@@ -4,7 +4,7 @@
 
 1. Ordne in jeder Zeile zu: Befehl (function call), Objekt, Wert. 
 
-```{r}
+```{r, error=TRUE}
 Buchtitel <- c("Emma", "Stolz und Vorurteil", "Sinn und Sinnlichkeit")
 
 print(Buchtitel)
@@ -18,7 +18,7 @@ Jahr.num <- as.numeric(Jahr)
 
 1.2 Beschreibe, was in jeder Zeile passiert (in mind. einem Satz pro Zeile).
 
-```{r}
+```{r, error=TRUE}
 Z <- c(1:42) # so könnt ihr Kommentare in den Code Chunk schreiben 
 Z2 <- c(10, 48, 100:111, 1080) #mit oder ohne Leerzeichen nach dem Hashtag
 Z2  
@@ -29,22 +29,22 @@ Z_mean <- mean(Z)
 
 1.3 Finde den Fehler!
 
-```{r}
+```{r, error=TRUE}
 Hunde_vektor <- c(Chihuahua, Dogge, Schäferhund, Border Collie)
 print(Hunde_vektor)
 ```
 
-```{r}
+```{r, error=TRUE}
 Nummern_vektor <- (1,8,9, 13:29, 49, 92:129)
 mean(Nummern_vektor)
 ```
 
-```{r}
+```{r, error=TRUE}
 Bsp.Zahlen <- c(1,8,9, 13:29, 31, "49", 92:129)
 sum(Bsp.Zahlen)
 ```
 
-```{r}
+```{r, error=TRUE}
 Übung <- as.integer(c(1.3, 2.9, 1.7, 3.7, 7.3, 9.2))
 print(Übung)
 ```

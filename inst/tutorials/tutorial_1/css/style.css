@@ -21,8 +21,6 @@ original is from: https://github.com/tidymodels/learntidymodels/tree/main/inst/t
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap');
 
 
-
-
 /*-------- Background color & body font --------*/
 
 body, button, input, textarea {
@@ -98,6 +96,11 @@ h2 {
   overflow-wrap: break-word;
   min-width: 1.5em;
   background-color: white;
+}
+
+.topicsList .topic.current {
+  background-color: #1a162d99 !important;
+  border-color: #CA225E !important;
 }
 
 .img-right {

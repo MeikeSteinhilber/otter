@@ -4,7 +4,7 @@ tutorial:
   version: 0.1
 output:
   learnr::tutorial:
-    lanuage: de
+    language: de
     # progressive: true
     allow_skip: true
     css: css/style.css
@@ -13,6 +13,10 @@ output:
 runtime: shiny_prerendered
 ---
 
+<div class="img-right">
+  <a href="https://meikesteinhilber.github.io/studyr/"> <i class="fa-solid fa-house" aria-label="Link zur studyr Homepage" aria-hidden="true"></i> 
+  </a> 
+</div>
 
 ```{r setup, include=FALSE}
 library(learnr)
@@ -24,11 +28,6 @@ knitr::opts_chunk$set(echo = FALSE)
 gradethis::gradethis_setup()
 ```
 
-<div class="img-right">
-  <a href="https://meikesteinhilber.github.io/studyr/"> <i class="fa-solid fa-house" aria-label="Link zur studyr Homepage" aria-hidden="true"></i> 
-  </a> 
-</div>
-
 
 
 ## R und RStudio Installation
@@ -39,7 +38,9 @@ unter: https://cran.r-project.org/bin/windows/base/
 2. RStudio Installation
 unter: https://posit.co/download/rstudio-desktop/
 
+
 ## RStudio Einstieg
+
 RStudio ist eine sogenannte *integrated development environment* (IDE), also eine Entwicklungsumgebung für die Programmiersprache R.
 Grundsätzlich sind auch andere IDEs möglich, wir werden in diesem Tutorial jedoch immer davon ausgehen, dass RStudio verwendet wird.
 
@@ -51,6 +52,8 @@ Aktuell haben wir noch kein Dokument geöffnet.
 Wir sehen aktuell 3 separierte Bereiche bzw. Fenster.
 
 ### Console
+
+
 ![](images/console.png){.absolute left="100%" width="80%"}
 
 In der *Console* können R Befehle direkt ausgeführt werden.
@@ -62,6 +65,7 @@ Dafür wird ein R Skript benötigt.
 
 
 ### Environment
+
 ![](images/environment.png){.absolute left="100%" width="80%"}
 
 Das Environment ist zu Beginn einer R Session leer.
@@ -70,16 +74,49 @@ Wenn wir jedoch Variablen speichern oder Datensätze einladen, werden diese Obje
 ![](images/environment2.png){.absolute left="100%" width="80%"}
 
 ### Files
+
+
 ![](images/files.png){.absolute left="100%" width="80%"}
 
 Je nachdem wo die *working directory* gesetzt ist, werden hier unterschiedliche Dokumente und Ordner angezeigt.
 
 ### R Skripte
 
+
 Wenn ein R Skript geöffnet wird, wird ein weiteres Fenster für das Skript angezeigt.
 In einem R Skript kann Code abgespeichert werden.
 
-## Neues R Skript öffnen
+
+## R Skript
+
+__Übersicht__
+
+<a href="#section-r-skript">section-r-skript</a>
+
+<a href="#section-kommentare">section-kommentare</a>
+
+<a href="#section-neues-r-skript-öffnen">section-neues-r-skript-öffnen</a>
+
+In einem R Skript kann Code abgespeichert werden.
+
+![](images/script1.png){.absolute left="100%" width="80%"}
+
+
+### Kommentare
+<a href="#section-r-skript">section-r-skript</a>.
+
+Grundsätzlich wird jeder Befehl und jedes Zeichen als R Code verstanden.
+Wenn man einen Kommentar schreiben möchte, muss man in jeder Zeile eine `#` davor setzen.
+![](images/script1.png){.absolute left="100%" width="80%"}
+
+Code wird ausgeführt in dem der gewünschte Bereich markiert wird und dann auf den *Run*-Button geklickt wird. Es kann hier der gesamte Code markiert werden, aber auch einzelne Zeilen oder sogar nur einzelne Befehle.
+
+![](images/script2.png){.absolute left="100%" width="80%"}
+
+Die Tastenkombination für *Run* ist unter Windows `Str + Enter` und unter macOS `Cmd + Enter`.
+
+### Neues R Skript öffnen
+<a href="#section-r-skript">section-r-skript</a>.
 
 Ein neues leeres R Skript wir über diesen Button geöffnet:
 
@@ -93,6 +130,7 @@ Das neu geöffnete R Skript sieht nun so aus und kann direkt abgespeichert werde
 
 ![](images/empty-rscript-open.png){.absolute left="100%" width="80%"}
 
+
 ## RStudio vs studyr
 
 Die studyr Tutorials sind alle interaktiv gestaltet.
@@ -105,7 +143,7 @@ So sieht derselbe R Code in unserem Tutorial Format aus
 
 `r studyr::colorize("Übungsaufgabe:", "#CA225E")`
  *Klicke auf den Button "Run Code" und vergleiche die Ausgabe mit den obrigen Bildern*.
-```{r r-vs-tutorial, exercise=TRUE}
+```{r r-vs-tutorial, exercise=TRUE, results = "hold"}
 5*5
 
 # Dies ist ein Kommentar
@@ -118,13 +156,219 @@ Versuche Dich nun selbst!
 `r studyr::colorize("Übungsaufgabe:", "#CA225E")`
 *Berechne 84 \* 15.
 Gebe dazu die Berechnung in den R Code Bereich ein und klicke auf "Rund Code"*
-```{r ex-r-vs-tutorial, exercise=TRUE}
+```{r ex-r-vs-tutorial, exercise=TRUE, results = "hold"}
 
 ```
 
-```{r ex-r-vs-tutorial-check}
+```{r ex-r-vs-tutorial-check, results = "hold"}
 grade_result(
   pass_if(~identical(.result, 84 * 15)),
   glue_correct = "Richtig!"
 )
+```
+
+
+## Datentypen
+
+### Kurze Übersicht
+
+-   Logical: TRUE, FALSE
+-   Integer: Ganze Zahlen (Platz speichernd)
+-   Double: Kommazahlen
+-   Character: Buchstaben
+
+### Logical
+
+Werte:   `TRUE` (entwpricht 1) und `FALSE` (entspricht 0)
+
+Kann aufsummiert werden:
+
+```{r logicals-1, exercise=TRUE, results = "hold"}
+TRUE + TRUE 
+FALSE + FALSE
+TRUE + FALSE 
+```
+
+Logische Operatoren können angewandt werden
+
+```{r logicals-2, exercise=TRUE, results = "hold"}
+FALSE & TRUE
+FALSE | TRUE
+5 < 10
+```
+
+__Logische Operatoren__
+
+| Symbol | Bedeutung   |
+|--------|-------------|
+| `<`    | kleiner als |
+| `>`    | größer als  |
+| `==`   | gleich      |
+| `!=`   | ungleich    |
+| `|`    | oder        |
+| `&`    | und         |
+| `!`    | Negierung   |
+
+<!-- : Logische Operatoren -->
+
+
+### Integer
+
+`integer`-zahlen sind Ganzezahlen in R.
+Sie sind platzsparender als `double` Zahlen, da Kommas ausgeschlossen sind.
+R geht zuerst immer davon aus, dass es sich um `double` Zahlen handelt, somit müssen `integer`-Zahlen explizit definiert werden.
+
+Hier gibt es zwei Möglichkeiten:
+
+-   L muss direkt dahinter gesetzt werden, z.B. `2L`
+-   `:` ermöglich schnell eine Folge an `integer` Zahlen zu generieren, z.B. `1:3` erzeugt die Zahlen von 1 bis 3 in einzer Schritten
+
+```{r integers-1, exercise=TRUE, results = "hold"}
+1L
+1:10
+10:1
+```
+
+Mit der Funktion `is.integer()` können wir prüfen, ob es sich um `integer`-Zahlen handelt oder nicht.
+
+```{r integers-2, exercise=TRUE, results = "hold"}
+is.integer(1)
+is.integer(1L)
+```
+
+### Double
+
+`double`-zahlen sind sogenannte Gleitkommazahlen.
+Diese Zahlentypen werden für normale Berechnungen verwendet
+
+-   Kommazahlen
+-   Sonderfälle
+    -   `Inf` Positive Unendlichkeit
+    -   `-Inf` Negative Unendlichkeit
+    -   `NaN` Not a Number (Fehlender Wert im Datensatz)
+    
+```{r doubles-1, exercise=TRUE, results = "hold"}
+8/5
+4.44 + 2.1
+```
+
+Mit der Funktion `typeof()` können wir abfragen, um welchen Datentyp es sich handelt.
+
+```{r doubles-2, exercise=TRUE, results = "hold"}
+typeof(5)
+```
+
+### Character
+
+### Viel Nichts in R
+
+In R gibt es viele Möglichkeit, um auszudrücken, dass etwas nicht vorhanden ist.
+Alle Formen von "Nichts" haben eine leicht andere Bedeutung und werden in unterschiedlichen Fällen verwendet oder produziert.
+
+Hier eine (nicht vollständige) Übersicht:
+
+- `NaN`: *Not a Number* (Länge ist 1). Wir verwendet bei invaliden Rechenoperationen.
+
+- `NA`: *Not Available* (Länge ist 1). Wird klassisch für fehlende Werte verwendet.
+
+- `NULL`: Repräsentiert das Null-Objekt in R (Länge ist Null). Wird z.B. in Funktionen verwendet für default Argumente.
+
+- `logical(0)`: Ein `logical`-Wert der Länge Null.
+
+- `integer(0)`: Eine `integer`-Zahl der Länge Null.
+
+- `double(0)`: Eine `double`-Zahl der Länge Null.
+
+All diese Werte stellen „nichts" oder „fehlend" dar.
+
+Die Länge dieser Werte unterscheidet sich, so sind manche 0 und andere 1.
+
+```{r na-2, exercise=TRUE, results = "hold"}
+length(NaN)
+length(NA)
+length(NULL)
+length(integer(0))
+length(double(0))
+```
+
+Beispiele für die Erzeugung von `NA`
+```{r na-3, exercise=TRUE, results = "hold"}
+NA == "test"
+NA == 5
+NaN == 5
+```
+
+Beispiele für die Erzeugung von `NaN`
+```{r na-5, exercise=TRUE, results = "hold"}
+0/0
+Inf/1
+```
+
+Beispiele für die Erzeugung von `logical(0)`
+```{r na-4, exercise=TRUE, results = "hold"}
+NULL == "test"
+NULL == 5
+integer(0) == 5
+```
+
+### Achtung: Fehlende Werte
+
+Fehlende Werte wie `NaN` sind manchmal infektiös!
+
+Bei Rechenoperationen führt z.B. ein `NaN` dazu, das das Ergebnis auch ein fehlender Wert ist.
+
+Dies gilt jedoch nicht für `|` Operationen.
+
+`NaN` kann NICHT mit `==` geprüft werden! Es muss mit `is.na()` geprüft werden.
+
+```{r na-1, exercise=TRUE, results = "hold"}
+NaN == NaN
+NaN < 5
+10 * NaN
+NaN & TRUE
+
+NaN | TRUE
+is.na(NaN)
+```
+
+### Hilfreiche Funktionen
+
+Erstellt Dummy Variablen eines bestimmten Datentyps.
+
+```{r, echo=TRUE}
+integer(5)
+double(5)
+character(5)
+logical(5)
+```
+
+
+Prüfungen
+
+```{r, echo=TRUE, results='hold'}
+number = 5
+is.integer(number)
+is.double(number)
+is.character(number)
+is.logical(number)
+
+is.numeric(number)
+is.finite(number)
+is.infinite(number)
+```
+
+
+## Test
+
+```{r code-example, exercise=FALSE, echo=TRUE, eval=FALSE}
+open_tutorial <- function(tutorial_name) {
+  if (!is.character(tutorial)) {stop("Invalid input argument: tutorial name must be a charcter string.")}
+  # learnr::run_tutorial(tutorial, package = "studyr")
+}
+NULL
+output$distPlot <- renderPlot({
+  x <- faithful[, 2]  # Old Faithful Geyser data
+  bins <- seq(min(x), max(x), length.out = input$bins + 1)
+  hist(x, breaks = bins, col = 'darkgray', border = 'white')
+})
 ```

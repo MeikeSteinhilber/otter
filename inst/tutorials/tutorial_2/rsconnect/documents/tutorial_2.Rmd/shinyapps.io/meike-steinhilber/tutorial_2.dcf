@@ -5,9 +5,9 @@ account: meike-steinhilber
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 9018277
-bundleId: 7354073
+bundleId: 7362837
 url: https://meike-steinhilber.shinyapps.io/tutorial_2/
-when: 1686928440.20897
-lastSyncTime: 1686928440.20898
+when: 1687188058.43229
+lastSyncTime: 1687188058.4323
 asMultiple: FALSE
 asStatic: FALSE
