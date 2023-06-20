@@ -21,13 +21,16 @@ runtime: shiny_prerendered
 ```{r setup, include=FALSE}
 library(learnr)
 library(gradethis)
-library(magick)
 # library(studyr)
-# devtools::load_all()
+devtools::load_all()
 knitr::opts_chunk$set(echo = FALSE)
 gradethis::gradethis_setup()
+tutorial_options(exercise.reveal_solution = TRUE)
 ```
 
+```{r custom-messages, echo=FALSE, eval=TRUE}
+correct_message <- "Richtig!"
+```
 
 
 ## R und RStudio Installation
@@ -148,7 +151,7 @@ So sieht derselbe R Code in unserem Tutorial Format aus
 
 # Dies ist ein Kommentar
 
-print("Hallo liebe Studis!")
+print("Hallo Welt!")
 ```
 
 Versuche Dich nun selbst!
@@ -211,6 +214,61 @@ __Logische Operatoren__
 
 <!-- : Logische Operatoren -->
 
+Mit Logischen Operatoren können auf Objekte (Variablen, Vektoren, Datensätze, ...) angewandt werden.
+Als Ergebnis wird immer der Datentyp `logical` ausgegeben.
+
+```{r logical-3, exercise=TRUE, results = "hold"}
+namen <- c("Lisa Müller", "Peter Bauer", "Hannah Schmidt")
+angemeldet <- c(TRUE, FALSE, TRUE)
+
+# Wer von den Personen heißt Lisa Müller?
+namen == "Lisa Müller"
+
+# Wer ist bereits angemeldet?
+angemeldet == TRUE
+```
+
+`r studyr::colorize("Übungsaufgabe:", "#CA225E")`
+ *Klicke auf den Button "Run Code" und vergleiche die Ausgabe mit den obrigen Bildern*.
+
+```{r ex-logical-1, exercise=TRUE, results = "hold"}
+namen <- c("Lisa Müller", "Peter Bauer", "Hannah Schmidt")
+angemeldet <- c(TRUE, FALSE, TRUE)
+alter <- c(18, 22, 16)
+
+# Wer von den Personen heißt NICHT Lisa Müller?
+
+```
+
+```{r ex-logical-1-hint-1, error=TRUE}
+!= 
+```
+
+```{r ex-logical-1-solution}
+namen != "Lisa Müller"
+```
+
+
+```{r ex-logical-1-check}
+grade_result(
+  pass_if(~identical(
+    .result,
+    namen != "Lisa Müller"
+  ),
+  message = correct_message)
+)
+```
+
+```{r ex-logical-2, exercise=TRUE, results = "hold"}
+namen <- c("Lisa Müller", "Peter Bauer", "Hannah Schmidt")
+angemeldet <- c(TRUE, FALSE, TRUE)
+alter <- c(18, 22, 16)
+
+# Wer von den Personen ist jünger als 18 Jahre?
+
+```
+
+
 
 ### Integer
 
@@ -259,6 +317,28 @@ typeof(5)
 ```
 
 ### Character
+
+Text oder Symbole oder auch Farben, werden in Datentyp `character` gespeichert.
+
+Text muss in `""` gesetzt werden.
+
+Dies ist ein Beispiel für Text.
+```{r character-1, exercise=TRUE, results = "hold"}
+"Hallo Welt"
+```
+
+Text wird häufig als Funktionsargument verwendet, z.B. um Symbole anzuzeigen.
+(Die Icons stammen von [fontawesome](https://fontawesome.com/search?o=r&m=free).)
+```{r character-2, exercise=TRUE, results = "hold"}
+shiny::icon("rocket")
+shiny::icon("star")
+```
+
+Oder auch für Hexcode, um Farben zu definieren.
+
+```{r character-3, exercise=TRUE, results = "hold"}
+scales::show_col(c("#044a85", "#e28743", "#1F98B44D", "#1F98BC"))
+```
 
 ### Viel Nichts in R
 
@@ -333,9 +413,9 @@ is.na(NaN)
 
 ### Hilfreiche Funktionen
 
-Erstellt Dummy Variablen eines bestimmten Datentyps.
+Erstellen Dummy Variablen eines bestimmten Datentyps:
 
-```{r, echo=TRUE}
+```{r data-functions1, exercise=TRUE, results = "hold"}
 integer(5)
 double(5)
 character(5)
@@ -343,16 +423,20 @@ logical(5)
 ```
 
 
-Prüfungen
+Prüfungen, welcher Datentyp vorliegt:
 
-```{r, echo=TRUE, results='hold'}
+```{r data-functions2, exercise=TRUE, results = "hold"}
+# Erzeugung einer Variable
 number = 5
+# Prüfung der Variable
 is.integer(number)
 is.double(number)
 is.character(number)
 is.logical(number)
-
 is.numeric(number)
+
+# Prüfung von Spezialfällen
+is.na(number)
 is.finite(number)
 is.infinite(number)
 ```
