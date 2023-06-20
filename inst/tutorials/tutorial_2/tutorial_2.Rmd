@@ -29,7 +29,7 @@ tutorial_options(exercise.reveal_solution = TRUE)
 ```
 
 ```{r custom-messages, echo=FALSE, eval=TRUE}
-correct_message <- "Richtig!"
+correct_message <<- "Richtig!"
 ```
 
 
@@ -228,6 +228,8 @@ namen == "Lisa Müller"
 angemeldet == TRUE
 ```
 
+### Übungen
+
 `r studyr::colorize("Übungsaufgabe:", "#CA225E")`
  *Klicke auf den Button "Run Code" und vergleiche die Ausgabe mit den obrigen Bildern*.
 
@@ -248,14 +250,13 @@ alter <- c(18, 22, 16)
 namen != "Lisa Müller"
 ```
 
-
 ```{r ex-logical-1-check}
 grade_result(
   pass_if(~identical(
     .result,
     namen != "Lisa Müller"
   ),
-  message = correct_message)
+  glue_correct = "Richtig")
 )
 ```
 
@@ -443,6 +444,30 @@ is.infinite(number)
 
 
 ## Test
+
+`r studyr::colorize("Übungsaufgabe:", "#CA225E")`
+ *Klicke auf den Button "Run Code" und vergleiche die Ausgabe mit den obrigen Bildern*.
+
+```{r ex-test-1, exercise=TRUE, results = "hold"}
+namen <- c("Lisa Müller", "Peter Bauer", "Hannah Schmidt")
+angemeldet <- c(TRUE, FALSE, TRUE)
+alter <- c(18, 22, 16)
+
+# Wer von den Personen heißt NICHT Lisa Müller?
+
+```
+```{r ex-test-1-solution}
+namen != "Lisa Müller"
+```
+```{r ex-test-1-check}
+grade_result(
+  pass_if(~identical(
+    .result,
+    namen != "Lisa Müller",
+    message = "Richtig!"
+  ))
+)
+```
 
 ```{r code-example, exercise=FALSE, echo=TRUE, eval=FALSE}
 open_tutorial <- function(tutorial_name) {
