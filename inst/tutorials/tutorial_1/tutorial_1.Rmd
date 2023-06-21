@@ -3,39 +3,136 @@ title: "Tutorial 1"
 tutorial:
   version: 0.1
 output:
+  # html_document:
   learnr::tutorial:
-    lanuage: de
+    language: de
     # progressive: true
     allow_skip: true
     css: css/style.css
     # highlight: espresso
-    ace_theme: clouds
-    # theme: united
+    # theme: cerulean
 runtime: shiny_prerendered
 ---
 
 ```{r setup, include=FALSE}
 library(learnr)
+library(gradethis)
 # library(studyr)
-knitr::opts_chunk$set(echo = FALSE, class.source="Rchunk", class.output="Rout")
+devtools::load_all()
+knitr::opts_chunk$set(echo = FALSE)
+gradethis::gradethis_setup(
+  pass.praise = FALSE,
+  fail.encourage = FALSE,
+  pass = "Richtig!",
+  fail = "Das ist leider falsch."
+  )
+tutorial_options(exercise.reveal_solution = TRUE)
 ```
 
-<div class="img-right">
+<!-- <a href="https://meikesteinhilber.github.io/studyr/"> <i class="fa-solid fa-house" aria-label="Link zur studyr Homepage" aria-hidden="true"></i> </a> -->
+
+<script>
+$(document).ready(function() {
+  $("#tutorial-topic").prepend(`<div class="img-right">
   <a href="https://meikesteinhilber.github.io/studyr/"> <i class="fa-solid fa-house" aria-label="Link zur studyr Homepage" aria-hidden="true"></i> 
   </a> 
-</div>
+  </div>`);
+  
+  $("a[href^='#']").on("click", function(event) {
+    const currentSection = $(".section.current");
+    var href = $(this).attr("href");
+    
+    if(!$(href, currentSection).length) {
+      return;
+    }
+    var href = href.substr(1);
+    event.preventDefault();
+    
+    const el = document.getElementById(href);
+    if(!el) {
+      return;
+    }
+    window.scrollTo({
+      top: el.offsetTop,
+      left: 0,
+      behavior: "smooth",
+    }); 
+  });
+});
+</script>
+
+## Nothing
+
+## Test
+
+<!-- <script> -->
+<!-- alert("Hallo Welt!"); -->
+<!-- </script> -->
+
+<a href="#section-test-1">Test1</a>
+
+<a href="#section-test-2">Test2</a>
+
+<a href="#section-topic-1">Topik 1</a>
+
+### Test1
+X
+
+X
+X
+
+X
+X
+
+X
+X
+
+X
+X
+
+X
+X
+
+X
+X
+X
+
+### Test 2
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+X
+X
+X
 
 
 
-<!-- <a href="https://meikesteinhilber.github.io/studyr/" class="button-link" target="_blank" rel="noopener noreferrer">Tutorial auf neuer Seite starten (empfohlen)</a></p> -->
 
 ## Topic 1
+
 Test
 
 ```{r, child = "sub-tutorial-1.Rmd"}
 
 ```
-
 
 ## Topic 2
 
@@ -51,8 +148,6 @@ output$distPlot <- renderPlot({
   hist(x, breaks = bins, col = 'darkgray', border = 'white')
 })
 ```
-
-
 
 ## Topic 3
 
@@ -76,8 +171,6 @@ question("What number is the letter A in the English alphabet?",
 )
 ```
 
-
-
 ## TOPIC 4 is a long a very long very very long long
 
 ```{r code-example, exercise=FALSE, echo=TRUE, eval=FALSE}
@@ -97,13 +190,11 @@ output$distPlot <- renderPlot({
 2+3
 ```
 
-
 ## Video
 
 VIDEO
 
 ![](https://youtu.be/zNzZ1PfUDNk)
-
 
 ## Exercise with Hint
 

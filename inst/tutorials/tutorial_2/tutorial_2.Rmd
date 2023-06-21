@@ -12,26 +12,53 @@ output:
     # theme: cerulean
 runtime: shiny_prerendered
 ---
+<script>
+$(document).ready(function() {
+  $("#tutorial-topic").prepend(`<div class="img-right">
+  <a href="https://meikesteinhilber.github.io/studyr/"> <i class="fa-solid fa-house" aria-label="Link zur studyr Homepage" aria-hidden="true"></i>
+  </a>
+  </div>`);
 
-<div class="img-right">
-  <a href="https://meikesteinhilber.github.io/studyr/"> <i class="fa-solid fa-house" aria-label="Link zur studyr Homepage" aria-hidden="true"></i> 
-  </a> 
-</div>
+  $("a[href^='#']").on("click", function(event) {
+    const currentSection = $(".section.current");
+    var href = $(this).attr("href");
+
+    if(!$(href, currentSection).length) {
+      return;
+    }
+    var href = href.substr(1);
+    event.preventDefault();
+
+    const el = document.getElementById(href);
+    if(!el) {
+      return;
+    }
+    window.scrollTo({
+      top: el.offsetTop,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+});
+
+</script>
 
 ```{r setup, include=FALSE}
 library(learnr)
 library(gradethis)
 # library(studyr)
-devtools::load_all()
+# devtools::load_all()
 knitr::opts_chunk$set(echo = FALSE)
-gradethis::gradethis_setup()
-tutorial_options(exercise.reveal_solution = TRUE)
+gradethis::gradethis_setup(
+  pass.praise = FALSE,
+  fail.encourage = FALSE,
+  pass = "Richtig!",
+  fail = "Das ist leider falsch."
+  )
+tutorial_options(exercise.reveal_solution = TRUE,
+                 exercise.blanks = "___")
+blue <- "#00c4e6"
 ```
-
-```{r custom-messages, echo=FALSE, eval=TRUE}
-correct_message <<- "Richtig!"
-```
-
 
 ## R und RStudio Installation
 
@@ -44,6 +71,19 @@ unter: https://posit.co/download/rstudio-desktop/
 
 ## RStudio Einstieg
 
+### Kapitel
+
+
+<a href="#section-console"> <i class="fa-solid fa-arrow-down"></i> Console</a>
+
+<a href="#section-environment"><i class="fa-solid fa-arrow-down"></i> Environment</a>
+
+<a href="#section-files"><i class="fa-solid fa-arrow-down"></i> Files</a>
+
+<a href="#section-r-skripte"><i class="fa-solid fa-arrow-down"></i> R Skripte</a>
+
+
+
 RStudio ist eine sogenannte *integrated development environment* (IDE), also eine Entwicklungsumgebung für die Programmiersprache R.
 Grundsätzlich sind auch andere IDEs möglich, wir werden in diesem Tutorial jedoch immer davon ausgehen, dass RStudio verwendet wird.
 
@@ -55,36 +95,38 @@ Aktuell haben wir noch kein Dokument geöffnet.
 Wir sehen aktuell 3 separierte Bereiche bzw. Fenster.
 
 ### Console
+<a href="#section-rstudio-einstieg"> <i class="fa-solid fa-arrow-up"></i></a>
 
 
-![](images/console.png){.absolute left="100%" width="80%"}
+![](images/console.png){.absolute .images-shadow left="100%" width="80%"}
 
 In der *Console* können R Befehle direkt ausgeführt werden.
 Dies ist praktisch für kleine Taschenrechner Befehle oder kleine Tests.
 Der Nachteil ist jedoch, dass die R Befehle nicht gespeichert werden können.
 Dafür wird ein R Skript benötigt.
 
-![](images/console2.png){.absolute left="100%" width="60%"}
+![](images/console2.png){.absolute .images-shadow left="100%" width="60%"}
 
 
 ### Environment
+<a href="#section-rstudio-einstieg"> <i class="fa-solid fa-arrow-up"></i></a>
 
-![](images/environment.png){.absolute left="100%" width="80%"}
+![](images/environment.png){.absolute .images-shadow left="100%" width="80%"}
 
 Das Environment ist zu Beginn einer R Session leer.
 Wenn wir jedoch Variablen speichern oder Datensätze einladen, werden diese Objekte hier angezeigt.
 
-![](images/environment2.png){.absolute left="100%" width="80%"}
+![](images/environment2.png){.absolute .images-shadow left="100%" width="80%"}
 
 ### Files
+<a href="#section-rstudio-einstieg"> <i class="fa-solid fa-arrow-up"></i></a>
 
-
-![](images/files.png){.absolute left="100%" width="80%"}
+![](images/files.png){.absolute .images-shadow left="100%" width="80%"}
 
 Je nachdem wo die *working directory* gesetzt ist, werden hier unterschiedliche Dokumente und Ordner angezeigt.
 
 ### R Skripte
-
+<a href="#section-rstudio-einstieg"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Wenn ein R Skript geöffnet wird, wird ein weiteres Fenster für das Skript angezeigt.
 In einem R Skript kann Code abgespeichert werden.
@@ -92,46 +134,46 @@ In einem R Skript kann Code abgespeichert werden.
 
 ## R Skript
 
-__Übersicht__
+### Kapitel
 
-<a href="#section-r-skript">section-r-skript</a>
+<a href="#section-kommentare"><i class="fa-solid fa-arrow-down"></i> Kommentare</a>
 
-<a href="#section-kommentare">section-kommentare</a>
+<a href="#section-neues-r-skript-öffnen"><i class="fa-solid fa-arrow-down"></i> Neues R Skript öffnen</a>
 
-<a href="#section-neues-r-skript-öffnen">section-neues-r-skript-öffnen</a>
 
 In einem R Skript kann Code abgespeichert werden.
 
-![](images/script1.png){.absolute left="100%" width="80%"}
+![](images/script1.png){.absolute .images-shadow left="100%" width="80%"}
 
 
 ### Kommentare
-<a href="#section-r-skript">section-r-skript</a>.
+<a href="#section-r-skript"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Grundsätzlich wird jeder Befehl und jedes Zeichen als R Code verstanden.
 Wenn man einen Kommentar schreiben möchte, muss man in jeder Zeile eine `#` davor setzen.
-![](images/script1.png){.absolute left="100%" width="80%"}
+
+![](images/script1.png){.absolute .images-shadow left="100%" width="80%"}
 
 Code wird ausgeführt in dem der gewünschte Bereich markiert wird und dann auf den *Run*-Button geklickt wird. Es kann hier der gesamte Code markiert werden, aber auch einzelne Zeilen oder sogar nur einzelne Befehle.
 
-![](images/script2.png){.absolute left="100%" width="80%"}
+![](images/script2.png){.absolute .images-shadow left="100%" width="80%"}
 
 Die Tastenkombination für *Run* ist unter Windows `Str + Enter` und unter macOS `Cmd + Enter`.
 
 ### Neues R Skript öffnen
-<a href="#section-r-skript">section-r-skript</a>.
+<a href="#section-r-skript"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Ein neues leeres R Skript wir über diesen Button geöffnet:
 
-![](images/button-rscript-open.png){.absolute left="100%" width="80%"}
+![](images/button-rscript-open.png){.absolute .images-shadow left="100%" width="80%"}
 
 Man erhält eine große Anzahl an möglichen Formaten, unter anderem auch ein R Skript.
 
-![](images/button-rscript-open2.png){.absolute left="100%" width="20%"}
+![](images/button-rscript-open2.png){.absolute .images-shadow left="100%" width="20%"}
 
 Das neu geöffnete R Skript sieht nun so aus und kann direkt abgespeichert werden  mit dem Disketten-Symbol.
 
-![](images/empty-rscript-open.png){.absolute left="100%" width="80%"}
+![](images/empty-rscript-open.png){.absolute .images-shadow left="100%" width="80%"}
 
 
 ## RStudio vs studyr
@@ -144,7 +186,11 @@ Siehe dir die folgenden Bilder und Aufgaben an, um zu verstehen wie in unseren T
 
 So sieht derselbe R Code in unserem Tutorial Format aus
 
-`r studyr::colorize("Übungsaufgabe:", "#CA225E")`
+#### Übungen
+
+<div class="uebungen">
+
+`r studyr::colorize("Aufgabe", "var(--blue)")`
  *Klicke auf den Button "Run Code" und vergleiche die Ausgabe mit den obrigen Bildern*.
 ```{r r-vs-tutorial, exercise=TRUE, results = "hold"}
 5*5
@@ -156,9 +202,9 @@ print("Hallo Welt!")
 
 Versuche Dich nun selbst!
 
-`r studyr::colorize("Übungsaufgabe:", "#CA225E")`
+`r studyr::colorize("Aufgabe", "var(--blue)")`
 *Berechne 84 \* 15.
-Gebe dazu die Berechnung in den R Code Bereich ein und klicke auf "Rund Code"*
+Gebe dazu die Berechnung in den R Code Bereich ein und klicke auf "Code ausführen"*
 ```{r ex-r-vs-tutorial, exercise=TRUE, results = "hold"}
 
 ```
@@ -170,10 +216,30 @@ grade_result(
 )
 ```
 
+</div> 
 
 ## Datentypen
 
-### Kurze Übersicht
+### Kapitel
+
+<a href="#section-kurze-zusammenfasssung"> <i class="fa-solid fa-arrow-down"></i> Kurze Zusammenfasssung</a>
+
+<a href="#section-logical"> <i class="fa-solid fa-arrow-down"></i> Logical</a>
+
+<a href="#section-integer"> <i class="fa-solid fa-arrow-down"></i> Integer</a>
+
+<a href="#section-double"> <i class="fa-solid fa-arrow-down"></i> Double</a>
+
+<a href="#section-character"> <i class="fa-solid fa-arrow-down"></i> Character</a>
+
+<a href="#section-viel-nichts-in-r"> <i class="fa-solid fa-arrow-down"></i> Viel Nichts in R</a>
+
+<a href="#section-infektiöse-fehlende-werte"> <i class="fa-solid fa-arrow-down"></i> Infektiöse fehelende Werte</a>
+
+<a href="#section-hilfreiche-funktionen"> <i class="fa-solid fa-arrow-down"></i> Hilfreiche Funktionen</a>
+
+### Kurze Zusammenfasssung
+<a href="#section-datentypen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 -   Logical: TRUE, FALSE
 -   Integer: Ganze Zahlen (Platz speichernd)
@@ -181,6 +247,7 @@ grade_result(
 -   Character: Buchstaben
 
 ### Logical
+<a href="#section-datentypen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Werte:   `TRUE` (entwpricht 1) und `FALSE` (entspricht 0)
 
@@ -218,60 +285,77 @@ Mit Logischen Operatoren können auf Objekte (Variablen, Vektoren, Datensätze, 
 Als Ergebnis wird immer der Datentyp `logical` ausgegeben.
 
 ```{r logical-3, exercise=TRUE, results = "hold"}
-namen <- c("Lisa Müller", "Peter Bauer", "Hannah Schmidt")
-angemeldet <- c(TRUE, FALSE, TRUE)
+buchstaben <- c("A", "B", "C", "D", "C")
+zahlen <- c(18, 22, 16, 20)
 
-# Wer von den Personen heißt Lisa Müller?
-namen == "Lisa Müller"
+# Welche Buchstaben sind C?
+buchstaben == "C"
 
-# Wer ist bereits angemeldet?
-angemeldet == TRUE
+# Welche Zahl ist größer als 20?
+zahlen > 20
 ```
 
-### Übungen
 
-`r studyr::colorize("Übungsaufgabe:", "#CA225E")`
- *Klicke auf den Button "Run Code" und vergleiche die Ausgabe mit den obrigen Bildern*.
+#### Übungen
+<div class="uebungen">
 
-```{r ex-logical-1, exercise=TRUE, results = "hold"}
+`r studyr::colorize("Vorbereitung", "var(--blue)")`
+```{r setup-logical}
 namen <- c("Lisa Müller", "Peter Bauer", "Hannah Schmidt")
 angemeldet <- c(TRUE, FALSE, TRUE)
 alter <- c(18, 22, 16)
+```
 
+```{r, ref.label=I('setup-logical'), eval=TRUE, echo=TRUE}
+
+```
+
+`r studyr::colorize("Aufgabe:", "var(--blue)")` *Beantworte die gestellte Frage mit R Code.*
+
+```{r ex-logical-1, exercise=TRUE, results = "hold", exercise.setup = "setup-logical"}
 # Wer von den Personen heißt NICHT Lisa Müller?
 
 ```
-
-```{r ex-logical-1-hint-1, error=TRUE}
-!= 
+```{r ex-logical-1-hint-1}
+namen ___ "Lisa Müller"
 ```
-
+```{r ex-logical-1-hint-2}
+!=
+```
 ```{r ex-logical-1-solution}
+# Wer von den Personen heißt NICHT Lisa Müller?
 namen != "Lisa Müller"
 ```
 
 ```{r ex-logical-1-check}
-grade_result(
-  pass_if(~identical(
-    .result,
-    namen != "Lisa Müller"
-  ),
-  glue_correct = "Richtig")
-)
+grade_this({
+  pass_if_equal()
+  fail()
+})
 ```
 
-```{r ex-logical-2, exercise=TRUE, results = "hold"}
-namen <- c("Lisa Müller", "Peter Bauer", "Hannah Schmidt")
-angemeldet <- c(TRUE, FALSE, TRUE)
-alter <- c(18, 22, 16)
 
+`r studyr::colorize("Aufgabe:", "var(--blue)")` *Beantworte die gestellte Frage mit R Code.*
+```{r ex-logical-2, exercise=TRUE, results = "hold", exercise.setup = "setup-logical"}
 # Wer von den Personen ist jünger als 18 Jahre?
 
 ```
 
+```{r ex-logical-2-solution}
+# Wer von den Personen heißt NICHT Lisa Müller?
+alter < 18
+```
 
+```{r ex-logical-2-check}
+grade_this({
+  pass_if_equal()
+  fail()
+})
+```
 
+</div>
 ### Integer
+<a href="#section-datentypen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 `integer`-zahlen sind Ganzezahlen in R.
 Sie sind platzsparender als `double` Zahlen, da Kommas ausgeschlossen sind.
@@ -296,6 +380,8 @@ is.integer(1L)
 ```
 
 ### Double
+<a href="#section-datentypen"> <i class="fa-solid fa-arrow-up"></i></a>
+
 
 `double`-zahlen sind sogenannte Gleitkommazahlen.
 Diese Zahlentypen werden für normale Berechnungen verwendet
@@ -318,6 +404,7 @@ typeof(5)
 ```
 
 ### Character
+<a href="#section-datentypen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Text oder Symbole oder auch Farben, werden in Datentyp `character` gespeichert.
 
@@ -342,6 +429,7 @@ scales::show_col(c("#044a85", "#e28743", "#1F98B44D", "#1F98BC"))
 ```
 
 ### Viel Nichts in R
+<a href="#section-datentypen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 In R gibt es viele Möglichkeit, um auszudrücken, dass etwas nicht vorhanden ist.
 Alle Formen von "Nichts" haben eine leicht andere Bedeutung und werden in unterschiedlichen Fällen verwendet oder produziert.
@@ -392,7 +480,8 @@ NULL == 5
 integer(0) == 5
 ```
 
-### Achtung: Fehlende Werte
+### Infektiöse fehlende Werte
+<a href="#section-datentypen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Fehlende Werte wie `NaN` sind manchmal infektiös!
 
@@ -413,6 +502,7 @@ is.na(NaN)
 ```
 
 ### Hilfreiche Funktionen
+<a href="#section-datentypen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Erstellen Dummy Variablen eines bestimmten Datentyps:
 
@@ -444,30 +534,6 @@ is.infinite(number)
 
 
 ## Test
-
-`r studyr::colorize("Übungsaufgabe:", "#CA225E")`
- *Klicke auf den Button "Run Code" und vergleiche die Ausgabe mit den obrigen Bildern*.
-
-```{r ex-test-1, exercise=TRUE, results = "hold"}
-namen <- c("Lisa Müller", "Peter Bauer", "Hannah Schmidt")
-angemeldet <- c(TRUE, FALSE, TRUE)
-alter <- c(18, 22, 16)
-
-# Wer von den Personen heißt NICHT Lisa Müller?
-
-```
-```{r ex-test-1-solution}
-namen != "Lisa Müller"
-```
-```{r ex-test-1-check}
-grade_result(
-  pass_if(~identical(
-    .result,
-    namen != "Lisa Müller",
-    message = "Richtig!"
-  ))
-)
-```
 
 ```{r code-example, exercise=FALSE, echo=TRUE, eval=FALSE}
 open_tutorial <- function(tutorial_name) {
