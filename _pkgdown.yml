@@ -1,6 +1,5 @@
 url: https://meikesteinhilber.github.io/studyr/
 
-css: solid.css
 
 template:
   bootstrap: 5
@@ -8,6 +7,8 @@ template:
   lang: de
   bslib:
    pkgdown-nav-height: 100px
+   primary: "#CA225E"
+
 
 
 home:
@@ -21,7 +22,7 @@ navbar:
 
    intro:
     icon: fa-solid fa-home
-    href: articles/studyr.html
+    href: index.html
     aria-label: Startseite
 
    reference:

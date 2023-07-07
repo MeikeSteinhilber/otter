@@ -1,5 +1,7 @@
 
-# Willkomen zu *studyr*
+# Willkommen zu **ottR** - einem **o**nline **T**utorial **T**ool für **R**.
+
+<img src="articles/figures/ottR_pink.png" style="width:30.0%" />
 
 <!-- badges: start -->
 
