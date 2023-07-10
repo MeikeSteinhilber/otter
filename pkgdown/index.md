@@ -11,11 +11,16 @@ von **R**.
 status](https://www.r-pkg.org/badges/version/studyr)](https://cran.r-project.org/package=studyr)
 [![pages-build-deployment](https://github.com/MeikeSteinhilber/otter/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/MeikeSteinhilber/otter/actions/workflows/pages/pages-build-deployment)
 [![pkgdown](https://github.com/MeikeSteinhilber/otter/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/MeikeSteinhilber/otter/actions/workflows/pkgdown.yaml)
+[![R-CMD-check](https://github.com/MeikeSteinhilber/otter/actions/workflows/R-CMD-check-windows-macOs.yaml/badge.svg)](https://github.com/MeikeSteinhilber/otter/actions/workflows/R-CMD-check-windows-macOs.yaml)
 
 <!-- badges: end -->
 
 Hier findest du eine Reihe an Totorials, die du zum Selbststudium
-verwenden kannst. <br>
+verwenden kannst.
+
+<br>
+
+## Inhalte
 
 Der Reiter **Artikel**, enthält Infos wie du das R Paket `otter` und die
 Selbstlern-Tutorials am besten nutzen kannst.
