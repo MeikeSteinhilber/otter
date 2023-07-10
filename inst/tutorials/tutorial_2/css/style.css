@@ -163,7 +163,7 @@ h2 {
     margin-right: 0%;
     background-color: white;
     width: 140%;
-    max-width: 1200px; /*length of the text on the page*/
+     /* max-width: 1200px; length of the text on the page*/
   }
 
   .bandContent band {
