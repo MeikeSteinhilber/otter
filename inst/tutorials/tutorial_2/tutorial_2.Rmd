@@ -15,7 +15,7 @@ runtime: shiny_prerendered
 <script>
 $(document).ready(function() {
   $("#tutorial-topic").prepend(`<div class="img-right">
-  <a href="https://meikesteinhilber.github.io/studyr/"> <i class="fa-solid fa-house" aria-label="Link zur studyr Homepage" aria-hidden="true"></i>
+  <a href="https://meikesteinhilber.github.io/otter/"> <i class="fa-solid fa-house" aria-label="Link zur otter Homepage" aria-hidden="true"></i>
   </a>
   </div>`);
 
@@ -46,7 +46,6 @@ $(document).ready(function() {
 ```{r setup, include=FALSE}
 library(learnr)
 library(gradethis)
-# library(studyr)
 # devtools::load_all()
 knitr::opts_chunk$set(echo = FALSE)
 gradethis::gradethis_setup(
@@ -62,11 +61,19 @@ blue <- "#00c4e6"
 
 ## R und RStudio Installation
 
-1. R Installation
-unter: https://cran.r-project.org/bin/windows/base/
+**1. R Installation**
 
-2. RStudio Installation
-unter: https://posit.co/download/rstudio-desktop/
+  -   allgemein unter: https://cran.rstudio.com/
+
+  -   für Windows: https://cran.rstudio.org/bin/windows/base/
+
+  -   für macOS: https://cran.r-project.org/bin/macosx/
+
+
+
+**2. RStudio Installation**
+
+  -   unter: https://posit.co/download/rstudio-desktop/
 
 
 ## RStudio Einstieg
@@ -176,9 +183,9 @@ Das neu geöffnete R Skript sieht nun so aus und kann direkt abgespeichert werde
 ![](images/empty-rscript-open.png){.absolute .images-shadow left="100%" width="80%"}
 
 
-## RStudio vs studyr
+## RStudio vs otter
 
-Die studyr Tutorials sind alle interaktiv gestaltet.
+Die `otter` Tutorials sind alle interaktiv gestaltet.
 Damit wir dir Feedback geben können und du nicht immer zwischen RStudio und unserer Website wechseln musst, sind R-Bausteine eingebaut.
 Siehe dir die folgenden Bilder und Aufgaben an, um zu verstehen wie in unseren Tutorials R eingebaut ist.
 
@@ -190,7 +197,7 @@ So sieht derselbe R Code in unserem Tutorial Format aus
 
 <div class="uebungen">
 
-`r studyr::colorize("Aufgabe", "var(--blue)")`
+`r otter::colorize("Aufgabe", "var(--blue)")`
  *Klicke auf den Button "Run Code" und vergleiche die Ausgabe mit den obrigen Bildern*.
 ```{r r-vs-tutorial, exercise=TRUE, results = "hold"}
 5*5
@@ -202,7 +209,7 @@ print("Hallo Welt!")
 
 Versuche Dich nun selbst!
 
-`r studyr::colorize("Aufgabe", "var(--blue)")`
+`r otter::colorize("Aufgabe", "var(--blue)")`
 *Berechne 84 \* 15.
 Gebe dazu die Berechnung in den R Code Bereich ein und klicke auf "Code ausführen"*
 ```{r ex-r-vs-tutorial, exercise=TRUE, results = "hold"}
@@ -299,7 +306,7 @@ zahlen > 20
 #### Übungen
 <div class="uebungen">
 
-`r studyr::colorize("Vorbereitung", "var(--blue)")`
+`r otter::colorize("Vorbereitung", "var(--blue)")`
 ```{r setup-logical}
 namen <- c("Lisa Müller", "Peter Bauer", "Hannah Schmidt")
 angemeldet <- c(TRUE, FALSE, TRUE)
@@ -310,7 +317,7 @@ alter <- c(18, 22, 16)
 
 ```
 
-`r studyr::colorize("Aufgabe:", "var(--blue)")` *Beantworte die gestellte Frage mit R Code.*
+`r otter::colorize("Aufgabe:", "var(--blue)")` *Beantworte die gestellte Frage mit R Code.*
 
 ```{r ex-logical-1, exercise=TRUE, results = "hold", exercise.setup = "setup-logical"}
 # Wer von den Personen heißt NICHT Lisa Müller?
@@ -335,7 +342,7 @@ grade_this({
 ```
 
 
-`r studyr::colorize("Aufgabe:", "var(--blue)")` *Beantworte die gestellte Frage mit R Code.*
+`r otter::colorize("Aufgabe:", "var(--blue)")` *Beantworte die gestellte Frage mit R Code.*
 ```{r ex-logical-2, exercise=TRUE, results = "hold", exercise.setup = "setup-logical"}
 # Wer von den Personen ist jünger als 18 Jahre?
 
@@ -538,7 +545,7 @@ is.infinite(number)
 ```{r code-example, exercise=FALSE, echo=TRUE, eval=FALSE}
 open_tutorial <- function(tutorial_name) {
   if (!is.character(tutorial)) {stop("Invalid input argument: tutorial name must be a charcter string.")}
-  # learnr::run_tutorial(tutorial, package = "studyr")
+  # learnr::run_tutorial(tutorial, package = "otter")
 }
 NULL
 output$distPlot <- renderPlot({

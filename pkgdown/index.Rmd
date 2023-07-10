@@ -6,7 +6,7 @@ editor_options:
 ---
 
 # Willkommen zu `otter`
-**otteR** ist ein **o**nline **T**utorial **T**ool für das **E**rlernen von **R**.
+**otter** ist ein **o**nline **T**utorial **T**ool für das **E**rlernen von **R**.
 
 ![](man/figures/otteR_pink.png){width="30%"}
 

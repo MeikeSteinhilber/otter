@@ -34,7 +34,7 @@ navbar:
    articles:
     text: Artikel
     menu:
-    - text: Übersicht
+    - text: Übersicht über Tutorials
       href: articles/uebersicht.html
     - text: FAQ
       href: articles/FAQ.html

@@ -6,7 +6,9 @@ editor_options:
 ---
 
 # Willkommen zu *otter* 
-**otteR** ist ein **o**nline **T**utorial **T**ool für das **E**rlernen von **R**.
+**otter** ist ein **o**nline **T**utorial **T**ool für das **E**rlernen von **R**.
+
+![](man/figures/otteR_pink.png){width="30%"}
 
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/studyr)](https://cran.r-project.org/package=studyr)

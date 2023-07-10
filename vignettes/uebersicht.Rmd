@@ -1,11 +1,11 @@
 ---
-title: "Übersicht"
+title: "Übersicht über Tutorials"
 output:
   rmarkdown::html_vignette:
     toc: true
     toc_depth: 4
 vignette: >
-  %\VignetteIndexEntry{Übersicht}
+  %\VignetteIndexEntry{Übersicht über Tutorials}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -21,6 +21,6 @@ knitr::opts_chunk$set(
 options(tibble.print_min = 5, tibble.print_max = 5)
 ```
 
-# Überschrift
+## Überschrift
 
 Text

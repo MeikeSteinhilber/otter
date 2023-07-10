@@ -1,8 +1,10 @@
 
-# Willkommen zu *otteR*
+# Willkommen zu *otter*
 
-**otteR** ein **o**nline **T**utorial **T**ool für das **E**rlernen von
-**R**.
+**otteR** ist ein **o**nline **T**utorial **T**ool für das **E**rlernen
+von **R**.
+
+<img src="man/figures/otteR_pink.png" style="width:30.0%" />
 
 <!-- badges: start -->
 
