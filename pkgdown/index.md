@@ -4,17 +4,18 @@
 **otter** ist ein **o**nline **T**utorial **T**ool für das **E**rlernen
 von **R**.
 
-<img src="man/figures/otteR_pink.png" style="width:30.0%" />
-
+<!-- ![](man/figures/otteR_pink.png){width="30%"} -->
 <!-- badges: start -->
 
 [![CRAN
 status](https://www.r-pkg.org/badges/version/studyr)](https://cran.r-project.org/package=studyr)
+[![pages-build-deployment](https://github.com/MeikeSteinhilber/otter/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/MeikeSteinhilber/otter/actions/workflows/pages/pages-build-deployment)
+[![pkgdown](https://github.com/MeikeSteinhilber/otter/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/MeikeSteinhilber/otter/actions/workflows/pkgdown.yaml)
 
 <!-- badges: end -->
 
 Hier findest du eine Reihe an Totorials, die du zum Selbststudium
-verwenden kannst.
+verwenden kannst. <br>
 
 Der Reiter **Artikel**, enthält Infos wie du das R Paket `otter` und die
 Selbstlern-Tutorials am besten nutzen kannst.
@@ -24,4 +25,6 @@ Selbstlern-Tutorials am besten nutzen kannst.
 Der Reiter **Funktionen**, bietet eine Übersicht über alle Funktionen
 des R Paketes `otter`.
 
-Viel Spaß beim Erkunden!
+<br> Viel Spaß beim Erkunden!
+
+<img src="man/figures/otter.png" style="width:50.0%" />
