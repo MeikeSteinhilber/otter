@@ -1,6 +1,6 @@
-Package: studyr
+Package: otter
 Type: Package
-Title: Self Study Tutorials for the University of Frankfurt
+Title: Self Study Tutorials for R for the University of Frankfurt
 Version: 0.1.0
 Authors@R:
     c(person(given = "Meike",
@@ -11,7 +11,7 @@ Authors@R:
       )
 Maintainer: Meike Steinhilber <Meike.Steinhilber@aol.com>
 Description: 
-   Self Study Tutorials for the University of Frankfurt.
+   Self Study Tutorials for R for the University of Frankfurt.
 License: AGPL (>= 3)
 Encoding: UTF-8
 LazyData: true
@@ -23,4 +23,4 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
-URL: https://meikesteinhilber.github.io/studyr/
+URL: https://meikesteinhilber.github.io/otter/

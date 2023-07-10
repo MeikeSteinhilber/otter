@@ -1,5 +1,8 @@
 
-# *studyr*
+# Willkommen zu *otteR*
+
+**otteR** ein **o**nline **T**utorial **T**ool für das **E**rlernen von
+**R**.
 
 <!-- badges: start -->
 

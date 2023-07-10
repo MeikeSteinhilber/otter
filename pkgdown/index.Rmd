@@ -5,9 +5,10 @@ editor_options:
     mode: gfm
 ---
 
-# Willkommen zu **ottR** - einem **o**nline **T**utorial **T**ool für **R**.
+# Willkommen zu `otter`
+**otteR** ist ein **o**nline **T**utorial **T**ool für das **E**rlernen von **R**.
 
-![](articles/figures/ottR_pink.png){width="30%"}
+![](man/figures/otteR_pink.png){width="30%"}
 
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/studyr)](https://cran.r-project.org/package=studyr)
@@ -25,8 +26,13 @@ knitr::opts_chunk$set(
 options(tibble.print_min = 5, tibble.print_max = 5)
 ```
 
-
-
 Hier findest du eine Reihe an Totorials, die du zum Selbststudium verwenden kannst.
 
 
+Der Reiter **Artikel**, enthält Infos wie du das R Paket `otter` und die Selbstlern-Tutorials am besten nutzen kannst.
+
+Über den Reiter **Tutorials**, gelangst du zu den Selbstlern-Tutorials.
+
+Der Reiter **Funktionen**, bietet eine Übersicht über alle Funktionen des R Paketes `otter`.
+
+Viel Spaß beim Erkunden!
