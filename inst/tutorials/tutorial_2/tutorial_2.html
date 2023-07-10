@@ -14,7 +14,7 @@
 <meta name="allow-skip" content="true" />
 <meta name="learnr-version-prerender" content="0.11.4.9000" />
 
-<title>RStudio Grundlagen</title>
+<title>R &amp; RStudio Grundlagen</title>
 
 <!-- header-includes START -->
 <!-- HEAD_CONTENT -->
@@ -116,6 +116,7 @@ $(document).ready(function() {
   <a href="https://meikesteinhilber.github.io/otter/"> <i class="fa-solid fa-house" aria-label="Link zur otter Homepage" aria-hidden="true"></i>
   </a>
   </div>`);
+  
 
   $("a[href^='#']").on("click", function(event) {
     const currentSection = $(".section.current");
@@ -142,6 +143,7 @@ $(document).ready(function() {
 </script>
 <div id="section-r-und-rstudio-installation" class="section level2">
 <h2>R und RStudio Installation</h2>
+<p><img src="images/Rlogo.png" style="width:10.0%" right="100%" /></p>
 <p><strong>1. R Installation</strong></p>
 <ul>
 <li><p>allgemein unter: <a href="https://cran.rstudio.com/"
@@ -151,6 +153,8 @@ class="uri">https://cran.rstudio.org/bin/windows/base/</a></p></li>
 <li><p>für macOS: <a href="https://cran.r-project.org/bin/macosx/"
 class="uri">https://cran.r-project.org/bin/macosx/</a></p></li>
 </ul>
+<p><br> <img src="images/RStudio-Logo-Flat.png" style="width:20.0%"
+right="100%" /></p>
 <p><strong>2. RStudio Installation</strong></p>
 <ul>
 <li>unter: <a href="https://posit.co/download/rstudio-desktop/"
@@ -175,7 +179,8 @@ Programmiersprache R. Grundsätzlich sind auch andere IDEs möglich, wir
 werden in diesem Tutorial jedoch immer davon ausgehen, dass RStudio
 verwendet wird.</p>
 <p>Nach dem RStudio geöffnet wird, sieht es so aus:</p>
-<p>SCREENSHOT</p>
+<p><img src="images/RStudio_fresh_start.png"
+class="absolute images-shadow" style="width:80.0%" left="100%" /></p>
 <p>Aktuell haben wir noch kein Dokument geöffnet. Wir sehen aktuell 3
 separierte Bereiche bzw. Fenster.</p>
 </div>
@@ -269,7 +274,7 @@ class="absolute images-shadow" style="width:80.0%" left="100%" /></p>
 </div>
 </div>
 <div id="section-rstudio-vs-otter" class="section level2">
-<h2>RStudio vs otter</h2>
+<h2>RStudio vs <code>otter</code></h2>
 <p>Die <code>otter</code> Tutorials sind alle interaktiv gestaltet.
 Damit wir dir Feedback geben können und du nicht immer zwischen RStudio
 und unserer Website wechseln musst, sind R-Bausteine eingebaut. Siehe
@@ -277,9 +282,9 @@ dir die folgenden Bilder und Aufgaben an, um zu verstehen wie in unseren
 Tutorials R eingebaut ist.</p>
 <p><img src="images/r-vs-tutorial.png" class="absolute"
 style="width:80.0%" left="100%" /></p>
-<p>So sieht derselbe R Code in unserem Tutorial Format aus</p>
 <div id="section-übungen" class="section level4">
 <h4>Übungen</h4>
+<p>So sieht derselbe R Code in unserem Tutorial Format aus:</p>
 <div class="uebungen">
 <span style="color: var(--blue);">Aufgabe</span> <em>Klicke auf den
 Button “Run Code” und vergleiche die Ausgabe mit den obrigen
@@ -680,23 +685,77 @@ is.infinite(number)</code></pre>
 </div>
 </div>
 </div>
-<div id="section-test" class="section level2">
-<h2>Test</h2>
-<pre class="r"><code>open_tutorial &lt;- function(tutorial_name) {
-  if (!is.character(tutorial)) {stop(&quot;Invalid input argument: tutorial name must be a charcter string.&quot;)}
-  # learnr::run_tutorial(tutorial, package = &quot;otter&quot;)
-}
-NULL
-output$distPlot &lt;- renderPlot({
-  x &lt;- faithful[, 2]  # Old Faithful Geyser data
-  bins &lt;- seq(min(x), max(x), length.out = input$bins + 1)
-  hist(x, breaks = bins, col = &#39;darkgray&#39;, border = &#39;white&#39;)
-})</code></pre>
+<div id="section-datenstrukturen" class="section level2">
+<h2>Datenstrukturen</h2>
+<div id="section-variablen" class="section level3">
+<h3>Variablen</h3>
+<p>-&gt; auch Daten ändern behandeln</p>
+</div>
+<div id="section-atomare-vektoren" class="section level3">
+<h3>Atomare Vektoren</h3>
+</div>
+<div id="section-matrizen" class="section level3">
+<h3>Matrizen</h3>
+</div>
+<div id="section-data.frame" class="section level3">
+<h3>data.frame</h3>
+</div>
+<div id="section-listen" class="section level3">
+<h3>Listen</h3>
+</div>
+</div>
+<div id="section-funktionen" class="section level2">
+<h2>Funktionen</h2>
+</div>
+<div id="section-r-pakete" class="section level2">
+<h2>R Pakete</h2>
+</div>
+<div id="section-daten-importieren-exportieren" class="section level2">
+<h2>Daten importieren &amp; exportieren</h2>
+<div id="section-import" class="section level3">
+<h3>Import</h3>
+</div>
+<div id="section-export" class="section level3">
+<h3>Export</h3>
+</div>
+</div>
+<div id="section-rmarkdown" class="section level2">
+<h2>RMarkdown</h2>
+</div>
+<div id="section-environments" class="section level2">
+<h2>Environments</h2>
+</div>
+<div id="section-debugging" class="section level2">
+<h2>Debugging</h2>
+<div id="section-warnungen-fehler" class="section level3">
+<h3>Warnungen &amp; Fehler</h3>
+</div>
+<div id="section-tipps" class="section level3">
+<h3>Tipps</h3>
+</div>
+</div>
+<div id="section-clean-code" class="section level2">
+<h2>Clean Code</h2>
+</div>
+<div id="section-r-projekte" class="section level2">
+<h2>R Projekte</h2>
+</div>
+<div id="section-code-flow" class="section level2">
+<h2>Code Flow</h2>
+<div id="section-if-else" class="section level3">
+<h3>if-else</h3>
+</div>
+<div id="section-for-loop" class="section level3">
+<h3>for-loop</h3>
+</div>
+<div id="section-while-loop" class="section level3">
+<h3>while-loop</h3>
 <p>
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
 library(gradethis)
 # devtools::load_all()
+library(otter)
 knitr::opts_chunk$set(echo = FALSE)
 gradethis::gradethis_setup(
   pass.praise = FALSE,
@@ -739,13 +798,13 @@ output$`tutorial-exercise-r-vs-tutorial-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "r-vs-tutorial", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "knitr::opts_chunk$set(echo = FALSE)", 
-"gradethis::gradethis_setup(", "  pass.praise = FALSE,", "  fail.encourage = FALSE,", 
-"  pass = \"Richtig!\",", "  fail = \"Das ist leider falsch.\"", 
-"  )", "tutorial_options(exercise.reveal_solution = TRUE,", "                 exercise.blanks = \"___\")", 
-"blue <- \"#00c4e6\""), chunk_opts = list(label = "setup", include = FALSE)), 
-    setup = NULL, chunks = list(list(label = "r-vs-tutorial", 
-        code = "5*5\n\n# Dies ist ein Kommentar\n\nprint(\"Hallo Welt!\")", 
+"library(gradethis)", "# devtools::load_all()", "library(otter)", 
+"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
+"  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
+"                 exercise.blanks = \"___\")", "blue <- \"#00c4e6\""
+), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
+    chunks = list(list(label = "r-vs-tutorial", code = "5*5\n\n# Dies ist ein Kommentar\n\nprint(\"Hallo Welt!\")", 
         opts = list(label = "\"r-vs-tutorial\"", exercise = "TRUE", 
             results = "\"hold\""), engine = "r")), code_check = NULL, 
     error_check = NULL, check = NULL, solution = NULL, tests = NULL, 
@@ -785,15 +844,16 @@ output$`tutorial-exercise-ex-r-vs-tutorial-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "ex-r-vs-tutorial", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "knitr::opts_chunk$set(echo = FALSE)", 
-"gradethis::gradethis_setup(", "  pass.praise = FALSE,", "  fail.encourage = FALSE,", 
-"  pass = \"Richtig!\",", "  fail = \"Das ist leider falsch.\"", 
-"  )", "tutorial_options(exercise.reveal_solution = TRUE,", "                 exercise.blanks = \"___\")", 
-"blue <- \"#00c4e6\""), chunk_opts = list(label = "setup", include = FALSE)), 
-    setup = NULL, chunks = list(list(label = "ex-r-vs-tutorial", 
-        code = "", opts = list(label = "\"ex-r-vs-tutorial\"", 
-            exercise = "TRUE", results = "\"hold\""), engine = "r")), 
-    code_check = NULL, error_check = NULL, check = structure(c("grade_result(", 
+"library(gradethis)", "# devtools::load_all()", "library(otter)", 
+"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
+"  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
+"                 exercise.blanks = \"___\")", "blue <- \"#00c4e6\""
+), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
+    chunks = list(list(label = "ex-r-vs-tutorial", code = "", 
+        opts = list(label = "\"ex-r-vs-tutorial\"", exercise = "TRUE", 
+            results = "\"hold\""), engine = "r")), code_check = NULL, 
+    error_check = NULL, check = structure(c("grade_result(", 
     "  pass_if(~identical(.result, 84 * 15)),", "  glue_correct = \"Richtig!\"", 
     ")"), chunk_opts = list(label = "ex-r-vs-tutorial-check", 
         results = "hold")), solution = NULL, tests = NULL, options = list(
@@ -831,12 +891,13 @@ output$`tutorial-exercise-logicals-1-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "logicals-1", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "knitr::opts_chunk$set(echo = FALSE)", 
-"gradethis::gradethis_setup(", "  pass.praise = FALSE,", "  fail.encourage = FALSE,", 
-"  pass = \"Richtig!\",", "  fail = \"Das ist leider falsch.\"", 
-"  )", "tutorial_options(exercise.reveal_solution = TRUE,", "                 exercise.blanks = \"___\")", 
-"blue <- \"#00c4e6\""), chunk_opts = list(label = "setup", include = FALSE)), 
-    setup = NULL, chunks = list(list(label = "logicals-1", code = "TRUE + TRUE \nFALSE + FALSE\nTRUE + FALSE ", 
+"library(gradethis)", "# devtools::load_all()", "library(otter)", 
+"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
+"  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
+"                 exercise.blanks = \"___\")", "blue <- \"#00c4e6\""
+), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
+    chunks = list(list(label = "logicals-1", code = "TRUE + TRUE \nFALSE + FALSE\nTRUE + FALSE ", 
         opts = list(label = "\"logicals-1\"", exercise = "TRUE", 
             results = "\"hold\""), engine = "r")), code_check = NULL, 
     error_check = NULL, check = NULL, solution = NULL, tests = NULL, 
@@ -876,12 +937,13 @@ output$`tutorial-exercise-logicals-2-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "logicals-2", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "knitr::opts_chunk$set(echo = FALSE)", 
-"gradethis::gradethis_setup(", "  pass.praise = FALSE,", "  fail.encourage = FALSE,", 
-"  pass = \"Richtig!\",", "  fail = \"Das ist leider falsch.\"", 
-"  )", "tutorial_options(exercise.reveal_solution = TRUE,", "                 exercise.blanks = \"___\")", 
-"blue <- \"#00c4e6\""), chunk_opts = list(label = "setup", include = FALSE)), 
-    setup = NULL, chunks = list(list(label = "logicals-2", code = "FALSE & TRUE\nFALSE | TRUE\n5 < 10", 
+"library(gradethis)", "# devtools::load_all()", "library(otter)", 
+"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
+"  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
+"                 exercise.blanks = \"___\")", "blue <- \"#00c4e6\""
+), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
+    chunks = list(list(label = "logicals-2", code = "FALSE & TRUE\nFALSE | TRUE\n5 < 10", 
         opts = list(label = "\"logicals-2\"", exercise = "TRUE", 
             results = "\"hold\""), engine = "r")), code_check = NULL, 
     error_check = NULL, check = NULL, solution = NULL, tests = NULL, 
@@ -921,12 +983,13 @@ output$`tutorial-exercise-logical-3-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "logical-3", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "knitr::opts_chunk$set(echo = FALSE)", 
-"gradethis::gradethis_setup(", "  pass.praise = FALSE,", "  fail.encourage = FALSE,", 
-"  pass = \"Richtig!\",", "  fail = \"Das ist leider falsch.\"", 
-"  )", "tutorial_options(exercise.reveal_solution = TRUE,", "                 exercise.blanks = \"___\")", 
-"blue <- \"#00c4e6\""), chunk_opts = list(label = "setup", include = FALSE)), 
-    setup = NULL, chunks = list(list(label = "logical-3", code = "buchstaben <- c(\"A\", \"B\", \"C\", \"D\", \"C\")\nzahlen <- c(18, 22, 16, 20)\n\n# Welche Buchstaben sind C?\nbuchstaben == \"C\"\n\n# Welche Zahl ist größer als 20?\nzahlen > 20", 
+"library(gradethis)", "# devtools::load_all()", "library(otter)", 
+"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
+"  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
+"                 exercise.blanks = \"___\")", "blue <- \"#00c4e6\""
+), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
+    chunks = list(list(label = "logical-3", code = "buchstaben <- c(\"A\", \"B\", \"C\", \"D\", \"C\")\nzahlen <- c(18, 22, 16, 20)\n\n# Welche Buchstaben sind C?\nbuchstaben == \"C\"\n\n# Welche Zahl ist größer als 20?\nzahlen > 20", 
         opts = list(label = "\"logical-3\"", exercise = "TRUE", 
             results = "\"hold\""), engine = "r")), code_check = NULL, 
     error_check = NULL, check = NULL, solution = NULL, tests = NULL, 
@@ -968,12 +1031,12 @@ output$`tutorial-exercise-ex-logical-1-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "ex-logical-1", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "knitr::opts_chunk$set(echo = FALSE)", 
-"gradethis::gradethis_setup(", "  pass.praise = FALSE,", "  fail.encourage = FALSE,", 
-"  pass = \"Richtig!\",", "  fail = \"Das ist leider falsch.\"", 
-"  )", "tutorial_options(exercise.reveal_solution = TRUE,", "                 exercise.blanks = \"___\")", 
-"blue <- \"#00c4e6\""), chunk_opts = list(label = "setup", include = FALSE)), 
-    setup = "namen <- c(\"Lisa Müller\", \"Peter Bauer\", \"Hannah Schmidt\")\nangemeldet <- c(TRUE, FALSE, TRUE)\nalter <- c(18, 22, 16)", 
+"library(gradethis)", "# devtools::load_all()", "library(otter)", 
+"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
+"  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
+"                 exercise.blanks = \"___\")", "blue <- \"#00c4e6\""
+), chunk_opts = list(label = "setup", include = FALSE)), setup = "namen <- c(\"Lisa Müller\", \"Peter Bauer\", \"Hannah Schmidt\")\nangemeldet <- c(TRUE, FALSE, TRUE)\nalter <- c(18, 22, 16)", 
     chunks = list(list(label = "setup-logical", code = "namen <- c(\"Lisa Müller\", \"Peter Bauer\", \"Hannah Schmidt\")\nangemeldet <- c(TRUE, FALSE, TRUE)\nalter <- c(18, 22, 16)", 
         opts = list(label = "\"setup-logical\""), engine = "r"), 
         list(label = "ex-logical-1", code = "# Wer von den Personen heißt NICHT Lisa Müller?\n", 
@@ -1020,12 +1083,12 @@ output$`tutorial-exercise-ex-logical-2-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "ex-logical-2", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "knitr::opts_chunk$set(echo = FALSE)", 
-"gradethis::gradethis_setup(", "  pass.praise = FALSE,", "  fail.encourage = FALSE,", 
-"  pass = \"Richtig!\",", "  fail = \"Das ist leider falsch.\"", 
-"  )", "tutorial_options(exercise.reveal_solution = TRUE,", "                 exercise.blanks = \"___\")", 
-"blue <- \"#00c4e6\""), chunk_opts = list(label = "setup", include = FALSE)), 
-    setup = "namen <- c(\"Lisa Müller\", \"Peter Bauer\", \"Hannah Schmidt\")\nangemeldet <- c(TRUE, FALSE, TRUE)\nalter <- c(18, 22, 16)", 
+"library(gradethis)", "# devtools::load_all()", "library(otter)", 
+"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
+"  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
+"                 exercise.blanks = \"___\")", "blue <- \"#00c4e6\""
+), chunk_opts = list(label = "setup", include = FALSE)), setup = "namen <- c(\"Lisa Müller\", \"Peter Bauer\", \"Hannah Schmidt\")\nangemeldet <- c(TRUE, FALSE, TRUE)\nalter <- c(18, 22, 16)", 
     chunks = list(list(label = "setup-logical", code = "namen <- c(\"Lisa Müller\", \"Peter Bauer\", \"Hannah Schmidt\")\nangemeldet <- c(TRUE, FALSE, TRUE)\nalter <- c(18, 22, 16)", 
         opts = list(label = "\"setup-logical\""), engine = "r"), 
         list(label = "ex-logical-2", code = "# Wer von den Personen ist jünger als 18 Jahre?\n", 
@@ -1072,12 +1135,13 @@ output$`tutorial-exercise-integers-1-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "integers-1", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "knitr::opts_chunk$set(echo = FALSE)", 
-"gradethis::gradethis_setup(", "  pass.praise = FALSE,", "  fail.encourage = FALSE,", 
-"  pass = \"Richtig!\",", "  fail = \"Das ist leider falsch.\"", 
-"  )", "tutorial_options(exercise.reveal_solution = TRUE,", "                 exercise.blanks = \"___\")", 
-"blue <- \"#00c4e6\""), chunk_opts = list(label = "setup", include = FALSE)), 
-    setup = NULL, chunks = list(list(label = "integers-1", code = "1L\n1:10\n10:1", 
+"library(gradethis)", "# devtools::load_all()", "library(otter)", 
+"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
+"  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
+"                 exercise.blanks = \"___\")", "blue <- \"#00c4e6\""
+), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
+    chunks = list(list(label = "integers-1", code = "1L\n1:10\n10:1", 
         opts = list(label = "\"integers-1\"", exercise = "TRUE", 
             results = "\"hold\""), engine = "r")), code_check = NULL, 
     error_check = NULL, check = NULL, solution = NULL, tests = NULL, 
@@ -1117,12 +1181,13 @@ output$`tutorial-exercise-integers-2-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "integers-2", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "knitr::opts_chunk$set(echo = FALSE)", 
-"gradethis::gradethis_setup(", "  pass.praise = FALSE,", "  fail.encourage = FALSE,", 
-"  pass = \"Richtig!\",", "  fail = \"Das ist leider falsch.\"", 
-"  )", "tutorial_options(exercise.reveal_solution = TRUE,", "                 exercise.blanks = \"___\")", 
-"blue <- \"#00c4e6\""), chunk_opts = list(label = "setup", include = FALSE)), 
-    setup = NULL, chunks = list(list(label = "integers-2", code = "is.integer(1)\nis.integer(1L)", 
+"library(gradethis)", "# devtools::load_all()", "library(otter)", 
+"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
+"  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
+"                 exercise.blanks = \"___\")", "blue <- \"#00c4e6\""
+), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
+    chunks = list(list(label = "integers-2", code = "is.integer(1)\nis.integer(1L)", 
         opts = list(label = "\"integers-2\"", exercise = "TRUE", 
             results = "\"hold\""), engine = "r")), code_check = NULL, 
     error_check = NULL, check = NULL, solution = NULL, tests = NULL, 
@@ -1162,12 +1227,13 @@ output$`tutorial-exercise-doubles-1-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "doubles-1", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "knitr::opts_chunk$set(echo = FALSE)", 
-"gradethis::gradethis_setup(", "  pass.praise = FALSE,", "  fail.encourage = FALSE,", 
-"  pass = \"Richtig!\",", "  fail = \"Das ist leider falsch.\"", 
-"  )", "tutorial_options(exercise.reveal_solution = TRUE,", "                 exercise.blanks = \"___\")", 
-"blue <- \"#00c4e6\""), chunk_opts = list(label = "setup", include = FALSE)), 
-    setup = NULL, chunks = list(list(label = "doubles-1", code = "8/5\n4.44 + 2.1", 
+"library(gradethis)", "# devtools::load_all()", "library(otter)", 
+"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
+"  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
+"                 exercise.blanks = \"___\")", "blue <- \"#00c4e6\""
+), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
+    chunks = list(list(label = "doubles-1", code = "8/5\n4.44 + 2.1", 
         opts = list(label = "\"doubles-1\"", exercise = "TRUE", 
             results = "\"hold\""), engine = "r")), code_check = NULL, 
     error_check = NULL, check = NULL, solution = NULL, tests = NULL, 
@@ -1207,12 +1273,13 @@ output$`tutorial-exercise-doubles-2-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "doubles-2", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "knitr::opts_chunk$set(echo = FALSE)", 
-"gradethis::gradethis_setup(", "  pass.praise = FALSE,", "  fail.encourage = FALSE,", 
-"  pass = \"Richtig!\",", "  fail = \"Das ist leider falsch.\"", 
-"  )", "tutorial_options(exercise.reveal_solution = TRUE,", "                 exercise.blanks = \"___\")", 
-"blue <- \"#00c4e6\""), chunk_opts = list(label = "setup", include = FALSE)), 
-    setup = NULL, chunks = list(list(label = "doubles-2", code = "typeof(5)", 
+"library(gradethis)", "# devtools::load_all()", "library(otter)", 
+"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
+"  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
+"                 exercise.blanks = \"___\")", "blue <- \"#00c4e6\""
+), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
+    chunks = list(list(label = "doubles-2", code = "typeof(5)", 
         opts = list(label = "\"doubles-2\"", exercise = "TRUE", 
             results = "\"hold\""), engine = "r")), code_check = NULL, 
     error_check = NULL, check = NULL, solution = NULL, tests = NULL, 
@@ -1251,12 +1318,13 @@ output$`tutorial-exercise-character-1-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "character-1", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "knitr::opts_chunk$set(echo = FALSE)", 
-"gradethis::gradethis_setup(", "  pass.praise = FALSE,", "  fail.encourage = FALSE,", 
-"  pass = \"Richtig!\",", "  fail = \"Das ist leider falsch.\"", 
-"  )", "tutorial_options(exercise.reveal_solution = TRUE,", "                 exercise.blanks = \"___\")", 
-"blue <- \"#00c4e6\""), chunk_opts = list(label = "setup", include = FALSE)), 
-    setup = NULL, chunks = list(list(label = "character-1", code = "\"Hallo Welt\"", 
+"library(gradethis)", "# devtools::load_all()", "library(otter)", 
+"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
+"  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
+"                 exercise.blanks = \"___\")", "blue <- \"#00c4e6\""
+), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
+    chunks = list(list(label = "character-1", code = "\"Hallo Welt\"", 
         opts = list(label = "\"character-1\"", exercise = "TRUE", 
             results = "\"hold\""), engine = "r")), code_check = NULL, 
     error_check = NULL, check = NULL, solution = NULL, tests = NULL, 
@@ -1295,12 +1363,13 @@ output$`tutorial-exercise-character-2-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "character-2", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "knitr::opts_chunk$set(echo = FALSE)", 
-"gradethis::gradethis_setup(", "  pass.praise = FALSE,", "  fail.encourage = FALSE,", 
-"  pass = \"Richtig!\",", "  fail = \"Das ist leider falsch.\"", 
-"  )", "tutorial_options(exercise.reveal_solution = TRUE,", "                 exercise.blanks = \"___\")", 
-"blue <- \"#00c4e6\""), chunk_opts = list(label = "setup", include = FALSE)), 
-    setup = NULL, chunks = list(list(label = "character-2", code = "shiny::icon(\"rocket\")\nshiny::icon(\"star\")", 
+"library(gradethis)", "# devtools::load_all()", "library(otter)", 
+"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
+"  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
+"                 exercise.blanks = \"___\")", "blue <- \"#00c4e6\""
+), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
+    chunks = list(list(label = "character-2", code = "shiny::icon(\"rocket\")\nshiny::icon(\"star\")", 
         opts = list(label = "\"character-2\"", exercise = "TRUE", 
             results = "\"hold\""), engine = "r")), code_check = NULL, 
     error_check = NULL, check = NULL, solution = NULL, tests = NULL, 
@@ -1340,12 +1409,13 @@ output$`tutorial-exercise-character-3-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "character-3", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "knitr::opts_chunk$set(echo = FALSE)", 
-"gradethis::gradethis_setup(", "  pass.praise = FALSE,", "  fail.encourage = FALSE,", 
-"  pass = \"Richtig!\",", "  fail = \"Das ist leider falsch.\"", 
-"  )", "tutorial_options(exercise.reveal_solution = TRUE,", "                 exercise.blanks = \"___\")", 
-"blue <- \"#00c4e6\""), chunk_opts = list(label = "setup", include = FALSE)), 
-    setup = NULL, chunks = list(list(label = "character-3", code = "scales::show_col(c(\"#044a85\", \"#e28743\", \"#1F98B44D\", \"#1F98BC\"))", 
+"library(gradethis)", "# devtools::load_all()", "library(otter)", 
+"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
+"  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
+"                 exercise.blanks = \"___\")", "blue <- \"#00c4e6\""
+), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
+    chunks = list(list(label = "character-3", code = "scales::show_col(c(\"#044a85\", \"#e28743\", \"#1F98B44D\", \"#1F98BC\"))", 
         opts = list(label = "\"character-3\"", exercise = "TRUE", 
             results = "\"hold\""), engine = "r")), code_check = NULL, 
     error_check = NULL, check = NULL, solution = NULL, tests = NULL, 
@@ -1384,12 +1454,13 @@ output$`tutorial-exercise-na-2-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "na-2", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "knitr::opts_chunk$set(echo = FALSE)", 
-"gradethis::gradethis_setup(", "  pass.praise = FALSE,", "  fail.encourage = FALSE,", 
-"  pass = \"Richtig!\",", "  fail = \"Das ist leider falsch.\"", 
-"  )", "tutorial_options(exercise.reveal_solution = TRUE,", "                 exercise.blanks = \"___\")", 
-"blue <- \"#00c4e6\""), chunk_opts = list(label = "setup", include = FALSE)), 
-    setup = NULL, chunks = list(list(label = "na-2", code = "length(NaN)\nlength(NA)\nlength(NULL)\nlength(integer(0))\nlength(double(0))", 
+"library(gradethis)", "# devtools::load_all()", "library(otter)", 
+"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
+"  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
+"                 exercise.blanks = \"___\")", "blue <- \"#00c4e6\""
+), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
+    chunks = list(list(label = "na-2", code = "length(NaN)\nlength(NA)\nlength(NULL)\nlength(integer(0))\nlength(double(0))", 
         opts = list(label = "\"na-2\"", exercise = "TRUE", results = "\"hold\""), 
         engine = "r")), code_check = NULL, error_check = NULL, 
     check = NULL, solution = NULL, tests = NULL, options = list(
@@ -1428,12 +1499,13 @@ output$`tutorial-exercise-na-3-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "na-3", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "knitr::opts_chunk$set(echo = FALSE)", 
-"gradethis::gradethis_setup(", "  pass.praise = FALSE,", "  fail.encourage = FALSE,", 
-"  pass = \"Richtig!\",", "  fail = \"Das ist leider falsch.\"", 
-"  )", "tutorial_options(exercise.reveal_solution = TRUE,", "                 exercise.blanks = \"___\")", 
-"blue <- \"#00c4e6\""), chunk_opts = list(label = "setup", include = FALSE)), 
-    setup = NULL, chunks = list(list(label = "na-3", code = "NA == \"test\"\nNA == 5\nNaN == 5", 
+"library(gradethis)", "# devtools::load_all()", "library(otter)", 
+"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
+"  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
+"                 exercise.blanks = \"___\")", "blue <- \"#00c4e6\""
+), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
+    chunks = list(list(label = "na-3", code = "NA == \"test\"\nNA == 5\nNaN == 5", 
         opts = list(label = "\"na-3\"", exercise = "TRUE", results = "\"hold\""), 
         engine = "r")), code_check = NULL, error_check = NULL, 
     check = NULL, solution = NULL, tests = NULL, options = list(
@@ -1472,13 +1544,14 @@ output$`tutorial-exercise-na-5-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "na-5", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "knitr::opts_chunk$set(echo = FALSE)", 
-"gradethis::gradethis_setup(", "  pass.praise = FALSE,", "  fail.encourage = FALSE,", 
-"  pass = \"Richtig!\",", "  fail = \"Das ist leider falsch.\"", 
-"  )", "tutorial_options(exercise.reveal_solution = TRUE,", "                 exercise.blanks = \"___\")", 
-"blue <- \"#00c4e6\""), chunk_opts = list(label = "setup", include = FALSE)), 
-    setup = NULL, chunks = list(list(label = "na-5", code = "0/0\nInf/1", 
-        opts = list(label = "\"na-5\"", exercise = "TRUE", results = "\"hold\""), 
+"library(gradethis)", "# devtools::load_all()", "library(otter)", 
+"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
+"  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
+"                 exercise.blanks = \"___\")", "blue <- \"#00c4e6\""
+), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
+    chunks = list(list(label = "na-5", code = "0/0\nInf/1", opts = list(
+        label = "\"na-5\"", exercise = "TRUE", results = "\"hold\""), 
         engine = "r")), code_check = NULL, error_check = NULL, 
     check = NULL, solution = NULL, tests = NULL, options = list(
         eval = FALSE, echo = TRUE, results = "hold", tidy = FALSE, 
@@ -1515,12 +1588,13 @@ output$`tutorial-exercise-na-4-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "na-4", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "knitr::opts_chunk$set(echo = FALSE)", 
-"gradethis::gradethis_setup(", "  pass.praise = FALSE,", "  fail.encourage = FALSE,", 
-"  pass = \"Richtig!\",", "  fail = \"Das ist leider falsch.\"", 
-"  )", "tutorial_options(exercise.reveal_solution = TRUE,", "                 exercise.blanks = \"___\")", 
-"blue <- \"#00c4e6\""), chunk_opts = list(label = "setup", include = FALSE)), 
-    setup = NULL, chunks = list(list(label = "na-4", code = "NULL == \"test\"\nNULL == 5\ninteger(0) == 5", 
+"library(gradethis)", "# devtools::load_all()", "library(otter)", 
+"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
+"  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
+"                 exercise.blanks = \"___\")", "blue <- \"#00c4e6\""
+), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
+    chunks = list(list(label = "na-4", code = "NULL == \"test\"\nNULL == 5\ninteger(0) == 5", 
         opts = list(label = "\"na-4\"", exercise = "TRUE", results = "\"hold\""), 
         engine = "r")), code_check = NULL, error_check = NULL, 
     check = NULL, solution = NULL, tests = NULL, options = list(
@@ -1559,12 +1633,13 @@ output$`tutorial-exercise-na-1-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "na-1", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "knitr::opts_chunk$set(echo = FALSE)", 
-"gradethis::gradethis_setup(", "  pass.praise = FALSE,", "  fail.encourage = FALSE,", 
-"  pass = \"Richtig!\",", "  fail = \"Das ist leider falsch.\"", 
-"  )", "tutorial_options(exercise.reveal_solution = TRUE,", "                 exercise.blanks = \"___\")", 
-"blue <- \"#00c4e6\""), chunk_opts = list(label = "setup", include = FALSE)), 
-    setup = NULL, chunks = list(list(label = "na-1", code = "NaN == NaN\nNaN < 5\n10 * NaN\nNaN & TRUE\n\nNaN | TRUE\nis.na(NaN)", 
+"library(gradethis)", "# devtools::load_all()", "library(otter)", 
+"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
+"  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
+"                 exercise.blanks = \"___\")", "blue <- \"#00c4e6\""
+), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
+    chunks = list(list(label = "na-1", code = "NaN == NaN\nNaN < 5\n10 * NaN\nNaN & TRUE\n\nNaN | TRUE\nis.na(NaN)", 
         opts = list(label = "\"na-1\"", exercise = "TRUE", results = "\"hold\""), 
         engine = "r")), code_check = NULL, error_check = NULL, 
     check = NULL, solution = NULL, tests = NULL, options = list(
@@ -1604,13 +1679,13 @@ output$`tutorial-exercise-data-functions1-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "data-functions1", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "knitr::opts_chunk$set(echo = FALSE)", 
-"gradethis::gradethis_setup(", "  pass.praise = FALSE,", "  fail.encourage = FALSE,", 
-"  pass = \"Richtig!\",", "  fail = \"Das ist leider falsch.\"", 
-"  )", "tutorial_options(exercise.reveal_solution = TRUE,", "                 exercise.blanks = \"___\")", 
-"blue <- \"#00c4e6\""), chunk_opts = list(label = "setup", include = FALSE)), 
-    setup = NULL, chunks = list(list(label = "data-functions1", 
-        code = "integer(5)\ndouble(5)\ncharacter(5)\nlogical(5)", 
+"library(gradethis)", "# devtools::load_all()", "library(otter)", 
+"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
+"  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
+"                 exercise.blanks = \"___\")", "blue <- \"#00c4e6\""
+), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
+    chunks = list(list(label = "data-functions1", code = "integer(5)\ndouble(5)\ncharacter(5)\nlogical(5)", 
         opts = list(label = "\"data-functions1\"", exercise = "TRUE", 
             results = "\"hold\""), engine = "r")), code_check = NULL, 
     error_check = NULL, check = NULL, solution = NULL, tests = NULL, 
@@ -1650,13 +1725,13 @@ output$`tutorial-exercise-data-functions2-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "data-functions2", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "knitr::opts_chunk$set(echo = FALSE)", 
-"gradethis::gradethis_setup(", "  pass.praise = FALSE,", "  fail.encourage = FALSE,", 
-"  pass = \"Richtig!\",", "  fail = \"Das ist leider falsch.\"", 
-"  )", "tutorial_options(exercise.reveal_solution = TRUE,", "                 exercise.blanks = \"___\")", 
-"blue <- \"#00c4e6\""), chunk_opts = list(label = "setup", include = FALSE)), 
-    setup = NULL, chunks = list(list(label = "data-functions2", 
-        code = "# Erzeugung einer Variable\nnumber = 5\n# Prüfung der Variable\nis.integer(number)\nis.double(number)\nis.character(number)\nis.logical(number)\nis.numeric(number)\n\n# Prüfung von Spezialfällen\nis.na(number)\nis.finite(number)\nis.infinite(number)", 
+"library(gradethis)", "# devtools::load_all()", "library(otter)", 
+"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
+"  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
+"                 exercise.blanks = \"___\")", "blue <- \"#00c4e6\""
+), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
+    chunks = list(list(label = "data-functions2", code = "# Erzeugung einer Variable\nnumber = 5\n# Prüfung der Variable\nis.integer(number)\nis.double(number)\nis.character(number)\nis.logical(number)\nis.numeric(number)\n\n# Prüfung von Spezialfällen\nis.na(number)\nis.finite(number)\nis.infinite(number)", 
         opts = list(label = "\"data-functions2\"", exercise = "TRUE", 
             results = "\"hold\""), engine = "r")), code_check = NULL, 
     error_check = NULL, check = NULL, solution = NULL, tests = NULL, 
@@ -1696,9 +1771,10 @@ learnr:::store_exercise_cache(structure(list(label = "data-functions2", global_s
 <!--/html_preserve-->
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="execution_dependencies">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46]}},"value":[{"type":"character","attributes":{},"value":["backports","base","bslib","cachem","checkmate","cli","compiler","datasets","digest","ellipsis","evaluate","fastmap","fontawesome","gradethis","graphics","grDevices","htmltools","htmlwidgets","httpuv","jquerylib","jsonlite","knitr","later","learnr","lifecycle","magrittr","methods","mime","otter","promises","R6","Rcpp","renv","rlang","rmarkdown","rprojroot","rstudioapi","sass","shiny","stats","tools","utils","withr","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["1.4.1","4.3.0","0.5.0","1.0.8","2.2.0","3.6.1","4.3.0","4.3.0","0.6.33","0.3.2","0.21","1.1.1","0.5.1","0.2.14","4.3.0","4.3.0","0.5.5","1.6.2","1.6.11","0.1.4","1.8.7","1.43","1.3.1","0.11.4.9000","1.0.3","2.0.3","4.3.0","0.12","0.1.0","1.2.0.1","2.5.1","1.0.11","1.0.0","1.1.1","2.23","2.0.3","0.15.0","0.4.6","1.7.4.1","4.3.0","4.3.0","4.3.0","2.5.0","0.39","1.8-4","2.3.7"]}]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45]}},"value":[{"type":"character","attributes":{},"value":["backports","base","bslib","cachem","checkmate","cli","compiler","datasets","digest","ellipsis","evaluate","fastmap","fontawesome","gradethis","graphics","grDevices","htmltools","htmlwidgets","httpuv","jquerylib","jsonlite","knitr","later","learnr","lifecycle","magrittr","methods","mime","otter","promises","R6","Rcpp","rlang","rmarkdown","rprojroot","rstudioapi","sass","shiny","stats","tools","utils","withr","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["1.4.1","4.3.0","0.5.0","1.0.8","2.2.0","3.6.1","4.3.0","4.3.0","0.6.31","0.3.2","0.21","1.1.1","0.5.1","0.2.14","4.3.0","4.3.0","0.5.5","1.6.2","1.6.10","0.1.4","1.8.4","1.43","1.3.1","0.11.4.9000","1.0.3","2.0.3","4.3.0","0.12","0.1.0","1.2.0.1","2.5.1","1.0.10","1.1.1","2.23","2.0.3","0.15.0","0.4.6","1.7.4.1","4.3.0","4.3.0","4.3.0","2.5.0","0.39","1.8-4","2.3.7"]}]}]}
 </script>
 <!--/html_preserve-->
+</div>
 </div>
 
 </article> <!-- topics -->
@@ -1710,7 +1786,7 @@ learnr:::store_exercise_cache(structure(list(label = "data-functions2", global_s
 
 <!-- begin doc-metadata -->
 <div id="doc-metadata">
-<h1 class="title toc-ignore" style="display:none;">RStudio
+<h1 class="title toc-ignore" style="display:none;">R &amp; RStudio
 Grundlagen</h1>
 </div>
 <!-- end doc-metadata -->

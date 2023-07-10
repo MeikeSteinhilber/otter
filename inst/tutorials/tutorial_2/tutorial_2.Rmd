@@ -1,5 +1,5 @@
 ---
-title: "RStudio Grundlagen"
+title: "R & RStudio Grundlagen"
 tutorial:
   version: 0.1
 output:
@@ -17,6 +17,11 @@ $(document).ready(function() {
   $("#tutorial-topic").prepend(`<div class="img-right">
   <a href="https://meikesteinhilber.github.io/otter/"> <i class="fa-solid fa-house" aria-label="Link zur otter Homepage" aria-hidden="true"></i>
   </a>
+  </div>`);
+  
+  $("#learnr-tutorial-content.topics").prepend(
+  `<div class="logo">
+  <img class="logo" src="images/logo.png" style="width:10.0%"/>
   </div>`);
 
   $("a[href^='#']").on("click", function(event) {
@@ -47,6 +52,7 @@ $(document).ready(function() {
 library(learnr)
 library(gradethis)
 # devtools::load_all()
+library(otter)
 knitr::opts_chunk$set(echo = FALSE)
 gradethis::gradethis_setup(
   pass.praise = FALSE,
@@ -61,6 +67,8 @@ blue <- "#00c4e6"
 
 ## R und RStudio Installation
 
+![](images/Rlogo.png){right="100%" width="10%"}
+
 **1. R Installation**
 
   -   allgemein unter: https://cran.rstudio.com/
@@ -70,6 +78,8 @@ blue <- "#00c4e6"
   -   für macOS: https://cran.r-project.org/bin/macosx/
 
 
+<br>
+![](images/RStudio-Logo-Flat.png){right="100%" width="20%"}
 
 **2. RStudio Installation**
 
@@ -96,7 +106,7 @@ Grundsätzlich sind auch andere IDEs möglich, wir werden in diesem Tutorial jed
 
 Nach dem RStudio geöffnet wird, sieht es so aus:
 
-SCREENSHOT
+![](images/RStudio_fresh_start.png){.absolute .images-shadow left="100%" width="80%"}
 
 Aktuell haben wir noch kein Dokument geöffnet.
 Wir sehen aktuell 3 separierte Bereiche bzw. Fenster.
@@ -183,7 +193,7 @@ Das neu geöffnete R Skript sieht nun so aus und kann direkt abgespeichert werde
 ![](images/empty-rscript-open.png){.absolute .images-shadow left="100%" width="80%"}
 
 
-## RStudio vs otter
+## RStudio vs `otter`
 
 Die `otter` Tutorials sind alle interaktiv gestaltet.
 Damit wir dir Feedback geben können und du nicht immer zwischen RStudio und unserer Website wechseln musst, sind R-Bausteine eingebaut.
@@ -191,9 +201,9 @@ Siehe dir die folgenden Bilder und Aufgaben an, um zu verstehen wie in unseren T
 
 ![](images/r-vs-tutorial.png){.absolute left="100%" width="80%"}
 
-So sieht derselbe R Code in unserem Tutorial Format aus
 
 #### Übungen
+So sieht derselbe R Code in unserem Tutorial Format aus:
 
 <div class="uebungen">
 
@@ -539,18 +549,48 @@ is.finite(number)
 is.infinite(number)
 ```
 
+## Datenstrukturen
 
-## Test
+### Variablen
 
-```{r code-example, exercise=FALSE, echo=TRUE, eval=FALSE}
-open_tutorial <- function(tutorial_name) {
-  if (!is.character(tutorial)) {stop("Invalid input argument: tutorial name must be a charcter string.")}
-  # learnr::run_tutorial(tutorial, package = "otter")
-}
-NULL
-output$distPlot <- renderPlot({
-  x <- faithful[, 2]  # Old Faithful Geyser data
-  bins <- seq(min(x), max(x), length.out = input$bins + 1)
-  hist(x, breaks = bins, col = 'darkgray', border = 'white')
-})
-```
+-> auch Daten ändern behandeln
+
+### Atomare Vektoren
+
+### Matrizen
+
+### data.frame
+
+### Listen
+
+## Funktionen
+
+## R Pakete
+
+## Daten importieren & exportieren
+
+### Import
+
+### Export
+
+## RMarkdown
+
+## Environments
+
+## Debugging
+
+### Warnungen & Fehler
+
+### Tipps
+
+## Clean Code
+
+## R Projekte
+
+## Code Flow
+
+### if-else 
+
+### for-loop
+
+### while-loop

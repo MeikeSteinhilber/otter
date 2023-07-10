@@ -78,7 +78,7 @@ h2 {
     width: 80%;
     overflow-x: auto;
     background-color: white;
-    border-left: 1pt solid #d9d9d9;
+   /* border-left: 1pt solid #d9d9d9;*/
 }
 
 .topicsContainer {
@@ -123,8 +123,8 @@ h2 {
 
 .img-right {
     background-color: white;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 1em;
+    margin-right: 2em;
     float: right;
     display: block;
     /*
@@ -132,7 +132,18 @@ h2 {
     left:100px;
     top:-10px;
     */
-  }
+}
+
+.logo {
+    float: right;
+    /*
+    display: block;
+
+    position: fixed;
+    left:100px;
+    top:-10px;
+    */
+}
 
 /* Remove extra space on mobile */
 
@@ -152,6 +163,7 @@ h2 {
     margin-right: 0%;
     background-color: white;
     width: 140%;
+    max-width: 1200px; /*length of the text on the page*/
   }
 
   .bandContent band {
@@ -265,6 +277,7 @@ h3 code {
   cursor: pointer;
   margin: 0 auto;
   margin-top: 1em;
+  margin-bottom: 8em;
 }
 
 /*-------- Code chunk header panel ---------*/
