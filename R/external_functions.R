@@ -2,7 +2,7 @@
 # library(roxygen2)
 
 
-#' Open Tutorials in the studyr package
+#' Open Tutorials in the otter package
 #'
 #' @param tutorial_name character string
 #'
@@ -15,3 +15,13 @@ open_tutorial <- function(tutorial_name) {
   learnr::run_tutorial(tutorial_name, package = "otter")
 }
 
+#' Show all tutorials in the otter package
+#'
+#'
+#' @return prints out on the console all available tutorials in the ottter package
+#' @export
+#'
+##' @examples show_all_tutorials()
+show_all_tutorials <- function() {
+  learnr::available_tutorials(package = "otter")
+}

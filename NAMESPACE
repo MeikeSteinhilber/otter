@@ -2,3 +2,4 @@
 
 export(colorize)
 export(open_tutorial)
+export(show_all_tutorials)

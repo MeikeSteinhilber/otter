@@ -2,7 +2,7 @@
 % Please edit documentation in R/external_functions.R
 \name{open_tutorial}
 \alias{open_tutorial}
-\title{Open Tutorials in the studyr package}
+\title{Open Tutorials in the otter package}
 \usage{
 open_tutorial(tutorial_name)
 }
@@ -13,8 +13,8 @@ open_tutorial(tutorial_name)
 opens the tutorial
 }
 \description{
-Open Tutorials in the studyr package
+Open Tutorials in the otter package
 }
 \examples{
-open_tutorial()
+open_tutorial("tutorial_2")
 }
