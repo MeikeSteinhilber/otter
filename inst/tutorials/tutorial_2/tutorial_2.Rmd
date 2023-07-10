@@ -52,7 +52,7 @@ $(document).ready(function() {
 library(learnr)
 library(gradethis)
 # devtools::load_all()
-remotes::install_github("MeikeSteinhilber/otter")
+# remotes::install_github("MeikeSteinhilber/otter")
 library(otter)
 knitr::opts_chunk$set(echo = FALSE)
 gradethis::gradethis_setup(
