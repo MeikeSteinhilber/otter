@@ -6,7 +6,7 @@
 
 
 .text-muted {
-  color: white;
+  color: white !important;
 }
 
 .navbar-dark .navbar-nav .active > .nav-link {
