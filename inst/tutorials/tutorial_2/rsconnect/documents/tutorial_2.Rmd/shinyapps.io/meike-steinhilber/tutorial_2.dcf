@@ -1,0 +1,13 @@
+name: tutorial_2
+title: tutorial_2
+username:
+account: meike-steinhilber
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 9018277
+bundleId: 7444697
+url: https://meike-steinhilber.shinyapps.io/tutorial_2/
+when: 1689089674.46877
+lastSyncTime: 1689089674.46878
+asMultiple: FALSE
+asStatic: FALSE
