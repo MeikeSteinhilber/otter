@@ -52,7 +52,7 @@ $(document).ready(function() {
 library(learnr)
 library(gradethis)
 library(scales)
-devtools::load_all()
+# devtools::load_all()
 # remotes::install_github("MeikeSteinhilber/otter")
 # remotes::install_github("rstudio/gradethis")
 # library(otter)
