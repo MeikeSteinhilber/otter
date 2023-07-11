@@ -1058,11 +1058,11 @@ Funktionen</p>
 <p>Daten simulieren</p>
 <pre><code>##  [1] 0 0 0 0 0 0 0 0 0 0</code></pre>
 <pre><code>##  [1] &quot;lala&quot; &quot;lala&quot; &quot;lala&quot; &quot;lala&quot; &quot;lala&quot; &quot;lala&quot; &quot;lala&quot; &quot;lala&quot; &quot;lala&quot; &quot;lala&quot;</code></pre>
-<pre><code>##  [1] 17 13 95 99 56 95 95 54 29 49</code></pre>
-<pre><code>##  [1]  0.77155058  1.44922682  2.23930349 -1.06812783  1.24851653 -1.60451981
-##  [7]  0.05223755  2.94783076 -0.61769120 -0.76536250</code></pre>
-<pre><code>##  [1] 1.0861243 0.1269473 0.1487113 1.5163843 0.2287251 0.2662924 0.9954919
-##  [8] 0.1067060 0.7424696 0.1650574</code></pre>
+<pre><code>##  [1]  7  9  7 42 86 71 32 83 59 60</code></pre>
+<pre><code>##  [1]  1.0745527  2.4212084 -2.1216191  1.5081530 -2.8483786  0.5442733
+##  [7]  0.2002943 -1.0337371  1.7025520  3.7653477</code></pre>
+<pre><code>##  [1] 0.2287575 1.2640144 0.1606401 0.1353856 1.9810825 0.4125427 1.1165405
+##  [8] 1.1627884 0.5868820 0.9100567</code></pre>
 <p>Text</p>
 <pre><code>## [1] &quot;Meike&quot;</code></pre>
 <pre><code>## Hello Meike ! How are you?</code></pre>
@@ -1121,10 +1121,11 @@ Funktionen</p>
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
 library(gradethis)
-# devtools::load_all()
+library(scales)
+devtools::load_all()
 # remotes::install_github("MeikeSteinhilber/otter")
 # remotes::install_github("rstudio/gradethis")
-library(otter)
+# library(otter)
 knitr::opts_chunk$set(echo = FALSE)
 gradethis::gradethis_setup(
   pass.praise = FALSE,
@@ -1168,9 +1169,9 @@ output$`tutorial-exercise-r-vs-tutorial-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "r-vs-tutorial", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "# remotes::install_github(\"MeikeSteinhilber/otter\")", 
-"# remotes::install_github(\"rstudio/gradethis\")", "library(otter)", 
-"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"library(gradethis)", "library(scales)", "devtools::load_all()", 
+"# remotes::install_github(\"MeikeSteinhilber/otter\")", "# remotes::install_github(\"rstudio/gradethis\")", 
+"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
 "  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
 "  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
 "                 exercise.blanks = \"___\",", "                 exercise.eval = TRUE)", 
@@ -1216,9 +1217,9 @@ output$`tutorial-exercise-ex-r-vs-tutorial-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "ex-r-vs-tutorial", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "# remotes::install_github(\"MeikeSteinhilber/otter\")", 
-"# remotes::install_github(\"rstudio/gradethis\")", "library(otter)", 
-"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"library(gradethis)", "library(scales)", "devtools::load_all()", 
+"# remotes::install_github(\"MeikeSteinhilber/otter\")", "# remotes::install_github(\"rstudio/gradethis\")", 
+"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
 "  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
 "  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
 "                 exercise.blanks = \"___\",", "                 exercise.eval = TRUE)", 
@@ -1265,9 +1266,9 @@ output$`tutorial-exercise-logicals-1-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "logicals-1", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "# remotes::install_github(\"MeikeSteinhilber/otter\")", 
-"# remotes::install_github(\"rstudio/gradethis\")", "library(otter)", 
-"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"library(gradethis)", "library(scales)", "devtools::load_all()", 
+"# remotes::install_github(\"MeikeSteinhilber/otter\")", "# remotes::install_github(\"rstudio/gradethis\")", 
+"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
 "  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
 "  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
 "                 exercise.blanks = \"___\",", "                 exercise.eval = TRUE)", 
@@ -1313,9 +1314,9 @@ output$`tutorial-exercise-logicals-2-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "logicals-2", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "# remotes::install_github(\"MeikeSteinhilber/otter\")", 
-"# remotes::install_github(\"rstudio/gradethis\")", "library(otter)", 
-"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"library(gradethis)", "library(scales)", "devtools::load_all()", 
+"# remotes::install_github(\"MeikeSteinhilber/otter\")", "# remotes::install_github(\"rstudio/gradethis\")", 
+"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
 "  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
 "  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
 "                 exercise.blanks = \"___\",", "                 exercise.eval = TRUE)", 
@@ -1361,9 +1362,9 @@ output$`tutorial-exercise-logical-3-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "logical-3", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "# remotes::install_github(\"MeikeSteinhilber/otter\")", 
-"# remotes::install_github(\"rstudio/gradethis\")", "library(otter)", 
-"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"library(gradethis)", "library(scales)", "devtools::load_all()", 
+"# remotes::install_github(\"MeikeSteinhilber/otter\")", "# remotes::install_github(\"rstudio/gradethis\")", 
+"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
 "  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
 "  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
 "                 exercise.blanks = \"___\",", "                 exercise.eval = TRUE)", 
@@ -1411,9 +1412,9 @@ output$`tutorial-exercise-ex-logical-1-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "ex-logical-1", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "# remotes::install_github(\"MeikeSteinhilber/otter\")", 
-"# remotes::install_github(\"rstudio/gradethis\")", "library(otter)", 
-"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"library(gradethis)", "library(scales)", "devtools::load_all()", 
+"# remotes::install_github(\"MeikeSteinhilber/otter\")", "# remotes::install_github(\"rstudio/gradethis\")", 
+"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
 "  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
 "  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
 "                 exercise.blanks = \"___\",", "                 exercise.eval = TRUE)", 
@@ -1465,9 +1466,9 @@ output$`tutorial-exercise-ex-logical-2-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "ex-logical-2", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "# remotes::install_github(\"MeikeSteinhilber/otter\")", 
-"# remotes::install_github(\"rstudio/gradethis\")", "library(otter)", 
-"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"library(gradethis)", "library(scales)", "devtools::load_all()", 
+"# remotes::install_github(\"MeikeSteinhilber/otter\")", "# remotes::install_github(\"rstudio/gradethis\")", 
+"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
 "  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
 "  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
 "                 exercise.blanks = \"___\",", "                 exercise.eval = TRUE)", 
@@ -1519,9 +1520,9 @@ output$`tutorial-exercise-integers-1-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "integers-1", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "# remotes::install_github(\"MeikeSteinhilber/otter\")", 
-"# remotes::install_github(\"rstudio/gradethis\")", "library(otter)", 
-"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"library(gradethis)", "library(scales)", "devtools::load_all()", 
+"# remotes::install_github(\"MeikeSteinhilber/otter\")", "# remotes::install_github(\"rstudio/gradethis\")", 
+"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
 "  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
 "  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
 "                 exercise.blanks = \"___\",", "                 exercise.eval = TRUE)", 
@@ -1567,9 +1568,9 @@ output$`tutorial-exercise-integers-2-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "integers-2", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "# remotes::install_github(\"MeikeSteinhilber/otter\")", 
-"# remotes::install_github(\"rstudio/gradethis\")", "library(otter)", 
-"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"library(gradethis)", "library(scales)", "devtools::load_all()", 
+"# remotes::install_github(\"MeikeSteinhilber/otter\")", "# remotes::install_github(\"rstudio/gradethis\")", 
+"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
 "  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
 "  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
 "                 exercise.blanks = \"___\",", "                 exercise.eval = TRUE)", 
@@ -1615,9 +1616,9 @@ output$`tutorial-exercise-doubles-1-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "doubles-1", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "# remotes::install_github(\"MeikeSteinhilber/otter\")", 
-"# remotes::install_github(\"rstudio/gradethis\")", "library(otter)", 
-"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"library(gradethis)", "library(scales)", "devtools::load_all()", 
+"# remotes::install_github(\"MeikeSteinhilber/otter\")", "# remotes::install_github(\"rstudio/gradethis\")", 
+"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
 "  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
 "  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
 "                 exercise.blanks = \"___\",", "                 exercise.eval = TRUE)", 
@@ -1663,9 +1664,9 @@ output$`tutorial-exercise-doubles-2-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "doubles-2", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "# remotes::install_github(\"MeikeSteinhilber/otter\")", 
-"# remotes::install_github(\"rstudio/gradethis\")", "library(otter)", 
-"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"library(gradethis)", "library(scales)", "devtools::load_all()", 
+"# remotes::install_github(\"MeikeSteinhilber/otter\")", "# remotes::install_github(\"rstudio/gradethis\")", 
+"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
 "  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
 "  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
 "                 exercise.blanks = \"___\",", "                 exercise.eval = TRUE)", 
@@ -1710,9 +1711,9 @@ output$`tutorial-exercise-character-1-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "character-1", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "# remotes::install_github(\"MeikeSteinhilber/otter\")", 
-"# remotes::install_github(\"rstudio/gradethis\")", "library(otter)", 
-"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"library(gradethis)", "library(scales)", "devtools::load_all()", 
+"# remotes::install_github(\"MeikeSteinhilber/otter\")", "# remotes::install_github(\"rstudio/gradethis\")", 
+"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
 "  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
 "  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
 "                 exercise.blanks = \"___\",", "                 exercise.eval = TRUE)", 
@@ -1757,9 +1758,9 @@ output$`tutorial-exercise-character-2-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "character-2", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "# remotes::install_github(\"MeikeSteinhilber/otter\")", 
-"# remotes::install_github(\"rstudio/gradethis\")", "library(otter)", 
-"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"library(gradethis)", "library(scales)", "devtools::load_all()", 
+"# remotes::install_github(\"MeikeSteinhilber/otter\")", "# remotes::install_github(\"rstudio/gradethis\")", 
+"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
 "  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
 "  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
 "                 exercise.blanks = \"___\",", "                 exercise.eval = TRUE)", 
@@ -1805,9 +1806,9 @@ output$`tutorial-exercise-character-3-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "character-3", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "# remotes::install_github(\"MeikeSteinhilber/otter\")", 
-"# remotes::install_github(\"rstudio/gradethis\")", "library(otter)", 
-"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"library(gradethis)", "library(scales)", "devtools::load_all()", 
+"# remotes::install_github(\"MeikeSteinhilber/otter\")", "# remotes::install_github(\"rstudio/gradethis\")", 
+"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
 "  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
 "  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
 "                 exercise.blanks = \"___\",", "                 exercise.eval = TRUE)", 
@@ -1852,9 +1853,9 @@ output$`tutorial-exercise-na-2-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "na-2", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "# remotes::install_github(\"MeikeSteinhilber/otter\")", 
-"# remotes::install_github(\"rstudio/gradethis\")", "library(otter)", 
-"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"library(gradethis)", "library(scales)", "devtools::load_all()", 
+"# remotes::install_github(\"MeikeSteinhilber/otter\")", "# remotes::install_github(\"rstudio/gradethis\")", 
+"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
 "  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
 "  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
 "                 exercise.blanks = \"___\",", "                 exercise.eval = TRUE)", 
@@ -1899,9 +1900,9 @@ output$`tutorial-exercise-na-3-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "na-3", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "# remotes::install_github(\"MeikeSteinhilber/otter\")", 
-"# remotes::install_github(\"rstudio/gradethis\")", "library(otter)", 
-"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"library(gradethis)", "library(scales)", "devtools::load_all()", 
+"# remotes::install_github(\"MeikeSteinhilber/otter\")", "# remotes::install_github(\"rstudio/gradethis\")", 
+"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
 "  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
 "  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
 "                 exercise.blanks = \"___\",", "                 exercise.eval = TRUE)", 
@@ -1946,9 +1947,9 @@ output$`tutorial-exercise-na-5-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "na-5", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "# remotes::install_github(\"MeikeSteinhilber/otter\")", 
-"# remotes::install_github(\"rstudio/gradethis\")", "library(otter)", 
-"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"library(gradethis)", "library(scales)", "devtools::load_all()", 
+"# remotes::install_github(\"MeikeSteinhilber/otter\")", "# remotes::install_github(\"rstudio/gradethis\")", 
+"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
 "  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
 "  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
 "                 exercise.blanks = \"___\",", "                 exercise.eval = TRUE)", 
@@ -1992,9 +1993,9 @@ output$`tutorial-exercise-na-4-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "na-4", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "# remotes::install_github(\"MeikeSteinhilber/otter\")", 
-"# remotes::install_github(\"rstudio/gradethis\")", "library(otter)", 
-"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"library(gradethis)", "library(scales)", "devtools::load_all()", 
+"# remotes::install_github(\"MeikeSteinhilber/otter\")", "# remotes::install_github(\"rstudio/gradethis\")", 
+"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
 "  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
 "  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
 "                 exercise.blanks = \"___\",", "                 exercise.eval = TRUE)", 
@@ -2039,9 +2040,9 @@ output$`tutorial-exercise-na-1-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "na-1", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "# remotes::install_github(\"MeikeSteinhilber/otter\")", 
-"# remotes::install_github(\"rstudio/gradethis\")", "library(otter)", 
-"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"library(gradethis)", "library(scales)", "devtools::load_all()", 
+"# remotes::install_github(\"MeikeSteinhilber/otter\")", "# remotes::install_github(\"rstudio/gradethis\")", 
+"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
 "  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
 "  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
 "                 exercise.blanks = \"___\",", "                 exercise.eval = TRUE)", 
@@ -2087,9 +2088,9 @@ output$`tutorial-exercise-data-functions1-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "data-functions1", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "# remotes::install_github(\"MeikeSteinhilber/otter\")", 
-"# remotes::install_github(\"rstudio/gradethis\")", "library(otter)", 
-"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"library(gradethis)", "library(scales)", "devtools::load_all()", 
+"# remotes::install_github(\"MeikeSteinhilber/otter\")", "# remotes::install_github(\"rstudio/gradethis\")", 
+"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
 "  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
 "  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
 "                 exercise.blanks = \"___\",", "                 exercise.eval = TRUE)", 
@@ -2136,9 +2137,9 @@ output$`tutorial-exercise-data-functions2-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "data-functions2", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "# remotes::install_github(\"MeikeSteinhilber/otter\")", 
-"# remotes::install_github(\"rstudio/gradethis\")", "library(otter)", 
-"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"library(gradethis)", "library(scales)", "devtools::load_all()", 
+"# remotes::install_github(\"MeikeSteinhilber/otter\")", "# remotes::install_github(\"rstudio/gradethis\")", 
+"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
 "  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
 "  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
 "                 exercise.blanks = \"___\",", "                 exercise.eval = TRUE)", 
@@ -2188,9 +2189,9 @@ output$`tutorial-exercise-variable-1-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "variable-1", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "# remotes::install_github(\"MeikeSteinhilber/otter\")", 
-"# remotes::install_github(\"rstudio/gradethis\")", "library(otter)", 
-"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"library(gradethis)", "library(scales)", "devtools::load_all()", 
+"# remotes::install_github(\"MeikeSteinhilber/otter\")", "# remotes::install_github(\"rstudio/gradethis\")", 
+"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
 "  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
 "  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
 "                 exercise.blanks = \"___\",", "                 exercise.eval = TRUE)", 
@@ -2237,9 +2238,9 @@ output$`tutorial-exercise-variable-2-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "variable-2", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "# remotes::install_github(\"MeikeSteinhilber/otter\")", 
-"# remotes::install_github(\"rstudio/gradethis\")", "library(otter)", 
-"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"library(gradethis)", "library(scales)", "devtools::load_all()", 
+"# remotes::install_github(\"MeikeSteinhilber/otter\")", "# remotes::install_github(\"rstudio/gradethis\")", 
+"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
 "  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
 "  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
 "                 exercise.blanks = \"___\",", "                 exercise.eval = TRUE)", 
@@ -2285,9 +2286,9 @@ output$`tutorial-exercise-variable-3-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "variable-3", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "# remotes::install_github(\"MeikeSteinhilber/otter\")", 
-"# remotes::install_github(\"rstudio/gradethis\")", "library(otter)", 
-"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"library(gradethis)", "library(scales)", "devtools::load_all()", 
+"# remotes::install_github(\"MeikeSteinhilber/otter\")", "# remotes::install_github(\"rstudio/gradethis\")", 
+"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
 "  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
 "  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
 "                 exercise.blanks = \"___\",", "                 exercise.eval = TRUE)", 
@@ -2337,9 +2338,9 @@ output$`tutorial-exercise-vektoren-1-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "vektoren-1", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "# remotes::install_github(\"MeikeSteinhilber/otter\")", 
-"# remotes::install_github(\"rstudio/gradethis\")", "library(otter)", 
-"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"library(gradethis)", "library(scales)", "devtools::load_all()", 
+"# remotes::install_github(\"MeikeSteinhilber/otter\")", "# remotes::install_github(\"rstudio/gradethis\")", 
+"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
 "  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
 "  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
 "                 exercise.blanks = \"___\",", "                 exercise.eval = TRUE)", 
@@ -2388,9 +2389,9 @@ output$`tutorial-exercise-vektoren-2-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "vektoren-2", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "# remotes::install_github(\"MeikeSteinhilber/otter\")", 
-"# remotes::install_github(\"rstudio/gradethis\")", "library(otter)", 
-"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"library(gradethis)", "library(scales)", "devtools::load_all()", 
+"# remotes::install_github(\"MeikeSteinhilber/otter\")", "# remotes::install_github(\"rstudio/gradethis\")", 
+"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
 "  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
 "  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
 "                 exercise.blanks = \"___\",", "                 exercise.eval = TRUE)", 
@@ -2436,9 +2437,9 @@ output$`tutorial-exercise-vektoren-4-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "vektoren-4", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "# remotes::install_github(\"MeikeSteinhilber/otter\")", 
-"# remotes::install_github(\"rstudio/gradethis\")", "library(otter)", 
-"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"library(gradethis)", "library(scales)", "devtools::load_all()", 
+"# remotes::install_github(\"MeikeSteinhilber/otter\")", "# remotes::install_github(\"rstudio/gradethis\")", 
+"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
 "  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
 "  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
 "                 exercise.blanks = \"___\",", "                 exercise.eval = TRUE)", 
@@ -2484,9 +2485,9 @@ output$`tutorial-exercise-vektoren-5-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "vektoren-5", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "# remotes::install_github(\"MeikeSteinhilber/otter\")", 
-"# remotes::install_github(\"rstudio/gradethis\")", "library(otter)", 
-"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"library(gradethis)", "library(scales)", "devtools::load_all()", 
+"# remotes::install_github(\"MeikeSteinhilber/otter\")", "# remotes::install_github(\"rstudio/gradethis\")", 
+"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
 "  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
 "  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
 "                 exercise.blanks = \"___\",", "                 exercise.eval = TRUE)", 
@@ -2533,9 +2534,9 @@ output$`tutorial-exercise-vektoren-6-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "vektoren-6", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "# remotes::install_github(\"MeikeSteinhilber/otter\")", 
-"# remotes::install_github(\"rstudio/gradethis\")", "library(otter)", 
-"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"library(gradethis)", "library(scales)", "devtools::load_all()", 
+"# remotes::install_github(\"MeikeSteinhilber/otter\")", "# remotes::install_github(\"rstudio/gradethis\")", 
+"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
 "  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
 "  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
 "                 exercise.blanks = \"___\",", "                 exercise.eval = TRUE)", 
@@ -2581,9 +2582,9 @@ output$`tutorial-exercise-matrix-1-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "matrix-1", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "# remotes::install_github(\"MeikeSteinhilber/otter\")", 
-"# remotes::install_github(\"rstudio/gradethis\")", "library(otter)", 
-"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"library(gradethis)", "library(scales)", "devtools::load_all()", 
+"# remotes::install_github(\"MeikeSteinhilber/otter\")", "# remotes::install_github(\"rstudio/gradethis\")", 
+"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
 "  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
 "  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
 "                 exercise.blanks = \"___\",", "                 exercise.eval = TRUE)", 
@@ -2629,9 +2630,9 @@ output$`tutorial-exercise-matrix-2-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "matrix-2", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "# remotes::install_github(\"MeikeSteinhilber/otter\")", 
-"# remotes::install_github(\"rstudio/gradethis\")", "library(otter)", 
-"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"library(gradethis)", "library(scales)", "devtools::load_all()", 
+"# remotes::install_github(\"MeikeSteinhilber/otter\")", "# remotes::install_github(\"rstudio/gradethis\")", 
+"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
 "  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
 "  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
 "                 exercise.blanks = \"___\",", "                 exercise.eval = TRUE)", 
@@ -2680,9 +2681,9 @@ output$`tutorial-exercise-matrix-3-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "matrix-3", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "# remotes::install_github(\"MeikeSteinhilber/otter\")", 
-"# remotes::install_github(\"rstudio/gradethis\")", "library(otter)", 
-"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"library(gradethis)", "library(scales)", "devtools::load_all()", 
+"# remotes::install_github(\"MeikeSteinhilber/otter\")", "# remotes::install_github(\"rstudio/gradethis\")", 
+"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
 "  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
 "  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
 "                 exercise.blanks = \"___\",", "                 exercise.eval = TRUE)", 
@@ -2731,9 +2732,9 @@ output$`tutorial-exercise-matrix-4-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "matrix-4", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "# remotes::install_github(\"MeikeSteinhilber/otter\")", 
-"# remotes::install_github(\"rstudio/gradethis\")", "library(otter)", 
-"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"library(gradethis)", "library(scales)", "devtools::load_all()", 
+"# remotes::install_github(\"MeikeSteinhilber/otter\")", "# remotes::install_github(\"rstudio/gradethis\")", 
+"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
 "  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
 "  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
 "                 exercise.blanks = \"___\",", "                 exercise.eval = TRUE)", 
@@ -2782,9 +2783,9 @@ output$`tutorial-exercise-funktionen-1-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "funktionen-1", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "# devtools::load_all()", "# remotes::install_github(\"MeikeSteinhilber/otter\")", 
-"# remotes::install_github(\"rstudio/gradethis\")", "library(otter)", 
-"knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
+"library(gradethis)", "library(scales)", "devtools::load_all()", 
+"# remotes::install_github(\"MeikeSteinhilber/otter\")", "# remotes::install_github(\"rstudio/gradethis\")", 
+"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
 "  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
 "  fail = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
 "                 exercise.blanks = \"___\",", "                 exercise.eval = TRUE)", 
@@ -2829,7 +2830,7 @@ learnr:::store_exercise_cache(structure(list(label = "funktionen-1", global_setu
 <!--/html_preserve-->
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="execution_dependencies">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53]}},"value":[{"type":"character","attributes":{},"value":["backports","base","bslib","cachem","checkmate","cli","colorspace","compiler","crayon","datasets","digest","ellipsis","evaluate","farver","fastmap","fontawesome","glue","gradethis","graphics","grDevices","highr","htmltools","htmlwidgets","httpuv","jquerylib","jsonlite","knitr","later","learnr","lifecycle","magrittr","methods","mime","munsell","otter","promises","R6","Rcpp","rlang","rmarkdown","rprojroot","rstudioapi","sass","scales","shiny","stats","tools","utils","vctrs","withr","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["1.4.1","4.3.0","0.5.0","1.0.8","2.2.0","3.6.1","2.1-0","4.3.0","1.5.2","4.3.0","0.6.31","0.3.2","0.21","2.1.1","1.1.1","0.5.1","1.6.2","0.2.14","4.3.0","4.3.0","0.10","0.5.5","1.6.2","1.6.11","0.1.4","1.8.7","1.43","1.3.1","0.11.4.9000","1.0.3","2.0.3","4.3.0","0.12","0.5.0","0.1.0","1.2.0.1","2.5.1","1.0.11","1.1.1","2.23","2.0.3","0.15.0","0.4.6","1.2.1","1.7.4.1","4.3.0","4.3.0","4.3.0","0.6.3","2.5.0","0.39","1.8-4","2.3.7"]}]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73]}},"value":[{"type":"character","attributes":{},"value":["backports","base","bslib","cachem","callr","checkmate","cli","colorspace","compiler","crayon","datasets","desc","devtools","digest","ellipsis","evaluate","farver","fastmap","fontawesome","fs","glue","gradethis","graphics","grDevices","highr","htmltools","htmlwidgets","httpuv","jquerylib","jsonlite","knitr","later","learnr","lifecycle","magrittr","memoise","methods","mime","miniUI","munsell","otter","pkgbuild","pkgload","prettyunits","processx","profvis","promises","ps","purrr","R6","Rcpp","remotes","rlang","rmarkdown","rprojroot","rsconnect","rstudioapi","sass","scales","sessioninfo","shiny","stats","stringi","stringr","tools","urlchecker","usethis","utils","vctrs","withr","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["1.4.1","4.3.0","0.5.0","1.0.8","3.7.3","2.2.0","3.6.1","2.1-0","4.3.0","1.5.2","4.3.0","1.4.2","2.4.5","0.6.33","0.3.2","0.21","2.1.1","1.1.1","0.5.1","1.6.2","1.6.2","0.2.14","4.3.0","4.3.0","0.10","0.5.5","1.6.2","1.6.11","0.1.4","1.8.7","1.43","1.3.1","0.11.4.9000","1.0.3","2.0.3","2.0.1","4.3.0","0.12","0.1.1.1","0.5.0","0.1.0","1.4.2","1.3.2","1.1.1","3.8.2","0.3.8","1.2.0.1","1.7.5","1.0.1","2.5.1","1.0.11","2.4.2","1.1.1","2.23","2.0.3","0.8.29","0.15.0","0.4.6","1.2.1","1.2.2","1.7.4.1","4.3.0","1.7.12","1.5.0","4.3.0","1.0.1","2.2.2","4.3.0","0.6.3","2.5.0","0.39","1.8-4","2.3.7"]}]}]}
 </script>
 <!--/html_preserve-->
 </div>
