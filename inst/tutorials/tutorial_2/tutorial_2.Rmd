@@ -95,13 +95,10 @@ blue <- "#00c4e6"
 ### Kapitel
 
 
-<a href="#section-console"> <i class="fa-solid fa-arrow-down"></i> Console</a>
-
-<a href="#section-environment"><i class="fa-solid fa-arrow-down"></i> Environment</a>
-
-<a href="#section-files"><i class="fa-solid fa-arrow-down"></i> Files</a>
-
-<a href="#section-r-skripte"><i class="fa-solid fa-arrow-down"></i> R Skripte</a>
+<a href="#section-console"> <i class="fa-solid fa-arrow-down"></i> Console</a><br>
+<a href="#section-environment"><i class="fa-solid fa-arrow-down"></i> Environment</a><br>
+<a href="#section-files"><i class="fa-solid fa-arrow-down"></i> Files</a><br>
+<a href="#section-r-skripte"><i class="fa-solid fa-arrow-down"></i> R Skripte</a><br>
 
 
 
@@ -115,8 +112,7 @@ Nach dem RStudio geöffnet wird, sieht es so aus:
 Aktuell haben wir noch kein Dokument geöffnet.
 Wir sehen aktuell 3 separierte Bereiche bzw. Fenster.
 
-### Console
-<a href="#section-rstudio-einstieg"> <i class="fa-solid fa-arrow-up"></i></a>
+### Console <a href="#section-rstudio-einstieg"> <i class="fa-solid fa-arrow-up"></i></a>
 
 
 ![](images/console.png){.absolute .images-shadow left="100%" width="80%"}
@@ -129,8 +125,7 @@ Dafür wird ein R Skript benötigt.
 ![](images/console2.png){.absolute .images-shadow left="100%" width="60%"}
 
 
-### Environment
-<a href="#section-rstudio-einstieg"> <i class="fa-solid fa-arrow-up"></i></a>
+### Environment <a href="#section-rstudio-einstieg"> <i class="fa-solid fa-arrow-up"></i></a>
 
 ![](images/environment.png){.absolute .images-shadow left="100%" width="80%"}
 
@@ -139,15 +134,14 @@ Wenn wir jedoch Variablen speichern oder Datensätze einladen, werden diese Obje
 
 ![](images/environment2.png){.absolute .images-shadow left="100%" width="80%"}
 
-### Files
-<a href="#section-rstudio-einstieg"> <i class="fa-solid fa-arrow-up"></i></a>
+### Files <a href="#section-rstudio-einstieg"> <i class="fa-solid fa-arrow-up"></i></a>
 
 ![](images/files.png){.absolute .images-shadow left="100%" width="80%"}
 
 Je nachdem wo die *working directory* gesetzt ist, werden hier unterschiedliche Dokumente und Ordner angezeigt.
 
-### R Skripte
-<a href="#section-rstudio-einstieg"> <i class="fa-solid fa-arrow-up"></i></a>
+### R Skripte <a href="#section-rstudio-einstieg"> <i class="fa-solid fa-arrow-up"></i></a>
+
 
 Wenn ein R Skript geöffnet wird, wird ein weiteres Fenster für das Skript angezeigt.
 In einem R Skript kann Code abgespeichert werden.
@@ -157,9 +151,8 @@ In einem R Skript kann Code abgespeichert werden.
 
 ### Kapitel
 
-<a href="#section-kommentare"><i class="fa-solid fa-arrow-down"></i> Kommentare</a>
-
-<a href="#section-neues-r-skript-öffnen"><i class="fa-solid fa-arrow-down"></i> Neues R Skript öffnen</a>
+<a href="#section-kommentare"><i class="fa-solid fa-arrow-down"></i> Kommentare</a><br>
+<a href="#section-neues-r-skript-öffnen"><i class="fa-solid fa-arrow-down"></i> Neues R Skript öffnen</a><br>
 
 
 In einem R Skript kann Code abgespeichert werden.
@@ -167,8 +160,8 @@ In einem R Skript kann Code abgespeichert werden.
 ![](images/script1.png){.absolute .images-shadow left="100%" width="80%"}
 
 
-### Kommentare
-<a href="#section-r-skript"> <i class="fa-solid fa-arrow-up"></i></a>
+### Kommentare <a href="#section-r-skript"> <i class="fa-solid fa-arrow-up"></i></a>
+
 
 Grundsätzlich wird jeder Befehl und jedes Zeichen als R Code verstanden.
 Wenn man einen Kommentar schreiben möchte, muss man in jeder Zeile eine `#` davor setzen.
@@ -181,8 +174,8 @@ Code wird ausgeführt in dem der gewünschte Bereich markiert wird und dann auf 
 
 Die Tastenkombination für *Run* ist unter Windows `Str + Enter` und unter macOS `Cmd + Enter`.
 
-### Neues R Skript öffnen
-<a href="#section-r-skript"> <i class="fa-solid fa-arrow-up"></i></a>
+### Neues R Skript öffnen <a href="#section-r-skript"> <i class="fa-solid fa-arrow-up"></i></a>
+
 
 Ein neues leeres R Skript wir über diesen Button geöffnet:
 
@@ -243,32 +236,24 @@ grade_result(
 
 ### Kapitel
 
-<a href="#section-kurze-zusammenfasssung"> <i class="fa-solid fa-arrow-down"></i> Kurze Zusammenfasssung</a>
+<a href="#section-kurze-zusammenfasssung"> <i class="fa-solid fa-arrow-down"></i> Kurze Zusammenfasssung</a><br>
+<a href="#section-logical"> <i class="fa-solid fa-arrow-down"></i> Logical</a><br>
+<a href="#section-integer"> <i class="fa-solid fa-arrow-down"></i> Integer</a><br>
+<a href="#section-double"> <i class="fa-solid fa-arrow-down"></i> Double</a><br>
+<a href="#section-character"> <i class="fa-solid fa-arrow-down"></i> Character</a><br>
+<a href="#section-viel-nichts-in-r"> <i class="fa-solid fa-arrow-down"></i> Viel Nichts in R</a><br>
+<a href="#section-infektiöse-fehlende-werte"> <i class="fa-solid fa-arrow-down"></i> Infektiöse fehelende Werte</a><br>
+<a href="#section-hilfreiche-funktionen"> <i class="fa-solid fa-arrow-down"></i> Hilfreiche Funktionen</a><br>
 
-<a href="#section-logical"> <i class="fa-solid fa-arrow-down"></i> Logical</a>
-
-<a href="#section-integer"> <i class="fa-solid fa-arrow-down"></i> Integer</a>
-
-<a href="#section-double"> <i class="fa-solid fa-arrow-down"></i> Double</a>
-
-<a href="#section-character"> <i class="fa-solid fa-arrow-down"></i> Character</a>
-
-<a href="#section-viel-nichts-in-r"> <i class="fa-solid fa-arrow-down"></i> Viel Nichts in R</a>
-
-<a href="#section-infektiöse-fehlende-werte"> <i class="fa-solid fa-arrow-down"></i> Infektiöse fehelende Werte</a>
-
-<a href="#section-hilfreiche-funktionen"> <i class="fa-solid fa-arrow-down"></i> Hilfreiche Funktionen</a>
-
-### Kurze Zusammenfasssung
-<a href="#section-datentypen"> <i class="fa-solid fa-arrow-up"></i></a>
+### Kurze Zusammenfasssung <a href="#section-datentypen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 -   Logical: TRUE, FALSE
 -   Integer: Ganze Zahlen (Platz speichernd)
 -   Double: Kommazahlen
 -   Character: Buchstaben
 
-### Logical
-<a href="#section-datentypen"> <i class="fa-solid fa-arrow-up"></i></a>
+### Logical <a href="#section-datentypen"> <i class="fa-solid fa-arrow-up"></i></a>
+
 
 Werte:   `TRUE` (entwpricht 1) und `FALSE` (entspricht 0)
 
@@ -375,8 +360,8 @@ grade_this({
 ```
 
 </div>
-### Integer
-<a href="#section-datentypen"> <i class="fa-solid fa-arrow-up"></i></a>
+### Integer <a href="#section-datentypen"> <i class="fa-solid fa-arrow-up"></i></a>
+
 
 `integer`-zahlen sind Ganzezahlen in R.
 Sie sind platzsparender als `double` Zahlen, da Kommas ausgeschlossen sind.
@@ -400,8 +385,8 @@ is.integer(1)
 is.integer(1L)
 ```
 
-### Double
-<a href="#section-datentypen"> <i class="fa-solid fa-arrow-up"></i></a>
+### Double <a href="#section-datentypen"> <i class="fa-solid fa-arrow-up"></i></a>
+
 
 
 `double`-zahlen sind sogenannte Gleitkommazahlen.
@@ -424,8 +409,8 @@ Mit der Funktion `typeof()` können wir abfragen, um welchen Datentyp es sich ha
 typeof(5)
 ```
 
-### Character
-<a href="#section-datentypen"> <i class="fa-solid fa-arrow-up"></i></a>
+### Character <a href="#section-datentypen"> <i class="fa-solid fa-arrow-up"></i></a>
+
 
 Text oder Symbole oder auch Farben, werden in Datentyp `character` gespeichert.
 
@@ -449,8 +434,7 @@ Oder auch für Hexcode, um Farben zu definieren.
 scales::show_col(c("#044a85", "#e28743", "#1F98B44D", "#1F98BC"))
 ```
 
-### Viel Nichts in R
-<a href="#section-datentypen"> <i class="fa-solid fa-arrow-up"></i></a>
+### Viel Nichts in R <a href="#section-datentypen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 In R gibt es viele Möglichkeit, um auszudrücken, dass etwas nicht vorhanden ist.
 Alle Formen von "Nichts" haben eine leicht andere Bedeutung und werden in unterschiedlichen Fällen verwendet oder produziert.
@@ -501,8 +485,8 @@ NULL == 5
 integer(0) == 5
 ```
 
-### Infektiöse fehlende Werte
-<a href="#section-datentypen"> <i class="fa-solid fa-arrow-up"></i></a>
+### Infektiöse fehlende Werte <a href="#section-datentypen"> <i class="fa-solid fa-arrow-up"></i></a>
+
 
 Fehlende Werte wie `NaN` sind manchmal infektiös!
 
@@ -522,8 +506,8 @@ NaN | TRUE
 is.na(NaN)
 ```
 
-### Hilfreiche Funktionen
-<a href="#section-datentypen"> <i class="fa-solid fa-arrow-up"></i></a>
+### Hilfreiche Funktionen <a href="#section-datentypen"> <i class="fa-solid fa-arrow-up"></i></a>
+
 
 Erstellen Dummy Variablen eines bestimmten Datentyps:
 
@@ -555,7 +539,18 @@ is.infinite(number)
 
 ## Datenstrukturen
 
-### Variablen
+### Kapitel
+
+<a href="#section-variablen"> <i class="fa-solid fa-arrow-down"></i> Variablen</a><br>
+<a href="#section-atomare-vektoren"> <i class="fa-solid fa-arrow-down"></i> Atomare Vektoren</a><br>
+<a href="#section-vektorisierte-berechnungen"> <i class="fa-solid fa-arrow-down"></i> Vektorisierte Berechnungen</a><br>
+<a href="#section-faktoren"> <i class="fa-solid fa-arrow-down"></i> Faktoren</a><br>
+<a href="#section-matrizen"> <i class="fa-solid fa-arrow-down"></i> Matrizen</a><br>
+<a href="#section-data.frame"> <i class="fa-solid fa-arrow-down"></i> data.frame</a><br>
+<a href="#section-listen"> <i class="fa-solid fa-arrow-down"></i> Listen</a><br>
+
+### Variablen <a href="#section-datenstrukturen"> <i class="fa-solid fa-arrow-up"></i></a>
+
 
 Variablen sind Kontainer für Daten.
 Sie zeigen auf ein Objekt im Speicher.
@@ -610,7 +605,9 @@ freunde[c(FALSE, TRUE, TRUE)] <- ""
 freunde
 ```
 
-### Atomare Vektoren
+### Atomare Vektoren <a href="#section-datenstrukturen"> <i class="fa-solid fa-arrow-up"></i></a>
+
+
 Atomare Vektoren können mehrere Informationen desselben Datentyps enthalten.
 
 -   Werden mit `c()` erstellt (c = combine)
@@ -618,7 +615,8 @@ Atomare Vektoren können mehrere Informationen desselben Datentyps enthalten.
 -   „klassische Vektoren": Vektoren mit mehr als einer Position
 -   Zugriff erfolgt mit Klammern `[]` und Nummer der Position oder einem Vektor mit `TRUE` und `FALSE` Werten.
 
-Beispiel Zugriff mit `[]`
+`r otter::colorize("Beispiel:", "var(--red)")`
+ Zugriff mit `[]`
 ```{r vektoren-1, exercise=TRUE, results = "hold"}
 name = "Meike"
 namen_freunde = c("Lisa", "Thorben", "Mara")
@@ -631,7 +629,8 @@ lieblingszahlen_freunde[2]
 weiblich_freunde[c(2, 3)]
 ```
 
-Beispiel Zugriff mit `TRUE` und `FALSE`
+`r otter::colorize("Beispiel:", "var(--red)")`
+Zugriff mit `TRUE` und `FALSE`
 
 ```{r vektoren-2, exercise=TRUE, results = "hold"}
 namen_freunde = c("Lisa", "Thorben", "Mara")
@@ -639,19 +638,22 @@ namen_freunde[c(TRUE, TRUE, TRUE)]
 namen_freunde[c(TRUE, FALSE, FALSE)]
 ```
 
-### Vektorisierte Berechnungen
+### Vektorisierte Berechnungen <a href="#section-datenstrukturen"> <i class="fa-solid fa-arrow-up"></i></a>
+
 
 Die Berechnungen in R erfolgen *vektorisiert*.
 Dies erlaubt effizienteres und leichteres Programmieren bei Rechenoperationen.
 
-Beispiel: Multiplikation eines Vektors mit einem Skalar
+`r otter::colorize("Beispiel:", "var(--red)")`
+Multiplikation eines Vektors mit einem Skalar
 
 ```{r vektoren-4, exercise=TRUE, results = "hold"}
 # Jede Zahl im Vektor wird hier automatisch mit 5 multipliziert
 c(1, 2, 3, 4) * 5
 ```
 
-Beispiel: Addition zweier Vektoren
+`r otter::colorize("Beispiel:", "var(--red)")`
+Addition zweier Vektoren
 
 ```{r vektoren-5, exercise=TRUE, results = "hold"}
 # Die Zahlen auf denselben Positionen werden mit einender addiert
@@ -660,7 +662,8 @@ zahlen_2 <- c(1, 2, 3, 4)
 zahlen_1 + zahlen_2
 ```
 
-Beispiel: Logische Operatoren
+`r otter::colorize("Beispiel:", "var(--red)")`
+Logische Operatoren
 
 ```{r vektoren-6, exercise=TRUE, results = "hold"}
 # Alle Zahlen werden mit dem logischen Operator geprüft
@@ -669,79 +672,169 @@ zahlen < 2
 ```
 
 
-### Faktoren
+### Faktoren <a href="#section-datenstrukturen"> <i class="fa-solid fa-arrow-up"></i></a>
 
-### Matrizen
--   Bestehen aus Vektoren gleicher Länge
--   Können NUR einen Datentyp enthalten
--   `matrix()`
--   Zugriff mit `[,]`
--   `[Zeile,Spalte]` (erst Zeile, dann Spalte)
 
+Faktoren repräsentieren kategoriale Daten mit endlichen Ausprägungen, z.B. Tage, Monate im Jahr oder Geschlecht.
+Damit mit diesen Daten gut gerechnet werden kann in R, werden sie mit Faktoren abgebildet.
+
+Dadurch können kategoriale Daten geordnet werden (hilfreich bei Tagen oder Monaten) oder auch in Zahlen kodierte Daten können inhaltlich sinnvoll abgebildet werden (hilfreich für statistische Auswertungen und Grafiken).
+
+`r otter::colorize("Beispiel:", "var(--red)")`
+Geschlecht (Daten sind als Zahlen kodiert):
+
+```{r factors-1, exercise=TRUE, results = "hold"}
+# Die Daten sind hier kodiert mit Zahlen
+daten <- c(1,2,3,1,2,1,1,1,1)
+
+# Erstellung eines Faktors
+geschlecht <- factor(
+  daten,
+  # alle möglichen Kategorien (müssen nicht alle vorhanden sein in den Daten)
+  levels = c(1, 2, 3, 4), 
+  # Namen zugeordnet zu den levels - > für was steht die Zahl 1?
+  labels = c("weiblich", "männlich", "divers", "unbekannt")
+)
+geschlecht
+```
+
+`r otter::colorize("Beispiel:", "var(--red)")`
+Tage (Daten sind als Text kodiert):
+
+```{r factors-2, exercise=TRUE, results = "hold"}
+# Die Daten sind hier kodiert als Text
+daten <- c("Sonntag", "Montag", "Freitag")
+
+# Erstellung eines Faktors
+tage <- factor(
+  daten,
+  # alle möglichen Kategorien (müssen nicht alle vorhanden sein in den Daten)
+  levels = c("Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag")
+)
+# Daten ungeordnet
+tage
+```
+
+`r otter::colorize("Beispiel:", "var(--red)")`
+Faktor vs character Vektor
+
+```{r factors-3, exercise=TRUE, results = "hold"}
+daten <- c("Sonntag", "Montag", "Freitag")
+# Daten werden nach dem Alphabet geordnet
+sort(daten)
+
+tage <- factor(
+  daten,
+  levels = c("Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag")
+)
+# Daten werden nach der Reihenfolge der angegebenen levels geordnet
+sort(tage)
+```
+
+
+### Matrizen <a href="#section-datenstrukturen"> <i class="fa-solid fa-arrow-up"></i></a>
+
+
+Sind Tabellen, die aus Vektoren gleicher Länge bestehen.
+-   Können nur **einen Datentyp** enthalten, z.B. `numeric`
+-   R Befehl: `matrix()`
+-   Zugriff erfolgt mit `[,]` wobei die Positionen für `[Zeile,Spalte]` stehen als erst Zeile, dann Spalte.
+
+`r otter::colorize("Beispiel:", "var(--red)")`
+Matrix Erstellung und Zugriff
 ```{r matrix-1, exercise=TRUE, results = "hold"}
 matrix <- matrix(1:12, nrow=3, ncol=4)
 matrix
 
-matrix[1,2]
-matrix[1, ]
-matrix[ ,2]
+matrix[1,2] # Zeile 1 und Spalte 2
+matrix[1, ] # Gesamte Zeile 1
+matrix[ ,2] # Gesamte Spalte
 ```
 
-### data.frame
+### data.frame <a href="#section-datenstrukturen"> <i class="fa-solid fa-arrow-up"></i></a>
 
--   Klassischer Datensatz
+
+Ist das Format für den klassischen Datensatz.
+
 -   Besteht aus Spalten gleicher Länge
--   Spalten können verschiedene Datentypen haben.
+-   Spalten können **verschiedene Datentypen** haben.
 -   Auf Spalte wird mit `$` zugegriffen
 
 ![](images/dollar_operator.png){width="300"}
 
-```{r matrix-2, exercise=TRUE, results = "hold"}
-namen_freunde = c("Lisa", "Thorben", "Mara")
-lieblingszahlen_freunde = c(1, 7, 8)
-weiblich_freunde = c(TRUE, FALSE, TRUE)
+`r otter::colorize("Beispiel:", "var(--red)")`
+`data.frame` Erstellung und Zugriff
+```{r matrix-2, exercise=TRUE, results = "hold", exercise.lines = 13}
+namen = c("Lisa", "Thorben", "Mara")
+lieblingszahlen = c(1, 7, 8)
+weiblich = c(TRUE, FALSE, TRUE)
 
-freunde <- data.frame(namen_freunde,
-                      lieblingszahlen_freunde,
-                      weiblich_freunde)
-freunde
+freunde <- data.frame(namen,
+                      lieblingszahlen,
+                      weiblich)
+freunde # gesamter atensatz anzeigen lassen
 
-freunde[2, 1]
-freunde$namen_freunde
-freunde$namen_freunde[2]
+freunde[2, 3] # zweite Zeile, dritte Spalte im Datensatz
+freunde$namen # Im Datensatz die Spalte namen 
+freunde$lieblingszahlen[2] # Im Datensatz die Spalte lieblingszahlen, die zweite Position
 ```
 
-```{r setup-datenstruktur, exercise.eval=FALSE}
-namen_freunde = c("Lisa", "Thorben", "Mara")
-lieblingszahlen_freunde = c(1, 7, 8)
-weiblich_freunde = c(TRUE, FALSE, TRUE)
+### Listen <a href="#section-datenstrukturen"> <i class="fa-solid fa-arrow-up"></i></a>
 
-freunde <- data.frame(namen_freunde,
-                      lieblingszahlen_freunde,
-                      weiblich_freunde)
-liste <- list(matrix, freunde, name)
-```
 
-### Listen
+Listen ermöglichen das Speichern von allen möglichen Datentypen und Datenstrukturen im selben Objekt.
+Dadurch können sehr flexible und komplexe Strukturen erschaffen werden.
 
--   Komplexe Struktur
 -   Jedes Element kann jeden Datentyp annehmen
--   Eine Liste kann also auch Listen enthalten!
--   Sehr variabel
+-   Eine Liste kann also auch andere Listen enthalten!
+-   Listen sind sehr mächtig! Sind aber auch schwerer zu bedienen als Matrizen oder `data.frame`
 
-Listen sind sehr mächtig! Ich rate zu Beginn dennoch davon ab, sie zu verwenden.
 
-```{r matrix-3, exercise=TRUE, results = "hold", exercise.setup = "setup-datenstruktur"}
-liste <- list(matrix, freunde, name)
+```{r setup-liste}
+variable <- 5
+
+matrix <- matrix(1:12, nrow=3, ncol=4)
+
+datensatz <- data.frame(namen = c("Lisa", "Thorben", "Mara"),
+                      lieblingszahlen = c(1, 7, 8),
+                      weiblich = c(TRUE, FALSE, TRUE))
+
+liste <- list(matrix, datensatz, variable)
+```
+
+`r otter::colorize("Beispiel:", "var(--red)")`
+Liste Erstellung
+```{r liste-1, exercise=TRUE, results = "hold"}
+variable <- 5
+
+matrix <- matrix(1:12, nrow=3, ncol=4)
+
+datensatz <- data.frame(namen = c("Lisa", "Thorben", "Mara"),
+                      lieblingszahlen = c(1, 7, 8),
+                      weiblich = c(TRUE, FALSE, TRUE))
+
+liste <- list(matrix, datensatz, variable)
+
 liste
 ```
 
-Beispiel Listen Zugriff
 
-```{r matrix-4, exercise=TRUE, results = "hold", exercise.setup = "setup-datenstruktur"}
-liste[1]
-liste[[1]][[2]]
-liste[[2]][[2]]
+`r otter::colorize("Beispiel:", "var(--red)")`
+Listen Zugriff
+
+Bei Listen verwendet man im Allgemeinen `[[]]`, um ein einzelnes Element auszuwählen, während `[]` eine Liste der ausgewählten Elemente zurückgibt.
+Je nachdem um was für ein Objekt es sich handelt in der Liste und wie darauf zugegriffen werden soll, müssen somit einfache oder doppelte eckige Klammern verwendet werden.
+
+```{r liste-2, exercise=TRUE, results = "hold", exercise.setup = "setup-liste"}
+liste[[1]] # erstes Element der Liste
+```
+
+```{r liste-3, exercise=TRUE, results = "hold", exercise.setup = "setup-liste"}
+liste[[2]][1,2] # im ersten Element (Datensatz) die erste Ziele und zweite Spalte
+```
+
+```{r liste-4, exercise=TRUE, results = "hold", exercise.setup = "setup-liste"}
+liste[[2]][1,] # im ersten Element (Datensatz) die erste Ziele
 ```
 
 ## Funktionen
@@ -749,12 +842,15 @@ liste[[2]][[2]]
 -   Sind elegante Möglichkeiten Code Abschnitte zu bündeln und zu strukturieren
 -   Sie tun irgendetwas mit Daten, Dokumenten, Argumenten etc.
 -   Können sehr klein, aber auch sehr groß und komplex sein.
-double() oder length() sind z.B. Funktion, die in base R vorkommen
+`double()` oder `length()` sind z.B. Funktion, die in base R vorkommen
 
--   In 3 Teile strukturiert
+-   Eine Funktion ist in 3 Teile strukturiert:
     -   Argumente
     -   Body der Funktion
     -   Environment (kommt später)
+
+`r otter::colorize("Beispiel:", "var(--red)")`
+Erstellung einer Funktion
 
 ```{r funktionen-1, exercise=TRUE, results = "hold"}
 function_name <- function(argument) {
@@ -768,7 +864,9 @@ function_name(argument = "test")
 
 Es gilt als guter Stil `return()` zu nutzen.
 
-```{r}
+`r otter::colorize("Beispiel:", "var(--red)")`
+Verwendung von `return()`
+```{r funktionen-2, exercise=TRUE, results = "hold"}
 add_numbers <- function(number1, number2) {
   result = number1 + number2
   return(result)
@@ -777,16 +875,20 @@ add_numbers(5,80)
 ```
 
 Es ist aber nicht zwingend erforderlich
-```{r}
+
+`r otter::colorize("Beispiel:", "var(--red)")`
+ohne `return()`
+```{r funktionen-3, exercise=TRUE, results = "hold"}
 add_numbers <- function(number1, number2) {
   number1 + number2
 }
 add_numbers(5,80)
 ```
 
+`r otter::colorize("Beispiel:", "var(--red)")`
 Mehrere Argumente
 
-```{r}
+```{r funktionen-4, exercise=TRUE, results = "hold"}
 namen = c("Lisa", "Thorben", "Mara", "Sophie", "Lara", "Tanja", "Lorenz", "Lena")
 
 read_vector <- function(number, vector) {
@@ -796,16 +898,18 @@ read_vector <- function(number, vector) {
 read_vector(2, namen)
 ```
 
+`r otter::colorize("Beispiel:", "var(--red)")`
 Default Werte
 
-```{r}
+Optionale Argumente werden mit argument = NULL angegeben
+```{r funktionen-5, exercise=TRUE, results = "hold"}
 add_numbers <- function(number1 = 1, number2 = 1, argument3 = NULL) {
   number1 + number2
 }
 add_numbers(5,80)
 add_numbers()
 ```
-Optionale Argumente werden mit argument = NULL angegeben
+
 
 ### Help Seiten
 
@@ -868,11 +972,9 @@ glue::glue("Hello {variable}! How are you?")
 
 ## Datenverarbeitung
 
-## Daten importieren & exportieren
+### Daten Import
 
-### Import
-
-### Export
+### Daten Export
 
 ## RMarkdown
 
