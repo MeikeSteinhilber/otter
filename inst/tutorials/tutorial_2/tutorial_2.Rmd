@@ -772,7 +772,7 @@ weiblich = c(TRUE, FALSE, TRUE)
 freunde <- data.frame(namen,
                       lieblingszahlen,
                       weiblich)
-freunde # gesamter atensatz anzeigen lassen
+freunde # gesamter Datensatz anzeigen lassen
 
 freunde[2, 3] # zweite Zeile, dritte Spalte im Datensatz
 freunde$namen # Im Datensatz die Spalte namen 
@@ -839,15 +839,23 @@ liste[[2]][1,] # im ersten Element (Datensatz) die erste Ziele
 
 ## Funktionen
 
--   Sind elegante Möglichkeiten Code Abschnitte zu bündeln und zu strukturieren
--   Sie tun irgendetwas mit Daten, Dokumenten, Argumenten etc.
--   Können sehr klein, aber auch sehr groß und komplex sein.
-`double()` oder `length()` sind z.B. Funktion, die in base R vorkommen
+### Kapitel
+<a href="#section-funktionen-erstellen"> <i class="fa-solid fa-arrow-down"></i> Funktionen erstellen</a><br>
+<a href="#section-hilfe-seiten"> <i class="fa-solid fa-arrow-down"></i> Hilfe Seiten</a><br>
+<a href="#section-hilfreiche-funktionen"> <i class="fa-solid fa-arrow-down"></i> Hilfreiche Funktionen</a><br>
+
+### Funktionen erstellen <a href="#section-funktionen"> <i class="fa-solid fa-arrow-up"></i></a>
+
+Funktionen sind elegante Möglichkeiten Code Abschnitte zu bündeln, zu strukturieren und wiederzuverwenden.
+Eine Funktion tun irgendetwas mit Daten, Dokumenten, Argumenten etc.
+Sie können sehr klein, aber auch sehr groß und komplex sein.
+
+`double()` oder `length()` sind z.B. Funktion, die in base R vorkommen.
 
 -   Eine Funktion ist in 3 Teile strukturiert:
     -   Argumente
     -   Body der Funktion
-    -   Environment (kommt später)
+    -   Environment
 
 `r otter::colorize("Beispiel:", "var(--red)")`
 Erstellung einer Funktion
@@ -911,66 +919,92 @@ add_numbers()
 ```
 
 
-### Help Seiten
+### Hilfe Seiten <a href="#section-funktionen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Die Hilfe Seite öffnet sich mit einem `?` vor dem Funktionsnamen.
 
 Beispiele: `?mean` oder `?t.test`
 
+```{r funktionen-5-1, exercise=TRUE, results = "hold", excercise.eval = FALSE, message=FALSE, eval=FALSE}
+?mean
+```
+
+
+Die Hilfe sollte immer verwendet werden bevor man eine neue Funktion verwendet, um sich die Argumente und Funktionsweise anzuschauen.
+Häufig werden am Ende auch Beispiele angegeben, die zeigen wie die Funktion angewandt werden kann.
+
+Die wichtigsten Inhalte in der Hilfe-Seite sind:
+
+-   **Description**: Eine kurze Beschreibung was die Funktion tut.
+
+-   **Usage**: Hier ist die Funktion mit den Pflicht-Argumenten und Default-Werten abgebildet (farbig markiert im Screenshot).
+
+-   **Arguments**: Eine Liste mit Erklärung der Funktions-Argumente
+
+-   **Value**: Gibt an was die Funktion ausgibt
+
+Übersicht über Argumente
+
+-   **Pflicht-Argumente** werden unter *Usage* angegeben und keine Default-Werte sind hinterlegt. Im Screenshot ist `x` ein Pflicht-Argument, welches angegeben werden muss.
+
+-   **Optionale-Argumente** werden unter *Usage* angegeben und enden mit `= NULL`. Diese Argumente sind optional und es ist kein Default-Wert hinterlegt.
+
+-   **Default-Werte**: alle Argumente die ein ein `=` mit Inhalt dahinter angezeigt haben unter *Usage*, z.B. `trim = 0`.
+
 ![](images/help_mean_long.png){height="600"}
-### Hilfreiche Funktionen
+
+
+### Hilfreiche Funktionen <a href="#section-funktionen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Zahlen:
 
-`length()`
+```{r funktionen-6, exercise=TRUE, results = "hold"}
+x <- c(1:12,12,12,NA)
 
-`mean()`
+length(x)
+mean(x, na.rm = TRUE)
+sum(x, na.rm = TRUE)
+sqrt(x)
+is.na(x)
+unique(x)
+round(5.0487)
+```
 
-`sum()`
+Daten simulieren:
 
-`sqrt()`
+```{r funktionen-7, exercise=TRUE, results = "hold"}
+# wiederhole einen Vektor
+rep(c(1,2,3), 5)
+rep(c(1,2,3), each = 5)
+rep("lala", 3)
 
-`is.na()`
-
-`unique()`
-
-`round()`
-
-`data.frame()`
-
-`matrix()`
-
-Daten simulieren
-
-```{r}
-# repeat a vector or a string
-rep(0, 10)
-rep("lala", 10)
-
-# draw random data
+# ziehe zufällige Daten mit zurücklegen aus einem Vektor
 sample(1:100, size = 10, replace = TRUE)
 
-# draw random data from a normal distribution
+# ziehe zufällige Daten aus einer Normal-Verteilung
 rnorm(n = 10, mean = 0, sd = 2)
 
-# draw random data from a uniform distribution
+# ziehe zufällige Daten aus einer Uniform-Verteilung
 runif(n = 10, min = 0, max = 2)
 ```
 
-Text
+Text:
 
-```{r}
-variable = "Meike"
+```{r funktionen-8, exercise=TRUE, results = "hold"}
+variable = "Lisa"
+
 print(variable)
-cat("Hello", variable, "! How are you?")
 paste("Hello", variable, "! How are you?")
 paste0("Hello ", variable, "! How are you?")
 glue::glue("Hello {variable}! How are you?")
+cat("Hello", variable, "! How are you?")
 ```
 
 ## R Pakete
 
 ## Datenverarbeitung
+
+## Subsetting
 
 ### Daten Import
 
