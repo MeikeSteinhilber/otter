@@ -52,6 +52,7 @@ $(document).ready(function() {
 library(learnr)
 library(gradethis)
 library(scales)
+library(sprtt)
 # devtools::load_all()
 # remotes::install_github("MeikeSteinhilber/otter")
 # remotes::install_github("rstudio/gradethis")
@@ -842,6 +843,7 @@ liste[[2]][1,] # im ersten Element (Datensatz) die erste Ziele
 ### Kapitel
 <a href="#section-funktionen-erstellen"> <i class="fa-solid fa-arrow-down"></i> Funktionen erstellen</a><br>
 <a href="#section-hilfe-seiten"> <i class="fa-solid fa-arrow-down"></i> Hilfe Seiten</a><br>
+<a href="#section-reihenfolge-von-argumenten"> <i class="fa-solid fa-arrow-down"></i> Reihenfolge von Argumenten</a><br>
 <a href="#section-hilfreiche-funktionen"> <i class="fa-solid fa-arrow-down"></i> Hilfreiche Funktionen</a><br>
 
 ### Funktionen erstellen <a href="#section-funktionen"> <i class="fa-solid fa-arrow-up"></i></a>
@@ -854,17 +856,17 @@ Sie können sehr klein, aber auch sehr groß und komplex sein.
 
 -   Eine Funktion ist in 3 Teile strukturiert:
     -   Argumente
-    -   Body der Funktion
-    -   Environment
+    -   Körper der Funktion
+    -   Environment (Umgebung)
 
 `r otter::colorize("Beispiel:", "var(--red)")`
 Erstellung einer Funktion
 
 ```{r funktionen-1, exercise=TRUE, results = "hold"}
 function_name <- function(argument) {
-  # function_body
-  # do something with the arguments
-  return("Output")
+  # Körper der Funktion
+  # hier passiert nun etwas mit den Argumenten
+  return("Output") # Ausgabe des Outputs
 }
 
 function_name(argument = "test")
@@ -921,14 +923,19 @@ add_numbers()
 
 ### Hilfe Seiten <a href="#section-funktionen"> <i class="fa-solid fa-arrow-up"></i></a>
 
-Die Hilfe Seite öffnet sich mit einem `?` vor dem Funktionsnamen.
+Die Hilfe Seite öffnet sich mit einem `?` vor dem Funktionsnamen, z.B. `?mean`.
+<div class="uebungen">
 
-Beispiele: `?mean` oder `?t.test`
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Gebe `?mean` ein und führe den Code aus.*
 
 ```{r funktionen-5-1, exercise=TRUE, results = "hold", excercise.eval = FALSE, message=FALSE, eval=FALSE}
+
+```
+```{r funktionen-5-1-solution}
 ?mean
 ```
-
+</div>
 
 Die Hilfe sollte immer verwendet werden bevor man eine neue Funktion verwendet, um sich die Argumente und Funktionsweise anzuschauen.
 Häufig werden am Ende auch Beispiele angegeben, die zeigen wie die Funktion angewandt werden kann.
@@ -952,6 +959,53 @@ Die wichtigsten Inhalte in der Hilfe-Seite sind:
 -   **Default-Werte**: alle Argumente die ein ein `=` mit Inhalt dahinter angezeigt haben unter *Usage*, z.B. `trim = 0`.
 
 ![](images/help_mean_long.png){height="600"}
+
+
+### Reihenfolge von Argumenten <a href="#section-funktionen"> <i class="fa-solid fa-arrow-up"></i></a>
+
+Die Hilfe-Seite einer Funktion zeigt unter *Usage* in welcher Reihenfolge die Argumente angegeben werden müssen.
+
+Bei der `mean` Funktion muss diese Reihenfolge angegeben werden: `x, trim, na.rm`. 
+
+Diese Reihenfolge kann nur geändert werden, wenn die Argumente benannt werden z.B. `trim = 0.1, x = 1:20, na.rm = TRUE`.
+
+Wenn die Argumente nicht benannt werden, muss die Reihenfolge zwingend eingehalten werden!
+
+`r otter::colorize("Beispiel:", "var(--red)")`
+Nicht benannte Argumente
+
+```{r argumente-1, exercise=TRUE, results = "hold"}
+data <- 1:20
+
+# Reihenfolge wie in Hilfe angegeben, aber ohne Argumentname
+mean(data, 0, FALSE)
+
+```
+
+`r otter::colorize("Beispiel:", "var(--red)")`
+Benannte Argumente
+```{r argumente-2, exercise=TRUE, results = "hold"}
+data <- 1:20
+
+# andere Reihenfolge (mit Argumentname)
+mean(na.rm = FALSE, trim = 0, x = data)
+
+# andere Reihenfolge und Defaultwerte werden genutzt
+mean(na.rm = FALSE, x = data)
+```
+
+Es gehen auch Mischformen, hier muss jedoch die Position der unbenannten Argumente korrekt sein!
+
+`r otter::colorize("Beispiel:", "var(--red)")`
+Mischformen
+
+```{r argumente-3, exercise=TRUE, results = "hold"}
+data <- c(1:20, NA)
+
+# das Argument "trim" wurde hier ausgelassen, "na.rm" muss deswegen benannt sein
+mean(data, na.rm = TRUE)
+```
+
 
 
 ### Hilfreiche Funktionen <a href="#section-funktionen"> <i class="fa-solid fa-arrow-up"></i></a>
@@ -1002,25 +1056,107 @@ cat("Hello", variable, "! How are you?")
 
 ## R Pakete
 
+Base R bietet grundlegende Funktionen z.B. `mean()`.
+R Pakete erweitern dieses Angebot.
+R Pakete sind damit Sammlungen an Funktionen.
+
+Damit Pakete verwendet werden können, müssen sie zuerst installiert sein.
+Dies muss auf einem Gerät nur einmal gemacht werden.
+
+Wir verwenden hier nun das `sprtt` Paket als Beispiel.
+
+`r otter::colorize("Beispiel:", "var(--red)")` 
+Installation
+
+```{r pakete-1, exercise=TRUE, results = "hold", eval=FALSE, exercice.eval=FALSE}
+# Der Code ist auskommentiert, da es innerhalb von otter nicht möglich ist ein R Paket zu installieren
+
+# install.packages(sprtt)
+```
+
+Nachdem das Paket installiert wurde, können die darin enthaltenen Funktionen verwendet werden mit dem Prefix: `paketname::funktions_name()`.
+
+`r otter::colorize("Beispiel:", "var(--red)")`
+Verwendung des Paketes nach der Installation
+
+```{r pakete-2, exercise=TRUE, results = "hold"}
+# Daten werden simuliert
+data <- sprtt::draw_sample_normal(3, f = 0.4, max_n = 20)
+# Eine sequentielle ANOVA (statistischer Test) wird gerechnet
+sprtt::seq_anova(y ~ x, f = 0.4, data = data, verbose = FALSE)
+```
+
+Noch angenehmer ist jedoch die Nutzung, wenn das Paket geladen wird.
+dadurch werden alle Funktionen in den aktuellen Namensraum geladen und Funktionen können ohne den Prefix genutzt werden.
+
+`r otter::colorize("Beispiel:", "var(--red)")`
+Paket laden und nutzen
+
+```{r pakete-3, exercise=TRUE, results = "hold"}
+# Das Paket wird geladen
+library(sprtt)
+
+# Funktionen können nun auch ohne Prefix verwendet werden
+data <- draw_sample_normal(3, f = 0.4, max_n = 20)
+seq_anova(y ~ x, f = 0.4, data = data, verbose = FALSE)
+```
+
+### Übersicht wichtiger R Pakete
+
+Allgemein:
+
+-   glue: Formatiert strings (Text)
+-   dplyr: Hilft Daten zu bearbeiten (<https://dplyr.tidyverse.org/>)
+-   ggplot2: Hilft Grafiken zu erstellen (<https://r-graph-gallery.com/index.html>)
+-   ...
+
+Statistische Auswertungen:
+
+-   psych: Enthält viele Standardanalysen (für die Psychologie)
+-   lavaan: Für Strukturgleichungsmodelle
+-   ...
+
+Tidyverse:
+
+-   bietet eine Sammlung von Alternativen zu base R Funktionen.
+-   Dazu gehören auch dplyr und ggplot2.
+-   Wird nicht weiter in diesem Tutorial behandelt.
+-    <https://www.tidyverse.org/>
+
 ## Datenverarbeitung
 
-## Subsetting
+### Subsetting
 
 ### Daten Import
 
 ### Daten Export
 
-## RMarkdown
+## Debugging (Fehlerbehebung)
+Lasst euch nicht davon verunsichern, dass euer Code häufig nicht sofort funktioniert sondern erst Mal *debugged* werden muss!
 
-## Environments
-
-## Debugging
 
 ### Warnungen & Fehler
 
 ### Tipps
 
-## Clean Code
+-   Fehlermeldungen lesen bzw. übersetzen lassen (häufig sagen diese relativ genau was das Problem ist, manchmal sogar wie eine Lösung aussehen kann.)
+
+-   Fehlermeldungen googeln (Klingt banal, ist aber eine der wichtigsten Fähigkeiten beim Programmieren)
+
+-   chatGPT oder andere KIs fragen, warum der Code nicht funktioniert
+
+-   RStudio neu starten & Code Zeilen Stück für Stück einlesen (verhindert Reihenfolge-Fehler)
+
+-   Coden -> Testen -> Coden -> Testen -> …. In kleinen Schritten arbeiten (testet euren Code in so kleinen Schritten wie möglich und nicht erst ganz am Ende)
+
+-   Einzelne Zeilen ausführen, oder auch nur Ausschnitte von Zeilen markieren und Ausführen
+
+-   Help Seite von Funktionen lesen
+    -   Welche Argumente gibt es? Was sind die Defaults?
+    -   Beispiele in der Doku ansehen
+    
+-   RStudio Debugger verwenden (<https://support.posit.co/hc/en-us/articles/205612627-Debugging-with-the-RStudio-IDE>)
+
 
 ## R Projekte
 
@@ -1031,3 +1167,100 @@ cat("Hello", variable, "! How are you?")
 ### for-loop
 
 ### while-loop
+
+
+## Environments
+
+Variablen und Funktionen sind `Environments` (Umgebungen) zugeordnet.
+Diese Zuordnung entscheidet, wo eine Variable oder eine Funktion existieren.
+
+### Funktionen
+`r otter::colorize("Vorbereitung:", "var(--red)")`
+Wir erzeugen hier eine Globale-Variable `global_variable` und eine Variable, die innerhalb dem Körper einer Funktion erzeugt wird `function_variable`.
+```{r setup-environment, exercise.eval=TRUE, results='hide'}
+global_variable = "global_variable"
+
+# Definition der Funktion
+test_function <- function() {
+  function_variable = "function_variable"
+  return(function_variable)
+}
+test_function() # Funktion wird ausgeführt
+```
+```{r, ref.label=I('setup-environment'), eval=TRUE, echo=TRUE, exercise.eval=FALSE}
+
+```
+
+Auf welche Variablen kann nun zugegriffen werden?
+
+`r otter::colorize("Beispiel:", "var(--red)")`
+Funktionsvariablen existieren nur innerhalb der Funktion und nicht außerhalb
+```{r environment-2, exercise=TRUE, results = "hold", error=TRUE, exercise.setup = "setup-environment"}
+function_variable # nur innerhalb der Funktion zugänglich -> Fehler
+```
+
+`r otter::colorize("Beispiel:", "var(--red)")`
+Globale Variablen existieren quasi immer
+```{r environment-1, exercise=TRUE, results = "hold", exercise.setup = "setup-environment"}
+global_variable # immer zugänglich -> kein Fehler
+```
+
+
+Globale Variablen funktionieren sogar innerhalb der Umgebung einer Funktion, ohne als Argument übergeben worden zu sein!
+Dies sollte jedoch nicht so programmiert werden.
+
+`r otter::colorize("Negativ-Beispiel:", "var(--red)")`
+Globale Variable in Funktionen
+```{r environment-3, exercise=TRUE, results = "hold"}
+global_variable = "global_variable"
+
+test_function <- function() {
+  return(global_variable)
+}
+test_function()
+```
+Obwohl die `global_variable` nicht als Argument übergeben wurde, kann die Funktion auf die Variable zugreifen.
+Das funktioniert NUR, weil die Funktion im selben Skript wie die `global_variable` definiert wurde.
+
+**Achtung**: Auch wenn es funktioniert, sollte man so etwas NIEMALS programmieren.
+Funktionen sollten immer nur auf ihre Argumente zugreifen.
+
+`r otter::colorize("Positiv-Beispiel:", "var(--red)")`
+Globale Variable in Funktionen 
+```{r environment-4, exercise=TRUE, results = "hold"}
+global_variable = "global_variable"
+test_function <- function(function_variable) {
+  return(function_variable)
+}
+test_function(global_variable)
+```
+
+### Loops
+
+Alle Variablen die innerhalb von Loops verwendet werden, befinden sich in der Global Umgebung (sofern die Loops sich in der Globalen Umgebung befinden).
+
+Damit kann auch außerhalb der Loop noch auf die Variablen zugegriffen werden und die Loops haben immer Zugriff auf Globale Variablen.
+
+`r otter::colorize("Beispiel:", "var(--red)")`
+Globale Variablen in for-Loops
+
+```{r environment-5, exercise=TRUE, results = "hold"}
+for (counter in 1:77) {
+  test = "for"
+}
+counter # enthält nun die Information der letzten for-loop-Iteration
+test # enthält nun die Information der letzten for-loop-Iteration
+```
+
+`r otter::colorize("Beispiel:", "var(--red)")`
+Globale Variablen in while-Loops
+
+```{r environment-6, exercise=TRUE, results = "hold"}
+j = 0
+while (j <= 10) {
+  j = j + 1
+  test = "while"
+}
+j # enthält nun die Information der letzten while-loop-Iteration
+test # enthält nun die Information der letzten while-loop-Iteration
+```

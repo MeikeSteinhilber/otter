@@ -19,7 +19,8 @@ RoxygenNote: 7.2.3
 Imports:
     learnr,
     rsconnect,
-    scales
+    scales,
+    sprtt
 Suggests: 
     knitr,
     rmarkdown
