@@ -1087,7 +1087,7 @@ sprtt::seq_anova(y ~ x, f = 0.4, data = data, verbose = FALSE)
 ```
 
 Noch angenehmer ist jedoch die Nutzung, wenn das Paket geladen wird.
-dadurch werden alle Funktionen in den aktuellen Namensraum geladen und Funktionen können ohne den Prefix genutzt werden.
+Dadurch werden alle Funktionen in den aktuellen Namensraum geladen und Funktionen können ohne den Prefix genutzt werden.
 
 `r otter::colorize("Beispiel:", "var(--red)")`
 Paket laden und nutzen
@@ -1158,7 +1158,7 @@ Lasst euch nicht davon verunsichern, dass euer Code häufig nicht sofort funktio
 -   RStudio Debugger verwenden (<https://support.posit.co/hc/en-us/articles/205612627-Debugging-with-the-RStudio-IDE>)
 
 
-## R Projekte
+## R Projekte & Working Directory
 
 ## Code Flow
 
