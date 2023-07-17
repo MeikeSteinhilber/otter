@@ -45,8 +45,8 @@ $(document).ready(function() {
     });
   });
 });
-
 </script>
+
 
 ```{r setup, include=FALSE}
 library(learnr)
@@ -563,7 +563,7 @@ Eine Variable kann verschiedene Inhalte enthalten, z.B eine Zahl, Buchstaben, Ma
 Der Inhalt einer Variable kann auf die *Konsole* geschrieben werden, wenn der Variablenname ausgeführt wird.
 
 ```{r variable-1, exercise=TRUE, results = "hold"}
-name <- "Meike"
+name <- "Lara"
 weiblich <- TRUE
 lieblingszahl <- 3
 alter <- NULL
@@ -619,7 +619,7 @@ Atomare Vektoren können mehrere Informationen desselben Datentyps enthalten.
 `r otter::colorize("Beispiel:", "var(--red)")`
  Zugriff mit `[]`
 ```{r vektoren-1, exercise=TRUE, results = "hold"}
-name = "Meike"
+name = "Lara"
 namen_freunde = c("Lisa", "Thorben", "Mara")
 lieblingszahlen_freunde = c(1, 7, 8)
 weiblich_freunde = c(TRUE, FALSE, TRUE)
@@ -1125,17 +1125,501 @@ Tidyverse:
 
 ## Datenverarbeitung
 
-### Subsetting
+```{r setup-data, exercise=FALSE, eval=FALSE, exercise.eval=FALSE, echo=FALSE}
+set.seed(333)
+N <- 100
+df <- data.frame(
+  sex = factor(sample(c("weiblich", "männlich", "divers", NA), N, TRUE, prob = c(0.40, 0.40, 0.10, .1))),
+  age = sample(16:60, N, TRUE),
+  treatment_group = sample(c("treatment", "control group"), N, TRUE),
+  health_rating_mental = sample(c(1:10, NA), N, TRUE),
+  health_rating_body = sample(1:10, N, TRUE)
+)
+```
+
+Hier ist der Einblick in einen klinischen Datensatz `df` (die Daten wurden simuliert).
+
+```{r data-1, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
+df
+```
+
+### Daten anschauen
+
+Teile der Daten anzeigen:
+
+```{r data-2, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
+head(df, n = 10) # zeigt die ersten 10 Zeilen im Datensatz
+```
+
+```{r data-3, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
+tail(df, n = 10) # zeigt die letzten 10 Zeilen im Datensatz
+```
+
+### Daten beschreiben
+
+Deskriptive Statistiken ausgeben:
+```{r data-4, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
+summary(df)
+```
+
+```{r data-5, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
+psych::describe(df)
+```
+
+### Fehlende Werte anzeigen
+
+```{r data-6, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
+rowSums(is.na(df)) # Anzahl von fehlenden Werten pro Zeile (eine Zeile ist eine Person)
+```
+
+```{r data-7, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
+colSums(is.na(df)) # Anzahl der fehlenden Werte pro Spalte
+```
+
+### Fehlende Werte entfernen
+
+Verwendung von `complete.cases()`:
+
+```{r data-8, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
+complete.cases(df) # Prüft, ob alle Spalten ausgefüllt wurden pro Zeile
+```
+
+```{r data-9, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
+df[!complete.cases(df),] # Zeigt die Daten, die fehlende Werte enthalten
+```
+
+```{r data-10, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
+df[complete.cases(df),] # Zeigt die Daten, die keine fehlenden Werte enthalten
+```
+
+Verwendung von `na.omit()`
+
+```{r data-11, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
+df <- na.omit(df) # Entfernt alle Zeiloen mit fehlenden Werten
+df
+```
+
+### Einzelne Daten auswählen
+
+```{r data-12, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
+df[df$age < 18, ]
+```
+
+```{r data-13, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
+df[df$age < 18 & df$treatment_group == "treatment", ]
+```
+
+```{r data-14, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
+df$sex[df$treatment_group == "treatment"]
+```
+
+### Daten ändern
+
+```{r data-15, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
+df$sex[is.na(df$sex)] <- "weiblich" # ersetze alle fehlenden Geschlechter durch "weiblich"
+df
+```
+
 
 ### Daten Import
 
 ### Daten Export
+
+### Subsetting
+
+
+
+## R Projekte und Working Directory
+
+### Kapitel
+<a href="#section-pfade-im-projekt"> <i class="fa-solid fa-arrow-down"></i> Pfade im Projekt</a><br>
+<a href="#section-r-projekt-erstellen"> <i class="fa-solid fa-arrow-down"></i> R projekt erstellen</a><br>
+<a href="#section-r-projekt-verwenden"> <i class="fa-solid fa-arrow-down"></i> R projekt verwenden</a><br>
+
+In R befindet man sich immer in einem *working directory* (Arbeitsverzeichnis).
+
+An diesen Ort werden Dateien abgespeichert, Datensätze geladen etc.
+
+```{r projekt-1, exercise=FALSE, eval=FALSE, exercise.eval=FALSE, echo=TRUE}
+# gebe das aktuelle Arbeitsverzeichnis aus
+getwd()
+
+# ändere das aktuelle Arbeitsverzeichnis
+setwd()
+```
+
+Dieses Pfadsystem kann einen schnell nerven! 😉
+Zudem sind die Skripte nicht reproduzierbar für andere Personen, da sich die Pfade meist unterscheiden.
+
+Eine bessere Lösung sind *R Projekte*!
+
+R Projekte erlauben es alle Pfade nur in Bezug zum Projekt zu definieren.
+R weiß bereits automatisch, wo sich das Projekt auf dem aktuellen Rechner befindet.
+Damit erspart man sich selbst unnötige Arbeit mit `setwd()` und Co.
+Zudem kann man auch deutlich leichter mit anderen Personen am selben Projekt zusammenarbeiten.
+
+### Pfade im Projekt <a href="#section-r-projekte-und-working-directory"> <i class="fa-solid fa-arrow-up"></i></a>
+
+Pfade werden nun immer innerhalb eines Projektes referenziert. Egal wo sich das Projekt befindet,
+die Pfade sind immer gleich.
+
+<br/>
+**Ein Pfad innerhalb eines Projektes:**
+
+`R/script.R` (Innerhalb des Projektes im Ordner R, die Datei script.R)
+
+<br/>
+**Ganzer Pfad (notwenidg, wenn kein R Projekt genutzt wird):**
+
+`D:/Laura/RKurse/r_programming_course/R/script.R` (Dieser Pfad funktioniert nicht auf einem anderen PC)
+
+### R Projekt erstellen <a href="#section-r-projekte-und-working-directory"> <i class="fa-solid fa-arrow-up"></i></a>
+
+Rechts oben in RStudio kann man ein neues Projekt erstellen.<br>
+![](images/project_1.png){ width="400"} <br>
+
+Hier wählt man aus, ob man eunen neuen Ordner anlegen möchte, oder ein bereits existierendes Verzeichnis nutzen möchte.<br>
+![](images/project_2.png){ width="450"} <br>
+
+Hier können Vorlagen für Projekte ausgewählt werden.
+In den meisten Fällen werdet ihr diese jedoch nicht benötigen.<br>
+![](images/project_3.png){ width="450"} <br>
+
+Hier könnt ihr nun den Namen vergeben und den Pfad auswählen.<br>
+![](images/project_4.png){ width="450"} <br>
+
+Nachdem ein Projekt erstellt wurde, befindet sich die `projektname.Rproj` Datei in eurem Projektordner.
+Von nun an, muss diese Datei zuerst geöffnet werden, wenn man an dem Projekt arbeiten möchte.<br>
+![](images/project_5.png){ width="450"} <br>
+
+
+### R Projekt verwenden <a href="#section-r-projekte-und-working-directory"> <i class="fa-solid fa-arrow-up"></i></a>
+
+Zuerst muss immer die Projektdatei geöffnet werden!
+
+![](images/project_5.png){ width="300"}
+
+Danach können andere Skripte geöffnet werden.
+Das Projekt speichert, welche Skripte letztes Mal offen waren
+
+Verwendet eine klare und einheitliche Ordnerstruktur in euren Projekten.
+Empfohlen ist z.B. diese hier:
+
+![](images/project_6.png){ width="300"}
+
+Im Ordner `data` werden alle Datensätze gespeichert.
+Im Ordner `images` werden alle Grafiken gespeichert.
+Im Ordner `R` werden alle R Skripte gespeichert.
+
+#### Übungen <a href="#section-r-projekte-und-working-directory"> <i class="fa-solid fa-arrow-up"></i></a>
+<div class="uebungen">
+
+`r otter::colorize("Aufagbe", "var(--blue)")`
+*Öffne RStudio auf deinem rechner und gehe die folgenden Schritte durch:*
+
+1. Erstelle ein R Projekt mit dem Namen `otter` in RStudio.
+
+2. Erstelle einen Unterordner und lege dort ein R Skript `test.R` ab.
+
+3. Schließe RStudio.
+
+4. Öffnet das R Projekt und öffne das `test.R` Skript.
+
+
+</div>
+
+## Code Flow
+
+### Kapitel
+
+<a href="#section-warum-ist-code-flow-notwendig"> <i class="fa-solid fa-arrow-down"></i> Warum ist Code Flow notwendig</a><br>
+<a href="#section-übersicht"> <i class="fa-solid fa-arrow-down"></i> Übersicht</a><br>
+<a href="#section-if-else"> <i class="fa-solid fa-arrow-down"></i> if-else</a><br>
+<a href="#section-for-loop"> <i class="fa-solid fa-arrow-down"></i> for-loop</a><br>
+<a href="#section-while-loop"> <i class="fa-solid fa-arrow-down"></i> while-loop</a><br>
+
+### Warum ist Code Flow notwendig? <a href="#section-code-flow"> <i class="fa-solid fa-arrow-up"></i></a>
+
+**Beispiel: Partyplanung**
+
+Ihr wollt eine E-Mail automatisch an alle eure Freunde schicken. Ihr habt einen Datensatz mit allen Kontakten. Die E-Mail soll nur gesendet werden, wenn ihr befreundet seid.
+
+*Code soll nur ausgeführt werden, wenn eine bestimmte Bedingung erfüllt ist.*
+
+[Lösung: if Statements]{style="color:var(--blue);"}
+
+*Ihr habt über 30 Freunde. Der Code soll sich mehrfach selbst ausführen, ohne ihn zu copy-pasten*
+
+[Lösung: for oder while Loop]{style="color:var(--blue);"}
+
+
+### Übersicht <a href="#section-code-flow"> <i class="fa-solid fa-arrow-up"></i></a>
+
+`if()`
+
+-   Logik: if (Prüfung == TRUE) {Code wo etwas passiert}
+-   Code wird nur ausgeführt, wenn eine Bedingung erfüllt ist
+-   Damit können komplexe Wenn-Dann-Sonst-Bedingungen abgebildet werden
+-   Der Code wird nur einmal ausgeführt (im Gegensatz zu den Loops)
+
+`for()`
+
+-   Logik: for (jedes Element in einem Vektor) {passiert etwas}, stoppe am Ende des Vektors
+-   Werden sehr häufig angewandt
+-   Können, aber nicht immer verwendet werden
+
+`while()`
+
+-   Logik: while(Statement == TRUE) {wiederhole etwas}, stoppt nur, wenn das Statement == FALSE wird
+-   Jede for Loop kann in eine while Loop umgewandelt werden!
+-   **Achtung: kann in eine Endlosschleife laufen, wenn das Statement nie unwahr wird!**
+
+### if-else <a href="#section-code-flow"> <i class="fa-solid fa-arrow-up"></i></a>
+
+If-else-Statements folgen der **Wenn-Dann-Logik**.
+Der Code ist nach folgendem Muster aufgebaut: if (Prüfung == TRUE) {Code wo etwas passiert}
+
+```{r ifelse-1, exercise=TRUE, results = "hold"}
+name <- "Lara"
+# Übersetzung wenn der Name gleich Lara ist, wird der Code ausgegeben: "Lara is here today."
+if (name == "Lara") {"Lara is here today."}
+
+name <- "XXX"
+# Übersetzung wenn der Name ungleich Lara ist, wird der Code ausgegeben: "Lara is NOT here today."
+if (name != "Lara") {"Lara is NOT here today."}
+```
+
+Eine komplexere Möglichkeit ist die **Wenn-Dann-Sonst-Logik**.
+Hier gibt es eine Restkategorie (Sonst).
+Wenn alle anderen if Statements davor nicht wahr sind, wird die `else` Kategorie ausgegeben.
+
+```{r ifelse-2, exercise=TRUE, results = "hold"}
+name <- "Hans"
+if (name == "Lara") {
+  "Lara is here today."
+} else{
+  "Lara is NOT here today."
+}
+```
+
+
+Es können auch mehrere If-Statements miteinander verbunden werden: **Wenn-Dann-Wenn-Dann-Sonst-Logik**
+Dazu werden `else if` Statements verwendet.
+
+```{r ifelse-3, exercise=TRUE, results = "hold"}
+name <- "X"
+if (name == "Lara") {
+  "Lara is here today."
+} else if (name == "X") {
+  "We are closed."
+} else{
+  "Lara is NOT here today."
+}
+```
+
+if-Statements können auch miteinander verschachtelt werden.
+Zuerst wird von oben nach unten und immer von der höchsten zur niedrigsten Ebene ausgewertet.
+Die Reihenfolge kann unten eingesehen werden mit `# -> Zahl`.
+
+```{r ifelse-4, exercise=TRUE, results = "hold", exercise.lines = 20}
+condition_1 <- FALSE
+condition_1_1 <- FALSE
+condition_2 <-TRUE
+condition_2_1 <- FALSE
+
+if (condition_1) {# -> 1
+  if (condition_1_1) {
+    "Code 1"
+  } else{
+    "Code 2"
+  }
+} else if (condition_2) { # -> 2
+    if (condition_2_1) { # -> 3
+    "Code 3"
+  } else{ # -> 4
+    "Code 4"
+  }
+} else{
+  "Code 5"
+}
+```
+
+**Erklärung**
+
+-   `# -> 1`: `condition_1` ist falsch und somit wird der nächste Fall geprüft.
+(`condition_1_1` wird nicht geprüft, da der äußere Fall nicht wahr ist.)
+
+-   `# -> 2`: `condition_2` ist richtig und somit wird nun der Körper dieses Falls ausgewertet.
+
+-   `# -> 3`: `condition_2_1` ist falsch und somit wird der nächste Fall geprüft.
+
+-   `# -> 4`: `else` hier ist das Ende erreicht der Prüfungen und der "Code 4" wird ausgegeben.
+
+#### Übungen
+<div class="uebungen">
+
+`r otter::colorize("Aufgabe", "var(--blue)")`
+ *Was ist der Output diese Codes? (Führe den Code erst aus, wenn du eine Lösung hast.)*
+```{r ex-ifelse-1, exercise=TRUE, results = "hold", exercise.eval=FALSE}
+name <- "Meike"
+vacation <- FALSE
+
+if (name == "Meike") {
+  if (vacation == TRUE) {
+    "Meike is on vacation."
+  } else{
+    "Meike is here today."
+  }
+} else if (name == "X") {
+  "We are closed."
+} else{
+  "Meike is NOT here today."
+}
+```
+</div>
+
+### for-loop <a href="#section-code-flow"> <i class="fa-solid fa-arrow-up"></i></a>
+
+**Anmerkung:** in einer for Loop muss `print()` genutzt werden, um auf die Console zu printen.
+
+```{r for-1, exercise=TRUE, results = "hold"}
+vector = 1:3
+for (element in vector) {
+  print(element + 10)
+}
+```
+
+```{r for-2, exercise=TRUE, results = "hold"}
+number = 3
+for (i in 1:number) {
+  print(i + 10)
+}
+```
+
+```{r for-3, exercise=TRUE, results = "hold"}
+friends = c("Lisa", "Thorben", "Mara", "Sophie")
+for (person in friends) {
+  print(person)
+}
+```
+
+*Was passiert, wenn wir eine Person zu unserer Freundesliste hinzufügen?*
+
+```{r for-4, exercise=TRUE, results = "hold"}
+friends = c("Lisa", "Thorben", "Mara", "Sophie")
+
+friends_status = logical(4) # Variable Initialisieren / Deklarieren
+
+for (position in 1:4) {
+  friends_status[position] <- TRUE
+}
+friends_status
+```
+
+<details> <summary>
+    <p class="solution-button"><i class="fa-solid fa-arrow-down"></i> Zeige die Lösung <i class="fa-solid fa-arrow-down"></i> </p>
+  </summary> <div class="solution-body"> <div class="uebungen">
+
+Antwort: Wir müssten überall im Code die Zahl 4 ändern!
+
+</div></div></details>
+
+Bessere Alternative (weil flexibler): `length()`
+
+```{r for-5, exercise=TRUE, results = "hold"}
+friends_status = logical(length(friends)) # Variable Initialisieren / Deklarieren
+for (position in 1:length(friends)) {
+  friends_status[position] <- TRUE
+}
+friends_status
+```
+
+### while-loop <a href="#section-code-flow"> <i class="fa-solid fa-arrow-up"></i></a>
+
+`r otter::colorize("Negativ-Beispiel:", "var(--red)")`
+*Was ist das Problem mit diesem Code?*
+
+```{r while-1, exercise=FALSE, eval=FALSE, exercise.eval=FALSE, echo=TRUE}
+condition = TRUE
+while (condition) {
+  print("Hallo Welt!")
+}
+```
+
+<details><summary>
+    <p class="solution-button"><i class="fa-solid fa-arrow-down"></i> Zeige die Lösung <i class="fa-solid fa-arrow-down"></i> </p>
+  </summary> <div class="solution-body"> <div class="uebungen">
+
+Es fehlt ein Abbruchkriterium in der while-loop.
+Damit läuft sie unendlich lange.
+
+</div> </div> </details>
+
+Wenn das Abbruch-Kriterium vergessen wird, läuft die while-loop in eine Endlosschleife.
+Wenn dies passiert, muss die Ausführung gestoppt werden.
+
+![](images/while_endless.png){.absolute width="500"}
+
+
+`r otter::colorize("Positiv-Beispiel:", "var(--red)")`
+Abbruchkriterium ist vorhanden
+
+```{r while-2, exercise=TRUE, results = "hold"}
+counter = 1
+stop_criteria = 3
+while (counter <= stop_criteria) {
+  print("Hallo Welt!")
+  counter = counter + 1
+}
+```
 
 ## Debugging (Fehlerbehebung)
 Lasst euch nicht davon verunsichern, dass euer Code häufig nicht sofort funktioniert sondern erst Mal *debugged* werden muss!
 
 
 ### Warnungen & Fehler
+
+Warnungen und Fehler sind da, um euch zu helfen! Auch, wenn es sich nicht immer so anfühlt 😉
+
+-   Sollen unerwartetes Verhalten verhindern.
+
+-   Sollen erklären, warum etwas nicht geht oder zumindest darauf hinweisen, dass etwas nicht geht.
+
+-   Sollten auch in eigenen Funktionen genutzt werden!
+
+-   Warnungen und Fehler werden mit *If-Statements* verbunden. Nur wennn der bestimmte Fall vorhanden ist, werden sie dann ausgegeben.
+
+-   **Warnungen** geben eine Meldung aus, aber das Programm läuft weiter. Sie werden erstellt mit `warning()`.
+
+-   **Fehler** geben eine Meldung aus und brechen das Programm ab! Sie werden erstellt mit `stop()`.
+
+
+
+`r otter::colorize("Beispiel:", "var(--red)")`
+eine Warnung selbst schreiben mit `warning()`
+
+```{r error-1, exercise=TRUE, results = "hold"}
+add_numbers <- function(number1 = 0, number2 = 0) {
+  # Hier wird eine Warnung ausgegeben, wenn mit Unendlichkeit gerechnet wird.
+  if (number1 == Inf | number2 == Inf) {warning("One Number is Infinity.")}
+  if (number1 == -Inf | number2 == -Inf) {warning("One Number is - Infinity.")}
+  number1 + number2
+}
+add_numbers(2, -Inf)
+```
+
+
+`r otter::colorize("Beispiel:", "var(--red)")`
+eine Fehlermeldung selbst schreiben mit `stop()`
+
+```{r error-2, exercise=TRUE, results = "hold", error=TRUE}
+# Hier soll eine Fehlermeldung ausgegeben werden, wenn versucht wird durch 0 zu teilen.
+divide_numbers <- function(number1, number2) {
+  if (number2 == 0) {stop("number2 is zero.")}
+  number1 / number2
+}
+divide_numbers(8, 0)
+```
 
 ### Tipps
 
@@ -1145,7 +1629,7 @@ Lasst euch nicht davon verunsichern, dass euer Code häufig nicht sofort funktio
 
 -   chatGPT oder andere KIs fragen, warum der Code nicht funktioniert
 
--   RStudio neu starten & Code Zeilen Stück für Stück einlesen (verhindert Reihenfolge-Fehler)
+-   RStudio neu starten und Code Zeilen Stück für Stück einlesen (verhindert Reihenfolge-Fehler)
 
 -   Coden -> Testen -> Coden -> Testen -> …. In kleinen Schritten arbeiten (testet euren Code in so kleinen Schritten wie möglich und nicht erst ganz am Ende)
 
@@ -1158,23 +1642,17 @@ Lasst euch nicht davon verunsichern, dass euer Code häufig nicht sofort funktio
 -   RStudio Debugger verwenden (<https://support.posit.co/hc/en-us/articles/205612627-Debugging-with-the-RStudio-IDE>)
 
 
-## R Projekte & Working Directory
-
-## Code Flow
-
-### if-else 
-
-### for-loop
-
-### while-loop
-
-
 ## Environments
+
+### Kapitel
+
+<a href="#section-funktionen"> <i class="fa-solid fa-arrow-down"></i> Funktionen</a><br>
+<a href="#section-loops"> <i class="fa-solid fa-arrow-down"></i> Loops</a><br>
 
 Variablen und Funktionen sind `Environments` (Umgebungen) zugeordnet.
 Diese Zuordnung entscheidet, wo eine Variable oder eine Funktion existieren.
 
-### Funktionen
+### Funktionen <a href="#section-environments"> <i class="fa-solid fa-arrow-up"></i></a>
 `r otter::colorize("Vorbereitung:", "var(--red)")`
 Wir erzeugen hier eine Globale-Variable `global_variable` und eine Variable, die innerhalb dem Körper einer Funktion erzeugt wird `function_variable`.
 ```{r setup-environment, exercise.eval=TRUE, results='hide'}
@@ -1235,7 +1713,7 @@ test_function <- function(function_variable) {
 test_function(global_variable)
 ```
 
-### Loops
+### Loops <a href="#section-environments"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Alle Variablen die innerhalb von Loops verwendet werden, befinden sich in der Global Umgebung (sofern die Loops sich in der Globalen Umgebung befinden).
 

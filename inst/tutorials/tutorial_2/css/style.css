@@ -30,6 +30,18 @@ original is from: https://github.com/tidymodels/learntidymodels/tree/main/inst/t
   border-color: #CA225E;
 }
 
+.solution-button {
+  /*background-color: green;*/
+  color: #00c4e6;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.solution-body {
+  color: var(--blue);
+}
+
 
 /*-------- Google font imports --------*/
 
