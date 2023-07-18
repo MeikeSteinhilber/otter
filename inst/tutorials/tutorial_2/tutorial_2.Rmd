@@ -19,6 +19,13 @@ $(document).ready(function() {
   </a>
   </div>`);
   
+  $(document).ready(function() {
+  $('.menu-button').click(function() {
+    $('.topicsContainer').toggleClass('menu-open');
+    $(this).toggleClass('menu-open');
+  });
+  });
+  
   $("#learnr-tutorial-content.topics").prepend(
   `<div class="logo">
   <img class="logo" src="images/logo.png" style="width:10.0%"/>
@@ -47,12 +54,15 @@ $(document).ready(function() {
 });
 </script>
 
+<!-- <div class="menu-button">Menu</div> -->
+
 
 ```{r setup, include=FALSE}
 library(learnr)
 library(gradethis)
 library(scales)
 library(sprtt)
+library(jquerylib)
 # devtools::load_all()
 # remotes::install_github("MeikeSteinhilber/otter")
 # remotes::install_github("rstudio/gradethis")
@@ -1125,9 +1135,19 @@ Tidyverse:
 
 ## Datenverarbeitung
 
+### Kapitel
+<a href="#section-daten-anschauen"> <i class="fa-solid fa-arrow-down"></i> Daten anschauen</a><br>
+<a href="#section-daten-beschreiben"> <i class="fa-solid fa-arrow-down"></i> Daten beschreiben</a><br>
+<a href="#section-fehlende-werte-anzeigen"> <i class="fa-solid fa-arrow-down"></i> Fehlende Werte anzeigen</a><br>
+<a href="#section-fehlende-werte-entfernen"> <i class="fa-solid fa-arrow-down"></i> Fehlende Werte entfernen</a><br>
+<a href="#section-einzelne-daten-auswählen"> <i class="fa-solid fa-arrow-down"></i> Einzelne Daten auswählen</a><br>
+<a href="#section-daten-ändern"> <i class="fa-solid fa-arrow-down"></i> Daten ändern</a><br>
+<a href="#section-daten-import"> <i class="fa-solid fa-arrow-down"></i> Daten import</a><br>
+<a href="#section-daten-export"> <i class="fa-solid fa-arrow-down"></i> Daten export</a><br>
+
 ```{r setup-data, exercise=FALSE, eval=FALSE, exercise.eval=FALSE, echo=FALSE}
-set.seed(333)
-N <- 100
+set.seed(333) # fixiere alle Zufallsprozesse
+N <- 100 # Anzahl der Personen im Datensatz
 df <- data.frame(
   sex = factor(sample(c("weiblich", "männlich", "divers", NA), N, TRUE, prob = c(0.40, 0.40, 0.10, .1))),
   age = sample(16:60, N, TRUE),
@@ -1139,11 +1159,22 @@ df <- data.frame(
 
 Hier ist der Einblick in einen klinischen Datensatz `df` (die Daten wurden simuliert).
 
+<details><summary>
+    <p class="solution-button"><i class="fa-solid fa-arrow-down"></i> Zeige den Code der Simulation <i class="fa-solid fa-arrow-down"></i> </p>
+  </summary> <div class="solution-body"> <div class="uebungen">
+
+So wurde der Datensatz `df` simuliert:
+```{r, ref.label=I('setup-data'), eval=FALSE, echo=TRUE, exercise.eval=FALSE}
+
+```
+</div> </div> </details>
+
 ```{r data-1, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
-df
+df # so können wir den Datensatz in der Console ausgeben lassen.
+# Dies ist oft aber unpraktisch, wenn es große Datensätze sind.
 ```
 
-### Daten anschauen
+### Daten anschauen <a href="#section-datenverarbeitung"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Teile der Daten anzeigen:
 
@@ -1155,7 +1186,7 @@ head(df, n = 10) # zeigt die ersten 10 Zeilen im Datensatz
 tail(df, n = 10) # zeigt die letzten 10 Zeilen im Datensatz
 ```
 
-### Daten beschreiben
+### Daten beschreiben <a href="#section-datenverarbeitung"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Deskriptive Statistiken ausgeben:
 ```{r data-4, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
@@ -1166,7 +1197,7 @@ summary(df)
 psych::describe(df)
 ```
 
-### Fehlende Werte anzeigen
+### Fehlende Werte anzeigen <a href="#section-datenverarbeitung"> <i class="fa-solid fa-arrow-up"></i></a>
 
 ```{r data-6, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
 rowSums(is.na(df)) # Anzahl von fehlenden Werten pro Zeile (eine Zeile ist eine Person)
@@ -1176,7 +1207,7 @@ rowSums(is.na(df)) # Anzahl von fehlenden Werten pro Zeile (eine Zeile ist eine 
 colSums(is.na(df)) # Anzahl der fehlenden Werte pro Spalte
 ```
 
-### Fehlende Werte entfernen
+### Fehlende Werte entfernen <a href="#section-datenverarbeitung"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Verwendung von `complete.cases()`:
 
@@ -1185,11 +1216,11 @@ complete.cases(df) # Prüft, ob alle Spalten ausgefüllt wurden pro Zeile
 ```
 
 ```{r data-9, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
-df[!complete.cases(df),] # Zeigt die Daten, die fehlende Werte enthalten
+df[!complete.cases(df), ] # Zeigt die Daten, die fehlende Werte enthalten
 ```
 
 ```{r data-10, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
-df[complete.cases(df),] # Zeigt die Daten, die keine fehlenden Werte enthalten
+df[complete.cases(df), ] # Zeigt die Daten, die keine fehlenden Werte enthalten
 ```
 
 Verwendung von `na.omit()`
@@ -1199,33 +1230,54 @@ df <- na.omit(df) # Entfernt alle Zeiloen mit fehlenden Werten
 df
 ```
 
-### Einzelne Daten auswählen
+### Einzelne Daten auswählen <a href="#section-datenverarbeitung"> <i class="fa-solid fa-arrow-up"></i></a>
 
+Im Datensatz eine Spalte Filtern
 ```{r data-12, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
-df[df$age < 18, ]
+# im Datensatz df alle Personen die jünger sind als 18 Jahre
+df[df$age < 18, ] # Achtung: das Komma ist zwingend erforderlich!
 ```
 
+Im Datensatz nach zwei verschiedenen Spalten filtern
 ```{r data-13, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
+# Im Datensatz df alle Personen die jünger sind als 18 Jahre
+# und sich in der Treatment-Gruppe befinden
 df[df$age < 18 & df$treatment_group == "treatment", ]
 ```
 
+Im Datensatz innerhalb einer Spalte filtern
 ```{r data-14, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
+# Im Datensatz df in der Spalte sex,
+# alle Personen die sich in der Treatment-Gruppe befinden.
 df$sex[df$treatment_group == "treatment"]
 ```
 
-### Daten ändern
+### Daten ändern <a href="#section-datenverarbeitung"> <i class="fa-solid fa-arrow-up"></i></a>
 
+Nachdem man auf die richtigen Daten im Datensatz zeigt, können mit dem Zuweisungsoperator neue Daten zugewiesen werden.
+Damit werden die alten Daten überschrieben.
+
+In einer Spalte im Datensatz bestimmte Werte ändern
 ```{r data-15, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
-df$sex[is.na(df$sex)] <- "weiblich" # ersetze alle fehlenden Geschlechter durch "weiblich"
+# ersetze alle fehlenden Geschlechter durch "weiblich"
+df$sex[is.na(df$sex)] <- "weiblich" 
 df
 ```
 
+Neue Spalten erstellen
 
-### Daten Import
+```{r data-16, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
+# addiere alle Werte der health_ratings miteinander
+# und erzeguge eine neue Spalte namens health_rating_sum
+df$health_rating_sum <- df$health_rating_mental + df$health_rating_body
 
-### Daten Export
+df$health_rating_sum
+```
 
-### Subsetting
+### Daten Import <a href="#section-datenverarbeitung"> <i class="fa-solid fa-arrow-up"></i></a>
+
+### Daten Export <a href="#section-datenverarbeitung"> <i class="fa-solid fa-arrow-up"></i></a>
+
 
 
 
@@ -1574,10 +1626,16 @@ while (counter <= stop_criteria) {
 ```
 
 ## Debugging (Fehlerbehebung)
+
+### Kapitel
+
+<a href="#section-warnungen-und-fehler"> <i class="fa-solid fa-arrow-down"></i> Warnungen und Fehler</a><br>
+<a href="#section-tipps"> <i class="fa-solid fa-arrow-down"></i> Tipps</a><br>
+
 Lasst euch nicht davon verunsichern, dass euer Code häufig nicht sofort funktioniert sondern erst Mal *debugged* werden muss!
 
 
-### Warnungen & Fehler
+### Warnungen und Fehler <a href="#section-debugging-fehlerbehebung"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Warnungen und Fehler sind da, um euch zu helfen! Auch, wenn es sich nicht immer so anfühlt 😉
 
@@ -1621,7 +1679,7 @@ divide_numbers <- function(number1, number2) {
 divide_numbers(8, 0)
 ```
 
-### Tipps
+### Tipps <a href="#section-debugging-fehlerbehebung"> <i class="fa-solid fa-arrow-up"></i></a>
 
 -   Fehlermeldungen lesen bzw. übersetzen lassen (häufig sagen diese relativ genau was das Problem ist, manchmal sogar wie eine Lösung aussehen kann.)
 

@@ -179,18 +179,6 @@ h2 {
      /* max-width: 1200px; length of the text on the page*/
   }
 
-  .bandContent band {
-    background-color: #CA225E;
-    color: #CA225E;
-    width: 0%;
-  }
-
-  .bandContent page {
-    background-color: #CA225E;
-    color: #CA225E;
-    width: 0%;
-  }
-
 
   .tutorial-is-bs3 {
   }
@@ -207,7 +195,7 @@ h2 {
       width: 0%;
       min-width: 0px;
       margin-right: 0;
-      background-color: black;
+      background-color: yellow;
   }
 
   .topics {
