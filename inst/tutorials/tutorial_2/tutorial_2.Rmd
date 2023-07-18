@@ -1142,8 +1142,8 @@ Tidyverse:
 <a href="#section-fehlende-werte-entfernen"> <i class="fa-solid fa-arrow-down"></i> Fehlende Werte entfernen</a><br>
 <a href="#section-einzelne-daten-auswählen"> <i class="fa-solid fa-arrow-down"></i> Einzelne Daten auswählen</a><br>
 <a href="#section-daten-ändern"> <i class="fa-solid fa-arrow-down"></i> Daten ändern</a><br>
-<a href="#section-daten-import"> <i class="fa-solid fa-arrow-down"></i> Daten import</a><br>
 <a href="#section-daten-export"> <i class="fa-solid fa-arrow-down"></i> Daten export</a><br>
+<a href="#section-daten-import"> <i class="fa-solid fa-arrow-down"></i> Daten import</a><br>
 
 ```{r setup-data, exercise=FALSE, eval=FALSE, exercise.eval=FALSE, echo=FALSE}
 set.seed(333) # fixiere alle Zufallsprozesse
@@ -1274,12 +1274,77 @@ df$health_rating_sum <- df$health_rating_mental + df$health_rating_body
 df$health_rating_sum
 ```
 
-### Daten Import <a href="#section-datenverarbeitung"> <i class="fa-solid fa-arrow-up"></i></a>
-
 ### Daten Export <a href="#section-datenverarbeitung"> <i class="fa-solid fa-arrow-up"></i></a>
 
+Jeder Datensatz (auch jede Variable) kann in verschiedene Dateiformate exportiert werden.
 
+Wenn Dateien für andere zugänglich gemacht werden sollen ist `.csv` zu empfehlen, da es ein allgemeingängiges Format ist und von verschiedenen anderen Programmen auch gut eingelesen werden kann.
 
+R hat auch zwei R spezifische Formate `.rda` bzw `.RData` und `.rds`.
+Diese Formate sind zu empfehlen, wenn nur innerhalb von R die Daten benötigt werden.
+Die R Formate sind deutlich effizienter und platzsparender als `.csv`.
+
+R kann auch die besonderen Formate von anderen Programmen einlesen, oft existieren extra R Pakete dafür.
+
+Eine Übersicht über die wichtigsten Infos:
+
+| Funktionen                       | .csv                                                        | .rda oder .RData                        | .rds                                 |
+|----------------------------------|-------------------------------------------------------------|-----------------------------------------|--------------------------------------|
+| Speichern                        | write.csv() (international)<br>write.csv2() (deutsch & Excel)  | save()                                  | saveRDS()                            |
+| Laden                            | read.csv() (international)<br>read.csv2() (deutsch & Excel)    | load()                                  | readRDS()                            |
+| Anzahl an gespeicherten Objekten | eins                                                        | mehrere                                 | eins                                 |
+| Verhalten mein Laden             | werden einem neuen Objekt zugewiesen                        | werden im Environment wiederhergestellt | werden einem neuen Objekt zugewiesen |
+|                                  |                                                             |                                         |                                      |
+|                                  |                                                             |                                         |                                      |
+|                                  |                                                             |                                         |                                      |
+`.csv`
+```{r data-20, exercise=FALSE, exercise.eval=FALSE, results='hold', echo=TRUE}
+# Komma als Seperator und . für Zahlen
+write.csv(df, file = "data/df.csv") 
+# Semikolon als Seperator und Kommas für Zahlen
+write.csv2(df, file = "data/df.csv") 
+```
+
+`.rds`
+```{r data-22, exercise=FALSE, exercise.eval=FALSE, results='hold', echo=TRUE}
+save(df, file = "data/df.rda") # Speichert nur den Datensatz df
+save(df, N, file = "data/df.rda") # Speichert den Datensatz df und die Variable N
+save(df, file = "data/df.RData") 
+```
+
+`.rda`
+```{r data-21, exercise=FALSE, exercise.eval=FALSE, results='hold', echo=TRUE}
+save(df, file = "data/df.rda") 
+save(df, file = "data/df.RData") 
+```
+
+Die hier behandelten Formate sind besonders empfohlen, aber natürlich können auch andere Formate gespeichert werden.
+
+### Daten Import <a href="#section-datenverarbeitung"> <i class="fa-solid fa-arrow-up"></i></a>
+
+`.csv`
+
+```{r data-17, exercise=FALSE, exercise.eval=FALSE, eval=FALSE, echo=TRUE}
+# Komma als Seperator und . für Zahlen
+df <- read.csv("data/df.csv")
+# Semikolon als Seperator und Kommas für Zahlen
+df <- read.csv2("data/df.csv")
+```
+
+`.rda`
+
+```{r data-18, exercise=FALSE, exercise.eval=FALSE, eval=FALSE, echo=TRUE}
+load("data/df.rda") # Dies kann auch mehrere Objekte in das Environment laden
+```
+
+`.rds`
+
+```{r data-19, eval=FALSE, echo=TRUE}
+# Hier handelt es sich immer nur um ein einziges Objekt
+df <- readRDS("data/df.rds")
+```
+
+Für weitere Datenformate bietet sich z.B. diese Quelle an: <https://r4ds.hadley.nz/spreadsheets.html>
 
 ## R Projekte und Working Directory
 
