@@ -20,7 +20,8 @@ Imports:
     learnr,
     rsconnect,
     scales,
-    sprtt
+    sprtt,
+    psych
 Suggests: 
     knitr,
     rmarkdown
