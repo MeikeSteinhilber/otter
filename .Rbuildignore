@@ -9,3 +9,4 @@
 ^Meta$
 ^\.github$
 ^LICENSE\.md$
+^inst/tutorials/tutorial_2/rsconnect$
