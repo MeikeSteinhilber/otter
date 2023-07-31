@@ -45,7 +45,7 @@ navbar:
     - text: Beispiel
       href: https://meike-steinhilber.shinyapps.io/tutorial_1/
     - text: R & RStudio Grundlagen
-      href: https://meike-steinhilber.shinyapps.io/tutorial_2/
+      href: https://meike-steinhilber.shinyapps.io/R_und_RStudio_Grundlagen/
 
    github:
     icon: fa-github
