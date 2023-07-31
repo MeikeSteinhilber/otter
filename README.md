@@ -11,7 +11,6 @@
 ![Visitors](https://api.visitorbadge.io/api/combined?path=https%3A%2F%2Fgithub.com%2FMeikeSteinhilber%2Fsprtt&label=GitHub%20Hits&countColor=%2337d67a&style=flat&labelStyle=none)
 [![HitCount](https://hits.dwyl.com/MeikeSteinhilber/otter.svg)](https://hits.dwyl.com/MeikeSteinhilber/otter)
 ![](https://img.shields.io/github/commit-activity/y/MeikeSteinhilber/otter)
-
 [![CRAN
 status](https://www.r-pkg.org/badges/version/studyr)](https://cran.r-project.org/package=studyr)
 
