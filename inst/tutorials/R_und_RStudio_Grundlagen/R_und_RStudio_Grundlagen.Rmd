@@ -1865,3 +1865,143 @@ while (j <= 10) {
 j # enthält nun die Information der letzten while-loop-Iteration
 test # enthält nun die Information der letzten while-loop-Iteration
 ```
+
+
+## Übergeordnete Übungen
+<div class="uebungen">
+### Code Debugging
+Die folgenden Aufgaben enthalten fehlerhaften Code.
+Behebe alle Fehler!
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Behebe den Fehler im Code (1 Fehler).*
+```{r ex-debugging-1, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE}
+name <- NA
+if (name == "X") {
+  print("Heute ist leider kein Personal anwesend!")
+}
+```
+
+```{r ex-debugging-1-check, results = "hold", exercise.eval=FALSE}
+grade_result(
+  pass_if(~identical(.result, print("Heute ist leider kein Personal anwesend!"))),
+    glue_correct = "Richtig!",
+  glue_incorrect = "Leider noch nicht ganz richtig!"
+)
+```
+
+```{r ex-debugging-1-solution, results = "hold", exercise.eval=FALSE}
+name <- NA
+if (is.na(name)) {
+  print("Heute ist leider kein Personal anwesend!")
+}
+```
+
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Behebe die Fehler im Code (2 Fehler). Die Textausgabe soll in einer Zeile erfolgen*
+```{r ex-debugging-2, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE}
+name <- "Lisa" # Diese Zeile ist korrekt
+if (name == "Max") {
+  print("Heute ist Max da!")
+} else if {
+  print(c("Heute ist Max leider nicht da!",
+          "Es ist aber", name, "hier!"))
+}
+```
+
+```{r ex-debugging-2-check, results = "hold", exercise.eval=FALSE}
+grade_result(
+  pass_if(~identical(.result,
+                     print(paste("Heute ist Max leider nicht da!", "Es ist aber", name, "hier!"))
+                     )),
+  glue_correct = "Richtig!",
+  glue_incorrect = "Leider noch nicht ganz richtig!"
+)
+```
+
+```{r ex-debugging-2-solution, results = "hold", exercise.eval=FALSE}
+name <- "Lisa" # Diese Zeile ist korrekt
+if (name == "Max") {
+  print("Heute ist Max da!")
+} else{
+  print(paste("Heute ist Max leider nicht da!",
+          "Es ist aber", name, "hier!"))
+}
+```
+
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Behebe den Fehler im Code (1 Fehler). Die Textausgabe soll `Option 1` sein*
+```{r ex-debugging-3, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE}
+content <- 55 # Diese Zeile ist korrekt
+if (content < 55) {
+  print("Option 1")
+} else if (content > 55) {
+  print("Option 2")
+}
+```
+
+```{r ex-debugging-3-check, results = "hold", exercise.eval=FALSE}
+grade_result(
+  pass_if(~identical(.result,
+                     print("Option 1")
+                     )),
+  glue_correct = "Richtig!",
+  glue_incorrect = "Leider noch nicht ganz richtig!"
+)
+```
+
+```{r ex-debugging-3-solution, results = "hold", exercise.eval=FALSE}
+content <- 55 # Diese Zeile ist korrekt
+if (content <= 55) {
+  print("Option 1")
+} else if (content > 55) {
+  print("Option 2")
+}
+```
+
+
+### Code umschreiben (Refactoring)
+
+Die folgenden Aufgaben enthalten Code, der umgeschrieben werden soll, *ohne* die Funktionalität zu ändern.
+Diese Fähigkeit hilft, Code flexibler zu schreiben.
+
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Schreibe den Code um, ohne die Funktionalität zu ändern.*
+```{r ex-refactor-1, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE}
+content <- 55 
+if (content < 55) {
+  print("Option 1")
+} else if (content > 55) {
+  print("Option 2")
+} else if (content == 55) { # verwende hier kein "else if"
+  print("Option 3")
+}
+```
+
+```{r ex-refactor-1-check, results = "hold", exercise.eval=FALSE}
+grade_result(
+  pass_if(~identical(.result,
+                     print("Option 3")
+                     )),
+  glue_correct = "Die Funktionalität ist gleich!",
+  glue_incorrect = "Die Funktionalität hat sich leider geändert!"
+)
+```
+
+```{r ex-refactor-1-solution, results = "hold", exercise.eval=FALSE}
+content <- 55 
+if (content < 55) {
+  print("Option 1")
+} else if (content > 55) {
+  print("Option 2")
+} else{ # verwende hier kein "else if"
+  print("Option 3")
+}
+```
+
+
+
+</div>
