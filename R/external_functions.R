@@ -12,7 +12,7 @@
 #'
 #' @examples
 #' library(otter)
-#' #open_tutorial("tutorial_2")
+#' #open_tutorial("R_und_RStudio_Grundlagen")
 open_tutorial <- function(tutorial_name) {
   if (!is.character(tutorial_name)) {stop("Invalid input argument: tutorial name must be a charcter string.")}
   learnr::run_tutorial(tutorial_name, package = "otter")

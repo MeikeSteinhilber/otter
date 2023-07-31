@@ -23,7 +23,7 @@ RUN apt-get update && \
 
 WORKDIR /home/shinyusr
 #COPY app.R app.R
-COPY /inst/tutorials/tutorial_2 ./inst/tutorials/tutorial_2
+COPY /inst/tutorials/R_und_RStudio_Grundlagen ./inst/tutorials/R_und_RStudio_Grundlagen
 COPY DESCRIPTION DESCRIPTION
 COPY deploy.R deploy.R
 COPY /R ./R
