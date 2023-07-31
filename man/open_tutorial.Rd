@@ -19,5 +19,5 @@ Open Tutorials in the otter package
 }
 \examples{
 library(otter)
-#open_tutorial("tutorial_2")
+#open_tutorial("R_und_RStudio_Grundlagen")
 }
