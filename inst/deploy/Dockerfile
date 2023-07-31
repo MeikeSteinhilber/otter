@@ -25,7 +25,7 @@ WORKDIR /home/shinyusr
 #COPY app.R app.R
 COPY /inst/tutorials/R_und_RStudio_Grundlagen ./inst/tutorials/R_und_RStudio_Grundlagen
 COPY DESCRIPTION DESCRIPTION
-COPY deploy.R deploy.R
+COPY /inst/deploy/deploy.R /inst/deploy/deploy.R
 COPY /R ./R
 #COPY /www ./www
-CMD Rscript deploy.R
+CMD Rscript /inst/deploy/deploy.R
