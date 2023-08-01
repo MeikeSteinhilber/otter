@@ -1226,7 +1226,7 @@ df[complete.cases(df), ] # Zeigt die Daten, die keine fehlenden Werte enthalten
 Verwendung von `na.omit()`
 
 ```{r data-11, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
-df <- na.omit(df) # Entfernt alle Zeiloen mit fehlenden Werten
+df <- na.omit(df) # Entfernt alle Zeilen mit fehlenden Werten
 df
 ```
 
@@ -1868,10 +1868,43 @@ test # enthält nun die Information der letzten while-loop-Iteration
 
 
 ## Übergeordnete Übungen
+
+### Kapitel
+
+<a href="#section-code-debugging"> <i class="fa-solid fa-arrow-down"></i> Code Debugging</a><br>
+<a href="#section-code-umschreiben-refactoring"> <i class="fa-solid fa-arrow-down"></i> Code umschreiben (Refactoring)</a><br>
+<a href="#section-übungen-mit-einem-datensatz"> <i class="fa-solid fa-arrow-down"></i>  Übungen mit einem Datensatz</a><br>
+<a href="#section-anspruchsvolle-Aufgaben"> <i class="fa-solid fa-arrow-down"></i>  Anspruchsvolle Aufgaben</a><br>
+
 <div class="uebungen">
-### Code Debugging
+### Code Debugging <a href="#section-übergeordnete-übungen"> <i class="fa-solid fa-arrow-up"></i></a>
 Die folgenden Aufgaben enthalten fehlerhaften Code.
 Behebe alle Fehler!
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Behebe den Fehler im Code (1 Fehler).*
+```{r ex-debugging-01, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE}
+zahl <- c(1;33)
+matrix <- matrix(zahl, ncol = 3)
+matrix
+```
+```{r ex-debugging-01-check, results = "hold", exercise.eval=FALSE}
+zahl <- c(1:33)
+matrix <- matrix(zahl, ncol = 3)
+grade_result(
+  pass_if(~identical(.result, 
+                     matrix
+                     ),
+    glue_correct = "Richtig!",
+  glue_incorrect = "Leider noch nicht ganz richtig!"
+)
+```
+```{r ex-debugging-01-solution, results = "hold", exercise.eval=FALSE}
+zahl <- c(1:33)
+matrix <- matrix(zahl, ncol = 3)
+matrix
+```
+
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Behebe den Fehler im Code (1 Fehler).*
@@ -1881,7 +1914,6 @@ if (name == "X") {
   print("Heute ist leider kein Personal anwesend!")
 }
 ```
-
 ```{r ex-debugging-1-check, results = "hold", exercise.eval=FALSE}
 grade_result(
   pass_if(~identical(.result, print("Heute ist leider kein Personal anwesend!"))),
@@ -1889,7 +1921,6 @@ grade_result(
   glue_incorrect = "Leider noch nicht ganz richtig!"
 )
 ```
-
 ```{r ex-debugging-1-solution, results = "hold", exercise.eval=FALSE}
 name <- NA
 if (is.na(name)) {
@@ -1909,7 +1940,6 @@ if (name == "Max") {
           "Es ist aber", name, "hier!"))
 }
 ```
-
 ```{r ex-debugging-2-check, results = "hold", exercise.eval=FALSE}
 grade_result(
   pass_if(~identical(.result,
@@ -1919,7 +1949,6 @@ grade_result(
   glue_incorrect = "Leider noch nicht ganz richtig!"
 )
 ```
-
 ```{r ex-debugging-2-solution, results = "hold", exercise.eval=FALSE}
 name <- "Lisa" # Diese Zeile ist korrekt
 if (name == "Max") {
@@ -1941,7 +1970,6 @@ if (content < 55) {
   print("Option 2")
 }
 ```
-
 ```{r ex-debugging-3-check, results = "hold", exercise.eval=FALSE}
 grade_result(
   pass_if(~identical(.result,
@@ -1951,7 +1979,6 @@ grade_result(
   glue_incorrect = "Leider noch nicht ganz richtig!"
 )
 ```
-
 ```{r ex-debugging-3-solution, results = "hold", exercise.eval=FALSE}
 content <- 55 # Diese Zeile ist korrekt
 if (content <= 55) {
@@ -1962,10 +1989,140 @@ if (content <= 55) {
 ```
 
 
-### Code umschreiben (Refactoring)
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Behebe den Fehler im Code (3 Fehler).*
+```{r ex-debugging-4, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 24}
+data <- data.frame(
+  name = c("Peter", "Max", "Lizzy", "Mara", "Beatrice", "Klaus"),
+  guthaben = c(-240, 33489, 453, 73563, -2553, 99763),
+  anzahl_kredite = c(3, 0, 1, 4, 0, 1)
+)
+bank_status <- function(df, name) {
+  guthaben <- df$guthaben[df$name = name]
+  kredite <- df$anzahl_kredite[df$name = name]
+  if (guthaben < 0) {
+    if (kredite >= 1) {
+      cat(name, "kann keinen weiteren Kredit erhalten.")
+    } else{
+      cat(name, "kann einen ersten Kredit erhalten.")
+  } else{
+    cat(name, "hat bereits", kredite, "Kredit(e) bei unserer Bank. Ein weiterer Kredit ist möglich.")
+  }
+  }
+# Der Code ab hier ist korrekt!
+# Hier wird die Consolenausgabe abgefangen mit capture.output,
+# sodass der Output auch gespeichert werden kann in einer Variable.
+results <- capture.output(
+  bank_status(data, "Lizzy"),
+  bank_status(data, "Beatrice"),
+  bank_status(data, "Peter"))
+results
+```
+```{r ex-debugging-4-check, results = "hold", exercise.eval=FALSE}
+data <- data.frame(
+  name = c("Peter", "Max", "Lizzy", "Mara", "Beatrice", "Klaus"),
+  guthaben = c(-240, 33489, 453, 73563, -2553, 99763),
+  anzahl_kredite = c(3, 0, 1, 4, 0, 1)
+)
+bank_status <- function(df, name) {
+  guthaben <- df$guthaben[df$name == name]
+  kredite <- df$anzahl_kredite[df$name == name]
+  if (guthaben < 0) {
+    if (kredite >= 1) {
+      cat(name, "kann keinen weiteren Kredit erhalten.\n")
+    } else{
+      cat(name, "kann einen ersten Kredit erhalten.\n")
+    }
+  } else{
+    cat(name, "hat bereits", kredite, "Kredit(e) bei unserer Bank. Ein weiterer Kredit ist möglich.\n")
+  }
+}
+results <- capture.output(
+  bank_status(data, "Lizzy"),
+  bank_status(data, "Beatrice"),
+  bank_status(data, "Peter"))
+
+grade_result(
+  pass_if(~identical(.result, 
+                     results
+                     ),
+  glue_correct = "Richtig!",
+  glue_incorrect = "Leider noch nicht ganz richtig!"
+))
+```
+```{r ex-debugging-4-solution, results = "hold", exercise.eval=FALSE}
+data <- data.frame(
+  name = c("Peter", "Max", "Lizzy", "Mara", "Beatrice", "Klaus"),
+  guthaben = c(-240, 33489, 453, 73563, -2553, 99763),
+  anzahl_kredite = c(3, 0, 1, 4, 0, 1)
+)
+bank_status <- function(df, name) {
+  guthaben <- df$guthaben[df$name == name]
+  kredite <- df$anzahl_kredite[df$name == name]
+  if (guthaben < 0) {
+    if (kredite >= 1) {
+      cat(name, "kann keinen weiteren Kredit erhalten.\n")
+    } else{
+      cat(name, "kann einen ersten Kredit erhalten.\n")
+    }
+  } else{
+    cat(name, "hat bereits", kredite, "Kredit(e) bei unserer Bank. Ein weiterer Kredit ist möglich.\n")
+  }
+}
+results <- capture.output(
+  bank_status(data, "Lizzy"),
+  bank_status(data, "Beatrice"),
+  bank_status(data, "Peter"))
+```
+
+### Code umschreiben (Refactoring) <a href="#section-übergeordnete-übungen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Die folgenden Aufgaben enthalten Code, der umgeschrieben werden soll, *ohne* die Funktionalität zu ändern.
 Diese Fähigkeit hilft, Code flexibler zu schreiben.
+
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Schreibe den Code um, ohne die Funktionalität zu ändern. Erstelle den Datensatz direkt, ohne erst die Vektoren zu erstellen.*
+```{r ex-refactor-0, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE}
+# Erstellt die Vektoren (dieser Schritt soll ausgelassen werden!)
+namen <- c("Lisa", "Peter", "Klara", "Thorben")
+alter <- c(22, 21, 34, 17)
+status_student <- c(TRUE, FALSE, FALSE, TRUE)
+# Erstellt den Datensatz
+data <- data.frame(
+  namen = namen,
+  alter = alter,
+  status_student
+)
+data
+```
+```{r ex-refactor-0-check, results = "hold", exercise.eval=FALSE}
+namen <- c("Lisa", "Peter", "Klara", "Thorben")
+alter <- c(22, 21, 34, 17)
+status_student <- c(TRUE, FALSE, FALSE, TRUE)
+
+data <- data.frame(
+  namen = namen,
+  alter = alter,
+  status_student
+)
+grade_result(
+  pass_if(~identical(.result,
+                     data
+                     )),
+  glue_correct = "Die Funktionalität ist gleich!",
+  glue_incorrect = "Die Funktionalität hat sich leider geändert!"
+)
+```
+```{r ex-refactor-0-solution, results = "hold", exercise.eval=FALSE}
+data <- data.frame(
+namen = c("Lisa", "Peter", "Klara", "Thorben"),
+alter = c(22, 21, 34, 17),
+status_student = c(TRUE, FALSE, FALSE, TRUE)
+)
+data
+```
 
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
@@ -1980,7 +2137,6 @@ if (content < 55) {
   print("Option 3")
 }
 ```
-
 ```{r ex-refactor-1-check, results = "hold", exercise.eval=FALSE}
 grade_result(
   pass_if(~identical(.result,
@@ -1990,7 +2146,6 @@ grade_result(
   glue_incorrect = "Die Funktionalität hat sich leider geändert!"
 )
 ```
-
 ```{r ex-refactor-1-solution, results = "hold", exercise.eval=FALSE}
 content <- 55 
 if (content < 55) {
@@ -2003,5 +2158,147 @@ if (content < 55) {
 ```
 
 
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Schreibe den Code um, ohne die Funktionalität zu ändern. Schreibe die while-loop in eine for-loop um.*
+```{r ex-refactor-2, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE}
+namen <- c("Lisa", "Peter", "Klara", "Thorben")
+length_namen <- length(namen)
+counter <- 1
+results <- length(namen)
+while (counter <= length_namen) {
+  results[counter] <- paste("Hallo", namen[counter])
+  counter <- counter + 1
+}
+results
+```
+```{r ex-refactor-2-check, results = "hold", exercise.eval=FALSE}
+namen <- c("Lisa", "Peter", "Klara", "Thorben")
+results <- length(namen)
+for (i in 1:length(namen)) {
+  results[i] <- paste("Hallo", namen[i])
+}
+grade_result(
+  pass_if(~identical(.result,
+                     results
+                     )),
+  glue_correct = "Die Funktionalität ist gleich!",
+  glue_incorrect = "Die Funktionalität hat sich leider geändert!"
+)
+```
+```{r ex-refactor-2-solution, results = "hold", exercise.eval=FALSE}
+namen <- c("Lisa", "Peter", "Klara", "Thorben")
+results <- length(namen)
+for (i in 1:length(namen)) {
+  results[i] <- paste("Hallo", namen[i])
+}
+results
+```
+
+### Übungen mit einem Datensatz <a href="#section-übergeordnete-übungen"> <i class="fa-solid fa-arrow-up"></i></a>
+
+```{r setup-df, exercise=FALSE, eval=TRUE, exercise.eval=FALSE, echo=FALSE}
+set.seed(3) # fixiere alle Zufallsprozesse
+N <- 200 # Anzahl der Personen im Datensatz
+data_health <- data.frame(
+  sex = factor(sample(c("weiblich", "männlich", "divers"), N, TRUE, prob = c(0.40, 0.40, 0.20))),
+  age = sample(16:60, N, TRUE),
+  treatment_group = sample(c("treatment", "control group"), N, TRUE),
+  health_rating_mental_1 = sample(c(1:10), N, TRUE),
+  health_rating_mental_2 = sample(c(1:10), N, TRUE),
+  health_rating_mental_3 = sample(c(1:10, NA), N, TRUE),
+  health_rating_body_1 = sample(1:10, N, TRUE),
+  health_rating_body_2 = sample(1:10, N, TRUE),
+  health_rating_body_3 = sample(1:10, N, TRUE),
+  stress_level = sample(1:7, N, TRUE)
+)
+data_health
+```
+
+<details><summary>
+    <p class="solution-button"><i class="fa-solid fa-arrow-down"></i> Zeige den Code der Simulation von `data_health` <i class="fa-solid fa-arrow-down"></i> </p>
+  </summary> <div class="solution-body"> <div class="uebungen">
+
+So wurde der Datensatz `data_health` simuliert:
+```{r, ref.label=I('setup-df'), eval=FALSE, echo=TRUE, exercise.eval=FALSE}
+
+```
+</div> </div> </details>
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Schaue den Datensatz `data_health` an. Gebe dir dazu die letzten 7 Zeilen des Datensatzes aus.*
+```{r ex-df-01, exercise=TRUE, exercise.eval=FALSE, results='hold', exercise.setup = "setup-df"}
+
+```
+```{r ex-df-01-check, results = "hold", exercise.eval=FALSE, ref.label=I('setup-df')}
+grade_result(
+  pass_if(~identical(.result,
+                     tail(data_health, n = 7)
+                     ),
+  glue_correct = "Richtig!",
+  glue_incorrect = "Leider noch nicht ganz richtig!"
+))
+```
+```{r ex-df-01-solution, results = "hold", exercise.eval=FALSE}
+tail(data_health, n = 7)
+```
+
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Gibt es fehlende Werte im Datensatz `data_health`? Gebe dir fehlende Werte pro Spalte aus.*
+```{r ex-df-02, exercise=TRUE, exercise.eval=FALSE, results='hold', exercise.setup = "setup-df"}
+
+```
+```{r ex-df-02-check, results = "hold", exercise.eval=FALSE, ref.label=I('setup-df')}
+grade_result(
+  pass_if(~identical(.result,
+                     colSums(is.na(data_health))
+                     ),
+  glue_correct = "Richtig!",
+  glue_incorrect = "Leider noch nicht ganz richtig!"
+))
+```
+```{r ex-df-02-solution, results = "hold", exercise.eval=FALSE}
+colSums(is.na(data_health))
+```
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Gebe dir alle Zeilen aus, die fehlende Werte enthalten. Schaue dir die Daten an.*
+```{r ex-df-03, exercise=TRUE, exercise.eval=FALSE, results='hold', exercise.setup = "setup-df"}
+
+```
+```{r ex-df-03-check, results = "hold", exercise.eval=FALSE, ref.label=I('setup-df')}
+grade_result(
+  pass_if(~identical(.result,
+                     data_health[!complete.cases(data_health), ]
+                     ),
+  glue_correct = "Richtig!",
+  glue_incorrect = "Leider noch nicht ganz richtig!"
+))
+```
+```{r ex-df-03-solution, results = "hold", exercise.eval=FALSE}
+data_health[!complete.cases(data_health), ]
+```
+
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Entferne alle Zeilen mit fehlenden Werten aus dem Datensatz und prüfe, ob sich keine fehlenden Werte mehr im Datensatz befinden.*
+```{r ex-df-04, exercise=TRUE, exercise.eval=FALSE, results='hold', exercise.setup = "setup-df"}
+
+```
+```{r ex-df-04-check, results = "hold", exercise.eval=FALSE, ref.label=I('setup-df')}
+grade_result(
+  pass_if(~identical(.result,
+                     data_health[!complete.cases(data_health), ]
+                     ),
+  glue_correct = "Richtig!",
+  glue_incorrect = "Leider noch nicht ganz richtig!"
+))
+```
+```{r ex-df-04-solution, results = "hold", exercise.eval=FALSE}
+data_health <- na.omit(data_health)
+colSums(is.na(data_health))
+```
+
+### Anspruchsvolle Aufgaben <a href="#section-übergeordnete-übungen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 </div>
