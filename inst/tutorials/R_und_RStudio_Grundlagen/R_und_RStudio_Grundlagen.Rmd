@@ -57,12 +57,13 @@ $(document).ready(function() {
 <!-- <div class="menu-button">Menu</div> -->
 
 
-```{r setup, include=FALSE}
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
 library(learnr)
 library(gradethis)
 library(scales)
 library(sprtt)
 library(psych)
+library(testthat)
 # devtools::load_all()
 # remotes::install_github("MeikeSteinhilber/otter")
 # remotes::install_github("rstudio/gradethis")
@@ -72,7 +73,9 @@ gradethis::gradethis_setup(
   pass.praise = FALSE,
   fail.encourage = FALSE,
   pass = "Richtig!",
-  fail = "Das ist leider falsch."
+  code_correct = "Richtig!",
+  fail = "Das ist leider falsch.",
+  code_incorrect= "Das ist leider falsch."
   )
 tutorial_options(exercise.reveal_solution = TRUE,
                  exercise.blanks = "___",
@@ -1874,7 +1877,7 @@ test # enthält nun die Information der letzten while-loop-Iteration
 <a href="#section-code-debugging"> <i class="fa-solid fa-arrow-down"></i> Code Debugging</a><br>
 <a href="#section-code-umschreiben-refactoring"> <i class="fa-solid fa-arrow-down"></i> Code umschreiben (Refactoring)</a><br>
 <a href="#section-übungen-mit-einem-datensatz"> <i class="fa-solid fa-arrow-down"></i>  Übungen mit einem Datensatz</a><br>
-<a href="#section-anspruchsvolle-Aufgaben"> <i class="fa-solid fa-arrow-down"></i>  Anspruchsvolle Aufgaben</a><br>
+<a href="#section-anspruchsvolle-aufgaben"> <i class="fa-solid fa-arrow-down"></i>  Anspruchsvolle Aufgaben</a><br>
 
 <div class="uebungen">
 ### Code Debugging <a href="#section-übergeordnete-übungen"> <i class="fa-solid fa-arrow-up"></i></a>
@@ -1992,7 +1995,7 @@ if (content <= 55) {
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Behebe den Fehler im Code (3 Fehler).*
-```{r ex-debugging-4, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 24}
+```{r ex-debugging-4, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 25}
 data <- data.frame(
   name = c("Peter", "Max", "Lizzy", "Mara", "Beatrice", "Klaus"),
   guthaben = c(-240, 33489, 453, 73563, -2553, 99763),
@@ -2011,45 +2014,12 @@ bank_status <- function(df, name) {
   }
   }
 # Der Code ab hier ist korrekt!
-# Hier wird die Consolenausgabe abgefangen mit capture.output,
-# sodass der Output auch gespeichert werden kann in einer Variable.
-results <- capture.output(
-  bank_status(data, "Lizzy"),
-  bank_status(data, "Beatrice"),
-  bank_status(data, "Peter"))
-results
+bank_status(data, "Lizzy")
+bank_status(data, "Beatrice")
+bank_status(data, "Peter")
 ```
 ```{r ex-debugging-4-check, results = "hold", exercise.eval=FALSE}
-data <- data.frame(
-  name = c("Peter", "Max", "Lizzy", "Mara", "Beatrice", "Klaus"),
-  guthaben = c(-240, 33489, 453, 73563, -2553, 99763),
-  anzahl_kredite = c(3, 0, 1, 4, 0, 1)
-)
-bank_status <- function(df, name) {
-  guthaben <- df$guthaben[df$name == name]
-  kredite <- df$anzahl_kredite[df$name == name]
-  if (guthaben < 0) {
-    if (kredite >= 1) {
-      cat(name, "kann keinen weiteren Kredit erhalten.\n")
-    } else{
-      cat(name, "kann einen ersten Kredit erhalten.\n")
-    }
-  } else{
-    cat(name, "hat bereits", kredite, "Kredit(e) bei unserer Bank. Ein weiterer Kredit ist möglich.\n")
-  }
-}
-results <- capture.output(
-  bank_status(data, "Lizzy"),
-  bank_status(data, "Beatrice"),
-  bank_status(data, "Peter"))
-
-grade_result(
-  pass_if(~identical(.result, 
-                     results
-                     ),
-  glue_correct = "Richtig!",
-  glue_incorrect = "Leider noch nicht ganz richtig!"
-))
+grade_this_code()
 ```
 ```{r ex-debugging-4-solution, results = "hold", exercise.eval=FALSE}
 data <- data.frame(
@@ -2070,10 +2040,9 @@ bank_status <- function(df, name) {
     cat(name, "hat bereits", kredite, "Kredit(e) bei unserer Bank. Ein weiterer Kredit ist möglich.\n")
   }
 }
-results <- capture.output(
-  bank_status(data, "Lizzy"),
-  bank_status(data, "Beatrice"),
-  bank_status(data, "Peter"))
+bank_status(data, "Lizzy")
+bank_status(data, "Beatrice")
+bank_status(data, "Peter")
 ```
 
 ### Code umschreiben (Refactoring) <a href="#section-übergeordnete-übungen"> <i class="fa-solid fa-arrow-up"></i></a>
@@ -2230,13 +2199,14 @@ So wurde der Datensatz `data_health` simuliert:
 
 ```
 ```{r ex-df-01-check, results = "hold", exercise.eval=FALSE, ref.label=I('setup-df')}
-grade_result(
-  pass_if(~identical(.result,
-                     tail(data_health, n = 7)
-                     ),
-  glue_correct = "Richtig!",
-  glue_incorrect = "Leider noch nicht ganz richtig!"
-))
+# grade_result(
+#   pass_if(~identical(.result,
+#                      tail(data_health, n = 7)
+#                      ),
+#   glue_correct = "Richtig!",
+#   glue_incorrect = "Leider noch nicht ganz richtig!"
+# ))
+grade_this_code()
 ```
 ```{r ex-df-01-solution, results = "hold", exercise.eval=FALSE}
 tail(data_health, n = 7)
@@ -2249,13 +2219,14 @@ tail(data_health, n = 7)
 
 ```
 ```{r ex-df-02-check, results = "hold", exercise.eval=FALSE, ref.label=I('setup-df')}
-grade_result(
-  pass_if(~identical(.result,
-                     colSums(is.na(data_health))
-                     ),
-  glue_correct = "Richtig!",
-  glue_incorrect = "Leider noch nicht ganz richtig!"
-))
+# grade_result(
+#   pass_if(~identical(.result,
+#                      colSums(is.na(data_health))
+#                      ),
+#   glue_correct = "Richtig!",
+#   glue_incorrect = "Leider noch nicht ganz richtig!"
+# ))
+grade_this_code()
 ```
 ```{r ex-df-02-solution, results = "hold", exercise.eval=FALSE}
 colSums(is.na(data_health))
@@ -2267,13 +2238,14 @@ colSums(is.na(data_health))
 
 ```
 ```{r ex-df-03-check, results = "hold", exercise.eval=FALSE, ref.label=I('setup-df')}
-grade_result(
-  pass_if(~identical(.result,
-                     data_health[!complete.cases(data_health), ]
-                     ),
-  glue_correct = "Richtig!",
-  glue_incorrect = "Leider noch nicht ganz richtig!"
-))
+# grade_result(
+#   pass_if(~identical(.result,
+#                      data_health[!complete.cases(data_health), ]
+#                      ),
+#   glue_correct = "Richtig!",
+#   glue_incorrect = "Leider noch nicht ganz richtig!"
+# ))
+grade_this_code()
 ```
 ```{r ex-df-03-solution, results = "hold", exercise.eval=FALSE}
 data_health[!complete.cases(data_health), ]
@@ -2281,24 +2253,81 @@ data_health[!complete.cases(data_health), ]
 
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
-*Entferne alle Zeilen mit fehlenden Werten aus dem Datensatz und prüfe, ob sich keine fehlenden Werte mehr im Datensatz befinden.*
+*Entferne alle Zeilen mit fehlenden Werten aus dem Datensatz und gebe den datensatz aus.*
 ```{r ex-df-04, exercise=TRUE, exercise.eval=FALSE, results='hold', exercise.setup = "setup-df"}
 
 ```
 ```{r ex-df-04-check, results = "hold", exercise.eval=FALSE, ref.label=I('setup-df')}
-grade_result(
-  pass_if(~identical(.result,
-                     data_health[!complete.cases(data_health), ]
-                     ),
-  glue_correct = "Richtig!",
-  glue_incorrect = "Leider noch nicht ganz richtig!"
-))
+grade_this({
+  # custom checking code appears here
+  if (identical(.result, data_health <- data_health[complete.cases(data_health), ])) {
+    pass("Great work!")
+  }
+  if (identical(.result, data_health <- na.omit(data_health)
+                )) {
+    pass("Great work!")
+  }
+  fail("Try again!")
+})
 ```
 ```{r ex-df-04-solution, results = "hold", exercise.eval=FALSE}
 data_health <- na.omit(data_health)
-colSums(is.na(data_health))
+data_health
 ```
 
 ### Anspruchsvolle Aufgaben <a href="#section-übergeordnete-übungen"> <i class="fa-solid fa-arrow-up"></i></a>
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Schreibe eine Funktion, welche den Buchstaben F in die Console ausgibt mit unterschiedlichen Argumenten, um die Größe und das Aussehen zu beeinflussen. Die Consolenausgabe soll identisch sein mit dieser:*
+
+```{r setup-f, eval=TRUE, echo=FALSE}
+zeichne_f <- function(groesse = 7, breite = 5, symbol = "#", trennungszeichen = "") {
+  
+  fuss <- (groesse - 1) / 2
+  kopf <- ceiling(fuss / 2) # ceiling() rundet auf
+  
+  cat(rep(symbol, breite), "\n", sep = trennungszeichen)
+  for (i in 1:kopf) {
+    cat(symbol, "\n")
+  }
+  cat(rep(symbol, breite), "\n", sep = trennungszeichen)
+  for (i in 1:fuss) {
+    cat(symbol, "\n")
+  }
+}
+```
+```{r ex-difficult-00, exercise=TRUE, echo=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-f"}
+zeichne_f()
+zeichne_f(groesse = 5, breite = 3, symbol = "%", trennungszeichen = "-")
+```
+
+```{r ex-difficult-01, exercise=TRUE, exercise.eval=FALSE, results='hold', exercise.lines = 30}
+# Erstelle hier die Funktion zeichne_f()
+
+
+# Teste hiermit, ob deine Funktion funktioniert
+zeichne_f()
+zeichne_f(groesse = 5, breite = 3, symbol = "%", trennungszeichen = "-")
+```
+Um zu testen, ob dein Code funktioniert vergleiche die Ausgabe mit der obrigen Ausgabe.
+```{r ex-difficult-01-solution, results = "hold", exercise.eval=FALSE}
+zeichne_f <- function(groesse = 7, breite = 5, symbol = "#", trennungszeichen = "") {
+  
+  fuss <- (groesse - 1) / 2
+  kopf <- ceiling(fuss / 2) # ceiling() rundet auf
+  
+  cat(rep(symbol, breite), "\n", sep = trennungszeichen)
+  for (i in 1:kopf) {
+    cat(symbol, "\n")
+  }
+  cat(rep(symbol, breite), "\n", sep = trennungszeichen)
+  for (i in 1:fuss) {
+    cat(symbol, "\n")
+  }
+}
+# Teste hiermit, ob deine Funktion funktioniert.
+zeichne_f()
+zeichne_f(groesse = 5, breite = 3, symbol = "%", trennungszeichen = "-")
+```
 
 </div>
