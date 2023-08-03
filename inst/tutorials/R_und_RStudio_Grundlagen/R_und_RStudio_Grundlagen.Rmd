@@ -75,11 +75,17 @@ gradethis::gradethis_setup(
   pass = "Richtig!",
   code_correct = "Richtig!",
   fail = "Das ist leider falsch.",
-  code_incorrect= "Das ist leider falsch."
+  code_incorrect = "Das ist leider falsch."
   )
 tutorial_options(exercise.reveal_solution = TRUE,
                  exercise.blanks = "___",
                  exercise.eval = TRUE)
+options(
+  # gradethis_glue_correct = "{ random_praise() } { .message } { .correct }",
+  gradethis_glue_correct = "{ .message } { .correct }",  
+  # gradethis_glue_incorrect = "{ .message } { .incorrect } { random_encourage() }"
+  gradethis_glue_incorrect = "{ .message } { .incorrect }"
+)
 blue <- "#00c4e6"
 ```
 
@@ -1892,15 +1898,13 @@ matrix <- matrix(zahl, ncol = 3)
 matrix
 ```
 ```{r ex-debugging-01-check, results = "hold", exercise.eval=FALSE}
-zahl <- c(1:33)
-matrix <- matrix(zahl, ncol = 3)
 grade_result(
   pass_if(~identical(.result, 
-                     matrix
+                     matrix(c(1:33), ncol = 3)
                      ),
-    glue_correct = "Richtig!",
+  glue_correct = "Richtig!",
   glue_incorrect = "Leider noch nicht ganz richtig!"
-)
+))
 ```
 ```{r ex-debugging-01-solution, results = "hold", exercise.eval=FALSE}
 zahl <- c(1:33)
@@ -1919,9 +1923,7 @@ if (name == "X") {
 ```
 ```{r ex-debugging-1-check, results = "hold", exercise.eval=FALSE}
 grade_result(
-  pass_if(~identical(.result, print("Heute ist leider kein Personal anwesend!"))),
-    glue_correct = "Richtig!",
-  glue_incorrect = "Leider noch nicht ganz richtig!"
+  pass_if(~identical(.result, print("Heute ist leider kein Personal anwesend!")))
 )
 ```
 ```{r ex-debugging-1-solution, results = "hold", exercise.eval=FALSE}
@@ -1993,6 +1995,7 @@ if (content <= 55) {
 
 
 
+
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Behebe den Fehler im Code (3 Fehler).*
 ```{r ex-debugging-4, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 25}
@@ -2014,12 +2017,15 @@ bank_status <- function(df, name) {
   }
   }
 # Der Code ab hier ist korrekt!
-bank_status(data, "Lizzy")
-bank_status(data, "Beatrice")
 bank_status(data, "Peter")
 ```
 ```{r ex-debugging-4-check, results = "hold", exercise.eval=FALSE}
 grade_this_code()
+
+# grade_this({
+#   pass_if_equal()
+#   fail(hint = TRUE)
+# })
 ```
 ```{r ex-debugging-4-solution, results = "hold", exercise.eval=FALSE}
 data <- data.frame(
@@ -2040,8 +2046,6 @@ bank_status <- function(df, name) {
     cat(name, "hat bereits", kredite, "Kredit(e) bei unserer Bank. Ein weiterer Kredit ist möglich.\n")
   }
 }
-bank_status(data, "Lizzy")
-bank_status(data, "Beatrice")
 bank_status(data, "Peter")
 ```
 
@@ -2199,14 +2203,14 @@ So wurde der Datensatz `data_health` simuliert:
 
 ```
 ```{r ex-df-01-check, results = "hold", exercise.eval=FALSE, ref.label=I('setup-df')}
-# grade_result(
-#   pass_if(~identical(.result,
-#                      tail(data_health, n = 7)
-#                      ),
-#   glue_correct = "Richtig!",
-#   glue_incorrect = "Leider noch nicht ganz richtig!"
-# ))
-grade_this_code()
+grade_result(
+  pass_if(~identical(.result,
+                     tail(data_health, n = 7)
+                     ),
+  glue_correct = "Richtig!",
+  glue_incorrect = "Leider noch nicht ganz richtig!"
+))
+# grade_this_code()
 ```
 ```{r ex-df-01-solution, results = "hold", exercise.eval=FALSE}
 tail(data_health, n = 7)
@@ -2219,14 +2223,14 @@ tail(data_health, n = 7)
 
 ```
 ```{r ex-df-02-check, results = "hold", exercise.eval=FALSE, ref.label=I('setup-df')}
-# grade_result(
-#   pass_if(~identical(.result,
-#                      colSums(is.na(data_health))
-#                      ),
-#   glue_correct = "Richtig!",
-#   glue_incorrect = "Leider noch nicht ganz richtig!"
-# ))
-grade_this_code()
+grade_result(
+  pass_if(~identical(.result,
+                     colSums(is.na(data_health))
+                     ),
+  glue_correct = "Richtig!",
+  glue_incorrect = "Leider noch nicht ganz richtig!"
+))
+# grade_this_code()
 ```
 ```{r ex-df-02-solution, results = "hold", exercise.eval=FALSE}
 colSums(is.na(data_health))
@@ -2238,14 +2242,14 @@ colSums(is.na(data_health))
 
 ```
 ```{r ex-df-03-check, results = "hold", exercise.eval=FALSE, ref.label=I('setup-df')}
-# grade_result(
-#   pass_if(~identical(.result,
-#                      data_health[!complete.cases(data_health), ]
-#                      ),
-#   glue_correct = "Richtig!",
-#   glue_incorrect = "Leider noch nicht ganz richtig!"
-# ))
-grade_this_code()
+grade_result(
+  pass_if(~identical(.result,
+                     data_health[!complete.cases(data_health), ]
+                     ),
+  glue_correct = "Richtig!",
+  glue_incorrect = "Leider noch nicht ganz richtig!"
+))
+# grade_this_code()
 ```
 ```{r ex-df-03-solution, results = "hold", exercise.eval=FALSE}
 data_health[!complete.cases(data_health), ]
@@ -2253,26 +2257,27 @@ data_health[!complete.cases(data_health), ]
 
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
-*Entferne alle Zeilen mit fehlenden Werten aus dem Datensatz und gebe den datensatz aus.*
+*Entferne alle Zeilen mit fehlenden Werten aus dem Datensatz (und speichere den neuen Datensatz als `data` ab).*
 ```{r ex-df-04, exercise=TRUE, exercise.eval=FALSE, results='hold', exercise.setup = "setup-df"}
 
 ```
-```{r ex-df-04-check, results = "hold", exercise.eval=FALSE, ref.label=I('setup-df')}
-grade_this({
-  # custom checking code appears here
-  if (identical(.result, data_health <- data_health[complete.cases(data_health), ])) {
-    pass("Great work!")
-  }
-  if (identical(.result, data_health <- na.omit(data_health)
-                )) {
-    pass("Great work!")
-  }
-  fail("Try again!")
-})
-```
 ```{r ex-df-04-solution, results = "hold", exercise.eval=FALSE}
-data_health <- na.omit(data_health)
-data_health
+# complete.cases() ----
+data <- data_health[complete.cases(data_health), ]
+data
+
+# na.omit() ----
+data <- na.omit(data_health)
+data
+```
+```{r ex-df-04-check, results = "hold", exercise.eval=FALSE, ref.label=I('setup-df')}
+# debug_this()
+grade_this({
+  # fail_if(identical(.result, .solution))
+  pass_if_equal(.solution_all, "Du hast die Aufgabe korrekt gelöst!")
+  fail()
+})
+
 ```
 
 ### Anspruchsvolle Aufgaben <a href="#section-übergeordnete-übungen"> <i class="fa-solid fa-arrow-up"></i></a>
@@ -2309,6 +2314,7 @@ zeichne_f(groesse = 5, breite = 3, symbol = "%", trennungszeichen = "-")
 zeichne_f()
 zeichne_f(groesse = 5, breite = 3, symbol = "%", trennungszeichen = "-")
 ```
+
 Um zu testen, ob dein Code funktioniert vergleiche die Ausgabe mit der obrigen Ausgabe.
 ```{r ex-difficult-01-solution, results = "hold", exercise.eval=FALSE}
 zeichne_f <- function(groesse = 7, breite = 5, symbol = "#", trennungszeichen = "") {

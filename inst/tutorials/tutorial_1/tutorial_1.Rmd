@@ -63,65 +63,131 @@ $(document).ready(function() {
 
 ## Nothing
 
-## Test
-
-<!-- <script> -->
-<!-- alert("Hallo Welt!"); -->
-<!-- </script> -->
-
 <a href="#section-test-1">Test1</a>
 
 <a href="#section-test-2">Test2</a>
 
 <a href="#section-topic-1">Topik 1</a>
 
-### Test1
-X
 
-X
-X
+```{r setup-df, exercise=FALSE, eval=TRUE, exercise.eval=FALSE, echo=FALSE}
+set.seed(3) # fixiere alle Zufallsprozesse
+N <- 200 # Anzahl der Personen im Datensatz
+data_health <- data.frame(
+  sex = factor(sample(c("weiblich", "männlich", "divers"), N, TRUE, prob = c(0.40, 0.40, 0.20))),
+  age = sample(16:60, N, TRUE),
+  treatment_group = sample(c("treatment", "control group"), N, TRUE),
+  health_rating_mental_1 = sample(c(1:10), N, TRUE),
+  health_rating_mental_2 = sample(c(1:10), N, TRUE),
+  health_rating_mental_3 = sample(c(1:10, NA), N, TRUE),
+  health_rating_body_1 = sample(1:10, N, TRUE),
+  health_rating_body_2 = sample(1:10, N, TRUE),
+  health_rating_body_3 = sample(1:10, N, TRUE),
+  stress_level = sample(1:7, N, TRUE)
+)
+data_health
+```
 
-X
-X
 
-X
-X
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Gebe dir alle Zeilen aus, die fehlende Werte enthalten. Schaue dir die Daten an.*
+```{r ex-df-03, exercise=TRUE, exercise.eval=FALSE, results='hold', exercise.setup = "setup-df"}
 
-X
-X
+```
+```{r ex-df-03-check, results = "hold", exercise.eval=FALSE, ref.label=I('setup-df')}
+grade_this({
+  pass_if_equal(.solution_all, "Du hast die Aufgabe korrekt gelöst!")
+  fail(hint = TRUE)
+})
 
-X
-X
+```
+```{r ex-df-03-solution, results = "hold", exercise.eval=FALSE}
+# complete.cases() ----
+data <- data_health[complete.cases(data_health), ]
+data
 
-X
-X
-X
+# na.omit() ----
+data <- na.omit(data_health)
+data
+```
 
-### Test 2
-X
 
-X
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Schreibe eine Funktion, welche den Buchstaben F in die Console ausgibt mit unterschiedlichen Argumenten, um die Größe und das Aussehen zu beeinflussen. Die Consolenausgabe soll identisch sein mit dieser:*
 
-X
+```{r setup-f, eval=TRUE, echo=FALSE}
+zeichne_f <- function(groesse = 7, breite = 5, symbol = "#", trennungszeichen = "") {
+  
+  fuss <- (groesse - 1) / 2
+  kopf <- ceiling(fuss / 2) # ceiling() rundet auf
+  
+  cat(rep(symbol, breite), "\n", sep = trennungszeichen)
+  for (i in 1:kopf) {
+    cat(symbol, "\n")
+  }
+  cat(rep(symbol, breite), "\n", sep = trennungszeichen)
+  for (i in 1:fuss) {
+    cat(symbol, "\n")
+  }
+}
+```
+```{r ex-difficult-00, exercise=TRUE, echo=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-f"}
+zeichne_f()
+zeichne_f(groesse = 5, breite = 3, symbol = "%", trennungszeichen = "-")
+```
 
-X
+```{r ex-difficult-01, exercise=TRUE, exercise.eval=FALSE, results='hold', exercise.lines = 30}
+# Erstelle hier die Funktion zeichne_f()
 
-X
 
-X
+# Teste hiermit, ob deine Funktion funktioniert
+zeichne_f()
+zeichne_f(groesse = 5, breite = 3, symbol = "%", trennungszeichen = "-")
+```
+```{r ex-difficult-01-check, results = "hold", exercise.eval=FALSE}
+grade_this({
+  pass_if_equal()
+  fail(hint = TRUE)
+})
+```
 
-X
+Um zu testen, ob dein Code funktioniert vergleiche die Ausgabe mit der obrigen Ausgabe.
+```{r ex-difficult-01-solution, results = "hold", exercise.eval=FALSE}
+zeichne_f <- function(groesse = 7, breite = 5, symbol = "#", trennungszeichen = "") {
+  
+  fuss <- (groesse - 1) / 2
+  kopf <- ceiling(fuss / 2) # ceiling() rundet auf
+  
+  cat(rep(symbol, breite), "\n", sep = trennungszeichen)
+  for (i in 1:kopf) {
+    cat(symbol, "\n")
+  }
+  cat(rep(symbol, breite), "\n", sep = trennungszeichen)
+  for (i in 1:fuss) {
+    cat(symbol, "\n")
+  }
+}
+# Teste hiermit, ob deine Funktion funktioniert.
+zeichne_f()
+zeichne_f(groesse = 5, breite = 3, symbol = "%", trennungszeichen = "-")
+```
 
-X
 
-X
 
-X
 
-X
-X
-X
-X
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
