@@ -58,12 +58,12 @@ $(document).ready(function() {
 
 
 ```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
-library(learnr)
-library(gradethis)
 library(scales)
 library(sprtt)
 library(psych)
 library(testthat)
+library(learnr)
+library(gradethis)
 # devtools::load_all()
 # remotes::install_github("MeikeSteinhilber/otter")
 # remotes::install_github("rstudio/gradethis")
@@ -108,6 +108,19 @@ blue <- "#00c4e6"
 **2. RStudio Installation**
 
   -   unter: https://posit.co/download/rstudio-desktop/
+
+
+
+#### Übungen
+<div class="uebungen">
+
+`r otter::colorize("Aufagbe:", "var(--blue)")`
+
+1.    Installiere R und RStudio auf deinem Rechner.
+
+2.    Öffne Rstudio, um zu prüfen, ob die Installation erfolgreich war.
+
+</div>
 
 
 ## RStudio Einstieg
@@ -166,6 +179,20 @@ Je nachdem wo die *working directory* gesetzt ist, werden hier unterschiedliche 
 Wenn ein R Skript geöffnet wird, wird ein weiteres Fenster für das Skript angezeigt.
 In einem R Skript kann Code abgespeichert werden.
 
+#### Übungen
+<div class="uebungen">
+
+`r otter::colorize("Aufagbe:", "var(--blue)")`
+
+1.    Öffne RStudio
+
+2.    Tippe in die Console eine einfache Rechenaufgaben und drücke "Enter", um dir das Ergebnis anzeigen zu lassen.
+
+3.    Tippe `"Hallo Welt"` (mit den Anhührunsgzeichen) in die Console und drücke auf "Enter".
+
+
+</div>
+
 
 ## R Skript
 
@@ -208,6 +235,26 @@ Man erhält eine große Anzahl an möglichen Formaten, unter anderem auch ein R 
 Das neu geöffnete R Skript sieht nun so aus und kann direkt abgespeichert werden  mit dem Disketten-Symbol.
 
 ![](images/empty-rscript-open.png){.absolute .images-shadow left="100%" width="80%"}
+
+
+#### Übungen
+<div class="uebungen">
+
+`r otter::colorize("Aufagbe:", "var(--blue)")`
+
+1.    Erstelle ein neues R-Skript und speichere es in einem Ordner ab.
+
+2.    Schreibe einen Kommentar in das R-Skript.
+
+3.    Schreibe eine einfache Rechenoperation in das R-Skript.
+
+4.    Schreibe `print("hallo Welt!")`in das R-Skript.
+
+5.    Führe das R Skript aus und schaue Dir den Output in der Console an.
+
+
+</div>
+
 
 
 ## RStudio vs `otter`
@@ -325,7 +372,7 @@ zahlen > 20
 #### Übungen
 <div class="uebungen">
 
-`r otter::colorize("Vorbereitung", "var(--blue)")`
+`r otter::colorize("Vorbereitung:", "var(--blue)")`
 ```{r setup-logical, exercise.eval=FALSE}
 namen <- c("Lisa Müller", "Peter Bauer", "Hannah Schmidt")
 angemeldet <- c(TRUE, FALSE, TRUE)
@@ -429,6 +476,68 @@ Mit der Funktion `typeof()` können wir abfragen, um welchen Datentyp es sich ha
 typeof(5)
 ```
 
+
+#### Übungen
+<div class="uebungen">
+
+`r otter::colorize("Aufagbe:", "var(--blue)")`
+*Erzeuge einen integer-Vektor von 5 bis 12 in Einer-Schritten*
+```{r ex-int-01, exercise=TRUE, results = "hold"}
+
+```
+```{r ex-int-01-solution, results = "hold"}
+5:12
+```
+```{r ex-int-01-check, results = "hold"}
+grade_result(
+  pass_if(~identical(.result, 
+                     5:12
+                     )),
+  glue_correct = "Richtig!",
+  glue_incorrect = "Leider noch nicht ganz richtig!"
+)
+```
+
+
+`r otter::colorize("Aufagbe:", "var(--blue)")`
+*Welche Datentyp hat die Zahl `78`? Nutze zur Beantwortung der Frage eine Funktion.*
+```{r ex-int-02, exercise=TRUE, results = "hold"}
+
+```
+```{r ex-int-02-solution, results = "hold"}
+typeof(78)
+```
+```{r ex-int-02-check, results = "hold"}
+grade_result(
+  pass_if(~identical(.result, 
+                     typeof(78)
+                     )),
+  glue_correct = "Richtig!",
+  glue_incorrect = "Leider noch nicht ganz richtig!"
+)
+```
+
+`r otter::colorize("Aufagbe:", "var(--blue)")`
+*Was passiert, wenn man in R durch Null teilt? Probiere es aus!*
+```{r ex-int-03, exercise=TRUE, results = "hold"}
+
+```
+```{r ex-int-03-solution, results = "hold"}
+1/0
+```
+```{r ex-int-03-check, results = "hold"}
+grade_result(
+  pass_if(~identical(.result, 
+                     1/0
+                     )),
+  glue_correct = "Richtig!",
+  glue_incorrect = "Leider noch nicht ganz richtig!"
+)
+```
+
+</div>
+
+
 ### Character <a href="#section-datentypen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 
@@ -453,6 +562,31 @@ Oder auch für Hexcode, um Farben zu definieren.
 ```{r character-3, exercise=TRUE, results = "hold"}
 scales::show_col(c("#044a85", "#e28743", "#1F98B44D", "#1F98BC"))
 ```
+
+#### Übungen
+<div class="uebungen">
+
+`r otter::colorize("Aufagbe:", "var(--blue)")`
+*Gebe Dir ein Herz-Symbol aus. Ändere hierzu den Code und nutze den Text `"heart"`.*
+```{r ex-char-01, exercise=TRUE, results = "hold"}
+shiny::icon("plus")
+```
+```{r ex-char-01-solution, results = "hold"}
+shiny::icon("heart")
+```
+```{r ex-char-01-check, results = "hold"}
+grade_result(
+  pass_if(~identical(.result, 
+                     shiny::icon("heart")
+                     )),
+  glue_correct = "Richtig!",
+  glue_incorrect = "Leider noch nicht ganz richtig!"
+)
+```
+
+
+
+</div>
 
 ### Viel Nichts in R <a href="#section-datentypen"> <i class="fa-solid fa-arrow-up"></i></a>
 
@@ -495,7 +629,6 @@ NaN == 5
 Beispiele für die Erzeugung von `NaN`
 ```{r na-5, exercise=TRUE, results = "hold"}
 0/0
-Inf/1
 ```
 
 Beispiele für die Erzeugung von `logical(0)`
@@ -517,14 +650,26 @@ Dies gilt jedoch nicht für `|` Operationen.
 `NaN` kann NICHT mit `==` geprüft werden! Es muss mit `is.na()` geprüft werden.
 
 ```{r na-1, exercise=TRUE, results = "hold"}
+# Erzeugt NaN
+10 * NaN
+# Erzeugt NA
 NaN == NaN
 NaN < 5
-10 * NaN
 NaN & TRUE
-
+# Erzeugt logicals
 NaN | TRUE
 is.na(NaN)
 ```
+
+
+#### Übungen
+<div class="uebungen">
+
+`r otter::colorize("Aufagbe:", "var(--blue)")`
+*XXX*
+
+
+</div>
 
 ### Hilfreiche Funktionen <a href="#section-datentypen"> <i class="fa-solid fa-arrow-up"></i></a>
 
@@ -557,6 +702,16 @@ is.finite(number)
 is.infinite(number)
 ```
 
+#### Übungen
+<div class="uebungen">
+
+`r otter::colorize("Aufagbe:", "var(--blue)")`
+*XXX*
+
+
+</div>
+
+
 ## Datenstrukturen
 
 ### Kapitel
@@ -579,7 +734,7 @@ Nach Erstellung taucht die Variable im *Environment* auf.
 
 Eine Variable kann verschiedene Inhalte enthalten, z.B eine Zahl, Buchstaben, Matrizen oder Listen.
 
-Der Inhalt einer Variable kann auf die *Konsole* geschrieben werden, wenn der Variablenname ausgeführt wird.
+Der Inhalt einer Variable kann auf die *Console* geschrieben werden, wenn der Variablenname ausgeführt wird.
 
 ```{r variable-1, exercise=TRUE, results = "hold"}
 name <- "Lara"
@@ -625,6 +780,15 @@ freunde[c(FALSE, TRUE, TRUE)] <- ""
 freunde
 ```
 
+#### Übungen
+<div class="uebungen">
+
+`r otter::colorize("Aufagbe:", "var(--blue)")`
+*XXX*
+
+
+</div>
+
 ### Atomare Vektoren <a href="#section-datenstrukturen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 
@@ -657,6 +821,16 @@ namen_freunde = c("Lisa", "Thorben", "Mara")
 namen_freunde[c(TRUE, TRUE, TRUE)]
 namen_freunde[c(TRUE, FALSE, FALSE)]
 ```
+
+#### Übungen
+<div class="uebungen">
+
+`r otter::colorize("Aufagbe:", "var(--blue)")`
+*XXX*
+
+
+</div>
+
 
 ### Vektorisierte Berechnungen <a href="#section-datenstrukturen"> <i class="fa-solid fa-arrow-up"></i></a>
 
@@ -691,6 +865,15 @@ zahlen <- c(0, 1, 2, 3)
 zahlen < 2
 ```
 
+
+#### Übungen
+<div class="uebungen">
+
+`r otter::colorize("Aufagbe:", "var(--blue)")`
+*XXX*
+
+
+</div>
 
 ### Faktoren <a href="#section-datenstrukturen"> <i class="fa-solid fa-arrow-up"></i></a>
 
@@ -751,6 +934,16 @@ tage <- factor(
 sort(tage)
 ```
 
+#### Übungen
+<div class="uebungen">
+
+`r otter::colorize("Aufagbe:", "var(--blue)")`
+*XXX*
+
+
+</div>
+
+
 
 ### Matrizen <a href="#section-datenstrukturen"> <i class="fa-solid fa-arrow-up"></i></a>
 
@@ -770,6 +963,16 @@ matrix[1,2] # Zeile 1 und Spalte 2
 matrix[1, ] # Gesamte Zeile 1
 matrix[ ,2] # Gesamte Spalte
 ```
+
+#### Übungen
+<div class="uebungen">
+
+`r otter::colorize("Aufagbe:", "var(--blue)")`
+*XXX*
+
+
+</div>
+
 
 ### data.frame <a href="#section-datenstrukturen"> <i class="fa-solid fa-arrow-up"></i></a>
 
@@ -798,6 +1001,18 @@ freunde[2, 3] # zweite Zeile, dritte Spalte im Datensatz
 freunde$namen # Im Datensatz die Spalte namen 
 freunde$lieblingszahlen[2] # Im Datensatz die Spalte lieblingszahlen, die zweite Position
 ```
+
+
+#### Übungen
+<div class="uebungen">
+
+`r otter::colorize("Aufagbe:", "var(--blue)")`
+*XXX*
+
+
+</div>
+
+
 
 ### Listen <a href="#section-datenstrukturen"> <i class="fa-solid fa-arrow-up"></i></a>
 
@@ -940,6 +1155,16 @@ add_numbers()
 ```
 
 
+#### Übungen
+<div class="uebungen">
+
+`r otter::colorize("Aufagbe:", "var(--blue)")`
+*XXX*
+
+
+</div>
+
+
 ### Hilfe Seiten <a href="#section-funktionen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Die Hilfe Seite öffnet sich mit einem `?` vor dem Funktionsnamen, z.B. `?mean`.
@@ -978,6 +1203,17 @@ Die wichtigsten Inhalte in der Hilfe-Seite sind:
 -   **Default-Werte**: alle Argumente die ein ein `=` mit Inhalt dahinter angezeigt haben unter *Usage*, z.B. `trim = 0`.
 
 ![](images/help_mean_long.png){height="600"}
+
+
+
+#### Übungen
+<div class="uebungen">
+
+`r otter::colorize("Aufagbe:", "var(--blue)")`
+*XXX*
+
+
+</div>
 
 
 ### Reihenfolge von Argumenten <a href="#section-funktionen"> <i class="fa-solid fa-arrow-up"></i></a>
@@ -1027,6 +1263,17 @@ mean(data, na.rm = TRUE)
 
 
 
+#### Übungen
+<div class="uebungen">
+
+`r otter::colorize("Aufagbe:", "var(--blue)")`
+*XXX*
+
+
+</div>
+
+
+
 ### Hilfreiche Funktionen <a href="#section-funktionen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Zahlen:
@@ -1072,6 +1319,16 @@ paste0("Hello ", variable, "! How are you?")
 glue::glue("Hello {variable}! How are you?")
 cat("Hello", variable, "! How are you?")
 ```
+
+
+#### Übungen
+<div class="uebungen">
+
+`r otter::colorize("Aufagbe:", "var(--blue)")`
+*XXX*
+
+
+</div>
 
 ## R Pakete
 
@@ -1120,6 +1377,8 @@ data <- draw_sample_normal(3, f = 0.4, max_n = 20)
 seq_anova(y ~ x, f = 0.4, data = data, verbose = FALSE)
 ```
 
+
+
 ### Übersicht wichtiger R Pakete
 
 Allgemein:
@@ -1141,6 +1400,16 @@ Tidyverse:
 -   Dazu gehören auch dplyr und ggplot2.
 -   Wird nicht weiter in diesem Tutorial behandelt.
 -    <https://www.tidyverse.org/>
+
+
+#### Übungen
+<div class="uebungen">
+
+`r otter::colorize("Aufagbe:", "var(--blue)")`
+*XXX*
+
+
+</div>
 
 ## Datenverarbeitung
 
@@ -1261,6 +1530,15 @@ Im Datensatz innerhalb einer Spalte filtern
 df$sex[df$treatment_group == "treatment"]
 ```
 
+#### Übungen
+<div class="uebungen">
+
+`r otter::colorize("Aufagbe:", "var(--blue)")`
+*XXX*
+
+
+</div>
+
 ### Daten ändern <a href="#section-datenverarbeitung"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Nachdem man auf die richtigen Daten im Datensatz zeigt, können mit dem Zuweisungsoperator neue Daten zugewiesen werden.
@@ -1282,6 +1560,17 @@ df$health_rating_sum <- df$health_rating_mental + df$health_rating_body
 
 df$health_rating_sum
 ```
+
+
+#### Übungen
+<div class="uebungen">
+
+`r otter::colorize("Aufagbe:", "var(--blue)")`
+*XXX*
+
+
+</div>
+
 
 ### Daten Export <a href="#section-datenverarbeitung"> <i class="fa-solid fa-arrow-up"></i></a>
 
@@ -1440,7 +1729,7 @@ Im Ordner `R` werden alle R Skripte gespeichert.
 #### Übungen <a href="#section-r-projekte-und-working-directory"> <i class="fa-solid fa-arrow-up"></i></a>
 <div class="uebungen">
 
-`r otter::colorize("Aufagbe", "var(--blue)")`
+`r otter::colorize("Aufagbe:", "var(--blue)")`
 *Öffne RStudio auf deinem rechner und gehe die folgenden Schritte durch:*
 
 1. Erstelle ein R Projekt mit dem Namen `otter` in RStudio.
@@ -1699,6 +1988,16 @@ while (counter <= stop_criteria) {
 }
 ```
 
+#### Übungen
+<div class="uebungen">
+
+`r otter::colorize("Aufagbe:", "var(--blue)")`
+*XXX*
+
+
+</div>
+
+
 ## Debugging (Fehlerbehebung)
 
 ### Kapitel
@@ -1752,6 +2051,16 @@ divide_numbers <- function(number1, number2) {
 }
 divide_numbers(8, 0)
 ```
+
+#### Übungen
+<div class="uebungen">
+
+`r otter::colorize("Aufagbe:", "var(--blue)")`
+*XXX*
+
+
+</div>
+
 
 ### Tipps <a href="#section-debugging-fehlerbehebung"> <i class="fa-solid fa-arrow-up"></i></a>
 
@@ -1876,6 +2185,17 @@ test # enthält nun die Information der letzten while-loop-Iteration
 ```
 
 
+
+#### Übungen
+<div class="uebungen">
+
+`r otter::colorize("Aufagbe:", "var(--blue)")`
+*XXX*
+
+
+</div>
+
+
 ## Übergeordnete Übungen
 
 ### Kapitel
@@ -1883,7 +2203,7 @@ test # enthält nun die Information der letzten while-loop-Iteration
 <a href="#section-code-debugging"> <i class="fa-solid fa-arrow-down"></i> Code Debugging</a><br>
 <a href="#section-code-umschreiben-refactoring"> <i class="fa-solid fa-arrow-down"></i> Code umschreiben (Refactoring)</a><br>
 <a href="#section-übungen-mit-einem-datensatz"> <i class="fa-solid fa-arrow-down"></i>  Übungen mit einem Datensatz</a><br>
-<a href="#section-anspruchsvolle-aufgaben"> <i class="fa-solid fa-arrow-down"></i>  Anspruchsvolle Aufgaben</a><br>
+<a href="#section-programmierübungen"> <i class="fa-solid fa-arrow-down"></i>  Programmierübungen</a><br>
 
 <div class="uebungen">
 ### Code Debugging <a href="#section-übergeordnete-übungen"> <i class="fa-solid fa-arrow-up"></i></a>
@@ -1900,11 +2220,10 @@ matrix
 ```{r ex-debugging-01-check, results = "hold", exercise.eval=FALSE}
 grade_result(
   pass_if(~identical(.result, 
-                     matrix(c(1:33), ncol = 3)
-                     ),
+                     matrix(c(1:33), ncol = 3))),
   glue_correct = "Richtig!",
   glue_incorrect = "Leider noch nicht ganz richtig!"
-))
+)
 ```
 ```{r ex-debugging-01-solution, results = "hold", exercise.eval=FALSE}
 zahl <- c(1:33)
@@ -1923,7 +2242,9 @@ if (name == "X") {
 ```
 ```{r ex-debugging-1-check, results = "hold", exercise.eval=FALSE}
 grade_result(
-  pass_if(~identical(.result, print("Heute ist leider kein Personal anwesend!")))
+  pass_if(~identical(.result, print("Heute ist leider kein Personal anwesend!"))),
+    glue_correct = "Richtig!",
+  glue_incorrect = "Leider noch nicht ganz richtig!"
 )
 ```
 ```{r ex-debugging-1-solution, results = "hold", exercise.eval=FALSE}
@@ -1994,8 +2315,6 @@ if (content <= 55) {
 ```
 
 
-
-
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Behebe den Fehler im Code (3 Fehler).*
 ```{r ex-debugging-4, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 25}
@@ -2016,11 +2335,14 @@ bank_status <- function(df, name) {
     cat(name, "hat bereits", kredite, "Kredit(e) bei unserer Bank. Ein weiterer Kredit ist möglich.")
   }
   }
-# Der Code ab hier ist korrekt!
-bank_status(data, "Peter")
+# Der Code ist ab hier ist korrekt!
+bank_status(data, "Lizzy")
+bank_status(data, "Beatrice")
+bank_status(data, "Klaus")
 ```
 ```{r ex-debugging-4-check, results = "hold", exercise.eval=FALSE}
-grade_this_code()
+grade_this_code(
+)
 
 # grade_this({
 #   pass_if_equal()
@@ -2030,7 +2352,7 @@ grade_this_code()
 ```{r ex-debugging-4-solution, results = "hold", exercise.eval=FALSE}
 data <- data.frame(
   name = c("Peter", "Max", "Lizzy", "Mara", "Beatrice", "Klaus"),
-  guthaben = c(-240, 33489, 453, 73563, -2553, 99763),
+  guthaben = c(-240, 33489, -453, 73563, -2553, 99763),
   anzahl_kredite = c(3, 0, 1, 4, 0, 1)
 )
 bank_status <- function(df, name) {
@@ -2046,8 +2368,18 @@ bank_status <- function(df, name) {
     cat(name, "hat bereits", kredite, "Kredit(e) bei unserer Bank. Ein weiterer Kredit ist möglich.\n")
   }
 }
-bank_status(data, "Peter")
+bank_status(data, "Lizzy")
+bank_status(data, "Beatrice")
+bank_status(data, "Klaus")
 ```
+
+**Hinweis:** Der korrekte Code soll diese Ausgabe haben:
+```{r ex-debugging-4-example, exercise=FALSE, results = "hold",  ref.label=I('ex-debugging-4-solution')}
+bank_status(data, "Lizzy")
+bank_status(data, "Beatrice")
+bank_status(data, "Klaus")
+```
+
 
 ### Code umschreiben (Refactoring) <a href="#section-übergeordnete-übungen"> <i class="fa-solid fa-arrow-up"></i></a>
 
@@ -2206,10 +2538,10 @@ So wurde der Datensatz `data_health` simuliert:
 grade_result(
   pass_if(~identical(.result,
                      tail(data_health, n = 7)
-                     ),
+                     )),
   glue_correct = "Richtig!",
   glue_incorrect = "Leider noch nicht ganz richtig!"
-))
+)
 # grade_this_code()
 ```
 ```{r ex-df-01-solution, results = "hold", exercise.eval=FALSE}
@@ -2226,10 +2558,10 @@ tail(data_health, n = 7)
 grade_result(
   pass_if(~identical(.result,
                      colSums(is.na(data_health))
-                     ),
+                     )),
   glue_correct = "Richtig!",
   glue_incorrect = "Leider noch nicht ganz richtig!"
-))
+)
 # grade_this_code()
 ```
 ```{r ex-df-02-solution, results = "hold", exercise.eval=FALSE}
@@ -2245,10 +2577,10 @@ colSums(is.na(data_health))
 grade_result(
   pass_if(~identical(.result,
                      data_health[!complete.cases(data_health), ]
-                     ),
+                     )),
   glue_correct = "Richtig!",
   glue_incorrect = "Leider noch nicht ganz richtig!"
-))
+)
 # grade_this_code()
 ```
 ```{r ex-df-03-solution, results = "hold", exercise.eval=FALSE}
@@ -2273,14 +2605,18 @@ data
 ```{r ex-df-04-check, results = "hold", exercise.eval=FALSE, ref.label=I('setup-df')}
 # debug_this()
 grade_this({
-  # fail_if(identical(.result, .solution))
   pass_if_equal(.solution_all, "Du hast die Aufgabe korrekt gelöst!")
   fail()
 })
 
 ```
 
-### Anspruchsvolle Aufgaben <a href="#section-übergeordnete-übungen"> <i class="fa-solid fa-arrow-up"></i></a>
+<!-- data_health[rowSums(is.na(data_health)) != 1, ] -->
+
+
+
+
+### Programmierübungen <a href="#section-programmierübungen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Schreibe eine Funktion, welche den Buchstaben F in die Console ausgibt mit unterschiedlichen Argumenten, um die Größe und das Aussehen zu beeinflussen. Die Consolenausgabe soll identisch sein mit dieser:*
@@ -2317,6 +2653,7 @@ zeichne_f(groesse = 5, breite = 3, symbol = "%", trennungszeichen = "-")
 
 Um zu testen, ob dein Code funktioniert vergleiche die Ausgabe mit der obrigen Ausgabe.
 ```{r ex-difficult-01-solution, results = "hold", exercise.eval=FALSE}
+# Beispiellösung ----
 zeichne_f <- function(groesse = 7, breite = 5, symbol = "#", trennungszeichen = "") {
   
   fuss <- (groesse - 1) / 2

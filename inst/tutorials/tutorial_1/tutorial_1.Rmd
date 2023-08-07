@@ -15,18 +15,48 @@ runtime: shiny_prerendered
 ---
 
 ```{r setup, include=FALSE}
-library(learnr)
+# library(learnr)
+# library(gradethis)
+# # library(studyr)
+# devtools::load_all()
+# knitr::opts_chunk$set(echo = FALSE)
+# gradethis::gradethis_setup(
+#   pass.praise = FALSE,
+#   fail.encourage = FALSE,
+#   pass = "Richtig!",
+#   fail = "Das ist leider falsch."
+#   )
+# tutorial_options(exercise.reveal_solution = TRUE)
+
+library(scales)
+library(sprtt)
+library(psych)
+library(testthat)
 library(gradethis)
-# library(studyr)
-devtools::load_all()
+library(learnr)
+# devtools::load_all()
+# remotes::install_github("MeikeSteinhilber/otter")
+# remotes::install_github("rstudio/gradethis")
+# library(otter)
 knitr::opts_chunk$set(echo = FALSE)
 gradethis::gradethis_setup(
   pass.praise = FALSE,
   fail.encourage = FALSE,
   pass = "Richtig!",
-  fail = "Das ist leider falsch."
+  code_correct = "Richtig!",
+  fail = "Das ist leider falsch.",
+  code_incorrect = "Das ist leider falsch."
   )
-tutorial_options(exercise.reveal_solution = TRUE)
+tutorial_options(exercise.reveal_solution = TRUE,
+                 exercise.blanks = "___",
+                 exercise.eval = TRUE)
+options(
+  # gradethis_glue_correct = "{ random_praise() } { .message } { .correct }",
+  gradethis_glue_correct = "{ .message } { .correct }",
+  # gradethis_glue_incorrect = "{ .message } { .incorrect } { random_encourage() }"
+  gradethis_glue_incorrect = "{ .message } { .incorrect }"
+)
+blue <- "#00c4e6"
 ```
 
 <!-- <a href="https://meikesteinhilber.github.io/studyr/"> <i class="fa-solid fa-house" aria-label="Link zur studyr Homepage" aria-hidden="true"></i> </a> -->
@@ -70,106 +100,70 @@ $(document).ready(function() {
 <a href="#section-topic-1">Topik 1</a>
 
 
-```{r setup-df, exercise=FALSE, eval=TRUE, exercise.eval=FALSE, echo=FALSE}
-set.seed(3) # fixiere alle Zufallsprozesse
-N <- 200 # Anzahl der Personen im Datensatz
-data_health <- data.frame(
-  sex = factor(sample(c("weiblich", "männlich", "divers"), N, TRUE, prob = c(0.40, 0.40, 0.20))),
-  age = sample(16:60, N, TRUE),
-  treatment_group = sample(c("treatment", "control group"), N, TRUE),
-  health_rating_mental_1 = sample(c(1:10), N, TRUE),
-  health_rating_mental_2 = sample(c(1:10), N, TRUE),
-  health_rating_mental_3 = sample(c(1:10, NA), N, TRUE),
-  health_rating_body_1 = sample(1:10, N, TRUE),
-  health_rating_body_2 = sample(1:10, N, TRUE),
-  health_rating_body_3 = sample(1:10, N, TRUE),
-  stress_level = sample(1:7, N, TRUE)
-)
-data_health
-```
-
-
 `r otter::colorize("Aufgabe:", "var(--blue)")`
-*Gebe dir alle Zeilen aus, die fehlende Werte enthalten. Schaue dir die Daten an.*
-```{r ex-df-03, exercise=TRUE, exercise.eval=FALSE, results='hold', exercise.setup = "setup-df"}
-
-```
-```{r ex-df-03-check, results = "hold", exercise.eval=FALSE, ref.label=I('setup-df')}
-grade_this({
-  pass_if_equal(.solution_all, "Du hast die Aufgabe korrekt gelöst!")
-  fail(hint = TRUE)
-})
-
-```
-```{r ex-df-03-solution, results = "hold", exercise.eval=FALSE}
-# complete.cases() ----
-data <- data_health[complete.cases(data_health), ]
-data
-
-# na.omit() ----
-data <- na.omit(data_health)
-data
-```
-
-
-`r otter::colorize("Aufgabe:", "var(--blue)")`
-*Schreibe eine Funktion, welche den Buchstaben F in die Console ausgibt mit unterschiedlichen Argumenten, um die Größe und das Aussehen zu beeinflussen. Die Consolenausgabe soll identisch sein mit dieser:*
-
-```{r setup-f, eval=TRUE, echo=FALSE}
-zeichne_f <- function(groesse = 7, breite = 5, symbol = "#", trennungszeichen = "") {
-  
-  fuss <- (groesse - 1) / 2
-  kopf <- ceiling(fuss / 2) # ceiling() rundet auf
-  
-  cat(rep(symbol, breite), "\n", sep = trennungszeichen)
-  for (i in 1:kopf) {
-    cat(symbol, "\n")
+*Behebe den Fehler im Code (3 Fehler).*
+```{r ex-debugging-4, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 25}
+data <- data.frame(
+  name = c("Peter", "Max", "Lizzy", "Mara", "Beatrice", "Klaus"),
+  guthaben = c(-240, 33489, 453, 73563, -2553, 99763),
+  anzahl_kredite = c(3, 0, 1, 4, 0, 1)
+)
+bank_status <- function(df, name) {
+  guthaben <- df$guthaben[df$name = name]
+  kredite <- df$anzahl_kredite[df$name = name]
+  if (guthaben < 0) {
+    if (kredite >= 1) {
+      cat(name, "kann keinen weiteren Kredit erhalten.")
+    } else{
+      cat(name, "kann einen ersten Kredit erhalten.")
+  } else{
+    cat(name, "hat bereits", kredite, "Kredit(e) bei unserer Bank. Ein weiterer Kredit ist möglich.")
   }
-  cat(rep(symbol, breite), "\n", sep = trennungszeichen)
-  for (i in 1:fuss) {
-    cat(symbol, "\n")
+  }
+# Der Code ist ab hier ist korrekt!
+bank_status(data, "Lizzy")
+bank_status(data, "Beatrice")
+bank_status(data, "Klaus")
+```
+```{r ex-debugging-4-check, results = "hold", exercise.eval=FALSE}
+grade_this_code(
+)
+
+# grade_this({
+#   pass_if_equal()
+#   fail(hint = TRUE)
+# })
+```
+```{r ex-debugging-4-solution, results = "hold", exercise.eval=FALSE}
+data <- data.frame(
+  name = c("Peter", "Max", "Lizzy", "Mara", "Beatrice", "Klaus"),
+  guthaben = c(-240, 33489, -453, 73563, -2553, 99763),
+  anzahl_kredite = c(3, 0, 1, 4, 0, 1)
+)
+bank_status <- function(df, name) {
+  guthaben <- df$guthaben[df$name == name]
+  kredite <- df$anzahl_kredite[df$name == name]
+  if (guthaben < 0) {
+    if (kredite >= 1) {
+      cat(name, "kann keinen weiteren Kredit erhalten.\n")
+    } else{
+      cat(name, "kann einen ersten Kredit erhalten.\n")
+    }
+  } else{
+    cat(name, "hat bereits", kredite, "Kredit(e) bei unserer Bank. Ein weiterer Kredit ist möglich.\n")
   }
 }
-```
-```{r ex-difficult-00, exercise=TRUE, echo=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-f"}
-zeichne_f()
-zeichne_f(groesse = 5, breite = 3, symbol = "%", trennungszeichen = "-")
-```
-
-```{r ex-difficult-01, exercise=TRUE, exercise.eval=FALSE, results='hold', exercise.lines = 30}
-# Erstelle hier die Funktion zeichne_f()
-
-
-# Teste hiermit, ob deine Funktion funktioniert
-zeichne_f()
-zeichne_f(groesse = 5, breite = 3, symbol = "%", trennungszeichen = "-")
-```
-```{r ex-difficult-01-check, results = "hold", exercise.eval=FALSE}
-grade_this({
-  pass_if_equal()
-  fail(hint = TRUE)
-})
+bank_status(data, "Lizzy")
+bank_status(data, "Beatrice")
+bank_status(data, "Klaus")
 ```
 
-Um zu testen, ob dein Code funktioniert vergleiche die Ausgabe mit der obrigen Ausgabe.
-```{r ex-difficult-01-solution, results = "hold", exercise.eval=FALSE}
-zeichne_f <- function(groesse = 7, breite = 5, symbol = "#", trennungszeichen = "") {
-  
-  fuss <- (groesse - 1) / 2
-  kopf <- ceiling(fuss / 2) # ceiling() rundet auf
-  
-  cat(rep(symbol, breite), "\n", sep = trennungszeichen)
-  for (i in 1:kopf) {
-    cat(symbol, "\n")
-  }
-  cat(rep(symbol, breite), "\n", sep = trennungszeichen)
-  for (i in 1:fuss) {
-    cat(symbol, "\n")
-  }
-}
-# Teste hiermit, ob deine Funktion funktioniert.
-zeichne_f()
-zeichne_f(groesse = 5, breite = 3, symbol = "%", trennungszeichen = "-")
+
+**Hinweis:** Der korrekte Code soll diese Ausgabe haben:
+```{r ex-debugging-4-example, exercise=FALSE, results = "hold",  ref.label=I('ex-debugging-4-solution')}
+bank_status(data, "Lizzy")
+bank_status(data, "Beatrice")
+bank_status(data, "Klaus")
 ```
 
 
@@ -185,116 +179,109 @@ zeichne_f(groesse = 5, breite = 3, symbol = "%", trennungszeichen = "-")
 
 
 
+<!-- ## Topic 1 -->
 
+<!-- Test -->
 
+<!-- ```{r, child = "sub-tutorial-1.Rmd"} -->
 
+<!-- ``` -->
 
+<!-- ## Topic 2 -->
 
+<!-- ```{r, echo=FALSE} -->
+<!-- sliderInput("bins", "Number of bins:", min = 1, max = 50, value = 30) -->
+<!-- plotOutput("distPlot") -->
+<!-- ``` -->
 
+<!-- ```{r, context="server"} -->
+<!-- output$distPlot <- renderPlot({ -->
+<!--   x <- faithful[, 2]  # Old Faithful Geyser data -->
+<!--   bins <- seq(min(x), max(x), length.out = input$bins + 1) -->
+<!--   hist(x, breaks = bins, col = 'darkgray', border = 'white') -->
+<!-- }) -->
+<!-- ``` -->
 
-## Topic 1
+<!-- ## Topic 3 -->
 
-Test
+<!-- Quizfragen -->
 
-```{r, child = "sub-tutorial-1.Rmd"}
+<!-- ```{r letter-a, echo=FALSE} -->
+<!-- question("What number is the letter A in the English alphabet?", -->
+<!--   answer("8"), -->
+<!--   answer("14"), -->
+<!--   answer("1", correct = TRUE), -->
+<!--   answer("23") -->
+<!-- ) -->
+<!-- ``` -->
 
-```
+<!-- ```{r letter-b, echo=FALSE} -->
+<!-- question("What number is the letter A in the English alphabet?", -->
+<!--   answer("8"), -->
+<!--   answer("14"), -->
+<!--   answer("1", correct = TRUE), -->
+<!--   answer("23") -->
+<!-- ) -->
+<!-- ``` -->
 
-## Topic 2
+<!-- ## TOPIC 4 is a long a very long very very long long -->
 
-```{r, echo=FALSE}
-sliderInput("bins", "Number of bins:", min = 1, max = 50, value = 30)
-plotOutput("distPlot")
-```
+<!-- ```{r code-example, exercise=FALSE, echo=TRUE, eval=FALSE} -->
+<!-- open_tutorial <- function(tutorial_name) { -->
+<!--   if (!is.character(tutorial)) {stop("Invalid input argument: tutorial name must be a charcter string.")} -->
+<!--   # learnr::run_tutorial(tutorial, package = "studyr") -->
+<!-- } -->
+<!-- NULL -->
+<!-- output$distPlot <- renderPlot({ -->
+<!--   x <- faithful[, 2]  # Old Faithful Geyser data -->
+<!--   bins <- seq(min(x), max(x), length.out = input$bins + 1) -->
+<!--   hist(x, breaks = bins, col = 'darkgray', border = 'white') -->
+<!-- }) -->
+<!-- ``` -->
 
-```{r, context="server"}
-output$distPlot <- renderPlot({
-  x <- faithful[, 2]  # Old Faithful Geyser data
-  bins <- seq(min(x), max(x), length.out = input$bins + 1)
-  hist(x, breaks = bins, col = 'darkgray', border = 'white')
-})
-```
+<!-- ```{r test-color, exercise=FALSE} -->
+<!-- 2+3 -->
+<!-- ``` -->
 
-## Topic 3
+<!-- ## Video -->
 
-Quizfragen
+<!-- VIDEO -->
 
-```{r letter-a, echo=FALSE}
-question("What number is the letter A in the English alphabet?",
-  answer("8"),
-  answer("14"),
-  answer("1", correct = TRUE),
-  answer("23")
-)
-```
+<!-- ![](https://youtu.be/zNzZ1PfUDNk) -->
 
-```{r letter-b, echo=FALSE}
-question("What number is the letter A in the English alphabet?",
-  answer("8"),
-  answer("14"),
-  answer("1", correct = TRUE),
-  answer("23")
-)
-```
+<!-- ## Exercise with Hint -->
 
-## TOPIC 4 is a long a very long very very long long
+<!-- *Here's an exercise where the chunk is pre-evaluated via the `exercise.eval` option (so the user can see the default output we'd like them to customize). We also add a "hint" to the correct solution via the chunk immediate below labeled `print-limit-hint`.* -->
 
-```{r code-example, exercise=FALSE, echo=TRUE, eval=FALSE}
-open_tutorial <- function(tutorial_name) {
-  if (!is.character(tutorial)) {stop("Invalid input argument: tutorial name must be a charcter string.")}
-  # learnr::run_tutorial(tutorial, package = "studyr")
-}
-NULL
-output$distPlot <- renderPlot({
-  x <- faithful[, 2]  # Old Faithful Geyser data
-  bins <- seq(min(x), max(x), length.out = input$bins + 1)
-  hist(x, breaks = bins, col = 'darkgray', border = 'white')
-})
-```
+<!-- Modify the following code to limit the number of rows printed to 5: -->
 
-```{r test-color, exercise=FALSE}
-2+3
-```
+<!-- ```{r print-limit, exercise=TRUE, exercise.eval=TRUE} -->
+<!-- mtcars -->
+<!-- ``` -->
 
-## Video
+<!-- ```{r print-limit-hint} -->
+<!-- head(mtcars) -->
+<!-- ``` -->
 
-VIDEO
+<!-- ## Quiz -->
 
-![](https://youtu.be/zNzZ1PfUDNk)
+<!-- *You can include any number of single or multiple choice questions as a quiz. Use the `question` function to define a question and the `quiz` function for grouping multiple questions together.* -->
 
-## Exercise with Hint
+<!-- Some questions to verify that you understand the purposes of various base and recommended R packages: -->
 
-*Here's an exercise where the chunk is pre-evaluated via the `exercise.eval` option (so the user can see the default output we'd like them to customize). We also add a "hint" to the correct solution via the chunk immediate below labeled `print-limit-hint`.*
-
-Modify the following code to limit the number of rows printed to 5:
-
-```{r print-limit, exercise=TRUE, exercise.eval=TRUE}
-mtcars
-```
-
-```{r print-limit-hint}
-head(mtcars)
-```
-
-## Quiz
-
-*You can include any number of single or multiple choice questions as a quiz. Use the `question` function to define a question and the `quiz` function for grouping multiple questions together.*
-
-Some questions to verify that you understand the purposes of various base and recommended R packages:
-
-```{r quiz}
-quiz(
-  question("Which package contains functions for installing other R packages?",
-    answer("base"),
-    answer("tools"),
-    answer("utils", correct = TRUE),
-    answer("codetools")
-  ),
-  question("Which of the R packages listed below are used to create plots?",
-    answer("lattice", correct = TRUE),
-    answer("tools"),
-    answer("stats"),
-    answer("grid", correct = TRUE)
-  )
-)
-```
+<!-- ```{r quiz} -->
+<!-- quiz( -->
+<!--   question("Which package contains functions for installing other R packages?", -->
+<!--     answer("base"), -->
+<!--     answer("tools"), -->
+<!--     answer("utils", correct = TRUE), -->
+<!--     answer("codetools") -->
+<!--   ), -->
+<!--   question("Which of the R packages listed below are used to create plots?", -->
+<!--     answer("lattice", correct = TRUE), -->
+<!--     answer("tools"), -->
+<!--     answer("stats"), -->
+<!--     answer("grid", correct = TRUE) -->
+<!--   ) -->
+<!-- ) -->
+<!-- ``` -->
