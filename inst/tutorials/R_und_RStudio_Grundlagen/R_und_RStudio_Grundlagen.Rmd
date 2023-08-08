@@ -56,7 +56,6 @@ $(document).ready(function() {
 
 <!-- <div class="menu-button">Menu</div> -->
 
-
 ```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
 library(scales)
 library(sprtt)
@@ -89,6 +88,8 @@ options(
 blue <- "#00c4e6"
 ```
 
+
+
 ## R und RStudio Installation
 
 ![](images/Rlogo.png){right="100%" width="10%"}
@@ -114,11 +115,11 @@ blue <- "#00c4e6"
 #### Übungen
 <div class="uebungen">
 
-`r otter::colorize("Aufagbe:", "var(--blue)")`
+`r otter::colorize("Aufgabe:", "var(--blue)")`
 
-1.    Installiere R und RStudio auf deinem Rechner.
+1.    *Installiere R und RStudio auf deinem Rechner.*
 
-2.    Öffne Rstudio, um zu prüfen, ob die Installation erfolgreich war.
+2.    *Öffne Rstudio, um zu prüfen, ob die Installation erfolgreich war.*
 
 </div>
 
@@ -182,13 +183,13 @@ In einem R Skript kann Code abgespeichert werden.
 #### Übungen
 <div class="uebungen">
 
-`r otter::colorize("Aufagbe:", "var(--blue)")`
+`r otter::colorize("Aufgabe:", "var(--blue)")`
 
-1.    Öffne RStudio
+1.    *Öffne RStudio.*
 
-2.    Tippe in die Console eine einfache Rechenaufgaben und drücke "Enter", um dir das Ergebnis anzeigen zu lassen.
+2.    *Tippe in die Console eine einfache Rechenaufgaben und drücke "Enter", um dir das Ergebnis anzeigen zu lassen.*
 
-3.    Tippe `"Hallo Welt"` (mit den Anhührunsgzeichen) in die Console und drücke auf "Enter".
+3.    *Tippe `"Hallo Welt"` (mit den Anhührunsgzeichen) in die Console und drücke auf "Enter".*
 
 
 </div>
@@ -240,17 +241,17 @@ Das neu geöffnete R Skript sieht nun so aus und kann direkt abgespeichert werde
 #### Übungen
 <div class="uebungen">
 
-`r otter::colorize("Aufagbe:", "var(--blue)")`
+`r otter::colorize("Aufgabe:", "var(--blue)")`
 
-1.    Erstelle ein neues R-Skript und speichere es in einem Ordner ab.
+1.    *Erstelle ein neues R-Skript und speichere es in einem Ordner ab.*
 
-2.    Schreibe einen Kommentar in das R-Skript.
+2.    *Schreibe einen Kommentar in das R-Skript.*
 
-3.    Schreibe eine einfache Rechenoperation in das R-Skript.
+3.    *Schreibe eine einfache Rechenoperation in das R-Skript.*
 
-4.    Schreibe `print("hallo Welt!")`in das R-Skript.
+4.    *Schreibe `print("hallo Welt!")`in das R-Skript.*
 
-5.    Führe das R Skript aus und schaue Dir den Output in der Console an.
+5.    *Führe das R Skript aus und schaue Dir den Output in der Console an.*
 
 
 </div>
@@ -480,7 +481,7 @@ typeof(5)
 #### Übungen
 <div class="uebungen">
 
-`r otter::colorize("Aufagbe:", "var(--blue)")`
+`r otter::colorize("Aufgabe:", "var(--blue)")`
 *Erzeuge einen integer-Vektor von 5 bis 12 in Einer-Schritten*
 ```{r ex-int-01, exercise=TRUE, results = "hold"}
 
@@ -499,7 +500,7 @@ grade_result(
 ```
 
 
-`r otter::colorize("Aufagbe:", "var(--blue)")`
+`r otter::colorize("Aufgabe:", "var(--blue)")`
 *Welche Datentyp hat die Zahl `78`? Nutze zur Beantwortung der Frage eine Funktion.*
 ```{r ex-int-02, exercise=TRUE, results = "hold"}
 
@@ -517,7 +518,7 @@ grade_result(
 )
 ```
 
-`r otter::colorize("Aufagbe:", "var(--blue)")`
+`r otter::colorize("Aufgabe:", "var(--blue)")`
 *Was passiert, wenn man in R durch Null teilt? Probiere es aus!*
 ```{r ex-int-03, exercise=TRUE, results = "hold"}
 
@@ -566,15 +567,33 @@ scales::show_col(c("#044a85", "#e28743", "#1F98B44D", "#1F98BC"))
 #### Übungen
 <div class="uebungen">
 
-`r otter::colorize("Aufagbe:", "var(--blue)")`
-*Gebe Dir ein Herz-Symbol aus. Ändere hierzu den Code und nutze den Text `"heart"`.*
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Gebe Dir den Text "Hallo liebe R-Freunde" aus.*
 ```{r ex-char-01, exercise=TRUE, results = "hold"}
-shiny::icon("plus")
+
 ```
 ```{r ex-char-01-solution, results = "hold"}
-shiny::icon("heart")
+"Hallo liebe R-Freunde"
 ```
 ```{r ex-char-01-check, results = "hold"}
+grade_result(
+  pass_if(~identical(.result, 
+                     "Hallo liebe R-Freunde"
+                     )),
+  glue_correct = "Richtig!",
+  glue_incorrect = "Leider noch nicht ganz richtig!"
+)
+```
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Gebe Dir ein Herz-Symbol aus. Ändere hierzu den Code und nutze den Text `"heart"`.*
+```{r ex-char-02, exercise=TRUE, results = "hold"}
+shiny::icon("plus")
+```
+```{r ex-char-02-solution, results = "hold"}
+shiny::icon("heart")
+```
+```{r ex-char-02-check, results = "hold"}
 grade_result(
   pass_if(~identical(.result, 
                      shiny::icon("heart")
@@ -583,7 +602,6 @@ grade_result(
   glue_incorrect = "Leider noch nicht ganz richtig!"
 )
 ```
-
 
 
 </div>
@@ -665,8 +683,19 @@ is.na(NaN)
 #### Übungen
 <div class="uebungen">
 
-`r otter::colorize("Aufagbe:", "var(--blue)")`
-*XXX*
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Prüfe, ob die Variable `variable` einen fehlenden Wert enthält. Korrigiere dazu den Fehler im Code.*
+```{r ex-na-01, exercise=TRUE, results = "hold", error=TRUE}
+variable <- 0/0
+variable == NaN
+```
+```{r ex-na-01-solution, results = "hold"}
+variable <- 0/0
+is.na(variable)
+```
+```{r ex-na-01-check, results = "hold"}
+grade_this_code()
+```
 
 
 </div>
@@ -705,7 +734,7 @@ is.infinite(number)
 #### Übungen
 <div class="uebungen">
 
-`r otter::colorize("Aufagbe:", "var(--blue)")`
+`r otter::colorize("Aufgabe:", "var(--blue)")`
 *XXX*
 
 
@@ -783,7 +812,7 @@ freunde
 #### Übungen
 <div class="uebungen">
 
-`r otter::colorize("Aufagbe:", "var(--blue)")`
+`r otter::colorize("Aufgabe:", "var(--blue)")`
 *XXX*
 
 
@@ -825,7 +854,7 @@ namen_freunde[c(TRUE, FALSE, FALSE)]
 #### Übungen
 <div class="uebungen">
 
-`r otter::colorize("Aufagbe:", "var(--blue)")`
+`r otter::colorize("Aufgabe:", "var(--blue)")`
 *XXX*
 
 
@@ -869,7 +898,7 @@ zahlen < 2
 #### Übungen
 <div class="uebungen">
 
-`r otter::colorize("Aufagbe:", "var(--blue)")`
+`r otter::colorize("Aufgabe:", "var(--blue)")`
 *XXX*
 
 
@@ -937,7 +966,7 @@ sort(tage)
 #### Übungen
 <div class="uebungen">
 
-`r otter::colorize("Aufagbe:", "var(--blue)")`
+`r otter::colorize("Aufgabe:", "var(--blue)")`
 *XXX*
 
 
@@ -967,7 +996,7 @@ matrix[ ,2] # Gesamte Spalte
 #### Übungen
 <div class="uebungen">
 
-`r otter::colorize("Aufagbe:", "var(--blue)")`
+`r otter::colorize("Aufgabe:", "var(--blue)")`
 *XXX*
 
 
@@ -1006,7 +1035,7 @@ freunde$lieblingszahlen[2] # Im Datensatz die Spalte lieblingszahlen, die zweite
 #### Übungen
 <div class="uebungen">
 
-`r otter::colorize("Aufagbe:", "var(--blue)")`
+`r otter::colorize("Aufgabe:", "var(--blue)")`
 *XXX*
 
 
@@ -1158,7 +1187,7 @@ add_numbers()
 #### Übungen
 <div class="uebungen">
 
-`r otter::colorize("Aufagbe:", "var(--blue)")`
+`r otter::colorize("Aufgabe:", "var(--blue)")`
 *XXX*
 
 
@@ -1209,7 +1238,7 @@ Die wichtigsten Inhalte in der Hilfe-Seite sind:
 #### Übungen
 <div class="uebungen">
 
-`r otter::colorize("Aufagbe:", "var(--blue)")`
+`r otter::colorize("Aufgabe:", "var(--blue)")`
 *XXX*
 
 
@@ -1266,7 +1295,7 @@ mean(data, na.rm = TRUE)
 #### Übungen
 <div class="uebungen">
 
-`r otter::colorize("Aufagbe:", "var(--blue)")`
+`r otter::colorize("Aufgabe:", "var(--blue)")`
 *XXX*
 
 
@@ -1324,7 +1353,7 @@ cat("Hello", variable, "! How are you?")
 #### Übungen
 <div class="uebungen">
 
-`r otter::colorize("Aufagbe:", "var(--blue)")`
+`r otter::colorize("Aufgabe:", "var(--blue)")`
 *XXX*
 
 
@@ -1405,7 +1434,7 @@ Tidyverse:
 #### Übungen
 <div class="uebungen">
 
-`r otter::colorize("Aufagbe:", "var(--blue)")`
+`r otter::colorize("Aufgabe:", "var(--blue)")`
 *XXX*
 
 
@@ -1533,7 +1562,7 @@ df$sex[df$treatment_group == "treatment"]
 #### Übungen
 <div class="uebungen">
 
-`r otter::colorize("Aufagbe:", "var(--blue)")`
+`r otter::colorize("Aufgabe:", "var(--blue)")`
 *XXX*
 
 
@@ -1565,7 +1594,7 @@ df$health_rating_sum
 #### Übungen
 <div class="uebungen">
 
-`r otter::colorize("Aufagbe:", "var(--blue)")`
+`r otter::colorize("Aufgabe:", "var(--blue)")`
 *XXX*
 
 
@@ -1729,7 +1758,7 @@ Im Ordner `R` werden alle R Skripte gespeichert.
 #### Übungen <a href="#section-r-projekte-und-working-directory"> <i class="fa-solid fa-arrow-up"></i></a>
 <div class="uebungen">
 
-`r otter::colorize("Aufagbe:", "var(--blue)")`
+`r otter::colorize("Aufgabe:", "var(--blue)")`
 *Öffne RStudio auf deinem rechner und gehe die folgenden Schritte durch:*
 
 1. Erstelle ein R Projekt mit dem Namen `otter` in RStudio.
@@ -1991,7 +2020,7 @@ while (counter <= stop_criteria) {
 #### Übungen
 <div class="uebungen">
 
-`r otter::colorize("Aufagbe:", "var(--blue)")`
+`r otter::colorize("Aufgabe:", "var(--blue)")`
 *XXX*
 
 
@@ -2055,7 +2084,7 @@ divide_numbers(8, 0)
 #### Übungen
 <div class="uebungen">
 
-`r otter::colorize("Aufagbe:", "var(--blue)")`
+`r otter::colorize("Aufgabe:", "var(--blue)")`
 *XXX*
 
 
@@ -2189,7 +2218,7 @@ test # enthält nun die Information der letzten while-loop-Iteration
 #### Übungen
 <div class="uebungen">
 
-`r otter::colorize("Aufagbe:", "var(--blue)")`
+`r otter::colorize("Aufgabe:", "var(--blue)")`
 *XXX*
 
 
