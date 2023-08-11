@@ -15,7 +15,7 @@ runtime: shiny_prerendered
 <script>
 $(document).ready(function() {
   $("#tutorial-topic").prepend(`<div class="img-right">
-  <a href="https://meikesteinhilber.github.io/otter/"> <i class="fa-solid fa-house" aria-label="Link zur otter Homepage" aria-hidden="true"></i>
+  <a href="https://meikesteinhilber.github.io/otter/"> <i class="fa-solid fa-house" aria-label="Link zur otter Homepage" aria-hidden="false"></i>
   </a>
   </div>`);
   
@@ -183,7 +183,7 @@ In einem R Skript kann Code abgespeichert werden.
 #### Übungen
 <div class="uebungen">
 
-`r otter::colorize("Aufgabe:", "var(--blue)")`
+<!-- `r otter::colorize("Aufgabe:", "var(--blue)")` -->
 
 1.    *Öffne RStudio.*
 
@@ -241,7 +241,7 @@ Das neu geöffnete R Skript sieht nun so aus und kann direkt abgespeichert werde
 #### Übungen
 <div class="uebungen">
 
-`r otter::colorize("Aufgabe:", "var(--blue)")`
+<!-- `r otter::colorize("Aufgabe:", "var(--blue)")` -->
 
 1.    *Erstelle ein neues R-Skript und speichere es in einem Ordner ab.*
 
@@ -272,7 +272,7 @@ So sieht derselbe R Code in unserem Tutorial Format aus:
 
 <div class="uebungen">
 
-`r otter::colorize("Aufgabe", "var(--blue)")`
+`r otter::colorize("Aufgabe:", "var(--blue)")`
  *Klicke auf den Button "Run Code" und vergleiche die Ausgabe mit den obrigen Bildern*.
 ```{r r-vs-tutorial, exercise=TRUE, results = "hold", exercise.eval=FALSE}
 5*5
@@ -284,7 +284,7 @@ print("Hallo Welt!")
 
 Versuche Dich nun selbst!
 
-`r otter::colorize("Aufgabe", "var(--blue)")`
+`r otter::colorize("Aufgabe:", "var(--blue)")`
 *Berechne 84 \* 15.
 Gebe dazu die Berechnung in den R Code Bereich ein und klicke auf "Code ausführen"*
 ```{r ex-r-vs-tutorial, exercise=TRUE, results = "hold", exercise.eval=FALSE}
@@ -551,7 +551,7 @@ Dies ist ein Beispiel für Text.
 "Hallo Welt"
 ```
 
-Text wird häufig als Funktionsargument verwendet, z.B. um Symbole anzuzeigen.
+Text wird häufig als Funktionsargument verwendet weil hier auch alle Zeichen abgebildet werden können, z.B. um Symbole anzuzeigen.
 (Die Icons stammen von [fontawesome](https://fontawesome.com/search?o=r&m=free).)
 ```{r character-2, exercise=TRUE, results = "hold"}
 shiny::icon("rocket")
@@ -645,12 +645,12 @@ NaN == 5
 ```
 
 Beispiele für die Erzeugung von `NaN`
-```{r na-5, exercise=TRUE, results = "hold"}
+```{r na-4, exercise=TRUE, results = "hold"}
 0/0
 ```
 
 Beispiele für die Erzeugung von `logical(0)`
-```{r na-4, exercise=TRUE, results = "hold"}
+```{r na-5, exercise=TRUE, results = "hold"}
 NULL == "test"
 NULL == 5
 integer(0) == 5
@@ -663,20 +663,27 @@ Fehlende Werte wie `NaN` sind manchmal infektiös!
 
 Bei Rechenoperationen führt z.B. ein `NaN` dazu, das das Ergebnis auch ein fehlender Wert ist.
 
-Dies gilt jedoch nicht für `|` Operationen.
-
-`NaN` kann NICHT mit `==` geprüft werden! Es muss mit `is.na()` geprüft werden.
-
-```{r na-1, exercise=TRUE, results = "hold"}
+```{r na-6, exercise=TRUE, results = "hold"}
 # Erzeugt NaN
 10 * NaN
 # Erzeugt NA
 NaN == NaN
 NaN < 5
 NaN & TRUE
-# Erzeugt logicals
+```
+
+Dies gilt jedoch nicht für `|` (oder) Operationen.
+
+```{r na-7, exercise=TRUE, results = "hold"}
 NaN | TRUE
-is.na(NaN)
+```
+
+**`NaN` kann nicht mit `==` geprüft werden!** Es muss mit `is.na()` geprüft werden.
+
+```{r na-8, exercise=TRUE, results = "hold"}
+variable <- NaN
+variable == NaN # -> erzeugt NA
+is.na(variable) #- > gibt einen logischen Wert aus
 ```
 
 
@@ -697,6 +704,32 @@ is.na(variable)
 grade_this_code()
 ```
 
+```{r quiz-na}
+quiz(caption = "",
+  question("Was ist die Länge der Variable `variable = logical(3)`?",
+    answer("0"),
+    answer("1"),
+    answer("3", correct = TRUE),
+    answer("Es gibt keine sinnvolle Antwort auf diese Frage."),
+     random_answer_order = TRUE,
+     # allow_retry = TRUE,
+     correct = "Richtig!",
+     incorrect = "Leider falsch!",
+     submit_button = "Antwort einreichen"
+  ),
+  question("Was passiert, wenn dieser Befehl ausgeführt wird: `NaN < 0`?",
+    answer("Es gibt eine Fehlermeldung."),
+    answer("FALSE"),
+    answer("TRUE"),
+    answer("Es gibt einen fehlenden Wert aus.", correct = TRUE),
+     random_answer_order = TRUE,
+     # allow_retry = TRUE,
+     correct = "Richtig!",
+     incorrect = "Leider falsch!",
+     submit_button = "Antwort einreichen"
+  )
+)
+```
 
 </div>
 
@@ -731,12 +764,60 @@ is.finite(number)
 is.infinite(number)
 ```
 
+Datentyp ändern:
+
+```{r data-functions3, exercise=TRUE, results = "hold"}
+# Erzeugung einer Variable
+number = 0
+# Änderung des Datentyps
+as.numeric(number)
+as.integer(number)
+as.double(number)
+as.character(number) # -> Zahl wird in einen Text verwandelt
+as.logical(number) # -> 0 wird zu FALSE
+```
+
 #### Übungen
 <div class="uebungen">
 
-`r otter::colorize("Aufgabe:", "var(--blue)")`
-*XXX*
-
+```{r quiz-datentyp}
+quiz(caption = "",
+  question("In welchem Datentyp könnte ein solcher Smiley gespeichert werden: `:-)`? ",
+    answer("numeric"),
+    answer("logical"),
+    answer("integer"),
+    answer("character", correct = TRUE),
+     random_answer_order = TRUE,
+     # allow_retry = TRUE,
+     correct = "Richtig!",
+     incorrect = "Leider falsch!",
+     submit_button = "Antwort einreichen"
+  ),
+  question("Wie werden Zahlen mit dem Datentyp `integer` erstellt?",
+    answer("Mit einem L, z.B. `3L`", correct = TRUE),
+    answer("`as.integer(3)`", correct = TRUE),
+    answer("`1:3`", correct = TRUE),
+    answer("Mit einem I, z.B. `3I`"),
+    answer("Mit dem Eintippen der Zahl `3`"),
+     random_answer_order = TRUE,
+     # allow_retry = TRUE,
+     correct = "Richtig!",
+     incorrect = "Leider falsch!",
+     submit_button = "Antwort einreichen"
+  ),
+  question("Welche Aussagen sind richtig?",
+    answer("`is.double()` prüft, ob es sich um den Datenyp double handelt", correct = TRUE),
+    answer("`as.integer(3)` erstellt 3 Zahlen"),
+    answer("`double(3)` erstellt die Zahl 3 im Datentyp double"),
+    answer("Man kann 5 Nullen mit `integer(5)` erstellen", correct = TRUE),
+     random_answer_order = TRUE,
+     # allow_retry = TRUE,
+     correct = "Richtig!",
+     incorrect = "Leider falsch!",
+     submit_button = "Antwort einreichen"
+  )
+)
+```
 
 </div>
 
@@ -750,7 +831,7 @@ is.infinite(number)
 <a href="#section-vektorisierte-berechnungen"> <i class="fa-solid fa-arrow-down"></i> Vektorisierte Berechnungen</a><br>
 <a href="#section-faktoren"> <i class="fa-solid fa-arrow-down"></i> Faktoren</a><br>
 <a href="#section-matrizen"> <i class="fa-solid fa-arrow-down"></i> Matrizen</a><br>
-<a href="#section-data.frame"> <i class="fa-solid fa-arrow-down"></i> data.frame</a><br>
+<a href="#section-data-frame"> <i class="fa-solid fa-arrow-down"></i> data.frame</a><br>
 <a href="#section-listen"> <i class="fa-solid fa-arrow-down"></i> Listen</a><br>
 
 ### Variablen <a href="#section-datenstrukturen"> <i class="fa-solid fa-arrow-up"></i></a>
@@ -809,12 +890,41 @@ freunde[c(FALSE, TRUE, TRUE)] <- ""
 freunde
 ```
 
+Daten können auch nachträglich gelöscht werden:
+
+```{r variable-4, exercise=TRUE, results = "hold"}
+# Entferne den Inhalt an Position 2
+freunde <- c("Lisa", "Thorben", "Mara")
+freunde <- freunde[-2]
+freunde
+
+# Entferne den Inhalt "Thorben"
+freunde <- c("Thorben", "Lisa", "Thorben", "Mara", "Thorben")
+freunde <- freunde[!freunde == "Thorben"]
+freunde
+```
+
 #### Übungen
 <div class="uebungen">
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
-*XXX*
+*Erstelle ein Variable mit dem Inhalt: Baum, Blume, Haus, Pferd. Und gebe Dir den Inhalt der Variable auf der Console aus.*
+```{r ex-variable-1, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE}
 
+```
+```{r ex-variable-1-solution, results = "hold", exercise.eval=FALSE}
+variable <- c("Baum", "Blume", "Haus", "Pferd")
+variable
+```
+```{r ex-variable-1-check, results = "hold", exercise.eval=FALSE}
+# grade_result(
+#   pass_if(~identical(.result, print("Heute ist leider kein Personal anwesend!"))
+#           ),
+#     glue_correct = "Richtig!",
+#   glue_incorrect = "Leider noch nicht ganz richtig!"
+# )
+grade_this_code()
+```
 
 </div>
 
@@ -855,7 +965,32 @@ namen_freunde[c(TRUE, FALSE, FALSE)]
 <div class="uebungen">
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
-*XXX*
+*Ändere den Inhalt der Variable: entferne die Einträge `Hund`.*
+```{r ex-vector-1, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE}
+blumen <- c("Tulpen", "Rosen", "Hund", "Sonnenblumen", "Hund")
+```
+```{r ex-vector-1-solution, results = "hold", exercise.eval=FALSE}
+blumen <- c("Tulpen", "Rosen", "Hund", "Sonnenblumen", "Hund")
+blumen <- blumen[ !blumen == "Hund"]
+blumen
+```
+```{r ex-vector-1-check, results = "hold", exercise.eval=FALSE}
+grade_this_code()
+```
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Ändere den Inhalt der Variable: ersetze die Einträge `Hund` durch `NA`.*
+```{r ex-vector-2, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE}
+blumen <- c("Tulpen", "Rosen", "Hund", "Sonnenblumen", "Hund")
+```
+```{r ex-vector-2-solution, results = "hold", exercise.eval=FALSE}
+blumen <- c("Tulpen", "Rosen", "Hund", "Sonnenblumen", "Hund")
+blumen[ blumen == "Hund"] <- NA
+blumen
+```
+```{r ex-vector-2-check, results = "hold", exercise.eval=FALSE}
+grade_this_code()
+```
 
 
 </div>
@@ -899,8 +1034,47 @@ zahlen < 2
 <div class="uebungen">
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
-*XXX*
+*Addiere auf jedes Element im Vektor die Zahl 3.*
+```{r ex-vectorisiert-1, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE}
+zahlen <- 1:100
+```
+```{r ex-vectorisiert-1-solution, results = "hold", exercise.eval=FALSE}
+zahlen <- 1:100
+zahlen + 3
+```
+```{r ex-vectorisiert-1-check, results = "hold", exercise.eval=FALSE}
+grade_this_code()
+```
 
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Multipliziere jedes Element im Vektor mit der Zahl 5.*
+```{r ex-vectorisiert-2, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE}
+zahlen <- 1:100
+
+```
+```{r ex-vectorisiert-2-solution, results = "hold", exercise.eval=FALSE}
+zahlen <- 1:100
+zahlen * 5
+```
+```{r ex-vectorisiert-2-check, results = "hold", exercise.eval=FALSE}
+grade_this_code()
+```
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Multipliziere die zwei Vektoren miteinander.*
+```{r ex-vectorisiert-3, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE}
+nummer_1 <- 1:100
+nummer_2 <- c(100:1)
+```
+```{r ex-vectorisiert-3-solution, results = "hold", exercise.eval=FALSE}
+nummer_1 <- 1:100
+nummer_2 <- c(100:1)
+
+nummer_1 * nummer_2
+```
+```{r ex-vectorisiert-3-check, results = "hold", exercise.eval=FALSE}
+grade_this_code()
+```
 
 </div>
 
@@ -967,8 +1141,24 @@ sort(tage)
 <div class="uebungen">
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
-*XXX*
+*Erstelle einen Faktor aus der Variable `var_monate`. Sortiere danach die Monate innerhalb dieser Variable.*
+```{r ex-factor-1, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 7}
+# Nutze diese Variablen, um den Faktor zu erstellen
+monate <- c("Januar", "Februar", "März", "April", "Mai", "Juni",
+            "Juli", "August", "September", "Oktober", "November", "Dezember")
+var_monate <- c("Juli", "Mai", "Januar", "November")
+```
+```{r ex-factor-1-solution, results = "hold", exercise.eval=FALSE}
+monate <- c("Januar", "Februar", "März", "April", "Mai", "Juni",
+            "Juli", "August", "September", "Oktober", "November", "Dezember")
+var_monate <- c("Juli", "Mai", "Januar", "November")
 
+var_monate <- factor(var_monate, levels = monate)
+sort(var_monate)
+```
+```{r ex-factor-1-check, results = "hold", exercise.eval=FALSE}
+grade_this_code()
+```
 
 </div>
 
@@ -997,13 +1187,55 @@ matrix[ ,2] # Gesamte Spalte
 <div class="uebungen">
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
-*XXX*
+*Erstelle eine Matrix aus der Variable `farben`. Wähle eine inhaltlich sinnvolle Aufteilung für die Spalten.*
+```{r ex-matrix-1, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 5}
+farben <- c("rot", "hellrot", "blau", "dunkelblau", "grün", "hellgrün")
+```
+```{r ex-matrix-1-solution, results = "hold", exercise.eval=FALSE}
+farben <- c("rot", "hellrot", "blau", "dunkelblau", "grün", "hellgrün")
+farben <- matrix(farben, ncol = 3)
+farben
+```
+```{r ex-matrix-1-check, results = "hold", exercise.eval=FALSE}
+grade_this_code()
+```
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Wähle die zweite Spalte aus der Matrix aus.*
+```{r ex-matrix-2, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 5}
+daten <- matrix(c("Lisa", "Thorben", "Mara", "TRUE", "FALSE", "TRUE", "2", "5", "8")
+                , ncol = 3)
+```
+```{r ex-matrix-2-solution, results = "hold", exercise.eval=FALSE}
+daten <- matrix(c("Lisa", "Thorben", "Mara", "TRUE", "FALSE", "TRUE", "2", "5", "8")
+                , ncol = 3)
+daten[, 2]
+```
+```{r ex-matrix-2-check, results = "hold", exercise.eval=FALSE}
+grade_this_code()
+```
+
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Wähle die aus der ersten Spalte die dritte Zeile aus.*
+```{r ex-matrix-3, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 5}
+daten <- matrix(c("Lisa", "Thorben", "Mara", "TRUE", "FALSE", "TRUE", "2", "5", "8")
+                , ncol = 3)
+```
+```{r ex-matrix-3-solution, results = "hold", exercise.eval=FALSE}
+daten <- matrix(c("Lisa", "Thorben", "Mara", "TRUE", "FALSE", "TRUE", "2", "5", "8")
+                , ncol = 3)
+daten[3, 1]
+```
+```{r ex-matrix-3-check, results = "hold", exercise.eval=FALSE}
+grade_this_code()
+```
 
 
 </div>
 
 
-### data.frame <a href="#section-datenstrukturen"> <i class="fa-solid fa-arrow-up"></i></a>
+### data frame <a href="#section-datenstrukturen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 
 Ist das Format für den klassischen Datensatz.
@@ -1036,8 +1268,72 @@ freunde$lieblingszahlen[2] # Im Datensatz die Spalte lieblingszahlen, die zweite
 <div class="uebungen">
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
-*XXX*
+*Erstelle einen Datensatz `tiere` aus den Variablen und gebe den Datensatz aus.*
+```{r ex-df-1, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 11}
+tierart <- c("Hund", "Katze", "Maus", "Schlange", "Hund", "Hund", "Katze")
+alter <- c(12, 2, 1, 4, 6, 2, 3)
+gesund < c(TRUE, FALSE, TRUE, TRUE, FALSE, FALSE, TRUE)
 
+```
+```{r ex-df-1-solution, results = "hold", exercise.eval=FALSE}
+tierart <- c("Hund", "Katze", "Maus", "Schlange", "Hund", "Hund", "Katze")
+alter <- c(12, 2, 1, 4, 6, 2, 3)
+gesund_status <- c(TRUE, FALSE, TRUE, TRUE, FALSE, FALSE, TRUE)
+
+tiere <- data.frame(
+  tierart = tierart,
+  alter = alter,
+  gesund_status = gesund_status
+)
+tiere
+```
+```{r ex-df-1-check, results = "hold", exercise.eval=FALSE}
+grade_this_code()
+```
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Wähle die Spalte `zahl` aus (verwende dazu den Namen der Spalte).*
+```{r ex-df-2, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 10}
+data <- data.frame(
+  buchstabe = c("A", "B", "C", "D", "E", "F", "G"),
+  zahl = c(12, 2, 1, 4, 6, 2, 3),
+  verwendet = c(TRUE, FALSE, TRUE, TRUE, FALSE, FALSE, TRUE)
+)
+```
+```{r ex-df-2-solution, results = "hold", exercise.eval=FALSE}
+data <- data.frame(
+  buchstabe = c("A", "B", "C", "D", "E", "F", "G"),
+  zahl = c(12, 2, 1, 4, 6, 2, 3),
+  verwendet = c(TRUE, FALSE, TRUE, TRUE, FALSE, FALSE, TRUE)
+)
+data$zahl
+```
+```{r ex-df-2-check, results = "hold", exercise.eval=FALSE}
+grade_this_code()
+```
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Wähle die Spalte `buchstabe` aus und ersetze den Buchstaben `D` mit einem `X`.*
+```{r ex-df-3, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 10}
+data <- data.frame(
+  buchstabe = c("A", "B", "C", "D", "E", "F", "G"),
+  zahl = c(12, 2, 1, 4, 6, 2, 3),
+  verwendet = c(TRUE, FALSE, TRUE, TRUE, FALSE, FALSE, TRUE)
+)
+
+```
+```{r ex-df-3-solution, results = "hold", exercise.eval=FALSE}
+data <- data.frame(
+  buchstabe = c("A", "B", "C", "D", "E", "F", "G"),
+  zahl = c(12, 2, 1, 4, 6, 2, 3),
+  verwendet = c(TRUE, FALSE, TRUE, TRUE, FALSE, FALSE, TRUE)
+)
+
+data$buchstabe[4] <- "X"
+```
+```{r ex-df-3-check, results = "hold", exercise.eval=FALSE}
+grade_this_code()
+```
 
 </div>
 
@@ -1100,6 +1396,31 @@ liste[[2]][1,2] # im ersten Element (Datensatz) die erste Ziele und zweite Spalt
 ```{r liste-4, exercise=TRUE, results = "hold", exercise.setup = "setup-liste"}
 liste[[2]][1,] # im ersten Element (Datensatz) die erste Ziele
 ```
+
+#### Übungen
+<div class="uebungen">
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Erstelle eine Liste aus den drei Objekten und greife auf das zweite Objekt zu.*
+```{r ex-df-00, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 11}
+m <- matrix(1:12, nrow=3, ncol=4)
+df <- data.frame(namen = c("Ben", "Claus", "Lisa"),
+                 alter = c(51, 27, 38))
+"Object 3"
+```
+```{r ex-df-00-solution, results = "hold", exercise.eval=FALSE}
+m <- matrix(1:12, nrow=3, ncol=4)
+df <- data.frame(namen = c("Ben", "Claus", "Lisa"),
+                 alter = c(51, 27, 38))
+liste <- list(m,
+              df,
+              "Object 3")
+liste[[2]]
+```
+```{r ex-df-00-check, results = "hold", exercise.eval=FALSE}
+grade_this_code()
+```
+
+</div>
 
 ## Funktionen
 
@@ -2418,7 +2739,7 @@ Diese Fähigkeit hilft, Code flexibler zu schreiben.
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Schreibe den Code um, ohne die Funktionalität zu ändern. Erstelle den Datensatz direkt, ohne erst die Vektoren zu erstellen.*
-```{r ex-refactor-0, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE}
+```{r ex-refactor-0, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 15}
 # Erstellt die Vektoren (dieser Schritt soll ausgelassen werden!)
 namen <- c("Lisa", "Peter", "Klara", "Thorben")
 alter <- c(22, 21, 34, 17)
@@ -2461,7 +2782,7 @@ data
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Schreibe den Code um, ohne die Funktionalität zu ändern.*
-```{r ex-refactor-1, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE}
+```{r ex-refactor-1, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 15}
 content <- 55 
 if (content < 55) {
   print("Option 1")
@@ -2494,7 +2815,7 @@ if (content < 55) {
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Schreibe den Code um, ohne die Funktionalität zu ändern. Schreibe die while-loop in eine for-loop um.*
-```{r ex-refactor-2, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE}
+```{r ex-refactor-2, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 15}
 namen <- c("Lisa", "Peter", "Klara", "Thorben")
 length_namen <- length(namen)
 counter <- 1
@@ -2703,3 +3024,23 @@ zeichne_f(groesse = 5, breite = 3, symbol = "%", trennungszeichen = "-")
 ```
 
 </div>
+
+
+## R Chunk (freies Üben)
+
+Arbeitsbereich 1 (kurz)
+
+```{r ex-free-01, exercise=TRUE, exercise.eval=FALSE, results='hold', exercise.lines = 8}
+
+```
+
+Arbeitsbereich 2 (mittel)
+
+```{r ex-free-02, exercise=TRUE, exercise.eval=FALSE, results='hold', exercise.lines = 30}
+
+```
+
+Arbeitsbereich 3 (lang)
+```{r ex-free-03, exercise=TRUE, exercise.eval=FALSE, results='hold', exercise.lines = 60}
+
+```

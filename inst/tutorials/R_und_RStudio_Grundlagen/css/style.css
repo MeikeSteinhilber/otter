@@ -289,11 +289,19 @@ h3 code {
 /*------- Rectangle panels, RChunks --------*/
 
 .panel, pre {
-  background-color: #f2f2f2;
+  background-color: white;
   /*font-weight: bolder;*/
   font-size: 15px;
 }
 
+.uebungen .panel {
+  border-left-color: var(--blue);
+  border-left-width: 5px;
+}
+
+.uebung .btn-warning {
+
+}
 .tutorial-exercise .tutorial-exercise-input {
   margin-bottom: 1em;
   border-left-color: #CA225E;
@@ -301,7 +309,9 @@ h3 code {
 }
 
 .uebungen .tutorial-exercise .tutorial-exercise-input {
+  border-color: #e0e0e0;
   border-left-color: var(--blue);
+
 }
 
 .r {
@@ -499,7 +509,12 @@ h2.tutorialTitle,
 
 /*------- Button disabled -------*/
 .btn-primary.disabled {
-    background-color: #f2f2f2;
+    background-color: #CA225E;
+}
+
+.topicActions .btn-primary. {
+    background-color: #CA225E;
+    color: white;
 }
 
 
