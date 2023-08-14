@@ -54,7 +54,7 @@
     },
     "Matrix": {
       "Package": "Matrix",
-      "Version": "1.6-0",
+      "Version": "1.6-1",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -67,7 +67,7 @@
         "stats",
         "utils"
       ],
-      "Hash": "31262fd18481fab05c5e7258dac163ca"
+      "Hash": "cb6855ac711958ca734b75e631b2035d"
     },
     "OpenMx": {
       "Package": "OpenMx",
@@ -353,10 +353,13 @@
     },
     "cpp11": {
       "Package": "cpp11",
-      "Version": "0.4.5",
+      "Version": "0.4.6",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "f07821e9b0aada6c999d4692e22a2ea7"
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "707fae4bbf73697ec8d85f9d7076c061"
     },
     "crayon": {
       "Package": "crayon",
@@ -547,16 +550,17 @@
     },
     "ggfun": {
       "Package": "ggfun",
-      "Version": "0.1.1",
+      "Version": "0.1.2",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
+        "R",
         "ggplot2",
         "grid",
         "rlang",
         "utils"
       ],
-      "Hash": "f31174df0168499f1aa33bc7f96bfc25"
+      "Hash": "068a90b74406f3abb0647635a2696880"
     },
     "ggimage": {
       "Package": "ggimage",
@@ -582,7 +586,7 @@
     },
     "ggplot2": {
       "Package": "ggplot2",
-      "Version": "3.4.3",
+      "Version": "3.4.2",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -603,11 +607,11 @@
         "vctrs",
         "withr"
       ],
-      "Hash": "85846544c596e71f8f46483ab165da33"
+      "Hash": "3a147ee02e85a8941aad9909f1b43b7b"
     },
     "ggplotify": {
       "Package": "ggplotify",
-      "Version": "0.1.1",
+      "Version": "0.1.2",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -619,7 +623,7 @@
         "gridGraphics",
         "yulab.utils"
       ],
-      "Hash": "788dcf9b28f7bbe339338093c3654109"
+      "Hash": "1547863db3b472cf7181973acf649f1a"
     },
     "glue": {
       "Package": "glue",
@@ -990,7 +994,7 @@
     },
     "magick": {
       "Package": "magick",
-      "Version": "2.7.4",
+      "Version": "2.7.5",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -998,7 +1002,7 @@
         "curl",
         "magrittr"
       ],
-      "Hash": "92dd08195d2270e188dcac8d4b219e84"
+      "Hash": "26ff8efba0dcc7b1bc8f970df1c38cc9"
     },
     "magrittr": {
       "Package": "magrittr",
@@ -1119,7 +1123,7 @@
     },
     "nlme": {
       "Package": "nlme",
-      "Version": "3.1-162",
+      "Version": "3.1-163",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -1129,7 +1133,7 @@
         "stats",
         "utils"
       ],
-      "Hash": "0984ce8da8da9ead8643c5cbbb60f83e"
+      "Hash": "8d1938040a05566f4f7a14af4feadd6b"
     },
     "nloptr": {
       "Package": "nloptr",
@@ -1923,14 +1927,16 @@
     },
     "yulab.utils": {
       "Package": "yulab.utils",
-      "Version": "0.0.6",
+      "Version": "0.0.7",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
+        "memoise",
+        "rlang",
         "stats",
         "utils"
       ],
-      "Hash": "0d0b7cc6da5efc21f07f6b8d966a9cc1"
+      "Hash": "1894800873fd5860051969f1ad22ddd7"
     }
   }
 }
