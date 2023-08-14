@@ -42,15 +42,14 @@ navbar:
    tutorials:
     text: Tutorials
     menu:
-    - text: Beispiel
-      href: https://meike-steinhilber.shinyapps.io/tutorial_1/
-    - text: R & RStudio Grundlagen
+    - text: R & RStudio Grundlagen (Frankfurter Server)
+      href: http://otter.uni-frankfurt.de
+    - text: Entwicklung (Frankfurter Server)
+      href: http://otter-test.uni-frankfurt.de
+    - text: R & RStudio Grundlagen (Posit Server)
       href: https://meike-steinhilber.shinyapps.io/R_und_RStudio_Grundlagen/
 
    github:
     icon: fa-github
     href: https://github.com/MeikeSteinhilber/studyr
     aria-label: GitHub
-
-
-
