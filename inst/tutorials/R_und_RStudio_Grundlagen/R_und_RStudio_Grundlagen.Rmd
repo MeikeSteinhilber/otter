@@ -1428,7 +1428,7 @@ grade_this_code()
 <a href="#section-funktionen-erstellen"> <i class="fa-solid fa-arrow-down"></i> Funktionen erstellen</a><br>
 <a href="#section-hilfe-seiten"> <i class="fa-solid fa-arrow-down"></i> Hilfe Seiten</a><br>
 <a href="#section-reihenfolge-von-argumenten"> <i class="fa-solid fa-arrow-down"></i> Reihenfolge von Argumenten</a><br>
-<a href="#section-hilfreiche-funktionen"> <i class="fa-solid fa-arrow-down"></i> Hilfreiche Funktionen</a><br>
+<a href="#section-hilfreiche-funktionen-1"> <i class="fa-solid fa-arrow-down"></i> Hilfreiche Funktionen</a><br>
 
 ### Funktionen erstellen <a href="#section-funktionen"> <i class="fa-solid fa-arrow-up"></i></a>
 
@@ -1509,8 +1509,99 @@ add_numbers()
 <div class="uebungen">
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
-*XXX*
+*Schreibe eine Funktion, die zwei Zahlen addiert. Nutze dazu den bereits angegebenen Code.*
+```{r ex-functions-00, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 5}
+rechner <- function() {
+  
+}
+# Teste die Funktion
+rechner(8, 5) # Diese Zeile soll nicht verändert werden
+```
+```{r ex-functions-00-solution, results = "hold", exercise.eval=FALSE}
+rechner <- function(zahl1, zahl2) {
+  zahl1 + zahl2
+}
+rechner(8, 5)
+```
+```{r ex-functions-00-check, results = "hold", exercise.eval=FALSE}
+grade_this_code()
+```
 
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Schreibe eine Funktion, die zwei Vektoren multiplizieren.*
+```{r ex-functions-01, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 8}
+# Schreibe hier die Funktion
+
+# Teste die Funktion
+vektor_rechner(c(1,2,3), c(3,2,1)) # Diese Zeile soll nicht verändert werden
+```
+```{r ex-functions-01-solution, results = "hold", exercise.eval=FALSE}
+vektor_rechner <- function(vektor1, vektor2) {
+  vektor1 * vektor2
+}
+vektor_rechner(c(1,2,3), c(3,2,1))
+```
+```{r ex-functions-01-check, results = "hold", exercise.eval=FALSE}
+grade_this_code()
+```
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Schreibe eine Funktion, die den Mittelwert über einen Vektor berechnet und folgende Ausgabe macht: `"Mittwelwert = 5.67"`.*
+
+*(Es ist 1 Tipp hinterlegt, danach wird die Lösung angezeigt.)*
+```{r ex-functions-02, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 8}
+# Schreibe hier die Funktion
+
+# Teste die Funktion
+vektor_mittelwert(c(1,2,3, 8, 8, 12)) # Diese Zeile soll nicht verändert werden
+```
+```{r ex-functions-02-solution, results = "hold", exercise.eval=FALSE}
+# Lösung:
+vektor_mittelwert <- function(vektor1) {
+  mittelwert <- round(mean(vektor1), 2)
+  paste("Mittwelwert =", mittelwert)
+}
+vektor_mittelwert(c(1,2,3, 8, 8, 12))
+```
+```{r ex-functions-02-hint, results = "hold", exercise.eval=FALSE}
+# Tipp: Verwende die Funktionen:
+round()
+mean()
+```
+```{r ex-functions-02-check, results = "hold", exercise.eval=FALSE}
+grade_this_code()
+```
+
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Schreibe die vorhandene Funktion so um, dass der Code `taschen_rechner()` die folgende Rechnung ausführt: `1 + 2`.*
+
+*(Es ist 1 Tipp hinterlegt, danach wird die Lösung angezeigt.)*
+```{r ex-functions-03, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 8}
+taschen_rechner <- function(zahl1, zahl2, zeichen) {
+  text = glue::glue("{zahl1}{zeichen}{zahl2}")
+  eval(parse(text = text))
+}
+# Teste die Funktion
+taschen_rechner(4, 5, "+")
+taschen_rechner() # Diese Zeile soll nicht verändert werden
+```
+```{r ex-functions-03-solution, results = "hold", exercise.eval=FALSE}
+taschen_rechner <- function(zahl1 = 1, zahl2 = 2, zeichen = "+") {
+  text = glue::glue("{zahl1}{zeichen}{zahl2}")
+  eval(parse(text = text))
+}
+# Teste die Funktion
+taschen_rechner(4, 5, "+")
+taschen_rechner() # Diese Zeile soll nicht verändert werden
+```
+```{r ex-functions-03-hint, results = "hold", exercise.eval=FALSE}
+# Tipp: Definiere Default Argumente
+```
+```{r ex-functions-03-check, results = "hold", exercise.eval=FALSE}
+grade_this_code()
+```
 
 </div>
 
@@ -1560,8 +1651,48 @@ Die wichtigsten Inhalte in der Hilfe-Seite sind:
 <div class="uebungen">
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
-*XXX*
+*Öffne hier die Hilfeseiten der Funktionen, um die folgenden Quiz-Fragen zu beantworten. Probiere auch gerne Code aus, um zu verstehen, wie die Funktionen funktionieren.*
+```{r ex-help-00, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 5}
 
+```
+
+
+```{r quiz-help}
+quiz(caption = "",
+  question("Was macht die `floor()` Funktion?",
+    answer("Sie rundet eine Zahl auf."),
+    answer("Sie berechnet einen mathematischen Grenzwert."),
+    answer("Sie rundet zahlen ab", correct = TRUE),
+     random_answer_order = TRUE,
+     # allow_retry = TRUE,
+     correct = "Richtig!",
+     incorrect = "Leider falsch!",
+     submit_button = "Antwort einreichen"
+  ),
+  question("Welche Aussagen stimmen zu über die `all()` Funktion?",
+    answer("Die Funktion prüft, ob alle Argumente in einer Funktion vorhanden sind."),
+    answer("Die Funktion prüft, ob alle Werte in einem Vektor `TRUE` sind.", correct = TRUE),
+    answer("Die Funktion hat zwei Pflicht-Argumente"),
+    answer("Die Funktion hat ein Pflicht-Argument und ein Default-Argument.", correct = TRUE),
+     random_answer_order = TRUE,
+     # allow_retry = TRUE,
+     correct = "Richtig!",
+     incorrect = "Leider falsch!",
+     submit_button = "Antwort einreichen"
+  ),
+   question("Welche Aussagen stimmen zu über das `na.rm` Argument (Bsp. `all()`)?",
+    answer("Das `na.rm` Argument entfernt alle `NA` Werte in einem Vektor vor der Berechnung.", correct = TRUE),
+    answer("Das Argument ist in allen mathematischen Funktionen enthalten."),
+    answer("Das Argument ist meist auf `TRUE` gesetzt."),
+    answer("Das `na.rm` Argument ist in der log() Funktion enthalten."),
+     random_answer_order = TRUE,
+     # allow_retry = TRUE,
+     correct = "Richtig!",
+     incorrect = "Leider falsch!",
+     submit_button = "Antwort einreichen"
+  )
+)
+```
 
 </div>
 
@@ -1617,8 +1748,35 @@ mean(data, na.rm = TRUE)
 <div class="uebungen">
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
-*XXX*
+*Die Argumente werden im folgenden Code falsch übergeben. Korrigiere den Fehler.*
+```{r ex-functions-05, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 5}
+median(TRUE, c(1:8))
+```
+```{r ex-functions-05-solution, results = "hold", exercise.eval=FALSE}
+median(c(1:8), TRUE)
+```
+```{r ex-functions-05-check, results = "hold", exercise.eval=FALSE}
+grade_this_code()
+```
 
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Die Argumente werden im folgenden Code falsch übergeben. Korrigiere den Fehler.*
+```{r ex-functions-06, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 5}
+sample(1:10, NULL, TRUE, 4)
+```
+```{r ex-functions-06-solution, results = "hold", exercise.eval=FALSE}
+# Lösung 1 ----
+sample(1:10, 4, TRUE, NULL)
+
+# Lösung 2 ----
+sample(1:10, 4, TRUE)
+
+# Lösung 3 ----
+sample(x = 1:10, size = 4, replace = TRUE)
+```
+```{r ex-functions-06-check, results = "hold", exercise.eval=FALSE}
+grade_this_code()
+```
 
 </div>
 
@@ -1675,8 +1833,37 @@ cat("Hello", variable, "! How are you?")
 <div class="uebungen">
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
-*XXX*
+*Löse die Problemstellung mit einer Funktion.*
+```{r ex-functions-08, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 5}
+vektor <- c(rep(c(1:5), 4), 12, 19)
+# Gebe alle Zahlen aus, die nur einmal vorkommen im Vektor
 
+```
+```{r ex-functions-08-solution, results = "hold", exercise.eval=FALSE}
+vektor <- c(rep(c(1:5), 4), 12, 19)
+# Gebe alle Zahlen aus, die nur einmal vorkommen im Vektor
+unique(vektor)
+```
+```{r ex-functions-08-check, results = "hold", exercise.eval=FALSE}
+grade_this_code()
+```
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Löse die Problemstellung mit einer Funktion.*
+```{r ex-functions-09, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 5}
+vektor <- 1:10
+# Gebe jedes Element im Vektor 5 mal aus,
+# wobei zuerst 5 1-er und dann fünf 2-er, etc ausgegeben werden.
+```
+```{r ex-functions-09-solution, results = "hold", exercise.eval=FALSE}
+vektor <- 1:10
+# Gebe jedes Element im Vektor 5 mal aus,
+# wobei zuerst 5 1-er und dann fünf 2-er, etc ausgegeben werden.
+rep(vektor, each = 5)
+```
+```{r ex-functions-09-check, results = "hold", exercise.eval=FALSE}
+grade_this_code()
+```
 
 </div>
 
@@ -1755,8 +1942,15 @@ Tidyverse:
 #### Übungen
 <div class="uebungen">
 
-`r otter::colorize("Aufgabe:", "var(--blue)")`
-*XXX*
+  1. *Öffne RStudio auf deinem Rechner und navigiere in den Reiter "Packages". Siehe dir dort die installierten Pakete an.*
+
+  2. *Installiere das Paket `glue` auf deinem Rechner.*
+  
+  3. *Führe den Code aus, um zu testen, ob alles funktioniert: `glue::glue("Hallo Welt")`.*
+  
+  4. *Lade das Paket `glue` in einem R Skript oder über die Console.*
+  
+  5. *Führe den Code aus, um zu testen, ob alles funktioniert: `glue("Hallo Welt! :-)")`.*
 
 
 </div>
@@ -1772,6 +1966,13 @@ Tidyverse:
 <a href="#section-daten-ändern"> <i class="fa-solid fa-arrow-down"></i> Daten ändern</a><br>
 <a href="#section-daten-export"> <i class="fa-solid fa-arrow-down"></i> Daten export</a><br>
 <a href="#section-daten-import"> <i class="fa-solid fa-arrow-down"></i> Daten import</a><br>
+
+
+Die Übungen zu diesem Kapitel befinden sich sich hier:
+
+ - <a href="#section-datenstrukturen"> <i class="fa-solid fa-arrow-down"></i> Datenstrukturen: data.frame</a><br>
+ 
+ - <a href="#section-übergeordnete-übungen"> <i class="fa-solid fa-arrow-down"></i>  Übergeordnete Übungen: Übungen mit einem Datensatz</a><br>
 
 ```{r setup-data, exercise=FALSE, eval=FALSE, exercise.eval=FALSE, echo=FALSE}
 set.seed(333) # fixiere alle Zufallsprozesse
@@ -1880,14 +2081,6 @@ Im Datensatz innerhalb einer Spalte filtern
 df$sex[df$treatment_group == "treatment"]
 ```
 
-#### Übungen
-<div class="uebungen">
-
-`r otter::colorize("Aufgabe:", "var(--blue)")`
-*XXX*
-
-
-</div>
 
 ### Daten ändern <a href="#section-datenverarbeitung"> <i class="fa-solid fa-arrow-up"></i></a>
 
@@ -1911,15 +2104,6 @@ df$health_rating_sum <- df$health_rating_mental + df$health_rating_body
 df$health_rating_sum
 ```
 
-
-#### Übungen
-<div class="uebungen">
-
-`r otter::colorize("Aufgabe:", "var(--blue)")`
-*XXX*
-
-
-</div>
 
 
 ### Daten Export <a href="#section-datenverarbeitung"> <i class="fa-solid fa-arrow-up"></i></a>

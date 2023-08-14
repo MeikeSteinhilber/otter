@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "4.2.1",
+    "Version": "4.3.0",
     "Repositories": [
       {
         "Name": "CRAN",
@@ -636,8 +636,8 @@
       "Package": "gradethis",
       "Version": "0.2.14",
       "Source": "GitHub",
-      "RemoteType": "github",
       "Remotes": "rstudio/ggcheck, rstudio/learnr",
+      "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteRepo": "gradethis",
       "RemoteUsername": "rstudio",
