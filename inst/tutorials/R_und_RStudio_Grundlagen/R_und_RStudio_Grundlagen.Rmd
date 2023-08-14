@@ -2407,6 +2407,41 @@ if (condition_1) {# -> 1
 #### Übungen
 <div class="uebungen">
 
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Schreibe ein if-else-Statement, dass den ersten Satz ausgibt, wenn die Variable `tier` ein `Reptil` enthält. Der zweite Satz soll ausgegeben werden, wenn es sich nicht um ein `Reptil` handelt.*
+```{r ex-ifelse-01, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE}
+tier <- c("Reptil")
+
+print("Es handelt sich um ein Reptil.") # Satz 1
+print("Es handelt sich nicht um ein Reptil.") # satz 2
+```
+```{r ex-ifelse-01-solution, results = "hold", exercise.eval=FALSE}
+# Lösung 1 ----
+tier <- c("Reptil")
+if (tier == "Reptil") {
+  print("Es handelt sich um ein Reptil.")
+} else {
+  print("Es handelt sich nicht um ein Reptil.")
+}
+
+# Lösung 2 ----
+tier <- c("Reptil")
+if (tier == "Reptil") {
+  print("Es handelt sich um ein Reptil.")
+} else if (tier != "Reptil") {
+  print("Es handelt sich nicht um ein Reptil.")
+}
+```
+```{r ex-ifelse-01-check, results = "hold", exercise.eval=FALSE}
+# grade_result(
+#   pass_if(~identical(.result, 
+#                      matrix(c(1:33), ncol = 3))),
+#   glue_correct = "Richtig!",
+#   glue_incorrect = "Leider noch nicht ganz richtig!"
+# )
+grade_this_code()
+```
+
 `r otter::colorize("Aufgabe", "var(--blue)")`
  *Was ist der Output diese Codes? (Führe den Code erst aus, wenn du eine Lösung hast.)*
 ```{r ex-ifelse-1, exercise=TRUE, results = "hold", exercise.eval=FALSE}
@@ -2483,6 +2518,36 @@ for (position in 1:length(friends)) {
 friends_status
 ```
 
+
+#### Übungen
+<div class="uebungen">
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Schreibe eine For-loop, die den Satz `Ich mag ____.` für alle Tiere ausgibt. Nutze dazu den Code, der bereits angegeben ist.*
+```{r ex-for-01, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 6}
+tiere <- c("Hunde", "Katzen", "Vögel") # diese Zeile nicht ändern
+
+print(paste0("Ich mag ", ____, ".")) # ____ ist ein Platzhalter und muss ersetzt werden
+```
+```{r ex-for-01-solution, results = "hold", exercise.eval=FALSE}
+# Lösung 1 ----
+tiere <- c("Hunde", "Katzen", "Vögel")
+for (i in 1:length(tiere)) {
+  print(paste0("Ich mag ", tiere[i], "."))
+}
+
+# Lösung 2 ----
+tiere <- c("Hunde", "Katzen", "Vögel")
+for (i in tiere) {
+  print(paste0("Ich mag ", i, "."))
+}
+```
+```{r ex-for-01-check, results = "hold", exercise.eval=FALSE}
+grade_this_code()
+```
+
+</div>
+
 ### while-loop <a href="#section-code-flow"> <i class="fa-solid fa-arrow-up"></i></a>
 
 `r otter::colorize("Negativ-Beispiel:", "var(--red)")`
@@ -2526,8 +2591,35 @@ while (counter <= stop_criteria) {
 <div class="uebungen">
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
-*XXX*
-
+*Schreibe diese For-loop ine eine while-Loop um. Nutze dazu den Code, der bereits angegeben ist.*
+```{r ex-while-01, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 6}
+tiere <- c("Hunde", "Katzen", "Vögel")
+results <- character(3)
+for (i in 1:length(tiere)) {
+  results[i] <- paste0("Ich mag ", tiere[i], ".")
+}
+results
+```
+```{r ex-while-01-solution, results = "hold", exercise.eval=FALSE}
+tiere <- c("Hunde", "Katzen", "Vögel")
+results <- character(3)
+i = 1
+while (i <= length(tiere)) {
+    results[i] <- paste0("Ich mag ", tiere[i], ".")
+  i = i + 1
+}
+results
+```
+```{r ex-while-01-check, results = "hold", exercise.eval=FALSE}
+# grade_this_code()
+grade_result(
+  pass_if(~identical(.result,
+                     results
+                     )),
+  glue_correct = "Die Funktionalität ist gleich!",
+  glue_incorrect = "Die Funktionalität hat sich leider geändert!"
+)
+```
 
 </div>
 
@@ -2590,8 +2682,21 @@ divide_numbers(8, 0)
 <div class="uebungen">
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
-*XXX*
+*Schreibe eine Warnung, die angezeigt wird, wenn die Variable `zahl` nicht numerisch ist. Nutze dazu den Code der bereits vorhanden ist.*
+```{r ex-warning-01, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 5}
+zahl <- "5"
 
+"Zahl ist nicht numerisch!"
+```
+```{r ex-warning-01-solution, results = "hold", exercise.eval=FALSE}
+zahl <- "5"
+if (!is.numeric(zahl)){
+  warning("Zahl ist nicht numerisch!")
+}
+```
+```{r ex-warning-01-check, results = "hold", exercise.eval=FALSE}
+grade_this_code()
+```
 
 </div>
 
@@ -2720,14 +2825,14 @@ test # enthält nun die Information der letzten while-loop-Iteration
 
 
 
-#### Übungen
-<div class="uebungen">
+<!-- #### Übungen -->
+<!-- <div class="uebungen"> -->
 
-`r otter::colorize("Aufgabe:", "var(--blue)")`
-*XXX*
+<!-- `r otter::colorize("Aufgabe:", "var(--blue)")` -->
+<!-- *XXX* -->
 
 
-</div>
+<!-- </div> -->
 
 
 ## Übergeordnete Übungen
