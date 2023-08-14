@@ -23,8 +23,7 @@ Imports:
     rsconnect,
     scales,
     sprtt,
-    psych,
-    rlang
+    psych
 Suggests: 
     knitr,
     rmarkdown

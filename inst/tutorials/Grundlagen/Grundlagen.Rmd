@@ -392,10 +392,10 @@ alter <- c(18, 22, 16)
 
 ```
 ```{r ex-logical-1-hint-1, exercise.eval=FALSE}
-namen ___ "Lisa Müller"
+# namen ____ "Lisa Müller"
 ```
 ```{r ex-logical-1-hint-2, exercise.eval=FALSE}
-!=
+# !=
 ```
 ```{r ex-logical-1-solution, exercise.eval=FALSE}
 # Wer von den Personen heißt NICHT Lisa Müller?
