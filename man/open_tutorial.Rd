@@ -2,22 +2,21 @@
 % Please edit documentation in R/external_functions.R
 \name{open_tutorial}
 \alias{open_tutorial}
-\title{import rsconnect
-Open Tutorials in the otter package}
+\title{Open Tutorials in the otter package}
 \usage{
-open_tutorial(tutorial_name)
+open_tutorial(tutorial_name = "Grundlagen")
 }
 \arguments{
-\item{tutorial_name}{character string}
+\item{tutorial_name}{character string, the short name of the tutorial.
+Get the short name of the tutorials using `show_all_tutorials()`.}
 }
 \value{
-opens the tutorial
+opens the specified tutorial. Default value is set to "Grundlagen".
 }
 \description{
-import rsconnect
 Open Tutorials in the otter package
 }
 \examples{
 library(otter)
-#open_tutorial("R_und_RStudio_Grundlagen")
+#open_tutorial("Grundlagen")
 }

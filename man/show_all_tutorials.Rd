@@ -7,12 +7,12 @@
 show_all_tutorials()
 }
 \value{
-prints out on the console all available tutorials in the ottter package
+prints out (on the console) all available tutorials in the otter package
 }
 \description{
 Show all tutorials in the otter package
 }
 \examples{
 library(otter)
-#show_all_tutorials()
+show_all_tutorials()
 }

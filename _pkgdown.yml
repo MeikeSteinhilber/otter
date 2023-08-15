@@ -30,12 +30,12 @@ navbar:
     menu:
     - text: open_tutorial()
       href: reference/open_tutorial.html
+    - text: show_all_tutorials()
+      href: reference/show_all_tutorials.html
 
    articles:
-    text: Artikel
+    text: FAQ
     menu:
-    - text: Übersicht über Tutorials
-      href: articles/uebersicht.html
     - text: FAQ
       href: articles/FAQ.html
 
