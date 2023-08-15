@@ -3,8 +3,8 @@ pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   FAQ: FAQ.html
-last_built: 2023-08-15T10:12Z
+last_built: 2023-08-15T10:22Z
 urls:
-  reference: https://meikesteinhilber.github.io/studyr/reference
-  article: https://meikesteinhilber.github.io/studyr/articles
+  reference: https://meikesteinhilber.github.io/otter/reference
+  article: https://meikesteinhilber.github.io/otter/articles
 
