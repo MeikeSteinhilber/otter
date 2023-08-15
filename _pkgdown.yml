@@ -1,4 +1,4 @@
-url: https://meikesteinhilber.github.io/studyr/
+url: https://meikesteinhilber.github.io/otter/
 
 
 template:
@@ -51,5 +51,5 @@ navbar:
 
    github:
     icon: fa-github
-    href: https://github.com/MeikeSteinhilber/studyr
+    href: https://github.com/MeikeSteinhilber/otter
     aria-label: GitHub

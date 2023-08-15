@@ -12,7 +12,7 @@
 [![HitCount](https://hits.dwyl.com/MeikeSteinhilber/otter.svg)](https://hits.dwyl.com/MeikeSteinhilber/otter)
 ![](https://img.shields.io/github/commit-activity/y/MeikeSteinhilber/otter)
 [![CRAN
-status](https://www.r-pkg.org/badges/version/studyr)](https://cran.r-project.org/package=studyr)
+status](https://www.r-pkg.org/badges/version/otter)](https://cran.r-project.org/package=otter)
 
 <!-- badges: end -->
 

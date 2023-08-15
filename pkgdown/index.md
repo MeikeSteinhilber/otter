@@ -13,7 +13,7 @@ von **R**.
 [![](https://img.shields.io/github/commit-activity/y/MeikeSteinhilber/otter)]()
 <!-- [![hits](https://hits.deltapapa.io/github/MeikeSteinhilber/otter.svg)](https://hits.deltapapa.io) -->
 [![CRAN
-status](https://www.r-pkg.org/badges/version/studyr)](https://cran.r-project.org/package=studyr)
+status](https://www.r-pkg.org/badges/version/otter)](https://cran.r-project.org/package=otter)
 
 <!-- badges: end -->
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/colorize.R
 \name{colorize}
 \alias{colorize}
-\title{colorizes Text in the studyr package}
+\title{colorizes Text in the otter package}
 \usage{
 colorize(x, color)
 }
@@ -15,5 +15,5 @@ colorize(x, color)
 Coloured text
 }
 \description{
-colorizes Text in the studyr package
+colorizes Text in the otter package
 }
