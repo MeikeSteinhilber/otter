@@ -13,21 +13,21 @@ von **R**.
 [![](https://img.shields.io/github/commit-activity/y/MeikeSteinhilber/otter)]()
 <!-- [![hits](https://hits.deltapapa.io/github/MeikeSteinhilber/otter.svg)](https://hits.deltapapa.io) -->
 [![CRAN
-status](https://www.r-pkg.org/badges/version/studyr)](https://cran.r-project.org/package=studyr)
+status](https://www.r-pkg.org/badges/version/otter)](https://cran.r-project.org/package=otter)
 
 <!-- badges: end -->
 
-Hier findest du eine Reihe an Tutorials, die du zum Selbststudium
-verwenden kannst.
+Hier findest du ein Grundlagen Tutorial für R und RStudio, das du zum
+Selbststudium verwenden kannst.
 
 <br>
 
 ## Inhalte
 
-Der Reiter **Artikel**, enthält Infos wie du das R Paket `otter` und die
-Selbstlern-Tutorials am besten nutzen kannst.
+Der Reiter **FAQ**, enthält Infos wie du das R Paket `otter` und das
+Selbstlern-Tutorial am besten nutzen kannst.
 
-Über den Reiter **Tutorials**, gelangst du zu den Selbstlern-Tutorials.
+Über den Reiter **Tutorials**, gelangst du zum Tutorial.
 
 Der Reiter **Funktionen**, bietet eine Übersicht über alle Funktionen
 des R Paketes `otter`.

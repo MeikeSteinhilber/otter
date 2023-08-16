@@ -1,4 +1,4 @@
-#' colorizes Text in the studyr package
+#' colorizes Text in the otter package
 #'
 #' @param x Text
 #' @param color Colour

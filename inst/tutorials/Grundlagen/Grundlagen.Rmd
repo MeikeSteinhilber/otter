@@ -1065,11 +1065,11 @@ grade_this_code()
 *Multipliziere die zwei Vektoren miteinander.*
 ```{r ex-vectorisiert-3, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE}
 nummer_1 <- 1:100
-nummer_2 <- c(100:1)
+nummer_2 <- 100:1
 ```
 ```{r ex-vectorisiert-3-solution, results = "hold", exercise.eval=FALSE}
 nummer_1 <- 1:100
-nummer_2 <- c(100:1)
+nummer_2 <- 100:1
 
 nummer_1 * nummer_2
 ```
@@ -1969,7 +1969,7 @@ Tidyverse:
 <a href="#section-daten-import"> <i class="fa-solid fa-arrow-down"></i> Daten import</a><br>
 
 
-Die Übungen zu diesem Kapitel befinden sich sich hier:
+Die Übungen zu diesem Kapitel befinden sich hier:
 
  - <a href="#section-datenstrukturen"> <i class="fa-solid fa-arrow-down"></i> Datenstrukturen: data.frame</a><br>
  
