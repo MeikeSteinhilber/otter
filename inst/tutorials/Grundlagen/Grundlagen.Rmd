@@ -2138,17 +2138,20 @@ write.csv(df, file = "data/df.csv")
 write.csv2(df, file = "data/df.csv") 
 ```
 
-`.rds`
-```{r data-22, exercise=FALSE, exercise.eval=FALSE, results='hold', echo=TRUE}
-save(df, file = "data/df.rda") # Speichert nur den Datensatz df
-save(df, N, file = "data/df.rda") # Speichert den Datensatz df und die Variable N
-save(df, file = "data/df.RData") 
-```
-
 `.rda`
-```{r data-21, exercise=FALSE, exercise.eval=FALSE, results='hold', echo=TRUE}
+```{r data-22, exercise=FALSE, exercise.eval=FALSE, results='hold', echo=TRUE}
+# Speichert nur den Datensatz df
 save(df, file = "data/df.rda") 
 save(df, file = "data/df.RData") 
+
+# Speichert den Datensatz df und die Variable N
+save(df, N, file = "data/df.rda") 
+save(df, N, file = "data/df.RData") 
+```
+
+`.rds`
+```{r data-21, exercise=FALSE, exercise.eval=FALSE, results='hold', echo=TRUE}
+saveRDS(df, file = "data/df.rds") # Speichert nur den Datensatz df
 ```
 
 Die hier behandelten Formate sind besonders empfohlen, aber natürlich können auch andere Formate gespeichert werden.
