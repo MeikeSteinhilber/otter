@@ -37,11 +37,11 @@ Hier findest du ein Grundlagen Tutorial für R und RStudio, das du zum Selbststu
 <br>
 
 ## Inhalte
-Der Reiter **FAQ**, enthält Infos wie du das R Paket `otter` und das Selbstlern-Tutorial am besten nutzen kannst.
+Der Reiter **FAQ** enthält Infos, wie du das R Paket `otter` und das Selbstlern-Tutorial am besten nutzen kannst.
 
-Über den Reiter **Tutorials**, gelangst du zum Tutorial.
+Über den Reiter **Tutorials** gelangst du zum Selbstlern-Tutorial.
 
-Der Reiter **Funktionen**, bietet eine Übersicht über alle Funktionen des R Paketes `otter`.
+Der Reiter **Funktionen** bietet eine Übersicht über alle R Funktionen des R Paketes `otter`.
 
 <br>
 Viel Spaß beim Erkunden!

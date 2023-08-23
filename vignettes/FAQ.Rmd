@@ -24,41 +24,41 @@ options(tibble.print_min = 5, tibble.print_max = 5)
 
 ## Wie soll ich das Tutorial verwenden?
 
-Wenn du noch keine tieferen Kenntnisse in R hast, empfehlen wir dir die Kapitel und Übungen der Reihe nach zu bearbeiten.
+Wenn du noch keine tieferen Kenntnisse in R hast, empfehlen wir dir, die Kapitel und Übungen der Reihe nachzubearbeiten.
 Viele Inhalte bauen aufeinander auf und benötigen Vorwissen.
 
-Zwischen den Inhalten sind kurze Übungen und Quizzes.
-Nutze diese um dein Verständnis zu prüfen.
+Zwischen den Inhalten sind kurze Übungen und Quizze.
+Nutze diese, um dein Verständnis zu prüfen.
 Jede Übung enthält auch eine Musterlösung.
 
 Wenn du bereits gut mit R vertraut bist, kannst du natürlich zwischen den Themen springen und so deine Lücken auffüllen.
 
 
-## Werden meine Ergebnisse und Vortschritte gespeichert?
+## Werden meine Ergebnisse und Fortschritte gespeichert?
 
 Ja, deine Eingaben werden in deinem verwendeten Browser über Cookies gespeichert.
 Wenn du einen anderen Browser oder ein anderes Gerät verwendest, werden deine Eingaben nicht übertragen.
-Du kannst all deine Eingaben löschen, in dem du auf den Button "Neustart" klickst.
+Du kannst all deine Eingaben löschen, indem du auf den Button "Neustart" klickst.
 
 
 
 ## Kann ich das Tutorial auch offline nutzen?
 
-Ja das ist möglich!
-Dazu muss bereits R und RStudio auf dem eigenen Gerät installiert sein.
-Die Anleitung dazu befindet sich zu Beginn des Grundlagen Tutorials!
-Danach muss RStudio geöffnet werden und die folgenden Zeilen Code ausgeführt werden:
+Ja, das ist möglich!
+Dazu müssen bereits R und RStudio auf dem eigenen Gerät installiert sein.
+Die Anleitung dazu befindet sich zu Beginn des Grundlagen-Tutorials!
+Danach muss RStudio geöffnet und die folgenden Zeilen Code ausgeführt werden:
 
 ```{r, echo=TRUE, eval=FALSE}
 # Installiere das R Paket remotes, dies muss nur einmal auf einem Gerät getan werden
 install.packages("remotes")
 # Installiere Otter, dies muss nur einmal auf einem Gerät getan werden
 remotes::install_github("MeikeSteinhilber/otter")
-# lade Otter
+# Lade Otter
 library(otter)
-# zeige alle vorhandenen Tutorials
+# Zeige alle vorhandenen Tutorials
 otter::show_all_tutorials()
-# öffne ein Tutorial (dies kann ein paar Sekunden dauern)
+# Öffne ein Tutorial (dies kann ein paar Sekunden dauern)
 otter::open_tutorial("Grundlagen")
 ```
 
