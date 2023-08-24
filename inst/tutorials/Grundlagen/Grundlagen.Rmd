@@ -295,7 +295,8 @@ Gebe dazu die Berechnung in den R Code Bereich ein und klicke auf "Code ausführ
 ```{r ex-r-vs-tutorial-check, results = "hold", exercise.eval=FALSE}
 grade_result(
   pass_if(~identical(.result, 84 * 15)),
-  glue_correct = "Richtig!"
+  glue_correct = "Richtig!",
+  glue_incorrect = "Leider falsch!"
 )
 ```
 
