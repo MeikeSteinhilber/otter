@@ -78,7 +78,7 @@ gradethis::gradethis_setup(
   )
 tutorial_options(exercise.reveal_solution = TRUE,
                  exercise.blanks = "___",
-                 exercise.eval = TRUE)
+                 exercise.eval = FALSE)
 options(
   # gradethis_glue_correct = "{ random_praise() } { .message } { .correct }",
   gradethis_glue_correct = "{ .message } { .correct }",  
@@ -274,7 +274,7 @@ So sieht derselbe R Code in unserem Tutorial-Format aus:
 <div class="uebungen">
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
- *Klicke auf den Button "Run Code" und vergleiche die Ausgabe mit den obrigen Bildern*.
+ *Klicke auf den Button "Code ausführen" und vergleiche die Ausgabe mit den obrigen Bildern*.
 ```{r r-vs-tutorial, exercise=TRUE, results = "hold", exercise.eval=FALSE}
 5*5
 
