@@ -638,24 +638,27 @@ length(integer(0))
 length(double(0))
 ```
 
-Beispiele für die Erzeugung von `NA`
-```{r na-3, exercise=TRUE, results = "hold"}
-NA == "test"
-NA == 5
-NaN == 5
-```
+Bei Berechnungen oder anderen Operationen kann es leicht passieren, dass sich fehlende Werte einschleichen.
 
-Beispiele für die Erzeugung von `NaN`
+Beispiele für die Erzeugung von `NaN` durch eine Rechenoperation:
 ```{r na-4, exercise=TRUE, results = "hold"}
 0/0
 ```
 
-Beispiele für die Erzeugung von `logical(0)`
-```{r na-5, exercise=TRUE, results = "hold"}
-NULL == "test"
-NULL == 5
-integer(0) == 5
+`NA` tritt meistens auf, wenn ein Datensatz oder eine Variable einen fehlenden Wert enthält.
+Es ist üblich einen solchen fehlende Information mit `NA` zu speichern.
+
+```{r na-3, exercise=TRUE, results = "hold"}
+alter <- c(21, 18, NA, 33, 67, NA)
 ```
+
+<!-- Beispiele für die Erzeugung von `logical(0)` -->
+<!-- ```{r na-5, exercise=TRUE, results = "hold"} -->
+<!-- variable <- NULL # diese Variable wurde z.B. durch eine vorherige Operation zu NULL -->
+<!-- # logische Vergleiche werden nun nachfolgend zu logical(0) -->
+<!-- variable == "test" -->
+<!-- variable == 5 -->
+<!-- ``` -->
 
 ### Infektiöse fehlende Werte <a href="#section-datentypen"> <i class="fa-solid fa-arrow-up"></i></a>
 
@@ -664,19 +667,15 @@ Fehlende Werte wie `NaN` sind manchmal infektiös!
 
 Bei Rechenoperationen führt z.B. ein `NaN` dazu, das das Ergebnis auch ein fehlender Wert ist.
 
-```{r na-6, exercise=TRUE, results = "hold"}
-# Erzeugt NaN
-10 * NaN
-# Erzeugt NA
-NaN == NaN
-NaN < 5
-NaN & TRUE
-```
+```{r na-6.0, exercise=TRUE, results = "hold"}
+# Eine Variable wird absichtlich oder unabsichtlich zu NaN
+variable <- NaN
 
-Dies gilt jedoch nicht für `|` (oder) Operationen.
+# Weitere Berechnungen führen auch dazu, dass das Ergebnis zu einem fehlenden Wert wird
+variable * 10
 
-```{r na-7, exercise=TRUE, results = "hold"}
-NaN | TRUE
+# Auch eine logischer Vergleich mit NaN führt hier zu einem fehlenden Wert!
+variable == NaN
 ```
 
 **`NaN` kann nicht mit `==` geprüft werden!** Es muss mit `is.na()` geprüft werden.
@@ -687,6 +686,12 @@ variable == NaN # -> erzeugt NA
 is.na(variable) #- > gibt einen logischen Wert aus
 ```
 
+Nur der  `|` (oder) Operationen kann auch einen fehlenden Wert bearbeiten, ohne dass daraus ein fehlender Wert wird.
+
+```{r na-7, exercise=TRUE, results = "hold"}
+variable <- NaN
+variable | TRUE
+```
 
 #### Übungen
 <div class="uebungen">
