@@ -78,7 +78,7 @@ gradethis::gradethis_setup(
   )
 tutorial_options(exercise.reveal_solution = TRUE,
                  exercise.blanks = "___",
-                 exercise.eval = TRUE)
+                 exercise.eval = FALSE)
 options(
   # gradethis_glue_correct = "{ random_praise() } { .message } { .correct }",
   gradethis_glue_correct = "{ .message } { .correct }",  
@@ -140,7 +140,7 @@ blue <- "#00c4e6"
 RStudio ist eine sogenannte *integrated development environment* (IDE), also eine Entwicklungsumgebung für die Programmiersprache R.
 Grundsätzlich sind auch andere IDEs möglich, wir werden in diesem Tutorial jedoch immer davon ausgehen, dass RStudio verwendet wird.
 
-Nach dem RStudio geöffnet wird, sieht es so aus:
+Nachdem RStudio geöffnet wird, sieht es so aus:
 
 ![](images/RStudio_fresh_start.png){.absolute .images-shadow left="100%" width="80%"}
 
@@ -153,7 +153,7 @@ Wir sehen aktuell 3 separierte Bereiche bzw. Fenster.
 ![](images/console.png){.absolute .images-shadow left="100%" width="80%"}
 
 In der *Console* können R Befehle direkt ausgeführt werden.
-Dies ist praktisch für kleine Taschenrechner Befehle oder kleine Tests.
+Dies ist praktisch für kleine Taschenrechner-Befehle oder kleine Tests.
 Der Nachteil ist jedoch, dass die R Befehle nicht gespeichert werden können.
 Dafür wird ein R Skript benötigt.
 
@@ -173,7 +173,7 @@ Wenn wir jedoch Variablen speichern oder Datensätze einladen, werden diese Obje
 
 ![](images/files.png){.absolute .images-shadow left="100%" width="80%"}
 
-Je nachdem wo die *working directory* gesetzt ist, werden hier unterschiedliche Dokumente und Ordner angezeigt.
+Je nachdem, wo die *working directory* gesetzt ist, werden hier unterschiedliche Dokumente und Ordner angezeigt.
 
 ### R Skripte <a href="#section-rstudio-einstieg"> <i class="fa-solid fa-arrow-up"></i></a>
 
@@ -217,7 +217,7 @@ Wenn man einen Kommentar schreiben möchte, muss man in jeder Zeile eine `#` dav
 
 ![](images/script1.png){.absolute .images-shadow left="100%" width="80%"}
 
-Code wird ausgeführt in dem der gewünschte Bereich markiert wird und dann auf den *Run*-Button geklickt wird. Es kann hier der gesamte Code markiert werden, aber auch einzelne Zeilen oder sogar nur einzelne Befehle.
+Code wird ausgeführt, indem der gewünschte Bereich markiert und dann auf den *Run*-Button geklickt wird. Es kann hier der gesamte Code markiert werden, aber auch einzelne Zeilen oder sogar nur einzelne Befehle.
 
 ![](images/script2.png){.absolute .images-shadow left="100%" width="80%"}
 
@@ -226,7 +226,7 @@ Die Tastenkombination für *Run* ist unter Windows `Str + Enter` und unter macOS
 ### Neues R Skript öffnen <a href="#section-r-skript"> <i class="fa-solid fa-arrow-up"></i></a>
 
 
-Ein neues leeres R Skript wir über diesen Button geöffnet:
+Ein neues, leeres R Skript wird über diesen Button geöffnet:
 
 ![](images/button-rscript-open.png){.absolute .images-shadow left="100%" width="80%"}
 
@@ -234,7 +234,7 @@ Man erhält eine große Anzahl an möglichen Formaten, unter anderem auch ein R 
 
 ![](images/button-rscript-open2.png){.absolute .images-shadow left="100%" width="20%"}
 
-Das neu geöffnete R Skript sieht nun so aus und kann direkt abgespeichert werden  mit dem Disketten-Symbol.
+Das neu geöffnete R Skript sieht nun so aus und kann direkt mit dem Disketten-Symbol abgespeichert werden.
 
 ![](images/empty-rscript-open.png){.absolute .images-shadow left="100%" width="80%"}
 
@@ -263,18 +263,18 @@ Das neu geöffnete R Skript sieht nun so aus und kann direkt abgespeichert werde
 
 Die `otter` Tutorials sind alle interaktiv gestaltet.
 Damit wir dir Feedback geben können und du nicht immer zwischen RStudio und unserer Website wechseln musst, sind R-Bausteine eingebaut.
-Siehe dir die folgenden Bilder und Aufgaben an, um zu verstehen wie in unseren Tutorials R eingebaut ist.
+Siehe dir die folgenden Bilder und Aufgaben an, um zu verstehen, wie in unseren Tutorials R eingebaut ist.
 
 ![](images/r-vs-tutorial.png){.absolute left="100%" width="80%"}
 
 
 #### Übungen
-So sieht derselbe R Code in unserem Tutorial Format aus:
+So sieht derselbe R Code in unserem Tutorial-Format aus:
 
 <div class="uebungen">
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
- *Klicke auf den Button "Run Code" und vergleiche die Ausgabe mit den obrigen Bildern*.
+ *Klicke auf den Button "Code ausführen" und vergleiche die Ausgabe mit den obrigen Bildern*.
 ```{r r-vs-tutorial, exercise=TRUE, results = "hold", exercise.eval=FALSE}
 5*5
 
@@ -295,7 +295,8 @@ Gebe dazu die Berechnung in den R Code Bereich ein und klicke auf "Code ausführ
 ```{r ex-r-vs-tutorial-check, results = "hold", exercise.eval=FALSE}
 grade_result(
   pass_if(~identical(.result, 84 * 15)),
-  glue_correct = "Richtig!"
+  glue_correct = "Richtig!",
+  glue_incorrect = "Leider falsch!"
 )
 ```
 
@@ -324,7 +325,7 @@ grade_result(
 ### Logical <a href="#section-datentypen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 
-Werte:   `TRUE` (entwpricht 1) und `FALSE` (entspricht 0)
+Werte:   `TRUE` (entspricht 1) und `FALSE` (entspricht 0)
 
 Kann aufsummiert werden:
 
@@ -356,7 +357,7 @@ __Logische Operatoren__
 
 <!-- : Logische Operatoren -->
 
-Mit Logischen Operatoren können auf Objekte (Variablen, Vektoren, Datensätze, ...) angewandt werden.
+Mit logischen Operatoren können logische Prüfungen auf Objekte (Variablen, Vektoren, Datensätze, ...) angewandt werden.
 Als Ergebnis wird immer der Datentyp `logical` ausgegeben.
 
 ```{r logical-3, exercise=TRUE, results = "hold"}
@@ -432,14 +433,14 @@ grade_this({
 ### Integer <a href="#section-datentypen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 
-`integer`-zahlen sind Ganzezahlen in R.
-Sie sind platzsparender als `double` Zahlen, da Kommas ausgeschlossen sind.
-R geht zuerst immer davon aus, dass es sich um `double` Zahlen handelt, somit müssen `integer`-Zahlen explizit definiert werden.
+`integer`-Zahlen sind Ganzzahlen in R.
+Sie sind platzsparender als `double`-Zahlen, da Kommas ausgeschlossen sind.
+R geht zuerst immer davon aus, dass es sich um `double`-Zahlen handelt, somit müssen `integer`-Zahlen explizit definiert werden.
 
 Hier gibt es zwei Möglichkeiten:
 
 -   L muss direkt dahinter gesetzt werden, z.B. `2L`
--   `:` ermöglich schnell eine Folge an `integer` Zahlen zu generieren, z.B. `1:3` erzeugt die Zahlen von 1 bis 3 in einzer Schritten
+-   `:` ermöglicht schnell eine Folge an `integer`-Zahlen zu generieren, z. B. `1:3` erzeugt die Zahlen von 1 bis 3 in Einer-Schritten
 
 ```{r integers-1, exercise=TRUE, results = "hold"}
 1L
@@ -458,7 +459,7 @@ is.integer(1L)
 
 
 
-`double`-zahlen sind sogenannte Gleitkommazahlen.
+`double`-Zahlen sind sogenannte Gleitkommazahlen.
 Diese Zahlentypen werden für normale Berechnungen verwendet
 
 -   Kommazahlen
@@ -502,7 +503,7 @@ grade_result(
 
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
-*Welche Datentyp hat die Zahl `78`? Nutze zur Beantwortung der Frage eine Funktion.*
+*Welcher Datentyp hat die Zahl `78`? Nutze zur Beantwortung der Frage eine Funktion.*
 ```{r ex-int-02, exercise=TRUE, results = "hold"}
 
 ```
@@ -543,7 +544,7 @@ grade_result(
 ### Character <a href="#section-datentypen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 
-Text oder Symbole oder auch Farben, werden in Datentyp `character` gespeichert.
+Text, Symbole oder auch Farben werden im Datentyp `character` gespeichert.
 
 Text muss in `""` gesetzt werden.
 
@@ -552,7 +553,7 @@ Dies ist ein Beispiel für Text.
 "Hallo Welt"
 ```
 
-Text wird häufig als Funktionsargument verwendet weil hier auch alle Zeichen abgebildet werden können, z.B. um Symbole anzuzeigen.
+Text wird häufig als Funktionsargument verwendet, weil hier auch alle Zeichen abgebildet werden können, z. B. um Symbole anzuzeigen.
 (Die Icons stammen von [fontawesome](https://fontawesome.com/search?o=r&m=free).)
 ```{r character-2, exercise=TRUE, results = "hold"}
 shiny::icon("rocket")
@@ -609,16 +610,16 @@ grade_result(
 
 ### Viel Nichts in R <a href="#section-datentypen"> <i class="fa-solid fa-arrow-up"></i></a>
 
-In R gibt es viele Möglichkeit, um auszudrücken, dass etwas nicht vorhanden ist.
+In R gibt es viele Möglichkeiten, um auszudrücken, dass etwas nicht vorhanden ist.
 Alle Formen von "Nichts" haben eine leicht andere Bedeutung und werden in unterschiedlichen Fällen verwendet oder produziert.
 
 Hier eine (nicht vollständige) Übersicht:
 
-- `NaN`: *Not a Number* (Länge ist 1). Wir verwendet bei invaliden Rechenoperationen.
+- `NaN`: *Not a Number* (Länge ist 1). Wird verwendet bei invaliden Rechenoperationen.
 
 - `NA`: *Not Available* (Länge ist 1). Wird klassisch für fehlende Werte verwendet.
 
-- `NULL`: Repräsentiert das Null-Objekt in R (Länge ist Null). Wird z.B. in Funktionen verwendet für default Argumente.
+- `NULL`: Repräsentiert das Null-Objekt in R (Länge ist Null). Wird z. B. in Funktionen verwendet für default Argumente.
 
 - `logical(0)`: Ein `logical`-Wert der Länge Null.
 
@@ -665,7 +666,7 @@ alter <- c(21, 18, NA, 33, 67, NA)
 
 Fehlende Werte wie `NaN` sind manchmal infektiös!
 
-Bei Rechenoperationen führt z.B. ein `NaN` dazu, das das Ergebnis auch ein fehlender Wert ist.
+Bei Rechenoperationen führt z. B. ein `NaN` dazu, dass das Ergebnis auch ein fehlender Wert ist.
 
 ```{r na-6.0, exercise=TRUE, results = "hold"}
 # Eine Variable wird absichtlich oder unabsichtlich zu NaN
@@ -718,7 +719,8 @@ quiz(caption = "",
     answer("3", correct = TRUE),
     answer("Es gibt keine sinnvolle Antwort auf diese Frage."),
      random_answer_order = TRUE,
-     # allow_retry = TRUE,
+     allow_retry = TRUE,
+     try_again = "Leider falsch!",
      correct = "Richtig!",
      incorrect = "Leider falsch!",
      submit_button = "Antwort einreichen"
@@ -729,7 +731,8 @@ quiz(caption = "",
     answer("TRUE"),
     answer("Es gibt einen fehlenden Wert aus.", correct = TRUE),
      random_answer_order = TRUE,
-     # allow_retry = TRUE,
+     allow_retry = TRUE,
+     try_again = "Leider falsch!",
      correct = "Richtig!",
      incorrect = "Leider falsch!",
      submit_button = "Antwort einreichen"
@@ -742,7 +745,7 @@ quiz(caption = "",
 ### Hilfreiche Funktionen <a href="#section-datentypen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 
-Erstellen Dummy Variablen eines bestimmten Datentyps:
+Erstellen von "Platzhalter-Variablen" eines bestimmten Datentyps:
 
 ```{r data-functions1, exercise=TRUE, results = "hold"}
 integer(5)
@@ -794,7 +797,8 @@ quiz(caption = "",
     answer("integer"),
     answer("character", correct = TRUE),
      random_answer_order = TRUE,
-     # allow_retry = TRUE,
+     allow_retry = TRUE,
+     try_again = "Leider falsch!",
      correct = "Richtig!",
      incorrect = "Leider falsch!",
      submit_button = "Antwort einreichen"
@@ -806,7 +810,8 @@ quiz(caption = "",
     answer("Mit einem I, z.B. `3I`"),
     answer("Mit dem Eintippen der Zahl `3`"),
      random_answer_order = TRUE,
-     # allow_retry = TRUE,
+     allow_retry = TRUE,
+     try_again = "Leider falsch!",
      correct = "Richtig!",
      incorrect = "Leider falsch!",
      submit_button = "Antwort einreichen"
@@ -817,7 +822,8 @@ quiz(caption = "",
     answer("`double(3)` erstellt die Zahl 3 im Datentyp double"),
     answer("Man kann 5 Nullen mit `integer(5)` erstellen", correct = TRUE),
      random_answer_order = TRUE,
-     # allow_retry = TRUE,
+     allow_retry = TRUE,
+     try_again = "Leider falsch!",
      correct = "Richtig!",
      incorrect = "Leider falsch!",
      submit_button = "Antwort einreichen"
@@ -843,12 +849,12 @@ quiz(caption = "",
 ### Variablen <a href="#section-datenstrukturen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 
-Variablen sind Kontainer für Daten.
+Variablen sind Container für Daten.
 Sie zeigen auf ein Objekt im Speicher.
 Sie müssen *ausgeführt* werden, um erstellt und genutzt werden zu können.
 Nach Erstellung taucht die Variable im *Environment* auf.
 
-Eine Variable kann verschiedene Inhalte enthalten, z.B eine Zahl, Buchstaben, Matrizen oder Listen.
+Eine Variable kann verschiedene Inhalte enthalten, z. B eine Zahl, Buchstaben, Matrizen oder Listen.
 
 Der Inhalt einer Variable kann auf die *Console* geschrieben werden, wenn der Variablenname ausgeführt wird.
 
@@ -862,12 +868,13 @@ weiblich
 lieblingszahl
 ```
 
-In RStudio ist nach dem Ausführen dieses Codes im *Environment* folgendes zu sehen:
+In RStudio ist nach dem Ausführen dieses Codes im *Environment* Folgendes zu sehen:
 
 ![](images/env_example.png){.absolute width="500"}
 
-Variablen können mit Operatoren Inhalte zugewiesen werden. In R gibt es hierfür zwei Zuweisungsoperatoren: `<-` und `=`.
-Wobei es als guter Stil gilt einheitlich `<-` zu verwenden.
+Mit Operatoren können Variablen Inhalte zugewiesen werden.
+In R gibt es hierfür zwei Zuweisungsoperatoren: `<-` und `=`.
+Wobei es als guter Stil gilt, einheitlich `<-` zu verwenden.
 
 
 ```{r variable-2, exercise=TRUE, results = "hold"}
@@ -941,7 +948,7 @@ Atomare Vektoren können mehrere Informationen desselben Datentyps enthalten.
 
 -   Werden mit `c()` erstellt (c = combine)
 -   *Skalare*: Vektoren mit nur einer Position
--   „klassische Vektoren": Vektoren mit mehr als einer Position
+-   „Klassische Vektoren": Vektoren mit mehr als einer Position
 -   Zugriff erfolgt mit Klammern `[]` und Nummer der Position oder einem Vektor mit `TRUE` und `FALSE` Werten.
 
 `r otter::colorize("Beispiel:", "var(--red)")`
@@ -1087,7 +1094,7 @@ grade_this_code()
 ### Faktoren <a href="#section-datenstrukturen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 
-Faktoren repräsentieren kategoriale Daten mit endlichen Ausprägungen, z.B. Tage, Monate im Jahr oder Geschlecht.
+Faktoren repräsentieren kategoriale Daten mit endlichen Ausprägungen, z. B. Tage, Monate im Jahr oder Geschlecht.
 Damit mit diesen Daten gut gerechnet werden kann in R, werden sie mit Faktoren abgebildet.
 
 Dadurch können kategoriale Daten geordnet werden (hilfreich bei Tagen oder Monaten) oder auch in Zahlen kodierte Daten können inhaltlich sinnvoll abgebildet werden (hilfreich für statistische Auswertungen und Grafiken).
@@ -1174,9 +1181,12 @@ grade_this_code()
 
 
 Sind Tabellen, die aus Vektoren gleicher Länge bestehen.
+
 -   Können nur **einen Datentyp** enthalten, z.B. `numeric`
+
 -   R Befehl: `matrix()`
--   Zugriff erfolgt mit `[,]` wobei die Positionen für `[Zeile,Spalte]` stehen als erst Zeile, dann Spalte.
+
+-   Zugriff erfolgt mit `[,]`, wobei die Positionen für `[Zeile,Spalte]` stehen.
 
 `r otter::colorize("Beispiel:", "var(--red)")`
 Matrix Erstellung und Zugriff
@@ -1223,7 +1233,7 @@ grade_this_code()
 
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
-*Wähle die aus der ersten Spalte die dritte Zeile aus.*
+*Wähle aus der ersten Spalte die dritte Zeile aus.*
 ```{r ex-matrix-3, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 5}
 daten <- matrix(c("Lisa", "Thorben", "Mara", "TRUE", "FALSE", "TRUE", "2", "5", "8")
                 , ncol = 3)
@@ -1244,7 +1254,7 @@ grade_this_code()
 ### data frame <a href="#section-datenstrukturen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 
-Ist das Format für den klassischen Datensatz.
+`data.frame` ist das Format für den klassischen Datensatz.
 
 -   Besteht aus Spalten gleicher Länge
 -   Spalten können **verschiedene Datentypen** haben.
@@ -1389,7 +1399,7 @@ liste
 Listen Zugriff
 
 Bei Listen verwendet man im Allgemeinen `[[]]`, um ein einzelnes Element auszuwählen, während `[]` eine Liste der ausgewählten Elemente zurückgibt.
-Je nachdem um was für ein Objekt es sich handelt in der Liste und wie darauf zugegriffen werden soll, müssen somit einfache oder doppelte eckige Klammern verwendet werden.
+Je nachdem, um was für ein Objekt es sich in der Liste handelt und wie darauf zugegriffen werden soll, müssen somit einfache oder doppelte eckige Klammern verwendet werden.
 
 ```{r liste-2, exercise=TRUE, results = "hold", exercise.setup = "setup-liste"}
 liste[[1]] # erstes Element der Liste
@@ -1438,11 +1448,11 @@ grade_this_code()
 
 ### Funktionen erstellen <a href="#section-funktionen"> <i class="fa-solid fa-arrow-up"></i></a>
 
-Funktionen sind elegante Möglichkeiten Code Abschnitte zu bündeln, zu strukturieren und wiederzuverwenden.
-Eine Funktion tun irgendetwas mit Daten, Dokumenten, Argumenten etc.
+Funktionen sind elegante Möglichkeiten, um Code-Abschnitte zu bündeln, zu strukturieren und wiederzuverwenden.
+Eine Funktion tut irgendetwas mit Daten, Dokumenten, Argumenten etc.
 Sie können sehr klein, aber auch sehr groß und komplex sein.
 
-`double()` oder `length()` sind z.B. Funktion, die in base R vorkommen.
+`double()` oder `length()` sind z. B. Funktionen, die in Base-R vorkommen.
 
 -   Eine Funktion ist in 3 Teile strukturiert:
     -   Argumente
@@ -1535,7 +1545,7 @@ grade_this_code()
 
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
-*Schreibe eine Funktion, die zwei Vektoren multiplizieren.*
+*Schreibe eine Funktion, die zwei Vektoren multipliziert.*
 ```{r ex-functions-01, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 8}
 # Schreibe hier die Funktion
 
@@ -1628,18 +1638,18 @@ Die Hilfe Seite öffnet sich mit einem `?` vor dem Funktionsnamen, z.B. `?mean`.
 ```
 </div>
 
-Die Hilfe sollte immer verwendet werden bevor man eine neue Funktion verwendet, um sich die Argumente und Funktionsweise anzuschauen.
-Häufig werden am Ende auch Beispiele angegeben, die zeigen wie die Funktion angewandt werden kann.
+Die Hilfe sollte immer verwendet werden, bevor man eine neue Funktion verwendet, um sich die Argumente und die Funktionsweise anzuschauen.
+Häufig werden am Ende auch Beispiele angegeben, die zeigen, wie die Funktion angewandt werden kann.
 
 Die wichtigsten Inhalte in der Hilfe-Seite sind:
 
--   **Description**: Eine kurze Beschreibung was die Funktion tut.
+-   **Description**: Eine kurze Beschreibung, was die Funktion tut.
 
 -   **Usage**: Hier ist die Funktion mit den Pflicht-Argumenten und Default-Werten abgebildet (farbig markiert im Screenshot).
 
 -   **Arguments**: Eine Liste mit Erklärung der Funktions-Argumente
 
--   **Value**: Gibt an was die Funktion ausgibt
+-   **Value**: Gibt an, was die Funktion ausgibt
 
 Übersicht über Argumente
 
@@ -1647,7 +1657,7 @@ Die wichtigsten Inhalte in der Hilfe-Seite sind:
 
 -   **Optionale-Argumente** werden unter *Usage* angegeben und enden mit `= NULL`. Diese Argumente sind optional und es ist kein Default-Wert hinterlegt.
 
--   **Default-Werte**: alle Argumente die ein ein `=` mit Inhalt dahinter angezeigt haben unter *Usage*, z.B. `trim = 0`.
+-   **Default-Werte**: alle Argumente, die unter *Usage* ein `=` mit Inhalt dahinter angezeigt haben, z.B. `trim = 0`.
 
 ![](images/help_mean_long.png){height="600"}
 
@@ -1668,9 +1678,10 @@ quiz(caption = "",
   question("Was macht die `floor()` Funktion?",
     answer("Sie rundet eine Zahl auf."),
     answer("Sie berechnet einen mathematischen Grenzwert."),
-    answer("Sie rundet zahlen ab", correct = TRUE),
+    answer("Sie rundet Zahlen ab.", correct = TRUE),
      random_answer_order = TRUE,
-     # allow_retry = TRUE,
+     allow_retry = TRUE,
+     try_again = "Leider falsch!",
      correct = "Richtig!",
      incorrect = "Leider falsch!",
      submit_button = "Antwort einreichen"
@@ -1681,7 +1692,8 @@ quiz(caption = "",
     answer("Die Funktion hat zwei Pflicht-Argumente"),
     answer("Die Funktion hat ein Pflicht-Argument und ein Default-Argument.", correct = TRUE),
      random_answer_order = TRUE,
-     # allow_retry = TRUE,
+     allow_retry = TRUE,
+     try_again = "Leider falsch!",
      correct = "Richtig!",
      incorrect = "Leider falsch!",
      submit_button = "Antwort einreichen"
@@ -1692,7 +1704,8 @@ quiz(caption = "",
     answer("Das Argument ist meist auf `TRUE` gesetzt."),
     answer("Das `na.rm` Argument ist in der log() Funktion enthalten."),
      random_answer_order = TRUE,
-     # allow_retry = TRUE,
+     allow_retry = TRUE,
+     try_again = "Leider falsch!",
      correct = "Richtig!",
      incorrect = "Leider falsch!",
      submit_button = "Antwort einreichen"
@@ -1709,7 +1722,7 @@ Die Hilfe-Seite einer Funktion zeigt unter *Usage* in welcher Reihenfolge die Ar
 
 Bei der `mean` Funktion muss diese Reihenfolge angegeben werden: `x, trim, na.rm`. 
 
-Diese Reihenfolge kann nur geändert werden, wenn die Argumente benannt werden z.B. `trim = 0.1, x = 1:20, na.rm = TRUE`.
+Diese Reihenfolge kann nur geändert werden, wenn die Argumente benannt werden, z. B. `trim = 0.1, x = 1:20, na.rm = TRUE`.
 
 Wenn die Argumente nicht benannt werden, muss die Reihenfolge zwingend eingehalten werden!
 
@@ -1875,7 +1888,7 @@ grade_this_code()
 
 ## R Pakete
 
-Base R bietet grundlegende Funktionen z.B. `mean()`.
+Base-R bietet grundlegende Funktionen, z. B. `mean()`.
 R Pakete erweitern dieses Angebot.
 R Pakete sind damit Sammlungen an Funktionen.
 
@@ -1906,7 +1919,7 @@ sprtt::seq_anova(y ~ x, f = 0.4, data = data, verbose = FALSE)
 ```
 
 Noch angenehmer ist jedoch die Nutzung, wenn das Paket geladen wird.
-Dadurch werden alle Funktionen in den aktuellen Namensraum geladen und Funktionen können ohne den Prefix genutzt werden.
+Dadurch werden alle Funktionen in den aktuellen Namensraum geladen und Funktionen können ohne den Präfix genutzt werden.
 
 `r otter::colorize("Beispiel:", "var(--red)")`
 Paket laden und nutzen
@@ -1927,8 +1940,8 @@ seq_anova(y ~ x, f = 0.4, data = data, verbose = FALSE)
 Allgemein:
 
 -   glue: Formatiert strings (Text)
--   dplyr: Hilft Daten zu bearbeiten (<https://dplyr.tidyverse.org/>)
--   ggplot2: Hilft Grafiken zu erstellen (<https://r-graph-gallery.com/index.html>)
+-   dplyr: Hilft, Daten zu bearbeiten (<https://dplyr.tidyverse.org/>)
+-   ggplot2: Hilft, Grafiken zu erstellen (<https://r-graph-gallery.com/index.html>)
 -   ...
 
 Statistische Auswertungen:
@@ -1939,7 +1952,7 @@ Statistische Auswertungen:
 
 Tidyverse:
 
--   bietet eine Sammlung von Alternativen zu base R Funktionen.
+-   bietet eine Sammlung von Alternativen zu Base-R Funktionen.
 -   Dazu gehören auch dplyr und ggplot2.
 -   Wird nicht weiter in diesem Tutorial behandelt.
 -    <https://www.tidyverse.org/>
@@ -2116,9 +2129,9 @@ df$health_rating_sum
 
 Jeder Datensatz (auch jede Variable) kann in verschiedene Dateiformate exportiert werden.
 
-Wenn Dateien für andere zugänglich gemacht werden sollen ist `.csv` zu empfehlen, da es ein allgemeingängiges Format ist und von verschiedenen anderen Programmen auch gut eingelesen werden kann.
+Wenn Dateien für andere zugänglich gemacht werden sollen, ist `.csv` zu empfehlen, da es ein allgemein gängiges Format ist und von verschiedenen anderen Programmen auch gut eingelesen werden kann.
 
-R hat auch zwei R spezifische Formate `.rda` bzw `.RData` und `.rds`.
+R hat auch zwei R spezifische Formate, `.rda` bzw `.RData` und `.rds`.
 Diese Formate sind zu empfehlen, wenn nur innerhalb von R die Daten benötigt werden.
 Die R Formate sind deutlich effizienter und platzsparender als `.csv`.
 
@@ -2143,17 +2156,20 @@ write.csv(df, file = "data/df.csv")
 write.csv2(df, file = "data/df.csv") 
 ```
 
-`.rds`
-```{r data-22, exercise=FALSE, exercise.eval=FALSE, results='hold', echo=TRUE}
-save(df, file = "data/df.rda") # Speichert nur den Datensatz df
-save(df, N, file = "data/df.rda") # Speichert den Datensatz df und die Variable N
-save(df, file = "data/df.RData") 
-```
-
 `.rda`
-```{r data-21, exercise=FALSE, exercise.eval=FALSE, results='hold', echo=TRUE}
+```{r data-22, exercise=FALSE, exercise.eval=FALSE, results='hold', echo=TRUE}
+# Speichert nur den Datensatz df
 save(df, file = "data/df.rda") 
 save(df, file = "data/df.RData") 
+
+# Speichert den Datensatz df und die Variable N
+save(df, N, file = "data/df.rda") 
+save(df, N, file = "data/df.RData") 
+```
+
+`.rds`
+```{r data-21, exercise=FALSE, exercise.eval=FALSE, results='hold', echo=TRUE}
+saveRDS(df, file = "data/df.rds") # Speichert nur den Datensatz df
 ```
 
 Die hier behandelten Formate sind besonders empfohlen, aber natürlich können auch andere Formate gespeichert werden.
@@ -2193,7 +2209,7 @@ Für weitere Datenformate bietet sich z.B. diese Quelle an: <https://r4ds.hadley
 
 In R befindet man sich immer in einem *working directory* (Arbeitsverzeichnis).
 
-An diesen Ort werden Dateien abgespeichert, Datensätze geladen etc.
+An diesem Ort werden Dateien abgespeichert, Datensätze geladen etc.
 
 ```{r projekt-1, exercise=FALSE, eval=FALSE, exercise.eval=FALSE, echo=TRUE}
 # gebe das aktuelle Arbeitsverzeichnis aus
@@ -2208,15 +2224,15 @@ Zudem sind die Skripte nicht reproduzierbar für andere Personen, da sich die Pf
 
 Eine bessere Lösung sind *R Projekte*!
 
-R Projekte erlauben es alle Pfade nur in Bezug zum Projekt zu definieren.
+R Projekte erlauben es, alle Pfade nur in Bezug auf das Projekt zu definieren.
 R weiß bereits automatisch, wo sich das Projekt auf dem aktuellen Rechner befindet.
 Damit erspart man sich selbst unnötige Arbeit mit `setwd()` und Co.
 Zudem kann man auch deutlich leichter mit anderen Personen am selben Projekt zusammenarbeiten.
 
 ### Pfade im Projekt <a href="#section-r-projekte-und-working-directory"> <i class="fa-solid fa-arrow-up"></i></a>
 
-Pfade werden nun immer innerhalb eines Projektes referenziert. Egal wo sich das Projekt befindet,
-die Pfade sind immer gleich.
+Pfade werden nun immer innerhalb eines Projektes referenziert.
+Egal wo sich das Projekt befindet, die Pfade sind immer gleich.
 
 <br/>
 **Ein Pfad innerhalb eines Projektes:**
@@ -2224,7 +2240,7 @@ die Pfade sind immer gleich.
 `R/script.R` (Innerhalb des Projektes im Ordner R, die Datei script.R)
 
 <br/>
-**Ganzer Pfad (notwenidg, wenn kein R Projekt genutzt wird):**
+**Ganzer Pfad (notwendig, wenn kein R Projekt genutzt wird):**
 
 `D:/Laura/RKurse/r_programming_course/R/script.R` (Dieser Pfad funktioniert nicht auf einem anderen PC)
 
@@ -2233,18 +2249,23 @@ die Pfade sind immer gleich.
 Rechts oben in RStudio kann man ein neues Projekt erstellen.<br>
 ![](images/project_1.png){ width="400"} <br>
 
-Hier wählt man aus, ob man eunen neuen Ordner anlegen möchte, oder ein bereits existierendes Verzeichnis nutzen möchte.<br>
+Hier wählt man aus, ob man einen neuen Ordner anlegen möchte, oder ein bereits existierendes Verzeichnis nutzen möchte.
+<br>
 ![](images/project_2.png){ width="450"} <br>
 
 Hier können Vorlagen für Projekte ausgewählt werden.
-In den meisten Fällen werdet ihr diese jedoch nicht benötigen.<br>
+In den meisten Fällen werdet ihr diese jedoch nicht benötigen.
+
+<br>
 ![](images/project_3.png){ width="450"} <br>
 
 Hier könnt ihr nun den Namen vergeben und den Pfad auswählen.<br>
 ![](images/project_4.png){ width="450"} <br>
 
 Nachdem ein Projekt erstellt wurde, befindet sich die `projektname.Rproj` Datei in eurem Projektordner.
-Von nun an, muss diese Datei zuerst geöffnet werden, wenn man an dem Projekt arbeiten möchte.<br>
+Von nun an, muss diese Datei zuerst geöffnet werden, wenn man an dem Projekt arbeiten möchte.
+
+<br>
 ![](images/project_5.png){ width="450"} <br>
 
 
@@ -2255,10 +2276,10 @@ Zuerst muss immer die Projektdatei geöffnet werden!
 ![](images/project_5.png){ width="300"}
 
 Danach können andere Skripte geöffnet werden.
-Das Projekt speichert, welche Skripte letztes Mal offen waren
+Das Projekt speichert, welche Skripte letztes Mal offen waren.
 
 Verwendet eine klare und einheitliche Ordnerstruktur in euren Projekten.
-Empfohlen ist z.B. diese hier:
+Empfohlen ist z. B. diese hier:
 
 ![](images/project_6.png){ width="300"}
 
@@ -2270,7 +2291,7 @@ Im Ordner `R` werden alle R Skripte gespeichert.
 <div class="uebungen">
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
-*Öffne RStudio auf deinem rechner und gehe die folgenden Schritte durch:*
+*Öffne RStudio auf deinem Rechner und gehe die folgenden Schritte durch:*
 
 1. Erstelle ein R Projekt mit dem Namen `otter` in RStudio.
 
@@ -2278,7 +2299,7 @@ Im Ordner `R` werden alle R Skripte gespeichert.
 
 3. Schließe RStudio.
 
-4. Öffnet das R Projekt und öffne das `test.R` Skript.
+4. Öffne das R Projekt und öffne das `test.R` Skript.
 
 
 </div>
@@ -2303,7 +2324,7 @@ Ihr wollt eine E-Mail automatisch an alle eure Freunde schicken. Ihr habt einen 
 
 [Lösung: if Statements]{style="color:var(--blue);"}
 
-*Ihr habt über 30 Freunde. Der Code soll sich mehrfach selbst ausführen, ohne ihn zu copy-pasten*
+*Ihr habt über 30 Freunde. Der Code soll sich mehrfach selbst ausführen, ohne ihn zu Copy-Pasten*
 
 [Lösung: for oder while Loop]{style="color:var(--blue);"}
 
@@ -2321,7 +2342,7 @@ Ihr wollt eine E-Mail automatisch an alle eure Freunde schicken. Ihr habt einen 
 
 -   Logik: for (jedes Element in einem Vektor) {passiert etwas}, stoppe am Ende des Vektors
 -   Werden sehr häufig angewandt
--   Können, aber nicht immer verwendet werden
+-   Können aber nicht immer verwendet werden
 
 `while()`
 
@@ -2529,7 +2550,7 @@ friends_status
 <div class="uebungen">
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
-*Schreibe eine For-loop, die den Satz `Ich mag ____.` für alle Tiere ausgibt. Nutze dazu den Code, der bereits angegeben ist.*
+*Schreibe eine For-Loop, die den Satz `Ich mag ____.` für alle Tiere ausgibt. Nutze dazu den Code, der bereits angegeben ist.*
 ```{r ex-for-01, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 6}
 tiere <- c("Hunde", "Katzen", "Vögel") # diese Zeile nicht ändern
 
@@ -2570,12 +2591,12 @@ while (condition) {
     <p class="solution-button"><i class="fa-solid fa-arrow-down"></i> Zeige die Lösung <i class="fa-solid fa-arrow-down"></i> </p>
   </summary> <div class="solution-body"> <div class="uebungen">
 
-Es fehlt ein Abbruchkriterium in der while-loop.
+Es fehlt ein Abbruchkriterium in der While-Loop.
 Damit läuft sie unendlich lange.
 
 </div> </div> </details>
 
-Wenn das Abbruch-Kriterium vergessen wird, läuft die while-loop in eine Endlosschleife.
+Wenn das Abbruch-Kriterium vergessen wird, läuft die While-Loop in eine Endlosschleife.
 Wenn dies passiert, muss die Ausführung gestoppt werden.
 
 ![](images/while_endless.png){.absolute width="500"}
@@ -2597,7 +2618,7 @@ while (counter <= stop_criteria) {
 <div class="uebungen">
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
-*Schreibe diese For-loop ine eine while-Loop um. Nutze dazu den Code, der bereits angegeben ist.*
+*Schreibe diese For-Loop in eine While-Loop um. Nutze dazu den Code, der bereits angegeben ist.*
 ```{r ex-while-01, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 6}
 tiere <- c("Hunde", "Katzen", "Vögel")
 results <- character(3)
@@ -2637,7 +2658,7 @@ grade_result(
 <a href="#section-warnungen-und-fehler"> <i class="fa-solid fa-arrow-down"></i> Warnungen und Fehler</a><br>
 <a href="#section-tipps"> <i class="fa-solid fa-arrow-down"></i> Tipps</a><br>
 
-Lasst euch nicht davon verunsichern, dass euer Code häufig nicht sofort funktioniert sondern erst Mal *debugged* werden muss!
+Lasst euch nicht davon verunsichern, dass euer Code häufig nicht sofort funktioniert, sondern erst mal *debugged* werden muss!
 
 
 ### Warnungen und Fehler <a href="#section-debugging-fehlerbehebung"> <i class="fa-solid fa-arrow-up"></i></a>
@@ -2646,11 +2667,11 @@ Warnungen und Fehler sind da, um euch zu helfen! Auch, wenn es sich nicht immer 
 
 -   Sollen unerwartetes Verhalten verhindern.
 
--   Sollen erklären, warum etwas nicht geht oder zumindest darauf hinweisen, dass etwas nicht geht.
+-   Sollen erklären, warum etwas nicht geht, oder zumindest darauf hinweisen, dass etwas nicht geht.
 
 -   Sollten auch in eigenen Funktionen genutzt werden!
 
--   Warnungen und Fehler werden mit *If-Statements* verbunden. Nur wennn der bestimmte Fall vorhanden ist, werden sie dann ausgegeben.
+-   Warnungen und Fehler werden mit *If-Statements* verbunden. Nur wenn ein bestimmter Fall vorhanden ist, werden sie dann ausgegeben.
 
 -   **Warnungen** geben eine Meldung aus, aber das Programm läuft weiter. Sie werden erstellt mit `warning()`.
 
@@ -2709,9 +2730,9 @@ grade_this_code()
 
 ### Tipps <a href="#section-debugging-fehlerbehebung"> <i class="fa-solid fa-arrow-up"></i></a>
 
--   Fehlermeldungen lesen bzw. übersetzen lassen (häufig sagen diese relativ genau was das Problem ist, manchmal sogar wie eine Lösung aussehen kann.)
+-   Fehlermeldungen lesen bzw. übersetzen lassen (häufig sagen diese relativ genau, was das Problem ist, manchmal sogar wie eine Lösung aussehen kann.)
 
--   Fehlermeldungen googeln (Klingt banal, ist aber eine der wichtigsten Fähigkeiten beim Programmieren)
+-   Fehlermeldungen googeln (klingt banal, ist aber eine der wichtigsten Fähigkeiten beim Programmieren)
 
 -   chatGPT oder andere KIs fragen, warum der Code nicht funktioniert
 
@@ -2732,15 +2753,15 @@ grade_this_code()
 
 ### Kapitel
 
-<a href="#section-funktionen"> <i class="fa-solid fa-arrow-down"></i> Funktionen</a><br>
-<a href="#section-loops"> <i class="fa-solid fa-arrow-down"></i> Loops</a><br>
+<a href="#section-in-funktionen"> <i class="fa-solid fa-arrow-down"></i> Funktionen</a><br>
+<a href="#section-in-loops"> <i class="fa-solid fa-arrow-down"></i> Loops</a><br>
 
 Variablen und Funktionen sind `Environments` (Umgebungen) zugeordnet.
-Diese Zuordnung entscheidet, wo eine Variable oder eine Funktion existieren.
+Diese Zuordnung entscheidet, wo eine Variable oder eine Funktion existiert
 
-### Funktionen <a href="#section-environments"> <i class="fa-solid fa-arrow-up"></i></a>
+### In Funktionen <a href="#section-environments"> <i class="fa-solid fa-arrow-up"></i></a>
 `r otter::colorize("Vorbereitung:", "var(--red)")`
-Wir erzeugen hier eine Globale-Variable `global_variable` und eine Variable, die innerhalb dem Körper einer Funktion erzeugt wird `function_variable`.
+Wir erzeugen hier eine Globale-Variable `global_variable` und eine Variable, die innerhalb des Körpers einer Funktion erzeugt wird `function_variable`.
 ```{r setup-environment, exercise.eval=TRUE, results='hide'}
 global_variable = "global_variable"
 
@@ -2799,11 +2820,11 @@ test_function <- function(function_variable) {
 test_function(global_variable)
 ```
 
-### Loops <a href="#section-environments"> <i class="fa-solid fa-arrow-up"></i></a>
+### In Loops <a href="#section-environments"> <i class="fa-solid fa-arrow-up"></i></a>
 
-Alle Variablen die innerhalb von Loops verwendet werden, befinden sich in der Global Umgebung (sofern die Loops sich in der Globalen Umgebung befinden).
+Alle Variablen, die innerhalb von Loops verwendet werden, befinden sich in der globalen Umgebung (sofern die Loops sich in der globalen Umgebung befinden).
 
-Damit kann auch außerhalb der Loop noch auf die Variablen zugegriffen werden und die Loops haben immer Zugriff auf Globale Variablen.
+Damit kann auch außerhalb der Loop noch auf die Variablen zugegriffen werden und die Loops haben immer Zugriff auf globale Variablen.
 
 `r otter::colorize("Beispiel:", "var(--red)")`
 Globale Variablen in for-Loops
@@ -3261,7 +3282,7 @@ grade_this({
 
 
 
-### Programmierübungen <a href="#section-programmierübungen"> <i class="fa-solid fa-arrow-up"></i></a>
+### Programmierübungen <a href="#section-übergeordnete-übungen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Schreibe eine Funktion, welche den Buchstaben F in die Console ausgibt mit unterschiedlichen Argumenten, um die Größe und das Aussehen zu beeinflussen. Die Consolenausgabe soll identisch sein mit dieser:*
@@ -3296,7 +3317,7 @@ zeichne_f()
 zeichne_f(groesse = 5, breite = 3, symbol = "%", trennungszeichen = "-")
 ```
 
-Um zu testen, ob dein Code funktioniert vergleiche die Ausgabe mit der obrigen Ausgabe.
+Um zu testen, ob dein Code funktioniert, vergleiche die Ausgabe mit der obigen Ausgabe.
 ```{r ex-difficult-01-solution, results = "hold", exercise.eval=FALSE}
 # Beispiellösung ----
 zeichne_f <- function(groesse = 7, breite = 5, symbol = "#", trennungszeichen = "") {

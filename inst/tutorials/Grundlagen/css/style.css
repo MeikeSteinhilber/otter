@@ -42,6 +42,52 @@ original is from: https://github.com/tidymodels/learntidymodels/tree/main/inst/t
   color: var(--blue);
 }
 
+.btn-warning {
+  border-color: #CA225E !important;
+  background-color: #CA225E !important;
+  background-image: none !important;
+}
+
+.solution-button:hover {
+  background-color: #93e0ed !important;
+  border-color: #93e0ed !important;
+}
+
+.btn-warning:hover {
+  opacity: 0.65;
+}
+
+.btn-primary, .btn-success, .btn-info {
+  background-color: var(--blue);
+  background-image: none;
+  border: none;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary:focus:active, .btn-primary:focus:active:hover {
+  opacity: 0.65;
+  background-color: #CA225E80;
+}
+
+.btn-primary:focus:active:hover {
+  background-color: #CA225E;
+}
+
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default:focus:active, .btn-default:focus:active:hover {
+  opacity: 0.65;
+  background-color: #93e0ed !important;
+  border-color: #93e0ed !important;
+}
+
+.btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success:focus:active, .btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info:focus:active {
+  opacity: 0.65;
+}
+
+.uebungen .btn-primary.disabled {
+  border-color: var(--blue) !important;
+  background-color: var(--blue) !important;
+  background-image: none !important;
+}
+
 
 /*-------- Google font imports --------*/
 
@@ -299,9 +345,7 @@ h3 code {
   border-left-width: 5px;
 }
 
-.uebung .btn-warning {
 
-}
 .tutorial-exercise .tutorial-exercise-input {
   margin-bottom: 1em;
   border-left-color: #CA225E;

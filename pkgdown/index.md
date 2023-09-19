@@ -24,12 +24,12 @@ Selbststudium verwenden kannst.
 
 ## Inhalte
 
-Der Reiter **FAQ**, enthält Infos wie du das R Paket `otter` und das
+Der Reiter **FAQ** enthält Infos, wie du das R Paket `otter` und das
 Selbstlern-Tutorial am besten nutzen kannst.
 
-Über den Reiter **Tutorials**, gelangst du zum Tutorial.
+Über den Reiter **Tutorials** gelangst du zum Selbstlern-Tutorial.
 
-Der Reiter **Funktionen**, bietet eine Übersicht über alle Funktionen
+Der Reiter **Funktionen** bietet eine Übersicht über alle R Funktionen
 des R Paketes `otter`.
 
 <br> Viel Spaß beim Erkunden!
