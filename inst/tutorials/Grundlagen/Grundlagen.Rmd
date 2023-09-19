@@ -647,7 +647,7 @@ Beispiele für die Erzeugung von `NaN` durch eine Rechenoperation:
 ```
 
 `NA` tritt meistens auf, wenn ein Datensatz oder eine Variable einen fehlenden Wert enthält.
-Es ist üblich einen solchen fehlende Information mit `NA` zu speichern.
+Es ist üblich eine solche fehlende Information mit `NA` zu speichern.
 
 ```{r na-3, exercise=TRUE, results = "hold"}
 alter <- c(21, 18, NA, 33, 67, NA)
@@ -668,7 +668,7 @@ Fehlende Werte wie `NaN` sind manchmal infektiös!
 
 Bei Rechenoperationen führt z. B. ein `NaN` dazu, dass das Ergebnis auch ein fehlender Wert ist.
 
-```{r na-6.0, exercise=TRUE, results = "hold"}
+```{r na-6, exercise=TRUE, results = "hold"}
 # Eine Variable wird absichtlich oder unabsichtlich zu NaN
 variable <- NaN
 
@@ -757,15 +757,21 @@ logical(5)
 
 Prüfungen, welcher Datentyp vorliegt:
 
-```{r data-functions2, exercise=TRUE, results = "hold"}
+```{r data-functions2-1, exercise=TRUE, results = "hold"}
 # Erzeugung einer Variable
 number = 5
+
 # Prüfung der Variable
 is.integer(number)
 is.double(number)
 is.character(number)
 is.logical(number)
 is.numeric(number)
+```
+
+```{r data-functions2-2, exercise=TRUE, results = "hold"}
+# Erzeugung einer Variable
+number = 5
 
 # Prüfung von Spezialfällen
 is.na(number)
@@ -854,18 +860,22 @@ Sie zeigen auf ein Objekt im Speicher.
 Sie müssen *ausgeführt* werden, um erstellt und genutzt werden zu können.
 Nach Erstellung taucht die Variable im *Environment* auf.
 
-Eine Variable kann verschiedene Inhalte enthalten, z. B eine Zahl, Buchstaben, Matrizen oder Listen.
+Eine Variable kann verschiedene Inhalte enthalten, z. B. eine Zahl, Buchstaben, Matrizen oder Listen.
 
 Der Inhalt einer Variable kann auf die *Console* geschrieben werden, wenn der Variablenname ausgeführt wird.
 
 ```{r variable-1, exercise=TRUE, results = "hold"}
 name <- "Lara"
-weiblich <- TRUE
-lieblingszahl <- 3
-alter <- NULL
 name
+
+weiblich <- TRUE
 weiblich
+
+lieblingszahl <- 3
 lieblingszahl
+
+alter <- NULL
+alter
 ```
 
 In RStudio ist nach dem Ausführen dieses Codes im *Environment* Folgendes zu sehen:
@@ -879,8 +889,9 @@ Wobei es als guter Stil gilt, einheitlich `<-` zu verwenden.
 
 ```{r variable-2, exercise=TRUE, results = "hold"}
 pfeil_beispiel <- "Pfeil"
-gleich_beispiel = "Gleich"
 pfeil_beispiel
+
+gleich_beispiel = "Gleich"
 gleich_beispiel
 ```
 
@@ -888,16 +899,25 @@ Der Inhalt von einer Variable kann jederzeit geändert werden.
 Neue Daten können mit dem Zuweisungsoperator zugewiesen werden.
 Dadurch werden die alten Daten überschrieben.
 
-```{r variable-3, exercise=TRUE, results = "hold"}
+```{r variable-3-1, exercise=TRUE, results = "hold"}
 # Alte Daten
 freunde <- 1:5
 freunde
+
 # Neue Daten Variante 1 (anderer Datentyp)
 freunde <- c("Lisa", "Thorben", "Mara")
 freunde
+```
+
+```{r variable-3-2, exercise=TRUE, results = "hold"}
+# Alte Daten
+freunde <- c("Lisa", "Thorben", "Mara")
+freunde
+
 # Neue Daten Variante 2 (einzelne Daten ändern)
 freunde[2] <- "XXXX"
 freunde
+
 # Neue Daten Variante 3 (einzelne Daten ändern)
 freunde[c(FALSE, TRUE, TRUE)] <- ""
 freunde
@@ -905,12 +925,15 @@ freunde
 
 Daten können auch nachträglich gelöscht werden:
 
-```{r variable-4, exercise=TRUE, results = "hold"}
+```{r variable-4-1, exercise=TRUE, results = "hold"}
 # Entferne den Inhalt an Position 2
 freunde <- c("Lisa", "Thorben", "Mara")
 freunde <- freunde[-2]
 freunde
 
+```
+
+```{r variable-4-2, exercise=TRUE, results = "hold"}
 # Entferne den Inhalt "Thorben"
 freunde <- c("Thorben", "Lisa", "Thorben", "Mara", "Thorben")
 freunde <- freunde[!freunde == "Thorben"]
@@ -954,7 +977,6 @@ Atomare Vektoren können mehrere Informationen desselben Datentyps enthalten.
 `r otter::colorize("Beispiel:", "var(--red)")`
  Zugriff mit `[]`
 ```{r vektoren-1, exercise=TRUE, results = "hold"}
-name = "Lara"
 namen_freunde = c("Lisa", "Thorben", "Mara")
 lieblingszahlen_freunde = c(1, 7, 8)
 weiblich_freunde = c(TRUE, FALSE, TRUE)
@@ -1114,6 +1136,7 @@ geschlecht <- factor(
   # Namen zugeordnet zu den levels - > für was steht die Zahl 1?
   labels = c("weiblich", "männlich", "divers", "unbekannt")
 )
+
 geschlecht
 ```
 
@@ -1272,11 +1295,12 @@ weiblich = c(TRUE, FALSE, TRUE)
 freunde <- data.frame(namen,
                       lieblingszahlen,
                       weiblich)
-freunde # gesamter Datensatz anzeigen lassen
 
 freunde[2, 3] # zweite Zeile, dritte Spalte im Datensatz
 freunde$namen # Im Datensatz die Spalte namen 
 freunde$lieblingszahlen[2] # Im Datensatz die Spalte lieblingszahlen, die zweite Position
+
+freunde # gesamter Datensatz anzeigen lassen
 ```
 
 
@@ -1931,6 +1955,7 @@ library(sprtt)
 # Funktionen können nun auch ohne Prefix verwendet werden
 data <- draw_sample_normal(3, f = 0.4, max_n = 20)
 seq_anova(y ~ x, f = 0.4, data = data, verbose = FALSE)
+
 ```
 
 
@@ -2026,32 +2051,32 @@ df # so können wir den Datensatz in der Console ausgeben lassen.
 
 Teile der Daten anzeigen:
 
-```{r data-2, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
+```{r data-2, exercise=TRUE, results='hold', exercise.setup = "setup-data"}
 head(df, n = 10) # zeigt die ersten 10 Zeilen im Datensatz
 ```
 
-```{r data-3, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
+```{r data-3, exercise=TRUE, results='hold', exercise.setup = "setup-data"}
 tail(df, n = 10) # zeigt die letzten 10 Zeilen im Datensatz
 ```
 
 ### Daten beschreiben <a href="#section-datenverarbeitung"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Deskriptive Statistiken ausgeben:
-```{r data-4, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
+```{r data-4, exercise=TRUE, results='hold', exercise.setup = "setup-data"}
 summary(df)
 ```
 
-```{r data-5, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
+```{r data-5, exercise=TRUE,results='hold', exercise.setup = "setup-data"}
 psych::describe(df)
 ```
 
 ### Fehlende Werte anzeigen <a href="#section-datenverarbeitung"> <i class="fa-solid fa-arrow-up"></i></a>
 
-```{r data-6, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
+```{r data-6, exercise=TRUE, results='hold', exercise.setup = "setup-data"}
 rowSums(is.na(df)) # Anzahl von fehlenden Werten pro Zeile (eine Zeile ist eine Person)
 ```
 
-```{r data-7, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
+```{r data-7, exercise=TRUE, results='hold', exercise.setup = "setup-data"}
 colSums(is.na(df)) # Anzahl der fehlenden Werte pro Spalte
 ```
 
@@ -2059,21 +2084,21 @@ colSums(is.na(df)) # Anzahl der fehlenden Werte pro Spalte
 
 Verwendung von `complete.cases()`:
 
-```{r data-8, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
+```{r data-8, exercise=TRUE, results='hold', exercise.setup = "setup-data"}
 complete.cases(df) # Prüft, ob alle Spalten ausgefüllt wurden pro Zeile
 ```
 
-```{r data-9, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
+```{r data-9, exercise=TRUE, results='hold', exercise.setup = "setup-data"}
 df[!complete.cases(df), ] # Zeigt die Daten, die fehlende Werte enthalten
 ```
 
-```{r data-10, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
+```{r data-10, exercise=TRUE, results='hold', exercise.setup = "setup-data"}
 df[complete.cases(df), ] # Zeigt die Daten, die keine fehlenden Werte enthalten
 ```
 
 Verwendung von `na.omit()`
 
-```{r data-11, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
+```{r data-11, exercise=TRUE, results='hold', exercise.setup = "setup-data"}
 df <- na.omit(df) # Entfernt alle Zeilen mit fehlenden Werten
 df
 ```
@@ -2081,20 +2106,20 @@ df
 ### Einzelne Daten auswählen <a href="#section-datenverarbeitung"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Im Datensatz eine Spalte Filtern
-```{r data-12, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
+```{r data-12, exercise=TRUE, results='hold', exercise.setup = "setup-data"}
 # im Datensatz df alle Personen die jünger sind als 18 Jahre
 df[df$age < 18, ] # Achtung: das Komma ist zwingend erforderlich!
 ```
 
 Im Datensatz nach zwei verschiedenen Spalten filtern
-```{r data-13, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
+```{r data-13, exercise=TRUE, results='hold', exercise.setup = "setup-data"}
 # Im Datensatz df alle Personen die jünger sind als 18 Jahre
 # und sich in der Treatment-Gruppe befinden
 df[df$age < 18 & df$treatment_group == "treatment", ]
 ```
 
 Im Datensatz innerhalb einer Spalte filtern
-```{r data-14, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
+```{r data-14, exercise=TRUE, results='hold', exercise.setup = "setup-data"}
 # Im Datensatz df in der Spalte sex,
 # alle Personen die sich in der Treatment-Gruppe befinden.
 df$sex[df$treatment_group == "treatment"]
@@ -2107,7 +2132,7 @@ Nachdem man auf die richtigen Daten im Datensatz zeigt, können mit dem Zuweisun
 Damit werden die alten Daten überschrieben.
 
 In einer Spalte im Datensatz bestimmte Werte ändern
-```{r data-15, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
+```{r data-15, exercise=TRUE, results='hold', exercise.setup = "setup-data"}
 # ersetze alle fehlenden Geschlechter durch "weiblich"
 df$sex[is.na(df$sex)] <- "weiblich" 
 df
@@ -2115,7 +2140,7 @@ df
 
 Neue Spalten erstellen
 
-```{r data-16, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
+```{r data-16, exercise=TRUE, results='hold', exercise.setup = "setup-data"}
 # addiere alle Werte der health_ratings miteinander
 # und erzeguge eine neue Spalte namens health_rating_sum
 df$health_rating_sum <- df$health_rating_mental + df$health_rating_body
