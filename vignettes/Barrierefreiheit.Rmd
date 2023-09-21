@@ -1,0 +1,32 @@
+---
+title: "Barrierefreiheit"
+output:
+  rmarkdown::html_vignette:
+    toc: true
+    toc_depth: 4
+vignette: >
+  %\VignetteIndexEntry{Barrierefreiheit}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  collapse = TRUE,
+  comment = "#>",
+  # fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+options(tibble.print_min = 5, tibble.print_max = 5)
+```
+
+
+
+## Ist Otter barrierefrei?
+
+Aktuell ist Otter noch nicht gut zugänglich mit einem Screenreader. Es ist zwar möglich Otter darüber zu bedienen, aber es ist noch nicht benutzerfreundlich eingerichtet. Wir arbeiten aktuell daran, dies zu ändern.
+
+Weitere geplante Erweiterungen umfassen das Vergrößern der Schriftgröße und das Erhöhen der Kontraste in Otter.
+
+Falls Du Wünsche oder Anmerkungen zur Barrierefreiheit hast, melde dich bei **M.Steinhilber@em.uni-frankfurt.de**.

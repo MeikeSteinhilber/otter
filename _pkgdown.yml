@@ -14,9 +14,14 @@ template:
 home:
   title: Self Study of R using Tutorials
 
+authors:
+  Meike Steinhilber:
+    href: https://methoden.amd.psychologie.uni-mainz.de/steinhilber/
+
+
 navbar:
   structure:
-    left:  [intro, articles, tutorials, reference, news]
+    left:  [intro, faq, tutorials, feedback, barrierefreiheit, reference, news]
     right: [search, github]
   components:
 
@@ -33,21 +38,39 @@ navbar:
     - text: show_all_tutorials()
       href: reference/show_all_tutorials.html
 
-   articles:
+   # articles:
+   #  text: FAQ
+   #  menu:
+   #  - text: FAQ
+   #    href: articles/FAQ.html
+   #  - text: Barrierefreiheit
+   #    href: articles/Barrierefreiheit.html
+
+   faq:
     text: FAQ
+    href: articles/FAQ.html
+
+   barrierefreiheit:
+    text: Barrierefreiheit
+    href: articles/Barrierefreiheit.html
+
+
+   feedback:
+    text: Feedback
     menu:
-    - text: FAQ
-      href: articles/FAQ.html
+    - text: Fehler berichten
+      href: https://www.soscisurvey.de/Otter-Fehler/
+    - text: Feedback zu Otter geben
+      href: https://www.soscisurvey.de/Otter-Feedback/
+
 
    tutorials:
     text: Tutorials
     menu:
     - text: R & RStudio Grundlagen (Frankfurter Server)
       href: http://otter.uni-frankfurt.de
-    - text: Entwicklung (Frankfurter Server)
+    - text: Entwicklungsversion (Frankfurter Server)
       href: http://otter-test.uni-frankfurt.de
-    - text: R & RStudio Grundlagen (Posit Server)
-      href: https://meike-steinhilber.shinyapps.io/R_und_RStudio_Grundlagen/
 
    github:
     icon: fa-github

@@ -17,8 +17,8 @@ status](https://www.r-pkg.org/badges/version/otter)](https://cran.r-project.org/
 
 <!-- badges: end -->
 
-Hier findest du ein Grundlagen Tutorial für R und RStudio, das du zum
-Selbststudium verwenden kannst.
+Hier findest du ein **Grundlagen Tutorial für R und RStudio**, das du
+zum Selbststudium verwenden kannst.
 
 <br>
 
@@ -27,10 +27,17 @@ Selbststudium verwenden kannst.
 Der Reiter **FAQ** enthält Infos, wie du das R Paket `otter` und das
 Selbstlern-Tutorial am besten nutzen kannst.
 
-Über den Reiter **Tutorials** gelangst du zum Selbstlern-Tutorial.
+Über den Reiter **Tutorials** gelangst du zum Selbstlern-Tutorial “R &
+Rstudio Grundlagen”.
+
+Du kannst Feedback zu Otter geben oder auch Fehler in Otter berichten
+unter dem Reiter **Feedback**.
 
 Der Reiter **Funktionen** bietet eine Übersicht über alle R Funktionen
-des R Paketes `otter`.
+des R Paketes `otter`. Dieser Reiter ist nur hilfreich, wenn du bereits
+mit den Hilfeseiten von R Paketen und Funktionen vertraut bist. Die
+Hilfeseiten werden in Otter
+[hier](http://otter.uni-frankfurt.de/#section-funktionen) erklärt.
 
 <br> Viel Spaß beim Erkunden!
 

@@ -41,6 +41,10 @@ Wenn du einen anderen Browser oder ein anderes Gerät verwendest, werden deine E
 Du kannst all deine Eingaben löschen, indem du auf den Button "Neustart" klickst.
 
 
+## Wo kann ich Fehler oder Probleme melden?
+
+Im Reiter **Feedback** auf dieser Webseite kannst du den Link, zum Berichten von Fehlern in Otter finden.
+
 
 ## Kann ich das Tutorial auch offline nutzen?
 
@@ -62,6 +66,4 @@ otter::show_all_tutorials()
 otter::open_tutorial("Grundlagen")
 ```
 
-## Wo kann ich Fehler oder Probleme melden?
 
-XXX
