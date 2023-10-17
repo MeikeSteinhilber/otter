@@ -25,10 +25,11 @@ zum Selbststudium verwenden kannst.
 ## Inhalte
 
 Der Reiter **FAQ** enthält Infos, wie du das R Paket `otter` und das
-Selbstlern-Tutorial am besten nutzen kannst.
+Selbstlern-Tutorial am besten nutzen kannst und beantwortet häufig
+gestellte Fragen zu Otter.
 
 Über den Reiter **Tutorials** gelangst du zum Selbstlern-Tutorial “R &
-Rstudio Grundlagen”.
+RStudio Grundlagen”.
 
 Du kannst Feedback zu Otter geben oder auch Fehler in Otter berichten
 unter dem Reiter **Feedback**.

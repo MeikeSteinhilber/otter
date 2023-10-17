@@ -1,5 +1,6 @@
 ---
 title: "FAQ"
+lang: de
 output:
   rmarkdown::html_vignette:
     toc: true

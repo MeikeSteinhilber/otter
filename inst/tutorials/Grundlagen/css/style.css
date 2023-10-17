@@ -110,7 +110,7 @@ body {
 /*-------- White Space --------*/
 
 .band {
-  margin-top: 1.2em;
+  margin-top: 0.2em;
   background-color: white;
   width: 100%;
 }
@@ -184,6 +184,7 @@ h2 {
     background-color: white;
     margin-left: 1em;
     margin-right: 2em;
+    margin-top: 0.5em;
     float: right;
     display: block;
     /*
@@ -194,14 +195,12 @@ h2 {
 }
 
 .logo {
-    float: right;
-    /*
-    display: block;
-
-    position: fixed;
-    left:100px;
-    top:-10px;
-    */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  /*
+  margin-top: 0.5em;
+  */
 }
 
 /* Remove extra space on mobile */

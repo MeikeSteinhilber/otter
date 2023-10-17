@@ -2,6 +2,7 @@
 title: "R & RStudio Grundlagen"
 tutorial:
   version: 0.1
+lang:   de
 output:
   learnr::tutorial:
     language: de
@@ -28,8 +29,10 @@ $(document).ready(function() {
   
   $("#learnr-tutorial-content.topics").prepend(
   `<div class="logo">
-  <img class="logo" src="images/logo.png" style="width:10.0%"/>
+  <img class="logo" src="images/corporate_logos_small.jpg" style="width:30.0%"/>
+    <img class="logo" src="images/logo.png" style="width:10.0%"/>
   </div>`);
+  
 
   $("a[href^='#']").on("click", function(event) {
     const currentSection = $(".section.current");
