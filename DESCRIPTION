@@ -1,6 +1,6 @@
 Package: otter
 Type: Package
-Title: Otter ist ein online Tutorial Tool für das Erlernen von R.
+Title: Otter ist ein online Tutorial Tool für das Erlernen von R
 Version: 0.1.0
 Authors@R:
     c(person(given = "Meike",

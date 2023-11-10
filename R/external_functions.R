@@ -1,26 +1,28 @@
 # library(learnr)
 # library(roxygen2)
 
-#' Open Tutorials in the otter package
+#' Öffnet ein Tutorial in Otter
 #'
-#' @param tutorial_name character string, the short name of the tutorial.
-#' Get the short name of the tutorials using `show_all_tutorials()`.
+#' @param tutorial_name Gebe den Kurznamen des Tutorials als character string an.
+#' Erhalte die Kurznahmen der Tutorials mit `show_all_tutorials()`.
 #'
-#' @return opens the specified tutorial. Default value is set to "Grundlagen".
+#' @return öffnet das spezifizierte Tutorial.
+#' Die Standardeinstellung ist auf "Grundlagen" gesetzt.
 #' @export
 #'
 #' @examples
-#' library(otter)
+#' # Der folgende Code ist als Kommentar geschrieben, und muss entkommentiert
+#' # werden, damit er funktioniert:
+#' #library(otter)
 #' #open_tutorial("Grundlagen")
 open_tutorial <- function(tutorial_name = "Grundlagen") {
   if (!is.character(tutorial_name)) {stop("Invalid input argument: tutorial name must be a charcter string.")}
   learnr::run_tutorial(tutorial_name, package = "otter")
 }
 
-#' Show all tutorials in the otter package
+#' Zeige alle Tutorials in Otter
 #'
-#'
-#' @return prints out (on the console) all available tutorials in the otter package
+#' @return gibt auf der Konsole aus, welche Tutorials es in Otter gibt und wie deren Kurznamen heißen.
 #' @export
 #'
 #' @examples
