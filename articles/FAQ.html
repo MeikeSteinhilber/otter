@@ -139,19 +139,24 @@ Link, zum Berichten von Fehlern in Otter finden.</p>
 <h2 id="kann-ich-das-tutorial-auch-offline-nutzen">Kann ich das Tutorial auch offline nutzen?<a class="anchor" aria-label="anchor" href="#kann-ich-das-tutorial-auch-offline-nutzen"></a>
 </h2>
 <p>Ja, das ist möglich! Dazu müssen bereits R und RStudio auf dem
-eigenen Gerät installiert sein. Die Anleitung dazu befindet sich zu
-Beginn des Grundlagen-Tutorials! Danach muss RStudio geöffnet und die
-folgenden Zeilen Code ausgeführt werden:</p>
+eigenen Gerät installiert sein. Es ist zudem wichtig, dass du die
+aktuell Version von R hast! Die Anleitung dazu befindet sich zu Beginn
+des Grundlagen-Tutorials!</p>
+<p>Danach muss RStudio geöffnet und die folgenden Zeilen Code ausgeführt
+werden:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Installiere das R Paket remotes, dies muss nur einmal auf einem Gerät getan werden</span></span>
+<code class="sourceCode R"><span><span class="co"># Installiere das R Paket remotes, dies muss nur einmal auf einem Gerät getan werden.</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span>
-<span><span class="co"># Installiere Otter, dies muss nur einmal auf einem Gerät getan werden</span></span>
+<span><span class="co"># Installiere die neuste gradethis Version von GitHub, dies muss nur einmal auf einem Gerät getan werden.</span></span>
+<span><span class="co"># Dies ist notwendig, da Otter diese Version verwendet</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"rstudio/gradethis"</span><span class="op">)</span></span>
+<span><span class="co"># Installiere Otter von GitHub, dies muss nur einmal auf einem Gerät getan werden.</span></span>
 <span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"MeikeSteinhilber/otter"</span><span class="op">)</span></span>
 <span><span class="co"># Lade Otter</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://meikesteinhilber.github.io/otter/">otter</a></span><span class="op">)</span></span>
 <span><span class="co"># Zeige alle vorhandenen Tutorials</span></span>
 <span><span class="fu">otter</span><span class="fu">::</span><span class="fu"><a href="../reference/show_all_tutorials.html">show_all_tutorials</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co"># Öffne ein Tutorial (dies kann ein paar Sekunden dauern)</span></span>
+<span><span class="co"># Öffne ein Tutorial (dies kann ein paar Sekunden dauern, weil das gesamte Tutorial "gebaut" wird)</span></span>
 <span><span class="fu">otter</span><span class="fu">::</span><span class="fu"><a href="../reference/open_tutorial.html">open_tutorial</a></span><span class="op">(</span><span class="st">"Grundlagen"</span><span class="op">)</span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>Auf dieser Seite</h2>
