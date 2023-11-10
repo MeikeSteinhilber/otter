@@ -315,7 +315,7 @@ grade_result(
 <a href="#section-double"> <i class="fa-solid fa-arrow-down"></i> Double</a><br>
 <a href="#section-character"> <i class="fa-solid fa-arrow-down"></i> Character</a><br>
 <a href="#section-viel-nichts-in-r"> <i class="fa-solid fa-arrow-down"></i> Viel Nichts in R</a><br>
-<a href="#section-infektiöse-fehlende-werte"> <i class="fa-solid fa-arrow-down"></i> Infektiöse fehelende Werte</a><br>
+<a href="#section-infektiöse-fehlende-werte"> <i class="fa-solid fa-arrow-down"></i> Infektiöse fehlende Werte</a><br>
 <a href="#section-hilfreiche-funktionen"> <i class="fa-solid fa-arrow-down"></i> Hilfreiche Funktionen</a><br>
 
 ### Kurze Zusammenfasssung <a href="#section-datentypen"> <i class="fa-solid fa-arrow-up"></i></a>
@@ -2172,7 +2172,7 @@ Eine Übersicht über die wichtigsten Infos:
 | Speichern                        | write.csv() (international)<br>write.csv2() (deutsch & Excel)  | save()                                  | saveRDS()                            |
 | Laden                            | read.csv() (international)<br>read.csv2() (deutsch & Excel)    | load()                                  | readRDS()                            |
 | Anzahl an gespeicherten Objekten | eins                                                        | mehrere                                 | eins                                 |
-| Verhalten mein Laden             | werden einem neuen Objekt zugewiesen                        | werden im Environment wiederhergestellt | werden einem neuen Objekt zugewiesen |
+| Verhalten beim Laden             | werden einem neuen Objekt zugewiesen                        | werden im Environment wiederhergestellt | werden einem neuen Objekt zugewiesen |
 |                                  |                                                             |                                         |                                      |
 |                                  |                                                             |                                         |                                      |
 |                                  |                                                             |                                         |                                      |
