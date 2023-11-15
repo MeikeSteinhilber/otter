@@ -62,6 +62,15 @@ $(document).ready(function() {
       behavior: "smooth",
     });
   });
+  
+  $("button[data-i18n-attr-title='button.submitanswertitle']").on("click", function(event) {
+    _paq.push(['trackEvent', 'Click', 'Button', "Submit Answer"]);
+  });
+  
+  $("button[data-i18n-attr-title='button.runcodetitle']").on("click", function(event) {
+    _paq.push(['trackEvent', 'Click', 'Button', "Run Code"]);
+  });
+  
 });
 
   var _paq = window._paq = window._paq || [];
