@@ -35,6 +35,14 @@ $(document).ready(function() {
   
 
   $("a[href^='#']").on("click", function(event) {
+    
+  	var target = event.currentTarget.href.toString();
+  	if(!!~target.indexOf("#")) {
+  	  target = target.split("#")[1];
+      _paq.push(['trackEvent', 'Click', 'Jump', target]);
+    }
+    console.log(target);
+    	
     const currentSection = $(".section.current");
     var href = $(this).attr("href");
 
@@ -53,13 +61,6 @@ $(document).ready(function() {
       left: 0,
       behavior: "smooth",
     });
-    
-    	var target = event.currentTarget.href.toString();
-    	if(!!~target.indexOf("#")) {
-    	  target = target.split("#")[1];
-    	  _paq.push(['trackEvent', 'Click', 'Jump', target]);
-      }
-    	console.log(target);
   });
 });
 
@@ -74,10 +75,10 @@ $(document).ready(function() {
   _paq.push(['enableLinkTracking']);
   (function() {
     var u="https://otter-test.uni-frankfurt.de/otterusers/";
-    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setTrackerUrl', u+'m.php']);
     _paq.push(['setSiteId', '1']);
     var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    g.async=true; g.src=u+'m.js'; s.parentNode.insertBefore(g,s);
   })();
 
 </script>
