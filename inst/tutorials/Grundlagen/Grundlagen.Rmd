@@ -64,11 +64,23 @@ $(document).ready(function() {
   });
   
   $("button[data-i18n-attr-title='button.submitanswertitle']").on("click", function(event) {
-    _paq.push(['trackEvent', 'Click', 'Button', "Submit Answer"]);
+    _paq.push(['trackGoal', 2]);
   });
   
   $("button[data-i18n-attr-title='button.runcodetitle']").on("click", function(event) {
-    _paq.push(['trackEvent', 'Click', 'Button', "Run Code"]);
+    _paq.push(['trackGoal', 1]);
+  });
+  
+  $("button[data-i18n-attr-title='button.solutiontitle']").on("click", function(event) {
+    _paq.push(['trackGoal', 3]);
+  });
+  
+  $("button[data-i18n-attr-title='button.hinttitle']").on("click", function(event) {
+    _paq.push(['trackGoal', 4]);
+  });
+  
+  $(".tutorial-question-container button").parent().on("click", function(event) {
+    _paq.push(['trackGoal', 5]);
   });
   
 });
@@ -78,12 +90,13 @@ $(document).ready(function() {
   _paq.push(["setRequestMethod", "POST"]);
   _paq.push(['enableHeartBeatTimer', 5]);
   _paq.push(['disableAlwaysUseSendBeacon']);
+  _paq.push(["setDoNotTrack", false]);
   _paq.push(["setDomains", ["*.otter.uni-frankfurt.de", "*.otter-test.uni-frankfurt.de", "127.0.0.1"]]);
   //_paq.push(["setCookieDomain", "*.otter.uni-frankfurt.de"]);
   _paq.push(['trackPageView']);
   _paq.push(['enableLinkTracking']);
   (function() {
-    var u="https://otter-test.uni-frankfurt.de/otterusers/";
+    var u="https://otter.uni-frankfurt.de/otterusers/";
     _paq.push(['setTrackerUrl', u+'m.php']);
     _paq.push(['setSiteId', '1']);
     var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
