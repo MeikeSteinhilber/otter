@@ -79,7 +79,7 @@ $(document).ready(function() {
     _paq.push(['trackGoal', 4]);
   });
   
-  $(".tutorial-question-container button").parent().on("click", function(event) {
+  $(".tutorial-question-container button").on("click", function(event) {
     _paq.push(['trackGoal', 5]);
   });
   
