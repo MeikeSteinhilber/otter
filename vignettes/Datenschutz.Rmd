@@ -2,6 +2,8 @@
 title: "Datenschutz"
 output:
   rmarkdown::html_vignette:
+    includes:
+      in_header: '../pkgdown/templates/noindex.html'
     toc: true
     toc_depth: 4
 vignette: >
@@ -9,21 +11,7 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
-<html>
-<meta name="robots" content="noindex, nofollow" />
-</html>
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(
-  echo = TRUE,
-  collapse = TRUE,
-  comment = "#>",
-  # fig.path = "man/figures/README-",
-  out.width = "100%"
-)
-options(tibble.print_min = 5, tibble.print_max = 5)
-```
-
+<html><meta name="robots" content="noindex,nofollow"/></html>
 
 Personenbezogene Daten (nachfolgend zumeist nur „Daten“ genannt) werden von uns nur im Rahmen der Erforderlichkeit sowie zum Zwecke der Bereitstellung eines funktionsfähigen und nutzerfreundlichen Internetauftritts, inklusive seiner Inhalte und der dort angebotenen Leistungen, verarbeitet.
 
