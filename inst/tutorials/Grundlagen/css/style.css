@@ -584,4 +584,11 @@ h2.tutorialTitle,
   margin-bottom: 1em;
 }
 
+/*-------Cookie banner stuff ------*/
+.modal-open .modal {
+  display: flex !important;
+}
 
+.modal-open {
+  overflow: unset !important;
+}
