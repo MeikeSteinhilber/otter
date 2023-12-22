@@ -1,0 +1,154 @@
+---
+title: "Datenschutz"
+output:
+  rmarkdown::html_vignette:
+    toc: true
+    toc_depth: 4
+vignette: >
+  %\VignetteIndexEntry{Datenschutz}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+<html>
+<meta name="robots" content="noindex, nofollow" />
+</html>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  collapse = TRUE,
+  comment = "#>",
+  # fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+options(tibble.print_min = 5, tibble.print_max = 5)
+```
+
+
+Personenbezogene Daten (nachfolgend zumeist nur „Daten“ genannt) werden von uns nur im Rahmen der Erforderlichkeit sowie zum Zwecke der Bereitstellung eines funktionsfähigen und nutzerfreundlichen Internetauftritts, inklusive seiner Inhalte und der dort angebotenen Leistungen, verarbeitet.
+
+Gemäß Art. 4 Ziffer 1. der Verordnung (EU) 2016/679, also der Datenschutz-Grundverordnung (nachfolgend nur „DSGVO“ genannt), gilt als „Verarbeitung“ jeder mit oder ohne Hilfe automatisierter Verfahren ausgeführter Vorgang oder jede solche Vorgangsreihe im Zusammenhang mit personenbezogenen Daten, wie das Erheben, das Erfassen, die Organisation, das Ordnen, die Speicherung, die Anpassung oder Veränderung, das Auslesen, das Abfragen, die Verwendung, die Offenlegung durch Übermittlung, Verbreitung oder eine andere Form der Bereitstellung, den Abgleich oder die Verknüpfung, die Einschränkung, das Löschen oder die Vernichtung.
+
+Mit der nachfolgenden Datenschutzerklärung informieren wir Sie insbesondere über Art, Umfang, Zweck, Dauer und Rechtsgrundlage der Verarbeitung personenbezogener Daten, soweit wir entweder allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung entscheiden. Zudem informieren wir Sie nachfolgend über die von uns zu Optimierungszwecken sowie zur Steigerung der Nutzungsqualität eingesetzten Fremdkomponenten, soweit hierdurch Dritte Daten in wiederum eigener Verantwortung verarbeiten.
+
+## I. Informationen über uns als Verantwortliche
+**Name und Anschrift des Verantwortlichen**
+
+Johann Wolfgang Goethe-Universität Frankfurt am Main
+
+Theodor-W.-Adorno-Platz 1
+
+60323 Frankfurt am Main
+
+*Postanschrift:*
+
+Goethe-Universität Frankfurt am Main
+
+60629 Frankfurt
+
+Telefon: +49-69-798-0 | Fax: +49-69-798-18383
+
+Internet: http://www.uni-frankfurt.de
+
+Bei Anfragen oder Beschwerden zum Datenschutz können Sie sich mit den Datenschutzbeauftragten der Goethe-Universität in Verbindung setzen.
+
+**Kontaktdaten der Datenschutzbeauftragten**
+
+Johann Wolfgang Goethe-Universität Frankfurt am Main
+
+Die behördlichen Datenschutzbeauftragten
+
+Theodor-W.-Adorno-Platz 1
+
+60323 Frankfurt am Main
+
+Internet: http://www.uni-frankfurt.de/datenschutzbeauftragte
+
+
+## II. Rechte der Nutzer und Betroffenen
+
+Mit Blick auf die nachfolgend noch näher beschriebene Datenverarbeitung haben die Nutzer und Betroffenen das Recht 
+
+  - auf Bestätigung, ob sie betreffende Daten verarbeitet werden, auf Auskunft über die verarbeiteten Daten, auf weitere Informationen über die Datenverarbeitung sowie auf Kopien der Daten (vgl. auch Art. 15 DSGVO);
+  
+  - auf Berichtigung oder Vervollständigung unrichtiger bzw. unvollständiger Daten (vgl. auch Art. 16 DSGVO);
+  
+  - auf unverzügliche Löschung der sie betreffenden Daten (vgl. auch Art. 17 DSGVO), oder, alternativ, soweit eine weitere Verarbeitung gemäß Art. 17 Abs. 3 DSGVO erforderlich ist, auf Einschränkung der Verarbeitung nach Maßgabe von Art. 18 DSGVO;
+  
+  - auf Erhalt der sie betreffenden und von ihnen bereitgestellten Daten und auf Übermittlung dieser Daten an andere Anbieter/Verantwortliche (vgl. auch Art. 20 DSGVO);
+  
+  - auf Beschwerde gegenüber der Aufsichtsbehörde, sofern sie der Ansicht sind, dass die sie betreffenden Daten durch den Anbieter unter Verstoß gegen datenschutzrechtliche Bestimmungen verarbeitet werden (vgl. auch Art. 77 DSGVO).
+
+Darüber hinaus ist der Anbieter dazu verpflichtet, alle Empfänger, denen gegenüber Daten durch den Anbieter offengelegt worden sind, über jedwede Berichtigung oder Löschung von Daten oder die Einschränkung der Verarbeitung, die aufgrund der Artikel 16, 17 Abs. 1, 18 DSGVO erfolgt, zu unterrichten. Diese Verpflichtung besteht jedoch nicht, soweit diese Mitteilung unmöglich oder mit einem unverhältnismäßigen Aufwand verbunden ist. Unbeschadet dessen hat der Nutzer ein Recht auf Auskunft über diese Empfänger.
+
+Ebenfalls haben die Nutzer und Betroffenen nach Art. 21 DSGVO das Recht auf Widerspruch gegen die künftige Verarbeitung der sie betreffenden Daten, sofern die Daten durch den Anbieter nach Maßgabe von Art. 6 Abs. 1 lit. f) DSGVO verarbeitet werden. Insbesondere ist ein Widerspruch gegen die Datenverarbeitung zum Zwecke der Direktwerbung statthaft.
+
+## III. Informationen zur Datenverarbeitung
+
+Ihre bei Nutzung unseres Internetauftritts verarbeiteten Daten werden gelöscht oder gesperrt, sobald der Zweck der Speicherung entfällt, der Löschung der Daten keine gesetzlichen Aufbewahrungspflichten entgegenstehen und nachfolgend keine anderslautenden Angaben zu einzelnen Verarbeitungsverfahren gemacht werden.
+
+### Serverdaten
+
+Aus technischen Gründen, insbesondere zur Gewährleistung eines sicheren und stabilen Internetauftritts, werden Daten durch Ihren Internet-Browser an uns bzw. an unseren Webspace-Provider übermittelt. Mit diesen sog. Server-Logfiles werden u.a. Typ und Version Ihres Internetbrowsers, das Betriebssystem, die Website, von der aus Sie auf unseren Internetauftritt gewechselt haben (Referrer URL), die Website(s) unseres Internetauftritts, die Sie besuchen, Datum und Uhrzeit des jeweiligen Zugriffs sowie die IP-Adresse des Internetanschlusses, von dem aus die Nutzung unseres Internetauftritts erfolgt, erhoben. Ihre IP-Adresse wird bei diesem Vorgang umgehend anony­mi­siert, so dass Sie als Nutzer für uns anonym bleiben.
+
+Diese so erhobenen Daten werden vorrübergehend gespeichert, dies jedoch nicht gemeinsam mit anderen Daten von Ihnen.
+
+Diese Speicherung erfolgt auf der Rechtsgrundlage von Art. 6 Abs. 1 lit. f) DSGVO. Unser berechtigtes Interesse liegt in der Verbesserung, Stabilität, Funktionalität und Sicherheit unseres Internetauftritts.
+
+Die Daten werden spätestens nach sieben Tage wieder gelöscht, soweit keine weitere Aufbewahrung zu Beweiszwecken erforderlich ist. Andernfalls sind die Daten bis zur endgültigen Klärung eines Vorfalls ganz oder teilweise von der Löschung ausgenommen.
+
+### Cookies
+
+#### a) Sitzungs-Cookies/Session-Cookies
+
+Wir verwenden mit unserem Internetauftritt sog. Cookies. Cookies sind kleine Textdateien oder andere Speichertechnologien, die durch den von Ihnen eingesetzten Internet-Browser auf Ihrem Endgerät ablegt und gespeichert werden. Durch diese Cookies werden im individuellen Umfang bestimmte Informationen von Ihnen, wie beispielsweise Ihre Browser- oder Standortdaten oder Ihre IP-Adresse, verarbeitet.
+
+Durch diese Verarbeitung wird unser Internetauftritt benutzerfreundlicher, effektiver und sicherer, da die Verarbeitung beispielsweise die Wiedergabe unseres Internetauftritts in unterschiedlichen Sprachen ermöglicht.
+
+Rechtsgrundlage dieser Verarbeitung ist Art. 6 Abs. 1 lit b.) DSGVO, sofern diese Cookies Daten zur Vertragsanbahnung oder Vertragsabwicklung verarbeitet werden.
+
+Falls die Verarbeitung nicht der Vertragsanbahnung oder Vertragsabwicklung dient, liegt unser berechtigtes Interesse in der Verbesserung der Funktionalität unseres Internetauftritts. Rechtsgrundlage ist in dann Art. 6 Abs. 1 lit. f) DSGVO.
+
+#### b) Drittanbieter-Cookies
+
+Gegebenenfalls werden mit unserem Internetauftritt auch Cookies von Partnerunternehmen, mit denen wir zum Zwecke der Werbung, der Analyse oder der Funktionalitäten unseres Internetauftritts zusammenarbeiten, verwendet.
+
+Die Einzelheiten hierzu, insbesondere zu den Zwecken und den Rechtsgrundlagen der Verarbeitung solcher Drittanbieter-Cookies, entnehmen Sie bitte den nachfolgenden Informationen.
+
+#### c) Persistente Cookies
+
+Wir verwenden in geringem Umfang auch persistente Cookies (ebenfalls kleine Textdateien, die auf Ihrem Endgerät abgelegt werden), die auf Ihrem Endgerät verbleiben und es uns ermöglichen, Ihren Browser beim nächsten Besuch wiederzuerkennen. Diese Cookies werden auf Ihrer Festplatte gespeichert und löschen sich nach der vorgegebenen Zeit von allein. Ihre Lebensdauer beträgt 1 Monat bis 10 Jahre. So können wir Ihnen unser Angebot nutzerfreundlicher, effektiver und sicherer präsentieren und Ihnen beispielsweise speziell auf Ihre Interessen abgestimmte Informationen auf der Seite anzeigen.
+
+Unser berechtigtes Interesse an der Nutzung der Cookies gemäß Art 6 Abs. 1 S. 1 f) DSGVO liegt darin, unsere Website nutzerfreundlicher, effektiver und sicherer zu machen.
+
+In den Cookies werden etwa folgende Daten und Informationen gespeichert:
+
+  - Login-Informationen
+  - Spracheinstellungen
+  - Informationen über die Anzahl der Aufrufe unserer Website sowie Nutzung einzelner Funktionen unseres Internetauftritts.
+
+Bei Aktivierung des Cookies wird diesem eine Identifikationsnummer zugewiesen und eine Zuordnung Ihrer personenbezogenen Daten zu dieser Identifikationsnummer wird nicht vorgenommen. Ihr Name, Ihre IP-Adresse oder ähnliche Daten, die eine Zuordnung des Cookies zu Ihnen ermöglichen würden, werden nicht in den Cookie eingelegt. Auf Basis der Cookie-Technologie erhalten wir lediglich pseudonymisierte Informationen, beispielsweise darüber, welche Seiten besucht wurden, etc.
+
+#### d) Beseitigungsmöglichkeit
+
+Sie können die Installation der Cookies durch eine Einstellung Ihres Internet-Browsers verhindern oder einschränken. Ebenfalls können Sie bereits gespeicherte Cookies jederzeit löschen. Die hierfür erforderlichen Schritte und Maßnahmen hängen jedoch von Ihrem konkret genutzten Internet-Browser ab. Bei Fragen benutzen Sie daher bitte die Hilfefunktion oder Dokumentation Ihres Internet-Browsers oder wenden sich an dessen Hersteller bzw. Support. Bei sogenannten Flash-Cookies kann die Verarbeitung allerdings nicht über die Einstellungen des Browsers unterbunden werden. Stattdessen müssen Sie insoweit die Einstellung Ihres Flash-Players ändern. Auch die hierfür erforderlichen Schritte und Maßnahmen hängen von Ihrem konkret genutzten Flash-Player ab. Bei Fragen benutzen Sie daher bitte ebenso die Hilfefunktion oder Dokumentation Ihres Flash-Players oder wenden sich an den Hersteller bzw. Benutzer-Support.
+
+Sollten Sie die Installation der Cookies verhindern oder einschränken, kann dies dazu führen, dass unser Produkt Otter nicht bzw. nicht vollumfänglich nutzbar ist
+
+### Matomo
+
+In unserem Internetauftritt setzen wir Matomo (ehemals: „PIWIK“) ein. Hierbei handelt es sich um eine Open-Source-Software, einem Dienst des Anbieters InnoCraft Ltd., 150 Willis St, 6011 Wellington, Neuseeland, („Mataomo“), mit der wir die Benutzung unseres Internetauftritts analysieren können. Hierbei werden Ihre IP-Adresse, die Website(s) unseres Internetauftritts, die Sie besuchen, die Website, von der aus Sie auf unseren Internetauftritt gewechselt haben (Referrer URL), Ihre Verweildauer auf unserem Internetauftritt sowie die Häufigkeit des Aufrufs einer unserer Websites verarbeitet.
+
+Zur Erfassung dieser Daten speichert Matomo über Ihren Internet-Browser ein Cookie auf Ihrem Endgerät. Dieses Cookie ist eine Woche lang gültig.
+
+Rechtsgrundlage ist Art. 6 Abs. 1 lit. f) DSGVO. Unser berechtigtes Interesse liegt in der Analyse und Optimierung unseres Internetauftritts.
+
+Allerdings nutzen wir Matomo mit der Anonymisierungsfunktion „Automatically Anonymize Visitor IPs“. Diese Anonymisierungsfunktion kürzt Ihre IP-Adresse um zwei Bytes, sodass eine Zuordnung zu Ihnen bzw. zu dem von Ihnen genutzten Internetanschluss unmöglich ist.
+
+Falls Sie mit dieser Verarbeitung nicht einverstanden sind, haben Sie die Möglichkeit, die Speicherung des Cookies durch eine Einstellung in Ihrem Internet-Browsers zu verhindern. Nähere Informationen hierzu finden Sie vorstehend unter „Cookies“.
+
+## Aktualität und Gültigkeit der Datenschutzerklärung
+
+Die vorliegende Datenschutzerklärung ist aktuell gültig und datiert vom 22.12.2023.
+
+Durch die Weiterentwicklung unserer Websites oder die Implementierung neuer Technologien kann es notwendig werden, diese Datenschutzerklärung zu ändern. Wir behalten uns vor, die Datenschutzerklärung jederzeit mit Wirkung für die Zukunft zu ändern. Wir empfehlen Ihnen, sich die aktuelle Datenschutzerklärung von Zeit zu Zeit erneut durchzulesen.

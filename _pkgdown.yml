@@ -27,6 +27,8 @@ authors:
     roles: [aut, ctb, fnd]
 
 
+
+
 home:
   title: Otter ist ein online Tutorial Tool für das Erlernen von R.
   sidebar:
@@ -37,7 +39,7 @@ home:
 
 navbar:
   structure:
-    left:  [intro, faq, tutorials, feedback, barrierefreiheit, reference, news]
+    left:  [intro, faq, tutorials, feedback, barrierefreiheit, reference, news, datasecurity]
     right: [search, github]
   components:
 
@@ -69,6 +71,10 @@ navbar:
    barrierefreiheit:
     text: Barrierefreiheit
     href: articles/Barrierefreiheit.html
+
+   datasecurity:
+    text: Datenschutz
+    href: articles/Datenschutz.html
 
    feedback:
     text: Feedback
