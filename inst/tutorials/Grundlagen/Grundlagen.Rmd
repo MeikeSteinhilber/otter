@@ -241,7 +241,7 @@ jQuery(document).ready(function() {
         <div class="modal-content">
         <div class="modal-body">
             <p>Wir ben&ouml;tigen Ihre Zustimmung, bevor Sie unsere Website weiter besuchen k&ouml;nnen.</p>
-            <p>Wir verwenden Cookies und andere Technologien auf unserer Webseite. Einige von ihnen sind essenziell, w&auml;hrend andere uns helfen, diese Webseite und Ihr Benutzungserlebnis zu verbessern. Personenbezogene Daten k&ouml;nnen verarbeitet werden (z.B. IP-Adressen), z.B. Anzeigen- und Inhaltsmessung (Tracking). Weitere Informationen &uuml;ber die Verwendung Ihrer Daten finden Sie in unserer Datenschutzerkl&auml;rung. Sie k&ouml;nnen Ihre Auswahl jederzeit unter Einstellungen widerrufen oder anpassen.</p>
+            <p>Wir verwenden Cookies und andere Technologien auf unserer Webseite. Einige von ihnen sind technisch essenziell, w&auml;hrend andere uns helfen Nutzerstatistiken zu erstellen, um das Otter Produkt weiterzuentwickeln. Weitere Informationen &uuml;ber die Verwendung Ihrer Daten finden Sie in unserer Datenschutzerkl&auml;rung auf der Otter Homepage.</p>
         </div>
         <div class="modal-footer">
             <a type="button" class="btn btn-light" href="https://meikesteinhilber.github.io/otter/">Ich m&ouml;chte Otter nicht nutzen.</a>
