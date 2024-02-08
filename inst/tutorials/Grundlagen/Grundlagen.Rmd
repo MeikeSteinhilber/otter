@@ -13,12 +13,36 @@ output:
     # theme: cerulean
 runtime: shiny_prerendered
 ---
+<div class="assessibility"></div>
+<div class="offcanvas"><div class="title">Einstellungen für Barrierefreiheit</div><div class="button-container"><button data-setting="contrast"><span>Kontrast</span></button><button data-setting="links"><span>Links hervorheben</span></button><button data-setting="spacing"><span>Schriftabstand</button><button data-setting="dyslexia"><span>Legasthenie&shy;freundlich</span></button><button data-setting="cursor"><span>Cursor</span></button><button data-setting="lineheight"><div>Zeilenhöhe</div><div class="indicators"><div data-num="1"></div><div data-num="2"></div><div data-num="3"></div></div></button><button data-setting="fontsize"><span>Schriftgröße</span></button></div>
+</div>
 <script>
 $(document).ready(function() {
   $("#tutorial-topic").prepend(`<div class="img-right">
   <a href="https://meikesteinhilber.github.io/otter/"> <i class="fa-solid fa-house" aria-label="Link zur otter Homepage" aria-hidden="false"></i>
   </a>
   </div>`);
+  
+  $(".assessibility").on("click", function() {
+    $(".offcanvas").toggleClass("show");
+  });
+  $(".offcanvas button").on("click", function() {
+    $(this).toggleClass("pressed");
+    
+    const setting = $(this).attr("data-setting");
+    const numIndicators = $(".indicators > div", this).length || 0;
+    if(numIndicators > 0) {
+      var currentIndicator = $(".indicators > div.dark", this).length || 0;
+      currentIndicator = numIndicators % (currentIndicator + 1);
+      console.log(numIndicators, currentIndicator);
+    }
+    
+    if(setting == "contrast") {
+      $("html").toggleClass("invert");
+    } else if(setting == "links") {
+      $("html").toggleClass("highlightlinks");
+    }
+  });
   
   $(document).ready(function() {
   $('.menu-button').click(function() {
