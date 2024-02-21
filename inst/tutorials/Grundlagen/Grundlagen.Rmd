@@ -14,7 +14,7 @@ output:
 runtime: shiny_prerendered
 ---
 <svg xmlns="http://www.w3.org/2000/svg" width="508.977" height="29.723" viewBox="0 0 134.667 7.864" class="followcursor"><path d="m96 117.136-3.889 3.315-2.208 1.882H30.167c-.831 0-1.5.595-1.5 1.334 0 .739.669 1.333 1.5 1.333h131.667c.83 0 1.5-.594 1.5-1.333s-.67-1.334-1.5-1.334h-59.736l-2.209-1.882z" style="fill:#000;stroke-width:.264583" transform="translate(-28.666 -117.136)"/></svg>
-<div class="assessibility"></div>
+<div class="accessibility"></div>
 <div class="offcanvas"><div class="title">Einstellungen für Barrierefreiheit</div><div class="button-container"><button data-setting="contrast"><span>Kontrast</span></button><button data-setting="links"><span>Links <wbr>hervorheben</span></button><button data-setting="letterspacing"><div>Schriftabstand</div><div class="indicators"><div data-num="1"></div><div data-num="2"></div><div data-num="3"></div></div></button><button data-setting="dyslexia"><span>Legasthenie&shy;freundlich</span></button><button data-setting="cursor"><span>Cursor</span></button><button data-setting="lineheight"><div>Zeilenhöhe</div><div class="indicators"><div data-num="1"></div><div data-num="2"></div><div data-num="3"></div></div></button><button data-setting="fontsize"><div>Schriftgröße</div><div class="indicators"><div data-num="1"></div><div data-num="2"></div><div data-num="3"></div><div data-num="4"></div><div data-num="5"></div></div></button></div>
 </div>
 <script>
@@ -24,7 +24,7 @@ $(document).ready(function() {
   </a>
   </div>`);
   
-  $(".assessibility").on("click", function() {
+  $(".accessibility").on("click", function() {
     $(".offcanvas").toggleClass("show");
   });
   $(".offcanvas button").on("click", function() {

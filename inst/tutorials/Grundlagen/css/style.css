@@ -252,8 +252,8 @@ h2 {
 
 }
 
-/*--------- Assessibility ---------*/
-.assessibility {
+/*--------- Accessibility ---------*/
+.accessibility {
   width: 70px;
   height: 70px;
   position: fixed;
@@ -262,7 +262,13 @@ h2 {
   background-image: url(/images/otter.png);
   background-size: contain;
   background-repeat: no-repeat;
+  opacity: 1;
   z-index: 100001;
+  transition: opacity 0.3s ease;
+}
+.accessibility:hover {
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
 }
 
 .offcanvas {
@@ -332,7 +338,7 @@ h2 {
   font-family: "Font Awesome 6 Free";
   font-weight: 500;
   font-size: 65%;
-  color: rgba(0,0,0,0.1);
+  color: rgba(0,0,0,0.4);
   transition: all 0.25s ease;
 }
 
@@ -346,7 +352,7 @@ h2 {
 html.invert {
   filter: invert() !important;
 }
-html.invert .assessibility, html.invert img.logo {
+html.invert .accessibility, html.invert img.logo {
   filter: invert() !important;
 }
 
