@@ -1,0 +1,101 @@
+"";"sex";"age";"treatment_group";"health_rating_mental";"health_rating_body"
+"1";"männlich";20;"control group";7;3
+"2";"weiblich";32;"treatment";8;4
+"3";NA;27;"treatment";9;6
+"4";"männlich";20;"treatment";1;8
+"5";"weiblich";40;"treatment";3;9
+"6";"männlich";20;"control group";NA;8
+"7";"männlich";36;"control group";5;1
+"8";"weiblich";49;"control group";6;7
+"9";"weiblich";39;"control group";2;3
+"10";"weiblich";49;"treatment";8;2
+"11";"weiblich";56;"treatment";2;5
+"12";"männlich";33;"control group";5;3
+"13";"divers";44;"treatment";1;9
+"14";"männlich";30;"treatment";2;8
+"15";"männlich";55;"treatment";7;8
+"16";NA;30;"treatment";1;9
+"17";"männlich";24;"treatment";5;10
+"18";"divers";31;"treatment";7;6
+"19";"weiblich";28;"treatment";2;9
+"20";"weiblich";50;"control group";5;9
+"21";"weiblich";37;"treatment";5;6
+"22";"weiblich";19;"treatment";3;6
+"23";"weiblich";23;"control group";6;4
+"24";"weiblich";41;"control group";1;6
+"25";"männlich";37;"control group";6;8
+"26";"weiblich";22;"control group";4;1
+"27";"weiblich";51;"treatment";7;8
+"28";"weiblich";45;"treatment";2;1
+"29";"weiblich";54;"treatment";8;4
+"30";"divers";31;"control group";8;4
+"31";"männlich";55;"control group";6;6
+"32";"männlich";21;"control group";10;3
+"33";"männlich";60;"treatment";6;4
+"34";"männlich";26;"control group";8;6
+"35";"männlich";18;"treatment";10;2
+"36";"männlich";54;"control group";7;6
+"37";NA;17;"treatment";10;10
+"38";"weiblich";33;"control group";4;3
+"39";"weiblich";39;"control group";NA;9
+"40";"weiblich";37;"control group";5;6
+"41";"weiblich";55;"treatment";9;6
+"42";NA;35;"treatment";1;8
+"43";"divers";55;"control group";1;6
+"44";"männlich";30;"control group";2;7
+"45";"weiblich";18;"control group";10;1
+"46";"weiblich";23;"control group";4;7
+"47";"männlich";24;"control group";1;5
+"48";"männlich";52;"control group";3;3
+"49";"männlich";35;"control group";5;9
+"50";NA;54;"control group";4;6
+"51";"männlich";34;"treatment";5;8
+"52";"weiblich";54;"control group";8;8
+"53";NA;23;"treatment";9;9
+"54";"männlich";24;"treatment";4;8
+"55";NA;30;"control group";1;1
+"56";"weiblich";36;"treatment";2;4
+"57";"männlich";52;"control group";4;9
+"58";NA;56;"treatment";9;3
+"59";"weiblich";36;"treatment";3;8
+"60";"divers";37;"treatment";9;6
+"61";"weiblich";19;"treatment";10;5
+"62";"weiblich";21;"treatment";8;2
+"63";"männlich";20;"treatment";8;5
+"64";"weiblich";54;"control group";3;5
+"65";"divers";60;"control group";5;5
+"66";"männlich";34;"control group";1;7
+"67";"weiblich";44;"control group";5;6
+"68";"weiblich";60;"treatment";6;2
+"69";"weiblich";45;"control group";8;7
+"70";"männlich";47;"control group";6;8
+"71";"weiblich";49;"treatment";9;10
+"72";"männlich";57;"control group";NA;6
+"73";"männlich";21;"control group";7;2
+"74";"weiblich";18;"control group";6;1
+"75";"männlich";33;"treatment";7;5
+"76";"weiblich";58;"treatment";7;4
+"77";"weiblich";45;"treatment";4;6
+"78";NA;48;"treatment";8;4
+"79";"weiblich";20;"treatment";2;3
+"80";"weiblich";58;"control group";8;10
+"81";"männlich";28;"control group";2;3
+"82";"männlich";58;"control group";4;8
+"83";"männlich";56;"control group";1;6
+"84";NA;31;"control group";7;5
+"85";"männlich";56;"control group";9;2
+"86";"divers";44;"control group";3;5
+"87";"weiblich";51;"treatment";5;2
+"88";"männlich";43;"control group";NA;8
+"89";"männlich";49;"control group";NA;7
+"90";"divers";54;"control group";10;10
+"91";NA;21;"control group";6;1
+"92";"männlich";44;"treatment";2;4
+"93";"männlich";16;"treatment";4;6
+"94";"männlich";33;"treatment";2;5
+"95";"weiblich";17;"treatment";5;4
+"96";"weiblich";54;"treatment";8;2
+"97";NA;39;"control group";9;4
+"98";"weiblich";57;"control group";5;10
+"99";NA;20;"treatment";10;5
+"100";"weiblich";47;"treatment";8;8
