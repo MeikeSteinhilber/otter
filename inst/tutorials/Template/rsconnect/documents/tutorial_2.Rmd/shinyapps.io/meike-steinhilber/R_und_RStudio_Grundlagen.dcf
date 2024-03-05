@@ -1,0 +1,13 @@
+name: R_und_RStudio_Grundlagen
+title: R_und_RStudio_Grundlagen
+username: meike-steinhilber
+account: meike-steinhilber
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 9531912
+bundleId: 7513734
+url: https://meike-steinhilber.shinyapps.io/R_und_RStudio_Grundlagen/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: tutorial_2.html|tutorial_2_files/figure-html/character-3-1.png
