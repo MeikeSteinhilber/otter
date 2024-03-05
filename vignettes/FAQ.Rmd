@@ -1,5 +1,6 @@
 ---
 title: "FAQ"
+lang: de
 output:
   rmarkdown::html_vignette:
     toc: true
@@ -50,19 +51,24 @@ Im Reiter **Feedback** auf dieser Webseite kannst du den Link, zum Berichten von
 
 Ja, das ist möglich!
 Dazu müssen bereits R und RStudio auf dem eigenen Gerät installiert sein.
+Es ist zudem wichtig, dass du die aktuell Version von R hast!
 Die Anleitung dazu befindet sich zu Beginn des Grundlagen-Tutorials!
+
 Danach muss RStudio geöffnet und die folgenden Zeilen Code ausgeführt werden:
 
 ```{r, echo=TRUE, eval=FALSE}
-# Installiere das R Paket remotes, dies muss nur einmal auf einem Gerät getan werden
+# Installiere das R Paket remotes, dies muss nur einmal auf einem Gerät getan werden.
 install.packages("remotes")
-# Installiere Otter, dies muss nur einmal auf einem Gerät getan werden
+# Installiere die neuste gradethis Version von GitHub, dies muss nur einmal auf einem Gerät getan werden.
+# Dies ist notwendig, da Otter diese Version verwendet
+remotes::install_github("rstudio/gradethis")
+# Installiere Otter von GitHub, dies muss nur einmal auf einem Gerät getan werden.
 remotes::install_github("MeikeSteinhilber/otter")
 # Lade Otter
 library(otter)
 # Zeige alle vorhandenen Tutorials
 otter::show_all_tutorials()
-# Öffne ein Tutorial (dies kann ein paar Sekunden dauern)
+# Öffne ein Tutorial (dies kann ein paar Sekunden dauern, weil das gesamte Tutorial "gebaut" wird)
 otter::open_tutorial("Grundlagen")
 ```
 

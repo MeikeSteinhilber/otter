@@ -1,13 +1,21 @@
 Package: otter
 Type: Package
-Title: Self Study Tutorials for R for the University of Frankfurt
+Title: Otter ist ein online Tutorial Tool für das Erlernen von R
 Version: 0.1.0
 Authors@R:
     c(person(given = "Meike",
              family = "Steinhilber",
-             role = c("aut", "cre"),
+             role = c("aut", "cre", "ctb"),
              email = "Meike.Steinhilber@aol.com",
-             comment = c(ORCID = "0000-0002-7144-2100"))
+             comment = c(ORCID = "0000-0002-7144-2100")),
+      person(given = "Wanja",
+             family = "Hemmerich",
+             role = c("ctb"),
+             comment = c(ORCID = "0000-0002-1619-8934")
+             ),
+      person(given = "digitell",
+             family = "",
+             role = c("fnd"))
       )
 Maintainer: Meike Steinhilber <Meike.Steinhilber@aol.com>
 Description: 

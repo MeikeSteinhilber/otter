@@ -2,15 +2,15 @@
 % Please edit documentation in R/external_functions.R
 \name{show_all_tutorials}
 \alias{show_all_tutorials}
-\title{Show all tutorials in the otter package}
+\title{Zeige alle Tutorials in Otter}
 \usage{
 show_all_tutorials()
 }
 \value{
-prints out (on the console) all available tutorials in the otter package
+gibt auf der Konsole aus, welche Tutorials es in Otter gibt und wie deren Kurznamen heißen.
 }
 \description{
-Show all tutorials in the otter package
+Zeige alle Tutorials in Otter
 }
 \examples{
 library(otter)

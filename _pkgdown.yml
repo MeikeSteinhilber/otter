@@ -1,27 +1,45 @@
 url: https://meikesteinhilber.github.io/otter/
-
+lang: de
 
 template:
   bootstrap: 5
   bootswatch: minty
-  lang: de
   bslib:
    pkgdown-nav-height: 100px
    primary: "#CA225E"
 
-
-
-home:
-  title: Self Study of R using Tutorials
+translate:
+  navbar:
+    home: Startseite
+    reference: Funktionen
 
 authors:
   Meike Steinhilber:
     href: https://methoden.amd.psychologie.uni-mainz.de/steinhilber/
+  Wanja Hemmerich:
+    href: https://methoden.amd.psychologie.uni-mainz.de/hemmerich/
+  digitell:
+    html: "gefördert durch <a href='https://www.uni-frankfurt.de/digitell' target='_blank'><img src='man/figures/corporate_logos_small.jpg' height=72 alt='Stiftung Innovation in der Hochschullehre'/a>"
+  footer:
+    roles: [cre, fnd]
+    text: "Entwickelt von"
+  sidebar:
+    roles: [aut, ctb, fnd]
+
+
+
+
+home:
+  title: Otter ist ein online Tutorial Tool für das Erlernen von R.
+  sidebar:
+    structure: [license, citation, authors, dev]
+    license:
+      text: Lizenz
 
 
 navbar:
   structure:
-    left:  [intro, faq, tutorials, feedback, barrierefreiheit, reference, news]
+    left:  [intro, faq, tutorials, feedback, barrierefreiheit, reference, news, datasecurity]
     right: [search, github]
   components:
 
@@ -54,6 +72,9 @@ navbar:
     text: Barrierefreiheit
     href: articles/Barrierefreiheit.html
 
+   datasecurity:
+    text: Datenschutz
+    href: articles/Datenschutz.html
 
    feedback:
     text: Feedback

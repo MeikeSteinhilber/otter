@@ -2,21 +2,24 @@
 % Please edit documentation in R/external_functions.R
 \name{open_tutorial}
 \alias{open_tutorial}
-\title{Open Tutorials in the otter package}
+\title{Öffnet ein Tutorial in Otter}
 \usage{
 open_tutorial(tutorial_name = "Grundlagen")
 }
 \arguments{
-\item{tutorial_name}{character string, the short name of the tutorial.
-Get the short name of the tutorials using `show_all_tutorials()`.}
+\item{tutorial_name}{Gebe den Kurznamen des Tutorials als character string an.
+Erhalte die Kurznahmen der Tutorials mit `show_all_tutorials()`.}
 }
 \value{
-opens the specified tutorial. Default value is set to "Grundlagen".
+öffnet das spezifizierte Tutorial.
+Die Standardeinstellung ist auf "Grundlagen" gesetzt.
 }
 \description{
-Open Tutorials in the otter package
+Öffnet ein Tutorial in Otter
 }
 \examples{
-library(otter)
+# Der folgende Code ist als Kommentar geschrieben, und muss entkommentiert
+# werden, damit er funktioniert:
+#library(otter)
 #open_tutorial("Grundlagen")
 }

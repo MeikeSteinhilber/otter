@@ -13,7 +13,7 @@ original is from: https://github.com/tidymodels/learntidymodels/tree/main/inst/t
   margin-bottom: 15px;
   margin-left: 15px;
 }
-}
+
 
 .Rchunk {
   background-color: #f2f2f2;
@@ -110,7 +110,7 @@ body {
 /*-------- White Space --------*/
 
 .band {
-  margin-top: 1.2em;
+  margin-top: 0.2em;
   background-color: white;
   width: 100%;
 }
@@ -184,6 +184,7 @@ h2 {
     background-color: white;
     margin-left: 1em;
     margin-right: 2em;
+    margin-top: 0.5em;
     float: right;
     display: block;
     /*
@@ -194,14 +195,12 @@ h2 {
 }
 
 .logo {
-    float: right;
-    /*
-    display: block;
-
-    position: fixed;
-    left:100px;
-    top:-10px;
-    */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  /*
+  margin-top: 0.5em;
+  */
 }
 
 /* Remove extra space on mobile */
@@ -253,6 +252,224 @@ h2 {
 
 }
 
+/*--------- Accessibility ---------*/
+.accessibility {
+  width: 70px;
+  height: 70px;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-image: url(/images/otter.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 1;
+  z-index: 100001;
+  transition: opacity 0.3s ease;
+}
+.accessibility:hover {
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.offcanvas {
+  height: 100vh;
+  width: 350px;
+  position: fixed;
+  right: -400px;
+  top: 0;
+  transition: 0.35s all ease;
+  background-color: rgba(242, 242, 242, 0.65);/*#f0f0f0;*/
+  backdrop-filter: blur(20px);
+  z-index: 10000;
+  box-shadow: -4px 0 50px rgba(0,0,0,0);
+}
+
+.offcanvas .button-container {
+  display: flex !important;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.offcanvas.show  {
+  right: 0px;
+  transition: 0.35s all ease;
+  box-shadow: -4px 0 50px rgba(0,0,0,0.35);
+}
+
+.offcanvas .title {
+  background-color: var(--blue);
+  color: white;
+  padding: 1rem;
+  margin-bottom: 3rem;
+  font-weight: bold;
+}
+
+.offcanvas button {
+  width: 150px;
+  height: 85px;
+  border: 3px solid var(--blue);
+  box-shadow: 0 0 0 5px rgba(0, 153, 230, 0.2);
+  margin-bottom: 2rem;
+  border-radius: 5px;
+  background-color: white;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.offcanvas button.pressed {
+  background-color: rgba(0, 153, 230, 1);
+  color: white;
+}
+
+.offcanvas button .indicators {
+  display: flex;
+  justify-content: center;
+}
+
+.offcanvas button .indicators > div {
+  margin-left: 0.35rem;
+  margin-right: 0.35rem;
+}
+
+.offcanvas button .indicators > div::after {
+  content: "\f111";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 500;
+  font-size: 65%;
+  color: rgba(0,0,0,0.4);
+  transition: all 0.25s ease;
+}
+
+.offcanvas button .indicators > div.dark::after {
+  font-weight: 700;
+  font-size: 65%;
+  color: rgba(0,0,0,0.3);
+  transition: all 0.25s ease;
+}
+
+html.invert {
+  filter: invert() !important;
+}
+html.invert .accessibility, html.invert img.logo {
+  filter: invert() !important;
+}
+
+html.highlightlinks a:link {
+  background-color: #fc0 !important;
+  outline: 3px solid #f0c !important;
+}
+
+html.dyslexic *:not(.fa-solid):not(.ace_editor):not(.fa) {
+  font-family: "OpenDyslexic" !important;
+}
+
+html.fontsize1 *:not(.offcanvas *) {
+  font-size: 1.5rem  !important;
+}
+html.fontsize2 *:not(.offcanvas *) {
+  font-size: 1.75rem !important;
+}
+html.fontsize3 *:not(.offcanvas *) {
+  font-size: 2rem !important;
+}
+html.fontsize4 *:not(.offcanvas *) {
+  font-size: 2.25rem !important;
+}
+html.fontsize5 *:not(.offcanvas *) {
+  font-size: 2.5rem !important;
+}
+
+html.lineheight1 *:not(.offcanvas *) {
+  line-height: 3rem !important;
+}
+html.lineheight2 *:not(.offcanvas *) {
+  line-height: 4rem !important;
+}
+html.lineheight3 *:not(.offcanvas *) {
+  line-height: 5rem !important;
+}
+
+html.letterspacing1 *:not(.offcanvas *) {
+  letter-spacing: 1px !important;
+}
+html.letterspacing2 *:not(.offcanvas *) {
+  letter-spacing: 2px !important;
+}
+html.letterspacing3 *:not(.offcanvas *) {
+  letter-spacing: 3px !important;
+}
+
+.followcursor {
+  display: none;
+}
+html.cursor {
+  cursor: none;
+}
+html.cursor .followcursor {
+  display: block;
+  position: fixed;
+  width: 250px;
+  transform: translateX(-50%);
+}
+
+.offcanvas * {
+  font-size: 1.65rem !important;
+  letter-spacing: 0 !important;
+  line-height: 1.2 !important;
+}
+
+@font-face {
+    font-family: 'OpenDyslexic';
+    src: url('/images/fonts/OpenDyslexic-BoldItalic.woff2') format('woff2'),
+        url('/images/fonts/OpenDyslexic-BoldItalic.woff') format('woff'),
+        url('/images/fonts/OpenDyslexic-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'OpenDyslexic';
+    src: url('/images/fonts/OpenDyslexic-Bold.woff2') format('woff2'),
+        url('/images/fonts/OpenDyslexic-Bold.woff') format('woff'),
+        url('/images/fonts/OpenDyslexic-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'OpenDyslexic';
+    src: url('/images/fonts/OpenDyslexic-Italic.woff2') format('woff2'),
+        url('/images/fonts/OpenDyslexic-Italic.woff') format('woff'),
+        url('/images/fonts/OpenDyslexic-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'OpenDyslexic';
+    src: url('/images/fonts/OpenDyslexic-Regular.woff2') format('woff2'),
+        url('/images/fonts/OpenDyslexic-Regular.woff') format('woff'),
+        url('/images/fonts/OpenDyslexic-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'OpenDyslexicMono';
+    src: url('/images/fonts/OpenDyslexicMono-Regular.woff2') format('woff2'),
+        url('/images/fonts/OpenDyslexicMono-Regular.woff') format('woff'),
+        url('/images/fonts/OpenDyslexicMono-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 /*--------- Headers ---------*/
 
 h1, h2, h3 {
@@ -280,7 +497,7 @@ h3 {
   color: #1a162d99;*/
 }
 
-h4 {
+h4, .uebung {
   font-size: 1.3em;
   margin-top: 50px;
   color: var(--blue);
@@ -585,4 +802,11 @@ h2.tutorialTitle,
   margin-bottom: 1em;
 }
 
+/*-------Cookie banner stuff ------*/
+.modal-open .modal {
+  display: flex !important;
+}
 
+.modal-open {
+  overflow: unset !important;
+}
