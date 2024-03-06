@@ -32,6 +32,8 @@ gestellte Fragen zu Otter.
 Über den Reiter **Tutorials** gelangst du zum Selbstlern-Tutorial [R &
 RStudio Grundlagen](https://otter.uni-frankfurt.de/).
 
+<img src="man/figures/otter.png" style="float: right; width: 50%; margin-left: 20px;" />
+
 Du kannst Feedback zu Otter geben oder auch Fehler in Otter berichten
 unter dem Reiter **Feedback**.
 
@@ -45,13 +47,13 @@ Hilfeseiten werden in Otter
 
 Viel Spaß beim Erkunden!
 
-## Weiterführende Informationen
+## Weiterführende Inhalte
 
-Falls du dich eher für statistische Übungsaufgaben anstatt für reine R
-Aufgaben interessierst, schaue doch mal bei
+Falls du dich eher für **statistische Übungsaufgaben** anstatt für reine
+R Aufgaben interessierst, schaue doch mal bei
 [tigeR](https://tiger.uni-frankfurt.de/app/shinytigeR) vorbei!
 
-Du willst dich tiefer in statistische Verfahren einlesen? Dann werfe
+Du willst dich tiefer in **statistische Verfahren** einlesen? Dann werfe
 doch mal einen Blick auf [pandaR](https://pandar.netlify.app/)!
 
-<img src="man/figures/otter.png" style="width:50.0%" />
+<!-- ![](man/figures/otter.png){width="50%"} -->
