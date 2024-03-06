@@ -25,14 +25,14 @@ verwenden kannst.
 
 ## Inhalte
 
-Der Reiter **FAQ** enthält Infos, wie du das R Paket `otter` und das
-Selbstlern-Tutorial am besten nutzen kannst und beantwortet häufig
-gestellte Fragen zu Otter.
-
 Über den Reiter **Tutorials** gelangst du zum Selbstlern-Tutorial [R &
 RStudio Grundlagen](https://otter.uni-frankfurt.de/).
 
-<img src="man/figures/otter.png" style="float: right; width: 50%; margin-left: 20px;" />
+<img src="man/figures/otter.png" style="float: left; width: 40%; margin-left: 20px;" />
+
+Der Reiter **FAQ** enthält Infos, wie du das R Paket `otter` und das
+Selbstlern-Tutorial am besten nutzen kannst und beantwortet häufig
+gestellte Fragen zu Otter.
 
 Du kannst Feedback zu Otter geben oder auch Fehler in Otter berichten
 unter dem Reiter **Feedback**.
@@ -43,9 +43,7 @@ mit den Hilfeseiten von R Paketen und Funktionen vertraut bist. Die
 Hilfeseiten werden in Otter
 [hier](http://otter.uni-frankfurt.de/#section-funktionen) erklärt.
 
-<!-- <br> -->
-
-Viel Spaß beim Erkunden!
+<br> Viel Spaß beim Erkunden!
 
 ## Weiterführende Inhalte
 
