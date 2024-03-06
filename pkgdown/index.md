@@ -28,7 +28,13 @@ verwenden kannst.
 Über den Reiter **Tutorials** gelangst du zum Selbstlern-Tutorial [R &
 RStudio Grundlagen](https://otter.uni-frankfurt.de/).
 
-<img src="man/figures/otter.png" style="float: left; width: 40%; margin-left: 20px;" />
+<!-- <img src="man/figures/otter.png" style="float: left; width: 40%; margin-left: 5px; margin-right: -5px;" />-->
+
+<div style="overflow: hidden;">
+
+<img src="man/figures/otter.png" style="float: left; width: 40%; margin: 5px 5px 5px 5px;" alt="Otter Bild" />
+
+<div style="margin-left: 45%;">
 
 Der Reiter **FAQ** enthält Infos, wie du das R Paket `otter` und das
 Selbstlern-Tutorial am besten nutzen kannst und beantwortet häufig
@@ -43,9 +49,13 @@ mit den Hilfeseiten von R Paketen und Funktionen vertraut bist. Die
 Hilfeseiten werden in Otter
 [hier](http://otter.uni-frankfurt.de/#section-funktionen) erklärt.
 
-<br> Viel Spaß beim Erkunden!
+Viel Spaß beim Erkunden!
 
-## Weiterführende Inhalte
+</div>
+
+</div>
+
+## Lieber Statistik als R?
 
 Falls du dich eher für **statistische Übungsaufgaben** anstatt für reine
 R Aufgaben interessierst, schaue doch mal bei
@@ -53,5 +63,3 @@ R Aufgaben interessierst, schaue doch mal bei
 
 Du willst dich tiefer in **statistische Verfahren** einlesen? Dann werfe
 doch mal einen Blick auf [pandaR](https://pandar.netlify.app/)!
-
-<!-- ![](man/figures/otter.png){width="50%"} -->
