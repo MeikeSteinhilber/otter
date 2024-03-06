@@ -49,9 +49,9 @@ Der Reiter **Funktionen** bietet eine Übersicht über alle R Funktionen des R P
 <!-- <br> -->
 Viel Spaß beim Erkunden!
 
-## Weiterführende Informationen
-Falls du dich eher für statistische Übungsaufgaben anstatt für reine R Aufgaben interessierst, schaue doch mal bei [tigeR](https://tiger.uni-frankfurt.de/app/shinytigeR) vorbei!
+## Weiterführende Inhalte
+Falls du dich eher für **statistische Übungsaufgaben** anstatt für reine R Aufgaben interessierst, schaue doch mal bei [tigeR](https://tiger.uni-frankfurt.de/app/shinytigeR) vorbei!
 
-Du willst dich tiefer in statistische Verfahren einlesen? Dann werfe doch mal einen Blick auf [pandaR](https://pandar.netlify.app/)!
+Du willst dich tiefer in **statistische Verfahren** einlesen? Dann werfe doch mal einen Blick auf [pandaR](https://pandar.netlify.app/)!
 
 ![](man/figures/otter.png){width="50%"}
