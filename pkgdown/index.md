@@ -17,10 +17,11 @@ status](https://www.r-pkg.org/badges/version/otter)](https://cran.r-project.org/
 
 <!-- badges: end -->
 
-Hier findest du ein **Grundlagen Tutorial für R und RStudio**, das du
-zum Selbststudium verwenden kannst.
+Hier findest du ein [**Grundlagen Tutorial für R und
+RStudio**](https://otter.uni-frankfurt.de/), das du zum Selbststudium
+verwenden kannst.
 
-<br>
+<!-- <br> -->
 
 ## Inhalte
 
@@ -28,8 +29,8 @@ Der Reiter **FAQ** enthält Infos, wie du das R Paket `otter` und das
 Selbstlern-Tutorial am besten nutzen kannst und beantwortet häufig
 gestellte Fragen zu Otter.
 
-Über den Reiter **Tutorials** gelangst du zum Selbstlern-Tutorial “R &
-RStudio Grundlagen”.
+Über den Reiter **Tutorials** gelangst du zum Selbstlern-Tutorial [R &
+RStudio Grundlagen](https://otter.uni-frankfurt.de/).
 
 Du kannst Feedback zu Otter geben oder auch Fehler in Otter berichten
 unter dem Reiter **Feedback**.
@@ -40,6 +41,17 @@ mit den Hilfeseiten von R Paketen und Funktionen vertraut bist. Die
 Hilfeseiten werden in Otter
 [hier](http://otter.uni-frankfurt.de/#section-funktionen) erklärt.
 
-<br> Viel Spaß beim Erkunden!
+<!-- <br> -->
+
+Viel Spaß beim Erkunden!
+
+## Weiterführende Informationen
+
+Falls du dich eher für statistische Übungsaufgaben anstatt für reine R
+Aufgaben interessierst, schaue doch mal bei
+[tigeR](https://tiger.uni-frankfurt.de/app/shinytigeR) vorbei!
+
+Du willst dich tiefer in statistische Verfahren einlesen? Dann werfe
+doch mal einen Blick auf [pandaR](https://pandar.netlify.app/)!
 
 <img src="man/figures/otter.png" style="width:50.0%" />
