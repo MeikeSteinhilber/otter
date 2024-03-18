@@ -9,6 +9,7 @@ output:
     # progressive: true
     allow_skip: true
     css: css/style.css
+    fig_caption: false # important for the alt texts
     # highlight: espresso
     # theme: cerulean
 runtime: shiny_prerendered
@@ -90,8 +91,8 @@ $(document).ready(function() {
   
   $("#learnr-tutorial-content.topics").prepend(
   `<div class="logo">
-  <img class="logo" src="images/corporate_logos_small.jpg" style="width:30.0%"/>
-    <img class="logo" src="images/logo.png" style="width:10.0%"/>
+  <img class="logo" src="images/corporate_logos_small.jpg" alt="Digtell Logo" style="width:30.0%"/>
+    <img class="logo" src="images/logo.png" alt="Otter Logo" style="width:10.0%"/>
   </div>`);
   
 
@@ -397,7 +398,8 @@ blue <- "#00c4e6"
 
 ## R und RStudio Installation
 
-![](images/Rlogo.png){right="100%" width="10%"}
+
+![R Logo](images/Rlogo.png){right="100%" width="10%"}
 
 **1. R Installation**
 
@@ -409,7 +411,7 @@ blue <- "#00c4e6"
 
 
 <br>
-![](images/RStudio-Logo-Flat.png){right="100%" width="20%"}
+![RStudio Logo](images/RStudio-Logo-Flat.png){right="100%" width="20%"}
 
 **2. RStudio Installation**
 
@@ -447,7 +449,7 @@ Grundsätzlich sind auch andere IDEs möglich, wir werden in diesem Tutorial jed
 
 Nachdem RStudio geöffnet wird, sieht es so aus:
 
-![](images/RStudio_fresh_start.png){.absolute .images-shadow left="100%" width="80%"}
+![Die Console ist in einem Fenster geöffnet. Man kann dort die verwendete R Version “4.2.3” einsehen. Im rechten Drittel des Bildes ist das geöffnete Environment zu sehen. Direkt darunter ist ein weiteres Fenster, über das man zu Files, Plots, Packages, Help und Viewer gelangt.](images/RStudio_fresh_start.png){.absolute .images-shadow left="100%" width="80%"}
 
 Aktuell haben wir noch kein Dokument geöffnet.
 Wir sehen aktuell 3 separierte Bereiche bzw. Fenster.
@@ -455,28 +457,28 @@ Wir sehen aktuell 3 separierte Bereiche bzw. Fenster.
 ### Console <a href="#section-rstudio-einstieg"> <i class="fa-solid fa-arrow-up"></i></a>
 
 
-![](images/console.png){.absolute .images-shadow left="100%" width="80%"}
+![Die Console ist geöffnet.](images/console.png){.absolute .images-shadow left="100%" width="80%"}
 
 In der *Console* können R Befehle direkt ausgeführt werden.
 Dies ist praktisch für kleine Taschenrechner-Befehle oder kleine Tests.
 Der Nachteil ist jedoch, dass die R Befehle nicht gespeichert werden können.
 Dafür wird ein R Skript benötigt.
 
-![](images/console2.png){.absolute .images-shadow left="100%" width="60%"}
+![Die Console ist geöffnet. Es werden beispielhafte Taschenrechner-Befehle ausgeführt, z. B. 5*6 = 30](images/console2.png){.absolute .images-shadow left="100%" width="60%"}
 
 
 ### Environment <a href="#section-rstudio-einstieg"> <i class="fa-solid fa-arrow-up"></i></a>
 
-![](images/environment.png){.absolute .images-shadow left="100%" width="80%"}
+![Das Environment ist geöffnet. Im Environment steht Folgendes: Environment is empty. Über denselben Reiter kann man zu History, Connections und Tutorial gelangen.](images/environment.png){.absolute .images-shadow left="100%" width="80%"}
 
 Das Environment ist zu Beginn einer R Session leer.
 Wenn wir jedoch Variablen speichern oder Datensätze einladen, werden diese Objekte hier angezeigt.
 
-![](images/environment2.png){.absolute .images-shadow left="100%" width="80%"}
+![Das Environment ist geöffnet und nicht mehr leer. Es werden gespeicherte Variablen und Datensätze angezeigt (z.B. data.frame und list).](images/environment2.png){.absolute .images-shadow left="100%" width="80%"}
 
 ### Files <a href="#section-rstudio-einstieg"> <i class="fa-solid fa-arrow-up"></i></a>
 
-![](images/files.png){.absolute .images-shadow left="100%" width="80%"}
+![Das Fenster „Files“ ist geöffnet. Dort befinden sich zwei Dokumente (.Rhistory und project.Rproj).](images/files.png){.absolute .images-shadow left="100%" width="80%"}
 
 Je nachdem, wo die *working directory* gesetzt ist, werden hier unterschiedliche Dokumente und Ordner angezeigt.
 
@@ -511,7 +513,7 @@ In einem R Skript kann Code abgespeichert werden.
 
 In einem R Skript kann Code abgespeichert werden.
 
-![](images/script1.png){.absolute .images-shadow left="100%" width="80%"}
+![Ein R Skript, in dem sich ein Code befindet, ist geöffnet.](images/script1.png){.absolute .images-shadow left="100%" width="80%"}
 
 
 ### Kommentare <a href="#section-r-skript"> <i class="fa-solid fa-arrow-up"></i></a>
@@ -520,11 +522,11 @@ In einem R Skript kann Code abgespeichert werden.
 Grundsätzlich wird jeder Befehl und jedes Zeichen als R Code verstanden.
 Wenn man einen Kommentar schreiben möchte, muss man in jeder Zeile eine `#` davor setzen.
 
-![](images/script1.png){.absolute .images-shadow left="100%" width="80%"}
+![Ein R Skript, in dem sich ein Code befindet, ist geöffnet. Man sieht, dass ein Kommentar durch eine Raute am Zeilenanfang gekennzeichnet wird.](images/script1.png){.absolute .images-shadow left="100%" width="80%"}
 
 Code wird ausgeführt, indem der gewünschte Bereich markiert und dann auf den *Run*-Button geklickt wird. Es kann hier der gesamte Code markiert werden, aber auch einzelne Zeilen oder sogar nur einzelne Befehle.
 
-![](images/script2.png){.absolute .images-shadow left="100%" width="80%"}
+![Ein R Skript, in dem sich ein Code befindet, ist geöffnet. Der Code wurde blau markiert, dann wird auf den Run-Button geklickt, um den markierten Codeabschnitt auszuführen.](images/script2.png){.absolute .images-shadow left="100%" width="80%"}
 
 Die Tastenkombination für *Run* ist unter Windows `Str + Enter` und unter macOS `Cmd + Enter`.
 
@@ -533,15 +535,15 @@ Die Tastenkombination für *Run* ist unter Windows `Str + Enter` und unter macOS
 
 Ein neues, leeres R Skript wird über diesen Button geöffnet:
 
-![](images/button-rscript-open.png){.absolute .images-shadow left="100%" width="80%"}
+![Ein neues, leeres R Skript wird über die RStudio Oberfläche über ein grün-weißes Plus-Symbol geöffnet. Dieses befindet sich oben links.](images/button-rscript-open.png){.absolute .images-shadow left="100%" width="80%"}
 
 Man erhält eine große Anzahl an möglichen Formaten, unter anderem auch ein R Skript.
 
-![](images/button-rscript-open2.png){.absolute .images-shadow left="100%" width="20%"}
+![Nachdem das Symbol mit dem grünen Kreis und dem weißen Plus gedrückt wurde, öffnen sich weitere Auswahlmöglichkeiten. Die oberste Leiste mit dem Titel „R Script - Create a new R script“ wird ausgewählt.](images/button-rscript-open2.png){.absolute .images-shadow left="100%" width="20%"}
 
 Das neu geöffnete R Skript sieht nun so aus und kann direkt mit dem Disketten-Symbol abgespeichert werden.
 
-![](images/empty-rscript-open.png){.absolute .images-shadow left="100%" width="80%"}
+![Ein neues, leeres R Skript ist geöffnet. Das zum Speichern geeignete blaue Disketten-Symbol befindet sich über der ersten Zeile.](images/empty-rscript-open.png){.absolute .images-shadow left="100%" width="80%"}
 
 
 #### Übungen
@@ -570,7 +572,7 @@ Die `otter` Tutorials sind alle interaktiv gestaltet.
 Damit wir dir Feedback geben können und du nicht immer zwischen RStudio und unserer Website wechseln musst, sind R-Bausteine eingebaut.
 Siehe dir die folgenden Bilder und Aufgaben an, um zu verstehen, wie in unseren Tutorials R eingebaut ist.
 
-![](images/r-vs-tutorial.png){.absolute left="100%" width="80%"}
+![Zu sehen sind zwei Screenshots nebeneinander. Der linke Screenshot zeigt ein geöffnetes R-Skript. Der rechte Screenshot zeigt die Konsolen Ausgabe nach dem Ausführen des R-Skriptes in RStudio. Das R-Skript in R-Studio sowie der Konsolen-Output sind identisch mit den darunter stehenden Übungsaufgaben, die in Otter zu sehen sind. Daraus kann gefolgert werden, dass R-Studio-Umgebungen in Otter integriert sind und denselben Output ergeben.](images/r-vs-tutorial.png){.absolute left="100%" width="80%"}
 
 
 #### Übungen
@@ -1185,7 +1187,7 @@ alter
 
 In RStudio ist nach dem Ausführen dieses Codes im *Environment* Folgendes zu sehen:
 
-![](images/env_example.png){.absolute width="500"}
+![Das Environment ist geöffnet. Die gespeicherten Daten (alter = NULL, lieblingszahl = 3, name = “Meike”, weiblich = “TRUE” ) sind zu sehen. ](images/env_example.png){.absolute width="500"}
 
 Mit Operatoren können Variablen Inhalte zugewiesen werden.
 In R gibt es hierfür zwei Zuweisungsoperatoren: `<-` und `=`.
@@ -1588,7 +1590,7 @@ grade_this_code()
 -   Spalten können **verschiedene Datentypen** haben.
 -   Auf Spalte wird mit `$` zugegriffen
 
-![](images/dollar_operator.png){width="300"}
+![Es wird gezeigt, dass mit $ auf Spalten zugegriffen werden kann.](images/dollar_operator.png){width="300"}
 
 `r otter::colorize("Beispiel:", "var(--red)")`
 `data.frame` Erstellung und Zugriff
@@ -1988,7 +1990,7 @@ Die wichtigsten Inhalte in der Hilfe-Seite sind:
 
 -   **Default-Werte**: alle Argumente, die unter *Usage* ein `=` mit Inhalt dahinter angezeigt haben, z.B. `trim = 0`.
 
-![](images/help_mean_long.png){height="600"}
+![Der Help-Reiter wurde ausgewählt in RStudio. Die Inhalte der mean() Funktion werden wiedergegeben.](images/help_mean_long.png){height="600"}
 
 
 
@@ -2577,33 +2579,33 @@ Egal wo sich das Projekt befindet, die Pfade sind immer gleich.
 ### R Projekt erstellen <a href="#section-r-projekte-und-working-directory"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Rechts oben in RStudio kann man ein neues Projekt erstellen.<br>
-![](images/project_1.png){ width="400"} <br>
+![Es wird rechts oben in RStudio auf „Project: (None)“ und anschließend in der obersten Leiste auf „New Project“ geklickt.](images/project_1.png){ width="400"} <br>
 
 Hier wählt man aus, ob man einen neuen Ordner anlegen möchte, oder ein bereits existierendes Verzeichnis nutzen möchte.
 <br>
-![](images/project_2.png){ width="450"} <br>
+![Zu sehen sind die drei Auswahlmöglichkeit: New Directory, Existing Directory, and Version Control.](images/project_2.png){ width="450"} <br>
 
 Hier können Vorlagen für Projekte ausgewählt werden.
 In den meisten Fällen werdet ihr diese jedoch nicht benötigen.
 
 <br>
-![](images/project_3.png){ width="450"} <br>
+![Zu sehen sind Vorlagen für Projekte. Sofern man diese nicht benutzt, muss man einfach in der obersten Leiste auf „New Project“ klicken.](images/project_3.png){ width="450"} <br>
 
 Hier könnt ihr nun den Namen vergeben und den Pfad auswählen.<br>
-![](images/project_4.png){ width="450"} <br>
+![Zu sehen ist ein Eingabefeld, in dem man dem zu erstellenden Projekt einen Namen vergeben und den Projektpfad anpassen kann.](images/project_4.png){ width="450"} <br>
 
 Nachdem ein Projekt erstellt wurde, befindet sich die `projektname.Rproj` Datei in eurem Projektordner.
 Von nun an, muss diese Datei zuerst geöffnet werden, wenn man an dem Projekt arbeiten möchte.
 
 <br>
-![](images/project_5.png){ width="450"} <br>
+![Zu sehen ist das erstellte Projekt in dem Projektordner. Es ist nur die Datei test.Rproj zu sehen.](images/project_5.png){ width="450"} <br>
 
 
 ### R Projekt verwenden <a href="#section-r-projekte-und-working-directory"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Zuerst muss immer die Projektdatei geöffnet werden!
 
-![](images/project_5.png){ width="300"}
+![Zu sehen ist das erstellte Projekt in dem Projektordner. Es ist nur die Datei test.Rproj zu sehen.](images/project_5.png){ width="300"}
 
 Danach können andere Skripte geöffnet werden.
 Das Projekt speichert, welche Skripte letztes Mal offen waren.
@@ -2611,7 +2613,7 @@ Das Projekt speichert, welche Skripte letztes Mal offen waren.
 Verwendet eine klare und einheitliche Ordnerstruktur in euren Projekten.
 Empfohlen ist z. B. diese hier:
 
-![](images/project_6.png){ width="300"}
+![Auf dem Screenshot sind oben ein Ordner namens „data“, darunter ein Ordner namens „images“, darunter ein Ordner namens „R“ und darunter die neue Projekt-Datei (test.Rproj) abgebildet.](images/project_6.png){ width="300"}
 
 Im Ordner `data` werden alle Datensätze gespeichert.
 Im Ordner `images` werden alle Grafiken gespeichert.
@@ -2929,7 +2931,7 @@ Damit läuft sie unendlich lange.
 Wenn das Abbruch-Kriterium vergessen wird, läuft die While-Loop in eine Endlosschleife.
 Wenn dies passiert, muss die Ausführung gestoppt werden.
 
-![](images/while_endless.png){.absolute width="500"}
+![Die Console ist geöffnet. “Hallo Welt” wird unendlich oft in der Console ausgegeben. Oben rechts befindet sich ein rotes Symbol, auf dem „Stop“ steht. Dieses muss geklickt werden, um die Ausführung zu stoppen.](images/while_endless.png){.absolute width="500"}
 
 
 `r otter::colorize("Positiv-Beispiel:", "var(--red)")`

@@ -262,8 +262,8 @@ $(document).ready(function() {
   
   $("#learnr-tutorial-content.topics").prepend(
   `<div class="logo">
-  <img class="logo" src="images/corporate_logos_small.jpg" style="width:30.0%"/>
-    <img class="logo" src="images/logo.png" style="width:10.0%"/>
+  <img class="logo" src="images/corporate_logos_small.jpg" alt="Digtell Logo" style="width:30.0%"/>
+    <img class="logo" src="images/logo.png" alt="Otter Logo" style="width:10.0%"/>
   </div>`);
   
 
@@ -533,7 +533,8 @@ jQuery(document).ready(function() {
 <!-- <div class="menu-button">Menu</div> -->
 <div id="section-r-und-rstudio-installation" class="section level2">
 <h2>R und RStudio Installation</h2>
-<p><img src="images/Rlogo.png" style="width:10.0%" right="100%" /></p>
+<p><img src="images/Rlogo.png" style="width:10.0%" right="100%"
+alt="Logo" /></p>
 <p><strong>1. R Installation</strong></p>
 <ul>
 <li><p>allgemein unter: <a href="https://cran.rstudio.com/"
@@ -544,7 +545,7 @@ class="uri">https://cran.rstudio.org/bin/windows/base/</a></p></li>
 class="uri">https://cran.r-project.org/bin/macosx/</a></p></li>
 </ul>
 <p><br> <img src="images/RStudio-Logo-Flat.png" style="width:20.0%"
-right="100%" /></p>
+right="100%" alt="RStudio Logo" /></p>
 <p><strong>2. RStudio Installation</strong></p>
 <ul>
 <li>unter: <a href="https://posit.co/download/rstudio-desktop/"
@@ -581,7 +582,8 @@ werden in diesem Tutorial jedoch immer davon ausgehen, dass RStudio
 verwendet wird.</p>
 <p>Nachdem RStudio geöffnet wird, sieht es so aus:</p>
 <p><img src="images/RStudio_fresh_start.png"
-class="absolute images-shadow" style="width:80.0%" left="100%" /></p>
+class="absolute images-shadow" style="width:80.0%" left="100%"
+alt="Die Console ist in einem Fenster geöffnet. Man kann dort die verwendete R Version “4.2.3” einsehen. Im rechten Drittel des Bildes ist das geöffnete Environment zu sehen. Direkt darunter ist ein weiteres Fenster, über das man zu Files, Plots, Packages, Help und Viewer gelangt." /></p>
 <p>Aktuell haben wir noch kein Dokument geöffnet. Wir sehen aktuell 3
 separierte Bereiche bzw. Fenster.</p>
 </div>
@@ -589,30 +591,34 @@ separierte Bereiche bzw. Fenster.</p>
 <h3>Console <a href="#section-rstudio-einstieg">
 <i class="fa-solid fa-arrow-up"></i></a></h3>
 <p><img src="images/console.png" class="absolute images-shadow"
-style="width:80.0%" left="100%" /></p>
+style="width:80.0%" left="100%" alt="Die Console ist geöffnet." /></p>
 <p>In der <em>Console</em> können R Befehle direkt ausgeführt werden.
 Dies ist praktisch für kleine Taschenrechner-Befehle oder kleine Tests.
 Der Nachteil ist jedoch, dass die R Befehle nicht gespeichert werden
 können. Dafür wird ein R Skript benötigt.</p>
 <p><img src="images/console2.png" class="absolute images-shadow"
-style="width:60.0%" left="100%" /></p>
+style="width:60.0%" left="100%"
+alt="Die Console ist geöffnet. Es werden beispielhafte Taschenrechner-Befehle ausgeführt, z. B. 5*6 = 30" /></p>
 </div>
 <div id="section-environment" class="section level3">
 <h3>Environment <a href="#section-rstudio-einstieg">
 <i class="fa-solid fa-arrow-up"></i></a></h3>
 <p><img src="images/environment.png" class="absolute images-shadow"
-style="width:80.0%" left="100%" /></p>
+style="width:80.0%" left="100%"
+alt="Das Environment ist geöffnet. Im Environment steht Folgendes: Environment is empty. Über denselben Reiter kann man zu History, Connections und Tutorial gelangen." /></p>
 <p>Das Environment ist zu Beginn einer R Session leer. Wenn wir jedoch
 Variablen speichern oder Datensätze einladen, werden diese Objekte hier
 angezeigt.</p>
 <p><img src="images/environment2.png" class="absolute images-shadow"
-style="width:80.0%" left="100%" /></p>
+style="width:80.0%" left="100%"
+alt="Das Environment ist geöffnet und nicht mehr leer. Es werden gespeicherte Variablen und Datensätze angezeigt (z.B. data.frame und list)." /></p>
 </div>
 <div id="section-files" class="section level3">
 <h3>Files <a href="#section-rstudio-einstieg">
 <i class="fa-solid fa-arrow-up"></i></a></h3>
 <p><img src="images/files.png" class="absolute images-shadow"
-style="width:80.0%" left="100%" /></p>
+style="width:80.0%" left="100%"
+alt="Das Fenster „Files“ ist geöffnet. Dort befinden sich zwei Dokumente (.Rhistory und project.Rproj)." /></p>
 <p>Je nachdem, wo die <em>working directory</em> gesetzt ist, werden
 hier unterschiedliche Dokumente und Ordner angezeigt.</p>
 </div>
@@ -646,7 +652,8 @@ Kommentare</a><br>
 Neues R Skript öffnen</a><br></p>
 <p>In einem R Skript kann Code abgespeichert werden.</p>
 <p><img src="images/script1.png" class="absolute images-shadow"
-style="width:80.0%" left="100%" /></p>
+style="width:80.0%" left="100%"
+alt="Ein R Skript, in dem sich ein Code befindet, ist geöffnet." /></p>
 </div>
 <div id="section-kommentare" class="section level3">
 <h3>Kommentare <a href="#section-r-skript">
@@ -655,13 +662,15 @@ style="width:80.0%" left="100%" /></p>
 verstanden. Wenn man einen Kommentar schreiben möchte, muss man in jeder
 Zeile eine <code>#</code> davor setzen.</p>
 <p><img src="images/script1.png" class="absolute images-shadow"
-style="width:80.0%" left="100%" /></p>
+style="width:80.0%" left="100%"
+alt="Ein R Skript, in dem sich ein Code befindet, ist geöffnet. Man sieht, dass ein Kommentar durch eine Raute am Zeilenanfang gekennzeichnet wird." /></p>
 <p>Code wird ausgeführt, indem der gewünschte Bereich markiert und dann
 auf den <em>Run</em>-Button geklickt wird. Es kann hier der gesamte Code
 markiert werden, aber auch einzelne Zeilen oder sogar nur einzelne
 Befehle.</p>
 <p><img src="images/script2.png" class="absolute images-shadow"
-style="width:80.0%" left="100%" /></p>
+style="width:80.0%" left="100%"
+alt="Ein R Skript, in dem sich ein Code befindet, ist geöffnet. Der Code wurde blau markiert, dann wird auf den Run-Button geklickt, um den markierten Codeabschnitt auszuführen." /></p>
 <p>Die Tastenkombination für <em>Run</em> ist unter Windows
 <code>Str + Enter</code> und unter macOS <code>Cmd + Enter</code>.</p>
 </div>
@@ -670,15 +679,18 @@ style="width:80.0%" left="100%" /></p>
 <i class="fa-solid fa-arrow-up"></i></a></h3>
 <p>Ein neues, leeres R Skript wird über diesen Button geöffnet:</p>
 <p><img src="images/button-rscript-open.png"
-class="absolute images-shadow" style="width:80.0%" left="100%" /></p>
+class="absolute images-shadow" style="width:80.0%" left="100%"
+alt="Ein neues, leeres R Skript wird über die RStudio Oberfläche über ein grün-weißes Plus-Symbol geöffnet. Dieses befindet sich oben links." /></p>
 <p>Man erhält eine große Anzahl an möglichen Formaten, unter anderem
 auch ein R Skript.</p>
 <p><img src="images/button-rscript-open2.png"
-class="absolute images-shadow" style="width:20.0%" left="100%" /></p>
+class="absolute images-shadow" style="width:20.0%" left="100%"
+alt="Nachdem das Symbol mit dem grünen Kreis und dem weißen Plus gedrückt wurde, öffnen sich weitere Auswahlmöglichkeiten. Die oberste Leiste mit dem Titel „R Script - Create a new R script“ wird ausgewählt." /></p>
 <p>Das neu geöffnete R Skript sieht nun so aus und kann direkt mit dem
 Disketten-Symbol abgespeichert werden.</p>
 <p><img src="images/empty-rscript-open.png"
-class="absolute images-shadow" style="width:80.0%" left="100%" /></p>
+class="absolute images-shadow" style="width:80.0%" left="100%"
+alt="Ein neues, leeres R Skript ist geöffnet. Das zum Speichern geeignete blaue Disketten-Symbol befindet sich über der ersten Zeile." /></p>
 <div id="section-übungen-2" class="section level4">
 <h4>Übungen</h4>
 <div class="uebungen">
@@ -706,7 +718,8 @@ und unserer Website wechseln musst, sind R-Bausteine eingebaut. Siehe
 dir die folgenden Bilder und Aufgaben an, um zu verstehen, wie in
 unseren Tutorials R eingebaut ist.</p>
 <p><img src="images/r-vs-tutorial.png" class="absolute"
-style="width:80.0%" left="100%" /></p>
+style="width:80.0%" left="100%"
+alt="Zu sehen sind zwei Screenshots nebeneinander. Der linke Screenshot zeigt ein geöffnetes R-Skript. Der rechte Screenshot zeigt die Konsolen Ausgabe nach dem Ausführen des R-Skriptes in RStudio. Das R-Skript in R-Studio sowie der Konsolen-Output sind identisch mit den darunter stehenden Übungsaufgaben, die in Otter zu sehen sind. Daraus kann gefolgert werden, dass R-Studio-Umgebungen in Otter integriert sind und denselben Output ergeben." /></p>
 <div id="section-übungen-3" class="section level4">
 <h4>Übungen</h4>
 <p>So sieht derselbe R Code in unserem Tutorial-Format aus:</p>
@@ -1334,7 +1347,8 @@ alter</code></pre>
 </div>
 <p>In RStudio ist nach dem Ausführen dieses Codes im
 <em>Environment</em> Folgendes zu sehen:</p>
-<p><img src="images/env_example.png" class="absolute" width="500" /></p>
+<p><img src="images/env_example.png" class="absolute" width="500"
+alt="Das Environment ist geöffnet. Die gespeicherten Daten (alter = NULL, lieblingszahl = 3, name = “Meike”, weiblich = “TRUE” ) sind zu sehen." /></p>
 <p>Mit Operatoren können Variablen Inhalte zugewiesen werden. In R gibt
 es hierfür zwei Zuweisungsoperatoren: <code>&lt;-</code> und
 <code>=</code>. Wobei es als guter Stil gilt, einheitlich
@@ -1765,7 +1779,8 @@ Datensatz.</p>
 <li>Spalten können <strong>verschiedene Datentypen</strong> haben.</li>
 <li>Auf Spalte wird mit <code>$</code> zugegriffen</li>
 </ul>
-<p><img src="images/dollar_operator.png" width="300" /></p>
+<p><img src="images/dollar_operator.png" width="300"
+alt="Es wird gezeigt, dass mit $ auf Spalten zugegriffen werden kann." /></p>
 <span style="color: var(--red);">Beispiel:</span>
 <code>data.frame</code> Erstellung und Zugriff
 <div class="tutorial-exercise" data-label="matrix-2" data-completion="1"
@@ -2200,7 +2215,8 @@ optional und es ist kein Default-Wert hinterlegt.</p></li>
 <em>Usage</em> ein <code>=</code> mit Inhalt dahinter angezeigt haben,
 z.B. <code>trim = 0</code>.</p></li>
 </ul>
-<p><img src="images/help_mean_long.png" height="600" /></p>
+<p><img src="images/help_mean_long.png" height="600"
+alt="Der Help-Reiter wurde ausgewählt in RStudio. Die Inhalte der mean() Funktion werden wiedergegeben." /></p>
 <div id="section-übungen-17" class="section level4">
 <h4>Übungen</h4>
 <div class="uebungen">
@@ -2882,32 +2898,44 @@ Pfad funktioniert nicht auf einem anderen PC)</p>
 <a href="#section-r-projekte-und-working-directory">
 <i class="fa-solid fa-arrow-up"></i></a></h3>
 <p>Rechts oben in RStudio kann man ein neues Projekt erstellen.<br> <img
-src="images/project_1.png" width="400" /> <br></p>
+src="images/project_1.png" width="400"
+alt="Es wird rechts oben in RStudio auf „Project: (None)“ und anschließend in der obersten Leiste auf „New Project“ geklickt." />
+<br></p>
 <p>Hier wählt man aus, ob man einen neuen Ordner anlegen möchte, oder
 ein bereits existierendes Verzeichnis nutzen möchte. <br> <img
-src="images/project_2.png" width="450" /> <br></p>
+src="images/project_2.png" width="450"
+alt="Zu sehen sind die drei Auswahlmöglichkeit: New Directory, Existing Directory, Version Control." />
+<br></p>
 <p>Hier können Vorlagen für Projekte ausgewählt werden. In den meisten
 Fällen werdet ihr diese jedoch nicht benötigen.</p>
-<p><br> <img src="images/project_3.png" width="450" /> <br></p>
+<p><br> <img src="images/project_3.png" width="450"
+alt="Zu sehen sind Vorlagen für Projekte. Sofern man diese nicht benutzt, muss man einfach in der obersten Leiste auf „New Project“ klicken." />
+<br></p>
 <p>Hier könnt ihr nun den Namen vergeben und den Pfad auswählen.<br>
-<img src="images/project_4.png" width="450" /> <br></p>
+<img src="images/project_4.png" width="450"
+alt="Zu sehen ist ein Eingabefeld, in dem man dem zu erstellenden Projekt einen Namen vergeben und den Projektpfad anpassen kann." />
+<br></p>
 <p>Nachdem ein Projekt erstellt wurde, befindet sich die
 <code>projektname.Rproj</code> Datei in eurem Projektordner. Von nun an,
 muss diese Datei zuerst geöffnet werden, wenn man an dem Projekt
 arbeiten möchte.</p>
-<p><br> <img src="images/project_5.png" width="450" /> <br></p>
+<p><br> <img src="images/project_5.png" width="450"
+alt="Zu sehen ist das erstellte Projekt in dem Projektordner. Es ist nur die Datei test.Rproj zu sehen." />
+<br></p>
 </div>
 <div id="section-r-projekt-verwenden" class="section level3">
 <h3>R Projekt verwenden
 <a href="#section-r-projekte-und-working-directory">
 <i class="fa-solid fa-arrow-up"></i></a></h3>
 <p>Zuerst muss immer die Projektdatei geöffnet werden!</p>
-<p><img src="images/project_5.png" width="300" /></p>
+<p><img src="images/project_5.png" width="300"
+alt="Zu sehen ist das erstellte Projekt in dem Projektordner. Es ist nur die Datei test.Rproj zu sehen." /></p>
 <p>Danach können andere Skripte geöffnet werden. Das Projekt speichert,
 welche Skripte letztes Mal offen waren.</p>
 <p>Verwendet eine klare und einheitliche Ordnerstruktur in euren
 Projekten. Empfohlen ist z. B. diese hier:</p>
-<p><img src="images/project_6.png" width="300" /></p>
+<p><img src="images/project_6.png" width="300"
+alt="Auf dem Screenshot sind oben ein Ordner namens „data“, darunter ein Ordner namens „images“, darunter ein Ordner namens „R“ und darunter die neue Projekt-Datei (test.Rproj) abgebildet." /></p>
 <p>Im Ordner <code>data</code> werden alle Datensätze gespeichert. Im
 Ordner <code>images</code> werden alle Grafiken gespeichert. Im Ordner
 <code>R</code> werden alle R Skripte gespeichert.</p>
@@ -3266,8 +3294,8 @@ unendlich lange.</p>
 <p>Wenn das Abbruch-Kriterium vergessen wird, läuft die While-Loop in
 eine Endlosschleife. Wenn dies passiert, muss die Ausführung gestoppt
 werden.</p>
-<p><img src="images/while_endless.png" class="absolute"
-width="500" /></p>
+<p><img src="images/while_endless.png" class="absolute" width="500"
+alt="Die Console ist geöffnet. “Hallo Welt” wird unendlich oft in der Console ausgegeben. Oben rechts befindet sich ein rotes Symbol, auf dem „Stop“ steht. Dieses muss geklickt werden, um die Ausführung zu stoppen." /></p>
 <p><span style="color: var(--red);">Positiv-Beispiel:</span>
 Abbruchkriterium ist vorhanden</p>
 <div class="tutorial-exercise" data-label="while-2" data-completion="1"
@@ -5471,16 +5499,16 @@ learnr:::store_exercise_cache(structure(list(label = "ex-na-01", global_setup = 
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-na-1", question = structure("Was ist die Länge der Variable <code>variable = logical(3)<\u002fcode>?", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_bb2f686", 
+"character")), answers = list(structure(list(id = "lnr_ans_b4668b", 
     option = "0", value = "0", label = structure("0", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_dded9cc", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_a201fac", 
     option = "1", value = "1", label = structure("1", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_a30ab55", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_31b058d", 
     option = "3", value = "3", label = structure("3", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_2412c36", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_d3fcf00", 
     option = "Es gibt keine sinnvolle Antwort auf diese Frage.", 
     value = "Es gibt keine sinnvolle Antwort auf diese Frage.", 
     label = structure("Es gibt keine sinnvolle Antwort auf diese Frage.", html = TRUE, class = c("html", 
@@ -5492,7 +5520,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), incorrect = structure("Leider falsch!", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "quiz-na-1-answer", question = "quiz-na-1"), loading = NULL, 
-    random_answer_order = TRUE, allow_retry = TRUE, seed = 1353225797.86986, 
+    random_answer_order = TRUE, allow_retry = TRUE, seed = 176069500.418011, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
@@ -5500,17 +5528,17 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-na-2", question = structure("Was passiert, wenn dieser Befehl ausgeführt wird: <code>NaN &lt; 0<\u002fcode>?", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_b900154", 
+"character")), answers = list(structure(list(id = "lnr_ans_5576bab", 
     option = "Es gibt eine Fehlermeldung.", value = "Es gibt eine Fehlermeldung.", 
     label = structure("Es gibt eine Fehlermeldung.", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_2abd07a", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_57b9278", 
     option = "FALSE", value = "FALSE", label = structure("FALSE", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_3e66a85", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_19138f1", 
     option = "TRUE", value = "TRUE", label = structure("TRUE", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_f6a9094", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_e1debf7", 
     option = "Es gibt einen fehlenden Wert aus.", value = "Es gibt einen fehlenden Wert aus.", 
     label = structure("Es gibt einen fehlenden Wert aus.", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
@@ -5521,7 +5549,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), incorrect = structure("Leider falsch!", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "quiz-na-2-answer", question = "quiz-na-2"), loading = NULL, 
-    random_answer_order = TRUE, allow_retry = TRUE, seed = 1084857499.99482, 
+    random_answer_order = TRUE, allow_retry = TRUE, seed = 741121882.154888, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
@@ -5750,16 +5778,16 @@ learnr:::store_exercise_cache(structure(list(label = "data-functions3", global_s
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-datentyp-1", 
     question = structure("In welchem Datentyp könnte ein solcher Smiley gespeichert werden: <code>:-)<\u002fcode>?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_cdfbb9a", 
+    "character")), answers = list(structure(list(id = "lnr_ans_5f52f22", 
         option = "numeric", value = "numeric", label = structure("numeric", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_81bdfde", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7842103", 
         option = "logical", value = "logical", label = structure("logical", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7b63bcf", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_a781f19", 
         option = "integer", value = "integer", label = structure("integer", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_73c3f74", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_775ebcf", 
         option = "character", value = "character", label = structure("character", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("Antwort einreichen", html = TRUE, class = c("html", 
@@ -5770,7 +5798,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "quiz-datentyp-1-answer", question = "quiz-datentyp-1"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1720941794.19862, options = list()), class = c("learnr_radio", 
+    seed = 408954388.309566, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -5778,22 +5806,22 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", label = "quiz-datentyp-2", 
     question = structure("Wie werden Zahlen mit dem Datentyp <code>integer<\u002fcode> erstellt?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_dd0bca7", 
+    "character")), answers = list(structure(list(id = "lnr_ans_f426a81", 
         option = "Mit einem L, z.B. `3L`", value = "Mit einem L, z.B. `3L`", 
         label = structure("Mit einem L, z.B. <code>3L<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_83b88c2", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_906d06a", 
         option = "`as.integer(3)`", value = "`as.integer(3)`", 
         label = structure("<code>as.integer(3)<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ae046a", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9f28c53", 
         option = "`1:3`", value = "`1:3`", label = structure("<code>1:3<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_30e1949", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_5189b26", 
         option = "Mit einem I, z.B. `3I`", value = "Mit einem I, z.B. `3I`", 
         label = structure("Mit einem I, z.B. <code>3I<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_5f28b8f", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_80d55a6", 
         option = "Mit dem Eintippen der Zahl `3`", value = "Mit dem Eintippen der Zahl `3`", 
         label = structure("Mit dem Eintippen der Zahl <code>3<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
@@ -5805,28 +5833,28 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", lab
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "quiz-datentyp-2-answer", question = "quiz-datentyp-2"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1873921280.12739, options = list()), class = c("learnr_checkbox", 
+    seed = 1318133402.3862, options = list()), class = c("learnr_checkbox", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", label = "quiz-datentyp-3", 
     question = structure("Welche Aussagen sind richtig?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_df11c1e", 
+    "character")), answers = list(structure(list(id = "lnr_ans_8148c78", 
         option = "`is.double()` prüft, ob es sich um den Datenyp double handelt", 
         value = "`is.double()` prüft, ob es sich um den Datenyp double handelt", 
         label = structure("<code>is.double()<\u002fcode> prüft, ob es sich um den Datenyp double handelt", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_88f474e", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_2819da", 
         option = "`as.integer(3)` erstellt 3 Zahlen", value = "`as.integer(3)` erstellt 3 Zahlen", 
         label = structure("<code>as.integer(3)<\u002fcode> erstellt 3 Zahlen", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_4d67f9b", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_4c49e0f", 
         option = "`double(3)` erstellt die Zahl 3 im Datentyp double", 
         value = "`double(3)` erstellt die Zahl 3 im Datentyp double", 
         label = structure("<code>double(3)<\u002fcode> erstellt die Zahl 3 im Datentyp double", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_487b201", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_83440fd", 
         option = "Man kann 5 Nullen mit `integer(5)` erstellen", 
         value = "Man kann 5 Nullen mit `integer(5)` erstellen", 
         label = structure("Man kann 5 Nullen mit <code>integer(5)<\u002fcode> erstellen", html = TRUE, class = c("html", 
@@ -5839,7 +5867,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", lab
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "quiz-datentyp-3-answer", question = "quiz-datentyp-3"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1270887949.9082, options = list()), class = c("learnr_checkbox", 
+    seed = 608255550.716759, options = list()), class = c("learnr_checkbox", 
 "tutorial_question")), session = session)
 </script>
 
@@ -8432,16 +8460,16 @@ learnr:::store_exercise_cache(structure(list(label = "ex-help-00", global_setup 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-help-1", 
     question = structure("Was macht die <code>floor()<\u002fcode> Funktion?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_57560b0", 
+    "character")), answers = list(structure(list(id = "lnr_ans_9a78a6b", 
         option = "Sie rundet eine Zahl auf.", value = "Sie rundet eine Zahl auf.", 
         label = structure("Sie rundet eine Zahl auf.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c6cfddb", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_6b37c5a", 
         option = "Sie berechnet einen mathematischen Grenzwert.", 
         value = "Sie berechnet einen mathematischen Grenzwert.", 
         label = structure("Sie berechnet einen mathematischen Grenzwert.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_64039a6", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_67e197b", 
         option = "Sie rundet Zahlen ab.", value = "Sie rundet Zahlen ab.", 
         label = structure("Sie rundet Zahlen ab.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
@@ -8453,28 +8481,28 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "quiz-help-1-answer", question = "quiz-help-1"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1108053276.48402, options = list()), class = c("learnr_radio", 
+    seed = 402651341.312501, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", label = "quiz-help-2", 
     question = structure("Welche Aussagen stimmen zu über die <code>all()<\u002fcode> Funktion?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_dd154fe", 
+    "character")), answers = list(structure(list(id = "lnr_ans_aa4103e", 
         option = "Die Funktion prüft, ob alle Argumente in einer Funktion vorhanden sind.", 
         value = "Die Funktion prüft, ob alle Argumente in einer Funktion vorhanden sind.", 
         label = structure("Die Funktion prüft, ob alle Argumente in einer Funktion vorhanden sind.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ae897fa", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_826dbfc", 
         option = "Die Funktion prüft, ob alle Werte in einem Vektor `TRUE` sind.", 
         value = "Die Funktion prüft, ob alle Werte in einem Vektor `TRUE` sind.", 
         label = structure("Die Funktion prüft, ob alle Werte in einem Vektor <code>TRUE<\u002fcode> sind.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_77eccf3", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_307de38", 
         option = "Die Funktion hat zwei Pflicht-Argumente", value = "Die Funktion hat zwei Pflicht-Argumente", 
         label = structure("Die Funktion hat zwei Pflicht-Argumente", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_2e12860", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_1133340", 
         option = "Die Funktion hat ein Pflicht-Argument und ein Default-Argument.", 
         value = "Die Funktion hat ein Pflicht-Argument und ein Default-Argument.", 
         label = structure("Die Funktion hat ein Pflicht-Argument und ein Default-Argument.", html = TRUE, class = c("html", 
@@ -8487,7 +8515,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", lab
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "quiz-help-2-answer", question = "quiz-help-2"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 2093016030.02536, options = list()), class = c("learnr_checkbox", 
+    seed = 89376815.9583807, options = list()), class = c("learnr_checkbox", 
 "tutorial_question")), session = session)
 </script>
 
@@ -8495,22 +8523,22 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", lab
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-help-3", 
     question = structure("Welche Aussagen stimmen zu über das <code>na.rm<\u002fcode> Argument (Bsp. <code>all()<\u002fcode>)?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_ae67afa", 
+    "character")), answers = list(structure(list(id = "lnr_ans_c8b8577", 
         option = "Das `na.rm` Argument entfernt alle `NA` Werte in einem Vektor vor der Berechnung.", 
         value = "Das `na.rm` Argument entfernt alle `NA` Werte in einem Vektor vor der Berechnung.", 
         label = structure("Das <code>na.rm<\u002fcode> Argument entfernt alle <code>NA<\u002fcode> Werte in einem Vektor vor der Berechnung.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7fca7df", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f139854", 
         option = "Das Argument ist in allen mathematischen Funktionen enthalten.", 
         value = "Das Argument ist in allen mathematischen Funktionen enthalten.", 
         label = structure("Das Argument ist in allen mathematischen Funktionen enthalten.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_3c609f2", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8c4c18f", 
         option = "Das Argument ist meist auf `TRUE` gesetzt.", 
         value = "Das Argument ist meist auf `TRUE` gesetzt.", 
         label = structure("Das Argument ist meist auf <code>TRUE<\u002fcode> gesetzt.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7a9a7a7", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b586d77", 
         option = "Das `na.rm` Argument ist in der log() Funktion enthalten.", 
         value = "Das `na.rm` Argument ist in der log() Funktion enthalten.", 
         label = structure("Das <code>na.rm<\u002fcode> Argument ist in der log() Funktion enthalten.", html = TRUE, class = c("html", 
@@ -8523,7 +8551,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "quiz-help-3-answer", question = "quiz-help-3"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 2074306349.53408, options = list()), class = c("learnr_radio", 
+    seed = 2051232023.04482, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  

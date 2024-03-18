@@ -39,7 +39,7 @@ home:
 
 navbar:
   structure:
-    left:  [intro, faq, tutorials, feedback, barrierefreiheit, reference, news, datasecurity]
+    left:  [intro, faq, tutorials, feedback, barrierefreiheit, reference, learning-design, news, datasecurity]
     right: [search, github]
   components:
 
@@ -71,6 +71,10 @@ navbar:
    barrierefreiheit:
     text: Barrierefreiheit
     href: articles/Barrierefreiheit.html
+
+   learning-design:
+    text: Learning Design
+    href: articles/Learning-Design.html
 
    datasecurity:
     text: Datenschutz
