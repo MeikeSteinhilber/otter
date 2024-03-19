@@ -115,8 +115,113 @@
 
     
     
-<p>XXXXX</p>
-  </main>
+<p>Du findest Otter technisch gelungen, aber du würdest gerne deine
+eigenen Inhalte und Übungen für die Lehre erstellen?</p>
+<p>Dann bist du hier richtig!</p>
+<p>In diesem technischen Handout wird ein Überblick über die wichtigsten
+technischen Grundlagen von Otter festgehalten und Hinweise gegeben, wie
+auf dieser Basis weitere Tutorials erstellt werden können.</p>
+<p>Dabei gehen wir zuerst auf das inhaltliche Learning Design von Otter
+ein und anschließend auf die technischen Hintergründe.</p>
+<div class="section level2">
+<h2 id="otter-als-learning-design">Otter als Learning Design<a class="anchor" aria-label="anchor" href="#otter-als-learning-design"></a>
+</h2>
+<p>Das inhaltliche Learning Design basiert zentral darauf, dass zum
+einen Wissen vermittelt wird anhand von Texten, Bildern und
+Beispielcode. Und zum anderen auch interaktive Übungsaufgaben in echten
+R Umgebungen mit einer automatischen Feedbackfunktion integriert
+sind.</p>
+<p>Otter Tutorials sollen damit ein Selbststudium ermöglichen, welches
+mit Übungsaufgaben in ansteigender Komplexität angereichert ist. Dadurch
+können die User das Lerntempo und die Lerntiefe selbst bestimmen.</p>
+</div>
+<div class="section level2">
+<h2 id="technischer-hintergrund-von-otter">Technischer Hintergrund von Otter<a class="anchor" aria-label="anchor" href="#technischer-hintergrund-von-otter"></a>
+</h2>
+<p><em>Voraussetzungen</em>: Es ist leider nicht möglich auf alle
+notwendigen Inhalte einzugehen, ohne bereits ein gewisses Maß an
+Vorwissen zu haben.</p>
+<p>Wenn du ein eigenes auf Otter basierendes Tutorial entwickeln
+möchtest, musst du dich mit mit den R Grundlagen, den Grundlagen der R
+Package Entwicklung, mit R Markdown auskennen sowie auch mit den R
+Packages <em>learnr</em> und <em>gradethis.</em> Du kannst dein Wissen
+zu diesen Inhalten auch hier auffrischen oder aufbauen:</p>
+<ul>
+<li><p>R Grundlagen (Otter Grundlagen Tutorial, <a href="https://r4ds.hadley.nz/" class="external-link uri">https://r4ds.hadley.nz/</a>)</p></li>
+<li><p>R Package Entwicklung (<a href="https://r-pkgs.org/" class="external-link uri">https://r-pkgs.org/</a>)</p></li>
+<li><p>R Markdown (<a href="https://bookdown.org/yihui/rmarkdown/" class="external-link uri">https://bookdown.org/yihui/rmarkdown/</a>)</p></li>
+<li><p>learnr (<a href="https://pkgs.rstudio.com/learnr/index.html" class="external-link uri">https://pkgs.rstudio.com/learnr/index.html</a>)</p></li>
+<li><p>gradethis (<a href="https://pkgs.rstudio.com/gradethis/" class="external-link uri">https://pkgs.rstudio.com/gradethis/</a>)</p></li>
+</ul>
+<p>Otter ist ein R Paket, welches aktuell zwei externe Funktionen und
+zwei learnr Tutorials enthält. Die externen Funktionen sind nicht
+zentral für die Otter Bedienung. Sie wurden jedoch entwickelt, um es
+User leichter zu machen, auf die Tutorials zuzugreifen über die
+Kommandozeile. Die Funktionen sind im Abschnitt <em>Funktionen</em>
+dokumentiert auf der Otter Homepage, sowie auch in der internen Package
+Dokumentation.</p>
+<p>Das Otter Grundlagen Tutorial wird aktuell vom Frankfurter
+Rechenzentrum über einen Shiny-Server gehostet.</p>
+<p>Da Otter ein R Paket ist, sind die Ordner und deren Namen z.T. genau
+vorgeschrieben. So befinden sich die Tutorials im Pfad:
+inst/tutorials/</p>
+<p>Hier gibt es derzeit zwei Tutorials:</p>
+<ul>
+<li><p>Grundlagen (Das Grundlagentutorial zu R und RStudio)</p></li>
+<li><p>template (ein Template für weitere Tutorials)</p></li>
+</ul>
+<p>Das Design von Otter befindet sich im jeweiligen <em>css</em> Ordner,
+die verwendeten Bilder befinden sich im Order <em>images</em>, und
+verwendete Datensätze befinden sich im Ordner <em>data</em>.</p>
+<p>Selbstverständlich kann das Design auch angepasst werden - dafür sind
+jedoch CSS Kenntnisse notwendig. Alternativ kann das Design auch einfach
+gänzlich übernommen werden.</p>
+<p>Das Herzstück von Otter sind natürlich die Tutorials, welche aktuell
+<em>Grundlagen.Rmd</em> und <em>template.Rmd</em> (für das
+Template-Tutorial) heißen.</p>
+<div class="section level3">
+<h3 id="ablauf-eines-neuen-tutorials">Ablauf eines neuen Tutorials<a class="anchor" aria-label="anchor" href="#ablauf-eines-neuen-tutorials"></a>
+</h3>
+<p>Wir empfehlen die folgende Reihenfolge zu beachten:</p>
+<ol style="list-style-type: decimal">
+<li><p>ein neues inhaltliches Learning Design muss entworfen
+werden.</p></li>
+<li><p>das Otter Paket kann von GitHub geforkt werden (<a href="https://github.com/MeikeSteinhilber/otter" class="external-link uri">https://github.com/MeikeSteinhilber/otter</a>) und der
+Templates Ordner kann kopiert und als Vorlage genutzt werden.</p></li>
+<li><p>die Template-Kopie sollte umbenannt und mit individuellen
+Inhalten (aus dem bereits erstellten Learning Design) gefüllt
+werden.</p></li>
+<li><p>das neue Template sollte regelmäßig in der Entwicklung geknittet
+werden, um Fehler frühzeitig zu beheben.</p></li>
+<li><p>das Tutorial ist ab hier nun inhaltlich fertig und kann
+veröfffentlicht werden.</p></li>
+</ol>
+<p>Ab hier gibt es mehrere Möglichkeiten in Abhängigkeit davon wie und
+wo das Tutorial zum Einsatz kommen soll.</p>
+<ol style="list-style-type: decimal">
+<li><p>das Tutorial soll Teil von Otter werden. Dies ist dann
+empfehlenswert, wenn es sich um ein Tutorial handelt, welches einer
+breiten Audience zur Verfügung gestellt werden soll. Dazu kann ein
+Pull-Request über GitHub erstellt werden. Zusätzlich müssen weitere
+Ports für den Server freigegeben werden. Dazu sind Änderungen der
+Serverkonfiguration notwendig. Nehme hierzu Kontakt zu Meike Steinhilber
+auf über <em><a href="mailto:M.Steinhilber@em.uni-frankfurt.de" class="email">M.Steinhilber@em.uni-frankfurt.de</a></em>.</p></li>
+<li><p>Alternativ kann das Tutorial auch über einen eigenen Shiny-Server
+gehostet werden.</p></li>
+<li><p>Alternativ kann das Tutorial auch über den Shiny Server von Posit
+gehostet werden (<a href="https://posit.co/products/open-source/shinyserver/" class="external-link uri">https://posit.co/products/open-source/shinyserver/</a>).</p></li>
+<li><p>Alternativ kann das Tutorial auch als ein weiteres GitHub
+Repository veröffentlich werden (hier ist kein zusätzlicher Server
+notwendig). Die User könnten dann das Paket lokal von GitHub
+installieren und das Tutorial offline verwenden. Dies erfordert jedoch
+mehr Aufwand und Kompetenzen für die User im Vergleich zu einer
+öffentlich zugänglichen Website. Eine erste Anleitung dazu befindet sich
+bereits auf der Otter Homepage im FAQ.</p></li>
+</ol>
+</div>
+</div>
+  </main><aside class="col-md-3"><nav id="toc"><h2>Auf dieser Seite</h2>
+    </nav></aside>
 </div>
 
 
