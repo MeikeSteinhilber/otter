@@ -110,7 +110,7 @@ if (window.hljs) {
 
 <article class="topics" id="learnr-tutorial-content">
 
-<!-- Dieser Java Skript Cdde kann einfach so gelassen werden wie er ist. Es werden hier die Logos, das Barrierefreiheits-Tool, sowie Matomo eingebunden.  -->
+<!-- Dieser Java Skript Code kann erstmal so gelassen werden wie er ist. Es werden hier die Logos, das Barrierefreiheits-Tool, sowie Matomo eingebunden.  -->
 <svg xmlns="http://www.w3.org/2000/svg" width="508.977" height="29.723" viewBox="0 0 134.667 7.864" class="followcursor">
 <path d="m96 117.136-3.889 3.315-2.208 1.882H30.167c-.831 0-1.5.595-1.5 1.334 0 .739.669 1.333 1.5 1.333h131.667c.83 0 1.5-.594 1.5-1.333s-.67-1.334-1.5-1.334h-59.736l-2.209-1.882z" style="fill:#000;stroke-width:.264583" transform="translate(-28.666 -117.136)"/>
 </svg>
@@ -532,6 +532,8 @@ jQuery(document).ready(function() {
 
 </script>
 <!-- Wichtiges Setup in R -->
+<!-- Hier werden zentrale Einstellungen vorgenommen -->
+<!-- Der inhaltliche Bereich beginnt ab hier. -->
 <div id="section-erste-überschrift" class="section level2">
 <h2>Erste Überschrift</h2>
 <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
@@ -543,14 +545,17 @@ elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
 aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
 dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
 est Lorem ipsum dolor sit amet.</p>
+<!-- Ein Beispiel wie ein Bild eingefügt wird mit Alt-Text für den Screenreader lesbar. -->
 <p><img src="images/Rlogo.png" style="width:10.0%" right="100%"
 alt="R Logo" /></p>
+<!-- Dies ist ein R Chunk, welcher ein Beispielcode enthält, der vom User ausgeführt werden kann. Dies ist noch keine Übung mit inhaltlicher Überprüfung der Korrektheit. -->
 <div class="tutorial-exercise" data-label="character-1"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <pre class="text"><code>&quot;Hallo Welt&quot;</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<!-- Ab hier beginnt nun ein Übungsbereich. -->
 <!-- Übungen wurden der 4. Überschriftsebene zugeordnet -->
 <div id="section-übungen" class="section level4">
 <h4>Übungen</h4>
@@ -569,12 +574,15 @@ data-lines="0" data-pipe="|&gt;">
 <pre class="text"><code>&quot;Hallo liebe R-Freunde&quot;</code></pre>
 </div>
 </div>
+<!-- Die Klasse Übungen soll ab hier nicht mehr verwendet werden. Die darf nicht vergessen werden! -->
 </div>
 </div>
 <div id="section-zweite-überschrift" class="section level2">
 <h2>Zweite Überschrift</h2>
+<!-- Wenn es viele Unterkapitel gibt, empfehlen wir eine Kapitelübersicht. -->
 <div id="section-kapitel" class="section level3">
 <h3>Kapitel</h3>
+<!-- Die Kapitelübersicht muss leider händisch gecoded werden in html. -->
 <p><a href="#section-1"> <i class="fa-solid fa-arrow-down"></i>
 Unterkapitel 1</a><br>
 <a href="#section-2"><i class="fa-solid fa-arrow-down"></i> Unterkapitel
@@ -588,6 +596,7 @@ elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
 aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
 dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
 est Lorem ipsum dolor sit amet.</p>
+<!-- Hier wird das Pfeil-nach-oben-Symbol eingefügt mit dem Link zur Kapitelübersicht. -->
 </div>
 <div id="section-unterkapitel-1" class="section level3">
 <h3>Unterkapitel 1 <a href="#section-1">
@@ -601,6 +610,7 @@ elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
 aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
 dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
 est Lorem ipsum dolor sit amet.</p>
+<!-- Wie auch oben bschreiben beginnt hie wieder der Übungsbereich. -->
 <div id="section-übungen-1" class="section level4">
 <h4>Übungen</h4>
 <div class="uebungen">
@@ -609,10 +619,10 @@ est Lorem ipsum dolor sit amet.</p>
 <pre class="r"><code>namen &lt;- c(&quot;Lisa Müller&quot;, &quot;Peter Bauer&quot;, &quot;Hannah Schmidt&quot;)
 angemeldet &lt;- c(TRUE, FALSE, TRUE)
 alter &lt;- c(18, 22, 16)</code></pre>
-<!-- Übungsfrage -->
+<!-- Übungsfrage wird hier gestellt. Es wird eine selbsterstellte Funktion colorize() verwendet. -->
 <p><span style="color: var(--blue);">Aufgabe:</span> <em>Beantworte die
 gestellte Frage mit R Code.</em></p>
-<!-- Übungschunk -->
+<!-- Übungschunk beginnt hier. Dies ist die Konkrete Übungsaufgabe als Chunk -->
 <div class="tutorial-exercise" data-label="ex-logical-1"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
@@ -620,6 +630,7 @@ data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
 <!-- Hinweis 1 -->
+<!-- Wird nur angezeigt, wenn die Person auf "Tipps" klickt. -->
 <div class="tutorial-exercise-support" data-label="ex-logical-1-hint-1"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
@@ -631,7 +642,8 @@ data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <pre class="text"><code># !=</code></pre>
 </div>
-<!-- Hinweis 3 -->
+<!-- Lösung-->
+<!-- Muss zwingen hinterlegt werden für die automatisierte Feedbackfunktion! -->
 <div class="tutorial-exercise-support"
 data-label="ex-logical-1-solution" data-completion="1"
 data-diagnostics="1" data-startover="1" data-lines="0"
@@ -640,6 +652,9 @@ data-pipe="|&gt;">
 namen != &quot;Lisa Müller&quot;</code></pre>
 </div>
 <!-- Automatische Überprüfung der Antwort -->
+<!-- Die User-Lösung wird mit der Lösung verglichen. Nur wenn der Output gleich ist, ist die Aufgabe korrekt gelöst! -->
+<!-- Dies ist eine andere Aufgabe, wo e snicht um den Output sondern um den Code geht. Deswegen wird hier eine andere Bewertungsfunktion aus dem gradethis Package verwendet. -->
+<!-- Übungsaufgabe -->
 <span style="color: var(--blue);">Aufgabe:</span> <em>Prüfe, ob die
 Variable <code>variable</code> einen fehlenden Wert enthält. Korrigiere
 dazu den Fehler im Code.</em>
@@ -650,12 +665,14 @@ data-pipe="|&gt;">
 variable == NaN</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<!-- Lösung, wird nur über den Button Lösung angezeigt. -->
 <div class="tutorial-exercise-support" data-label="ex-na-01-solution"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <pre class="text"><code>variable &lt;- 0/0
 is.na(variable)</code></pre>
 </div>
+<!-- Hier wird angegeben, wie die Korrektheit geprüft werden soll. In diesem fall ist es der Code selbst, der geprüft werden soll. -->
 </div>
 </div>
 </div>
@@ -671,6 +688,7 @@ elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
 aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
 dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
 est Lorem ipsum dolor sit amet.</p>
+<!-- Hier sieht man, dass auch längerer Code angezeigt werden kann. Es muss aber das exercise.lines Argument definiert werden. -->
 <div class="tutorial-exercise" data-label="ifelse-4" data-completion="1"
 data-diagnostics="1" data-startover="1" data-lines="20"
 data-pipe="|&gt;">
@@ -696,6 +714,7 @@ if (condition_1) {# -&gt; 1
 }</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<!-- Hier ist nun ein Beispiel für eine Quiz anstatt einer Coding-Aufgabe. -->
 <div id="section-übungen-2" class="section level4">
 <h4>Übungen</h4>
 <div class="uebungen">
@@ -1044,16 +1063,16 @@ learnr:::store_exercise_cache(structure(list(label = "ifelse-4", global_setup = 
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-na-1", question = structure("Was ist die Länge der Variable <code>variable = logical(3)<\u002fcode>?", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_e1238ea", 
+"character")), answers = list(structure(list(id = "lnr_ans_4fad7c1", 
     option = "0", value = "0", label = structure("0", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_7535877", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_c1a9f21", 
     option = "1", value = "1", label = structure("1", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_c617c65", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_79c865a", 
     option = "3", value = "3", label = structure("3", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_df4def0", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_9388e09", 
     option = "Es gibt keine sinnvolle Antwort auf diese Frage.", 
     value = "Es gibt keine sinnvolle Antwort auf diese Frage.", 
     label = structure("Es gibt keine sinnvolle Antwort auf diese Frage.", html = TRUE, class = c("html", 
@@ -1065,7 +1084,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), incorrect = structure("Leider falsch!", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "quiz-na-1-answer", question = "quiz-na-1"), loading = NULL, 
-    random_answer_order = TRUE, allow_retry = TRUE, seed = 1796089741.66363, 
+    random_answer_order = TRUE, allow_retry = TRUE, seed = 587734364.726315, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
@@ -1073,17 +1092,17 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-na-2", question = structure("Was passiert, wenn dieser Befehl ausgeführt wird: <code>NaN &lt; 0<\u002fcode>?", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_b91697d", 
+"character")), answers = list(structure(list(id = "lnr_ans_88b949a", 
     option = "Es gibt eine Fehlermeldung.", value = "Es gibt eine Fehlermeldung.", 
     label = structure("Es gibt eine Fehlermeldung.", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_1aecee1", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_51ad26", 
     option = "FALSE", value = "FALSE", label = structure("FALSE", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_1aff018", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_1e9b070", 
     option = "TRUE", value = "TRUE", label = structure("TRUE", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_8f2a88b", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_1e190a5", 
     option = "Es gibt einen fehlenden Wert aus.", value = "Es gibt einen fehlenden Wert aus.", 
     label = structure("Es gibt einen fehlenden Wert aus.", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
@@ -1094,7 +1113,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), incorrect = structure("Leider falsch!", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "quiz-na-2-answer", question = "quiz-na-2"), loading = NULL, 
-    random_answer_order = TRUE, allow_retry = TRUE, seed = 1974120763.08073, 
+    random_answer_order = TRUE, allow_retry = TRUE, seed = 1529898041.28759, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>

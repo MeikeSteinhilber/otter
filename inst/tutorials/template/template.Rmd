@@ -12,7 +12,7 @@ output:
 runtime: shiny_prerendered
 ---
 
-<!-- Dieser Java Skript Cdde kann einfach so gelassen werden wie er ist. Es werden hier die Logos, das Barrierefreiheits-Tool, sowie Matomo eingebunden.  -->
+<!-- Dieser Java Skript Code kann erstmal so gelassen werden wie er ist. Es werden hier die Logos, das Barrierefreiheits-Tool, sowie Matomo eingebunden.  -->
 
 <svg xmlns="http://www.w3.org/2000/svg" width="508.977" height="29.723" viewBox="0 0 134.667 7.864" class="followcursor"><path d="m96 117.136-3.889 3.315-2.208 1.882H30.167c-.831 0-1.5.595-1.5 1.334 0 .739.669 1.333 1.5 1.333h131.667c.83 0 1.5-.594 1.5-1.333s-.67-1.334-1.5-1.334h-59.736l-2.209-1.882z" style="fill:#000;stroke-width:.264583" transform="translate(-28.666 -117.136)"/></svg>
 <div class="accessibility"></div>
@@ -361,6 +361,7 @@ jQuery(document).ready(function() {
 </script>
 
 <!-- Wichtiges Setup in R -->
+<!-- Hier werden zentrale Einstellungen vorgenommen -->
 
 ```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
 library(testthat)
@@ -389,19 +390,23 @@ options(
 blue <- "#00c4e6"
 ```
 
-
+<!-- Der inhaltliche Bereich beginnt ab hier. -->
 
 ## Erste Überschrift
 
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
+<!-- Ein Beispiel wie ein Bild eingefügt wird mit Alt-Text für den Screenreader lesbar. -->
 ![R Logo](images/Rlogo.png){right="100%" width="10%"}
 
+<!-- Dies ist ein R Chunk, welcher ein Beispielcode enthält, der vom User ausgeführt werden kann. Dies ist noch keine Übung mit inhaltlicher Überprüfung der Korrektheit. -->
 
 ```{r character-1, exercise=TRUE, results = "hold"}
 "Hallo Welt"
 ```
 
+
+<!-- Ab hier beginnt nun ein Übungsbereich. -->
 <!-- Übungen wurden der 4. Überschriftsebene zugeordnet -->
 #### Übungen
 <!-- Zusätzlich ist noch die Klasse uebungen notwendig für die korrekte Formatierung. -->
@@ -427,72 +432,74 @@ grade_result(
 ```
 
 </div>
-
+<!-- Die Klasse Übungen soll ab hier nicht mehr verwendet werden. Die darf nicht vergessen werden! -->
 
 
 ## Zweite Überschrift
 
+<!-- Wenn es viele Unterkapitel gibt, empfehlen wir eine Kapitelübersicht. -->
 ### Kapitel
 
-
+<!-- Die Kapitelübersicht muss leider händisch gecoded werden in html. -->
 <a href="#section-1"> <i class="fa-solid fa-arrow-down"></i> Unterkapitel 1</a><br>
 <a href="#section-2"><i class="fa-solid fa-arrow-down"></i> Unterkapitel 2</a><br>
 
 
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
+<!-- Hier wird das Pfeil-nach-oben-Symbol eingefügt mit dem Link zur Kapitelübersicht. -->
 ### Unterkapitel 1 <a href="#section-1"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
+
+<!-- Wie auch oben bschreiben beginnt hie wieder der Übungsbereich. -->
 #### Übungen
 <div class="uebungen">
 
 <!-- Hier werden Variablen vorbereitet und für die Übung zur Verfügung gestellt! -->
-
 `r otter::colorize("Vorbereitung:", "var(--blue)")`
+<!-- Hier wird der Background Code erstellt und auch in Otter abgebildet. Aus technischen Gründen wird der Code hier aber noch nicht ausgeführt. -->
 ```{r setup-logical, exercise.eval=FALSE}
 namen <- c("Lisa Müller", "Peter Bauer", "Hannah Schmidt")
 angemeldet <- c(TRUE, FALSE, TRUE)
 alter <- c(18, 22, 16)
 ```
-
+<!-- Hier wird nun der set-up Chunk definiert. -->
 ```{r, ref.label=I('setup-logical'), eval=TRUE, echo=TRUE, exercise.eval=FALSE}
 
 ```
 
 
-<!-- Übungsfrage -->
+<!-- Übungsfrage wird hier gestellt. Es wird eine selbsterstellte Funktion colorize() verwendet. -->
 `r otter::colorize("Aufgabe:", "var(--blue)")` *Beantworte die gestellte Frage mit R Code.*
 
-<!-- Übungschunk -->
-
+<!-- Übungschunk beginnt hier. Dies ist die Konkrete Übungsaufgabe als Chunk -->
 ```{r ex-logical-1, exercise=TRUE, results = "hold", exercise.setup = "setup-logical", exercise.eval=FALSE}
 # Wer von den Personen heißt NICHT Lisa Müller?
 
 ```
 
 <!-- Hinweis 1 -->
-
+<!-- Wird nur angezeigt, wenn die Person auf "Tipps" klickt. -->
 ```{r ex-logical-1-hint-1, exercise.eval=FALSE}
 # namen ____ "Lisa Müller"
 ```
 
 <!-- Hinweis 2 -->
-
 ```{r ex-logical-1-hint-2, exercise.eval=FALSE}
 # !=
 ```
 
-<!-- Hinweis 3 -->
-
+<!-- Lösung-->
+<!-- Muss zwingen hinterlegt werden für die automatisierte Feedbackfunktion! -->
 ```{r ex-logical-1-solution, exercise.eval=FALSE}
 # Wer von den Personen heißt NICHT Lisa Müller?
 namen != "Lisa Müller"
 ```
 
 <!-- Automatische Überprüfung der Antwort -->
-
+<!-- Die User-Lösung wird mit der Lösung verglichen. Nur wenn der Output gleich ist, ist die Aufgabe korrekt gelöst! -->
 ```{r ex-logical-1-check}
 grade_this({
   pass_if_equal()
@@ -500,16 +507,22 @@ grade_this({
 })
 ```
 
+
+<!-- Dies ist eine andere Aufgabe, wo e snicht um den Output sondern um den Code geht. Deswegen wird hier eine andere Bewertungsfunktion aus dem gradethis Package verwendet. -->
+
+<!-- Übungsaufgabe -->
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Prüfe, ob die Variable `variable` einen fehlenden Wert enthält. Korrigiere dazu den Fehler im Code.*
 ```{r ex-na-01, exercise=TRUE, results = "hold", error=TRUE}
 variable <- 0/0
 variable == NaN
 ```
+<!-- Lösung, wird nur über den Button Lösung angezeigt. -->
 ```{r ex-na-01-solution, results = "hold"}
 variable <- 0/0
 is.na(variable)
 ```
+<!-- Hier wird angegeben, wie die Korrektheit geprüft werden soll. In diesem fall ist es der Code selbst, der geprüft werden soll. -->
 ```{r ex-na-01-check, results = "hold"}
 grade_this_code()
 ```
@@ -521,6 +534,7 @@ grade_this_code()
 
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
+<!-- Hier sieht man, dass auch längerer Code angezeigt werden kann. Es muss aber das exercise.lines Argument definiert werden. -->
 ```{r ifelse-4, exercise=TRUE, results = "hold", exercise.lines = 20}
 condition_1 <- FALSE
 condition_1_1 <- FALSE
@@ -544,6 +558,8 @@ if (condition_1) {# -> 1
 }
 ```
 
+
+<!-- Hier ist nun ein Beispiel für eine Quiz anstatt einer Coding-Aufgabe. -->
 #### Übungen
 <div class="uebungen">
 
