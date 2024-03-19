@@ -5,6 +5,7 @@ output:
   rmarkdown::html_vignette:
     toc: true
     toc_depth: 4
+    fig_caption: false # important for the alt texts
 vignette: >
   %\VignetteIndexEntry{FAQ}
   %\VignetteEngine{knitr::rmarkdown}
@@ -36,12 +37,19 @@ Das inhaltliche Learning Design basiert zentral darauf, dass zum einen Wissen ve
 
 Otter Tutorials sollen damit ein Selbststudium ermöglichen, welches mit Übungsaufgaben in ansteigender Komplexität angereichert ist. Dadurch können die User das Lerntempo und die Lerntiefe selbst bestimmen.
 
+Wir haben unser Learning Design von Otter [hier](https://learning-design.eu/en/preview/3952f0466cb81e0379c36b18/details) detaillierte dokumentiert.
+
+
 
 ## Technischer Hintergrund von Otter
 
-*Voraussetzungen*: Es ist leider nicht möglich auf alle notwendigen Inhalte einzugehen, ohne bereits ein gewisses Maß an Vorwissen zu haben.
+Otter wurde in R als learnr Tutorial implementiert, wobei einige Anpassungen durchgeführt wurden, um die Usability des Tools zu verbessern. Das Tool wurde als R Paket entwickelt, sodass es einmal über Server des Uni-Rechenzentrums in Frankfurt gehostet, aber auch offline auf einem lokalen Rechner genutzt werden kann.
 
-Wenn du ein eigenes auf Otter basierendes Tutorial entwickeln möchtest, musst du dich mit mit den R Grundlagen, den Grundlagen der R Package Entwicklung, mit R Markdown auskennen sowie auch mit den R Packages *learnr* und *gradethis.* Du kannst dein Wissen zu diesen Inhalten auch hier auffrischen oder aufbauen:
+**Lizenzen:** Der gesamte Quellcode wurde auf GitHub (https://github.com/MeikeSteinhilber/otter/) veröffentlicht unter der Open Source Lizenz AGPL-3.0. Diese Lizenz erlaubt ausdrücklich das Verwenden und Weiterentwickeln des Quellcodes, jedoch sind die Entwickler*innen dazu verpflichtet, den weiterentwickelten Code auch unter eine AGPL-3.0 Lizenz zu stellen.
+
+**Voraussetzungen**: Es ist leider nicht möglich auf alle notwendigen Inhalte einzugehen, ohne bereits ein gewisses Maß an Vorwissen zu haben.
+
+Wenn du ein eigenes auf Otter basierendes Tutorial entwickeln möchtest, musst du dich mit mit den R Grundlagen, den Grundlagen der R Package Entwicklung, und mit R Markdown auskennen sowie auch mit den R Packages *learnr* und *gradethis.* Du kannst dein Wissen zu diesen Inhalten auch hier auffrischen oder aufbauen:
 
 - R Grundlagen (Otter Grundlagen Tutorial, https://r4ds.hadley.nz/)
 
@@ -52,6 +60,12 @@ Wenn du ein eigenes auf Otter basierendes Tutorial entwickeln möchtest, musst d
 - learnr (https://pkgs.rstudio.com/learnr/index.html)
 
 - gradethis (https://pkgs.rstudio.com/gradethis/)
+
+Wenn du das Tutorial auch auf einem Server hosten willst, musst du auch eventuell einen Shiny Server aufsetzen. Wir haben eine kostenlose Shiny Server Variante gewählt, welche jedoch die Konfigurationsmöglichkeiten einschränkt. Dies kann mit einem zusätzlichen Proxy Server verbessert werden.  Da auch dies den Rahmen dieser Anleitung übersteigt, kannst du hier mehr Informationen erhalten:
+
+- https://docs.posit.co/ide/server-pro/1.3.959-1/index.html
+
+- https://support.posit.co/hc/en-us/articles/213733868-Running-Shiny-Server-with-a-Proxy
 
 Otter ist ein R Paket, welches aktuell zwei externe Funktionen und zwei learnr Tutorials enthält.
 Die externen Funktionen sind nicht zentral für die Otter Bedienung. Sie wurden jedoch entwickelt, um es User leichter zu machen, auf die Tutorials zuzugreifen über die Kommandozeile. Die Funktionen sind im Abschnitt *Funktionen* dokumentiert auf der Otter Homepage, sowie auch in der internen Package Dokumentation.
@@ -71,6 +85,17 @@ Das Design von Otter befindet sich im jeweiligen *css* Ordner, die verwendeten B
 Selbstverständlich kann das Design auch angepasst werden - dafür sind jedoch CSS Kenntnisse notwendig. Alternativ kann das Design auch einfach gänzlich übernommen werden.
 
 Das Herzstück von Otter sind natürlich die Tutorials, welche aktuell *Grundlagen.Rmd* und *template.Rmd* (für das Template-Tutorial) heißen.
+
+## Otter Template
+
+Wie bereits erwähnt wurde ein Template für neue Otter Tutorials erstellt, welches über GitHub auch [hier](https://github.com/MeikeSteinhilber/otter/tree/master/inst/tutorials/template) eingesehen werden kann.
+Das Template enthält alle relevanten Bausteine für ein Otter-Tutorial und Kommentare, welche die einzelnen Funktionen der Bausteine erklären.
+
+So Sieht das Template aus, wenn es geknittet wurde:
+
+![Bild zeigt das Otter Template nach dem Knitten.](figures/template-1.png){.images-shadow  width="100%"}
+
+![Bild zeigt das Otter Template nach dem Knitten.](figures/template-2.png){.absolute .images-shadow  width="100%"}
 
 ### Ablauf eines neuen Tutorials
 

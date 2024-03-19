@@ -4,6 +4,7 @@ output:
   rmarkdown::html_vignette:
     toc: true
     toc_depth: 4
+    fig_caption: false # important for the alt texts
 vignette: >
   %\VignetteIndexEntry{Barrierefreiheit}
   %\VignetteEngine{knitr::rmarkdown}

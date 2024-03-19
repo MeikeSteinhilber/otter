@@ -4,6 +4,7 @@ lang:   de
 editor_options:
   markdown:
     mode: gfm
+    fig_caption: false # important for the alt texts
 ---
 
 # Willkommen zu `otter`
@@ -57,6 +58,15 @@ Viel Spaß beim Erkunden!
 
   </div>
 </div>
+
+
+![](https://youtu.be/5lWfIfzF7iw){width="90%"}
+
+<video src="https://youtu.be/5lWfIfzF7iw" width="320" height="240" type="video/mp4" controls></video>
+
+<!-- <video src="man/figures/Teaser_otter.mp4" width="320" height="240" type="video/mp4" controls></video> -->
+
+
 
 
 ## Lieber Statistik als R?
