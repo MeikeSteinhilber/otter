@@ -110,7 +110,8 @@ if (window.hljs) {
 
 <article class="topics" id="learnr-tutorial-content">
 
-<!-- Dieser Java Skript Code kann erstmal so gelassen werden wie er ist. Es werden hier die Logos, das Barrierefreiheits-Tool, sowie Matomo eingebunden.  -->
+<!-- Dieser Java Skript Code kann erstmal so gelassen werden wie er ist. Es werden hier die Logos, das Barrierefreiheits-Tool, sowie Matomo eingebunden. Matomo wurde so entkommentiert in dem Script, dass die Daten nicht getrackt werden.  -->
+<!-- XXXXXX ist ein Platzhalter -->
 <svg xmlns="http://www.w3.org/2000/svg" width="508.977" height="29.723" viewBox="0 0 134.667 7.864" class="followcursor">
 <path d="m96 117.136-3.889 3.315-2.208 1.882H30.167c-.831 0-1.5.595-1.5 1.334 0 .739.669 1.333 1.5 1.333h131.667c.83 0 1.5-.594 1.5-1.333s-.67-1.334-1.5-1.334h-59.736l-2.209-1.882z" style="fill:#000;stroke-width:.264583" transform="translate(-28.666 -117.136)"/>
 </svg>
@@ -263,19 +264,19 @@ $(document).ready(function() {
   
   $("#learnr-tutorial-content.topics").prepend(
   `<div class="logo">
-  <img class="logo" src="images/corporate_logos_small.jpg" style="width:30.0%"/>
-    <img class="logo" src="images/logo.png" style="width:10.0%"/>
+  <img class="logo" src="images/corporate_logos_small.jpg" alt="Digtell Logo" style="width:30.0%"/>
+    <img class="logo" src="images/logo.png" alt="Otter Logo" style="width:10.0%"/>
   </div>`);
   
 
   $("a[href^='#']").on("click", function(event) {
     
-    var target = event.currentTarget.href.toString();
-    if(!!~target.indexOf("#")) {
-      target = target.split("#")[1];
-      _paq.push(['trackEvent', 'Click', 'Jump', target]);
-    }
-    console.log(target);
+  <!-- var target = event.currentTarget.href.toString(); -->
+  <!--  if(!!~target.indexOf("#")) { -->
+  <!--    target = target.split("#")[1]; -->
+  <!--     _paq.push(['trackEvent', 'Click', 'Jump', target]); -->
+  <!--   } -->
+  <!-- console.log(target); -->
         
     const currentSection = $(".section.current");
     var href = $(this).attr("href");
@@ -485,47 +486,47 @@ jQuery(document).ready(function() {
     </div>
     </div>`;
 
-    const loadScripts = function() {
-        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-        _paq.push(["setRequestMethod", "POST"]);
-        _paq.push(['enableHeartBeatTimer', 5]);
-        _paq.push(['disableAlwaysUseSendBeacon']);
-        _paq.push(["setDoNotTrack", false]);
-        _paq.push(["setDomains", ["*.otter.uni-frankfurt.de", "*.otter-test.uni-frankfurt.de", "127.0.0.1"]]);
-        //_paq.push(["setCookieDomain", "*.otter.uni-frankfurt.de"]);
-        _paq.push(['trackPageView']);
-        _paq.push(['enableLinkTracking']);
-        (function() {
-        var u="https://otter.uni-frankfurt.de/otterusers/";
-        _paq.push(['setTrackerUrl', u+'m.php']);
-        _paq.push(['setSiteId', '1']);
-        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-        g.async=true; g.src=u+'m.js'; s.parentNode.insertBefore(g,s);
-        })();
-    };
+    <!-- const loadScripts = function() { -->
+    <!--     /* tracker methods like "setCustomDimension" should be called before "trackPageView" */ -->
+    <!--     _paq.push(["setRequestMethod", "POST"]); -->
+    <!--     _paq.push(['enableHeartBeatTimer', 5]); -->
+    <!--     _paq.push(['disableAlwaysUseSendBeacon']); -->
+    <!--     _paq.push(["setDoNotTrack", false]); -->
+    <!--     _paq.push(["setDomains", ["*XXXXXX", "*XXXXXX", "XXXXXX"]]); -->
+    <!--     //_paq.push(["setCookieDomain", "XXXXXX"]); -->
+    <!--     _paq.push(['trackPageView']); -->
+    <!--     _paq.push(['enableLinkTracking']); -->
+    <!--     (function() { -->
+    <!--     var u="XXXXXX"; -->
+    <!--     _paq.push(['setTrackerUrl', u+'m.php']); -->
+    <!--     _paq.push(['setSiteId', 'XXXXXX']); -->
+    <!--     var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; -->
+    <!--     g.async=true; g.src=u+'m.js'; s.parentNode.insertBefore(g,s); -->
+    <!--     })(); -->
+    <!-- }; -->
 
-    const consent = Cookies.get('cnsnt');
-    if(consent == undefined || consent == "0") {
-        jQuery("body").append(jQuery(cookiebanner));
-        jQuery('#cookie-okay').on("click", function() {
-            Cookies.set('cnsnt', '1', { expires: 180, sameSite: 'strict' });
-            loadScripts();
+    <!-- const consent = Cookies.get('cnsnt'); -->
+    <!-- if(consent == undefined || consent == "0") { -->
+    <!--     jQuery("body").append(jQuery(cookiebanner)); -->
+    <!--     jQuery('#cookie-okay').on("click", function() { -->
+    <!--         Cookies.set('cnsnt', '1', { expires: 180, sameSite: 'strict' }); -->
+    <!--         loadScripts(); -->
 
-            jQuery('#staticBackdrop').modal("hide");
-        });
+    <!--         jQuery('#staticBackdrop').modal("hide"); -->
+    <!--     }); -->
 
-        jQuery('#cookie-nokay').on("click", function() {
-            Cookies.set('cnsnt', '0', { expires: 30, sameSite: 'strict' });
-        });
+    <!--     jQuery('#cookie-nokay').on("click", function() { -->
+    <!--         Cookies.set('cnsnt', '0', { expires: 30, sameSite: 'strict' }); -->
+    <!--     }); -->
 
-        jQuery('#staticBackdrop').on('hidden.bs.show', function (event) {
-            jQuery(this).css('display', 'flex');
-        });
+    <!--     jQuery('#staticBackdrop').on('hidden.bs.show', function (event) { -->
+    <!--         jQuery(this).css('display', 'flex'); -->
+    <!--     }); -->
 
-        jQuery('#staticBackdrop').modal({backdrop: false, show: true, keyboard: false});
-    } else if(consent == "1" || consent === 1) {
-        loadScripts();
-    }
+    <!--     jQuery('#staticBackdrop').modal({backdrop: false, show: true, keyboard: false}); -->
+    <!-- } else if(consent == "1" || consent === 1) { -->
+    <!--     loadScripts(); -->
+    <!-- } -->
 });
 
 
@@ -1065,16 +1066,16 @@ learnr:::store_exercise_cache(structure(list(label = "ifelse-4", global_setup = 
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-na-1", question = structure("Was ist die Länge der Variable <code>variable = logical(3)<\u002fcode>?", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_800d0ff", 
+"character")), answers = list(structure(list(id = "lnr_ans_3044284", 
     option = "0", value = "0", label = structure("0", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_fbb4ece", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_7356fa0", 
     option = "1", value = "1", label = structure("1", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_7fa8785", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_3da7a3d", 
     option = "3", value = "3", label = structure("3", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_7b6ee6e", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_c8a6410", 
     option = "Es gibt keine sinnvolle Antwort auf diese Frage.", 
     value = "Es gibt keine sinnvolle Antwort auf diese Frage.", 
     label = structure("Es gibt keine sinnvolle Antwort auf diese Frage.", html = TRUE, class = c("html", 
@@ -1086,7 +1087,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), incorrect = structure("Leider falsch!", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "quiz-na-1-answer", question = "quiz-na-1"), loading = NULL, 
-    random_answer_order = TRUE, allow_retry = TRUE, seed = 1880918635.12413, 
+    random_answer_order = TRUE, allow_retry = TRUE, seed = 76885046.4641976, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
@@ -1094,17 +1095,17 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-na-2", question = structure("Was passiert, wenn dieser Befehl ausgeführt wird: <code>NaN &lt; 0<\u002fcode>?", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_459ce9f", 
+"character")), answers = list(structure(list(id = "lnr_ans_cf52b67", 
     option = "Es gibt eine Fehlermeldung.", value = "Es gibt eine Fehlermeldung.", 
     label = structure("Es gibt eine Fehlermeldung.", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_577557a", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_c095be9", 
     option = "FALSE", value = "FALSE", label = structure("FALSE", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_7ea63ae", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_d52e7ac", 
     option = "TRUE", value = "TRUE", label = structure("TRUE", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_32cc962", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_ceef8e5", 
     option = "Es gibt einen fehlenden Wert aus.", value = "Es gibt einen fehlenden Wert aus.", 
     label = structure("Es gibt einen fehlenden Wert aus.", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
@@ -1115,7 +1116,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), incorrect = structure("Leider falsch!", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "quiz-na-2-answer", question = "quiz-na-2"), loading = NULL, 
-    random_answer_order = TRUE, allow_retry = TRUE, seed = 2048613976.04604, 
+    random_answer_order = TRUE, allow_retry = TRUE, seed = 1999136178.06908, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>

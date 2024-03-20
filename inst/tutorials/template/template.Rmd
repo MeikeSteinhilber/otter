@@ -12,12 +12,16 @@ output:
 runtime: shiny_prerendered
 ---
 
-<!-- Dieser Java Skript Code kann erstmal so gelassen werden wie er ist. Es werden hier die Logos, das Barrierefreiheits-Tool, sowie Matomo eingebunden.  -->
+<!-- Dieser Java Skript Code kann erstmal so gelassen werden wie er ist. Es werden hier die Logos, das Barrierefreiheits-Tool, sowie Matomo eingebunden. Matomo wurde so entkommentiert in dem Script, dass die Daten nicht getrackt werden.  -->
+
+<!-- XXXXXX ist ein Platzhalter -->
 
 <svg xmlns="http://www.w3.org/2000/svg" width="508.977" height="29.723" viewBox="0 0 134.667 7.864" class="followcursor"><path d="m96 117.136-3.889 3.315-2.208 1.882H30.167c-.831 0-1.5.595-1.5 1.334 0 .739.669 1.333 1.5 1.333h131.667c.83 0 1.5-.594 1.5-1.333s-.67-1.334-1.5-1.334h-59.736l-2.209-1.882z" style="fill:#000;stroke-width:.264583" transform="translate(-28.666 -117.136)"/></svg>
 <div class="accessibility"></div>
 <div class="offcanvas"><div class="title">Einstellungen für Barrierefreiheit</div><div class="button-container"><button data-setting="contrast"><span>Kontrast</span></button><button data-setting="links"><span>Links <wbr>hervorheben</span></button><button data-setting="letterspacing"><div>Schriftabstand</div><div class="indicators"><div data-num="1"></div><div data-num="2"></div><div data-num="3"></div></div></button><button data-setting="dyslexia"><span>Legasthenie&shy;freundlich</span></button><button data-setting="cursor"><span>Cursor</span></button><button data-setting="lineheight"><div>Zeilenhöhe</div><div class="indicators"><div data-num="1"></div><div data-num="2"></div><div data-num="3"></div></div></button><button data-setting="fontsize"><div>Schriftgröße</div><div class="indicators"><div data-num="1"></div><div data-num="2"></div><div data-num="3"></div><div data-num="4"></div><div data-num="5"></div></div></button></div>
 </div>
+
+
 <script>
 $(document).ready(function() {
   $("#tutorial-topic").prepend(`<div class="img-right">
@@ -91,19 +95,19 @@ $(document).ready(function() {
   
   $("#learnr-tutorial-content.topics").prepend(
   `<div class="logo">
-  <img class="logo" src="images/corporate_logos_small.jpg" style="width:30.0%"/>
-    <img class="logo" src="images/logo.png" style="width:10.0%"/>
+  <img class="logo" src="images/corporate_logos_small.jpg" alt="Digtell Logo" style="width:30.0%"/>
+    <img class="logo" src="images/logo.png" alt="Otter Logo" style="width:10.0%"/>
   </div>`);
   
 
   $("a[href^='#']").on("click", function(event) {
     
-  	var target = event.currentTarget.href.toString();
-  	if(!!~target.indexOf("#")) {
-  	  target = target.split("#")[1];
-      _paq.push(['trackEvent', 'Click', 'Jump', target]);
-    }
-    console.log(target);
+  <!-- var target = event.currentTarget.href.toString(); -->
+  <!-- 	if(!!~target.indexOf("#")) { -->
+  <!-- 	  target = target.split("#")[1]; -->
+  <!--     _paq.push(['trackEvent', 'Click', 'Jump', target]); -->
+  <!--   } -->
+  <!-- console.log(target); -->
     	
     const currentSection = $(".section.current");
     var href = $(this).attr("href");
@@ -313,47 +317,47 @@ jQuery(document).ready(function() {
     </div>
     </div>`;
 
-    const loadScripts = function() {
-        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-        _paq.push(["setRequestMethod", "POST"]);
-        _paq.push(['enableHeartBeatTimer', 5]);
-        _paq.push(['disableAlwaysUseSendBeacon']);
-        _paq.push(["setDoNotTrack", false]);
-        _paq.push(["setDomains", ["*.otter.uni-frankfurt.de", "*.otter-test.uni-frankfurt.de", "127.0.0.1"]]);
-        //_paq.push(["setCookieDomain", "*.otter.uni-frankfurt.de"]);
-        _paq.push(['trackPageView']);
-        _paq.push(['enableLinkTracking']);
-        (function() {
-        var u="https://otter.uni-frankfurt.de/otterusers/";
-        _paq.push(['setTrackerUrl', u+'m.php']);
-        _paq.push(['setSiteId', '1']);
-        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-        g.async=true; g.src=u+'m.js'; s.parentNode.insertBefore(g,s);
-        })();
-    };
+    <!-- const loadScripts = function() { -->
+    <!--     /* tracker methods like "setCustomDimension" should be called before "trackPageView" */ -->
+    <!--     _paq.push(["setRequestMethod", "POST"]); -->
+    <!--     _paq.push(['enableHeartBeatTimer', 5]); -->
+    <!--     _paq.push(['disableAlwaysUseSendBeacon']); -->
+    <!--     _paq.push(["setDoNotTrack", false]); -->
+    <!--     _paq.push(["setDomains", ["*XXXXXX", "*XXXXXX", "XXXXXX"]]); -->
+    <!--     //_paq.push(["setCookieDomain", "XXXXXX"]); -->
+    <!--     _paq.push(['trackPageView']); -->
+    <!--     _paq.push(['enableLinkTracking']); -->
+    <!--     (function() { -->
+    <!--     var u="XXXXXX"; -->
+    <!--     _paq.push(['setTrackerUrl', u+'m.php']); -->
+    <!--     _paq.push(['setSiteId', 'XXXXXX']); -->
+    <!--     var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; -->
+    <!--     g.async=true; g.src=u+'m.js'; s.parentNode.insertBefore(g,s); -->
+    <!--     })(); -->
+    <!-- }; -->
 
-    const consent = Cookies.get('cnsnt');
-    if(consent == undefined || consent == "0") {
-        jQuery("body").append(jQuery(cookiebanner));
-        jQuery('#cookie-okay').on("click", function() {
-            Cookies.set('cnsnt', '1', { expires: 180, sameSite: 'strict' });
-            loadScripts();
+    <!-- const consent = Cookies.get('cnsnt'); -->
+    <!-- if(consent == undefined || consent == "0") { -->
+    <!--     jQuery("body").append(jQuery(cookiebanner)); -->
+    <!--     jQuery('#cookie-okay').on("click", function() { -->
+    <!--         Cookies.set('cnsnt', '1', { expires: 180, sameSite: 'strict' }); -->
+    <!--         loadScripts(); -->
 
-            jQuery('#staticBackdrop').modal("hide");
-        });
+    <!--         jQuery('#staticBackdrop').modal("hide"); -->
+    <!--     }); -->
 
-        jQuery('#cookie-nokay').on("click", function() {
-            Cookies.set('cnsnt', '0', { expires: 30, sameSite: 'strict' });
-        });
+    <!--     jQuery('#cookie-nokay').on("click", function() { -->
+    <!--         Cookies.set('cnsnt', '0', { expires: 30, sameSite: 'strict' }); -->
+    <!--     }); -->
 
-        jQuery('#staticBackdrop').on('hidden.bs.show', function (event) {
-            jQuery(this).css('display', 'flex');
-        });
+    <!--     jQuery('#staticBackdrop').on('hidden.bs.show', function (event) { -->
+    <!--         jQuery(this).css('display', 'flex'); -->
+    <!--     }); -->
 
-        jQuery('#staticBackdrop').modal({backdrop: false, show: true, keyboard: false});
-    } else if(consent == "1" || consent === 1) {
-        loadScripts();
-    }
+    <!--     jQuery('#staticBackdrop').modal({backdrop: false, show: true, keyboard: false}); -->
+    <!-- } else if(consent == "1" || consent === 1) { -->
+    <!--     loadScripts(); -->
+    <!-- } -->
 });
 
 
@@ -453,7 +457,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
 
-<!-- Wie auch oben bschreiben beginnt hie wieder der Übungsbereich. -->
+<!-- Wie auch oben beschrieben beginnt hier wieder der Übungsbereich. -->
 #### Übungen
 <div class="uebungen">
 

@@ -55,12 +55,6 @@ Viel Spaß beim Erkunden!
 
 </div>
 
-<img src="https://youtu.be/5lWfIfzF7iw" style="width:90.0%" />
-
-<video src="https://youtu.be/5lWfIfzF7iw" width="320" height="240" type="video/mp4" controls>
-</video>
-<!-- <video src="man/figures/Teaser_otter.mp4" width="320" height="240" type="video/mp4" controls></video> -->
-
 ## Lieber Statistik als R?
 
 Falls du dich eher für **statistische Übungsaufgaben** anstatt für reine

@@ -37,8 +37,7 @@ Das inhaltliche Learning Design basiert zentral darauf, dass zum einen Wissen ve
 
 Otter Tutorials sollen damit ein Selbststudium ermöglichen, welches mit Übungsaufgaben in ansteigender Komplexität angereichert ist. Dadurch können die User das Lerntempo und die Lerntiefe selbst bestimmen.
 
-Wir haben unser Learning Design von Otter [hier](https://learning-design.eu/en/preview/3952f0466cb81e0379c36b18/details) detaillierte dokumentiert.
-
+Wir haben unser Learning Design von Otter [hier](https://learning-design.eu/en/preview/3952f0466cb81e0379c36b18/details) detailliert dokumentiert.
 
 
 ## Technischer Hintergrund von Otter
@@ -86,7 +85,7 @@ Selbstverständlich kann das Design auch angepasst werden - dafür sind jedoch C
 
 Das Herzstück von Otter sind natürlich die Tutorials, welche aktuell *Grundlagen.Rmd* und *template.Rmd* (für das Template-Tutorial) heißen.
 
-## Otter Template
+### Otter Template
 
 Wie bereits erwähnt wurde ein Template für neue Otter Tutorials erstellt, welches über GitHub auch [hier](https://github.com/MeikeSteinhilber/otter/tree/master/inst/tutorials/template) eingesehen werden kann.
 Das Template enthält alle relevanten Bausteine für ein Otter-Tutorial und Kommentare, welche die einzelnen Funktionen der Bausteine erklären.
@@ -113,14 +112,12 @@ Wir empfehlen die folgende Reihenfolge zu beachten:
 
 Ab hier gibt es mehrere Möglichkeiten in Abhängigkeit davon wie und wo das Tutorial zum Einsatz kommen soll.
 
-1. das Tutorial soll Teil von Otter werden. Dies ist dann empfehlenswert, wenn es sich um ein Tutorial handelt, welches einer breiten Audience zur Verfügung gestellt werden soll. Dazu kann ein Pull-Request über GitHub erstellt werden. Zusätzlich müssen weitere Ports für den Server freigegeben werden. Dazu sind Änderungen der Serverkonfiguration notwendig. Nehme hierzu Kontakt zu Meike Steinhilber auf über *M.Steinhilber@em.uni-frankfurt.de*.
+1. Das Tutorial soll Teil von Otter werden. Dies ist dann empfehlenswert, wenn es sich um ein Tutorial handelt, welches einem breiten Publikum an der Goethe Universität zur Verfügung gestellt werden soll. Dazu kann ein Pull-Request über GitHub erstellt werden. Zusätzlich müssen weitere Ports für den Server freigegeben werden. Dazu sind Änderungen der Serverkonfiguration notwendig. Nehme hierzu Kontakt zu Meike Steinhilber auf über *M.Steinhilber@em.uni-frankfurt.de*. Hier müsste auch bedacht werden, dass die vorhandene Serverkapazitäten nicht ohne Weiteres vergrößert werden kann, wenn keine weiteren Gelder dafür vorhanden sind.
 
-2. Alternativ kann das Tutorial auch über einen eigenen Shiny-Server gehostet werden.
+2. Alternativ kann das Tutorial auch über einen eigenen Shiny-Server gehostet werden. Dazu müsstest du den Server jedoch selbst aufsetzen.
 
-3. Alternativ kann das Tutorial auch über den Shiny Server von Posit gehostet werden (https://posit.co/products/open-source/shinyserver/).
+3. Alternativ kann das Tutorial auch über den Shiny Server von Posit gehostet werden (https://posit.co/products/open-source/shinyserver/). Dazu müsstest du den Server nicht selbst aufsetzen, jedoch sind die Kapazitäten, welche kostenlos angeboten werden, stark eingeschränkt.
 
 3. Alternativ kann das Tutorial auch als ein weiteres GitHub Repository veröffentlich werden (hier ist kein zusätzlicher Server notwendig). Die User könnten dann das Paket lokal von GitHub installieren und das Tutorial offline verwenden. Dies erfordert jedoch mehr Aufwand und Kompetenzen für die User im Vergleich zu einer öffentlich zugänglichen Website. Eine erste Anleitung dazu befindet sich bereits auf der Otter Homepage im FAQ.
-
-
 
 

@@ -31,7 +31,9 @@ Imports:
     rsconnect,
     scales,
     sprtt,
-    psych
+    psych,
+    fontawesome,
+    dplyr
 Suggests: 
     knitr,
     rmarkdown
