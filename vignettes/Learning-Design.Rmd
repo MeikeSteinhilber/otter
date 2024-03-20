@@ -6,11 +6,23 @@ output:
     toc: true
     toc_depth: 4
     fig_caption: false # important for the alt texts
+    # css: css/style.css
+    
 vignette: >
   %\VignetteIndexEntry{FAQ}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+
+```{css, echo=FALSE}
+.images-shadow {
+  box-shadow: 12px 12px 15px rgba(0,0,0,0.25), 0px 0px 15px rgba(0,0,0,0.25);
+  margin-bottom: 15px;
+  margin-left: 15px;
+}
+
+```
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
@@ -92,9 +104,18 @@ Das Template enthält alle relevanten Bausteine für ein Otter-Tutorial und Komm
 
 So Sieht das Template aus, wenn es geknittet wurde:
 
-![Bild zeigt das Otter Template nach dem Knitten.](figures/template-1.png){.images-shadow  width="100%"}
+<!-- ![Bild zeigt das Otter Template nach dem Knitten.](figures/template-1.png){.images-shadow  width="100%"} -->
 
-![Bild zeigt das Otter Template nach dem Knitten.](figures/template-2.png){.absolute .images-shadow  width="100%"}
+<figure>
+  <img src="figures/template-1.png" alt="Bild zeigt das Otter Template nach dem Knitten." class="images-shadow" style="width: 100%;">
+  <!-- Caption can go here if needed using <figcaption> -->
+</figure>
+
+
+<figure>
+  <img src="figures/template-2.png" alt="Bild zeigt das Otter Template nach dem Knitten." class="images-shadow" style="width: 100%;">
+  <!-- Caption can go here if needed using <figcaption> -->
+</figure>
 
 ### Ablauf eines neuen Tutorials
 
