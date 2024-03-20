@@ -134,16 +134,28 @@ sind.</p>
 <p>Otter Tutorials sollen damit ein Selbststudium ermöglichen, welches
 mit Übungsaufgaben in ansteigender Komplexität angereichert ist. Dadurch
 können die User das Lerntempo und die Lerntiefe selbst bestimmen.</p>
+<p>Wir haben unser Learning Design von Otter <a href="https://learning-design.eu/en/preview/3952f0466cb81e0379c36b18/details" class="external-link">hier</a>
+detailliert dokumentiert.</p>
 </div>
 <div class="section level2">
 <h2 id="technischer-hintergrund-von-otter">Technischer Hintergrund von Otter<a class="anchor" aria-label="anchor" href="#technischer-hintergrund-von-otter"></a>
 </h2>
-<p><em>Voraussetzungen</em>: Es ist leider nicht möglich auf alle
-notwendigen Inhalte einzugehen, ohne bereits ein gewisses Maß an
+<p>Otter wurde in R als learnr Tutorial implementiert, wobei einige
+Anpassungen durchgeführt wurden, um die Usability des Tools zu
+verbessern. Das Tool wurde als R Paket entwickelt, sodass es einmal über
+Server des Uni-Rechenzentrums in Frankfurt gehostet, aber auch offline
+auf einem lokalen Rechner genutzt werden kann.</p>
+<p><strong>Lizenzen:</strong> Der gesamte Quellcode wurde auf GitHub (<a href="https://github.com/MeikeSteinhilber/otter/" class="external-link uri">https://github.com/MeikeSteinhilber/otter/</a>)
+veröffentlicht unter der Open Source Lizenz AGPL-3.0. Diese Lizenz
+erlaubt ausdrücklich das Verwenden und Weiterentwickeln des Quellcodes,
+jedoch sind die Entwickler*innen dazu verpflichtet, den
+weiterentwickelten Code auch unter eine AGPL-3.0 Lizenz zu stellen.</p>
+<p><strong>Voraussetzungen</strong>: Es ist leider nicht möglich auf
+alle notwendigen Inhalte einzugehen, ohne bereits ein gewisses Maß an
 Vorwissen zu haben.</p>
 <p>Wenn du ein eigenes auf Otter basierendes Tutorial entwickeln
 möchtest, musst du dich mit mit den R Grundlagen, den Grundlagen der R
-Package Entwicklung, mit R Markdown auskennen sowie auch mit den R
+Package Entwicklung, und mit R Markdown auskennen sowie auch mit den R
 Packages <em>learnr</em> und <em>gradethis.</em> Du kannst dein Wissen
 zu diesen Inhalten auch hier auffrischen oder aufbauen:</p>
 <ul>
@@ -152,6 +164,17 @@ zu diesen Inhalten auch hier auffrischen oder aufbauen:</p>
 <li><p>R Markdown (<a href="https://bookdown.org/yihui/rmarkdown/" class="external-link uri">https://bookdown.org/yihui/rmarkdown/</a>)</p></li>
 <li><p>learnr (<a href="https://pkgs.rstudio.com/learnr/index.html" class="external-link uri">https://pkgs.rstudio.com/learnr/index.html</a>)</p></li>
 <li><p>gradethis (<a href="https://pkgs.rstudio.com/gradethis/" class="external-link uri">https://pkgs.rstudio.com/gradethis/</a>)</p></li>
+</ul>
+<p>Wenn du das Tutorial auch auf einem Server hosten willst, musst du
+auch eventuell einen Shiny Server aufsetzen. Wir haben eine kostenlose
+Shiny Server Variante gewählt, welche jedoch die
+Konfigurationsmöglichkeiten einschränkt. Dies kann mit einem
+zusätzlichen Proxy Server verbessert werden. Da auch dies den Rahmen
+dieser Anleitung übersteigt, kannst du hier mehr Informationen
+erhalten:</p>
+<ul>
+<li><p><a href="https://docs.posit.co/ide/server-pro/1.3.959-1/index.html" class="external-link uri">https://docs.posit.co/ide/server-pro/1.3.959-1/index.html</a></p></li>
+<li><p><a href="https://support.posit.co/hc/en-us/articles/213733868-Running-Shiny-Server-with-a-Proxy" class="external-link uri">https://support.posit.co/hc/en-us/articles/213733868-Running-Shiny-Server-with-a-Proxy</a></p></li>
 </ul>
 <p>Otter ist ein R Paket, welches aktuell zwei externe Funktionen und
 zwei learnr Tutorials enthält. Die externen Funktionen sind nicht
@@ -180,6 +203,24 @@ gänzlich übernommen werden.</p>
 <em>Grundlagen.Rmd</em> und <em>template.Rmd</em> (für das
 Template-Tutorial) heißen.</p>
 <div class="section level3">
+<h3 id="otter-template">Otter Template<a class="anchor" aria-label="anchor" href="#otter-template"></a>
+</h3>
+<p>Wie bereits erwähnt wurde ein Template für neue Otter Tutorials
+erstellt, welches über GitHub auch <a href="https://github.com/MeikeSteinhilber/otter/tree/master/inst/tutorials/template" class="external-link">hier</a>
+eingesehen werden kann. Das Template enthält alle relevanten Bausteine
+für ein Otter-Tutorial und Kommentare, welche die einzelnen Funktionen
+der Bausteine erklären.</p>
+<p>So Sieht das Template aus, wenn es geknittet wurde:</p>
+<div class="float">
+<img src="figures/template-1.png" class="images-shadow" style="width:100.0%" alt="Bild zeigt das Otter Template nach dem Knitten."><div class="figcaption">Bild zeigt das Otter Template nach dem
+Knitten.</div>
+</div>
+<div class="float">
+<img src="figures/template-2.png" class="absolute images-shadow" style="width:100.0%" alt="Bild zeigt das Otter Template nach dem Knitten."><div class="figcaption">Bild zeigt das Otter Template nach dem
+Knitten.</div>
+</div>
+</div>
+<div class="section level3">
 <h3 id="ablauf-eines-neuen-tutorials">Ablauf eines neuen Tutorials<a class="anchor" aria-label="anchor" href="#ablauf-eines-neuen-tutorials"></a>
 </h3>
 <p>Wir empfehlen die folgende Reihenfolge zu beachten:</p>
@@ -199,17 +240,24 @@ veröfffentlicht werden.</p></li>
 <p>Ab hier gibt es mehrere Möglichkeiten in Abhängigkeit davon wie und
 wo das Tutorial zum Einsatz kommen soll.</p>
 <ol style="list-style-type: decimal">
-<li><p>das Tutorial soll Teil von Otter werden. Dies ist dann
-empfehlenswert, wenn es sich um ein Tutorial handelt, welches einer
-breiten Audience zur Verfügung gestellt werden soll. Dazu kann ein
-Pull-Request über GitHub erstellt werden. Zusätzlich müssen weitere
-Ports für den Server freigegeben werden. Dazu sind Änderungen der
-Serverkonfiguration notwendig. Nehme hierzu Kontakt zu Meike Steinhilber
-auf über <em><a href="mailto:M.Steinhilber@em.uni-frankfurt.de" class="email">M.Steinhilber@em.uni-frankfurt.de</a></em>.</p></li>
+<li><p>Das Tutorial soll Teil von Otter werden. Dies ist dann
+empfehlenswert, wenn es sich um ein Tutorial handelt, welches einem
+breiten Publikum an der Goethe Universität zur Verfügung gestellt werden
+soll. Dazu kann ein Pull-Request über GitHub erstellt werden. Zusätzlich
+müssen weitere Ports für den Server freigegeben werden. Dazu sind
+Änderungen der Serverkonfiguration notwendig. Nehme hierzu Kontakt zu
+Meike Steinhilber auf über <em><a href="mailto:M.Steinhilber@em.uni-frankfurt.de" class="email">M.Steinhilber@em.uni-frankfurt.de</a></em>. Hier müsste
+auch bedacht werden, dass die vorhandene Serverkapazitäten nicht ohne
+Weiteres vergrößert werden kann, wenn keine weiteren Gelder dafür
+vorhanden sind.</p></li>
 <li><p>Alternativ kann das Tutorial auch über einen eigenen Shiny-Server
-gehostet werden.</p></li>
+gehostet werden. Dazu müsstest du den Server jedoch selbst
+aufsetzen.</p></li>
 <li><p>Alternativ kann das Tutorial auch über den Shiny Server von Posit
-gehostet werden (<a href="https://posit.co/products/open-source/shinyserver/" class="external-link uri">https://posit.co/products/open-source/shinyserver/</a>).</p></li>
+gehostet werden (<a href="https://posit.co/products/open-source/shinyserver/" class="external-link uri">https://posit.co/products/open-source/shinyserver/</a>).
+Dazu müsstest du den Server nicht selbst aufsetzen, jedoch sind die
+Kapazitäten, welche kostenlos angeboten werden, stark
+eingeschränkt.</p></li>
 <li><p>Alternativ kann das Tutorial auch als ein weiteres GitHub
 Repository veröffentlich werden (hier ist kein zusätzlicher Server
 notwendig). Die User könnten dann das Paket lokal von GitHub
