@@ -31,15 +31,8 @@ original is from: https://github.com/tidymodels/learntidymodels/tree/main/inst/t
 }
 
 .solution-button {
-  /*background-color: green;*/
   color: #00c4e6;
-  padding: 10px;
-  border: none;
   cursor: pointer;
-}
-
-.solution-body {
-  color: var(--blue);
 }
 
 .btn-warning {
@@ -48,9 +41,39 @@ original is from: https://github.com/tidymodels/learntidymodels/tree/main/inst/t
   background-image: none !important;
 }
 
-.solution-button:hover {
-  background-color: #93e0ed !important;
-  border-color: #93e0ed !important;
+
+.hiddendetails-button {
+  /*background-color: green;*/
+  color: #00c4e6;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.hiddendetails-body {
+  /*color: var(--blue);*/
+  background-color: #f2f2f2;
+  margin: 0; /* Remove margins inside the content */
+  padding: 10px; /* Optional: Add padding for better appearance */
+}
+
+.hiddendetails-button:hover {
+  color: black;
+  background-color: #f2f2f2 !important;
+  border-color: #f2f2f2 !important;
+}
+
+/* Active state when <details> is open */
+.hiddendetails-container[open] .hiddendetails-button {
+  color: black;
+  background-color: #f2f2f2 !important;
+  border-color: #f2f2f2 !important;
+}
+.hiddendetails-container[open] .hiddendetails-button:hover {
+  color: #00c4e6;
+  background-color: #f2f2f2 !important;
+  border-color: #f2f2f2 !important;
 }
 
 .btn-warning:hover {

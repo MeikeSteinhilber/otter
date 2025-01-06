@@ -375,19 +375,19 @@ library(gradethis)
 # library(otter)
 knitr::opts_chunk$set(echo = FALSE)
 gradethis::gradethis_setup(
-  pass.praise = FALSE,
-  fail.encourage = FALSE,
+  # pass.praise = FALSE,
+  # fail.encourage = FALSE,
   pass = "Richtig!",
   code_correct = "Richtig!",
   fail = "Das ist leider falsch.",
-  code_incorrect = "Das ist leider falsch."
+  code_incorrect = "Noch nicht ganz. Hinweis: {code_feedback()} Probiere es noch einmal!"
   )
 tutorial_options(exercise.reveal_solution = TRUE,
                  exercise.blanks = "___",
                  exercise.eval = FALSE)
 options(
   # gradethis_glue_correct = "{ random_praise() } { .message } { .correct }",
-  gradethis_glue_correct = "{ .message } { .correct }",  
+  gradethis_glue_correct = "{ .message } { .correct }",
   # gradethis_glue_incorrect = "{ .message } { .incorrect } { random_encourage() }"
   gradethis_glue_incorrect = "{ .message } { .incorrect }"
 )
@@ -440,14 +440,14 @@ blue <- "#00c4e6"
 <a href="#section-console"> <i class="fa-solid fa-arrow-down"></i> Console</a><br>
 <a href="#section-environment"><i class="fa-solid fa-arrow-down"></i> Environment</a><br>
 <a href="#section-files"><i class="fa-solid fa-arrow-down"></i> Files</a><br>
-<a href="#section-r-skripte"><i class="fa-solid fa-arrow-down"></i> R Skripte</a><br>
+<a href="#section-r-skripte"><i class="fa-solid fa-arrow-down"></i> R-Skripte</a><br>
 
 
 
 RStudio ist eine sogenannte *integrated development environment* (IDE), also eine Entwicklungsumgebung für die Programmiersprache R.
 Grundsätzlich sind auch andere IDEs möglich, wir werden in diesem Tutorial jedoch immer davon ausgehen, dass RStudio verwendet wird.
 
-Nachdem RStudio geöffnet wird, sieht es so aus:
+Nachdem RStudio geöffnet wurde, sieht es so aus:
 
 ![Die Console ist in einem Fenster geöffnet. Man kann dort die verwendete R Version “4.2.3” einsehen. Im rechten Drittel des Bildes ist das geöffnete Environment zu sehen. Direkt darunter ist ein weiteres Fenster, über das man zu Files, Plots, Packages, Help und Viewer gelangt.](images/RStudio_fresh_start.png){.absolute .images-shadow left="100%" width="80%"}
 
@@ -462,7 +462,7 @@ Wir sehen aktuell 3 separierte Bereiche bzw. Fenster.
 In der *Console* können R Befehle direkt ausgeführt werden.
 Dies ist praktisch für kleine Taschenrechner-Befehle oder kleine Tests.
 Der Nachteil ist jedoch, dass die R Befehle nicht gespeichert werden können.
-Dafür wird ein R Skript benötigt.
+Dafür wird ein R-Skript benötigt.
 
 ![Die Console ist geöffnet. Es werden beispielhafte Taschenrechner-Befehle ausgeführt, z. B. 5*6 = 30](images/console2.png){.absolute .images-shadow left="100%" width="60%"}
 
@@ -482,11 +482,11 @@ Wenn wir jedoch Variablen speichern oder Datensätze einladen, werden diese Obje
 
 Je nachdem, wo die *working directory* gesetzt ist, werden hier unterschiedliche Dokumente und Ordner angezeigt.
 
-### R Skripte <a href="#section-rstudio-einstieg"> <i class="fa-solid fa-arrow-up"></i></a>
+### R-Skripte <a href="#section-rstudio-einstieg"> <i class="fa-solid fa-arrow-up"></i></a>
 
 
-Wenn ein R Skript geöffnet wird, wird ein weiteres Fenster für das Skript angezeigt.
-In einem R Skript kann Code abgespeichert werden.
+Wenn ein R-Skript geöffnet wird, wird ein weiteres Fenster für das Skript angezeigt.
+In einem R-Skript kann ein R Programmiercode abgespeichert werden.
 
 #### Übungen
 <div class="uebungen">
@@ -503,17 +503,17 @@ In einem R Skript kann Code abgespeichert werden.
 </div>
 
 
-## R Skript
+## R-Skript
 
 ### Kapitel
 
 <a href="#section-kommentare"><i class="fa-solid fa-arrow-down"></i> Kommentare</a><br>
-<a href="#section-neues-r-skript-öffnen"><i class="fa-solid fa-arrow-down"></i> Neues R Skript öffnen</a><br>
+<a href="#section-neues-r-skript-öffnen"><i class="fa-solid fa-arrow-down"></i> Neues R-Skript öffnen</a><br>
 
 
-In einem R Skript kann Code abgespeichert werden.
+In einem R-Skript kann ein R Programmiercode abgespeichert werden.
 
-![Ein R Skript, in dem sich ein Code befindet, ist geöffnet.](images/script1.png){.absolute .images-shadow left="100%" width="80%"}
+![Ein R-Skript, in dem sich ein Code befindet, ist geöffnet.](images/script1.png){.absolute .images-shadow left="100%" width="80%"}
 
 
 ### Kommentare <a href="#section-r-skript"> <i class="fa-solid fa-arrow-up"></i></a>
@@ -522,28 +522,28 @@ In einem R Skript kann Code abgespeichert werden.
 Grundsätzlich wird jeder Befehl und jedes Zeichen als R Code verstanden.
 Wenn man einen Kommentar schreiben möchte, muss man in jeder Zeile eine `#` davor setzen.
 
-![Ein R Skript, in dem sich ein Code befindet, ist geöffnet. Man sieht, dass ein Kommentar durch eine Raute am Zeilenanfang gekennzeichnet wird.](images/script1.png){.absolute .images-shadow left="100%" width="80%"}
+![Ein R-Skript, in dem sich ein Code befindet, ist geöffnet. Man sieht, dass ein Kommentar durch eine Raute am Zeilenanfang gekennzeichnet wird.](images/script1.png){.absolute .images-shadow left="100%" width="80%"}
 
 Code wird ausgeführt, indem der gewünschte Bereich markiert und dann auf den *Run*-Button geklickt wird. Es kann hier der gesamte Code markiert werden, aber auch einzelne Zeilen oder sogar nur einzelne Befehle.
 
-![Ein R Skript, in dem sich ein Code befindet, ist geöffnet. Der Code wurde blau markiert, dann wird auf den Run-Button geklickt, um den markierten Codeabschnitt auszuführen.](images/script2.png){.absolute .images-shadow left="100%" width="80%"}
+![Ein R-Skript, in dem sich ein Code befindet, ist geöffnet. Der Code wurde blau markiert, dann wird auf den Run-Button geklickt, um den markierten Codeabschnitt auszuführen.](images/script2.png){.absolute .images-shadow left="100%" width="80%"}
 
 Die Tastenkombination für *Run* ist unter Windows `Str + Enter` und unter macOS `Cmd + Enter`.
 
-### Neues R Skript öffnen <a href="#section-r-skript"> <i class="fa-solid fa-arrow-up"></i></a>
+### Neues R-Skript öffnen <a href="#section-r-skript"> <i class="fa-solid fa-arrow-up"></i></a>
 
 
-Ein neues, leeres R Skript wird über diesen Button geöffnet:
+Ein neues, leeres R-Skript wird über diesen Button geöffnet:
 
-![Ein neues, leeres R Skript wird über die RStudio Oberfläche über ein grün-weißes Plus-Symbol geöffnet. Dieses befindet sich oben links.](images/button-rscript-open.png){.absolute .images-shadow left="100%" width="80%"}
+![Ein neues, leeres R-Skript wird über die RStudio Oberfläche über ein grün-weißes Plus-Symbol geöffnet. Dieses befindet sich oben links.](images/button-rscript-open.png){.absolute .images-shadow left="100%" width="80%"}
 
-Man erhält eine große Anzahl an möglichen Formaten, unter anderem auch ein R Skript.
+Man erhält eine große Anzahl an möglichen Formaten, unter anderem auch ein R-Skript.
 
 ![Nachdem das Symbol mit dem grünen Kreis und dem weißen Plus gedrückt wurde, öffnen sich weitere Auswahlmöglichkeiten. Die oberste Leiste mit dem Titel „R Script - Create a new R script“ wird ausgewählt.](images/button-rscript-open2.png){.absolute .images-shadow left="100%" width="20%"}
 
-Das neu geöffnete R Skript sieht nun so aus und kann direkt mit dem Disketten-Symbol abgespeichert werden.
+Das neu geöffnete R-Skript sieht nun so aus und kann direkt mit dem Disketten-Symbol abgespeichert werden.
 
-![Ein neues, leeres R Skript ist geöffnet. Das zum Speichern geeignete blaue Disketten-Symbol befindet sich über der ersten Zeile.](images/empty-rscript-open.png){.absolute .images-shadow left="100%" width="80%"}
+![Ein neues, leeres R-Skript ist geöffnet. Das zum Speichern geeignete blaue Disketten-Symbol befindet sich über der ersten Zeile.](images/empty-rscript-open.png){.absolute .images-shadow left="100%" width="80%"}
 
 
 #### Übungen
@@ -559,7 +559,7 @@ Das neu geöffnete R Skript sieht nun so aus und kann direkt mit dem Disketten-S
 
 4.    *Schreibe `print("hallo Welt!")`in das R-Skript.*
 
-5.    *Führe das R Skript aus und schaue Dir den Output in der Console an.*
+5.    *Führe das R-Skript aus und schaue Dir den Output in der Console an.*
 
 
 </div>
@@ -637,16 +637,40 @@ Werte:   `TRUE` (entspricht 1) und `FALSE` (entspricht 0)
 Kann aufsummiert werden:
 
 ```{r logicals-1, exercise=TRUE, results = "hold"}
-TRUE + TRUE 
-FALSE + FALSE
-TRUE + FALSE 
+variable_true <- TRUE
+variable_false <- FALSE
+
+variable_true + variable_true 
+variable_false + variable_false
+variable_true + variable_false 
 ```
+
+
+<details class="hiddendetails-container"> <summary>
+<p class="hiddendetails-button"><i class="fa-solid fa-arrow-down"></i> Zeige eine Erklärung der Lösung an <i class="fa-solid fa-arrow-down"></i> </p> </summary>
+<div class="hiddendetails-body"> <div class="uebungen">
+
+```{r logicals-1-1, exercise=FALSE, eval=FALSE, exercise.eval=FALSE, echo=TRUE}
+variable_true <- TRUE
+variable_false <- FALSE
+
+# Hier wird also 1 + 1 gerechnet (TRUE + TRUE)
+variable_true + variable_true 
+# Hier wird also 0 + 0 gerechnet (FALSE + FALSE)
+variable_false + variable_false
+# Hier wird also 1 + 0 gerechnet (TRUE + FALSE)
+variable_true + variable_false 
+```
+</div> </div> </details>
 
 Logische Operatoren können angewandt werden
 
 ```{r logicals-2, exercise=TRUE, results = "hold"}
-FALSE & TRUE
-FALSE | TRUE
+variable_true <- TRUE
+variable_false <- FALSE
+
+variable_false & variable_true
+variable_false | variable_true
 5 < 10
 ```
 
@@ -660,7 +684,7 @@ __Logische Operatoren__
 | `!=`   | ungleich    |
 | `|`    | oder        |
 | `&`    | und         |
-| `!`    | Negierung   |
+| `!`    | Negierung (Umkehrung der Logik)   |
 
 <!-- : Logische Operatoren -->
 
@@ -674,6 +698,9 @@ zahlen <- c(18, 22, 16, 20)
 # Welche Buchstaben sind C?
 buchstaben == "C"
 
+# Welche Buchstaben sind ungleich C?
+buchstaben != "C"
+
 # Welche Zahl ist größer als 20?
 zahlen > 20
 ```
@@ -684,9 +711,9 @@ zahlen > 20
 
 `r otter::colorize("Vorbereitung:", "var(--blue)")`
 ```{r setup-logical, exercise.eval=FALSE}
-namen <- c("Lisa Müller", "Peter Bauer", "Hannah Schmidt")
-angemeldet <- c(TRUE, FALSE, TRUE)
+namen <- c("Peter Bauer", "Lisa Müller", "Hannah Schmidt")
 alter <- c(18, 22, 16)
+angemeldet <- c(TRUE, FALSE, TRUE)
 ```
 
 ```{r, ref.label=I('setup-logical'), eval=TRUE, echo=TRUE, exercise.eval=FALSE}
@@ -696,7 +723,7 @@ alter <- c(18, 22, 16)
 `r otter::colorize("Aufgabe:", "var(--blue)")` *Beantworte die gestellte Frage mit R Code.*
 
 ```{r ex-logical-1, exercise=TRUE, results = "hold", exercise.setup = "setup-logical", exercise.eval=FALSE}
-# Wer von den Personen heißt NICHT Lisa Müller?
+# Wer von den Personen in der heißt NICHT Lisa Müller? Nutze hierzu die Variable "namen".
 
 ```
 ```{r ex-logical-1-hint-1, exercise.eval=FALSE}
@@ -704,9 +731,10 @@ alter <- c(18, 22, 16)
 ```
 ```{r ex-logical-1-hint-2, exercise.eval=FALSE}
 # !=
+# der nächste Tipp ist die finale Lösung!
 ```
 ```{r ex-logical-1-solution, exercise.eval=FALSE}
-# Wer von den Personen heißt NICHT Lisa Müller?
+# Lösung
 namen != "Lisa Müller"
 ```
 
@@ -716,6 +744,24 @@ grade_this({
   fail()
 })
 ```
+
+
+<!-- <details class="hiddendetails-container"> -->
+<!-- <summary> <p class="hiddendetails-button"><i class="fa-solid fa-arrow-down"></i> Zeige eine Erklärung der Lösung an <i class="fa-solid fa-arrow-down"></i> </p> </summary> -->
+
+<!-- <div class="hiddendetails-body"><div class="uebungen"> -->
+
+<!-- Für jede Position des Vektors `namen` wird geprüft, ob das Element ungleich zum Wert "Lisa Müller" ist. -->
+<!-- Dazu wir der logische Operator `!=` genutzt. -->
+<!-- Die Ausgabe ist ein Vektor mit drei Werten des Datentyps `logical`. -->
+<!-- Somit werden genauso viele Werte ausgegeben, wie die Länge des Vektors `namen`. -->
+
+<!-- Wenn das zu prüfende Element sich unterscheidet zu "Lisa Müller", wird der Wert `TRUE` ausgegeben, weil der Wert ungleich ist. -->
+<!-- Wenn das zu prüfende Element identisch zu "Lisa Müller" ist, wird der Wert `FALSE` ausgegeben, weil der Wert nicht ungleich ist. -->
+
+<!-- Durch diese Abfrage wissen wir nun, welche Personen im Vektor `namen` **nicht** Lisa Müller sind. -->
+
+<!-- </div> </div> </details> -->
 
 
 `r otter::colorize("Aufgabe:", "var(--blue)")` *Beantworte die gestellte Frage mit R Code.*
@@ -982,7 +1028,7 @@ variable <- NaN
 # Weitere Berechnungen führen auch dazu, dass das Ergebnis zu einem fehlenden Wert wird
 variable * 10
 
-# Auch eine logischer Vergleich mit NaN führt hier zu einem fehlenden Wert!
+# Auch ein logischer Vergleich mit NaN führt hier zu einem fehlenden Wert!
 variable == NaN
 ```
 
@@ -1538,12 +1584,20 @@ matrix[ ,2] # Gesamte Spalte
 farben <- c("rot", "hellrot", "blau", "dunkelblau", "grün", "hellgrün")
 ```
 ```{r ex-matrix-1-solution, results = "hold", exercise.eval=FALSE}
+#result ---
+matrix(c("rot", "hellrot", "blau", "dunkelblau", "grün", "hellgrün"), ncol = 3)
+
+#extended ----
 farben <- c("rot", "hellrot", "blau", "dunkelblau", "grün", "hellgrün")
 farben <- matrix(farben, ncol = 3)
 farben
 ```
 ```{r ex-matrix-1-check, results = "hold", exercise.eval=FALSE}
-grade_this_code()
+# grade_this_code()
+grade_this({
+  fail_if_not_equal(.solution_all, message = "Der Output stimmt nicht mit der Lösung überein. Eventuell hilft dir der Hinweis: {code_feedback()}")
+  pass_if_equal(.solution_all)
+})
 ```
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
@@ -2299,7 +2353,7 @@ Tidyverse:
   
   3. *Führe den Code aus, um zu testen, ob alles funktioniert: `glue::glue("Hallo Welt")`.*
   
-  4. *Lade das Paket `glue` in einem R Skript oder über die Console.*
+  4. *Lade das Paket `glue` in einem R-Skript oder über die Console.*
   
   5. *Führe den Code aus, um zu testen, ob alles funktioniert: `glue("Hallo Welt! :-)")`.*
 
@@ -2339,15 +2393,19 @@ df <- data.frame(
 
 Hier ist der Einblick in einen klinischen Datensatz `df` (die Daten wurden simuliert).
 
-<details><summary>
-    <p class="solution-button"><i class="fa-solid fa-arrow-down"></i> Zeige den Code der Simulation <i class="fa-solid fa-arrow-down"></i> </p>
-  </summary> <div class="solution-body"> <div class="uebungen">
+<!-- <details class="hiddendetails-container"><summary> -->
+<!-- <p class="hiddendetails-button"><i class="fa-solid fa-arrow-down"></i> Zeige den Code der Simulation <i class="fa-solid fa-arrow-down"></i> </p> -->
+<!-- </summary>  -->
+<!-- <div class="hiddendetails-body"> -->
+<!-- <div class="uebungen"> -->
 
-So wurde der Datensatz `df` simuliert:
-```{r, ref.label=I('setup-data'), eval=FALSE, echo=TRUE, exercise.eval=FALSE}
+<!-- So wurde der Datensatz `df` simuliert: -->
 
-```
-</div> </div> </details>
+<!-- ```{r, ref.label=I('setup-data'), eval=FALSE, echo=TRUE, exercise.eval=FALSE} -->
+
+<!-- ``` -->
+<!-- </div></div> -->
+<!-- </details> -->
 
 ```{r data-1, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
 df # so können wir den Datensatz in der Console ausgeben lassen.
@@ -2617,7 +2675,7 @@ Empfohlen ist z. B. diese hier:
 
 Im Ordner `data` werden alle Datensätze gespeichert.
 Im Ordner `images` werden alle Grafiken gespeichert.
-Im Ordner `R` werden alle R Skripte gespeichert.
+Im Ordner `R` werden alle R-Skripte gespeichert.
 
 #### Übungen <a href="#section-r-projekte-und-working-directory"> <i class="fa-solid fa-arrow-up"></i></a>
 <div class="uebungen">
@@ -2627,7 +2685,7 @@ Im Ordner `R` werden alle R Skripte gespeichert.
 
 1. Erstelle ein R Projekt mit dem Namen `otter` in RStudio.
 
-2. Erstelle einen Unterordner und lege dort ein R Skript `test.R` ab.
+2. Erstelle einen Unterordner und lege dort ein R-Skript `test.R` ab.
 
 3. Schließe RStudio.
 
@@ -2859,13 +2917,13 @@ for (position in 1:4) {
 friends_status
 ```
 
-<details> <summary>
-    <p class="solution-button"><i class="fa-solid fa-arrow-down"></i> Zeige die Lösung <i class="fa-solid fa-arrow-down"></i> </p>
-  </summary> <div class="solution-body"> <div class="uebungen">
+<!-- <details> <summary> -->
+<!--     <p class="hiddendetails-button"><i class="fa-solid fa-arrow-down"></i> Zeige die Lösung <i class="fa-solid fa-arrow-down"></i> </p> -->
+<!--   </summary> <div class="hiddendetails-body"> <div class="uebungen"> -->
 
-Antwort: Wir müssten überall im Code die Zahl 4 ändern!
+<!-- Antwort: Wir müssten überall im Code die Zahl 4 ändern! -->
 
-</div></div></details>
+<!-- </div></div></details> -->
 
 Bessere Alternative (weil flexibler): `length()`
 
@@ -2919,14 +2977,14 @@ while (condition) {
 }
 ```
 
-<details><summary>
-    <p class="solution-button"><i class="fa-solid fa-arrow-down"></i> Zeige die Lösung <i class="fa-solid fa-arrow-down"></i> </p>
-  </summary> <div class="solution-body"> <div class="uebungen">
+<!-- <details><summary> -->
+<!--     <p class="hiddendetails-button"><i class="fa-solid fa-arrow-down"></i> Zeige die Lösung <i class="fa-solid fa-arrow-down"></i> </p> -->
+<!--   </summary> <div class="hiddendetails-body"> <div class="uebungen"> -->
 
-Es fehlt ein Abbruchkriterium in der While-Loop.
-Damit läuft sie unendlich lange.
+<!-- Es fehlt ein Abbruchkriterium in der While-Loop. -->
+<!-- Damit läuft sie unendlich lange. -->
 
-</div> </div> </details>
+<!-- </div> </div> </details> -->
 
 Wenn das Abbruch-Kriterium vergessen wird, läuft die While-Loop in eine Endlosschleife.
 Wenn dies passiert, muss die Ausführung gestoppt werden.
@@ -3517,15 +3575,15 @@ data_health <- data.frame(
 data_health
 ```
 
-<details><summary>
-    <p class="solution-button"><i class="fa-solid fa-arrow-down"></i> Zeige den Code der Simulation von `data_health` <i class="fa-solid fa-arrow-down"></i> </p>
-  </summary> <div class="solution-body"> <div class="uebungen">
+<!-- <details><summary> -->
+<!--     <p class="hiddendetails-button"><i class="fa-solid fa-arrow-down"></i> Zeige den Code der Simulation von `data_health` <i class="fa-solid fa-arrow-down"></i> </p> -->
+<!--   </summary> <div class="hiddendetails-body"> <div class="uebungen"> -->
 
-So wurde der Datensatz `data_health` simuliert:
-```{r, ref.label=I('setup-df'), eval=FALSE, echo=TRUE, exercise.eval=FALSE}
+<!-- So wurde der Datensatz `data_health` simuliert: -->
+<!-- ```{r, ref.label=I('setup-df'), eval=FALSE, echo=TRUE, exercise.eval=FALSE} -->
 
-```
-</div> </div> </details>
+<!-- ``` -->
+<!-- </div> </div> </details> -->
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Schaue den Datensatz `data_health` an. Gebe dir dazu die letzten 7 Zeilen des Datensatzes aus.*
