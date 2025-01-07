@@ -609,6 +609,91 @@ grade_result(
 
 </div> 
 
+## Variablen
+
+Variablen sind Container für Daten.
+
+Sie müssen *ausgeführt* werden, um erstellt und genutzt werden zu können.
+Nach Erstellung taucht die Variable im *Environment* auf.
+
+Eine Variable kann verschiedene Inhalte enthalten, z. B. eine Zahl, Buchstaben, Matrizen mit Zahlen oder Listen.
+
+Der Inhalt einer Variable kann auf die *Console* geschrieben werden, wenn der Variablenname ausgeführt wird.
+
+```{r variable-0-1, exercise=TRUE, results = "hold"}
+# hier wird der Text "Lara" gespeichert in der Variable "name"
+name <- "Lara"
+name
+
+# hier wird eine Zahl gespeichert
+lieblingszahl <- 3
+lieblingszahl
+
+# hier wird ein logischer Datentyp gespeichert
+weiblich <- TRUE
+weiblich
+
+# es gibt auch Spezialfälle an Daten, die gespeichert werden können, wie das Nullobjekt
+alter <- NULL
+alter
+```
+
+In RStudio ist nach dem Ausführen dieses Codes im *Environment* Folgendes zu sehen:
+
+![Das Environment ist geöffnet. Die gespeicherten Daten (alter = NULL, lieblingszahl = 3, name = “Meike”, weiblich = “TRUE” ) sind zu sehen. ](images/env_example.png){.absolute width="500"}
+
+Mit Operatoren können Variablen Inhalte zugewiesen werden.
+In R gibt es hierfür zwei Zuweisungsoperatoren: `<-` und `=`.
+Wobei es als guter Stil gilt, einheitlich `<-` zu verwenden.
+
+
+```{r variable-0-2, exercise=TRUE, results = "hold"}
+pfeil_beispiel <- "Pfeil"
+pfeil_beispiel
+
+gleich_beispiel = "Gleich"
+gleich_beispiel
+```
+
+Der Inhalt von einer Variable kann jederzeit geändert werden.
+Neue Daten können mit dem Zuweisungsoperator zugewiesen werden.
+Dadurch werden die alten Daten überschrieben.
+
+```{r variable-0-3, exercise=TRUE, results = "hold"}
+# Alte Daten
+variable <- "Hallo!"
+variable
+
+# Der Inhalt wird nun überschrieben
+variable <- 3
+variable
+```
+
+
+#### Übungen
+<div class="uebungen">
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Erstelle ein Variable mit dem Inhalt: "Sonne". Und gebe Dir den Inhalt der Variable auf der Console aus.*
+```{r ex-variable-0, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE}
+
+```
+```{r ex-variable-0-solution, results = "hold", exercise.eval=FALSE}
+variable <- "Sonne"
+variable
+```
+```{r ex-variable-0-check, results = "hold", exercise.eval=FALSE}
+# grade_result(
+#   pass_if(~identical(.result, print("Heute ist leider kein Personal anwesend!"))
+#           ),
+#     glue_correct = "Richtig!",
+#   glue_incorrect = "Leider noch nicht ganz richtig!"
+# )
+grade_this_code()
+```
+
+</div>
+
 ## Datentypen
 
 ### Kapitel
@@ -634,7 +719,7 @@ grade_result(
 
 Werte:   `TRUE` (entspricht 1) und `FALSE` (entspricht 0)
 
-Kann aufsummiert werden:
+Dieser Datentyp kann aufsummiert werden:
 
 ```{r logicals-1, exercise=TRUE, results = "hold"}
 variable_true <- TRUE
@@ -647,7 +732,7 @@ variable_true + variable_false
 
 
 <details class="hiddendetails-container"> <summary>
-<p class="hiddendetails-button"><i class="fa-solid fa-arrow-down"></i> Zeige eine Erklärung der Lösung an <i class="fa-solid fa-arrow-down"></i> </p> </summary>
+<p class="hiddendetails-button"><i class="fa-solid fa-arrow-down"></i> Zeige eine zusätzliche Erklärung an <i class="fa-solid fa-arrow-down"></i> </p> </summary>
 <div class="hiddendetails-body"> <div class="uebungen">
 
 ```{r logicals-1-1, exercise=FALSE, eval=FALSE, exercise.eval=FALSE, echo=TRUE}
@@ -723,7 +808,7 @@ angemeldet <- c(TRUE, FALSE, TRUE)
 `r otter::colorize("Aufgabe:", "var(--blue)")` *Beantworte die gestellte Frage mit R Code.*
 
 ```{r ex-logical-1, exercise=TRUE, results = "hold", exercise.setup = "setup-logical", exercise.eval=FALSE}
-# Wer von den Personen in der heißt NICHT Lisa Müller? Nutze hierzu die Variable "namen".
+# Wer von den Personen heißt NICHT Lisa Müller? Prüfe hierzu die Variable "namen".
 
 ```
 ```{r ex-logical-1-hint-1, exercise.eval=FALSE}
@@ -749,7 +834,7 @@ grade_this({
 <details class="hiddendetails-container">
 <summary> <p class="hiddendetails-button"><i class="fa-solid fa-arrow-down"></i> Zeige eine Erklärung der Lösung an <i class="fa-solid fa-arrow-down"></i> </p> </summary>
 
-<div class="hiddendetails-body"><div class="uebungen">
+<div class="hiddendetails-body">
 
 Für jede Position des Vektors `namen` wird geprüft, ob das Element ungleich zum Wert "Lisa Müller" ist.
 Dazu wir der logische Operator `!=` genutzt.
@@ -761,7 +846,7 @@ Wenn das zu prüfende Element identisch zu "Lisa Müller" ist, wird der Wert `FA
 
 Durch diese Abfrage wissen wir nun, welche Personen im Vektor `namen` **nicht** Lisa Müller sind.
 
-</div> </div> </details>
+</div> </details>
 
 
 `r otter::colorize("Aufgabe:", "var(--blue)")` *Beantworte die gestellte Frage mit R Code.*
@@ -771,7 +856,7 @@ Durch diese Abfrage wissen wir nun, welche Personen im Vektor `namen` **nicht** 
 ```
 
 ```{r ex-logical-2-solution, exercise.eval=FALSE}
-# Wer von den Personen heißt NICHT Lisa Müller?
+# Wer von den Personen ist jünger als 18 Jahre?
 alter < 18
 ```
 
@@ -850,7 +935,7 @@ grade_result(
                      5:12
                      )),
   glue_correct = "Richtig!",
-  glue_incorrect = "Leider noch nicht ganz richtig!"
+  glue_incorrect = "Leider noch nicht ganz richtig! Hinweis: Versuche den Operatur : zu nutzen."
 )
 ```
 
@@ -861,16 +946,22 @@ grade_result(
 
 ```
 ```{r ex-int-02-solution, results = "hold"}
+# Lösung ----
 typeof(78)
+
+# Alternativer Ansatz ----
+class(78)
 ```
 ```{r ex-int-02-check, results = "hold"}
-grade_result(
-  pass_if(~identical(.result, 
-                     typeof(78)
-                     )),
-  glue_correct = "Richtig!",
-  glue_incorrect = "Leider noch nicht ganz richtig!"
-)
+grade_this({ # .solution all, because the solutions have different outputs
+  answer <- is.null(code_feedback(.user_code, .solution_code_all[["Alternativer Ansatz"]]))
+  pass_if(
+    answer,
+    "`class()` gibt eine ähnliche Information aus, ist aber nicht identisch zu `typeof()`"
+  )
+  pass_if_equal(.solution_all)
+  fail_if_not_equal(.solution_all, message = "Der Output stimmt nicht mit der Lösung überein. Eventuell hilft dir der Hinweis: {code_feedback()}")
+})
 ```
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
@@ -997,6 +1088,7 @@ Bei Berechnungen oder anderen Operationen kann es leicht passieren, dass sich fe
 Beispiele für die Erzeugung von `NaN` durch eine Rechenoperation:
 ```{r na-4, exercise=TRUE, results = "hold"}
 0/0
+# diese Rechenoperation ist mathematisch nicht definiert
 ```
 
 `NA` tritt meistens auf, wenn ein Datensatz oder eine Variable einen fehlenden Wert enthält.
@@ -1004,6 +1096,7 @@ Es ist üblich eine solche fehlende Information mit `NA` zu speichern.
 
 ```{r na-3, exercise=TRUE, results = "hold"}
 alter <- c(21, 18, NA, 33, 67, NA)
+alter
 ```
 
 <!-- Beispiele für die Erzeugung von `logical(0)` -->
@@ -1022,8 +1115,8 @@ Fehlende Werte wie `NaN` sind manchmal infektiös!
 Bei Rechenoperationen führt z. B. ein `NaN` dazu, dass das Ergebnis auch ein fehlender Wert ist.
 
 ```{r na-6, exercise=TRUE, results = "hold"}
-# Eine Variable wird absichtlich oder unabsichtlich zu NaN
-variable <- NaN
+# Eine Variable wird unabsichtlich zu NaN
+variable <- 0/0
 
 # Weitere Berechnungen mit führen nun auch dazu, dass das Ergebnis zu einem fehlenden Wert wird
 variable * 10
@@ -1036,6 +1129,7 @@ variable == NaN
 
 ```{r na-8, exercise=TRUE, results = "hold"}
 variable <- NaN
+
 variable == NaN # -> erzeugt NA
 is.na(variable) #- > gibt einen logischen Wert aus
 ```
@@ -1066,7 +1160,7 @@ grade_this_code()
 
 ```{r quiz-na}
 quiz(caption = "",
-  question("Was ist die Länge der Variable `variable = logical(3)`?",
+  question("Was ist die Länge der Variable `variable <- logical(3)`?",
     answer("0"),
     answer("1"),
     answer("3", correct = TRUE),
@@ -1112,22 +1206,28 @@ Prüfungen, welcher Datentyp vorliegt:
 
 ```{r data-functions2-1, exercise=TRUE, results = "hold"}
 # Erzeugung einer Variable
-number = 5
+number <- 5
 
-# Prüfung der Variable
+# Prüfung der Variable auf spezifische Datentypen
 is.integer(number)
 is.double(number)
+is.numeric(number)
 is.character(number)
 is.logical(number)
-is.numeric(number)
+
+# Abfrage des Datentyps
+typeof(number)
 ```
 
+Prüfung von Spezialfällen
 ```{r data-functions2-2, exercise=TRUE, results = "hold"}
 # Erzeugung einer Variable
-number = 5
+number <- 5
 
-# Prüfung von Spezialfällen
+# Fehlender Wert
 is.na(number)
+
+# Unendlichkeit
 is.finite(number)
 is.infinite(number)
 ```
@@ -1136,7 +1236,7 @@ Datentyp ändern:
 
 ```{r data-functions3, exercise=TRUE, results = "hold"}
 # Erzeugung einer Variable
-number = 0
+number <- 0
 # Änderung des Datentyps
 as.numeric(number)
 as.integer(number)
@@ -1207,26 +1307,29 @@ quiz(caption = "",
 
 ### Variablen <a href="#section-datenstrukturen"> <i class="fa-solid fa-arrow-up"></i></a>
 
-
 Variablen sind Container für Daten.
 Sie zeigen auf ein Objekt im Speicher.
 Sie müssen *ausgeführt* werden, um erstellt und genutzt werden zu können.
 Nach Erstellung taucht die Variable im *Environment* auf.
 
-Eine Variable kann verschiedene Inhalte enthalten, z. B. eine Zahl, Buchstaben, Matrizen oder Listen.
+Eine Variable kann verschiedene Inhalte mit verschiedenen Datentypen und Datenstrukturen enthalten, z. B. eine Zahl, Buchstaben, Matrizen mit Zahlen oder Listen.
 
 Der Inhalt einer Variable kann auf die *Console* geschrieben werden, wenn der Variablenname ausgeführt wird.
 
 ```{r variable-1, exercise=TRUE, results = "hold"}
+# hier wird der Text "Lara" gespeichert in der Variable "name"
 name <- "Lara"
 name
 
-weiblich <- TRUE
-weiblich
-
+# hier wird eine Zahl gespeichert
 lieblingszahl <- 3
 lieblingszahl
 
+# hier wird ein logischer Datentyp gespeichert
+weiblich <- TRUE
+weiblich
+
+# es gibt auch Spezialfälle an Daten, die gespeichert werden können, wie das Nullobjekt
 alter <- NULL
 alter
 ```
@@ -1306,15 +1409,8 @@ variable <- c("Baum", "Blume", "Haus", "Pferd")
 variable
 ```
 ```{r ex-variable-1-check, results = "hold", exercise.eval=FALSE}
-# grade_result(
-#   pass_if(~identical(.result, print("Heute ist leider kein Personal anwesend!"))
-#           ),
-#     glue_correct = "Richtig!",
-#   glue_incorrect = "Leider noch nicht ganz richtig!"
-# )
 grade_this_code()
 ```
-
 </div>
 
 ### Atomare Vektoren <a href="#section-datenstrukturen"> <i class="fa-solid fa-arrow-up"></i></a>
@@ -1356,14 +1452,25 @@ namen_freunde[c(TRUE, FALSE, FALSE)]
 *Ändere den Inhalt der Variable: entferne die Einträge `Hund`.*
 ```{r ex-vector-1, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE}
 blumen <- c("Tulpen", "Rosen", "Hund", "Sonnenblumen", "Hund")
+# die erste Zeile soll unverändert bleiben!
+# schreibe hier deinen Code
 ```
 ```{r ex-vector-1-solution, results = "hold", exercise.eval=FALSE}
+# option 1 ----
 blumen <- c("Tulpen", "Rosen", "Hund", "Sonnenblumen", "Hund")
-blumen <- blumen[ !blumen == "Hund"]
+blumen <- blumen[blumen != "Hund"]
+blumen
+
+# option 2 ----
+blumen <- c("Tulpen", "Rosen", "Hund", "Sonnenblumen", "Hund")
+blumen <- blumen[!blumen == "Hund"]
 blumen
 ```
 ```{r ex-vector-1-check, results = "hold", exercise.eval=FALSE}
-grade_this_code()
+grade_this({
+  pass_if_equal(.solution)
+  fail_if_not_equal(.solution, message = "Der Output stimmt nicht mit der Lösung überein. Eventuell hilft dir der Hinweis: {code_feedback()}")
+})
 ```
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
@@ -1379,8 +1486,6 @@ blumen
 ```{r ex-vector-2-check, results = "hold", exercise.eval=FALSE}
 grade_this_code()
 ```
-
-
 </div>
 
 
@@ -1584,19 +1689,19 @@ matrix[ ,2] # Gesamte Spalte
 farben <- c("rot", "hellrot", "blau", "dunkelblau", "grün", "hellgrün")
 ```
 ```{r ex-matrix-1-solution, results = "hold", exercise.eval=FALSE}
-#result ---
+# vereinfachte Lösung ----
 matrix(c("rot", "hellrot", "blau", "dunkelblau", "grün", "hellgrün"), ncol = 3)
 
-#extended ----
+# Lösung ----
 farben <- c("rot", "hellrot", "blau", "dunkelblau", "grün", "hellgrün")
 farben <- matrix(farben, ncol = 3)
 farben
 ```
 ```{r ex-matrix-1-check, results = "hold", exercise.eval=FALSE}
 # grade_this_code()
-grade_this({
-  fail_if_not_equal(.solution_all, message = "Der Output stimmt nicht mit der Lösung überein. Eventuell hilft dir der Hinweis: {code_feedback()}")
-  pass_if_equal(.solution_all)
+grade_this({ # .solution, because the two solutions have the same output
+  pass_if_equal(.solution)
+  fail_if_not_equal(.solution, message = "Der Output stimmt nicht mit der Lösung überein. Eventuell hilft dir der Hinweis: {code_feedback()}")
 })
 ```
 
@@ -3398,13 +3503,7 @@ bank_status(data, "Beatrice")
 bank_status(data, "Klaus")
 ```
 ```{r ex-debugging-4-check, results = "hold", exercise.eval=FALSE}
-grade_this_code(
-)
-
-# grade_this({
-#   pass_if_equal()
-#   fail(hint = TRUE)
-# })
+grade_this_code()
 ```
 ```{r ex-debugging-4-solution, results = "hold", exercise.eval=FALSE}
 data <- data.frame(
@@ -3578,13 +3677,13 @@ data_health
 
 <details class="hiddendetails-container"> <summary>
     <p class="hiddendetails-button"><i class="fa-solid fa-arrow-down"></i> Zeige den Code der Simulation von `data_health` <i class="fa-solid fa-arrow-down"></i> </p>
-  </summary> <div class="hiddendetails-body"> <div class="uebungen">
+  </summary> <div class="hiddendetails-body">
 
 So wurde der Datensatz `data_health` simuliert:
 ```{r, ref.label=I('setup-df'), eval=FALSE, echo=TRUE, exercise.eval=FALSE}
 
 ```
-</div> </div> </details>
+</div> </details>
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Schaue den Datensatz `data_health` an. Gebe dir dazu die letzten 7 Zeilen des Datensatzes aus.*
