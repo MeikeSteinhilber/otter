@@ -746,22 +746,22 @@ grade_this({
 ```
 
 
-<!-- <details class="hiddendetails-container"> -->
-<!-- <summary> <p class="hiddendetails-button"><i class="fa-solid fa-arrow-down"></i> Zeige eine Erklärung der Lösung an <i class="fa-solid fa-arrow-down"></i> </p> </summary> -->
+<details class="hiddendetails-container">
+<summary> <p class="hiddendetails-button"><i class="fa-solid fa-arrow-down"></i> Zeige eine Erklärung der Lösung an <i class="fa-solid fa-arrow-down"></i> </p> </summary>
 
-<!-- <div class="hiddendetails-body"><div class="uebungen"> -->
+<div class="hiddendetails-body"><div class="uebungen">
 
-<!-- Für jede Position des Vektors `namen` wird geprüft, ob das Element ungleich zum Wert "Lisa Müller" ist. -->
-<!-- Dazu wir der logische Operator `!=` genutzt. -->
-<!-- Die Ausgabe ist ein Vektor mit drei Werten des Datentyps `logical`. -->
-<!-- Somit werden genauso viele Werte ausgegeben, wie die Länge des Vektors `namen`. -->
+Für jede Position des Vektors `namen` wird geprüft, ob das Element ungleich zum Wert "Lisa Müller" ist.
+Dazu wir der logische Operator `!=` genutzt.
+Die Ausgabe ist ein Vektor mit drei Werten des Datentyps `logical`.
+Somit werden genauso viele Werte ausgegeben, wie die Länge des Vektors `namen`.
 
-<!-- Wenn das zu prüfende Element sich unterscheidet zu "Lisa Müller", wird der Wert `TRUE` ausgegeben, weil der Wert ungleich ist. -->
-<!-- Wenn das zu prüfende Element identisch zu "Lisa Müller" ist, wird der Wert `FALSE` ausgegeben, weil der Wert nicht ungleich ist. -->
+Wenn das zu prüfende Element sich unterscheidet zu "Lisa Müller", wird der Wert `TRUE` ausgegeben, weil der Wert ungleich ist.
+Wenn das zu prüfende Element identisch zu "Lisa Müller" ist, wird der Wert `FALSE` ausgegeben, weil der Wert nicht ungleich ist.
 
-<!-- Durch diese Abfrage wissen wir nun, welche Personen im Vektor `namen` **nicht** Lisa Müller sind. -->
+Durch diese Abfrage wissen wir nun, welche Personen im Vektor `namen` **nicht** Lisa Müller sind.
 
-<!-- </div> </div> </details> -->
+</div> </div> </details>
 
 
 `r otter::colorize("Aufgabe:", "var(--blue)")` *Beantworte die gestellte Frage mit R Code.*
@@ -1025,7 +1025,7 @@ Bei Rechenoperationen führt z. B. ein `NaN` dazu, dass das Ergebnis auch ein fe
 # Eine Variable wird absichtlich oder unabsichtlich zu NaN
 variable <- NaN
 
-# Weitere Berechnungen führen auch dazu, dass das Ergebnis zu einem fehlenden Wert wird
+# Weitere Berechnungen mit führen nun auch dazu, dass das Ergebnis zu einem fehlenden Wert wird
 variable * 10
 
 # Auch ein logischer Vergleich mit NaN führt hier zu einem fehlenden Wert!
@@ -2379,7 +2379,7 @@ Die Übungen zu diesem Kapitel befinden sich hier:
  
  - <a href="#section-übergeordnete-übungen"> <i class="fa-solid fa-arrow-down"></i>  Übergeordnete Übungen: Übungen mit einem Datensatz</a><br>
 
-```{r setup-data, exercise=FALSE, eval=FALSE, exercise.eval=FALSE, echo=FALSE}
+```{r setup-data, exercise=FALSE, eval=TRUE, exercise.eval=FALSE, echo=FALSE}
 set.seed(333) # fixiere alle Zufallsprozesse
 N <- 100 # Anzahl der Personen im Datensatz
 df <- data.frame(
@@ -2393,22 +2393,23 @@ df <- data.frame(
 
 Hier ist der Einblick in einen klinischen Datensatz `df` (die Daten wurden simuliert).
 
-<!-- <details class="hiddendetails-container"><summary> -->
-<!-- <p class="hiddendetails-button"><i class="fa-solid fa-arrow-down"></i> Zeige den Code der Simulation <i class="fa-solid fa-arrow-down"></i> </p> -->
-<!-- </summary>  -->
-<!-- <div class="hiddendetails-body"> -->
-<!-- <div class="uebungen"> -->
+<details class="hiddendetails-container"><summary>
+<p class="hiddendetails-button"><i class="fa-solid fa-arrow-down"></i> Zeige den Code der Simulation <i class="fa-solid fa-arrow-down"></i> </p>
+</summary>
+<div class="hiddendetails-body">
+<div class="uebungen">
 
-<!-- So wurde der Datensatz `df` simuliert: -->
+So wurde der Datensatz `df` simuliert:
 
-<!-- ```{r, ref.label=I('setup-data'), eval=FALSE, echo=TRUE, exercise.eval=FALSE} -->
+```{r, ref.label=I('setup-data'), eval=FALSE, echo=TRUE, exercise.eval=FALSE}
 
-<!-- ``` -->
-<!-- </div></div> -->
-<!-- </details> -->
+```
+</div></div>
+</details>
 
 ```{r data-1, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = "setup-data"}
-df # so können wir den Datensatz in der Console ausgeben lassen.
+# über den Objektnamen können wir den Datensatz in der Console ausgeben lassen.
+df
 # Dies ist oft aber unpraktisch, wenn es große Datensätze sind.
 ```
 
@@ -2470,7 +2471,7 @@ df
 
 ### Einzelne Daten auswählen <a href="#section-datenverarbeitung"> <i class="fa-solid fa-arrow-up"></i></a>
 
-Im Datensatz eine Spalte Filtern
+Im Datensatz eine Spalte filtern
 ```{r data-12, exercise=TRUE, results='hold', exercise.setup = "setup-data"}
 # im Datensatz df alle Personen die jünger sind als 18 Jahre
 df[df$age < 18, ] # Achtung: das Komma ist zwingend erforderlich!
@@ -2531,8 +2532,8 @@ Eine Übersicht über die wichtigsten Infos:
 
 | Funktionen                       | .csv                                                        | .rda oder .RData                        | .rds                                 |
 |----------------------------------|-------------------------------------------------------------|-----------------------------------------|--------------------------------------|
-| Speichern                        | write.csv() (international)<br>write.csv2() (deutsch & Excel)  | save()                                  | saveRDS()                            |
-| Laden                            | read.csv() (international)<br>read.csv2() (deutsch & Excel)    | load()                                  | readRDS()                            |
+| Speichern                        | write.csv() [international]<br>write.csv2() [deutsch & Excel]  | save()                                  | saveRDS()                            |
+| Laden                            | read.csv() [international]<br>read.csv2() [deutsch & Excel]    | load()                                  | readRDS()                            |
 | Anzahl an gespeicherten Objekten | eins                                                        | mehrere                                 | eins                                 |
 | Verhalten beim Laden             | werden einem neuen Objekt zugewiesen                        | werden im Environment wiederhergestellt | werden einem neuen Objekt zugewiesen |
 |                                  |                                                             |                                         |                                      |
@@ -2917,13 +2918,13 @@ for (position in 1:4) {
 friends_status
 ```
 
-<!-- <details> <summary> -->
-<!--     <p class="hiddendetails-button"><i class="fa-solid fa-arrow-down"></i> Zeige die Lösung <i class="fa-solid fa-arrow-down"></i> </p> -->
-<!--   </summary> <div class="hiddendetails-body"> <div class="uebungen"> -->
+<details class="hiddendetails-container"> <summary>
+    <p class="hiddendetails-button"><i class="fa-solid fa-arrow-down"></i> Zeige die Lösung <i class="fa-solid fa-arrow-down"></i> </p>
+  </summary> <div class="hiddendetails-body"> <div class="uebungen">
 
-<!-- Antwort: Wir müssten überall im Code die Zahl 4 ändern! -->
+Antwort: Wir müssten überall im Code die Zahl 4 ändern!
 
-<!-- </div></div></details> -->
+</div></div></details>
 
 Bessere Alternative (weil flexibler): `length()`
 
@@ -2977,14 +2978,14 @@ while (condition) {
 }
 ```
 
-<!-- <details><summary> -->
-<!--     <p class="hiddendetails-button"><i class="fa-solid fa-arrow-down"></i> Zeige die Lösung <i class="fa-solid fa-arrow-down"></i> </p> -->
-<!--   </summary> <div class="hiddendetails-body"> <div class="uebungen"> -->
+<details class="hiddendetails-container"> <summary>
+    <p class="hiddendetails-button"><i class="fa-solid fa-arrow-down"></i> Zeige die Lösung <i class="fa-solid fa-arrow-down"></i> </p>
+  </summary> <div class="hiddendetails-body"> <div class="uebungen">
 
-<!-- Es fehlt ein Abbruchkriterium in der While-Loop. -->
-<!-- Damit läuft sie unendlich lange. -->
+Es fehlt ein Abbruchkriterium in der While-Loop.
+Damit läuft sie unendlich lange.
 
-<!-- </div> </div> </details> -->
+</div> </div> </details>
 
 Wenn das Abbruch-Kriterium vergessen wird, läuft die While-Loop in eine Endlosschleife.
 Wenn dies passiert, muss die Ausführung gestoppt werden.
@@ -3575,15 +3576,15 @@ data_health <- data.frame(
 data_health
 ```
 
-<!-- <details><summary> -->
-<!--     <p class="hiddendetails-button"><i class="fa-solid fa-arrow-down"></i> Zeige den Code der Simulation von `data_health` <i class="fa-solid fa-arrow-down"></i> </p> -->
-<!--   </summary> <div class="hiddendetails-body"> <div class="uebungen"> -->
+<details class="hiddendetails-container"> <summary>
+    <p class="hiddendetails-button"><i class="fa-solid fa-arrow-down"></i> Zeige den Code der Simulation von `data_health` <i class="fa-solid fa-arrow-down"></i> </p>
+  </summary> <div class="hiddendetails-body"> <div class="uebungen">
 
-<!-- So wurde der Datensatz `data_health` simuliert: -->
-<!-- ```{r, ref.label=I('setup-df'), eval=FALSE, echo=TRUE, exercise.eval=FALSE} -->
+So wurde der Datensatz `data_health` simuliert:
+```{r, ref.label=I('setup-df'), eval=FALSE, echo=TRUE, exercise.eval=FALSE}
 
-<!-- ``` -->
-<!-- </div> </div> </details> -->
+```
+</div> </div> </details>
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Schaue den Datensatz `data_health` an. Gebe dir dazu die letzten 7 Zeilen des Datensatzes aus.*

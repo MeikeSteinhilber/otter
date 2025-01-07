@@ -30,6 +30,34 @@ original is from: https://github.com/tidymodels/learntidymodels/tree/main/inst/t
   border-color: #CA225E;
 }
 
+/* Default <details> styling */
+details {
+  margin: 0; /* Remove default margins */
+  padding: 0; /* Remove default padding */
+  background-color: transparent; /* No background when closed */
+  border: none;
+}
+
+/* Styling for <summary> */
+details summary {
+  margin: 0; /* Remove margins */
+  /* padding: 10px; Add padding for the button area */
+  background-color: transparent; /* No background when not clicked or hovered */
+  cursor: pointer; /* Pointer for interactivity */
+  transition: background-color 0.3s; /* Smooth background transition */
+}
+
+/* When details is open */
+details[open] {
+  background-color: #f2f2f2; /* Grey background when open */
+}
+
+/* When hovering over the summary */
+details summary:hover {
+  background-color: #f2f2f2; /* Grey background on hover */
+}
+
+
 .solution-button {
   color: #00c4e6;
   cursor: pointer;
@@ -43,7 +71,7 @@ original is from: https://github.com/tidymodels/learntidymodels/tree/main/inst/t
 
 
 .hiddendetails-button {
-  /*background-color: green;*/
+  background-color: white;
   color: #00c4e6;
   padding: 10px;
   border: none;

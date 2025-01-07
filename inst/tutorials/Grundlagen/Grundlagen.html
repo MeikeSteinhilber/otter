@@ -922,17 +922,30 @@ data-pipe="|&gt;">
 <pre class="text"><code># Lösung
 namen != &quot;Lisa Müller&quot;</code></pre>
 </div>
-<!-- <details class="hiddendetails-container"> -->
-<!-- <summary> <p class="hiddendetails-button"><i class="fa-solid fa-arrow-down"></i> Zeige eine Erklärung der Lösung an <i class="fa-solid fa-arrow-down"></i> </p> </summary> -->
-<!-- <div class="hiddendetails-body"><div class="uebungen"> -->
-<!-- Für jede Position des Vektors `namen` wird geprüft, ob das Element ungleich zum Wert "Lisa Müller" ist. -->
-<!-- Dazu wir der logische Operator `!=` genutzt. -->
-<!-- Die Ausgabe ist ein Vektor mit drei Werten des Datentyps `logical`. -->
-<!-- Somit werden genauso viele Werte ausgegeben, wie die Länge des Vektors `namen`. -->
-<!-- Wenn das zu prüfende Element sich unterscheidet zu "Lisa Müller", wird der Wert `TRUE` ausgegeben, weil der Wert ungleich ist. -->
-<!-- Wenn das zu prüfende Element identisch zu "Lisa Müller" ist, wird der Wert `FALSE` ausgegeben, weil der Wert nicht ungleich ist. -->
-<!-- Durch diese Abfrage wissen wir nun, welche Personen im Vektor `namen` **nicht** Lisa Müller sind. -->
-<!-- </div> </div> </details> -->
+<details class="hiddendetails-container">
+<summary>
+<p class="hiddendetails-button">
+<i class="fa-solid fa-arrow-down"></i> Zeige eine Erklärung der Lösung
+an <i class="fa-solid fa-arrow-down"></i>
+</p>
+</summary>
+<div class="hiddendetails-body">
+<div class="uebungen">
+<p>Für jede Position des Vektors <code>namen</code> wird geprüft, ob das
+Element ungleich zum Wert “Lisa Müller” ist. Dazu wir der logische
+Operator <code>!=</code> genutzt. Die Ausgabe ist ein Vektor mit drei
+Werten des Datentyps <code>logical</code>. Somit werden genauso viele
+Werte ausgegeben, wie die Länge des Vektors <code>namen</code>.</p>
+<p>Wenn das zu prüfende Element sich unterscheidet zu “Lisa Müller”,
+wird der Wert <code>TRUE</code> ausgegeben, weil der Wert ungleich ist.
+Wenn das zu prüfende Element identisch zu “Lisa Müller” ist, wird der
+Wert <code>FALSE</code> ausgegeben, weil der Wert nicht ungleich
+ist.</p>
+<p>Durch diese Abfrage wissen wir nun, welche Personen im Vektor
+<code>namen</code> <strong>nicht</strong> Lisa Müller sind.</p>
+</div>
+</div>
+</details>
 <span style="color: var(--blue);">Aufgabe:</span> <em>Beantworte die
 gestellte Frage mit R Code.</em>
 <div class="tutorial-exercise" data-label="ex-logical-2"
@@ -1194,7 +1207,7 @@ data-pipe="|&gt;">
 <pre class="text"><code># Eine Variable wird absichtlich oder unabsichtlich zu NaN
 variable &lt;- NaN
 
-# Weitere Berechnungen führen auch dazu, dass das Ergebnis zu einem fehlenden Wert wird
+# Weitere Berechnungen mit führen nun auch dazu, dass das Ergebnis zu einem fehlenden Wert wird
 variable * 10
 
 # Auch ein logischer Vergleich mit NaN führt hier zu einem fehlenden Wert!
@@ -2610,20 +2623,33 @@ mit einem Datensatz</a><br></p></li>
 </ul>
 <p>Hier ist der Einblick in einen klinischen Datensatz <code>df</code>
 (die Daten wurden simuliert).</p>
-<!-- <details class="hiddendetails-container"><summary> -->
-<!-- <p class="hiddendetails-button"><i class="fa-solid fa-arrow-down"></i> Zeige den Code der Simulation <i class="fa-solid fa-arrow-down"></i> </p> -->
-<!-- </summary>  -->
-<!-- <div class="hiddendetails-body"> -->
-<!-- <div class="uebungen"> -->
-<!-- So wurde der Datensatz `df` simuliert: -->
-<!-- ```{r, ref.label=I('setup-data'), eval=FALSE, echo=TRUE, exercise.eval=FALSE} -->
-<!-- ``` -->
-<!-- </div></div> -->
-<!-- </details> -->
+<details class="hiddendetails-container">
+<summary>
+<p class="hiddendetails-button">
+<i class="fa-solid fa-arrow-down"></i> Zeige den Code der Simulation
+<i class="fa-solid fa-arrow-down"></i>
+</p>
+</summary>
+<div class="hiddendetails-body">
+<div class="uebungen">
+<p>So wurde der Datensatz <code>df</code> simuliert:</p>
+<pre class="r"><code>set.seed(333) # fixiere alle Zufallsprozesse
+N &lt;- 100 # Anzahl der Personen im Datensatz
+df &lt;- data.frame(
+  sex = factor(sample(c(&quot;weiblich&quot;, &quot;männlich&quot;, &quot;divers&quot;, NA), N, TRUE, prob = c(0.40, 0.40, 0.10, .1))),
+  age = sample(16:60, N, TRUE),
+  treatment_group = sample(c(&quot;treatment&quot;, &quot;control group&quot;), N, TRUE),
+  health_rating_mental = sample(c(1:10, NA), N, TRUE),
+  health_rating_body = sample(1:10, N, TRUE)
+)</code></pre>
+</div>
+</div>
+</details>
 <div class="tutorial-exercise" data-label="data-1" data-completion="1"
 data-diagnostics="1" data-startover="1" data-lines="0"
 data-pipe="|&gt;">
-<pre class="text"><code>df # so können wir den Datensatz in der Console ausgeben lassen.
+<pre class="text"><code># über den Objektnamen können wir den Datensatz in der Console ausgeben lassen.
+df
 # Dies ist oft aber unpraktisch, wenn es große Datensätze sind.</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
@@ -2717,7 +2743,7 @@ df</code></pre>
 <div id="section-einzelne-daten-auswählen" class="section level3">
 <h3>Einzelne Daten auswählen <a href="#section-datenverarbeitung">
 <i class="fa-solid fa-arrow-up"></i></a></h3>
-Im Datensatz eine Spalte Filtern
+Im Datensatz eine Spalte filtern
 <div class="tutorial-exercise" data-label="data-12" data-completion="1"
 data-diagnostics="1" data-startover="1" data-lines="0"
 data-pipe="|&gt;">
@@ -2806,14 +2832,14 @@ oft existieren extra R Pakete dafür.</p>
 <tbody>
 <tr class="odd">
 <td>Speichern</td>
-<td>write.csv() (international)<br>write.csv2() (deutsch &amp;
-Excel)</td>
+<td>write.csv() [international]<br>write.csv2() [deutsch &amp;
+Excel]</td>
 <td>save()</td>
 <td>saveRDS()</td>
 </tr>
 <tr class="even">
 <td>Laden</td>
-<td>read.csv() (international)<br>read.csv2() (deutsch &amp; Excel)</td>
+<td>read.csv() [international]<br>read.csv2() [deutsch &amp; Excel]</td>
 <td>load()</td>
 <td>readRDS()</td>
 </tr>
@@ -3248,11 +3274,19 @@ for (position in 1:4) {
 friends_status</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
-<!-- <details> <summary> -->
-<!--     <p class="hiddendetails-button"><i class="fa-solid fa-arrow-down"></i> Zeige die Lösung <i class="fa-solid fa-arrow-down"></i> </p> -->
-<!--   </summary> <div class="hiddendetails-body"> <div class="uebungen"> -->
-<!-- Antwort: Wir müssten überall im Code die Zahl 4 ändern! -->
-<!-- </div></div></details> -->
+<details class="hiddendetails-container">
+<summary>
+<p class="hiddendetails-button">
+<i class="fa-solid fa-arrow-down"></i> Zeige die Lösung
+<i class="fa-solid fa-arrow-down"></i>
+</p>
+</summary>
+<div class="hiddendetails-body">
+<div class="uebungen">
+<p>Antwort: Wir müssten überall im Code die Zahl 4 ändern!</p>
+</div>
+</div>
+</details>
 <p>Bessere Alternative (weil flexibler): <code>length()</code></p>
 <div class="tutorial-exercise" data-label="for-5" data-completion="1"
 data-diagnostics="1" data-startover="1" data-lines="0"
@@ -3305,12 +3339,20 @@ das Problem mit diesem Code?</em></p>
 while (condition) {
   print(&quot;Hallo Welt!&quot;)
 }</code></pre>
-<!-- <details><summary> -->
-<!--     <p class="hiddendetails-button"><i class="fa-solid fa-arrow-down"></i> Zeige die Lösung <i class="fa-solid fa-arrow-down"></i> </p> -->
-<!--   </summary> <div class="hiddendetails-body"> <div class="uebungen"> -->
-<!-- Es fehlt ein Abbruchkriterium in der While-Loop. -->
-<!-- Damit läuft sie unendlich lange. -->
-<!-- </div> </div> </details> -->
+<details class="hiddendetails-container">
+<summary>
+<p class="hiddendetails-button">
+<i class="fa-solid fa-arrow-down"></i> Zeige die Lösung
+<i class="fa-solid fa-arrow-down"></i>
+</p>
+</summary>
+<div class="hiddendetails-body">
+<div class="uebungen">
+<p>Es fehlt ein Abbruchkriterium in der While-Loop. Damit läuft sie
+unendlich lange.</p>
+</div>
+</div>
+</details>
 <p>Wenn das Abbruch-Kriterium vergessen wird, läuft die While-Loop in
 eine Endlosschleife. Wenn dies passiert, muss die Ausführung gestoppt
 werden.</p>
@@ -3860,13 +3902,34 @@ results</code></pre>
 <h3>Übungen mit einem Datensatz
 <a href="#section-übergeordnete-übungen">
 <i class="fa-solid fa-arrow-up"></i></a></h3>
-<!-- <details><summary> -->
-<!--     <p class="hiddendetails-button"><i class="fa-solid fa-arrow-down"></i> Zeige den Code der Simulation von `data_health` <i class="fa-solid fa-arrow-down"></i> </p> -->
-<!--   </summary> <div class="hiddendetails-body"> <div class="uebungen"> -->
-<!-- So wurde der Datensatz `data_health` simuliert: -->
-<!-- ```{r, ref.label=I('setup-df'), eval=FALSE, echo=TRUE, exercise.eval=FALSE} -->
-<!-- ``` -->
-<!-- </div> </div> </details> -->
+<details class="hiddendetails-container">
+<summary>
+<p class="hiddendetails-button">
+<i class="fa-solid fa-arrow-down"></i> Zeige den Code der Simulation von
+<code>data_health</code> <i class="fa-solid fa-arrow-down"></i>
+</p>
+</summary>
+<div class="hiddendetails-body">
+<div class="uebungen">
+<p>So wurde der Datensatz <code>data_health</code> simuliert:</p>
+<pre class="r"><code>set.seed(3) # fixiere alle Zufallsprozesse
+N &lt;- 200 # Anzahl der Personen im Datensatz
+data_health &lt;- data.frame(
+  sex = factor(sample(c(&quot;weiblich&quot;, &quot;männlich&quot;, &quot;divers&quot;), N, TRUE, prob = c(0.40, 0.40, 0.20))),
+  age = sample(16:60, N, TRUE),
+  treatment_group = sample(c(&quot;treatment&quot;, &quot;control group&quot;), N, TRUE),
+  health_rating_mental_1 = sample(c(1:10), N, TRUE),
+  health_rating_mental_2 = sample(c(1:10), N, TRUE),
+  health_rating_mental_3 = sample(c(1:10, NA), N, TRUE),
+  health_rating_body_1 = sample(1:10, N, TRUE),
+  health_rating_body_2 = sample(1:10, N, TRUE),
+  health_rating_body_3 = sample(1:10, N, TRUE),
+  stress_level = sample(1:7, N, TRUE)
+)
+data_health</code></pre>
+</div>
+</div>
+</details>
 <span style="color: var(--blue);">Aufgabe:</span> <em>Schaue den
 Datensatz <code>data_health</code> an. Gebe dir dazu die letzten 7
 Zeilen des Datensatzes aus.</em>
@@ -5306,7 +5369,7 @@ learnr:::store_exercise_cache(structure(list(label = "na-6", global_setup = stru
 "  gradethis_glue_incorrect = \"{ .message } { .incorrect }\"", 
 ")", "blue <- \"#00c4e6\""), chunk_opts = list(label = "setup", 
     echo = FALSE, message = FALSE, warning = FALSE)), setup = NULL, 
-    chunks = list(list(label = "na-6", code = "# Eine Variable wird absichtlich oder unabsichtlich zu NaN\nvariable <- NaN\n\n# Weitere Berechnungen führen auch dazu, dass das Ergebnis zu einem fehlenden Wert wird\nvariable * 10\n\n# Auch ein logischer Vergleich mit NaN führt hier zu einem fehlenden Wert!\nvariable == NaN", 
+    chunks = list(list(label = "na-6", code = "# Eine Variable wird absichtlich oder unabsichtlich zu NaN\nvariable <- NaN\n\n# Weitere Berechnungen mit führen nun auch dazu, dass das Ergebnis zu einem fehlenden Wert wird\nvariable * 10\n\n# Auch ein logischer Vergleich mit NaN führt hier zu einem fehlenden Wert!\nvariable == NaN", 
         opts = list(label = "\"na-6\"", exercise = "TRUE", results = "\"hold\""), 
         engine = "r")), code_check = NULL, error_check = NULL, 
     check = NULL, solution = NULL, tests = NULL, options = list(
@@ -5329,7 +5392,7 @@ learnr:::store_exercise_cache(structure(list(label = "na-6", global_setup = stru
         exercise.error.check.code = "gradethis_error_checker()", 
         exercise.eval = FALSE, exercise.blanks = "___", exercise.reveal_solution = TRUE, 
         label = "na-6", exercise = TRUE, code = c("# Eine Variable wird absichtlich oder unabsichtlich zu NaN", 
-        "variable <- NaN", "", "# Weitere Berechnungen führen auch dazu, dass das Ergebnis zu einem fehlenden Wert wird", 
+        "variable <- NaN", "", "# Weitere Berechnungen mit führen nun auch dazu, dass das Ergebnis zu einem fehlenden Wert wird", 
         "variable * 10", "", "# Auch ein logischer Vergleich mit NaN führt hier zu einem fehlenden Wert!", 
         "variable == NaN"), out.width.px = 624, out.height.px = 384, 
         params.src = "na-6, exercise=TRUE, results = \"hold\"", 
@@ -5501,16 +5564,16 @@ learnr:::store_exercise_cache(structure(list(label = "ex-na-01", global_setup = 
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-na-1", question = structure("Was ist die Länge der Variable <code>variable = logical(3)<\u002fcode>?", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_c462414", 
+"character")), answers = list(structure(list(id = "lnr_ans_a450ef", 
     option = "0", value = "0", label = structure("0", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_ceb6018", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_3a573d9", 
     option = "1", value = "1", label = structure("1", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_4a30529", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_dfdbcab", 
     option = "3", value = "3", label = structure("3", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_892d600", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_511acce", 
     option = "Es gibt keine sinnvolle Antwort auf diese Frage.", 
     value = "Es gibt keine sinnvolle Antwort auf diese Frage.", 
     label = structure("Es gibt keine sinnvolle Antwort auf diese Frage.", html = TRUE, class = c("html", 
@@ -5522,7 +5585,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), incorrect = structure("Leider falsch!", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "quiz-na-1-answer", question = "quiz-na-1"), loading = NULL, 
-    random_answer_order = TRUE, allow_retry = TRUE, seed = 340090706.341633, 
+    random_answer_order = TRUE, allow_retry = TRUE, seed = 1644562429.73419, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
@@ -5530,17 +5593,17 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-na-2", question = structure("Was passiert, wenn dieser Befehl ausgeführt wird: <code>NaN &lt; 0<\u002fcode>?", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_c46d38", 
+"character")), answers = list(structure(list(id = "lnr_ans_9856585", 
     option = "Es gibt eine Fehlermeldung.", value = "Es gibt eine Fehlermeldung.", 
     label = structure("Es gibt eine Fehlermeldung.", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_19d84d3", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_7e47fee", 
     option = "FALSE", value = "FALSE", label = structure("FALSE", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_6ac8af", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_c4fdda4", 
     option = "TRUE", value = "TRUE", label = structure("TRUE", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_4a2d9c6", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_1ba04dc", 
     option = "Es gibt einen fehlenden Wert aus.", value = "Es gibt einen fehlenden Wert aus.", 
     label = structure("Es gibt einen fehlenden Wert aus.", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
@@ -5551,7 +5614,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), incorrect = structure("Leider falsch!", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "quiz-na-2-answer", question = "quiz-na-2"), loading = NULL, 
-    random_answer_order = TRUE, allow_retry = TRUE, seed = 1779830988.1712, 
+    random_answer_order = TRUE, allow_retry = TRUE, seed = 2034162930.55277, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
@@ -5780,16 +5843,16 @@ learnr:::store_exercise_cache(structure(list(label = "data-functions3", global_s
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-datentyp-1", 
     question = structure("In welchem Datentyp könnte ein solcher Smiley gespeichert werden: <code>:-)<\u002fcode>?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_b66e366", 
+    "character")), answers = list(structure(list(id = "lnr_ans_52f07d9", 
         option = "numeric", value = "numeric", label = structure("numeric", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_124382a", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b536b7c", 
         option = "logical", value = "logical", label = structure("logical", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ff179ea", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_72224f2", 
         option = "integer", value = "integer", label = structure("integer", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b44bf0d", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c089f23", 
         option = "character", value = "character", label = structure("character", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("Antwort einreichen", html = TRUE, class = c("html", 
@@ -5800,7 +5863,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "quiz-datentyp-1-answer", question = "quiz-datentyp-1"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 336192667.343448, options = list()), class = c("learnr_radio", 
+    seed = 2103957283.02027, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -5808,22 +5871,22 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", label = "quiz-datentyp-2", 
     question = structure("Wie werden Zahlen mit dem Datentyp <code>integer<\u002fcode> erstellt?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_fe1d10", 
+    "character")), answers = list(structure(list(id = "lnr_ans_17d0af7", 
         option = "Mit einem L, z.B. `3L`", value = "Mit einem L, z.B. `3L`", 
         label = structure("Mit einem L, z.B. <code>3L<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_747fd6", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7378a80", 
         option = "`as.integer(3)`", value = "`as.integer(3)`", 
         label = structure("<code>as.integer(3)<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_86d07b9", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f34488e", 
         option = "`1:3`", value = "`1:3`", label = structure("<code>1:3<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_2f9222f", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7338bab", 
         option = "Mit einem I, z.B. `3I`", value = "Mit einem I, z.B. `3I`", 
         label = structure("Mit einem I, z.B. <code>3I<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f47934b", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b9334b", 
         option = "Mit dem Eintippen der Zahl `3`", value = "Mit dem Eintippen der Zahl `3`", 
         label = structure("Mit dem Eintippen der Zahl <code>3<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
@@ -5835,28 +5898,28 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", lab
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "quiz-datentyp-2-answer", question = "quiz-datentyp-2"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 197413413.908072, options = list()), class = c("learnr_checkbox", 
+    seed = 528422480.253934, options = list()), class = c("learnr_checkbox", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", label = "quiz-datentyp-3", 
     question = structure("Welche Aussagen sind richtig?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_de81ed3", 
+    "character")), answers = list(structure(list(id = "lnr_ans_d64811a", 
         option = "`is.double()` prüft, ob es sich um den Datenyp double handelt", 
         value = "`is.double()` prüft, ob es sich um den Datenyp double handelt", 
         label = structure("<code>is.double()<\u002fcode> prüft, ob es sich um den Datenyp double handelt", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9cb3633", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_eef6801", 
         option = "`as.integer(3)` erstellt 3 Zahlen", value = "`as.integer(3)` erstellt 3 Zahlen", 
         label = structure("<code>as.integer(3)<\u002fcode> erstellt 3 Zahlen", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_3bb7a58", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_6e7e638", 
         option = "`double(3)` erstellt die Zahl 3 im Datentyp double", 
         value = "`double(3)` erstellt die Zahl 3 im Datentyp double", 
         label = structure("<code>double(3)<\u002fcode> erstellt die Zahl 3 im Datentyp double", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_66b9943", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_13eabca", 
         option = "Man kann 5 Nullen mit `integer(5)` erstellen", 
         value = "Man kann 5 Nullen mit `integer(5)` erstellen", 
         label = structure("Man kann 5 Nullen mit <code>integer(5)<\u002fcode> erstellen", html = TRUE, class = c("html", 
@@ -5869,7 +5932,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", lab
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "quiz-datentyp-3-answer", question = "quiz-datentyp-3"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 2137513429.50464, options = list()), class = c("learnr_checkbox", 
+    seed = 1038570870.01638, options = list()), class = c("learnr_checkbox", 
 "tutorial_question")), session = session)
 </script>
 
@@ -8465,16 +8528,16 @@ learnr:::store_exercise_cache(structure(list(label = "ex-help-00", global_setup 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-help-1", 
     question = structure("Was macht die <code>floor()<\u002fcode> Funktion?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_a99bff0", 
+    "character")), answers = list(structure(list(id = "lnr_ans_5d30ec4", 
         option = "Sie rundet eine Zahl auf.", value = "Sie rundet eine Zahl auf.", 
         label = structure("Sie rundet eine Zahl auf.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9b184c", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c519ef6", 
         option = "Sie berechnet einen mathematischen Grenzwert.", 
         value = "Sie berechnet einen mathematischen Grenzwert.", 
         label = structure("Sie berechnet einen mathematischen Grenzwert.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7194e3", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_283c129", 
         option = "Sie rundet Zahlen ab.", value = "Sie rundet Zahlen ab.", 
         label = structure("Sie rundet Zahlen ab.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
@@ -8486,28 +8549,28 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "quiz-help-1-answer", question = "quiz-help-1"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1295719664.89663, options = list()), class = c("learnr_radio", 
+    seed = 450620023.290164, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", label = "quiz-help-2", 
     question = structure("Welche Aussagen stimmen zu über die <code>all()<\u002fcode> Funktion?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_6b758c0", 
+    "character")), answers = list(structure(list(id = "lnr_ans_dbe63e6", 
         option = "Die Funktion prüft, ob alle Argumente in einer Funktion vorhanden sind.", 
         value = "Die Funktion prüft, ob alle Argumente in einer Funktion vorhanden sind.", 
         label = structure("Die Funktion prüft, ob alle Argumente in einer Funktion vorhanden sind.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f47fc73", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9d2c303", 
         option = "Die Funktion prüft, ob alle Werte in einem Vektor `TRUE` sind.", 
         value = "Die Funktion prüft, ob alle Werte in einem Vektor `TRUE` sind.", 
         label = structure("Die Funktion prüft, ob alle Werte in einem Vektor <code>TRUE<\u002fcode> sind.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f354417", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_aa54a6f", 
         option = "Die Funktion hat zwei Pflicht-Argumente", value = "Die Funktion hat zwei Pflicht-Argumente", 
         label = structure("Die Funktion hat zwei Pflicht-Argumente", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_616dd22", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e0daea2", 
         option = "Die Funktion hat ein Pflicht-Argument und ein Default-Argument.", 
         value = "Die Funktion hat ein Pflicht-Argument und ein Default-Argument.", 
         label = structure("Die Funktion hat ein Pflicht-Argument und ein Default-Argument.", html = TRUE, class = c("html", 
@@ -8520,7 +8583,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", lab
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "quiz-help-2-answer", question = "quiz-help-2"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 769451328.141696, options = list()), class = c("learnr_checkbox", 
+    seed = 1728073068.6953, options = list()), class = c("learnr_checkbox", 
 "tutorial_question")), session = session)
 </script>
 
@@ -8528,22 +8591,22 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", lab
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-help-3", 
     question = structure("Welche Aussagen stimmen zu über das <code>na.rm<\u002fcode> Argument (Bsp. <code>all()<\u002fcode>)?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_77087da", 
+    "character")), answers = list(structure(list(id = "lnr_ans_807e754", 
         option = "Das `na.rm` Argument entfernt alle `NA` Werte in einem Vektor vor der Berechnung.", 
         value = "Das `na.rm` Argument entfernt alle `NA` Werte in einem Vektor vor der Berechnung.", 
         label = structure("Das <code>na.rm<\u002fcode> Argument entfernt alle <code>NA<\u002fcode> Werte in einem Vektor vor der Berechnung.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_23e186a", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_d2ccd19", 
         option = "Das Argument ist in allen mathematischen Funktionen enthalten.", 
         value = "Das Argument ist in allen mathematischen Funktionen enthalten.", 
         label = structure("Das Argument ist in allen mathematischen Funktionen enthalten.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c6356", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_779a839", 
         option = "Das Argument ist meist auf `TRUE` gesetzt.", 
         value = "Das Argument ist meist auf `TRUE` gesetzt.", 
         label = structure("Das Argument ist meist auf <code>TRUE<\u002fcode> gesetzt.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_38429d3", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_87d9f64", 
         option = "Das `na.rm` Argument ist in der log() Funktion enthalten.", 
         value = "Das `na.rm` Argument ist in der log() Funktion enthalten.", 
         label = structure("Das <code>na.rm<\u002fcode> Argument ist in der log() Funktion enthalten.", html = TRUE, class = c("html", 
@@ -8556,7 +8619,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "quiz-help-3-answer", question = "quiz-help-3"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1888488155.1206, options = list()), class = c("learnr_radio", 
+    seed = 744867569.153144, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
@@ -9327,8 +9390,8 @@ learnr:::store_exercise_cache(structure(list(label = "data-1", global_setup = st
     echo = FALSE, message = FALSE, warning = FALSE)), setup = "set.seed(333) # fixiere alle Zufallsprozesse\nN <- 100 # Anzahl der Personen im Datensatz\ndf <- data.frame(\n  sex = factor(sample(c(\"weiblich\", \"männlich\", \"divers\", NA), N, TRUE, prob = c(0.40, 0.40, 0.10, .1))),\n  age = sample(16:60, N, TRUE),\n  treatment_group = sample(c(\"treatment\", \"control group\"), N, TRUE),\n  health_rating_mental = sample(c(1:10, NA), N, TRUE),\n  health_rating_body = sample(1:10, N, TRUE)\n)", 
     chunks = list(list(label = "setup-data", code = "set.seed(333) # fixiere alle Zufallsprozesse\nN <- 100 # Anzahl der Personen im Datensatz\ndf <- data.frame(\n  sex = factor(sample(c(\"weiblich\", \"männlich\", \"divers\", NA), N, TRUE, prob = c(0.40, 0.40, 0.10, .1))),\n  age = sample(16:60, N, TRUE),\n  treatment_group = sample(c(\"treatment\", \"control group\"), N, TRUE),\n  health_rating_mental = sample(c(1:10, NA), N, TRUE),\n  health_rating_body = sample(1:10, N, TRUE)\n)", 
         opts = list(label = "\"setup-data\"", exercise = "FALSE", 
-            eval = "FALSE", exercise.eval = "FALSE", echo = "FALSE"), 
-        engine = "r"), list(label = "data-1", code = "df # so können wir den Datensatz in der Console ausgeben lassen.\n# Dies ist oft aber unpraktisch, wenn es große Datensätze sind.", 
+            eval = "TRUE", exercise.eval = "FALSE", echo = "FALSE"), 
+        engine = "r"), list(label = "data-1", code = "# über den Objektnamen können wir den Datensatz in der Console ausgeben lassen.\ndf\n# Dies ist oft aber unpraktisch, wenn es große Datensätze sind.", 
         opts = list(label = "\"data-1\"", exercise = "TRUE", 
             exercise.eval = "TRUE", results = "\"hold\"", exercise.setup = "\"setup-data\""), 
         engine = "r")), code_check = NULL, error_check = NULL, 
@@ -9352,8 +9415,8 @@ learnr:::store_exercise_cache(structure(list(label = "data-1", global_setup = st
         exercise.error.check.code = "gradethis_error_checker()", 
         exercise.eval = TRUE, exercise.blanks = "___", exercise.reveal_solution = TRUE, 
         label = "data-1", exercise = TRUE, exercise.setup = "setup-data", 
-        code = c("df # so können wir den Datensatz in der Console ausgeben lassen.", 
-        "# Dies ist oft aber unpraktisch, wenn es große Datensätze sind."
+        code = c("# über den Objektnamen können wir den Datensatz in der Console ausgeben lassen.", 
+        "df", "# Dies ist oft aber unpraktisch, wenn es große Datensätze sind."
         ), out.width.px = 624, out.height.px = 384, params.src = "data-1, exercise=TRUE, exercise.eval=TRUE, results='hold', exercise.setup = \"setup-data\"", 
         fig.alt = NULL, fig.num = 0, exercise.df_print = "paged"), 
     engine = "r", version = "4"), class = c("r", "tutorial_exercise"
@@ -9386,7 +9449,7 @@ learnr:::store_exercise_cache(structure(list(label = "data-2", global_setup = st
     echo = FALSE, message = FALSE, warning = FALSE)), setup = "set.seed(333) # fixiere alle Zufallsprozesse\nN <- 100 # Anzahl der Personen im Datensatz\ndf <- data.frame(\n  sex = factor(sample(c(\"weiblich\", \"männlich\", \"divers\", NA), N, TRUE, prob = c(0.40, 0.40, 0.10, .1))),\n  age = sample(16:60, N, TRUE),\n  treatment_group = sample(c(\"treatment\", \"control group\"), N, TRUE),\n  health_rating_mental = sample(c(1:10, NA), N, TRUE),\n  health_rating_body = sample(1:10, N, TRUE)\n)", 
     chunks = list(list(label = "setup-data", code = "set.seed(333) # fixiere alle Zufallsprozesse\nN <- 100 # Anzahl der Personen im Datensatz\ndf <- data.frame(\n  sex = factor(sample(c(\"weiblich\", \"männlich\", \"divers\", NA), N, TRUE, prob = c(0.40, 0.40, 0.10, .1))),\n  age = sample(16:60, N, TRUE),\n  treatment_group = sample(c(\"treatment\", \"control group\"), N, TRUE),\n  health_rating_mental = sample(c(1:10, NA), N, TRUE),\n  health_rating_body = sample(1:10, N, TRUE)\n)", 
         opts = list(label = "\"setup-data\"", exercise = "FALSE", 
-            eval = "FALSE", exercise.eval = "FALSE", echo = "FALSE"), 
+            eval = "TRUE", exercise.eval = "FALSE", echo = "FALSE"), 
         engine = "r"), list(label = "data-2", code = "head(df, n = 10) # zeigt die ersten 10 Zeilen im Datensatz", 
         opts = list(label = "\"data-2\"", exercise = "TRUE", 
             results = "\"hold\"", exercise.setup = "\"setup-data\""), 
@@ -9443,7 +9506,7 @@ learnr:::store_exercise_cache(structure(list(label = "data-3", global_setup = st
     echo = FALSE, message = FALSE, warning = FALSE)), setup = "set.seed(333) # fixiere alle Zufallsprozesse\nN <- 100 # Anzahl der Personen im Datensatz\ndf <- data.frame(\n  sex = factor(sample(c(\"weiblich\", \"männlich\", \"divers\", NA), N, TRUE, prob = c(0.40, 0.40, 0.10, .1))),\n  age = sample(16:60, N, TRUE),\n  treatment_group = sample(c(\"treatment\", \"control group\"), N, TRUE),\n  health_rating_mental = sample(c(1:10, NA), N, TRUE),\n  health_rating_body = sample(1:10, N, TRUE)\n)", 
     chunks = list(list(label = "setup-data", code = "set.seed(333) # fixiere alle Zufallsprozesse\nN <- 100 # Anzahl der Personen im Datensatz\ndf <- data.frame(\n  sex = factor(sample(c(\"weiblich\", \"männlich\", \"divers\", NA), N, TRUE, prob = c(0.40, 0.40, 0.10, .1))),\n  age = sample(16:60, N, TRUE),\n  treatment_group = sample(c(\"treatment\", \"control group\"), N, TRUE),\n  health_rating_mental = sample(c(1:10, NA), N, TRUE),\n  health_rating_body = sample(1:10, N, TRUE)\n)", 
         opts = list(label = "\"setup-data\"", exercise = "FALSE", 
-            eval = "FALSE", exercise.eval = "FALSE", echo = "FALSE"), 
+            eval = "TRUE", exercise.eval = "FALSE", echo = "FALSE"), 
         engine = "r"), list(label = "data-3", code = "tail(df, n = 10) # zeigt die letzten 10 Zeilen im Datensatz", 
         opts = list(label = "\"data-3\"", exercise = "TRUE", 
             results = "\"hold\"", exercise.setup = "\"setup-data\""), 
@@ -9500,7 +9563,7 @@ learnr:::store_exercise_cache(structure(list(label = "data-4", global_setup = st
     echo = FALSE, message = FALSE, warning = FALSE)), setup = "set.seed(333) # fixiere alle Zufallsprozesse\nN <- 100 # Anzahl der Personen im Datensatz\ndf <- data.frame(\n  sex = factor(sample(c(\"weiblich\", \"männlich\", \"divers\", NA), N, TRUE, prob = c(0.40, 0.40, 0.10, .1))),\n  age = sample(16:60, N, TRUE),\n  treatment_group = sample(c(\"treatment\", \"control group\"), N, TRUE),\n  health_rating_mental = sample(c(1:10, NA), N, TRUE),\n  health_rating_body = sample(1:10, N, TRUE)\n)", 
     chunks = list(list(label = "setup-data", code = "set.seed(333) # fixiere alle Zufallsprozesse\nN <- 100 # Anzahl der Personen im Datensatz\ndf <- data.frame(\n  sex = factor(sample(c(\"weiblich\", \"männlich\", \"divers\", NA), N, TRUE, prob = c(0.40, 0.40, 0.10, .1))),\n  age = sample(16:60, N, TRUE),\n  treatment_group = sample(c(\"treatment\", \"control group\"), N, TRUE),\n  health_rating_mental = sample(c(1:10, NA), N, TRUE),\n  health_rating_body = sample(1:10, N, TRUE)\n)", 
         opts = list(label = "\"setup-data\"", exercise = "FALSE", 
-            eval = "FALSE", exercise.eval = "FALSE", echo = "FALSE"), 
+            eval = "TRUE", exercise.eval = "FALSE", echo = "FALSE"), 
         engine = "r"), list(label = "data-4", code = "summary(df)", 
         opts = list(label = "\"data-4\"", exercise = "TRUE", 
             results = "\"hold\"", exercise.setup = "\"setup-data\""), 
@@ -9557,7 +9620,7 @@ learnr:::store_exercise_cache(structure(list(label = "data-5", global_setup = st
     echo = FALSE, message = FALSE, warning = FALSE)), setup = "set.seed(333) # fixiere alle Zufallsprozesse\nN <- 100 # Anzahl der Personen im Datensatz\ndf <- data.frame(\n  sex = factor(sample(c(\"weiblich\", \"männlich\", \"divers\", NA), N, TRUE, prob = c(0.40, 0.40, 0.10, .1))),\n  age = sample(16:60, N, TRUE),\n  treatment_group = sample(c(\"treatment\", \"control group\"), N, TRUE),\n  health_rating_mental = sample(c(1:10, NA), N, TRUE),\n  health_rating_body = sample(1:10, N, TRUE)\n)", 
     chunks = list(list(label = "setup-data", code = "set.seed(333) # fixiere alle Zufallsprozesse\nN <- 100 # Anzahl der Personen im Datensatz\ndf <- data.frame(\n  sex = factor(sample(c(\"weiblich\", \"männlich\", \"divers\", NA), N, TRUE, prob = c(0.40, 0.40, 0.10, .1))),\n  age = sample(16:60, N, TRUE),\n  treatment_group = sample(c(\"treatment\", \"control group\"), N, TRUE),\n  health_rating_mental = sample(c(1:10, NA), N, TRUE),\n  health_rating_body = sample(1:10, N, TRUE)\n)", 
         opts = list(label = "\"setup-data\"", exercise = "FALSE", 
-            eval = "FALSE", exercise.eval = "FALSE", echo = "FALSE"), 
+            eval = "TRUE", exercise.eval = "FALSE", echo = "FALSE"), 
         engine = "r"), list(label = "data-5", code = "psych::describe(df)", 
         opts = list(label = "\"data-5\"", exercise = "TRUE", 
             results = "\"hold\"", exercise.setup = "\"setup-data\""), 
@@ -9614,7 +9677,7 @@ learnr:::store_exercise_cache(structure(list(label = "data-6", global_setup = st
     echo = FALSE, message = FALSE, warning = FALSE)), setup = "set.seed(333) # fixiere alle Zufallsprozesse\nN <- 100 # Anzahl der Personen im Datensatz\ndf <- data.frame(\n  sex = factor(sample(c(\"weiblich\", \"männlich\", \"divers\", NA), N, TRUE, prob = c(0.40, 0.40, 0.10, .1))),\n  age = sample(16:60, N, TRUE),\n  treatment_group = sample(c(\"treatment\", \"control group\"), N, TRUE),\n  health_rating_mental = sample(c(1:10, NA), N, TRUE),\n  health_rating_body = sample(1:10, N, TRUE)\n)", 
     chunks = list(list(label = "setup-data", code = "set.seed(333) # fixiere alle Zufallsprozesse\nN <- 100 # Anzahl der Personen im Datensatz\ndf <- data.frame(\n  sex = factor(sample(c(\"weiblich\", \"männlich\", \"divers\", NA), N, TRUE, prob = c(0.40, 0.40, 0.10, .1))),\n  age = sample(16:60, N, TRUE),\n  treatment_group = sample(c(\"treatment\", \"control group\"), N, TRUE),\n  health_rating_mental = sample(c(1:10, NA), N, TRUE),\n  health_rating_body = sample(1:10, N, TRUE)\n)", 
         opts = list(label = "\"setup-data\"", exercise = "FALSE", 
-            eval = "FALSE", exercise.eval = "FALSE", echo = "FALSE"), 
+            eval = "TRUE", exercise.eval = "FALSE", echo = "FALSE"), 
         engine = "r"), list(label = "data-6", code = "rowSums(is.na(df)) # Anzahl von fehlenden Werten pro Zeile (eine Zeile ist eine Person)", 
         opts = list(label = "\"data-6\"", exercise = "TRUE", 
             results = "\"hold\"", exercise.setup = "\"setup-data\""), 
@@ -9671,7 +9734,7 @@ learnr:::store_exercise_cache(structure(list(label = "data-7", global_setup = st
     echo = FALSE, message = FALSE, warning = FALSE)), setup = "set.seed(333) # fixiere alle Zufallsprozesse\nN <- 100 # Anzahl der Personen im Datensatz\ndf <- data.frame(\n  sex = factor(sample(c(\"weiblich\", \"männlich\", \"divers\", NA), N, TRUE, prob = c(0.40, 0.40, 0.10, .1))),\n  age = sample(16:60, N, TRUE),\n  treatment_group = sample(c(\"treatment\", \"control group\"), N, TRUE),\n  health_rating_mental = sample(c(1:10, NA), N, TRUE),\n  health_rating_body = sample(1:10, N, TRUE)\n)", 
     chunks = list(list(label = "setup-data", code = "set.seed(333) # fixiere alle Zufallsprozesse\nN <- 100 # Anzahl der Personen im Datensatz\ndf <- data.frame(\n  sex = factor(sample(c(\"weiblich\", \"männlich\", \"divers\", NA), N, TRUE, prob = c(0.40, 0.40, 0.10, .1))),\n  age = sample(16:60, N, TRUE),\n  treatment_group = sample(c(\"treatment\", \"control group\"), N, TRUE),\n  health_rating_mental = sample(c(1:10, NA), N, TRUE),\n  health_rating_body = sample(1:10, N, TRUE)\n)", 
         opts = list(label = "\"setup-data\"", exercise = "FALSE", 
-            eval = "FALSE", exercise.eval = "FALSE", echo = "FALSE"), 
+            eval = "TRUE", exercise.eval = "FALSE", echo = "FALSE"), 
         engine = "r"), list(label = "data-7", code = "colSums(is.na(df)) # Anzahl der fehlenden Werte pro Spalte", 
         opts = list(label = "\"data-7\"", exercise = "TRUE", 
             results = "\"hold\"", exercise.setup = "\"setup-data\""), 
@@ -9728,7 +9791,7 @@ learnr:::store_exercise_cache(structure(list(label = "data-8", global_setup = st
     echo = FALSE, message = FALSE, warning = FALSE)), setup = "set.seed(333) # fixiere alle Zufallsprozesse\nN <- 100 # Anzahl der Personen im Datensatz\ndf <- data.frame(\n  sex = factor(sample(c(\"weiblich\", \"männlich\", \"divers\", NA), N, TRUE, prob = c(0.40, 0.40, 0.10, .1))),\n  age = sample(16:60, N, TRUE),\n  treatment_group = sample(c(\"treatment\", \"control group\"), N, TRUE),\n  health_rating_mental = sample(c(1:10, NA), N, TRUE),\n  health_rating_body = sample(1:10, N, TRUE)\n)", 
     chunks = list(list(label = "setup-data", code = "set.seed(333) # fixiere alle Zufallsprozesse\nN <- 100 # Anzahl der Personen im Datensatz\ndf <- data.frame(\n  sex = factor(sample(c(\"weiblich\", \"männlich\", \"divers\", NA), N, TRUE, prob = c(0.40, 0.40, 0.10, .1))),\n  age = sample(16:60, N, TRUE),\n  treatment_group = sample(c(\"treatment\", \"control group\"), N, TRUE),\n  health_rating_mental = sample(c(1:10, NA), N, TRUE),\n  health_rating_body = sample(1:10, N, TRUE)\n)", 
         opts = list(label = "\"setup-data\"", exercise = "FALSE", 
-            eval = "FALSE", exercise.eval = "FALSE", echo = "FALSE"), 
+            eval = "TRUE", exercise.eval = "FALSE", echo = "FALSE"), 
         engine = "r"), list(label = "data-8", code = "complete.cases(df) # Prüft, ob alle Spalten ausgefüllt wurden pro Zeile", 
         opts = list(label = "\"data-8\"", exercise = "TRUE", 
             results = "\"hold\"", exercise.setup = "\"setup-data\""), 
@@ -9785,7 +9848,7 @@ learnr:::store_exercise_cache(structure(list(label = "data-9", global_setup = st
     echo = FALSE, message = FALSE, warning = FALSE)), setup = "set.seed(333) # fixiere alle Zufallsprozesse\nN <- 100 # Anzahl der Personen im Datensatz\ndf <- data.frame(\n  sex = factor(sample(c(\"weiblich\", \"männlich\", \"divers\", NA), N, TRUE, prob = c(0.40, 0.40, 0.10, .1))),\n  age = sample(16:60, N, TRUE),\n  treatment_group = sample(c(\"treatment\", \"control group\"), N, TRUE),\n  health_rating_mental = sample(c(1:10, NA), N, TRUE),\n  health_rating_body = sample(1:10, N, TRUE)\n)", 
     chunks = list(list(label = "setup-data", code = "set.seed(333) # fixiere alle Zufallsprozesse\nN <- 100 # Anzahl der Personen im Datensatz\ndf <- data.frame(\n  sex = factor(sample(c(\"weiblich\", \"männlich\", \"divers\", NA), N, TRUE, prob = c(0.40, 0.40, 0.10, .1))),\n  age = sample(16:60, N, TRUE),\n  treatment_group = sample(c(\"treatment\", \"control group\"), N, TRUE),\n  health_rating_mental = sample(c(1:10, NA), N, TRUE),\n  health_rating_body = sample(1:10, N, TRUE)\n)", 
         opts = list(label = "\"setup-data\"", exercise = "FALSE", 
-            eval = "FALSE", exercise.eval = "FALSE", echo = "FALSE"), 
+            eval = "TRUE", exercise.eval = "FALSE", echo = "FALSE"), 
         engine = "r"), list(label = "data-9", code = "df[!complete.cases(df), ] # Zeigt die Daten, die fehlende Werte enthalten", 
         opts = list(label = "\"data-9\"", exercise = "TRUE", 
             results = "\"hold\"", exercise.setup = "\"setup-data\""), 
@@ -9842,7 +9905,7 @@ learnr:::store_exercise_cache(structure(list(label = "data-10", global_setup = s
     echo = FALSE, message = FALSE, warning = FALSE)), setup = "set.seed(333) # fixiere alle Zufallsprozesse\nN <- 100 # Anzahl der Personen im Datensatz\ndf <- data.frame(\n  sex = factor(sample(c(\"weiblich\", \"männlich\", \"divers\", NA), N, TRUE, prob = c(0.40, 0.40, 0.10, .1))),\n  age = sample(16:60, N, TRUE),\n  treatment_group = sample(c(\"treatment\", \"control group\"), N, TRUE),\n  health_rating_mental = sample(c(1:10, NA), N, TRUE),\n  health_rating_body = sample(1:10, N, TRUE)\n)", 
     chunks = list(list(label = "setup-data", code = "set.seed(333) # fixiere alle Zufallsprozesse\nN <- 100 # Anzahl der Personen im Datensatz\ndf <- data.frame(\n  sex = factor(sample(c(\"weiblich\", \"männlich\", \"divers\", NA), N, TRUE, prob = c(0.40, 0.40, 0.10, .1))),\n  age = sample(16:60, N, TRUE),\n  treatment_group = sample(c(\"treatment\", \"control group\"), N, TRUE),\n  health_rating_mental = sample(c(1:10, NA), N, TRUE),\n  health_rating_body = sample(1:10, N, TRUE)\n)", 
         opts = list(label = "\"setup-data\"", exercise = "FALSE", 
-            eval = "FALSE", exercise.eval = "FALSE", echo = "FALSE"), 
+            eval = "TRUE", exercise.eval = "FALSE", echo = "FALSE"), 
         engine = "r"), list(label = "data-10", code = "df[complete.cases(df), ] # Zeigt die Daten, die keine fehlenden Werte enthalten", 
         opts = list(label = "\"data-10\"", exercise = "TRUE", 
             results = "\"hold\"", exercise.setup = "\"setup-data\""), 
@@ -9899,7 +9962,7 @@ learnr:::store_exercise_cache(structure(list(label = "data-11", global_setup = s
     echo = FALSE, message = FALSE, warning = FALSE)), setup = "set.seed(333) # fixiere alle Zufallsprozesse\nN <- 100 # Anzahl der Personen im Datensatz\ndf <- data.frame(\n  sex = factor(sample(c(\"weiblich\", \"männlich\", \"divers\", NA), N, TRUE, prob = c(0.40, 0.40, 0.10, .1))),\n  age = sample(16:60, N, TRUE),\n  treatment_group = sample(c(\"treatment\", \"control group\"), N, TRUE),\n  health_rating_mental = sample(c(1:10, NA), N, TRUE),\n  health_rating_body = sample(1:10, N, TRUE)\n)", 
     chunks = list(list(label = "setup-data", code = "set.seed(333) # fixiere alle Zufallsprozesse\nN <- 100 # Anzahl der Personen im Datensatz\ndf <- data.frame(\n  sex = factor(sample(c(\"weiblich\", \"männlich\", \"divers\", NA), N, TRUE, prob = c(0.40, 0.40, 0.10, .1))),\n  age = sample(16:60, N, TRUE),\n  treatment_group = sample(c(\"treatment\", \"control group\"), N, TRUE),\n  health_rating_mental = sample(c(1:10, NA), N, TRUE),\n  health_rating_body = sample(1:10, N, TRUE)\n)", 
         opts = list(label = "\"setup-data\"", exercise = "FALSE", 
-            eval = "FALSE", exercise.eval = "FALSE", echo = "FALSE"), 
+            eval = "TRUE", exercise.eval = "FALSE", echo = "FALSE"), 
         engine = "r"), list(label = "data-11", code = "df <- na.omit(df) # Entfernt alle Zeilen mit fehlenden Werten\ndf", 
         opts = list(label = "\"data-11\"", exercise = "TRUE", 
             results = "\"hold\"", exercise.setup = "\"setup-data\""), 
@@ -9956,7 +10019,7 @@ learnr:::store_exercise_cache(structure(list(label = "data-12", global_setup = s
     echo = FALSE, message = FALSE, warning = FALSE)), setup = "set.seed(333) # fixiere alle Zufallsprozesse\nN <- 100 # Anzahl der Personen im Datensatz\ndf <- data.frame(\n  sex = factor(sample(c(\"weiblich\", \"männlich\", \"divers\", NA), N, TRUE, prob = c(0.40, 0.40, 0.10, .1))),\n  age = sample(16:60, N, TRUE),\n  treatment_group = sample(c(\"treatment\", \"control group\"), N, TRUE),\n  health_rating_mental = sample(c(1:10, NA), N, TRUE),\n  health_rating_body = sample(1:10, N, TRUE)\n)", 
     chunks = list(list(label = "setup-data", code = "set.seed(333) # fixiere alle Zufallsprozesse\nN <- 100 # Anzahl der Personen im Datensatz\ndf <- data.frame(\n  sex = factor(sample(c(\"weiblich\", \"männlich\", \"divers\", NA), N, TRUE, prob = c(0.40, 0.40, 0.10, .1))),\n  age = sample(16:60, N, TRUE),\n  treatment_group = sample(c(\"treatment\", \"control group\"), N, TRUE),\n  health_rating_mental = sample(c(1:10, NA), N, TRUE),\n  health_rating_body = sample(1:10, N, TRUE)\n)", 
         opts = list(label = "\"setup-data\"", exercise = "FALSE", 
-            eval = "FALSE", exercise.eval = "FALSE", echo = "FALSE"), 
+            eval = "TRUE", exercise.eval = "FALSE", echo = "FALSE"), 
         engine = "r"), list(label = "data-12", code = "# im Datensatz df alle Personen die jünger sind als 18 Jahre\ndf[df$age < 18, ] # Achtung: das Komma ist zwingend erforderlich!", 
         opts = list(label = "\"data-12\"", exercise = "TRUE", 
             results = "\"hold\"", exercise.setup = "\"setup-data\""), 
@@ -10014,7 +10077,7 @@ learnr:::store_exercise_cache(structure(list(label = "data-13", global_setup = s
     echo = FALSE, message = FALSE, warning = FALSE)), setup = "set.seed(333) # fixiere alle Zufallsprozesse\nN <- 100 # Anzahl der Personen im Datensatz\ndf <- data.frame(\n  sex = factor(sample(c(\"weiblich\", \"männlich\", \"divers\", NA), N, TRUE, prob = c(0.40, 0.40, 0.10, .1))),\n  age = sample(16:60, N, TRUE),\n  treatment_group = sample(c(\"treatment\", \"control group\"), N, TRUE),\n  health_rating_mental = sample(c(1:10, NA), N, TRUE),\n  health_rating_body = sample(1:10, N, TRUE)\n)", 
     chunks = list(list(label = "setup-data", code = "set.seed(333) # fixiere alle Zufallsprozesse\nN <- 100 # Anzahl der Personen im Datensatz\ndf <- data.frame(\n  sex = factor(sample(c(\"weiblich\", \"männlich\", \"divers\", NA), N, TRUE, prob = c(0.40, 0.40, 0.10, .1))),\n  age = sample(16:60, N, TRUE),\n  treatment_group = sample(c(\"treatment\", \"control group\"), N, TRUE),\n  health_rating_mental = sample(c(1:10, NA), N, TRUE),\n  health_rating_body = sample(1:10, N, TRUE)\n)", 
         opts = list(label = "\"setup-data\"", exercise = "FALSE", 
-            eval = "FALSE", exercise.eval = "FALSE", echo = "FALSE"), 
+            eval = "TRUE", exercise.eval = "FALSE", echo = "FALSE"), 
         engine = "r"), list(label = "data-13", code = "# Im Datensatz df alle Personen die jünger sind als 18 Jahre\n# und sich in der Treatment-Gruppe befinden\ndf[df$age < 18 & df$treatment_group == \"treatment\", ]", 
         opts = list(label = "\"data-13\"", exercise = "TRUE", 
             results = "\"hold\"", exercise.setup = "\"setup-data\""), 
@@ -10072,7 +10135,7 @@ learnr:::store_exercise_cache(structure(list(label = "data-14", global_setup = s
     echo = FALSE, message = FALSE, warning = FALSE)), setup = "set.seed(333) # fixiere alle Zufallsprozesse\nN <- 100 # Anzahl der Personen im Datensatz\ndf <- data.frame(\n  sex = factor(sample(c(\"weiblich\", \"männlich\", \"divers\", NA), N, TRUE, prob = c(0.40, 0.40, 0.10, .1))),\n  age = sample(16:60, N, TRUE),\n  treatment_group = sample(c(\"treatment\", \"control group\"), N, TRUE),\n  health_rating_mental = sample(c(1:10, NA), N, TRUE),\n  health_rating_body = sample(1:10, N, TRUE)\n)", 
     chunks = list(list(label = "setup-data", code = "set.seed(333) # fixiere alle Zufallsprozesse\nN <- 100 # Anzahl der Personen im Datensatz\ndf <- data.frame(\n  sex = factor(sample(c(\"weiblich\", \"männlich\", \"divers\", NA), N, TRUE, prob = c(0.40, 0.40, 0.10, .1))),\n  age = sample(16:60, N, TRUE),\n  treatment_group = sample(c(\"treatment\", \"control group\"), N, TRUE),\n  health_rating_mental = sample(c(1:10, NA), N, TRUE),\n  health_rating_body = sample(1:10, N, TRUE)\n)", 
         opts = list(label = "\"setup-data\"", exercise = "FALSE", 
-            eval = "FALSE", exercise.eval = "FALSE", echo = "FALSE"), 
+            eval = "TRUE", exercise.eval = "FALSE", echo = "FALSE"), 
         engine = "r"), list(label = "data-14", code = "# Im Datensatz df in der Spalte sex,\n# alle Personen die sich in der Treatment-Gruppe befinden.\ndf$sex[df$treatment_group == \"treatment\"]", 
         opts = list(label = "\"data-14\"", exercise = "TRUE", 
             results = "\"hold\"", exercise.setup = "\"setup-data\""), 
@@ -10130,7 +10193,7 @@ learnr:::store_exercise_cache(structure(list(label = "data-15", global_setup = s
     echo = FALSE, message = FALSE, warning = FALSE)), setup = "set.seed(333) # fixiere alle Zufallsprozesse\nN <- 100 # Anzahl der Personen im Datensatz\ndf <- data.frame(\n  sex = factor(sample(c(\"weiblich\", \"männlich\", \"divers\", NA), N, TRUE, prob = c(0.40, 0.40, 0.10, .1))),\n  age = sample(16:60, N, TRUE),\n  treatment_group = sample(c(\"treatment\", \"control group\"), N, TRUE),\n  health_rating_mental = sample(c(1:10, NA), N, TRUE),\n  health_rating_body = sample(1:10, N, TRUE)\n)", 
     chunks = list(list(label = "setup-data", code = "set.seed(333) # fixiere alle Zufallsprozesse\nN <- 100 # Anzahl der Personen im Datensatz\ndf <- data.frame(\n  sex = factor(sample(c(\"weiblich\", \"männlich\", \"divers\", NA), N, TRUE, prob = c(0.40, 0.40, 0.10, .1))),\n  age = sample(16:60, N, TRUE),\n  treatment_group = sample(c(\"treatment\", \"control group\"), N, TRUE),\n  health_rating_mental = sample(c(1:10, NA), N, TRUE),\n  health_rating_body = sample(1:10, N, TRUE)\n)", 
         opts = list(label = "\"setup-data\"", exercise = "FALSE", 
-            eval = "FALSE", exercise.eval = "FALSE", echo = "FALSE"), 
+            eval = "TRUE", exercise.eval = "FALSE", echo = "FALSE"), 
         engine = "r"), list(label = "data-15", code = "# ersetze alle fehlenden Geschlechter durch \"weiblich\"\ndf$sex[is.na(df$sex)] <- \"weiblich\" \ndf", 
         opts = list(label = "\"data-15\"", exercise = "TRUE", 
             results = "\"hold\"", exercise.setup = "\"setup-data\""), 
@@ -10188,7 +10251,7 @@ learnr:::store_exercise_cache(structure(list(label = "data-16", global_setup = s
     echo = FALSE, message = FALSE, warning = FALSE)), setup = "set.seed(333) # fixiere alle Zufallsprozesse\nN <- 100 # Anzahl der Personen im Datensatz\ndf <- data.frame(\n  sex = factor(sample(c(\"weiblich\", \"männlich\", \"divers\", NA), N, TRUE, prob = c(0.40, 0.40, 0.10, .1))),\n  age = sample(16:60, N, TRUE),\n  treatment_group = sample(c(\"treatment\", \"control group\"), N, TRUE),\n  health_rating_mental = sample(c(1:10, NA), N, TRUE),\n  health_rating_body = sample(1:10, N, TRUE)\n)", 
     chunks = list(list(label = "setup-data", code = "set.seed(333) # fixiere alle Zufallsprozesse\nN <- 100 # Anzahl der Personen im Datensatz\ndf <- data.frame(\n  sex = factor(sample(c(\"weiblich\", \"männlich\", \"divers\", NA), N, TRUE, prob = c(0.40, 0.40, 0.10, .1))),\n  age = sample(16:60, N, TRUE),\n  treatment_group = sample(c(\"treatment\", \"control group\"), N, TRUE),\n  health_rating_mental = sample(c(1:10, NA), N, TRUE),\n  health_rating_body = sample(1:10, N, TRUE)\n)", 
         opts = list(label = "\"setup-data\"", exercise = "FALSE", 
-            eval = "FALSE", exercise.eval = "FALSE", echo = "FALSE"), 
+            eval = "TRUE", exercise.eval = "FALSE", echo = "FALSE"), 
         engine = "r"), list(label = "data-16", code = "# addiere alle Werte der health_ratings miteinander\n# und erzeguge eine neue Spalte namens health_rating_sum\ndf$health_rating_sum <- df$health_rating_mental + df$health_rating_body\n\ndf$health_rating_sum", 
         opts = list(label = "\"data-16\"", exercise = "TRUE", 
             results = "\"hold\"", exercise.setup = "\"setup-data\""), 
@@ -12608,7 +12671,7 @@ learnr:::store_exercise_cache(structure(list(label = "ex-free-03", global_setup 
 <!--/html_preserve-->
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="execution_dependencies">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70]}},"value":[{"type":"character","attributes":{},"value":["backports","base","brio","bslib","cachem","checkmate","cli","colorspace","commonmark","compiler","datasets","digest","dplyr","evaluate","fastmap","fontawesome","generics","ggplot2","glue","gradethis","graphics","grDevices","grid","gtable","htmltools","htmlwidgets","httpuv","jquerylib","jsonlite","knitr","later","lattice","learnr","lifecycle","magrittr","markdown","MBESS","methods","mime","mnormt","munsell","nlme","otter","parallel","pillar","pkgconfig","promises","psych","purrr","R6","Rcpp","rlang","rmarkdown","rprojroot","rstudioapi","sass","scales","shiny","sprtt","stats","testthat","tibble","tidyselect","tools","utils","vctrs","withr","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["1.5.0","4.4.2","1.1.5","0.8.0","1.1.0","2.3.2","3.6.3","2.1-1","1.9.2","4.4.2","4.4.2","0.6.37","1.1.4","1.0.1","1.2.0","0.5.3","0.1.3","3.5.1","1.8.0","0.2.14","4.4.2","4.4.2","4.4.2","0.3.6","0.5.8.1","1.6.4","1.6.15","0.1.4","1.8.9","1.49","1.4.1","0.22-6","0.11.5.9000","1.0.4","2.0.3","1.13","4.9.3","4.4.2","0.12","2.1.1","0.5.1","3.1-166","0.1.0","4.4.2","1.10.0","2.0.3","1.3.2","2.4.12","1.0.2","2.5.1","1.0.13-1","1.1.4","2.29","2.0.4","0.17.1","0.4.9","1.3.0","1.10.0","0.2.0","4.4.2","3.2.2","3.2.1","1.2.1","4.4.2","4.4.2","0.6.5","3.0.2","0.49","1.8-4","2.3.10"]}]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70]}},"value":[{"type":"character","attributes":{},"value":["backports","base","brio","bslib","cachem","checkmate","cli","colorspace","commonmark","compiler","datasets","digest","dplyr","evaluate","fastmap","fontawesome","generics","ggplot2","glue","gradethis","graphics","grDevices","grid","gtable","htmltools","htmlwidgets","httpuv","jquerylib","jsonlite","knitr","later","lattice","learnr","lifecycle","magrittr","markdown","MBESS","methods","mime","mnormt","munsell","nlme","otter","parallel","pillar","pkgconfig","promises","psych","purrr","R6","Rcpp","rlang","rmarkdown","rprojroot","rstudioapi","sass","scales","shiny","sprtt","stats","testthat","tibble","tidyselect","tools","utils","vctrs","withr","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["1.5.0","4.4.2","1.1.5","0.8.0","1.1.0","2.3.2","3.6.3","2.1-1","1.9.2","4.4.2","4.4.2","0.6.37","1.1.4","1.0.1","1.2.0","0.5.3","0.1.3","3.5.1","1.8.0","0.2.14","4.4.2","4.4.2","4.4.2","0.3.6","0.5.8.1","1.6.4","1.6.15","0.1.4","1.8.9","1.49","1.4.1","0.22-6","0.11.5.9000","1.0.4","2.0.3","1.13","4.9.3","4.4.2","0.12","2.1.1","0.5.1","3.1-166","0.1.0","4.4.2","1.10.0","2.0.3","1.3.2","2.4.12","1.0.2","2.5.1","1.0.13-1","1.1.4","2.29","2.0.4","0.17.1","0.4.9","1.3.0","1.10.0","0.2.0","4.4.2","3.2.1.1","3.2.1","1.2.1","4.4.2","4.4.2","0.6.5","3.0.2","0.49","1.8-4","2.3.10"]}]}]}
 </script>
 <!--/html_preserve-->
 </div>
