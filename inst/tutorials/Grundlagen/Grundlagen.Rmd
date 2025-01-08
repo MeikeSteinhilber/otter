@@ -358,6 +358,49 @@ jQuery(document).ready(function() {
 
 
 
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const carousels = document.querySelectorAll(".tip-carousel");
+  carousels.forEach(function(carousel) {
+    const tips = carousel.querySelectorAll(".tip-content");
+    const prevBtn = carousel.querySelector(".prev-tip");
+    const nextBtn = carousel.querySelector(".next-tip");
+    let currentTip = 0;
+
+    function updateCarousel() {
+      tips.forEach((tip, index) => {
+        tip.style.display = index === currentTip ? "block" : "none";
+      });
+      prevBtn.disabled = currentTip === 0;
+      nextBtn.disabled = currentTip === tips.length - 1;
+    }
+
+    prevBtn.addEventListener("click", function() {
+      if (currentTip > 0) {
+        currentTip--;
+        updateCarousel();
+      }
+    });
+
+    nextBtn.addEventListener("click", function() {
+      if (currentTip < tips.length - 1) {
+        currentTip++;
+        updateCarousel();
+      }
+    });
+
+    updateCarousel();
+  });
+});
+
 </script>
 
 <!-- <div class="menu-button">Menu</div> -->
@@ -369,16 +412,20 @@ library(psych)
 library(testthat)
 library(learnr)
 library(gradethis)
+library(glue)
 # devtools::load_all()
 # remotes::install_github("MeikeSteinhilber/otter")
 # remotes::install_github("rstudio/gradethis")
 # library(otter)
 knitr::opts_chunk$set(echo = FALSE)
+feedback_message_wrong <- "Der Output stimmt nicht mit der Lösung überein. Eventuell hilft dir der Hinweis: {code_feedback()}"
+feedback_message_correct <- 'Richtig! {sample(c("Sehr gut gemacht!", "Perfekte Arbeit!", "Weiter so!", "Wunderbar gemacht!", "Klasse!", "Toller Job!", ""),1)}'
+
 gradethis::gradethis_setup(
-  # pass.praise = FALSE,
+  pass.praise = FALSE,
   # fail.encourage = FALSE,
   pass = "Richtig!",
-  code_correct = "Richtig!",
+  code_correct = glue('Richtig! {sample(c("Sehr gut gemacht!", "Perfekte Arbeit!", "Weiter so!", "Wunderbar gemacht!", "Klasse!", "Toller Job!", ""),1)}'),
   fail = "Das ist leider falsch.",
   code_incorrect = "Noch nicht ganz. Hinweis: {code_feedback()} Probiere es noch einmal!"
   )
@@ -386,8 +433,10 @@ tutorial_options(exercise.reveal_solution = TRUE,
                  exercise.blanks = "___",
                  exercise.eval = FALSE)
 options(
-  # gradethis_glue_correct = "{ random_praise() } { .message } { .correct }",
-  gradethis_glue_correct = "{ .message } { .correct }",
+  # gradethis.pass = 'Richtig! {gradethis::random_praise(language="de")}',
+  gradethis.grading_problem.message = "Es ist leider ein Problem mit dem Bewertungscode für diese Übung aufgetreten.",
+  gradethis_glue_correct = '{sample(c("Sehr gut gemacht!", "Perfekte Arbeit!", "Weiter so!", "Wunderbar gemacht!", "Klasse!", "Toller Job!", ""),1)} { .message } { .correct }',
+  # gradethis_glue_correct = "{ .message } { .correct }",
   # gradethis_glue_incorrect = "{ .message } { .incorrect } { random_encourage() }"
   gradethis_glue_incorrect = "{ .message } { .incorrect }"
 )
@@ -602,7 +651,7 @@ Gebe dazu die Berechnung in den R Code Bereich ein und klicke auf "Code ausführ
 ```{r ex-r-vs-tutorial-check, results = "hold", exercise.eval=FALSE}
 grade_result(
   pass_if(~identical(.result, 84 * 15)),
-  glue_correct = "Richtig!",
+  glue_correct = feedback_message_correct,
   glue_incorrect = "Leider falsch!"
 )
 ```
@@ -611,14 +660,14 @@ grade_result(
 
 ## Variablen
 
-Variablen sind Container für Daten.
+Variablen dienen als Speicherorte oder Container für Daten in R.
+Sie ermöglichen es, Informationen wie Zahlen, Zeichenketten, Matrizen oder Listen effizient zu speichern und wiederzuverwenden.
 
-Sie müssen *ausgeführt* werden, um erstellt und genutzt werden zu können.
-Nach Erstellung taucht die Variable im *Environment* auf.
+Um eine Variable zu erstellen und zu verwenden, muss ihr Name mit einem Wert verknüpft werden, was durch Zuweisung geschieht.
+Sobald dies erfolgt ist, erscheint die Variable im *Environment* von R, wo alle aktiven Objekte und deren Inhalte verwaltet werden.
 
-Eine Variable kann verschiedene Inhalte enthalten, z. B. eine Zahl, Buchstaben, Matrizen mit Zahlen oder Listen.
-
-Der Inhalt einer Variable kann auf die *Console* geschrieben werden, wenn der Variablenname ausgeführt wird.
+Der Inhalt einer Variable kann in der Console angezeigt werden, indem der Variablenname eingegeben und ausgeführt wird.
+Dies ermöglicht es, schnell auf den gespeicherten Wert zuzugreifen und ihn zu überprüfen.
 
 ```{r variable-0-1, exercise=TRUE, results = "hold"}
 # hier wird der Text "Lara" gespeichert in der Variable "name"
@@ -686,7 +735,7 @@ variable
 # grade_result(
 #   pass_if(~identical(.result, print("Heute ist leider kein Personal anwesend!"))
 #           ),
-#     glue_correct = "Richtig!",
+#     glue_correct = feedback_message_correct,
 #   glue_incorrect = "Leider noch nicht ganz richtig!"
 # )
 grade_this_code()
@@ -934,10 +983,25 @@ grade_result(
   pass_if(~identical(.result, 
                      5:12
                      )),
-  glue_correct = "Richtig!",
+  glue_correct = feedback_message_correct,
   glue_incorrect = "Leider noch nicht ganz richtig! Hinweis: Versuche den Operatur : zu nutzen."
 )
 ```
+
+<div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+    
+  <div class="tip-carousel">
+  <div class="tip-content"> Think about how the `+` operator works in R.</div>
+  <div class="tip-content"> Ensure your function takes two arguments, `a` and `b`.</div>
+  <div class="tip-content"> Remember to return the result using the `return()` function.</div>
+  <button class="prev-tip">zurück</button>
+  <button class="next-tip">weiter</button>
+</div>
+    
+  </details>
+</div>
 
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
@@ -964,6 +1028,8 @@ grade_this({ # .solution all, because the solutions have different outputs
 })
 ```
 
+
+
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Was passiert, wenn man in R durch Null teilt? Probiere es aus!*
 ```{r ex-int-03, exercise=TRUE, results = "hold"}
@@ -977,7 +1043,7 @@ grade_result(
   pass_if(~identical(.result, 
                      1/0
                      )),
-  glue_correct = "Richtig!",
+  glue_correct = feedback_message_correct,
   glue_incorrect = "Leider noch nicht ganz richtig!"
 )
 ```
@@ -1026,7 +1092,7 @@ grade_result(
   pass_if(~identical(.result, 
                      "Hallo liebe R-Freunde"
                      )),
-  glue_correct = "Richtig!",
+  glue_correct = feedback_message_correct,
   glue_incorrect = "Leider noch nicht ganz richtig!"
 )
 ```
@@ -1044,7 +1110,7 @@ grade_result(
   pass_if(~identical(.result, 
                      shiny::icon("heart")
                      )),
-  glue_correct = "Richtig!",
+  glue_correct = feedback_message_correct,
   glue_incorrect = "Leider noch nicht ganz richtig!"
 )
 ```
@@ -1450,7 +1516,7 @@ namen_freunde[c(TRUE, FALSE, FALSE)]
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Ändere den Inhalt der Variable: entferne die Einträge `Hund`.*
-```{r ex-vector-1, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE}
+```{r ex-vector-1, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 5}
 blumen <- c("Tulpen", "Rosen", "Hund", "Sonnenblumen", "Hund")
 # die erste Zeile soll unverändert bleiben!
 # schreibe hier deinen Code
@@ -1468,23 +1534,27 @@ blumen
 ```
 ```{r ex-vector-1-check, results = "hold", exercise.eval=FALSE}
 grade_this({
-  pass_if_equal(.solution)
+  pass_if_equal(.solution, message = feedback_message_correct)
   fail_if_not_equal(.solution, message = "Der Output stimmt nicht mit der Lösung überein. Eventuell hilft dir der Hinweis: {code_feedback()}")
 })
 ```
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Ändere den Inhalt der Variable: ersetze die Einträge `Hund` durch `NA`.*
-```{r ex-vector-2, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE}
+```{r ex-vector-2, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 5}
 blumen <- c("Tulpen", "Rosen", "Hund", "Sonnenblumen", "Hund")
 ```
 ```{r ex-vector-2-solution, results = "hold", exercise.eval=FALSE}
 blumen <- c("Tulpen", "Rosen", "Hund", "Sonnenblumen", "Hund")
-blumen[ blumen == "Hund"] <- NA
+blumen[blumen == "Hund"] <- NA
 blumen
 ```
 ```{r ex-vector-2-check, results = "hold", exercise.eval=FALSE}
-grade_this_code()
+# grade_this_code()
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
 ```
 </div>
 
@@ -1528,7 +1598,7 @@ zahlen < 2
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Addiere auf jedes Element im Vektor die Zahl 3.*
-```{r ex-vectorisiert-1, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE}
+```{r ex-vectorisiert-1, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 8}
 zahlen <- 1:100
 ```
 ```{r ex-vectorisiert-1-solution, results = "hold", exercise.eval=FALSE}
@@ -1536,12 +1606,16 @@ zahlen <- 1:100
 zahlen + 3
 ```
 ```{r ex-vectorisiert-1-check, results = "hold", exercise.eval=FALSE}
-grade_this_code()
+# grade_this_code()
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
 ```
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Multipliziere jedes Element im Vektor mit der Zahl 5.*
-```{r ex-vectorisiert-2, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE}
+```{r ex-vectorisiert-2, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 8}
 zahlen <- 1:100
 
 ```
@@ -1550,12 +1624,16 @@ zahlen <- 1:100
 zahlen * 5
 ```
 ```{r ex-vectorisiert-2-check, results = "hold", exercise.eval=FALSE}
-grade_this_code()
+# grade_this_code()
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
 ```
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Multipliziere die zwei Vektoren miteinander.*
-```{r ex-vectorisiert-3, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE}
+```{r ex-vectorisiert-3, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 8}
 nummer_1 <- 1:100
 nummer_2 <- 100:1
 ```
@@ -1566,7 +1644,11 @@ nummer_2 <- 100:1
 nummer_1 * nummer_2
 ```
 ```{r ex-vectorisiert-3-check, results = "hold", exercise.eval=FALSE}
-grade_this_code()
+# grade_this_code()
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
 ```
 
 </div>
@@ -1636,7 +1718,7 @@ sort(tage)
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Erstelle einen Faktor aus der Variable `var_monate`. Sortiere danach die Monate innerhalb dieser Variable.*
-```{r ex-factor-1, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 7}
+```{r ex-factor-1, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 8}
 # Nutze diese Variablen, um den Faktor zu erstellen
 monate <- c("Januar", "Februar", "März", "April", "Mai", "Juni",
             "Juli", "August", "September", "Oktober", "November", "Dezember")
@@ -1651,7 +1733,11 @@ var_monate <- factor(var_monate, levels = monate)
 sort(var_monate)
 ```
 ```{r ex-factor-1-check, results = "hold", exercise.eval=FALSE}
-grade_this_code()
+# grade_this_code()
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
 ```
 
 </div>
@@ -1700,7 +1786,7 @@ farben
 ```{r ex-matrix-1-check, results = "hold", exercise.eval=FALSE}
 # grade_this_code()
 grade_this({ # .solution, because the two solutions have the same output
-  pass_if_equal(.solution)
+  pass_if_equal(.solution, message = feedback_message_correct)
   fail_if_not_equal(.solution, message = "Der Output stimmt nicht mit der Lösung überein. Eventuell hilft dir der Hinweis: {code_feedback()}")
 })
 ```
@@ -1717,7 +1803,11 @@ daten <- matrix(c("Lisa", "Thorben", "Mara", "TRUE", "FALSE", "TRUE", "2", "5", 
 daten[, 2]
 ```
 ```{r ex-matrix-2-check, results = "hold", exercise.eval=FALSE}
-grade_this_code()
+# grade_this_code()
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
 ```
 
 
@@ -1733,7 +1823,11 @@ daten <- matrix(c("Lisa", "Thorben", "Mara", "TRUE", "FALSE", "TRUE", "2", "5", 
 daten[3, 1]
 ```
 ```{r ex-matrix-3-check, results = "hold", exercise.eval=FALSE}
-grade_this_code()
+# grade_this_code()
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
 ```
 
 
@@ -1794,7 +1888,11 @@ tiere <- data.frame(
 tiere
 ```
 ```{r ex-df-1-check, results = "hold", exercise.eval=FALSE}
-grade_this_code()
+# grade_this_code()
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
 ```
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
@@ -1815,7 +1913,11 @@ data <- data.frame(
 data$zahl
 ```
 ```{r ex-df-2-check, results = "hold", exercise.eval=FALSE}
-grade_this_code()
+# grade_this_code()
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
 ```
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
@@ -1838,7 +1940,11 @@ data <- data.frame(
 data$buchstabe[4] <- "X"
 ```
 ```{r ex-df-3-check, results = "hold", exercise.eval=FALSE}
-grade_this_code()
+# grade_this_code()
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
 ```
 
 </div>
@@ -1906,12 +2012,12 @@ liste[[2]][1,] # im ersten Element (Datensatz) die erste Ziele
 #### Übungen
 <div class="uebungen">
 `r otter::colorize("Aufgabe:", "var(--blue)")`
-*Erstelle eine Liste aus den drei Objekten und greife auf das zweite Objekt zu.*
+*Erstelle eine Liste aus den drei Objekten.*
 ```{r ex-df-00, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 11}
 m <- matrix(1:12, nrow=3, ncol=4)
 df <- data.frame(namen = c("Ben", "Claus", "Lisa"),
                  alter = c(51, 27, 38))
-"Object 3"
+object <- "Object 3"
 ```
 ```{r ex-df-00-solution, results = "hold", exercise.eval=FALSE}
 m <- matrix(1:12, nrow=3, ncol=4)
@@ -1920,12 +2026,39 @@ df <- data.frame(namen = c("Ben", "Claus", "Lisa"),
 liste <- list(m,
               df,
               "Object 3")
-liste[[2]]
+liste
 ```
 ```{r ex-df-00-check, results = "hold", exercise.eval=FALSE}
-grade_this_code()
+# grade_this_code()
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
 ```
 
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Greife auf den Inhalt des zweiten Objektes der Liste zu.*
+```{r ex-df-0-1, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 7}
+liste <- list("test",
+              matrix(1:12, nrow=3, ncol=4),
+              data.frame(namen = c("A", "B", "C"),
+                 alter = c(20, 00, 50)))
+```
+```{r ex-df-0-1-solution, results = "hold", exercise.eval=FALSE}
+liste <- list("test",
+              matrix(1:12, nrow=3, ncol=4),
+              data.frame(namen = c("A", "B", "C"),
+                 alter = c(20, 00, 50)))
+liste[[2]]
+```
+```{r ex-df-0-1-check, results = "hold", exercise.eval=FALSE}
+# grade_this_code()
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
+```
 </div>
 
 ## Funktionen
@@ -2030,7 +2163,10 @@ rechner <- function(zahl1, zahl2) {
 rechner(8, 5)
 ```
 ```{r ex-functions-00-check, results = "hold", exercise.eval=FALSE}
-grade_this_code()
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
 ```
 
 
@@ -2049,7 +2185,10 @@ vektor_rechner <- function(vektor1, vektor2) {
 vektor_rechner(c(1,2,3), c(3,2,1))
 ```
 ```{r ex-functions-01-check, results = "hold", exercise.eval=FALSE}
-grade_this_code()
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
 ```
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
@@ -2076,7 +2215,10 @@ round()
 mean()
 ```
 ```{r ex-functions-02-check, results = "hold", exercise.eval=FALSE}
-grade_this_code()
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
 ```
 
 
@@ -2106,7 +2248,10 @@ taschen_rechner() # Diese Zeile soll nicht verändert werden
 # Tipp: Definiere Default Argumente
 ```
 ```{r ex-functions-03-check, results = "hold", exercise.eval=FALSE}
-grade_this_code()
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
 ```
 
 </div>
@@ -2265,7 +2410,10 @@ median(TRUE, c(1:8))
 median(c(1:8), TRUE)
 ```
 ```{r ex-functions-05-check, results = "hold", exercise.eval=FALSE}
-grade_this_code()
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
 ```
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
@@ -2284,7 +2432,10 @@ sample(1:10, 4, TRUE)
 sample(x = 1:10, size = 4, replace = TRUE)
 ```
 ```{r ex-functions-06-check, results = "hold", exercise.eval=FALSE}
-grade_this_code()
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
 ```
 
 </div>
@@ -2354,7 +2505,10 @@ vektor <- c(rep(c(1:5), 4), 12, 19)
 unique(vektor)
 ```
 ```{r ex-functions-08-check, results = "hold", exercise.eval=FALSE}
-grade_this_code()
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
 ```
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
@@ -2371,7 +2525,10 @@ vektor <- 1:10
 rep(vektor, each = 5)
 ```
 ```{r ex-functions-09-check, results = "hold", exercise.eval=FALSE}
-grade_this_code()
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
 ```
 
 </div>
@@ -2932,7 +3089,7 @@ if (condition_1) {# -> 1
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Schreibe ein if-else-Statement, dass den ersten Satz ausgibt, wenn die Variable `tier` ein `Reptil` enthält. Der zweite Satz soll ausgegeben werden, wenn es sich nicht um ein `Reptil` handelt.*
-```{r ex-ifelse-01, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE}
+```{r ex-ifelse-01, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 8}
 tier <- c("Reptil")
 
 print("Es handelt sich um ein Reptil.") # Satz 1
@@ -2959,10 +3116,13 @@ if (tier == "Reptil") {
 # grade_result(
 #   pass_if(~identical(.result, 
 #                      matrix(c(1:33), ncol = 3))),
-#   glue_correct = "Richtig!",
+#   glue_correct = feedback_message_correct,
 #   glue_incorrect = "Leider noch nicht ganz richtig!"
 # )
-grade_this_code()
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
 ```
 
 `r otter::colorize("Aufgabe", "var(--blue)")`
@@ -3047,7 +3207,7 @@ friends_status
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Schreibe eine For-Loop, die den Satz `Ich mag ____.` für alle Tiere ausgibt. Nutze dazu den Code, der bereits angegeben ist.*
-```{r ex-for-01, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 6}
+```{r ex-for-01, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 8}
 tiere <- c("Hunde", "Katzen", "Vögel") # diese Zeile nicht ändern
 
 print(paste0("Ich mag ", ____, ".")) # ____ ist ein Platzhalter und muss ersetzt werden
@@ -3066,7 +3226,10 @@ for (i in tiere) {
 }
 ```
 ```{r ex-for-01-check, results = "hold", exercise.eval=FALSE}
-grade_this_code()
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
 ```
 
 </div>
@@ -3115,7 +3278,7 @@ while (counter <= stop_criteria) {
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Schreibe diese For-Loop in eine While-Loop um. Nutze dazu den Code, der bereits angegeben ist.*
-```{r ex-while-01, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 6}
+```{r ex-while-01, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 10}
 tiere <- c("Hunde", "Katzen", "Vögel")
 results <- character(3)
 for (i in 1:length(tiere)) {
@@ -3218,7 +3381,10 @@ if (!is.numeric(zahl)){
 }
 ```
 ```{r ex-warning-01-check, results = "hold", exercise.eval=FALSE}
-grade_this_code()
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
 ```
 
 </div>
@@ -3383,7 +3549,7 @@ matrix
 grade_result(
   pass_if(~identical(.result, 
                      matrix(c(1:33), ncol = 3))),
-  glue_correct = "Richtig!",
+  glue_correct = feedback_message_correct,
   glue_incorrect = "Leider noch nicht ganz richtig!"
 )
 ```
@@ -3405,7 +3571,7 @@ if (name == "X") {
 ```{r ex-debugging-1-check, results = "hold", exercise.eval=FALSE}
 grade_result(
   pass_if(~identical(.result, print("Heute ist leider kein Personal anwesend!"))),
-    glue_correct = "Richtig!",
+    glue_correct = feedback_message_correct,
   glue_incorrect = "Leider noch nicht ganz richtig!"
 )
 ```
@@ -3433,7 +3599,7 @@ grade_result(
   pass_if(~identical(.result,
                      print(paste("Heute ist Max leider nicht da!", "Es ist aber", name, "hier!"))
                      )),
-  glue_correct = "Richtig!",
+  glue_correct = feedback_message_correct,
   glue_incorrect = "Leider noch nicht ganz richtig!"
 )
 ```
@@ -3463,7 +3629,7 @@ grade_result(
   pass_if(~identical(.result,
                      print("Option 1")
                      )),
-  glue_correct = "Richtig!",
+  glue_correct = feedback_message_correct,
   glue_incorrect = "Leider noch nicht ganz richtig!"
 )
 ```
@@ -3503,7 +3669,10 @@ bank_status(data, "Beatrice")
 bank_status(data, "Klaus")
 ```
 ```{r ex-debugging-4-check, results = "hold", exercise.eval=FALSE}
-grade_this_code()
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
 ```
 ```{r ex-debugging-4-solution, results = "hold", exercise.eval=FALSE}
 data <- data.frame(
@@ -3690,18 +3859,22 @@ So wurde der Datensatz `data_health` simuliert:
 ```{r ex-df-01, exercise=TRUE, exercise.eval=FALSE, results='hold', exercise.setup = "setup-df"}
 
 ```
-```{r ex-df-01-check, results = "hold", exercise.eval=FALSE, ref.label=I('setup-df')}
-grade_result(
-  pass_if(~identical(.result,
-                     tail(data_health, n = 7)
-                     )),
-  glue_correct = "Richtig!",
-  glue_incorrect = "Leider noch nicht ganz richtig!"
-)
-# grade_this_code()
-```
 ```{r ex-df-01-solution, results = "hold", exercise.eval=FALSE}
 tail(data_health, n = 7)
+```
+```{r ex-df-01-check, results = "hold", exercise.eval=FALSE, ref.label=I('setup-df')}
+# grade_result(
+#   pass_if(~identical(.result,
+#                      tail(data_health, n = 7)
+#                      )),
+#   glue_correct = feedback_message_correct,
+#   glue_incorrect = "Leider noch nicht ganz richtig!"
+# )
+# grade_this_code()
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
 ```
 
 
@@ -3710,18 +3883,22 @@ tail(data_health, n = 7)
 ```{r ex-df-02, exercise=TRUE, exercise.eval=FALSE, results='hold', exercise.setup = "setup-df"}
 
 ```
-```{r ex-df-02-check, results = "hold", exercise.eval=FALSE, ref.label=I('setup-df')}
-grade_result(
-  pass_if(~identical(.result,
-                     colSums(is.na(data_health))
-                     )),
-  glue_correct = "Richtig!",
-  glue_incorrect = "Leider noch nicht ganz richtig!"
-)
-# grade_this_code()
-```
 ```{r ex-df-02-solution, results = "hold", exercise.eval=FALSE}
 colSums(is.na(data_health))
+```
+```{r ex-df-02-check, results = "hold", exercise.eval=FALSE, ref.label=I('setup-df')}
+# grade_result(
+#   pass_if(~identical(.result,
+#                      colSums(is.na(data_health))
+#                      )),
+#   glue_correct = feedback_message_correct,
+#   glue_incorrect = "Leider noch nicht ganz richtig!"
+# )
+# grade_this_code()
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
 ```
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
@@ -3729,18 +3906,22 @@ colSums(is.na(data_health))
 ```{r ex-df-03, exercise=TRUE, exercise.eval=FALSE, results='hold', exercise.setup = "setup-df"}
 
 ```
-```{r ex-df-03-check, results = "hold", exercise.eval=FALSE, ref.label=I('setup-df')}
-grade_result(
-  pass_if(~identical(.result,
-                     data_health[!complete.cases(data_health), ]
-                     )),
-  glue_correct = "Richtig!",
-  glue_incorrect = "Leider noch nicht ganz richtig!"
-)
-# grade_this_code()
-```
 ```{r ex-df-03-solution, results = "hold", exercise.eval=FALSE}
 data_health[!complete.cases(data_health), ]
+```
+```{r ex-df-03-check, results = "hold", exercise.eval=FALSE, ref.label=I('setup-df')}
+# grade_result(
+#   pass_if(~identical(.result,
+#                      data_health[!complete.cases(data_health), ]
+#                      )),
+#   glue_correct = feedback_message_correct,
+#   glue_incorrect = "Leider noch nicht ganz richtig!"
+# )
+# grade_this_code()
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
 ```
 
 
@@ -3760,11 +3941,14 @@ data
 ```
 ```{r ex-df-04-check, results = "hold", exercise.eval=FALSE, ref.label=I('setup-df')}
 # debug_this()
+# grade_this({
+#   pass_if_equal(.solution_all, "Du hast die Aufgabe korrekt gelöst!")
+#   fail()
+# })
 grade_this({
-  pass_if_equal(.solution_all, "Du hast die Aufgabe korrekt gelöst!")
-  fail()
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
 })
-
 ```
 
 <!-- data_health[rowSums(is.na(data_health)) != 1, ] -->
@@ -3798,7 +3982,7 @@ zeichne_f()
 zeichne_f(groesse = 5, breite = 3, symbol = "%", trennungszeichen = "-")
 ```
 
-```{r ex-difficult-01, exercise=TRUE, exercise.eval=FALSE, results='hold', exercise.lines = 30}
+```{r ex-difficult-01, exercise=TRUE, exercise.eval=FALSE, results='hold', exercise.lines = 35}
 # Erstelle hier die Funktion zeichne_f()
 
 
