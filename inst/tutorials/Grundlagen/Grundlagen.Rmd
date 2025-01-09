@@ -1,7 +1,7 @@
 ---
 title: "R & RStudio Grundlagen"
 tutorial:
-  version: 0.1
+  version: 0.1.1
 lang:   de
 output:
   learnr::tutorial:
@@ -143,6 +143,14 @@ $(document).ready(function() {
   
   $(".tutorial-question-container button").on("click", function(event) {
     _paq.push(['trackGoal', 5]);
+  });
+
+  $(".tip summary").on("click", function(event) {
+    _paq.push(['trackGoal', 6]);
+  });
+  
+  $(".hiddendetails-container summary").on("click", function(event) {
+    _paq.push(['trackGoal', 7]);
   });
   
 });
@@ -359,14 +367,6 @@ jQuery(document).ready(function() {
 
 
 
-
-
-
-
-
-
-
-
 document.addEventListener("DOMContentLoaded", function() {
   const carousels = document.querySelectorAll(".tip-carousel");
   carousels.forEach(function(carousel) {
@@ -379,23 +379,31 @@ document.addEventListener("DOMContentLoaded", function() {
       tips.forEach((tip, index) => {
         tip.style.display = index === currentTip ? "block" : "none";
       });
-      prevBtn.disabled = currentTip === 0;
-      nextBtn.disabled = currentTip === tips.length - 1;
+      if(prevBtn) {
+        prevBtn.disabled = currentTip === 0;
+      }
+      if(nextBtn) {
+        nextBtn.disabled = currentTip === tips.length - 1;
+      }
     }
 
-    prevBtn.addEventListener("click", function() {
-      if (currentTip > 0) {
-        currentTip--;
-        updateCarousel();
-      }
-    });
+    if(prevBtn) {
+      prevBtn.addEventListener("click", function() {
+        if (currentTip > 0) {
+          currentTip--;
+          updateCarousel();
+        }
+      });
+    }
 
-    nextBtn.addEventListener("click", function() {
-      if (currentTip < tips.length - 1) {
-        currentTip++;
-        updateCarousel();
-      }
-    });
+    if(nextBtn) {
+      nextBtn.addEventListener("click", function() {
+        if (currentTip < tips.length - 1) {
+          currentTip++;
+          updateCarousel();
+        }
+      });
+    }
 
     updateCarousel();
   });
@@ -419,7 +427,12 @@ library(glue)
 # library(otter)
 knitr::opts_chunk$set(echo = FALSE)
 feedback_message_wrong <- "Der Output stimmt nicht mit der Lösung überein. Eventuell hilft dir der Hinweis: {code_feedback()}"
-feedback_message_correct <- 'Richtig! {sample(c("Sehr gut gemacht!", "Perfekte Arbeit!", "Weiter so!", "Wunderbar gemacht!", "Klasse!", "Toller Job!", ""),1)}'
+feedback_message_correct <- 'Richtig! {sample(c("Sehr gut gemacht!", "Perfekte Arbeit!", "Weiter so!", "Wunderbar gemacht!", "Klasse!", "Toller Job!",
+"Echt gut gemacht!", "Mega Arbeit, echt stark!",
+  "Weiter so, du schaffst das!", "Hammer, echt klasse!",
+  "Das hast du super hinbekommen!", "Boah, richtig nice!",
+  "Das läuft bei dir!", "Respekt, echt cool gemacht!",
+  "Ey, das ist mal richtig stark!",),1)}'
 
 gradethis::gradethis_setup(
   pass.praise = FALSE,
@@ -615,9 +628,9 @@ Das neu geöffnete R-Skript sieht nun so aus und kann direkt mit dem Disketten-S
 
 
 
-## RStudio vs `otter`
+## RStudio vs Otter
 
-Die `otter` Tutorials sind alle interaktiv gestaltet.
+Die Otter-Tutorials sind alle interaktiv gestaltet.
 Damit wir dir Feedback geben können und du nicht immer zwischen RStudio und unserer Website wechseln musst, sind R-Bausteine eingebaut.
 Siehe dir die folgenden Bilder und Aufgaben an, um zu verstehen, wie in unseren Tutorials R eingebaut ist.
 
@@ -860,18 +873,9 @@ angemeldet <- c(TRUE, FALSE, TRUE)
 # Wer von den Personen heißt NICHT Lisa Müller? Prüfe hierzu die Variable "namen".
 
 ```
-```{r ex-logical-1-hint-1, exercise.eval=FALSE}
-# namen ____ "Lisa Müller"
-```
-```{r ex-logical-1-hint-2, exercise.eval=FALSE}
-# !=
-# der nächste Tipp ist die finale Lösung!
-```
 ```{r ex-logical-1-solution, exercise.eval=FALSE}
-# Lösung
 namen != "Lisa Müller"
 ```
-
 ```{r ex-logical-1-check}
 grade_this({
   pass_if_equal()
@@ -879,6 +883,20 @@ grade_this({
 })
 ```
 
+<div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+    
+  <div class="tip-carousel">
+  <div class="tip-content"> namen ____ "Lisa Müller"</div>
+  <div class="tip-content"> Nutze einen logischen Operator.</div>
+  <div class="tip-content"> Nutze `!=`.</div>
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div>
+    
+  </details>
+</div>
 
 <details class="hiddendetails-container">
 <summary> <p class="hiddendetails-button"><i class="fa-solid fa-arrow-down"></i> Zeige eine Erklärung der Lösung an <i class="fa-solid fa-arrow-down"></i> </p> </summary>
@@ -972,6 +990,17 @@ typeof(5)
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Erzeuge einen integer-Vektor von 5 bis 12 in Einer-Schritten*
+<div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> 5 ____ 12</div>
+  <div class="tip-content"> Verwende den `:` Operator.</div>
+  
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
 ```{r ex-int-01, exercise=TRUE, results = "hold"}
 
 ```
@@ -987,21 +1016,6 @@ grade_result(
   glue_incorrect = "Leider noch nicht ganz richtig! Hinweis: Versuche den Operatur : zu nutzen."
 )
 ```
-
-<div class="tip">
-  <details>
-  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
-    
-  <div class="tip-carousel">
-  <div class="tip-content"> Think about how the `+` operator works in R.</div>
-  <div class="tip-content"> Ensure your function takes two arguments, `a` and `b`.</div>
-  <div class="tip-content"> Remember to return the result using the `return()` function.</div>
-  <button class="prev-tip">zurück</button>
-  <button class="next-tip">weiter</button>
-</div>
-    
-  </details>
-</div>
 
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
@@ -1212,6 +1226,19 @@ variable | TRUE
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Prüfe, ob die Variable `variable` einen fehlenden Wert enthält. Korrigiere dazu den Fehler im Code.*
+<div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+    
+  <div class="tip-carousel">
+  <div class="tip-content"> Wie lautet die Funktion, welche auf fehlende Werte prüft?</div>
+  <div class="tip-content"> Nutze `is.na()`</div>
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div>
+    
+  </details>
+</div>
 ```{r ex-na-01, exercise=TRUE, results = "hold", error=TRUE}
 variable <- 0/0
 variable == NaN
@@ -1221,8 +1248,12 @@ variable <- 0/0
 is.na(variable)
 ```
 ```{r ex-na-01-check, results = "hold"}
-grade_this_code()
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
 ```
+
 
 ```{r quiz-na}
 quiz(caption = "",
@@ -1467,6 +1498,16 @@ freunde
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Erstelle ein Variable mit dem Inhalt: Baum, Blume, Haus, Pferd. Und gebe Dir den Inhalt der Variable auf der Console aus.*
+<div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Nutze `c()`.</div>
+  
+  <!-- <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button> -->
+  <!-- <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button> -->
+</div> </details> </div>
 ```{r ex-variable-1, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE}
 
 ```
@@ -1516,6 +1557,18 @@ namen_freunde[c(TRUE, FALSE, FALSE)]
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Ändere den Inhalt der Variable: entferne die Einträge `Hund`.*
+<div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Denke daran das neue Objekt wieder `blumen` zuzuweisen.</div>
+  <div class="tip-content"> Nutze `blumen <- blumen[____]`.</div>
+  <div class="tip-content"> Nutze den logischen Operator `!=`.</div>
+  
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
 ```{r ex-vector-1, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 5}
 blumen <- c("Tulpen", "Rosen", "Hund", "Sonnenblumen", "Hund")
 # die erste Zeile soll unverändert bleiben!
@@ -1541,6 +1594,19 @@ grade_this({
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Ändere den Inhalt der Variable: ersetze die Einträge `Hund` durch `NA`.*
+<div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Denke daran das neue Objekt wieder `blumen` zuzuweisen.</div>
+  <div class="tip-content"> Nutze den logischen Operator `==`.</div>
+  <div class="tip-content"> `NA` kann zugeordnet werden mit `variable <- NA`.</div>
+  <div class="tip-content"> Nutze `blumen[____] <- NA`.</div>
+  
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
 ```{r ex-vector-2, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 5}
 blumen <- c("Tulpen", "Rosen", "Hund", "Sonnenblumen", "Hund")
 ```
@@ -1718,6 +1784,17 @@ sort(tage)
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Erstelle einen Faktor aus der Variable `var_monate`. Sortiere danach die Monate innerhalb dieser Variable.*
+<div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Nutze `factor()`.</div>
+  <div class="tip-content"> Nutze `sort()`.</div>
+  
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
 ```{r ex-factor-1, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 8}
 # Nutze diese Variablen, um den Faktor zu erstellen
 monate <- c("Januar", "Februar", "März", "April", "Mai", "Juni",
@@ -1771,6 +1848,17 @@ matrix[ ,2] # Gesamte Spalte
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Erstelle eine Matrix aus der Variable `farben`. Wähle eine inhaltlich sinnvolle Aufteilung für die Spalten.*
+<div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Nutze `matrix()`.</div>
+  <div class="tip-content"> Nutze das Funktionsargument `ncol` innerhalb von `matrix()`.</div>
+  
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
 ```{r ex-matrix-1, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 5}
 farben <- c("rot", "hellrot", "blau", "dunkelblau", "grün", "hellgrün")
 ```
@@ -1793,6 +1881,18 @@ grade_this({ # .solution, because the two solutions have the same output
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Wähle die zweite Spalte aus der Matrix aus.*
+<div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Nutze `[]` um auf den Inhalt zuzugreifen.</div>
+  <div class="tip-content"> Vergesse nicht das Komma und achte auf die Reihenfolge!</div>
+  <div class="tip-content"> Die Reihenfolge: `[Zeile,Spalte]`.</div>
+  
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
 ```{r ex-matrix-2, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 5}
 daten <- matrix(c("Lisa", "Thorben", "Mara", "TRUE", "FALSE", "TRUE", "2", "5", "8")
                 , ncol = 3)
@@ -1869,6 +1969,16 @@ freunde # gesamter Datensatz anzeigen lassen
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Erstelle einen Datensatz `tiere` aus den Variablen und gebe den Datensatz aus.*
+<div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Nutze `data.frame()`.</div>
+  
+  <!-- <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button> -->
+  <!-- <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button> -->
+</div> </details> </div>
 ```{r ex-df-1, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 11}
 tierart <- c("Hund", "Katze", "Maus", "Schlange", "Hund", "Hund", "Katze")
 alter <- c(12, 2, 1, 4, 6, 2, 3)
@@ -1897,6 +2007,16 @@ grade_this({
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Wähle die Spalte `zahl` aus (verwende dazu den Namen der Spalte).*
+<div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Nutze den `$` Operator.</div>
+  
+  <!-- <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button> -->
+  <!-- <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button> -->
+</div> </details> </div>
 ```{r ex-df-2, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 10}
 data <- data.frame(
   buchstabe = c("A", "B", "C", "D", "E", "F", "G"),
@@ -1922,6 +2042,18 @@ grade_this({
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Wähle die Spalte `buchstabe` aus und ersetze den Buchstaben `D` mit einem `X`.*
+<div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> `data____ <- ____`</div>
+  <div class="tip-content"> `data$____ <- ____`</div>
+  <div class="tip-content"> `data$____[____] <- ____`</div>
+  
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
 ```{r ex-df-3, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 10}
 data <- data.frame(
   buchstabe = c("A", "B", "C", "D", "E", "F", "G"),
@@ -2013,6 +2145,16 @@ liste[[2]][1,] # im ersten Element (Datensatz) die erste Ziele
 <div class="uebungen">
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Erstelle eine Liste aus den drei Objekten.*
+<div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Nutze `list()`.</div>
+  
+  <!-- <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button> -->
+  <!-- <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button> -->
+</div> </details> </div>
 ```{r ex-df-00, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 11}
 m <- matrix(1:12, nrow=3, ncol=4)
 df <- data.frame(namen = c("Ben", "Claus", "Lisa"),
@@ -2039,6 +2181,16 @@ grade_this({
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Greife auf den Inhalt des zweiten Objektes der Liste zu.*
+<div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Verwende eckige Klammern.</div>
+  
+  <!-- <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button> -->
+  <!-- <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button> -->
+</div> </details> </div>
 ```{r ex-df-0-1, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 7}
 liste <- list("test",
               matrix(1:12, nrow=3, ncol=4),
@@ -2134,13 +2286,21 @@ read_vector(2, namen)
 `r otter::colorize("Beispiel:", "var(--red)")`
 Default Werte
 
-Optionale Argumente werden mit argument = NULL angegeben
+Optionale Argumente können auch mit argument = NULL angegeben werden.
+Das ist eher ein Spezialfall, aber man sieht es manchmal in der Dokumentation auf den Hilfe-Seiten von Funktionen.
+Wenn ihr das Argument nicht benötigt, müsst ihr es auch nicht definieren und es sind auch keine klassischen Default-Werte hinterlegt.
+
 ```{r funktionen-5, exercise=TRUE, results = "hold"}
-add_numbers <- function(number1 = 1, number2 = 1, argument3 = NULL) {
-  number1 + number2
+add_numbers <- function(number1 = 1, number2 = 1, custom_text = NULL) {
+  result <- number1 + number2
+  if (!is.null(text)) { # Ist ein Wert vorhanden in der Variable?
+    result <- paste(custom_text, result)
+  }
+  return(result)
 }
 add_numbers(5,80)
-add_numbers()
+add_numbers(5,80, custom_text = "result =")
+add_numbers(5,80, custom_text = "The answer is")
 ```
 
 
@@ -2149,6 +2309,18 @@ add_numbers()
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Schreibe eine Funktion, die zwei Zahlen addiert. Nutze dazu den bereits angegebenen Code.*
+<div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Der Basiscode der Funktion ist bereits angegeben. Es fehlen noch die Funktionsargumente und der Körper der Funktion, also was mit den Funktionsargumenten geschehen soll.</div>
+  <div class="tip-content"> Überlege wie viele Funktionsargumente benötigt werden.</div>
+  <div class="tip-content"> Nutze zwei Funktionsargumente (pro Zahl ein Argument) - die Benennung kann selbst gewählt werden.</div>
+  
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
 ```{r ex-functions-00, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 5}
 rechner <- function() {
   
@@ -2193,8 +2365,21 @@ grade_this({
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Schreibe eine Funktion, die den Mittelwert über einen Vektor berechnet und folgende Ausgabe macht: `"Mittwelwert = 5.67"`.*
-
-*(Es ist 1 Tipp hinterlegt, danach wird die Lösung angezeigt.)*
+<div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Der Basiscode der Funktion ist bereits angegeben. Es fehlen noch die Funktionsargumente und der Körper der Funktion, also was mit den Funktionsargumenten geschehen soll.</div>
+  <div class="tip-content"> Verwende ein Funktionsargument für den Zahlenvektor.</div>
+  <div class="tip-content"> Baue die Funktion Stück für Stück zusammen. Teste auch bereits Zwischenschritte.</div>
+  <div class="tip-content"> Verwende die Funktionen: `round()` und `mean()` und wende es auf den Zahlenvektor (das Funktionsargument) an.</div>
+  <div class="tip-content"> `____ <- round(mean(___), 2)`</div>
+  <div class="tip-content"> Verwende die Funktionen: `paste()`, um den Satz auszugeben.</div>
+  
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
 ```{r ex-functions-02, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 8}
 # Schreibe hier die Funktion
 
@@ -2209,11 +2394,6 @@ vektor_mittelwert <- function(vektor1) {
 }
 vektor_mittelwert(c(1,2,3, 8, 8, 12))
 ```
-```{r ex-functions-02-hint, results = "hold", exercise.eval=FALSE}
-# Tipp: Verwende die Funktionen:
-round()
-mean()
-```
 ```{r ex-functions-02-check, results = "hold", exercise.eval=FALSE}
 grade_this({
   pass_if_equal(.solution, message = feedback_message_correct)
@@ -2225,7 +2405,17 @@ grade_this({
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Schreibe die vorhandene Funktion so um, dass der Code `taschen_rechner()` die folgende Rechnung ausführt: `1 + 2`.*
 
-*(Es ist 1 Tipp hinterlegt, danach wird die Lösung angezeigt.)*
+<div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Warum gibt die Funktion ein Ergebnis aus, wenn `taschen_rechner()` ausgeführt wird?.</div>
+  <div class="tip-content"> Definiere Default-Argumente für den Fall `taschen_rechner()`.</div>
+  
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
 ```{r ex-functions-03, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 8}
 taschen_rechner <- function(zahl1, zahl2, zeichen) {
   text = glue::glue("{zahl1}{zeichen}{zahl2}")
@@ -2237,15 +2427,12 @@ taschen_rechner() # Diese Zeile soll nicht verändert werden
 ```
 ```{r ex-functions-03-solution, results = "hold", exercise.eval=FALSE}
 taschen_rechner <- function(zahl1 = 1, zahl2 = 2, zeichen = "+") {
-  text = glue::glue("{zahl1}{zeichen}{zahl2}")
+  text = paste(zahl1, zeichen, zahl2)
   eval(parse(text = text))
 }
 # Teste die Funktion
 taschen_rechner(4, 5, "+")
 taschen_rechner() # Diese Zeile soll nicht verändert werden
-```
-```{r ex-functions-03-hint, results = "hold", exercise.eval=FALSE}
-# Tipp: Definiere Default Argumente
 ```
 ```{r ex-functions-03-check, results = "hold", exercise.eval=FALSE}
 grade_this({
@@ -3091,6 +3278,9 @@ if (condition_1) {# -> 1
 *Schreibe ein if-else-Statement, dass den ersten Satz ausgibt, wenn die Variable `tier` ein `Reptil` enthält. Der zweite Satz soll ausgegeben werden, wenn es sich nicht um ein `Reptil` handelt.*
 ```{r ex-ifelse-01, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 8}
 tier <- c("Reptil")
+# Schreibe hier deinen Code
+
+
 
 print("Es handelt sich um ein Reptil.") # Satz 1
 print("Es handelt sich nicht um ein Reptil.") # satz 2
@@ -3184,7 +3374,7 @@ friends_status
 ```
 
 <details class="hiddendetails-container"> <summary>
-    <p class="hiddendetails-button"><i class="fa-solid fa-arrow-down"></i> Zeige die Lösung <i class="fa-solid fa-arrow-down"></i> </p>
+    <p class="hiddendetails-button"><i class="fa-solid fa-arrow-down"></i> Zeige die Antwort <i class="fa-solid fa-arrow-down"></i> </p>
   </summary> <div class="hiddendetails-body"> <div class="uebungen">
 
 Antwort: Wir müssten überall im Code die Zahl 4 ändern!
@@ -3207,10 +3397,24 @@ friends_status
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Schreibe eine For-Loop, die den Satz `Ich mag ____.` für alle Tiere ausgibt. Nutze dazu den Code, der bereits angegeben ist.*
+<div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Der Output soll so aussehen: <pre>
+    [1] "Ich mag Hunde." 
+    [1] "Ich mag Katzen."
+    [1] "Ich mag Vögel."</pre></div>
+  <div class="tip-content"> Die Ausgabe kann mit paste gemacht werden: `print(paste0("Ich mag ", ____, "."))`</div>
+  
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
 ```{r ex-for-01, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 8}
 tiere <- c("Hunde", "Katzen", "Vögel") # diese Zeile nicht ändern
 
-print(paste0("Ich mag ", ____, ".")) # ____ ist ein Platzhalter und muss ersetzt werden
+
 ```
 ```{r ex-for-01-solution, results = "hold", exercise.eval=FALSE}
 # Lösung 1 ----
@@ -3278,6 +3482,17 @@ while (counter <= stop_criteria) {
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Schreibe diese For-Loop in eine While-Loop um. Nutze dazu den Code, der bereits angegeben ist.*
+<div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Achte darauf, dass die while-Loop eine break-Bedingung benötigt!</div>
+  <div class="tip-content"> Verwende eine Zählvariable z.B `i = 1`.</div>
+  
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
 ```{r ex-while-01, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 10}
 tiere <- c("Hunde", "Katzen", "Vögel")
 results <- character(3)
@@ -3369,6 +3584,17 @@ divide_numbers(8, 0)
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Schreibe eine Warnung, die angezeigt wird, wenn die Variable `zahl` nicht numerisch ist. Nutze dazu den Code der bereits vorhanden ist.*
+<div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Nutze `warning()`.</div>
+  <div class="tip-content"> Verwende auch eine if-Abfrage.</div>
+  
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
 ```{r ex-warning-01, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 5}
 zahl <- "5"
 
@@ -3645,6 +3871,26 @@ if (content <= 55) {
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Behebe den Fehler im Code (3 Fehler).*
+**Hinweis:** Der korrekte Code soll diese Ausgabe haben:
+```{r ex-debugging-4-example, exercise=FALSE, results = "hold",  ref.label=I('ex-debugging-4-solution')}
+bank_status(data, "Lizzy")
+bank_status(data, "Beatrice")
+bank_status(data, "Klaus")
+```
+
+<div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Prüfe die logischen Operatoren.</div>
+  <div class="tip-content"> Prüfe die Klammern.</div>
+  <div class="tip-content"> Prüfe die Formatierung der Absätze.</div>
+  <div class="tip-content"> Nutze `\n` für die Absätze.</div>
+  
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
 ```{r ex-debugging-4, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 25}
 data <- data.frame(
   name = c("Peter", "Max", "Lizzy", "Mara", "Beatrice", "Klaus"),
@@ -3662,17 +3908,11 @@ bank_status <- function(df, name) {
   } else{
     cat(name, "hat bereits", kredite, "Kredit(e) bei unserer Bank. Ein weiterer Kredit ist möglich.")
   }
-  }
+}
 # Der Code ist ab hier ist korrekt!
 bank_status(data, "Lizzy")
 bank_status(data, "Beatrice")
 bank_status(data, "Klaus")
-```
-```{r ex-debugging-4-check, results = "hold", exercise.eval=FALSE}
-grade_this({
-  pass_if_equal(.solution, message = feedback_message_correct)
-  fail_if_not_equal(.solution, message = feedback_message_wrong)
-})
 ```
 ```{r ex-debugging-4-solution, results = "hold", exercise.eval=FALSE}
 data <- data.frame(
@@ -3692,18 +3932,18 @@ bank_status <- function(df, name) {
   } else{
     cat(name, "hat bereits", kredite, "Kredit(e) bei unserer Bank. Ein weiterer Kredit ist möglich.\n")
   }
-}
+  }
 bank_status(data, "Lizzy")
 bank_status(data, "Beatrice")
 bank_status(data, "Klaus")
+```
+```{r ex-debugging-4-check, results = "hold", exercise.eval=FALSE}
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
 ```
 
-**Hinweis:** Der korrekte Code soll diese Ausgabe haben:
-```{r ex-debugging-4-example, exercise=FALSE, results = "hold",  ref.label=I('ex-debugging-4-solution')}
-bank_status(data, "Lizzy")
-bank_status(data, "Beatrice")
-bank_status(data, "Klaus")
-```
 
 
 ### Code umschreiben (Refactoring) <a href="#section-übergeordnete-übungen"> <i class="fa-solid fa-arrow-up"></i></a>
@@ -3714,6 +3954,16 @@ Diese Fähigkeit hilft, Code flexibler zu schreiben.
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Schreibe den Code um, ohne die Funktionalität zu ändern. Erstelle den Datensatz direkt, ohne erst die Vektoren zu erstellen.*
+<div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Definiere die Inhalte direkt bei der Erstellung des Datensatzes.</div>
+
+  <!-- <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button> -->
+  <!-- <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button> -->
+</div> </details> </div>
 ```{r ex-refactor-0, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 15}
 # Erstellt die Vektoren (dieser Schritt soll ausgelassen werden!)
 namen <- c("Lisa", "Peter", "Klara", "Thorben")
@@ -3757,6 +4007,16 @@ data
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Schreibe den Code um, ohne die Funktionalität zu ändern.*
+<div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Mache aus der letzten if-else-Bedingung eine else-Bedingung.</div>
+
+  <!-- <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button> -->
+  <!-- <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button> -->
+</div> </details> </div>
 ```{r ex-refactor-1, exercise=TRUE, results = "hold", exercise.eval=FALSE, error=TRUE, exercise.lines = 15}
 content <- 55 
 if (content < 55) {
@@ -3950,11 +4210,6 @@ grade_this({
   fail_if_not_equal(.solution, message = feedback_message_wrong)
 })
 ```
-
-<!-- data_health[rowSums(is.na(data_health)) != 1, ] -->
-
-
-
 
 ### Programmierübungen <a href="#section-übergeordnete-übungen"> <i class="fa-solid fa-arrow-up"></i></a>
 

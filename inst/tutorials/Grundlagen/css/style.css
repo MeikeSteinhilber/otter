@@ -33,13 +33,13 @@ original is from: https://github.com/tidymodels/learntidymodels/tree/main/inst/t
 .tip summary {
   background-color: #f2f2f2; /* Neutral background color */
   border-color: grey;
+  margin: -20px;
   font-size: 11px;
   display: inline-block; /* Ensures the button adjusts to its content */
   border-radius: 8px; /* Rounded corners for a modern look */
   padding: 1px 6px; /* Padding for better spacing */
   cursor: pointer; /* Pointer cursor for interactivity */
   font-weight: bold; /* Bold text for emphasis */
-  margin-bottom: 25px;
   border: 1px solid transparent; /* Border for a cleaner look */
   transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s; /* Smooth hover and click effects */
 }
@@ -70,8 +70,9 @@ original is from: https://github.com/tidymodels/learntidymodels/tree/main/inst/t
 
 .tip-carousel {
   border: 1px solid #ddd;
-  padding: 15px;
-  margin-top: -15px;
+  margin-top: 14px;
+  margin-left: -20px;
+  padding: 10px 10px 0px;
 }
 
 .tip-carousel button {
@@ -79,7 +80,7 @@ original is from: https://github.com/tidymodels/learntidymodels/tree/main/inst/t
   border-color: #ddd;
   background-color: #f2f2f2;
   color: black;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
   font-size: small;
 }
@@ -91,8 +92,11 @@ original is from: https://github.com/tidymodels/learntidymodels/tree/main/inst/t
 }
 
 .tip-carousel .tip-content {
-  margin: 10px 0;
-  font-size: 14px;
+    /*margin: 23px 0; */
+    font-size: 14px;
+    /* margin-top: 45px;
+    padding: 33px 0px 10px;
+    */
 }
 
 .icon-small {
@@ -142,6 +146,7 @@ details summary:hover {
 
 .hiddendetails-button {
   background-color: white;
+  border-radius: 8px;
   color: #00c4e6;
   padding: 10px;
   border: none;
