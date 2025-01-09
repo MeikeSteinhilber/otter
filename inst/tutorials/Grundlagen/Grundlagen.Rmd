@@ -458,7 +458,7 @@ blue <- "#00c4e6"
 
 
 
-## R und RStudio Installation [CACHE TEST]
+## R und RStudio Installation
 
 
 ![R Logo](images/Rlogo.png){right="100%" width="10%"}
