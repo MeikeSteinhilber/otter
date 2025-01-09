@@ -702,7 +702,7 @@ alter
 
 In RStudio ist nach dem Ausführen dieses Codes im *Environment* Folgendes zu sehen:
 
-![Das Environment ist geöffnet. Die gespeicherten Daten (alter = NULL, lieblingszahl = 3, name = “Meike”, weiblich = “TRUE” ) sind zu sehen. ](images/env_example.png){.absolute width="500"}
+![Das Environment ist geöffnet. Die gespeicherten Daten (alter = NULL, lieblingszahl = 3, name = “Meike”, weiblich = “TRUE” ) sind zu sehen. ](images/env_example.png){.absolute .images-shadow width="500"}
 
 Mit Operatoren können Variablen Inhalte zugewiesen werden.
 In R gibt es hierfür zwei Zuweisungsoperatoren: `<-` und `=`.
@@ -1433,7 +1433,7 @@ alter
 
 In RStudio ist nach dem Ausführen dieses Codes im *Environment* Folgendes zu sehen:
 
-![Das Environment ist geöffnet. Die gespeicherten Daten (alter = NULL, lieblingszahl = 3, name = “Meike”, weiblich = “TRUE” ) sind zu sehen. ](images/env_example.png){.absolute width="500"}
+![Das Environment ist geöffnet. Die gespeicherten Daten (alter = NULL, lieblingszahl = 3, name = “Meike”, weiblich = “TRUE” ) sind zu sehen. ](images/env_example.png){.absolute .images-shadow width="500"}
 
 Mit Operatoren können Variablen Inhalte zugewiesen werden.
 In R gibt es hierfür zwei Zuweisungsoperatoren: `<-` und `=`.

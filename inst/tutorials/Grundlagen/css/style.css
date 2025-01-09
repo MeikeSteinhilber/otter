@@ -378,6 +378,10 @@ h2 {
 
 }
 
+.modal {
+  z-index: 100002 !important;
+}
+
 /*--------- Accessibility ---------*/
 .accessibility {
   width: 70px;
