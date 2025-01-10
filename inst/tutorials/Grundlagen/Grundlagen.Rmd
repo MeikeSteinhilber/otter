@@ -427,18 +427,18 @@ library(glue)
 # library(otter)
 knitr::opts_chunk$set(echo = FALSE)
 feedback_message_wrong <- "Der Output stimmt nicht mit der Lösung überein. Eventuell hilft dir der Hinweis: {code_feedback()}"
-feedback_message_correct <- 'Richtig! {sample(c("Sehr gut gemacht!", "Perfekte Arbeit!", "Weiter so!", "Wunderbar gemacht!", "Klasse!", "Toller Job!",
+feedback_message_correct <- 'Richtig. {sample(c("Sehr gut gemacht!", "Perfekte Arbeit!", "Weiter so!", "Wunderbar gemacht!", "Klasse!", "Toller Job!",
 "Echt gut gemacht!", "Mega Arbeit, echt stark!",
-  "Weiter so, du schaffst das!", "Hammer, echt klasse!",
+  "Du wirst immer besser!", "Hammer, echt klasse!",
   "Das hast du super hinbekommen!", "Boah, richtig nice!",
   "Das läuft bei dir!", "Respekt, echt cool gemacht!",
-  "Ey, das ist mal richtig stark!",),1)}'
+  "Ey, das ist mal richtig stark!"),1)}'
 
 gradethis::gradethis_setup(
   pass.praise = FALSE,
   # fail.encourage = FALSE,
   pass = "Richtig!",
-  code_correct = glue('Richtig! {sample(c("Sehr gut gemacht!", "Perfekte Arbeit!", "Weiter so!", "Wunderbar gemacht!", "Klasse!", "Toller Job!", ""),1)}'),
+  code_correct = glue('Richtig! {sample(c("Sehr gut gemacht!", "Perfekte Arbeit!", "Du wirst immer besser!", "Wunderbar gemacht!", "Klasse!", "Toller Job!"),1)}'),
   fail = "Das ist leider falsch.",
   code_incorrect = "Noch nicht ganz. Hinweis: {code_feedback()} Probiere es noch einmal!"
   )
@@ -448,7 +448,7 @@ tutorial_options(exercise.reveal_solution = TRUE,
 options(
   # gradethis.pass = 'Richtig! {gradethis::random_praise(language="de")}',
   gradethis.grading_problem.message = "Es ist leider ein Problem mit dem Bewertungscode für diese Übung aufgetreten.",
-  gradethis_glue_correct = '{sample(c("Sehr gut gemacht!", "Perfekte Arbeit!", "Weiter so!", "Wunderbar gemacht!", "Klasse!", "Toller Job!", ""),1)} { .message } { .correct }',
+  gradethis_glue_correct = '{sample(c("Sehr gut gemacht!", "Perfekte Arbeit!", "Weiter so!", "Wunderbar gemacht!", "Klasse!", "Toller Job!"),1)} { .message } { .correct }',
   # gradethis_glue_correct = "{ .message } { .correct }",
   # gradethis_glue_incorrect = "{ .message } { .incorrect } { random_encourage() }"
   gradethis_glue_incorrect = "{ .message } { .incorrect }"
@@ -868,21 +868,6 @@ angemeldet <- c(TRUE, FALSE, TRUE)
 ```
 
 `r otter::colorize("Aufgabe:", "var(--blue)")` *Beantworte die gestellte Frage mit R Code.*
-
-```{r ex-logical-1, exercise=TRUE, results = "hold", exercise.setup = "setup-logical", exercise.eval=FALSE}
-# Wer von den Personen heißt NICHT Lisa Müller? Prüfe hierzu die Variable "namen".
-
-```
-```{r ex-logical-1-solution, exercise.eval=FALSE}
-namen != "Lisa Müller"
-```
-```{r ex-logical-1-check}
-grade_this({
-  pass_if_equal()
-  fail()
-})
-```
-
 <div class="tip">
   <details>
   <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
@@ -897,6 +882,19 @@ grade_this({
     
   </details>
 </div>
+```{r ex-logical-1, exercise=TRUE, results = "hold", exercise.setup = "setup-logical", exercise.eval=FALSE}
+# Wer von den Personen heißt NICHT Lisa Müller? Prüfe hierzu die Variable "namen".
+
+```
+```{r ex-logical-1-solution, exercise.eval=FALSE}
+namen != "Lisa Müller"
+```
+```{r ex-logical-1-check}
+grade_this({
+  pass_if_equal()
+  fail()
+})
+```
 
 <details class="hiddendetails-container">
 <summary> <p class="hiddendetails-button"><i class="fa-solid fa-arrow-down"></i> Zeige eine Erklärung der Lösung an <i class="fa-solid fa-arrow-down"></i> </p> </summary>
@@ -1588,7 +1586,7 @@ blumen
 ```{r ex-vector-1-check, results = "hold", exercise.eval=FALSE}
 grade_this({
   pass_if_equal(.solution, message = feedback_message_correct)
-  fail_if_not_equal(.solution, message = "Der Output stimmt nicht mit der Lösung überein. Eventuell hilft dir der Hinweis: {code_feedback()}")
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
 })
 ```
 

@@ -1,0 +1,460 @@
+---
+title: "Datenverarbeitung mit dplyr"
+tutorial:
+  version: 0.1.1
+lang:   de
+output:
+  learnr::tutorial:
+    language: de
+    # progressive: true
+    allow_skip: true
+    css: css/style.css
+    fig_caption: false # important for the alt texts
+    # highlight: espresso
+    # theme: cerulean
+runtime: shiny_prerendered
+---
+<svg xmlns="http://www.w3.org/2000/svg" width="508.977" height="29.723" viewBox="0 0 134.667 7.864" class="followcursor"><path d="m96 117.136-3.889 3.315-2.208 1.882H30.167c-.831 0-1.5.595-1.5 1.334 0 .739.669 1.333 1.5 1.333h131.667c.83 0 1.5-.594 1.5-1.333s-.67-1.334-1.5-1.334h-59.736l-2.209-1.882z" style="fill:#000;stroke-width:.264583" transform="translate(-28.666 -117.136)"/></svg>
+<div class="accessibility"></div>
+<div class="offcanvas"><div class="title">Einstellungen für Barrierefreiheit</div><div class="button-container"><button data-setting="contrast"><span>Kontrast</span></button><button data-setting="links"><span>Links <wbr>hervorheben</span></button><button data-setting="letterspacing"><div>Schriftabstand</div><div class="indicators"><div data-num="1"></div><div data-num="2"></div><div data-num="3"></div></div></button><button data-setting="dyslexia"><span>Legasthenie&shy;freundlich</span></button><button data-setting="cursor"><span>Cursor</span></button><button data-setting="lineheight"><div>Zeilenhöhe</div><div class="indicators"><div data-num="1"></div><div data-num="2"></div><div data-num="3"></div></div></button><button data-setting="fontsize"><div>Schriftgröße</div><div class="indicators"><div data-num="1"></div><div data-num="2"></div><div data-num="3"></div><div data-num="4"></div><div data-num="5"></div></div></button></div>
+</div>
+<script>
+$(document).ready(function() {
+  $("#tutorial-topic").prepend(`<div class="img-right">
+  <a href="https://meikesteinhilber.github.io/otter/"> <i class="fa-solid fa-house" aria-label="Link zur otter Homepage" aria-hidden="false"></i>
+  </a>
+  </div>`);
+  
+  $(".accessibility").on("click", function() {
+    $(".offcanvas").toggleClass("show");
+  });
+  $(".offcanvas button").on("click", function() {
+    
+    const setting = $(this).attr("data-setting");
+    const numIndicators = $(".indicators > div", this).length || 0;
+    var currentIndicator = 0;
+    if(numIndicators > 0) {
+      currentIndicator = $(".indicators > div.dark", this).length || 0;
+      currentIndicator = ((currentIndicator + 1) % (numIndicators + 1));
+
+      $(".indicators > div.dark", this).removeClass("dark");
+      $(".indicators > div", this).slice(0, currentIndicator).addClass("dark");
+
+      $(this).toggleClass("pressed", currentIndicator > 0);
+
+    } else {
+      $(this).toggleClass("pressed");
+    }
+
+    if(setting == "contrast") {
+      $("html").toggleClass("invert");
+      
+    } else if(setting == "links") {
+      $("html").toggleClass("highlightlinks");
+      
+    } else if(setting == "dyslexia") {
+      $("html").toggleClass("dyslexic");
+      
+    } else if(setting == "fontsize" || setting == "lineheight" || setting == "letterspacing") {
+      if(currentIndicator != 0) {
+        $("html").addClass(setting + currentIndicator.toString());
+      } else {
+        [1,2,3,4,5].map(function(i) {
+          $("html").removeClass(setting + i.toString());
+        });
+      }
+    } else if(setting == "cursor") {
+      const hasCursor = $("html").hasClass("cursor");
+      $("html").toggleClass("cursor");
+      
+      if(hasCursor) {
+        $("html").off("mousemove");
+      } else {
+        $("html").on("mousemove", function(e) {
+          const ev = e.originalEvent;
+          var x = ev.clientX;
+          var y = ev.clientY;
+          
+          $(".followcursor").css({top: y, left: x});
+        });      
+      }
+    }
+    
+  });
+  
+  $(document).ready(function() {
+  $('.menu-button').click(function() {
+    $('.topicsContainer').toggleClass('menu-open');
+    $(this).toggleClass('menu-open');
+  });
+  });
+  
+  $("#learnr-tutorial-content.topics").prepend(
+  `<div class="logo">
+  <img class="logo" src="images/corporate_logos_small.jpg" alt="Digtell Logo" style="width:30.0%"/>
+    <img class="logo" src="images/logo.png" alt="Otter Logo" style="width:10.0%"/>
+  </div>`);
+  
+
+  $("a[href^='#']").on("click", function(event) {
+    
+  	var target = event.currentTarget.href.toString();
+  	if(!!~target.indexOf("#")) {
+  	  target = target.split("#")[1];
+      _paq.push(['trackEvent', 'Click', 'Jump', target]);
+    }
+    console.log(target);
+    	
+    const currentSection = $(".section.current");
+    var href = $(this).attr("href");
+
+    if(!$(href, currentSection).length) {
+      return;
+    }
+    var href = href.substr(1);
+    event.preventDefault();
+
+    const el = document.getElementById(href);
+    if(!el) {
+      return;
+    }
+    window.scrollTo({
+      top: el.offsetTop,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+  
+  $("button[data-i18n-attr-title='button.submitanswertitle']").on("click", function(event) {
+    _paq.push(['trackGoal', 2]);
+  });
+  
+  $("button[data-i18n-attr-title='button.runcodetitle']").on("click", function(event) {
+    _paq.push(['trackGoal', 1]);
+  });
+  
+  $("button[data-i18n-attr-title='button.solutiontitle']").on("click", function(event) {
+    _paq.push(['trackGoal', 3]);
+  });
+  
+  $("button[data-i18n-attr-title='button.hinttitle']").on("click", function(event) {
+    _paq.push(['trackGoal', 4]);
+  });
+  
+  $(".tutorial-question-container button").on("click", function(event) {
+    _paq.push(['trackGoal', 5]);
+  });
+
+  $(".tip summary").on("click", function(event) {
+    _paq.push(['trackGoal', 6]);
+  });
+  
+  $(".hiddendetails-container summary").on("click", function(event) {
+    _paq.push(['trackGoal', 7]);
+  });
+  
+});
+
+
+/*! js-cookie v3.0.1 | MIT */
+;
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+  typeof define === 'function' && define.amd ? define(factory) :
+  (global = global || self, (function () {
+    var current = global.Cookies;
+    var exports = global.Cookies = factory();
+    exports.noConflict = function () { global.Cookies = current; return exports; };
+  }()));
+}(this, (function () { 'use strict';
+
+  /* eslint-disable no-var */
+  function assign (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        target[key] = source[key];
+      }
+    }
+    return target
+  }
+  /* eslint-enable no-var */
+
+  /* eslint-disable no-var */
+  var defaultConverter = {
+    read: function (value) {
+      if (value[0] === '"') {
+        value = value.slice(1, -1);
+      }
+      return value.replace(/(%[\dA-F]{2})+/gi, decodeURIComponent)
+    },
+    write: function (value) {
+      return encodeURIComponent(value).replace(
+        /%(2[346BF]|3[AC-F]|40|5[BDE]|60|7[BCD])/g,
+        decodeURIComponent
+      )
+    }
+  };
+  /* eslint-enable no-var */
+
+  /* eslint-disable no-var */
+
+  function init (converter, defaultAttributes) {
+    function set (key, value, attributes) {
+      if (typeof document === 'undefined') {
+        return
+      }
+
+      attributes = assign({}, defaultAttributes, attributes);
+
+      if (typeof attributes.expires === 'number') {
+        attributes.expires = new Date(Date.now() + attributes.expires * 864e5);
+      }
+      if (attributes.expires) {
+        attributes.expires = attributes.expires.toUTCString();
+      }
+
+      key = encodeURIComponent(key)
+        .replace(/%(2[346B]|5E|60|7C)/g, decodeURIComponent)
+        .replace(/[()]/g, escape);
+
+      var stringifiedAttributes = '';
+      for (var attributeName in attributes) {
+        if (!attributes[attributeName]) {
+          continue
+        }
+
+        stringifiedAttributes += '; ' + attributeName;
+
+        if (attributes[attributeName] === true) {
+          continue
+        }
+
+        // Considers RFC 6265 section 5.2:
+        // ...
+        // 3.  If the remaining unparsed-attributes contains a %x3B (";")
+        //     character:
+        // Consume the characters of the unparsed-attributes up to,
+        // not including, the first %x3B (";") character.
+        // ...
+        stringifiedAttributes += '=' + attributes[attributeName].split(';')[0];
+      }
+
+      return (document.cookie =
+        key + '=' + converter.write(value, key) + stringifiedAttributes)
+    }
+
+    function get (key) {
+      if (typeof document === 'undefined' || (arguments.length && !key)) {
+        return
+      }
+
+      // To prevent the for loop in the first place assign an empty array
+      // in case there are no cookies at all.
+      var cookies = document.cookie ? document.cookie.split('; ') : [];
+      var jar = {};
+      for (var i = 0; i < cookies.length; i++) {
+        var parts = cookies[i].split('=');
+        var value = parts.slice(1).join('=');
+
+        try {
+          var foundKey = decodeURIComponent(parts[0]);
+          jar[foundKey] = converter.read(value, foundKey);
+
+          if (key === foundKey) {
+            break
+          }
+        } catch (e) {}
+      }
+
+      return key ? jar[key] : jar
+    }
+
+    return Object.create(
+      {
+        set: set,
+        get: get,
+        remove: function (key, attributes) {
+          set(
+            key,
+            '',
+            assign({}, attributes, {
+              expires: -1
+            })
+          );
+        },
+        withAttributes: function (attributes) {
+          return init(this.converter, assign({}, this.attributes, attributes))
+        },
+        withConverter: function (converter) {
+          return init(assign({}, this.converter, converter), this.attributes)
+        }
+      },
+      {
+        attributes: { value: Object.freeze(defaultAttributes) },
+        converter: { value: Object.freeze(converter) }
+      }
+    )
+  }
+
+  var api = init(defaultConverter, { path: '/' });
+  /* eslint-enable no-var */
+
+  return api;
+
+})));
+
+var _paq = window._paq = window._paq || [];
+jQuery(document).ready(function() {
+   const cookiebanner = `<div class="modal modal-dialog-scrollable modal-dialog-centered modal-dialog-scrollable fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" style="justify-content: end; margin: unset !important;">
+    <div class="modal-dialog" style="display: flex; align-self: end; margin: unset !important;">
+        <div class="modal-content">
+        <div class="modal-body">
+            <p>Wir ben&ouml;tigen Ihre Zustimmung, bevor Sie unsere Website weiter besuchen k&ouml;nnen.</p>
+            <p>Wir verwenden Cookies und andere Technologien auf unserer Webseite. Einige von ihnen sind technisch essenziell, w&auml;hrend andere uns helfen Nutzerstatistiken zu erstellen, um das Otter Produkt weiterzuentwickeln. Weitere Informationen &uuml;ber die Verwendung Ihrer Daten finden Sie in unserer Datenschutzerkl&auml;rung auf der Otter Homepage.</p>
+        </div>
+        <div class="modal-footer">
+            <a type="button" class="btn btn-light" href="https://meikesteinhilber.github.io/otter/">Ich m&ouml;chte Otter nicht nutzen.</a>
+            <button type="button" class="btn btn-success" id="cookie-okay">Ich bin einverstanden.</button>
+        </div>
+        </div>  
+    </div>
+    </div>`;
+
+    const loadScripts = function() {
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(["setRequestMethod", "POST"]);
+        _paq.push(['enableHeartBeatTimer', 5]);
+        _paq.push(['disableAlwaysUseSendBeacon']);
+        _paq.push(["setDoNotTrack", false]);
+        _paq.push(["setDomains", ["*.otter.uni-frankfurt.de", "*.otter-test.uni-frankfurt.de", "127.0.0.1"]]);
+        //_paq.push(["setCookieDomain", "*.otter.uni-frankfurt.de"]);
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+        var u="https://otter.uni-frankfurt.de/otterusers/";
+        _paq.push(['setTrackerUrl', u+'m.php']);
+        _paq.push(['setSiteId', '1']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.src=u+'m.js'; s.parentNode.insertBefore(g,s);
+        })();
+    };
+
+    const consent = Cookies.get('cnsnt');
+    if(consent == undefined || consent == "0") {
+        jQuery("body").append(jQuery(cookiebanner));
+        jQuery('#cookie-okay').on("click", function() {
+            Cookies.set('cnsnt', '1', { expires: 180, sameSite: 'strict' });
+            loadScripts();
+
+            jQuery('#staticBackdrop').modal("hide");
+        });
+
+        jQuery('#cookie-nokay').on("click", function() {
+            Cookies.set('cnsnt', '0', { expires: 30, sameSite: 'strict' });
+        });
+
+        jQuery('#staticBackdrop').on('hidden.bs.show', function (event) {
+            jQuery(this).css('display', 'flex');
+        });
+
+        jQuery('#staticBackdrop').modal({backdrop: false, show: true, keyboard: false});
+    } else if(consent == "1" || consent === 1) {
+        loadScripts();
+    }
+});
+
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const carousels = document.querySelectorAll(".tip-carousel");
+  carousels.forEach(function(carousel) {
+    const tips = carousel.querySelectorAll(".tip-content");
+    const prevBtn = carousel.querySelector(".prev-tip");
+    const nextBtn = carousel.querySelector(".next-tip");
+    let currentTip = 0;
+
+    function updateCarousel() {
+      tips.forEach((tip, index) => {
+        tip.style.display = index === currentTip ? "block" : "none";
+      });
+      if(prevBtn) {
+        prevBtn.disabled = currentTip === 0;
+      }
+      if(nextBtn) {
+        nextBtn.disabled = currentTip === tips.length - 1;
+      }
+    }
+
+    if(prevBtn) {
+      prevBtn.addEventListener("click", function() {
+        if (currentTip > 0) {
+          currentTip--;
+          updateCarousel();
+        }
+      });
+    }
+
+    if(nextBtn) {
+      nextBtn.addEventListener("click", function() {
+        if (currentTip < tips.length - 1) {
+          currentTip++;
+          updateCarousel();
+        }
+      });
+    }
+
+    updateCarousel();
+  });
+});
+
+</script>
+
+<!-- <div class="menu-button">Menu</div> -->
+
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
+library(scales)
+library(sprtt)
+library(psych)
+library(testthat)
+library(learnr)
+library(gradethis)
+library(glue)
+# devtools::load_all()
+# remotes::install_github("MeikeSteinhilber/otter")
+# remotes::install_github("rstudio/gradethis")
+# library(otter)
+knitr::opts_chunk$set(echo = FALSE)
+feedback_message_wrong <- "Der Output stimmt nicht mit der Lösung überein. Eventuell hilft dir der Hinweis: {code_feedback()}"
+feedback_message_correct <- 'Richtig. {sample(c("Sehr gut gemacht!", "Perfekte Arbeit!", "Weiter so!", "Wunderbar gemacht!", "Klasse!", "Toller Job!",
+"Echt gut gemacht!", "Mega Arbeit, echt stark!",
+  "Du wirst immer besser!", "Hammer, echt klasse!",
+  "Das hast du super hinbekommen!", "Boah, richtig nice!",
+  "Das läuft bei dir!", "Respekt, echt cool gemacht!",
+  "Ey, das ist mal richtig stark!"),1)}'
+
+gradethis::gradethis_setup(
+  pass.praise = FALSE,
+  # fail.encourage = FALSE,
+  pass = "Richtig!",
+  code_correct = glue('Richtig! {sample(c("Sehr gut gemacht!", "Perfekte Arbeit!", "Du wirst immer besser!", "Wunderbar gemacht!", "Klasse!", "Toller Job!"),1)}'),
+  fail = "Das ist leider falsch.",
+  code_incorrect = "Noch nicht ganz. Hinweis: {code_feedback()} Probiere es noch einmal!"
+  )
+tutorial_options(exercise.reveal_solution = TRUE,
+                 exercise.blanks = "___",
+                 exercise.eval = FALSE)
+options(
+  # gradethis.pass = 'Richtig! {gradethis::random_praise(language="de")}',
+  gradethis.grading_problem.message = "Es ist leider ein Problem mit dem Bewertungscode für diese Übung aufgetreten.",
+  gradethis_glue_correct = '{sample(c("Sehr gut gemacht!", "Perfekte Arbeit!", "Weiter so!", "Wunderbar gemacht!", "Klasse!", "Toller Job!"),1)} { .message } { .correct }',
+  # gradethis_glue_correct = "{ .message } { .correct }",
+  # gradethis_glue_incorrect = "{ .message } { .incorrect } { random_encourage() }"
+  gradethis_glue_incorrect = "{ .message } { .incorrect }"
+)
+blue <- "#00c4e6"
+```
+
+
+
