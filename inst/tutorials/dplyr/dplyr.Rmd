@@ -1,5 +1,5 @@
 ---
-title: "Datenverarbeitung mit dplyr"
+title: "dplyr & ggplot2"
 tutorial:
   version: 0.1.1
 lang:   de
@@ -415,6 +415,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 ```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
 library(scales)
+library(tidyverse)
 library(sprtt)
 library(psych)
 library(testthat)
@@ -425,7 +426,7 @@ library(glue)
 # remotes::install_github("MeikeSteinhilber/otter")
 # remotes::install_github("rstudio/gradethis")
 # library(otter)
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = TRUE)
 feedback_message_wrong <- "Der Output stimmt nicht mit der Lösung überein. Eventuell hilft dir der Hinweis: {code_feedback()}"
 feedback_message_correct <- 'Richtig. {sample(c("Sehr gut gemacht!", "Perfekte Arbeit!", "Weiter so!", "Wunderbar gemacht!", "Klasse!", "Toller Job!",
 "Echt gut gemacht!", "Mega Arbeit, echt stark!",
@@ -456,5 +457,171 @@ options(
 blue <- "#00c4e6"
 ```
 
+## Einführung
 
+### Ziele dieses Tutorials
+
+### Tidyverse
+
+Das [*tidyverse*](https://www.tidyverse.org/) ist eine Sammlung von open-source R-Paketen, die speziell für die Datenaufbereitung und -visualisierung entwickelt wurde.
+Alle Pakete basieren auf einer konsistenten Design-Philosophie, Grammatik und auch Datenstruktur, welche innerhalb des tidyverse-Universums einheitlich ist, aber z.T auch sehr stark von *base*-R abweicht.
+Zu den Paketen im tidyverse gehören:
+
+  - `dplyr` (Datenmanipulation),
+  
+  - `ggplot2` (Datenvisualisierung),
+  
+  - `tidyr` (Datenbereinigung),
+  
+  - `readr` (Datenimport),
+  
+  - `stringr` (Umgang mit Strings/Text),
+  
+  - `forcats` (Umgang mit kategorialen daten),
+  
+  - `purrr` (funktionales Programmieren) und
+  
+  - `tibble` (Alternative zu `data.frames`).
+
+
+**Warum ist das tidyverse sinnvoll als Ergänzung zu base R?**
+
+*Benutzerfreundlichkeit und Lesbarkeit:* Der tidyverse bietet eine intuitive Syntax, die mit Pipes (%>%) arbeitet. Dies ermöglicht eine klare und lesbare Darstellung von Datenmanipulationsprozessen, wodurch auch komplexe Analysen nachvollziehbar bleiben.
+
+*Konsistenz:* Alle Pakete im tidyverse folgen gemeinsamen Designprinzipien und Funktionen, was den Lernaufwand reduziert und eine nahtlose Integration zwischen den Paketen ermöglicht.
+
+*Effizienz:* Viele tidyverse-Funktionen sind im Vergleich zu *base*-R einheitlicher und damit auch leichter anzuwenden, wenn man sich innerhalb der Syntax gut auskennt.
+
+*Erweiterte Funktionalität:* Das tidyverse bietet moderne Werkzeuge, die in *base*-R fehlen oder umständlicher umzusetzen sind, wie z. B. das einfache Pivotieren von Tabellen, die Gruppierung von Daten oder das Erstellen aussagekräftiger Visualisierungen.
+
+*Community und Dokumentation:* Das tidyverse hat eine große Community, hervorragende Dokumentationen und Tutorials, die den Einstieg und die Weiterentwicklung erleichtern.
+
+**Kritische Punkte und Herausforderungen**
+
+*Häufige Änderungen:* Der tidyverse entwickelt sich kontinuierlich weiter, und Funktionen werden mitunter angepasst oder durch neue ersetzt. Dies kann dazu führen, dass älterer Code schnell veraltet und nachträglich angepasst werden muss. Viele Pakete enthalten daher einen [Lifecycle-Status](https://lifecycle.r-lib.org/articles/stages.html), der angibt, ob eine Funktion stabil ist oder zukünftig durch andere ersetzt wird.
+
+*Lernaufwand:* Wer an die Arbeitsweise von *base*-R gewöhnt ist, muss sich zunächst an die andere Syntax und Denkweise des tidyverse gewöhnen.
+
+*Performance in spezifischen Fällen:* Während der tidyverse in vielen Bereichen performant ist, kann es in sehr spezialisierten Anwendungsfällen oder bei extrem großen Datensätzen weniger effizient sein als optimierte Alternativen.
+
+*Abhängigkeiten:* Das tidyverse umfasst eine Vielzahl von Paketen, was die Abhängigkeiten und den Overhead im Vergleich zu reinem *base*-R erhöht.
+
+Insgesamt bietet das tidyverse eine kohärente, mächtige und weit verbreitete Ergänzung zu *base*-R.
+
+## `dplyr`: Grundlagen
+
+### Piping mit ` %>% `
+
+Der Pipe-Operator (`%>%`) ist ein zentrales Werkzeug im tidyverse und hilft dabei, Datenmanipulationen in einer klaren und lesbaren Weise zu verketten.
+Er ermöglicht es, mehrere Funktionen nacheinander auf einen Datensatz anzuwenden, ohne dabei den Datensatz-Objekt in jedem Funktionsaufruf explizit wiederholen zu müssen.
+Der Shortcut für ein schnelles Erstellen des Operators ist `Strg + Shift + M ` für Windows und `Cmd + Shift + M` für MacOS.
+
+Betrachten wir folgendes Beispiel, in dem wir Daten mit vier Funktionen manipulieren.
+Was die einzelnen Funktionen machen, werden wir uns später im Detail anschauen.
+
+```{r dplyr-pipe-1, exercise=FALSE, eval=FALSE}
+# Option 1
+# Zergliederung der Schritte und Speicherung der Zwischenschritte
+df <- select(df, X, sex, age, intelligence)
+df <- filter(df, age <= 40)
+df <- arrange(df, sex)
+df <- rename(df, subjects = X)
+```
+
+Die erste Optione ist zwar gut leserlich, aber sehr umständlich gecoded, da sie einige Wiederholungen enthält.
+So wird der einzelne Bearbeitungsschritt jedes Mal zwischen gespeichert und der Datensatz muss jedes Mal neu übergeben werden.
+
+```{r dplyr-pipe-2, exercise=FALSE, eval=FALSE}
+# Option 2
+# Verschachtelung der Funktionen ineinander
+df <- rename(
+  arrange(
+    filter(
+      select(df, X, sex, age, intelligence), 
+      age <= 40
+    ), 
+    sex
+  ), 
+  subjects = X
+)
+```
+Die zweite Option ist deutlich effizienter geschrieben, jedoch schwer zum Lesen und Debuggen.
+
+Der Pipe-Operator `%>%` hilft nun, genaus diese Verarbeitungs-Ketten besser darzustellen im Code.
+Anstatt den Datensatz in jeder Funktion explizit zu nennen, wird der Datensatz implizit an die nachfolgende Funktionen weitergegeben.
+So sieht der Code mit Pipe-Operator aus:
+
+```{r dplyr-pipe-3, exercise=FALSE, eval=FALSE}
+df %>% 
+  # der Originaldatensatz wird nun weitergeleitet an die select Funktion
+  select(id, sex, age, intelligence) %>%  
+  # der veränderte Datensatz wird weitergeleitet nach filter()
+  filter(age <= 40) %>%
+  arrange(sex) %>%
+  rename(subjects = id)
+```
+
+Die Funktionsweise bleibt gleich, aber der Code wird übersichtlicher und leichter lesbar.
+Die Pipe-Schreibweise verbindet die Übersichtlichkeit von Option 1 und die Effizienz von Option 2.
+
+**Vorteile des Pipe-Operators**
+
+1. *Lesbarkeit*: Der Code zeigt die Verarbeitungsschritte klar und in einer logischen Reihenfolge.
+2. *Weniger Wiederholungen*: Der Datensatz-Objekt muss nicht bei jeder Funktion neu referenziert werden.
+3. *Effizienz bei komplexen Prozessen*: Die Verkettung macht besonders bei vielen Verarbeitungsschritten Sinn.
+
+
+Hier ist ein Beispiel mit einem fiktiven Datensatz:
+
+```{r dplyr-pipe-4, exercise=TRUE, results = "hold", exercise.lines = 20}
+# Beispiel-Datensatz
+df <- data.frame(
+  id = 1:6,
+  x1 = rnorm(6),
+  x2 = rnorm(6),
+  x3 = rnorm(6),
+  sex = c("M", "F", "M", "F", "M", "F"),
+  age = c(25, 35, 45, 20, 30, 40),
+  intelligence = c(110, 120, 130, 115, 125, 135),
+  school_years = c(10, 7, 8, 12, 10, 8)
+)
+
+# Datenmanipulation mit Pipe-Operator
+df %>% 
+  select(id, sex, age, intelligence) %>% 
+  filter(age <= 40) %>% 
+  arrange(sex) %>% 
+  rename(subjects = id)
+```
+
+Der Pipe-Operator (`%>%`) ist ein mächtiges Werkzeug, das den Code übersichtlicher macht und oft näher am menschlichen Denken dran ist.
+Diese Art zu Programmieren ist so beliebt geworden, dass es inzwischen auch einen Pipe-Operator in *base*-R gibt, welcher so aussieht: `|>`.
+Die Operatoren sind sich in vielen Funktionalitäten ähnlich, wir werden innerhalb dieses Tutorials wegen der Einfachheit immer den `%>%` Operator verwenden.
+
+
+### `select()`
+
+### `filter()`
+
+### `arrange()`
+
+### `rename()`
+
+### `mutate()`
+
+### `summarize()`
+
+### `group_by()`
+
+## `dplyr`: Ausblick
+
+## `dplyr`: übergeordnete Übungen
+
+## `ggplot2`: Grundlagen
+
+### Piping mit `+`
+
+## `ggplot2`: Ausblick
+
+## `ggplot`: übergeordnete Übungen
 
