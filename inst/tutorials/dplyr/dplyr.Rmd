@@ -508,18 +508,67 @@ Zu den Paketen im tidyverse gehören:
 
 Insgesamt bietet das tidyverse eine kohärente, mächtige und weit verbreitete Ergänzung zu *base*-R.
 
-## `dplyr`: Grundlagen
+## `dplyr`-- Grundlagen
 
-### Piping mit ` %>% `
+### Kapitel
+<a href="#section-übersicht-über-die-wichtigsten-funktionen"> <i class="fa-solid fa-arrow-down"></i> Übersicht über die wichtigsten Funktionen </a><br>
+<a href="#section-beispieldatensatz"> <i class="fa-solid fa-arrow-down"></i> Beispieldatensatz </a><br>
+<a href="#section-piping-mit"> <i class="fa-solid fa-arrow-down"></i> Piping mit `%>%` </a><br>
+<a href="#section-select"> <i class="fa-solid fa-arrow-down"></i> `select()` </a><br>
+<a href="#section-filter"> <i class="fa-solid fa-arrow-down"></i> `filter()` </a><br>
+<a href="#section-arrange"> <i class="fa-solid fa-arrow-down"></i> `arrange()` </a><br>
+<a href="#section-rename"> <i class="fa-solid fa-arrow-down"></i> `rename()` </a><br>
+<a href="#section-mutate"> <i class="fa-solid fa-arrow-down"></i> `mutate()` </a><br>
+<a href="#section-summarize"> <i class="fa-solid fa-arrow-down"></i> `summarize()` </a><br>
+<a href="#section-group_by"> <i class="fa-solid fa-arrow-down"></i> `group_by()` </a><br>
 
-Der Pipe-Operator (`%>%`) ist ein zentrales Werkzeug im tidyverse und hilft dabei, Datenmanipulationen in einer klaren und lesbaren Weise zu verketten.
+### Übersicht über die wichtigsten Funktionen <a href="#section-dplyr-grundlagen"> <i class="fa-solid fa-arrow-up"></i></a>
+
+All diese Funktionen werden in diesem Kapitel näher erklärt:
+
+- `select()`: Auswahl von Spalten
+- `filter()`: Auswahl von Zeilen basierend auf Bedingungen
+- `arrange()`: Sortieren von Zeilen
+- `rename()`: Umbenennen von Spalten
+- `mutate()`: Hinzufügen oder Verändern von Spalten
+- `summarize()`: Aggregation von Daten, z. B. Berechnung von Mittelwerten
+- `group_by()`: Gruppieren von Daten für Aggregationen
+
+### Beispieldatensatz <a href="#section-dplyr-grundlagen"> <i class="fa-solid fa-arrow-up"></i></a>
+
+Der Datensatz `df` wird nachfolgend im Kapitel genutzt und ist in den jeweiligen R-Umgebungen hinterlegt.
+
+```{r setup-base-df, exercise=FALSE, eval=TRUE, echo=TRUE}
+df <- data.frame(
+  id = 1:6,
+  x_1 = rnorm(6),
+  x_2 = rnorm(6),
+  x_3 = rnorm(6),
+  x_4 = rnorm(6),
+  life1 = rnorm(6),
+  life2 = rnorm(6),
+  life3 = rnorm(6),
+  life4 = rnorm(6),
+  sex = c("M", "F", "M", "F", "M", "F"),
+  age = c(25, 35, 45, 20, 30, 40),
+  intelligence = c(110, 120, 130, 115, 125, 135),
+  school_years = c(10, 7, 8, 12, 10, 8)
+)
+```
+```{r, ref.label=I('setup-base-df'), eval=FALSE, echo=TRUE, exercise.eval=FALSE, exercise.lines = 13}
+
+```
+
+### Piping mit `%>%` <a href="#section-dplyr-grundlagen"> <i class="fa-solid fa-arrow-up"></i></a>
+
+Der Pipe-Operator (`%>%`) ist ein zentrales Werkzeug im *tidyverse* und hilft dabei, Datenmanipulationen in einer klaren und lesbaren Weise zu verketten.
 Er ermöglicht es, mehrere Funktionen nacheinander auf einen Datensatz anzuwenden, ohne dabei den Datensatz-Objekt in jedem Funktionsaufruf explizit wiederholen zu müssen.
 Der Shortcut für ein schnelles Erstellen des Operators ist `Strg + Shift + M ` für Windows und `Cmd + Shift + M` für MacOS.
 
 Betrachten wir folgendes Beispiel, in dem wir Daten mit vier Funktionen manipulieren.
 Was die einzelnen Funktionen machen, werden wir uns später im Detail anschauen.
 
-```{r dplyr-pipe-1, exercise=FALSE, eval=FALSE}
+```{r dplyr-pipe-1, exercise.setup = "setup-base-df", exercise=FALSE, eval=FALSE}
 # Option 1
 # Zergliederung der Schritte und Speicherung der Zwischenschritte
 df <- select(df, X, sex, age, intelligence)
@@ -531,7 +580,7 @@ df <- rename(df, subjects = X)
 Die erste Optione ist zwar gut leserlich, aber sehr umständlich gecoded, da sie einige Wiederholungen enthält.
 So wird der einzelne Bearbeitungsschritt jedes Mal zwischen gespeichert und der Datensatz muss jedes Mal neu übergeben werden.
 
-```{r dplyr-pipe-2, exercise=FALSE, eval=FALSE}
+```{r dplyr-pipe-2, exercise.setup = "setup-base-df", exercise=FALSE, eval=FALSE}
 # Option 2
 # Verschachtelung der Funktionen ineinander
 df <- rename(
@@ -551,7 +600,7 @@ Der Pipe-Operator `%>%` hilft nun, genaus diese Verarbeitungs-Ketten besser darz
 Anstatt den Datensatz in jeder Funktion explizit zu nennen, wird der Datensatz implizit an die nachfolgende Funktionen weitergegeben.
 So sieht der Code mit Pipe-Operator aus:
 
-```{r dplyr-pipe-3, exercise=FALSE, eval=FALSE}
+```{r dplyr-pipe-3, exercise.setup = "setup-base-df", exercise=FALSE, eval=FALSE}
 df %>% 
   # der Originaldatensatz wird nun weitergeleitet an die select Funktion
   select(id, sex, age, intelligence) %>%  
@@ -573,19 +622,7 @@ Die Pipe-Schreibweise verbindet die Übersichtlichkeit von Option 1 und die Effi
 
 Hier ist ein Beispiel mit einem fiktiven Datensatz:
 
-```{r dplyr-pipe-4, exercise=TRUE, results = "hold", exercise.lines = 20}
-# Beispiel-Datensatz
-df <- data.frame(
-  id = 1:6,
-  x1 = rnorm(6),
-  x2 = rnorm(6),
-  x3 = rnorm(6),
-  sex = c("M", "F", "M", "F", "M", "F"),
-  age = c(25, 35, 45, 20, 30, 40),
-  intelligence = c(110, 120, 130, 115, 125, 135),
-  school_years = c(10, 7, 8, 12, 10, 8)
-)
-
+```{r dplyr-pipe-4, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.lines = 7}
 # Datenmanipulation mit Pipe-Operator
 df %>% 
   select(id, sex, age, intelligence) %>% 
@@ -599,29 +636,136 @@ Diese Art zu Programmieren ist so beliebt geworden, dass es inzwischen auch eine
 Die Operatoren sind sich in vielen Funktionalitäten ähnlich, wir werden innerhalb dieses Tutorials wegen der Einfachheit immer den `%>%` Operator verwenden.
 
 
-### `select()`
+### `select()` <a href="#section-dplyr-grundlagen"> <i class="fa-solid fa-arrow-up"></i></a>
 
-### `filter()`
+Mit der Funktion `select()` können spezifische Spalten eines Dataframes ausgewählt werden.
+Die Funktionen bietet viele Möglichkeiten, die Spalten-Auswahl zu gestalten.
 
-### `arrange()`
+Die wichtigsten Funktionen und Operatoren sind:
 
-### `rename()`
+-   `:` um einen Bereich von Spalten auszuwählen
+-   `!` um Spalten auszuschließen
+-   `&` (*und*) sowie `|` (*oder*) um Bedingungen zu kombinieren
+-   `starts_with("")` um Spalten auszuwählen, die mit einem bestimmten Präfix beginnen
+-   `ends_with("")` um Spalten auszuwählen, die mit einem bestimmten Suffix enden
+-   `contains("")` um Spalten auszuwählen, die einen bestimmten Text enthalten
+-   `everything()` um alle Spalten auszuwählen (z. B. nach vorheriger Modifikation der Reihenfolge)
+-   `num_range("prefix", range)` um nummerierte Spalten auszuwählen, z. B. `x1`, `x2`, ...
+-   `matches("")` um Spalten basierend auf regulären Ausdrücken ["Regex"](https://r4ds.hadley.nz/regexps) auszuwählen
 
-### `mutate()`
 
-### `summarize()`
+**Spalten auflisten**
 
-### `group_by()`
+Das Komma `,` wir verwendet, um alle gewünschten Spaltennamen aufzulisten.
+```{r select-0, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold"}
+df %>% 
+  select(sex, age, intelligence)
+```
 
-## `dplyr`: Ausblick
+**Spaltenbereich auswählen**
 
-## `dplyr`: übergeordnete Übungen
+Der Doppelpunkt `:` wird verwendet, um eine Spaltensequenz auszuwählen.
+Es bedeutet: "Wähle alle Spalten zwischen (einschließlich) `sex` und `intelligence`".
+Die Reihenfolge basiert auf der tatsächlichen Anordnung der Spalten im Datensatz `df`.
+```{r select-1, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold"}
+df %>% 
+  select(sex:intelligence)
+```
 
-## `ggplot2`: Grundlagen
+**Spalten ausschließen**
+
+Negiere die ausgewählten Spalten mit `!`.
+Es werden alle Spalten ausgewählt, außer den negierten Spalten.
+```{r select-2, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold"}
+df %>% 
+  select(!sex:intelligence)
+```
+
+**Spalten auswählen, welche einen bestimmten character String enthalten**
+
+Der gesuchte String kann Text, aber auch Zahlen oder Symbole enthalten.
+
+```{r select-4, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold"}
+df %>% 
+  select(contains("_"))
+```
+
+**Spalten auswählen, welche mit einem bestimmten character String beginnen**
+```{r select-5, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold"}
+df %>% 
+  select(starts_with("life"))
+```
+
+**Alles oder den übrigen Rest auswählen**
+
+```{r select-6, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold"}
+# Wähle age an erster Stelle und füge dann den Rest aller Spalten dazu
+df %>% 
+  select(age, everything())
+```
+
+**Nummerierte Spalten auswählen**
+
+Es gibt oft Spaltennamen, welche dem Muster folgen [Textname + aufsteigende Zahl].
+Solch ein Muster kann auch leicht ausgewählt werden mit `num_range`.
+
+```{r select-7, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold"}
+df %>% 
+  select(num_range("x", 1:3))
+```
+
+**Komplexe Mustererkennung**
+
+Es können auch nach sehr komplexen Mustern Spaltennamen ausgewählt werden.
+Dafür werden jedoch reguläre Ausdrücke, sogenannte *Regex* verwendet, was eine eigene Sprache darstellt.
+Weitere Informationen dazu gibt es [hier](https://r4ds.hadley.nz/regexps).
+
+Eine kleine Übersicht über wichtige *Regex*-Symbole:
+
+| Symbol | Beschreibung                                | Beispiel                          |
+|--------|--------------------------------------------|-----------------------------------|
+| `.`    | Beliebiges Zeichen (außer Zeilenumbruch)   | `a.c` erkennt `abc`, `a1c`, etc. |
+| `^`    | Start des Textes oder einer Zeile          | `^Hello` erkennt `Hello world`.  |
+| `$`    | Ende des Textes oder einer Zeile           | `world$` erkennt `Hello world`.  |
+| `*`    | Null oder mehr Wiederholungen              | `ab*` erkennt `a`, `ab`, `abb`.  |
+| `+`    | Eine oder mehr Wiederholungen              | `ab+` erkennt `ab`, `abb`, etc.  |
+| `?`    | Null oder eine Wiederholung                | `ab?` erkennt `a`, `ab`.         |
+| `{n}`  | Genau n Wiederholungen                     | `a{3}` erkennt `aaa`.            |
+| `{n,}` | Mindestens n Wiederholungen                | `a{2,}` erkennt `aa`, `aaa`, ... |
+| `{n,m}`| Zwischen n und m Wiederholungen            | `a{2,4}` erkennt `aa`, `aaa`.    |
+
+```{r select-8, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold"}
+# suche nach Spaltennamen, welche das _ Symbol im Namen enthalten
+df %>% 
+  select(matches(".*_.* "))
+```
+
+### `filter()` <a href="#section-dplyr-grundlagen"> <i class="fa-solid fa-arrow-up"></i></a>
+
+### `arrange()` <a href="#section-dplyr-grundlagen"> <i class="fa-solid fa-arrow-up"></i></a>
+
+### `rename()` <a href="#section-dplyr-grundlagen"> <i class="fa-solid fa-arrow-up"></i></a>
+
+### `mutate()` <a href="#section-dplyr-grundlagen"> <i class="fa-solid fa-arrow-up"></i></a>
+
+### `summarize()` <a href="#section-dplyr-grundlagen"> <i class="fa-solid fa-arrow-up"></i></a>
+
+### `group_by()` <a href="#section-dplyr-grundlagen"> <i class="fa-solid fa-arrow-up"></i></a>
+
+## `dplyr`-- Ausblick
+
+- `join`-Funktionen (z. B. `inner_join()`, `left_join()`, `right_join()`, `full_join()`, `semi_join()`, `anti_join()`): Verbinden von Tabellen
+- `bind_rows()` und `bind_cols()`: Zeilen oder Spalten zusammenfügen
+- `pivot_longer()`: Umwandeln von breiten in lange Datensätze
+- `pivot_wider()`: Umwandeln von langen in breite Datensätze
+
+## `dplyr`-- Übungen
+
+## `ggplot2`-- Grundlagen
 
 ### Piping mit `+`
 
-## `ggplot2`: Ausblick
+## `ggplot2`-- Ausblick
 
-## `ggplot`: übergeordnete Übungen
+## `ggplot`-- Übungen
 
