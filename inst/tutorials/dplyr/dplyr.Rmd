@@ -541,6 +541,10 @@ Der Datensatz `df` wird nachfolgend im Kapitel genutzt und ist in den jeweiligen
 ```{r setup-base-df, exercise=FALSE, eval=TRUE, echo=TRUE}
 df <- data.frame(
   id = 1:6,
+  sex = c("M", "F", "M", "F", "M", "F"),
+  age = c(25, 35, 45, 20, 30, 40),
+  intelligence = c(110, 120, 130, 115, 125, 135),
+  school_years = c(10, 7, 8, 12, 10, 8),
   x_1 = rnorm(6),
   x_2 = rnorm(6),
   x_3 = rnorm(6),
@@ -549,10 +553,6 @@ df <- data.frame(
   life2 = rnorm(6),
   life3 = rnorm(6),
   life4 = rnorm(6),
-  sex = c("M", "F", "M", "F", "M", "F"),
-  age = c(25, 35, 45, 20, 30, 40),
-  intelligence = c(110, 120, 130, 115, 125, 135),
-  school_years = c(10, 7, 8, 12, 10, 8)
 )
 ```
 ```{r, ref.label=I('setup-base-df'), eval=FALSE, echo=TRUE, exercise.eval=FALSE, exercise.lines = 13}
@@ -735,18 +735,125 @@ Eine kleine Übersicht über wichtige *Regex*-Symbole:
 | `{n,m}`| Zwischen n und m Wiederholungen            | `a{2,4}` erkennt `aa`, `aaa`.    |
 
 ```{r select-8, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold"}
-# suche nach Spaltennamen, welche das _ Symbol im Namen enthalten
+# suche nach Spaltennamen, welche das _ Symbol
+# im Namen enthalten
 df %>% 
   select(matches(".*_.* "))
 ```
 
 ### `filter()` <a href="#section-dplyr-grundlagen"> <i class="fa-solid fa-arrow-up"></i></a>
 
+Mit `filter()` kannst du Zeilen basierend auf einer oder mehreren Bedingungen auswählen.
+Diese Bedingungen können mit:
+
+  - Vergleichsoperatoren (`==`, `!=`, `<`, `>`, `<=`, `>=`) definiert werden,
+  
+  - Logischen Operatoren (`& `für "und", `|` für "oder"), und
+  
+  - Zeichenfolgen in Anführungszeichen für Textwerte.
+  
+  
+**Beispiele mit logischen Operatoren**  
+```{r filter-1, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold"}
+# Wähle Zeilen aus, in denen die Variable sex
+# den Inhalt F enthält
+df %>% 
+  filter(sex == "F")
+```
+
+**Mehrere Bedingungen**
+```{r filter-2, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold"}
+# Das Geschlecht muss weiblich sein und das
+# Alter muss über 40 Jahre sein
+df %>% 
+  filter(sex == "F" & age < 40)
+```
+
 ### `arrange()` <a href="#section-dplyr-grundlagen"> <i class="fa-solid fa-arrow-up"></i></a>
+
+Die Funktion `arrange()` verändert die Zeilen eines Datensatzes basierend auf einer oder mehreren Variablen.
+Standardmäßig erfolgt die Sortierung aufsteigend, aber mit der Funktion `desc()` kann auch absteigend sortiert werden.
+
+```{r arrange-1, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold"}
+# Die Zeilen werden zuerst sotiert nach dem
+# Geschlecht und danach nach dem Alter
+df %>% 
+  arrange(sex, age)
+```
+
+```{r arrange-2, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold"}
+# Das Alter wird nun aufsteigend sortiert
+df %>% 
+  arrange(desc(age))
+```
 
 ### `rename()` <a href="#section-dplyr-grundlagen"> <i class="fa-solid fa-arrow-up"></i></a>
 
+Die `rename()`-Funktion hilft dabei Spalten eines Datensatzes umzubenennen.
+Sie unterstützt sowohl die Umbenennung einzelner Spalten als auch mehrere Umbenennungen auf einmal.
+
+Die Syntaxlogik ist: `rename(neuer_name = alter_name)`
+
+```{r rename-1, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold"}
+df %>% 
+  rename(person_id = id,
+         experience_1 = x1)
+```
+
+
 ### `mutate()` <a href="#section-dplyr-grundlagen"> <i class="fa-solid fa-arrow-up"></i></a>
+
+Die Funktion wird verwendet, um neue Spalten zu erstellen oder bestehende Spalten in einem Datensatz zu überschreiben.
+Sie ist vielseitig einsetzbar und erlaubt mathematische Berechnungen, logische Operationen sowie die Anwendung von Funktionen auf Spalten.
+
+Besonderheiten von `mutate()`:
+
+  - *Existierende Spalten überschreiben* : Wenn die Spalte bereits existiert, wird sie mit den neuen Werten überschrieben.
+
+  - *Neue Spalten erstellen* : Wenn die Spalte noch nicht existiert, wird sie neu erstellt.
+
+  - *Mathematische Operationen* : Du kannst einfache mathematische Berechnungen wie Addition `+`, Subtraktion `-`, Multiplikation `*` und Division `/` verwenden.
+
+  - *Vektorisierung* : Die Operationen werden auf jede Zeile des Datensatzes angewendet.
+
+  - *Funktionen verwenden* : Du kannst R-Funktionen wie `mean()`, `if_else()`, `n()` und benutzerdefinierte Funktionen verwenden.
+  
+**Neue Spalte erstellen**
+
+```{r mutate-1, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold"}
+# Erstellt eine neue Spalte age_months,
+# die das Alter in Monaten darstellt
+df %>% 
+  mutate(age_months = age * 12)
+```
+
+**Mehrere Spalten gleichzeitig erstellen oder berechnen**
+
+```{r mutate-2, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold"}
+# Berechnet den Unterschied des Alters und des
+# IQ im Vergleich zum Mittelwert:
+df %>% 
+  mutate(age_diff = age - mean(age),
+         iq_diff = intelligence - mean(intelligence))
+```
+
+**Spalte mit logischer Bedingung erstellen**
+
+Erstellt eine Spalte `age_general`, die Menschen in die Kategorien "jung" (≤ 37 Jahre) und "alt" (> 37 Jahre) einteilt:
+```{r mutate-3, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold"}
+df %>% 
+  mutate(age_general = if_else(age <= 37, "young", "old"))
+```
+
+**Existierende Spalte überschreiben**
+
+Achtung: wenn ein Spaltenname gewählt wird, der bereits im Datensatz existiert, wird der bestehende Inhalt überschrieben. 
+
+```{r mutate-4, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold"}
+# das Einkommen wird um 10% erhöht
+df %>% 
+  mutate(income = income * 1.10)
+```
 
 ### `summarize()` <a href="#section-dplyr-grundlagen"> <i class="fa-solid fa-arrow-up"></i></a>
 
