@@ -508,7 +508,7 @@ Zu den Paketen im tidyverse gehören:
 
 Insgesamt bietet das tidyverse eine kohärente, mächtige und weit verbreitete Ergänzung zu *base*-R.
 
-## `dplyr`-- Grundlagen
+## dplyr-- Grundlagen
 
 ### Kapitel
 <a href="#section-übersicht-über-die-wichtigsten-funktionen"> <i class="fa-solid fa-arrow-down"></i> Übersicht über die wichtigsten Funktionen </a><br>
@@ -552,10 +552,10 @@ df <- data.frame(
   life1 = rnorm(6),
   life2 = rnorm(6),
   life3 = rnorm(6),
-  life4 = rnorm(6),
+  life4 = rnorm(6)
 )
 ```
-```{r, ref.label=I('setup-base-df'), eval=FALSE, echo=TRUE, exercise.eval=FALSE, exercise.lines = 13}
+```{r, ref.label=I('setup-base-df'), eval=TRUE, echo=TRUE, exercise.eval=FALSE, exercise.lines = 14}
 
 ```
 
@@ -636,7 +636,7 @@ Diese Art zu Programmieren ist so beliebt geworden, dass es inzwischen auch eine
 Die Operatoren sind sich in vielen Funktionalitäten ähnlich, wir werden innerhalb dieses Tutorials wegen der Einfachheit immer den `%>%` Operator verwenden.
 
 
-### `select()` <a href="#section-dplyr-grundlagen"> <i class="fa-solid fa-arrow-up"></i></a>
+### select() <a href="#section-dplyr-grundlagen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Mit der Funktion `select()` können spezifische Spalten eines Dataframes ausgewählt werden.
 Die Funktionen bietet viele Möglichkeiten, die Spalten-Auswahl zu gestalten.
@@ -741,7 +741,7 @@ df %>%
   select(matches(".*_.* "))
 ```
 
-### `filter()` <a href="#section-dplyr-grundlagen"> <i class="fa-solid fa-arrow-up"></i></a>
+### filter() <a href="#section-dplyr-grundlagen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Mit `filter()` kannst du Zeilen basierend auf einer oder mehreren Bedingungen auswählen.
 Diese Bedingungen können mit:
@@ -769,7 +769,7 @@ df %>%
   filter(sex == "F" & age < 40)
 ```
 
-### `arrange()` <a href="#section-dplyr-grundlagen"> <i class="fa-solid fa-arrow-up"></i></a>
+### arrange() <a href="#section-dplyr-grundlagen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Die Funktion `arrange()` verändert die Zeilen eines Datensatzes basierend auf einer oder mehreren Variablen.
 Standardmäßig erfolgt die Sortierung aufsteigend, aber mit der Funktion `desc()` kann auch absteigend sortiert werden.
@@ -787,7 +787,7 @@ df %>%
   arrange(desc(age))
 ```
 
-### `rename()` <a href="#section-dplyr-grundlagen"> <i class="fa-solid fa-arrow-up"></i></a>
+### rename() <a href="#section-dplyr-grundlagen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Die `rename()`-Funktion hilft dabei Spalten eines Datensatzes umzubenennen.
 Sie unterstützt sowohl die Umbenennung einzelner Spalten als auch mehrere Umbenennungen auf einmal.
@@ -801,7 +801,7 @@ df %>%
 ```
 
 
-### `mutate()` <a href="#section-dplyr-grundlagen"> <i class="fa-solid fa-arrow-up"></i></a>
+### mutate() <a href="#section-dplyr-grundlagen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Die Funktion wird verwendet, um neue Spalten zu erstellen oder bestehende Spalten in einem Datensatz zu überschreiben.
 Sie ist vielseitig einsetzbar und erlaubt mathematische Berechnungen, logische Operationen sowie die Anwendung von Funktionen auf Spalten.
@@ -855,24 +855,307 @@ df %>%
   mutate(income = income * 1.10)
 ```
 
-### `summarize()` <a href="#section-dplyr-grundlagen"> <i class="fa-solid fa-arrow-up"></i></a>
+### summarize() <a href="#section-dplyr-grundlagen"> <i class="fa-solid fa-arrow-up"></i></a>
 
-### `group_by()` <a href="#section-dplyr-grundlagen"> <i class="fa-solid fa-arrow-up"></i></a>
+Die Funktion `summarize()` (auch `summarise()`geschrieben) ermöglicht es, Datensätze durch Aggregation von Werten zu kondensieren.
+Dabei werden neue Spalten erstellt, die zusammenfassende Statistiken (wie `mean()`, `sum()`, `max()`, etc.) enthalten.
+Das Ergebnis ist ein neuer Datensatz mit weniger Zeilen als der Originaldatensatz.
 
-## `dplyr`-- Ausblick
+Die Syntaxlogik ist: `summarize(neue_spalte = Funktion(spaltenname))`
 
-- `join`-Funktionen (z. B. `inner_join()`, `left_join()`, `right_join()`, `full_join()`, `semi_join()`, `anti_join()`): Verbinden von Tabellen
-- `bind_rows()` und `bind_cols()`: Zeilen oder Spalten zusammenfügen
+```{r summarize-1, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold"}
+df %>%
+  summarize(
+    total_age = sum(age),
+    average_age = mean(age),
+    max_age = max(age)
+  )
+```
+
+In diesem Beispiel:
+
+  - Berechnet `total_age` die Summe der Werte in der Spalte "age."
+
+  - Ermittelt `average_age` den Durchschnittswert der Spalte "age."
+
+  - Findet `max_age` den höchsten Wert in der Spalte "age."
+
+Jede neue Spalte im Ergebnis enthält den Output der entsprechenden Funktion.
+Da alle Werte zu einer einzigen Zusammenfassung aggregiert werden, reduziert sich die Anzahl der Zeilen deutlich.
+
+
+
+### group_by() <a href="#section-dplyr-grundlagen"> <i class="fa-solid fa-arrow-up"></i></a>
+
+Mit der Funktion `group_by()` kannst du deinen Datensatz in verschiedene Gruppen aufteilen, um dann für jede Gruppe getrennte Operationen auszuführen.
+Dies ist besonders nützlich, wenn du gruppenspezifische Statistiken oder Filter anwenden möchtest.
+Zum Beenden einer Gruppierung innerhalb einer Pipe kannst du `ungroup()` verwenden.
+
+Die Syntaxlogik ist: `group_by(gruppe1)` oder auch `group_by(gruppe1, gruppe2)` 
+
+**Kurze Übersicht:**
+
+  - `group_by()`: Teilt den Datensatz in Gruppen auf.
+  
+  - `ungroup()`: Hebt die Gruppierung wieder auf, sodass nachfolgende Operationen wieder auf den gesamten Datensatz angewendet werden.
+
+Diese Funktionen lassen sich hervorragend mit folgenden Funktionen kombinieren:
+
+  - `summarize()`: Erzeugt zusammenfassende Statistiken für jede Gruppe.
+  
+  - `filter()`: Filtert Zeilen innerhalb jeder Gruppe basierend auf gruppenspezifischen Bedingungen.
+  
+  - `mutate()`: Fügt gruppenbezogene Berechnungen als neue Spalten hinzu.
+
+**Beispiel 1: Zusammenfassen nach Geschlecht**
+
+Im folgenden Beispiel werden Daten nach der Variable "sex" gruppiert und für jede Gruppe werden der Gesamtwert, der Durchschnitt und der Maximalwert des Alters berechnet:
+
+```{r group-1, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold"}
+df_grouped %>%
+  group_by(sex) %>%
+  summarize(
+    total_age = sum(age),
+    average_age = mean(age),
+    max_age = max(age)
+  )
+```
+
+In diesem Fall wird für jede Geschlecht eine eigene Zusammenfassung erstellt.
+
+**Beispiel 2: Filter() und mutate() in Gruppen**
+
+In diesem Beispiel wird der Datensatz nach "sex" gruppiert, dann werden nur Zeilen beibehalten, bei denen das Alter über dem jeweiligen Gruppenmittelwert liegt.
+Anschließend wird eine neue Spalte "age_diff" erstellt, die den Unterschied zwischen dem individuellen Alter und dem Gruppenmittelwert angibt:
+
+```{r group-2, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold"}
+df_grouped %>%
+  group_by(sex) %>%
+  filter(age > mean(age)) %>%
+  mutate(age_diff = age - mean(age)) %>%
+  ungroup()
+```
+
+In diesem Beispiel:
+
+ - `group_by(sex)`: Teilt den Datensatz in Gruppen basierend auf dem Geschlecht.
+ 
+  - `filter(age > mean(age))`: Behalte nur die Zeilen, in denen das Alter größer als der Durchschnitt der jeweiligen Gruppe (hier das Geschlecht) ist.
+  
+  - `mutate(age_diff = age - mean(age))`: Fügt eine neue Spalte hinzu, die die Differenz zwischen dem individuellen Alter und dem Gruppenmittelwert berechnet.
+  
+  - `ungroup()`: Hebt die Gruppierung auf, damit nachfolgende Operationen wieder auf den gesamten Datensatz angewendet werden können.
+
+## dplyr -- Daten zusammenführen
+
+Wir stellen hier zwei fundamental verschiedene Varianten vor Daten zusammenzuführen.
+
+Die `join`-Funktionen sind dazu geeignet Datensätze anhand von verknüpften IDs miteinander zu verbinden.
+`bin_col` ermöglicht es auch Spalten zusammen zu "kleben" - hier findet jedoch keine Zuordnung oder logische Prüfung der Zeilen statt.
+Dies ist ein feiner aber sehr relevanter Unterschied!
+
+### join Funktionen <a href="#section-dplyr-Fortgeschritten"> <i class="fa-solid fa-arrow-up"></i></a>
+
+In vielen Datenanalysen hast du es mit mehreren Datensätzen zu tun, die zusammengehören, aber unterschiedliche Informationen enthalten.
+In unserem Beispiel gibt es zwei Tabellen:
+
+  - **students**: Enthält alle immatrikulierten Studenten, ihren Namen und die Anzahl der bereits absolvierten Semester.
+
+  - **enrollments**: Enthält die Kursanmeldungen. Hierzu gehören neben der Kurs-ID und dem Kursnamen auch die Studenten ID und der Name, wie er in der Anmeldung erscheint.
+
+Dabei kann es vorkommen, dass:
+
+  - Ein Student in beiden Tabellen vorkommt (z. B. Max oder Sophie).
+  
+  - Ein Student nur in "students" vorhanden ist (z. B. Lukas oder Mia, falls keine Anmeldung erfolgt).
+  
+  - Anmeldungen von Studenten existieren, die nicht im aktuellen "students"-Datensatz aufgeführt sind (z. B. student_id 5).
+  
+Mit den `join`-Funktionen in `dplyr` kann man die Informationen der Datensätze zusammenführen.
+
+Hier ist eine grafische Übersicht über die einzelnen Funktionen und was sie bedeuten:
+
+![Zeigt in Venndiagrammen die Teilmengen der join Funktionen.](images/join_cc.png){.absolute .images-shadow  width="35%"}
+
+```{r setup-join-df, exercise=FALSE, eval=TRUE, echo=FALSE}
+# Datensatz: immatrikulierte Studenten
+students <- data.frame(
+  student_id = c(1, 2, 3, 4),
+  name = c("Max, S.", "Sophie, K.", "Lukas, L.", "Mia, N."),
+  semester = c(3, 5, 2, 7)
+)
+
+# Datensatz: Kursanmeldungen
+enrollments <- data.frame(
+  student_id = c(1, 2, 2, 5),
+  course_id = c("MAT101", "PHY102", "CHE103", "BIO104"),
+  course_name = c("Mathematik", "Physik", "Chemie", "Biologie"),
+  name = c("Max", "Sophie", "Unbekannt", "Beatrice")
+)
+
+```
+```{r, ref.label=I('setup-join-df'), eval=TRUE, echo=TRUE, exercise.eval=FALSE, exercise.lines = 16}
+```
+
+**Datensatz "students"**
+
+```{r joyn-01, exercise.setup = "setup-join-df", exercise=FALSE, results ='hold', eval=TRUE, echo=FALSE}
+students
+```
+
+**Datensatz "enrollments"**
+
+```{r joyn-02, exercise.setup = "setup-join-df", exercise=FALSE, results = "hold", eval=TRUE, echo=FALSE}
+enrollments
+```
+
+**Anmerkung:** In diesem Beispiel ist nur die Studierenden-ID eine eindeutige und fehlerfreie Art, die Personen (Zeilen) eindeutig zuzuordnen.
+Der Datensatz "enrollments" enthält z.T. unvollständige Angaben zum Namen, deswegen wird nur die Studierenden-ID verwendet.
+
+**full_join()**
+
+Mit `full_join()` werden beide Datensätze anhand des gemeinsamen ID vollständig `student_id` kombiniert, ohne eine Person (oder Zeile) zu verlieren.
+Es handelt sich somit um Studierende, welche entweder offiziell als immatrikuliert gelistet sind und/oder sich aktuell zu Prüfungen angemeldet haben (es handelt sich um eine logische **ODER** Verknüpfung).
+
+```{r joyn-0, exercise.setup = "setup-join-df", exercise=TRUE, results = "hold"}
+full_join(students, enrollments,
+           # mit welcher ID werden die Daten zugeordnet
+           by = "student_id",
+           # wie werden doppelte Spaltennamen benannt
+           suffix = c("_stud", "_enroll"))
+```
+
+Die Informationen werden sofern möglich zusammengeführt, wenn Werte fehlen werden `NA` Werte vergeben.
+
+
+**inner_join()**
+
+Mit `inner_join()` werden beide Datensätze anhand des gemeinsamen ID `student_id` kombiniert.
+Es werden nur die Zeilen (Studierende) zurückgegeben, bei denen die ID in beiden Datensätzen vorhanden ist.
+Es handelt sich somit um Studierende, welche offiziell als immatrikuliert gelistet sind und sich aktuell zu Prüfungen angemeldet haben (es handelt sich um eine logische **UND** Verknüpfung).
+
+```{r joyn-3, exercise.setup = "setup-join-df", exercise=TRUE, results = "hold"}
+inner_join(students, enrollments,
+           # mit welcher ID werden die Daten zugeordnet
+           by = "student_id",
+           # wie werden doppelte Spaltennamen benannt
+           suffix = c("_stud", "_enroll"))
+```
+
+Die ID 2 (Sophie) wird zwei Mal angezeigt, da sie sich zu zwei Klausuren angemeldet hat.
+
+
+**left_join()**
+
+`left_join()` liefert alle Zeilen aus dem linken Datensatz (hier: "students") und ergänzt, falls vorhanden, die zugehörigen Informationen aus dem rechten Datensatz (hier:"enrollments").
+Falls ein Student keine Kursanmeldung hat (keinen Eintrag in "enrollments" existiert), erscheinen in den entsprechenden Spalten `NA`.
+
+```{r joyn-4, exercise.setup = "setup-join-df", exercise=TRUE, results = "hold"}
+right_join(students, enrollments, by = "student_id", suffix = c("_stud", "_enroll"))
+```
+
+Alle immatrikulierten Studenten werden angezeigt mit der Information der angemeldeten Klausuren.
+Da Lukas und Mia keine Anmeldung in "enrollments" haben, werden die fehlenden Informationen durch `NA` definiert.
+Studenten, die in mehreren Kursen angemeldet sind (wie Sophie), erscheinen mehrfach.
+Beatrice wird nicht angezeigt, da sie nicht offiziell immatrikuliert ist.
+
+**semi_join()**
+
+Diese Funktionen behält alle Zeilen (Personen) des ersten Datensatzes ("students"), welche sich auch im zweiten Datensatz befinden ("enrollments") und es fügt zusätzliche Spalten des zweiten Datensatzes **nicht** hinzu.
+
+
+Vorteile von `semi_join()`
+
+  - *Datenfilterung*: Du erhältst einen klaren Überblick darüber, welche Einträge in beiden Datensätzen vorhanden sind, ohne die Daten durch zusätzliche Spalten zu erweitern.
+  
+  - *Einfachheit*: Da keine zusätzlichen Informationen aus dem rechten Datensatz übernommen werden, bleibt die Struktur des linken Datensatzes erhalten.
+    
+  - *Effizienz*: Perfekt geeignet, wenn du nur prüfen möchtest, ob ein Eintrag in einem zweiten Datensatz vorhanden ist.
+
+
+```{r joyn-4-1, exercise.setup = "setup-join-df", exercise=TRUE, results = "hold"}
+semi_join(students, enrollments, by = "student_id")
+```
+
+Es werden alle immatrikulierten Studierenden angezeigt, welche sich auch zu einem Kurs angemeldet haben.
+Die Informationen des Kurses werden nicht zusätzlich mit angezeigt.
+
+
+**anti_join()**
+
+Gibt die Zeilen aus dem "enrollments"-Datensatz zurück, für die **kein** passender Eintrag im "students"-Datensatz gefunden wird.
+
+```{r joyn-5, exercise.setup = "setup-join-df", exercise=TRUE, results = "hold"}
+anti_join(enrollments, students, by = "student_id", suffix = c("_stud", "_enroll"))
+```
+
+Hier handelt es sich um alle Personen (Zeilen), die sich zu einer Klausur angemeldet haben, obwohl sie nicht offiziell immatrikuliert sind.
+
+
+### bind Funktionen
+
+**Zeilen zusammenfügen mit bind_rows()**
+
+Mit *bind_rows()* kannst du mehrere Datensätze vertikal (also zeilenweise) zusammenführen.
+Dies ist nützlich, wenn du beispielsweise Daten aus verschiedenen Quellen hast, die dieselbe Struktur haben (ähnliche oder identische Spalten) beinhalten, und diese in einen einzigen Datensatz integrieren möchtest.
+
+```{r bind-1, exercise.setup = "setup-join-df", exercise=TRUE, results = "hold"}
+df1 <- data.frame(
+  id = c(1, 2),
+  name = c("Alice", "Bob"),
+  hobby = c( "sport", "baking")
+)
+
+df2 <- data.frame(
+  id = c(3, 4),
+  name = c("Claudia", "Dieter"),
+  allergy = c(TRUE, FALSE)
+)
+
+# Zusammenführen der Zeilen
+bind_rows(df1, df2)
+```
+
+Alle Zeilen aus df1 und df2 werden untereinander angeordnet.
+Alle Spalten werden übernommen.
+Fehlende Werte werden mit `NA` aufgefüllt.
+
+
+**Spalten zusammenfügen mit bind_cols()**
+
+Mit `bind_cols()` kannst du Data Frames spaltenweise (also horizontal) zusammenführen.
+Dabei werden die Datensätze nebeneinander angeordnet.
+Wichtig ist, dass die Datensätze dieselbe Anzahl an Zeilen haben, da sonst die Zusammenführung nicht eindeutig erfolgt.
+Im besten Fall gibt es auch keine Überlappung der Spaltennamen.
+
+
+```{r bind-2, exercise.setup = "setup-join-df", exercise=TRUE, results = "hold"}
+df1 <- data.frame(
+  id = c(3, 4),
+  name = c("Claudia", "Dieter")
+)
+
+df2 <- data.frame(
+  hobby = c( "sport", "baking"),
+    allergy = c(TRUE, FALSE)
+)
+
+# Zusammenführen der Zeilen
+bind_cols(df1, df2)
+```
+
+
+
 - `pivot_longer()`: Umwandeln von breiten in lange Datensätze
 - `pivot_wider()`: Umwandeln von langen in breite Datensätze
 
-## `dplyr`-- Übungen
+## dplyr -- Übungen
 
-## `ggplot2`-- Grundlagen
+## ggplot2 -- Grundlagen
 
 ### Piping mit `+`
 
-## `ggplot2`-- Ausblick
+## ggplot2 -- Ausblick
 
-## `ggplot`-- Übungen
+## ggplot -- Übungen
 
