@@ -659,17 +659,16 @@ Funktionen </a><br> <a href="#section-beispieldatensatz">
 <i class="fa-solid fa-arrow-down"></i> Beispieldatensatz </a><br>
 <a href="#section-piping-mit"> <i class="fa-solid fa-arrow-down"></i>
 Piping mit <code>%&gt;%</code> </a><br> <a href="#section-select">
-<i class="fa-solid fa-arrow-down"></i> <code>select()</code> </a><br>
+<i class="fa-solid fa-arrow-down"></i> select() </a><br>
 <a href="#section-filter"> <i class="fa-solid fa-arrow-down"></i>
-<code>filter()</code> </a><br> <a href="#section-arrange">
-<i class="fa-solid fa-arrow-down"></i> <code>arrange()</code> </a><br>
+filter() </a><br> <a href="#section-arrange">
+<i class="fa-solid fa-arrow-down"></i> arrange() </a><br>
 <a href="#section-rename"> <i class="fa-solid fa-arrow-down"></i>
-<code>rename()</code> </a><br> <a href="#section-mutate">
-<i class="fa-solid fa-arrow-down"></i> <code>mutate()</code> </a><br>
+rename() </a><br> <a href="#section-mutate">
+<i class="fa-solid fa-arrow-down"></i> mutate() </a><br>
 <a href="#section-summarize"> <i class="fa-solid fa-arrow-down"></i>
-<code>summarize()</code> </a><br> <a href="#section-group_by">
-<i class="fa-solid fa-arrow-down"></i> <code>group_by()</code>
-</a><br></p>
+summarize() </a><br> <a href="#section-group_by">
+<i class="fa-solid fa-arrow-down"></i> group_by() </a><br></p>
 </div>
 <div id="section-übersicht-über-die-wichtigsten-funktionen"
 class="section level3">
@@ -1232,19 +1231,45 @@ werden können.</p></li>
 </div>
 <div id="section-dplyr-daten-zusammenführen" class="section level2">
 <h2>dplyr – Daten zusammenführen</h2>
-<p>Wir stellen hier zwei fundamental verschiedene Varianten vor Daten
+<div id="section-kapitel-1" class="section level3">
+<h3>Kapitel</h3>
+<a href="#section-join-funktionen">
+<i class="fa-solid fa-arrow-down"></i> join Funktionen </a><br>
+<div style="padding-left: 2em;">
+<p><a href="#section-full_join"> <i class="fa-solid fa-arrow-down"></i>
+full_join </a><br> <a href="#section-inner_join">
+<i class="fa-solid fa-arrow-down"></i> inner_join </a><br>
+<a href="#section-left_join"> <i class="fa-solid fa-arrow-down"></i>
+left_join </a><br> <a href="#section-semi_join">
+<i class="fa-solid fa-arrow-down"></i> semi_join </a><br>
+<a href="#section-anti_join"> <i class="fa-solid fa-arrow-down"></i>
+anti_join </a><br></p>
+</div>
+<a href="#section-bind-funktionen">
+<i class="fa-solid fa-arrow-down"></i> bind Funktionen </a><br>
+<div style="padding-left: 2em;">
+<p><a href="#section-zeilen-zusammenfügen-mit-bind_rows">
+<i class="fa-solid fa-arrow-down"></i> Zeilen zusammenfügen mit
+bind_rows </a><br> <a href="#section-spalte-zusammenfügen-mit-row_rows">
+<i class="fa-solid fa-arrow-down"></i> Spalten zusammenfügen mit
+row_rows </a><br></p>
+</div>
+<p><br></p>
+<p>Wir stellen hier zwei verschiedene Varianten vor Daten
 zusammenzuführen.</p>
 <p>Die <code>join</code>-Funktionen sind dazu geeignet Datensätze anhand
 von verknüpften IDs miteinander zu verbinden. <code>bin_col</code>
 ermöglicht es auch Spalten zusammen zu “kleben” - hier findet jedoch
-keine Zuordnung oder logische Prüfung der Zeilen statt. Dies ist ein
-feiner aber sehr relevanter Unterschied!</p>
+keine Zuordnung oder logische Prüfung der Zeilen statt.</p>
+</div>
 <div id="section-join-funktionen" class="section level3">
-<h3>join Funktionen <a href="#section-dplyr-Fortgeschritten">
+<h3>join Funktionen <a href="#section-dplyr-daten-zusammenführen">
 <i class="fa-solid fa-arrow-up"></i></a></h3>
 <p>In vielen Datenanalysen hast du es mit mehreren Datensätzen zu tun,
-die zusammengehören, aber unterschiedliche Informationen enthalten. In
-unserem Beispiel gibt es zwei Tabellen:</p>
+die zusammengehören, aber unterschiedliche Informationen enthalten. Mit
+den join-Funktionen kann man die Daten zueinander zuordnen und dabei
+zusammenführen.</p>
+<p>In unserem Beispiel gibt es zwei Tabellen:</p>
 <ul>
 <li><p><strong>students</strong>: Enthält alle immatrikulierten
 Studenten, ihren Namen und die Anzahl der bereits absolvierten
@@ -1281,7 +1306,7 @@ enrollments &lt;- data.frame(
   student_id = c(1, 2, 2, 5),
   course_id = c(&quot;MAT101&quot;, &quot;PHY102&quot;, &quot;CHE103&quot;, &quot;BIO104&quot;),
   course_name = c(&quot;Mathematik&quot;, &quot;Physik&quot;, &quot;Chemie&quot;, &quot;Biologie&quot;),
-  name = c(&quot;Max&quot;, &quot;Sophie&quot;, &quot;Unbekannt&quot;, &quot;Beatrice&quot;)
+  name = c(&quot;Max&quot;, &quot;Sophie&quot;, NA, &quot;Beatrice&quot;)
 )</code></pre>
 <p><strong>Datensatz “students”</strong></p>
 <div data-pagedtable="false">
@@ -1292,7 +1317,7 @@ enrollments &lt;- data.frame(
 <p><strong>Datensatz “enrollments”</strong></p>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["student_id"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["course_id"],"name":[2],"type":["chr"],"align":["left"]},{"label":["course_name"],"name":[3],"type":["chr"],"align":["left"]},{"label":["name"],"name":[4],"type":["chr"],"align":["left"]}],"data":[{"1":"1","2":"MAT101","3":"Mathematik","4":"Max"},{"1":"2","2":"PHY102","3":"Physik","4":"Sophie"},{"1":"2","2":"CHE103","3":"Chemie","4":"Unbekannt"},{"1":"5","2":"BIO104","3":"Biologie","4":"Beatrice"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["student_id"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["course_id"],"name":[2],"type":["chr"],"align":["left"]},{"label":["course_name"],"name":[3],"type":["chr"],"align":["left"]},{"label":["name"],"name":[4],"type":["chr"],"align":["left"]}],"data":[{"1":"1","2":"MAT101","3":"Mathematik","4":"Max"},{"1":"2","2":"PHY102","3":"Physik","4":"Sophie"},{"1":"2","2":"CHE103","3":"Chemie","4":"NA"},{"1":"5","2":"BIO104","3":"Biologie","4":"Beatrice"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p><strong>Anmerkung:</strong> In diesem Beispiel ist nur die
@@ -1300,7 +1325,9 @@ Studierenden-ID eine eindeutige und fehlerfreie Art, die Personen
 (Zeilen) eindeutig zuzuordnen. Der Datensatz “enrollments” enthält z.T.
 unvollständige Angaben zum Namen, deswegen wird nur die Studierenden-ID
 verwendet.</p>
-<p><strong>full_join()</strong></p>
+<div id="section-full_join" class="section level4">
+<h4>full_join() <a href="#section-dplyr-daten-zusammenführen">
+<i class="fa-solid fa-arrow-up"></i></a></h4>
 <p>Mit <code>full_join()</code> werden beide Datensätze anhand des
 gemeinsamen ID vollständig <code>student_id</code> kombiniert, ohne eine
 Person (oder Zeile) zu verlieren. Es handelt sich somit um Studierende,
@@ -1319,7 +1346,10 @@ data-pipe="|&gt;">
 </div>
 <p>Die Informationen werden sofern möglich zusammengeführt, wenn Werte
 fehlen werden <code>NA</code> Werte vergeben.</p>
-<p><strong>inner_join()</strong></p>
+</div>
+<div id="section-inner_join" class="section level4">
+<h4>inner_join() <a href="#section-dplyr-daten-zusammenführen">
+<i class="fa-solid fa-arrow-up"></i></a></h4>
 <p>Mit <code>inner_join()</code> werden beide Datensätze anhand des
 gemeinsamen ID <code>student_id</code> kombiniert. Es werden nur die
 Zeilen (Studierende) zurückgegeben, bei denen die ID in beiden
@@ -1339,7 +1369,10 @@ data-pipe="|&gt;">
 </div>
 <p>Die ID 2 (Sophie) wird zwei Mal angezeigt, da sie sich zu zwei
 Klausuren angemeldet hat.</p>
-<p><strong>left_join()</strong></p>
+</div>
+<div id="section-left_join" class="section level4">
+<h4>left_join() <a href="#section-dplyr-daten-zusammenführen">
+<i class="fa-solid fa-arrow-up"></i></a></h4>
 <p><code>left_join()</code> liefert alle Zeilen aus dem linken Datensatz
 (hier: “students”) und ergänzt, falls vorhanden, die zugehörigen
 Informationen aus dem rechten Datensatz (hier:“enrollments”). Falls ein
@@ -1358,7 +1391,10 @@ der angemeldeten Klausuren. Da Lukas und Mia keine Anmeldung in
 <code>NA</code> definiert. Studenten, die in mehreren Kursen angemeldet
 sind (wie Sophie), erscheinen mehrfach. Beatrice wird nicht angezeigt,
 da sie nicht offiziell immatrikuliert ist.</p>
-<p><strong>semi_join()</strong></p>
+</div>
+<div id="section-semi_join" class="section level4">
+<h4>semi_join() <a href="#section-dplyr-daten-zusammenführen">
+<i class="fa-solid fa-arrow-up"></i></a></h4>
 <p>Diese Funktionen behält alle Zeilen (Personen) des ersten Datensatzes
 (“students”), welche sich auch im zweiten Datensatz befinden
 (“enrollments”) und es fügt zusätzliche Spalten des zweiten Datensatzes
@@ -1384,7 +1420,10 @@ data-pipe="|&gt;">
 <p>Es werden alle immatrikulierten Studierenden angezeigt, welche sich
 auch zu einem Kurs angemeldet haben. Die Informationen des Kurses werden
 nicht zusätzlich mit angezeigt.</p>
-<p><strong>anti_join()</strong></p>
+</div>
+<div id="section-anti_join" class="section level4">
+<h4>anti_join() <a href="#section-dplyr-daten-zusammenführen">
+<i class="fa-solid fa-arrow-up"></i></a></h4>
 <p>Gibt die Zeilen aus dem “enrollments”-Datensatz zurück, für die
 <strong>kein</strong> passender Eintrag im “students”-Datensatz gefunden
 wird.</p>
@@ -1398,9 +1437,22 @@ data-pipe="|&gt;">
 Klausur angemeldet haben, obwohl sie nicht offiziell immatrikuliert
 sind.</p>
 </div>
+<div id="section-übungen" class="section level4 uebung">
+<h4>Übungen</h4>
+<p>text</p>
+</div>
+</div>
 <div id="section-bind-funktionen" class="section level3">
-<h3>bind Funktionen</h3>
-<p><strong>Zeilen zusammenfügen mit bind_rows()</strong></p>
+<h3>bind Funktionen <a href="#section-dplyr-daten-zusammenführen">
+<i class="fa-solid fa-arrow-up"></i></a></h3>
+<p>Die bind-Funktionen ermöglichen es unkompliziert Datensätze
+miteinander zu verbinden. Die Daten können anhand der Spalten oder der
+Zeilen zusammengefügt werden.</p>
+<div id="section-zeilen-zusammenfügen-mit-bind_rows"
+class="section level4">
+<h4>Zeilen zusammenfügen mit bind_rows()
+<a href="#section-dplyr-daten-zusammenführen">
+<i class="fa-solid fa-arrow-up"></i></a></h4>
 <p>Mit <em>bind_rows()</em> kannst du mehrere Datensätze vertikal (also
 zeilenweise) zusammenführen. Dies ist nützlich, wenn du beispielsweise
 Daten aus verschiedenen Quellen hast, die dieselbe Struktur haben
@@ -1428,7 +1480,12 @@ bind_rows(df1, df2)</code></pre>
 <p>Alle Zeilen aus df1 und df2 werden untereinander angeordnet. Alle
 Spalten werden übernommen. Fehlende Werte werden mit <code>NA</code>
 aufgefüllt.</p>
-<p><strong>Spalten zusammenfügen mit bind_cols()</strong></p>
+</div>
+<div id="section-spalten-zusammenfügen-mit-bind_cols"
+class="section level4">
+<h4>Spalten zusammenfügen mit bind_cols()
+<a href="#section-dplyr-daten-zusammenführen">
+<i class="fa-solid fa-arrow-up"></i></a></h4>
 <p>Mit <code>bind_cols()</code> kannst du Data Frames spaltenweise (also
 horizontal) zusammenführen. Dabei werden die Datensätze nebeneinander
 angeordnet. Wichtig ist, dass die Datensätze dieselbe Anzahl an Zeilen
@@ -1451,12 +1508,153 @@ df2 &lt;- data.frame(
 bind_cols(df1, df2)</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+</div>
+</div>
+</div>
+<div id="section-tidyr-pivoting" class="section level2">
+<h2>tidyr – Pivoting</h2>
+<div id="section-pivot_longer-umwandeln-von-breiten-in-lange-datensätze"
+class="section level3">
+<h3>pivot_longer(): Umwandeln von breiten in lange Datensätze</h3>
+<p>In diesem Tutorial lernst du, wie du einen Datensatz zum Thema
+Säugetiere im Wide-Format mithilfe der Funktion
+<code>pivot_longer()</code> aus dem <code>tidyr</code>-Paket in das
+Long-Format überführst. Im Wide-Format werden verschiedene Messgrößen in
+separaten Spalten dargestellt, während im Long-Format jede Beobachtung
+in einer eigenen Zeile erscheint. Dieses Format ist häufig vorteilhaft
+für Datenanalysen und Visualisierungen (insbesondere auch
+<code>ggplot2</code>).</p>
+<div id="section-einfaches-beispiel" class="section level4">
+<h4>Einfaches Beispiel</h4>
+<p>Zunächst erstellen wir einen Datensatz, in dem für jedes Tier das
+Gewicht in den Jahren 2010, 2020 und 2030 festgehalten wird.</p>
+<pre class="r"><code># Beispieldatensatz im Wide-Format erstellen
+mammals &lt;- data.frame(
+  Animal = c(&quot;Elephant&quot;, &quot;Lion&quot;, &quot;Rhinoceros&quot;),
+  Weight_2010 = c(4800, 180, 2200),
+  Weight_2020 = c(5000, 190, 2300),
+  Weight_2030 = c(5200, 195, 2400)
+)</code></pre>
+<p><strong>Datensatz “mammals”</strong></p>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Animal"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Weight_2010"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Weight_2020"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Weight_2030"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Elephant","2":"4800","3":"5000","4":"5200"},{"1":"Lion","2":"180","3":"190","4":"195"},{"1":"Rhinoceros","2":"2200","3":"2300","4":"2400"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p><strong>Umwandeln in das Long-Format mit pivot_longer()</strong></p>
+<p>Wir transformieren nun den Datensatz, sodass die Spalten mit den
+Gewichtsangaben in zwei Spalten umgewandelt werden::</p>
 <ul>
-<li><code>pivot_longer()</code>: Umwandeln von breiten in lange
-Datensätze</li>
-<li><code>pivot_wider()</code>: Umwandeln von langen in breite
-Datensätze</li>
+<li><p><code>Year</code>: Enthält das Jahr (z. B. “2010”, “2020”,
+“2030”).</p></li>
+<li><p><code>Weight_kg</code>: Enthält das Gewicht des Tieres in
+Kilogramm.</p></li>
 </ul>
+<pre class="r"><code>mammals_long &lt;- mammals %&gt;%
+  pivot_longer(
+    cols = starts_with(&quot;Weight_&quot;),
+    names_to = &quot;Year&quot;,
+    values_to = &quot;Weight_kg&quot;
+  ) %&gt;%
+  # Entferne den Präfix &quot;Weight_&quot; aus der Year-Spalte
+  mutate(Year = sub(&quot;Weight_&quot;, &quot;&quot;, Year))
+
+mammals_long</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Animal"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Year"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Weight_kg"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Elephant","2":"2010","3":"4800"},{"1":"Elephant","2":"2020","3":"5000"},{"1":"Elephant","2":"2030","3":"5200"},{"1":"Lion","2":"2010","3":"180"},{"1":"Lion","2":"2020","3":"190"},{"1":"Lion","2":"2030","3":"195"},{"1":"Rhinoceros","2":"2010","3":"2200"},{"1":"Rhinoceros","2":"2020","3":"2300"},{"1":"Rhinoceros","2":"2030","3":"2400"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p><strong>Erklärungen:</strong></p>
+<ul>
+<li><p><code>pivot_longer()</code>: Diese Funktion “schmilzt” die
+Spalten, die mit “Weight_” beginnen, in zwei neue Spalten um.</p></li>
+<li><p><code>names_to = "Year"</code>: Speichert die ursprünglichen
+Spaltennamen (z. B. “Weight_2010”) in der neuen Spalte Year.</p></li>
+<li><p><code>values_to = "Weight_kg"</code>: Legt den Namen der neuen
+Spalte fest, in der die Gewichtswerte abgelegt werden.</p></li>
+<li><p><code>mutate(Year = sub("Weight_", "", Year))</code>: Entfernt
+den Text “Weight_” aus den Werten in der Spalte Year, sodass nur noch
+das Jahr übrig bleibt.</p></li>
+</ul>
+<p>Das Ergebnis ist ein Long-Format-Datensatz, in dem jede Zeile eine
+Gewichtsmessung eines Tieres in einem bestimmten Jahr darstellt.</p>
+</div>
+<div id="section-komplexeres-beispiel" class="section level4">
+<h4>Komplexeres Beispiel</h4>
+<p>Jetzt schauen wir uns noch einen komplexeren Datensatz an in dem es
+mehr Spalten gibt.</p>
+<p>Die Komplexität des Pivoting hängt maßgeblich von der Konsistenz der
+Spaltennamen ab. Es wird dringend empfohlen, eine einheitliche Benennung
+zu verwenden und klare Trennzeichen wie den Unterstrich <code>_</code>
+einzusetzen. Falls die Spaltennamen inkonsistent sind, sollte dies vor
+dem Pivoting idealerweise mit Hilfe von <code>dplyr</code> bereinigt
+werden.</p>
+<pre class="r"><code>mammals_2 &lt;- data.frame(
+  Animal = c(&quot;Elephant&quot;, &quot;Lion&quot;, &quot;Rhinoceros&quot;),
+  Region = c(&quot;Africa&quot;, &quot;Africa&quot;, &quot;Asia&quot;),
+  Weight_2010 = c(4800, 180, 2200),
+  Height_2010 = c(300, 120, 170),
+  Weight_2020 = c(5000, 190, 2300),
+  Height_2020 = c(320, 130, 180),
+  Weight_2030 = c(5200, 195, 2400),
+  Height_2030 = c(340, 135, 190)
+)</code></pre>
+<p><strong>Datensatz “mammals_2”</strong></p>
+<p>In diesem Beispiel enthält der Datensatz Informationen zu Gewicht und
+Höhe von Säugetieren in den Jahren 2010, 2020 und 2030 sowie Angaben zu
+Tierart und Region.</p>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Animal"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Region"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Weight_2010"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Height_2010"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Weight_2020"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["Height_2020"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["Weight_2030"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["Height_2030"],"name":[8],"type":["dbl"],"align":["right"]}],"data":[{"1":"Elephant","2":"Africa","3":"4800","4":"300","5":"5000","6":"320","7":"5200","8":"340"},{"1":"Lion","2":"Africa","3":"180","4":"120","5":"190","6":"130","7":"195","8":"135"},{"1":"Rhinoceros","2":"Asia","3":"2200","4":"170","5":"2300","6":"180","7":"2400","8":"190"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Wir fassen nun alle Spalten, außer Animal und Region, in zwei neue
+Spalten zusammen:</p>
+<ul>
+<li><p><code>Measurement</code>: Enthält den Typ der Messgröße, z. B.
+“Weight” oder “Height”.</p></li>
+<li><p><code>Year</code>: Enthält das Jahr, das ursprünglich Teil des
+Spaltennamens war (z. B. “2030”).</p></li>
+</ul>
+<p>Die eigentlichen Werte aus den ursprünglichen Spalten werden in der
+neuen Spalte “Value” abgelegt. Dadurch wird aus einer Vielzahl von
+Spalten (wie etwa “Height_2030”, “Weight_2010” usw.) ein einheitlicher
+Datensatz, in dem jede Zeile eine einzelne Messung eines Tieres
+darstellt.</p>
+<pre class="r"><code>mammals_long &lt;- mammals_2 %&gt;%
+  pivot_longer(
+    cols = -c(Animal, Region),
+    names_to = c(&quot;Measurement&quot;, &quot;Year&quot;),
+    names_sep = &quot;_&quot;,
+    values_to = &quot;Value&quot;
+  )
+
+mammals_long</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Animal"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Region"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Measurement"],"name":[3],"type":["chr"],"align":["left"]},{"label":["Year"],"name":[4],"type":["chr"],"align":["left"]},{"label":["Value"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"Elephant","2":"Africa","3":"Weight","4":"2010","5":"4800"},{"1":"Elephant","2":"Africa","3":"Height","4":"2010","5":"300"},{"1":"Elephant","2":"Africa","3":"Weight","4":"2020","5":"5000"},{"1":"Elephant","2":"Africa","3":"Height","4":"2020","5":"320"},{"1":"Elephant","2":"Africa","3":"Weight","4":"2030","5":"5200"},{"1":"Elephant","2":"Africa","3":"Height","4":"2030","5":"340"},{"1":"Lion","2":"Africa","3":"Weight","4":"2010","5":"180"},{"1":"Lion","2":"Africa","3":"Height","4":"2010","5":"120"},{"1":"Lion","2":"Africa","3":"Weight","4":"2020","5":"190"},{"1":"Lion","2":"Africa","3":"Height","4":"2020","5":"130"},{"1":"Lion","2":"Africa","3":"Weight","4":"2030","5":"195"},{"1":"Lion","2":"Africa","3":"Height","4":"2030","5":"135"},{"1":"Rhinoceros","2":"Asia","3":"Weight","4":"2010","5":"2200"},{"1":"Rhinoceros","2":"Asia","3":"Height","4":"2010","5":"170"},{"1":"Rhinoceros","2":"Asia","3":"Weight","4":"2020","5":"2300"},{"1":"Rhinoceros","2":"Asia","3":"Height","4":"2020","5":"180"},{"1":"Rhinoceros","2":"Asia","3":"Weight","4":"2030","5":"2400"},{"1":"Rhinoceros","2":"Asia","3":"Height","4":"2030","5":"190"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p><strong>Erklärung:</strong></p>
+<ul>
+<li><p><code>pivot_longer()</code>: Diese Funktion wandelt mehrere
+Spalten in zwei Spalten um.</p></li>
+<li><p><code>cols = -c(Animal, Region)</code>: Alle Spalten außer Animal
+und Region werden transformiert.</p></li>
+<li><p><code>names_to = c("Measurement", "Year")</code>: Die
+ursprünglichen Spaltennamen werden in zwei Teile aufgespalten – den
+Messwert-Typ und das Jahr.</p></li>
+<li><p><code>names_sep = "_"</code>: Der Unterstrich (“_“) dient als
+Trennzeichen.</p></li>
+<li><p><code>values_to = "Value"</code>: Die Messwerte werden in der
+neuen Spalte Value gespeichert.</p></li>
+</ul>
+</div>
+</div>
+<div id="section-pivot_wider-umwandeln-von-langen-in-breite-datensätze"
+class="section level3">
+<h3>pivot_wider(): Umwandeln von langen in breite Datensätze</h3>
 </div>
 </div>
 <div id="section-dplyr-übungen" class="section level2">
@@ -2931,8 +3129,8 @@ learnr:::store_exercise_cache(structure(list(label = "joyn-0", global_setup = st
 "  # gradethis_glue_incorrect = \"{ .message } { .incorrect } { random_encourage() }\"", 
 "  gradethis_glue_incorrect = \"{ .message } { .incorrect }\"", 
 ")", "blue <- \"#00c4e6\""), chunk_opts = list(label = "setup", 
-    echo = FALSE, message = FALSE, warning = FALSE)), setup = "# Datensatz: immatrikulierte Studenten\nstudents <- data.frame(\n  student_id = c(1, 2, 3, 4),\n  name = c(\"Max, S.\", \"Sophie, K.\", \"Lukas, L.\", \"Mia, N.\"),\n  semester = c(3, 5, 2, 7)\n)\n\n# Datensatz: Kursanmeldungen\nenrollments <- data.frame(\n  student_id = c(1, 2, 2, 5),\n  course_id = c(\"MAT101\", \"PHY102\", \"CHE103\", \"BIO104\"),\n  course_name = c(\"Mathematik\", \"Physik\", \"Chemie\", \"Biologie\"),\n  name = c(\"Max\", \"Sophie\", \"Unbekannt\", \"Beatrice\")\n)\n", 
-    chunks = list(list(label = "setup-join-df", code = "# Datensatz: immatrikulierte Studenten\nstudents <- data.frame(\n  student_id = c(1, 2, 3, 4),\n  name = c(\"Max, S.\", \"Sophie, K.\", \"Lukas, L.\", \"Mia, N.\"),\n  semester = c(3, 5, 2, 7)\n)\n\n# Datensatz: Kursanmeldungen\nenrollments <- data.frame(\n  student_id = c(1, 2, 2, 5),\n  course_id = c(\"MAT101\", \"PHY102\", \"CHE103\", \"BIO104\"),\n  course_name = c(\"Mathematik\", \"Physik\", \"Chemie\", \"Biologie\"),\n  name = c(\"Max\", \"Sophie\", \"Unbekannt\", \"Beatrice\")\n)\n", 
+    echo = FALSE, message = FALSE, warning = FALSE)), setup = "# Datensatz: immatrikulierte Studenten\nstudents <- data.frame(\n  student_id = c(1, 2, 3, 4),\n  name = c(\"Max, S.\", \"Sophie, K.\", \"Lukas, L.\", \"Mia, N.\"),\n  semester = c(3, 5, 2, 7)\n)\n\n# Datensatz: Kursanmeldungen\nenrollments <- data.frame(\n  student_id = c(1, 2, 2, 5),\n  course_id = c(\"MAT101\", \"PHY102\", \"CHE103\", \"BIO104\"),\n  course_name = c(\"Mathematik\", \"Physik\", \"Chemie\", \"Biologie\"),\n  name = c(\"Max\", \"Sophie\", NA, \"Beatrice\")\n)\n", 
+    chunks = list(list(label = "setup-join-df", code = "# Datensatz: immatrikulierte Studenten\nstudents <- data.frame(\n  student_id = c(1, 2, 3, 4),\n  name = c(\"Max, S.\", \"Sophie, K.\", \"Lukas, L.\", \"Mia, N.\"),\n  semester = c(3, 5, 2, 7)\n)\n\n# Datensatz: Kursanmeldungen\nenrollments <- data.frame(\n  student_id = c(1, 2, 2, 5),\n  course_id = c(\"MAT101\", \"PHY102\", \"CHE103\", \"BIO104\"),\n  course_name = c(\"Mathematik\", \"Physik\", \"Chemie\", \"Biologie\"),\n  name = c(\"Max\", \"Sophie\", NA, \"Beatrice\")\n)\n", 
         opts = list(label = "\"setup-join-df\"", exercise = "FALSE", 
             eval = "TRUE", echo = "FALSE"), engine = "r"), list(
         label = "joyn-0", code = "full_join(students, enrollments,\n           # mit welcher ID werden die Daten zugeordnet\n           by = \"student_id\",\n           # wie werden doppelte Spaltennamen benannt\n           suffix = c(\"_stud\", \"_enroll\"))", 
@@ -2997,8 +3195,8 @@ learnr:::store_exercise_cache(structure(list(label = "joyn-3", global_setup = st
 "  # gradethis_glue_incorrect = \"{ .message } { .incorrect } { random_encourage() }\"", 
 "  gradethis_glue_incorrect = \"{ .message } { .incorrect }\"", 
 ")", "blue <- \"#00c4e6\""), chunk_opts = list(label = "setup", 
-    echo = FALSE, message = FALSE, warning = FALSE)), setup = "# Datensatz: immatrikulierte Studenten\nstudents <- data.frame(\n  student_id = c(1, 2, 3, 4),\n  name = c(\"Max, S.\", \"Sophie, K.\", \"Lukas, L.\", \"Mia, N.\"),\n  semester = c(3, 5, 2, 7)\n)\n\n# Datensatz: Kursanmeldungen\nenrollments <- data.frame(\n  student_id = c(1, 2, 2, 5),\n  course_id = c(\"MAT101\", \"PHY102\", \"CHE103\", \"BIO104\"),\n  course_name = c(\"Mathematik\", \"Physik\", \"Chemie\", \"Biologie\"),\n  name = c(\"Max\", \"Sophie\", \"Unbekannt\", \"Beatrice\")\n)\n", 
-    chunks = list(list(label = "setup-join-df", code = "# Datensatz: immatrikulierte Studenten\nstudents <- data.frame(\n  student_id = c(1, 2, 3, 4),\n  name = c(\"Max, S.\", \"Sophie, K.\", \"Lukas, L.\", \"Mia, N.\"),\n  semester = c(3, 5, 2, 7)\n)\n\n# Datensatz: Kursanmeldungen\nenrollments <- data.frame(\n  student_id = c(1, 2, 2, 5),\n  course_id = c(\"MAT101\", \"PHY102\", \"CHE103\", \"BIO104\"),\n  course_name = c(\"Mathematik\", \"Physik\", \"Chemie\", \"Biologie\"),\n  name = c(\"Max\", \"Sophie\", \"Unbekannt\", \"Beatrice\")\n)\n", 
+    echo = FALSE, message = FALSE, warning = FALSE)), setup = "# Datensatz: immatrikulierte Studenten\nstudents <- data.frame(\n  student_id = c(1, 2, 3, 4),\n  name = c(\"Max, S.\", \"Sophie, K.\", \"Lukas, L.\", \"Mia, N.\"),\n  semester = c(3, 5, 2, 7)\n)\n\n# Datensatz: Kursanmeldungen\nenrollments <- data.frame(\n  student_id = c(1, 2, 2, 5),\n  course_id = c(\"MAT101\", \"PHY102\", \"CHE103\", \"BIO104\"),\n  course_name = c(\"Mathematik\", \"Physik\", \"Chemie\", \"Biologie\"),\n  name = c(\"Max\", \"Sophie\", NA, \"Beatrice\")\n)\n", 
+    chunks = list(list(label = "setup-join-df", code = "# Datensatz: immatrikulierte Studenten\nstudents <- data.frame(\n  student_id = c(1, 2, 3, 4),\n  name = c(\"Max, S.\", \"Sophie, K.\", \"Lukas, L.\", \"Mia, N.\"),\n  semester = c(3, 5, 2, 7)\n)\n\n# Datensatz: Kursanmeldungen\nenrollments <- data.frame(\n  student_id = c(1, 2, 2, 5),\n  course_id = c(\"MAT101\", \"PHY102\", \"CHE103\", \"BIO104\"),\n  course_name = c(\"Mathematik\", \"Physik\", \"Chemie\", \"Biologie\"),\n  name = c(\"Max\", \"Sophie\", NA, \"Beatrice\")\n)\n", 
         opts = list(label = "\"setup-join-df\"", exercise = "FALSE", 
             eval = "TRUE", echo = "FALSE"), engine = "r"), list(
         label = "joyn-3", code = "inner_join(students, enrollments,\n           # mit welcher ID werden die Daten zugeordnet\n           by = \"student_id\",\n           # wie werden doppelte Spaltennamen benannt\n           suffix = c(\"_stud\", \"_enroll\"))", 
@@ -3063,8 +3261,8 @@ learnr:::store_exercise_cache(structure(list(label = "joyn-4", global_setup = st
 "  # gradethis_glue_incorrect = \"{ .message } { .incorrect } { random_encourage() }\"", 
 "  gradethis_glue_incorrect = \"{ .message } { .incorrect }\"", 
 ")", "blue <- \"#00c4e6\""), chunk_opts = list(label = "setup", 
-    echo = FALSE, message = FALSE, warning = FALSE)), setup = "# Datensatz: immatrikulierte Studenten\nstudents <- data.frame(\n  student_id = c(1, 2, 3, 4),\n  name = c(\"Max, S.\", \"Sophie, K.\", \"Lukas, L.\", \"Mia, N.\"),\n  semester = c(3, 5, 2, 7)\n)\n\n# Datensatz: Kursanmeldungen\nenrollments <- data.frame(\n  student_id = c(1, 2, 2, 5),\n  course_id = c(\"MAT101\", \"PHY102\", \"CHE103\", \"BIO104\"),\n  course_name = c(\"Mathematik\", \"Physik\", \"Chemie\", \"Biologie\"),\n  name = c(\"Max\", \"Sophie\", \"Unbekannt\", \"Beatrice\")\n)\n", 
-    chunks = list(list(label = "setup-join-df", code = "# Datensatz: immatrikulierte Studenten\nstudents <- data.frame(\n  student_id = c(1, 2, 3, 4),\n  name = c(\"Max, S.\", \"Sophie, K.\", \"Lukas, L.\", \"Mia, N.\"),\n  semester = c(3, 5, 2, 7)\n)\n\n# Datensatz: Kursanmeldungen\nenrollments <- data.frame(\n  student_id = c(1, 2, 2, 5),\n  course_id = c(\"MAT101\", \"PHY102\", \"CHE103\", \"BIO104\"),\n  course_name = c(\"Mathematik\", \"Physik\", \"Chemie\", \"Biologie\"),\n  name = c(\"Max\", \"Sophie\", \"Unbekannt\", \"Beatrice\")\n)\n", 
+    echo = FALSE, message = FALSE, warning = FALSE)), setup = "# Datensatz: immatrikulierte Studenten\nstudents <- data.frame(\n  student_id = c(1, 2, 3, 4),\n  name = c(\"Max, S.\", \"Sophie, K.\", \"Lukas, L.\", \"Mia, N.\"),\n  semester = c(3, 5, 2, 7)\n)\n\n# Datensatz: Kursanmeldungen\nenrollments <- data.frame(\n  student_id = c(1, 2, 2, 5),\n  course_id = c(\"MAT101\", \"PHY102\", \"CHE103\", \"BIO104\"),\n  course_name = c(\"Mathematik\", \"Physik\", \"Chemie\", \"Biologie\"),\n  name = c(\"Max\", \"Sophie\", NA, \"Beatrice\")\n)\n", 
+    chunks = list(list(label = "setup-join-df", code = "# Datensatz: immatrikulierte Studenten\nstudents <- data.frame(\n  student_id = c(1, 2, 3, 4),\n  name = c(\"Max, S.\", \"Sophie, K.\", \"Lukas, L.\", \"Mia, N.\"),\n  semester = c(3, 5, 2, 7)\n)\n\n# Datensatz: Kursanmeldungen\nenrollments <- data.frame(\n  student_id = c(1, 2, 2, 5),\n  course_id = c(\"MAT101\", \"PHY102\", \"CHE103\", \"BIO104\"),\n  course_name = c(\"Mathematik\", \"Physik\", \"Chemie\", \"Biologie\"),\n  name = c(\"Max\", \"Sophie\", NA, \"Beatrice\")\n)\n", 
         opts = list(label = "\"setup-join-df\"", exercise = "FALSE", 
             eval = "TRUE", echo = "FALSE"), engine = "r"), list(
         label = "joyn-4", code = "right_join(students, enrollments, by = \"student_id\", suffix = c(\"_stud\", \"_enroll\"))", 
@@ -3127,8 +3325,8 @@ learnr:::store_exercise_cache(structure(list(label = "joyn-4-1", global_setup = 
 "  # gradethis_glue_incorrect = \"{ .message } { .incorrect } { random_encourage() }\"", 
 "  gradethis_glue_incorrect = \"{ .message } { .incorrect }\"", 
 ")", "blue <- \"#00c4e6\""), chunk_opts = list(label = "setup", 
-    echo = FALSE, message = FALSE, warning = FALSE)), setup = "# Datensatz: immatrikulierte Studenten\nstudents <- data.frame(\n  student_id = c(1, 2, 3, 4),\n  name = c(\"Max, S.\", \"Sophie, K.\", \"Lukas, L.\", \"Mia, N.\"),\n  semester = c(3, 5, 2, 7)\n)\n\n# Datensatz: Kursanmeldungen\nenrollments <- data.frame(\n  student_id = c(1, 2, 2, 5),\n  course_id = c(\"MAT101\", \"PHY102\", \"CHE103\", \"BIO104\"),\n  course_name = c(\"Mathematik\", \"Physik\", \"Chemie\", \"Biologie\"),\n  name = c(\"Max\", \"Sophie\", \"Unbekannt\", \"Beatrice\")\n)\n", 
-    chunks = list(list(label = "setup-join-df", code = "# Datensatz: immatrikulierte Studenten\nstudents <- data.frame(\n  student_id = c(1, 2, 3, 4),\n  name = c(\"Max, S.\", \"Sophie, K.\", \"Lukas, L.\", \"Mia, N.\"),\n  semester = c(3, 5, 2, 7)\n)\n\n# Datensatz: Kursanmeldungen\nenrollments <- data.frame(\n  student_id = c(1, 2, 2, 5),\n  course_id = c(\"MAT101\", \"PHY102\", \"CHE103\", \"BIO104\"),\n  course_name = c(\"Mathematik\", \"Physik\", \"Chemie\", \"Biologie\"),\n  name = c(\"Max\", \"Sophie\", \"Unbekannt\", \"Beatrice\")\n)\n", 
+    echo = FALSE, message = FALSE, warning = FALSE)), setup = "# Datensatz: immatrikulierte Studenten\nstudents <- data.frame(\n  student_id = c(1, 2, 3, 4),\n  name = c(\"Max, S.\", \"Sophie, K.\", \"Lukas, L.\", \"Mia, N.\"),\n  semester = c(3, 5, 2, 7)\n)\n\n# Datensatz: Kursanmeldungen\nenrollments <- data.frame(\n  student_id = c(1, 2, 2, 5),\n  course_id = c(\"MAT101\", \"PHY102\", \"CHE103\", \"BIO104\"),\n  course_name = c(\"Mathematik\", \"Physik\", \"Chemie\", \"Biologie\"),\n  name = c(\"Max\", \"Sophie\", NA, \"Beatrice\")\n)\n", 
+    chunks = list(list(label = "setup-join-df", code = "# Datensatz: immatrikulierte Studenten\nstudents <- data.frame(\n  student_id = c(1, 2, 3, 4),\n  name = c(\"Max, S.\", \"Sophie, K.\", \"Lukas, L.\", \"Mia, N.\"),\n  semester = c(3, 5, 2, 7)\n)\n\n# Datensatz: Kursanmeldungen\nenrollments <- data.frame(\n  student_id = c(1, 2, 2, 5),\n  course_id = c(\"MAT101\", \"PHY102\", \"CHE103\", \"BIO104\"),\n  course_name = c(\"Mathematik\", \"Physik\", \"Chemie\", \"Biologie\"),\n  name = c(\"Max\", \"Sophie\", NA, \"Beatrice\")\n)\n", 
         opts = list(label = "\"setup-join-df\"", exercise = "FALSE", 
             eval = "TRUE", echo = "FALSE"), engine = "r"), list(
         label = "joyn-4-1", code = "semi_join(students, enrollments, by = \"student_id\")", 
@@ -3191,8 +3389,8 @@ learnr:::store_exercise_cache(structure(list(label = "joyn-5", global_setup = st
 "  # gradethis_glue_incorrect = \"{ .message } { .incorrect } { random_encourage() }\"", 
 "  gradethis_glue_incorrect = \"{ .message } { .incorrect }\"", 
 ")", "blue <- \"#00c4e6\""), chunk_opts = list(label = "setup", 
-    echo = FALSE, message = FALSE, warning = FALSE)), setup = "# Datensatz: immatrikulierte Studenten\nstudents <- data.frame(\n  student_id = c(1, 2, 3, 4),\n  name = c(\"Max, S.\", \"Sophie, K.\", \"Lukas, L.\", \"Mia, N.\"),\n  semester = c(3, 5, 2, 7)\n)\n\n# Datensatz: Kursanmeldungen\nenrollments <- data.frame(\n  student_id = c(1, 2, 2, 5),\n  course_id = c(\"MAT101\", \"PHY102\", \"CHE103\", \"BIO104\"),\n  course_name = c(\"Mathematik\", \"Physik\", \"Chemie\", \"Biologie\"),\n  name = c(\"Max\", \"Sophie\", \"Unbekannt\", \"Beatrice\")\n)\n", 
-    chunks = list(list(label = "setup-join-df", code = "# Datensatz: immatrikulierte Studenten\nstudents <- data.frame(\n  student_id = c(1, 2, 3, 4),\n  name = c(\"Max, S.\", \"Sophie, K.\", \"Lukas, L.\", \"Mia, N.\"),\n  semester = c(3, 5, 2, 7)\n)\n\n# Datensatz: Kursanmeldungen\nenrollments <- data.frame(\n  student_id = c(1, 2, 2, 5),\n  course_id = c(\"MAT101\", \"PHY102\", \"CHE103\", \"BIO104\"),\n  course_name = c(\"Mathematik\", \"Physik\", \"Chemie\", \"Biologie\"),\n  name = c(\"Max\", \"Sophie\", \"Unbekannt\", \"Beatrice\")\n)\n", 
+    echo = FALSE, message = FALSE, warning = FALSE)), setup = "# Datensatz: immatrikulierte Studenten\nstudents <- data.frame(\n  student_id = c(1, 2, 3, 4),\n  name = c(\"Max, S.\", \"Sophie, K.\", \"Lukas, L.\", \"Mia, N.\"),\n  semester = c(3, 5, 2, 7)\n)\n\n# Datensatz: Kursanmeldungen\nenrollments <- data.frame(\n  student_id = c(1, 2, 2, 5),\n  course_id = c(\"MAT101\", \"PHY102\", \"CHE103\", \"BIO104\"),\n  course_name = c(\"Mathematik\", \"Physik\", \"Chemie\", \"Biologie\"),\n  name = c(\"Max\", \"Sophie\", NA, \"Beatrice\")\n)\n", 
+    chunks = list(list(label = "setup-join-df", code = "# Datensatz: immatrikulierte Studenten\nstudents <- data.frame(\n  student_id = c(1, 2, 3, 4),\n  name = c(\"Max, S.\", \"Sophie, K.\", \"Lukas, L.\", \"Mia, N.\"),\n  semester = c(3, 5, 2, 7)\n)\n\n# Datensatz: Kursanmeldungen\nenrollments <- data.frame(\n  student_id = c(1, 2, 2, 5),\n  course_id = c(\"MAT101\", \"PHY102\", \"CHE103\", \"BIO104\"),\n  course_name = c(\"Mathematik\", \"Physik\", \"Chemie\", \"Biologie\"),\n  name = c(\"Max\", \"Sophie\", NA, \"Beatrice\")\n)\n", 
         opts = list(label = "\"setup-join-df\"", exercise = "FALSE", 
             eval = "TRUE", echo = "FALSE"), engine = "r"), list(
         label = "joyn-5", code = "anti_join(enrollments, students, by = \"student_id\", suffix = c(\"_stud\", \"_enroll\"))", 
@@ -3255,8 +3453,8 @@ learnr:::store_exercise_cache(structure(list(label = "bind-1", global_setup = st
 "  # gradethis_glue_incorrect = \"{ .message } { .incorrect } { random_encourage() }\"", 
 "  gradethis_glue_incorrect = \"{ .message } { .incorrect }\"", 
 ")", "blue <- \"#00c4e6\""), chunk_opts = list(label = "setup", 
-    echo = FALSE, message = FALSE, warning = FALSE)), setup = "# Datensatz: immatrikulierte Studenten\nstudents <- data.frame(\n  student_id = c(1, 2, 3, 4),\n  name = c(\"Max, S.\", \"Sophie, K.\", \"Lukas, L.\", \"Mia, N.\"),\n  semester = c(3, 5, 2, 7)\n)\n\n# Datensatz: Kursanmeldungen\nenrollments <- data.frame(\n  student_id = c(1, 2, 2, 5),\n  course_id = c(\"MAT101\", \"PHY102\", \"CHE103\", \"BIO104\"),\n  course_name = c(\"Mathematik\", \"Physik\", \"Chemie\", \"Biologie\"),\n  name = c(\"Max\", \"Sophie\", \"Unbekannt\", \"Beatrice\")\n)\n", 
-    chunks = list(list(label = "setup-join-df", code = "# Datensatz: immatrikulierte Studenten\nstudents <- data.frame(\n  student_id = c(1, 2, 3, 4),\n  name = c(\"Max, S.\", \"Sophie, K.\", \"Lukas, L.\", \"Mia, N.\"),\n  semester = c(3, 5, 2, 7)\n)\n\n# Datensatz: Kursanmeldungen\nenrollments <- data.frame(\n  student_id = c(1, 2, 2, 5),\n  course_id = c(\"MAT101\", \"PHY102\", \"CHE103\", \"BIO104\"),\n  course_name = c(\"Mathematik\", \"Physik\", \"Chemie\", \"Biologie\"),\n  name = c(\"Max\", \"Sophie\", \"Unbekannt\", \"Beatrice\")\n)\n", 
+    echo = FALSE, message = FALSE, warning = FALSE)), setup = "# Datensatz: immatrikulierte Studenten\nstudents <- data.frame(\n  student_id = c(1, 2, 3, 4),\n  name = c(\"Max, S.\", \"Sophie, K.\", \"Lukas, L.\", \"Mia, N.\"),\n  semester = c(3, 5, 2, 7)\n)\n\n# Datensatz: Kursanmeldungen\nenrollments <- data.frame(\n  student_id = c(1, 2, 2, 5),\n  course_id = c(\"MAT101\", \"PHY102\", \"CHE103\", \"BIO104\"),\n  course_name = c(\"Mathematik\", \"Physik\", \"Chemie\", \"Biologie\"),\n  name = c(\"Max\", \"Sophie\", NA, \"Beatrice\")\n)\n", 
+    chunks = list(list(label = "setup-join-df", code = "# Datensatz: immatrikulierte Studenten\nstudents <- data.frame(\n  student_id = c(1, 2, 3, 4),\n  name = c(\"Max, S.\", \"Sophie, K.\", \"Lukas, L.\", \"Mia, N.\"),\n  semester = c(3, 5, 2, 7)\n)\n\n# Datensatz: Kursanmeldungen\nenrollments <- data.frame(\n  student_id = c(1, 2, 2, 5),\n  course_id = c(\"MAT101\", \"PHY102\", \"CHE103\", \"BIO104\"),\n  course_name = c(\"Mathematik\", \"Physik\", \"Chemie\", \"Biologie\"),\n  name = c(\"Max\", \"Sophie\", NA, \"Beatrice\")\n)\n", 
         opts = list(label = "\"setup-join-df\"", exercise = "FALSE", 
             eval = "TRUE", echo = "FALSE"), engine = "r"), list(
         label = "bind-1", code = "df1 <- data.frame(\n  id = c(1, 2),\n  name = c(\"Alice\", \"Bob\"),\n  hobby = c( \"sport\", \"baking\")\n)\n\ndf2 <- data.frame(\n  id = c(3, 4),\n  name = c(\"Claudia\", \"Dieter\"),\n  allergy = c(TRUE, FALSE)\n)\n\n# Zusammenführen der Zeilen\nbind_rows(df1, df2)", 
@@ -3323,8 +3521,8 @@ learnr:::store_exercise_cache(structure(list(label = "bind-2", global_setup = st
 "  # gradethis_glue_incorrect = \"{ .message } { .incorrect } { random_encourage() }\"", 
 "  gradethis_glue_incorrect = \"{ .message } { .incorrect }\"", 
 ")", "blue <- \"#00c4e6\""), chunk_opts = list(label = "setup", 
-    echo = FALSE, message = FALSE, warning = FALSE)), setup = "# Datensatz: immatrikulierte Studenten\nstudents <- data.frame(\n  student_id = c(1, 2, 3, 4),\n  name = c(\"Max, S.\", \"Sophie, K.\", \"Lukas, L.\", \"Mia, N.\"),\n  semester = c(3, 5, 2, 7)\n)\n\n# Datensatz: Kursanmeldungen\nenrollments <- data.frame(\n  student_id = c(1, 2, 2, 5),\n  course_id = c(\"MAT101\", \"PHY102\", \"CHE103\", \"BIO104\"),\n  course_name = c(\"Mathematik\", \"Physik\", \"Chemie\", \"Biologie\"),\n  name = c(\"Max\", \"Sophie\", \"Unbekannt\", \"Beatrice\")\n)\n", 
-    chunks = list(list(label = "setup-join-df", code = "# Datensatz: immatrikulierte Studenten\nstudents <- data.frame(\n  student_id = c(1, 2, 3, 4),\n  name = c(\"Max, S.\", \"Sophie, K.\", \"Lukas, L.\", \"Mia, N.\"),\n  semester = c(3, 5, 2, 7)\n)\n\n# Datensatz: Kursanmeldungen\nenrollments <- data.frame(\n  student_id = c(1, 2, 2, 5),\n  course_id = c(\"MAT101\", \"PHY102\", \"CHE103\", \"BIO104\"),\n  course_name = c(\"Mathematik\", \"Physik\", \"Chemie\", \"Biologie\"),\n  name = c(\"Max\", \"Sophie\", \"Unbekannt\", \"Beatrice\")\n)\n", 
+    echo = FALSE, message = FALSE, warning = FALSE)), setup = "# Datensatz: immatrikulierte Studenten\nstudents <- data.frame(\n  student_id = c(1, 2, 3, 4),\n  name = c(\"Max, S.\", \"Sophie, K.\", \"Lukas, L.\", \"Mia, N.\"),\n  semester = c(3, 5, 2, 7)\n)\n\n# Datensatz: Kursanmeldungen\nenrollments <- data.frame(\n  student_id = c(1, 2, 2, 5),\n  course_id = c(\"MAT101\", \"PHY102\", \"CHE103\", \"BIO104\"),\n  course_name = c(\"Mathematik\", \"Physik\", \"Chemie\", \"Biologie\"),\n  name = c(\"Max\", \"Sophie\", NA, \"Beatrice\")\n)\n", 
+    chunks = list(list(label = "setup-join-df", code = "# Datensatz: immatrikulierte Studenten\nstudents <- data.frame(\n  student_id = c(1, 2, 3, 4),\n  name = c(\"Max, S.\", \"Sophie, K.\", \"Lukas, L.\", \"Mia, N.\"),\n  semester = c(3, 5, 2, 7)\n)\n\n# Datensatz: Kursanmeldungen\nenrollments <- data.frame(\n  student_id = c(1, 2, 2, 5),\n  course_id = c(\"MAT101\", \"PHY102\", \"CHE103\", \"BIO104\"),\n  course_name = c(\"Mathematik\", \"Physik\", \"Chemie\", \"Biologie\"),\n  name = c(\"Max\", \"Sophie\", NA, \"Beatrice\")\n)\n", 
         opts = list(label = "\"setup-join-df\"", exercise = "FALSE", 
             eval = "TRUE", echo = "FALSE"), engine = "r"), list(
         label = "bind-2", code = "df1 <- data.frame(\n  id = c(3, 4),\n  name = c(\"Claudia\", \"Dieter\")\n)\n\ndf2 <- data.frame(\n  hobby = c( \"sport\", \"baking\"),\n    allergy = c(TRUE, FALSE)\n)\n\n# Zusammenführen der Zeilen\nbind_cols(df1, df2)", 

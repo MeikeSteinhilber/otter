@@ -514,13 +514,13 @@ Insgesamt bietet das tidyverse eine kohärente, mächtige und weit verbreitete E
 <a href="#section-übersicht-über-die-wichtigsten-funktionen"> <i class="fa-solid fa-arrow-down"></i> Übersicht über die wichtigsten Funktionen </a><br>
 <a href="#section-beispieldatensatz"> <i class="fa-solid fa-arrow-down"></i> Beispieldatensatz </a><br>
 <a href="#section-piping-mit"> <i class="fa-solid fa-arrow-down"></i> Piping mit `%>%` </a><br>
-<a href="#section-select"> <i class="fa-solid fa-arrow-down"></i> `select()` </a><br>
-<a href="#section-filter"> <i class="fa-solid fa-arrow-down"></i> `filter()` </a><br>
-<a href="#section-arrange"> <i class="fa-solid fa-arrow-down"></i> `arrange()` </a><br>
-<a href="#section-rename"> <i class="fa-solid fa-arrow-down"></i> `rename()` </a><br>
-<a href="#section-mutate"> <i class="fa-solid fa-arrow-down"></i> `mutate()` </a><br>
-<a href="#section-summarize"> <i class="fa-solid fa-arrow-down"></i> `summarize()` </a><br>
-<a href="#section-group_by"> <i class="fa-solid fa-arrow-down"></i> `group_by()` </a><br>
+<a href="#section-select"> <i class="fa-solid fa-arrow-down"></i> select() </a><br>
+<a href="#section-filter"> <i class="fa-solid fa-arrow-down"></i> filter() </a><br>
+<a href="#section-arrange"> <i class="fa-solid fa-arrow-down"></i> arrange() </a><br>
+<a href="#section-rename"> <i class="fa-solid fa-arrow-down"></i> rename() </a><br>
+<a href="#section-mutate"> <i class="fa-solid fa-arrow-down"></i> mutate() </a><br>
+<a href="#section-summarize"> <i class="fa-solid fa-arrow-down"></i> summarize() </a><br>
+<a href="#section-group_by"> <i class="fa-solid fa-arrow-down"></i> group_by() </a><br>
 
 ### Übersicht über die wichtigsten Funktionen <a href="#section-dplyr-grundlagen"> <i class="fa-solid fa-arrow-up"></i></a>
 
@@ -946,17 +946,34 @@ In diesem Beispiel:
   
   - `ungroup()`: Hebt die Gruppierung auf, damit nachfolgende Operationen wieder auf den gesamten Datensatz angewendet werden können.
 
+
 ## dplyr -- Daten zusammenführen
 
-Wir stellen hier zwei fundamental verschiedene Varianten vor Daten zusammenzuführen.
+### Kapitel
+<a href="#section-join-funktionen"> <i class="fa-solid fa-arrow-down"></i> join Funktionen </a><br>
+<div style="padding-left: 2em;">
+<a href="#section-full_join"> <i class="fa-solid fa-arrow-down"></i> full_join </a><br>
+<a href="#section-inner_join"> <i class="fa-solid fa-arrow-down"></i> inner_join </a><br>
+<a href="#section-left_join"> <i class="fa-solid fa-arrow-down"></i> left_join </a><br>
+<a href="#section-semi_join"> <i class="fa-solid fa-arrow-down"></i> semi_join </a><br>
+<a href="#section-anti_join"> <i class="fa-solid fa-arrow-down"></i> anti_join </a><br>
+</div>
+<a href="#section-bind-funktionen"> <i class="fa-solid fa-arrow-down"></i> bind Funktionen </a><br>
+<div style="padding-left: 2em;">
+<a href="#section-zeilen-zusammenfügen-mit-bind_rows"> <i class="fa-solid fa-arrow-down"></i> Zeilen zusammenfügen mit bind_rows </a><br>
+<a href="#section-spalte-zusammenfügen-mit-row_rows"> <i class="fa-solid fa-arrow-down"></i> Spalten zusammenfügen mit row_rows </a><br>
+</div><br>
+
+Wir stellen hier zwei verschiedene Varianten vor Daten zusammenzuführen.
 
 Die `join`-Funktionen sind dazu geeignet Datensätze anhand von verknüpften IDs miteinander zu verbinden.
 `bin_col` ermöglicht es auch Spalten zusammen zu "kleben" - hier findet jedoch keine Zuordnung oder logische Prüfung der Zeilen statt.
-Dies ist ein feiner aber sehr relevanter Unterschied!
 
-### join Funktionen <a href="#section-dplyr-Fortgeschritten"> <i class="fa-solid fa-arrow-up"></i></a>
+### join Funktionen <a href="#section-dplyr-daten-zusammenführen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 In vielen Datenanalysen hast du es mit mehreren Datensätzen zu tun, die zusammengehören, aber unterschiedliche Informationen enthalten.
+Mit den join-Funktionen kann man die Daten zueinander zuordnen und dabei zusammenführen.
+
 In unserem Beispiel gibt es zwei Tabellen:
 
   - **students**: Enthält alle immatrikulierten Studenten, ihren Namen und die Anzahl der bereits absolvierten Semester.
@@ -990,7 +1007,7 @@ enrollments <- data.frame(
   student_id = c(1, 2, 2, 5),
   course_id = c("MAT101", "PHY102", "CHE103", "BIO104"),
   course_name = c("Mathematik", "Physik", "Chemie", "Biologie"),
-  name = c("Max", "Sophie", "Unbekannt", "Beatrice")
+  name = c("Max", "Sophie", NA, "Beatrice")
 )
 
 ```
@@ -1012,7 +1029,7 @@ enrollments
 **Anmerkung:** In diesem Beispiel ist nur die Studierenden-ID eine eindeutige und fehlerfreie Art, die Personen (Zeilen) eindeutig zuzuordnen.
 Der Datensatz "enrollments" enthält z.T. unvollständige Angaben zum Namen, deswegen wird nur die Studierenden-ID verwendet.
 
-**full_join()**
+#### full_join() <a href="#section-dplyr-daten-zusammenführen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Mit `full_join()` werden beide Datensätze anhand des gemeinsamen ID vollständig `student_id` kombiniert, ohne eine Person (oder Zeile) zu verlieren.
 Es handelt sich somit um Studierende, welche entweder offiziell als immatrikuliert gelistet sind und/oder sich aktuell zu Prüfungen angemeldet haben (es handelt sich um eine logische **ODER** Verknüpfung).
@@ -1028,7 +1045,7 @@ full_join(students, enrollments,
 Die Informationen werden sofern möglich zusammengeführt, wenn Werte fehlen werden `NA` Werte vergeben.
 
 
-**inner_join()**
+#### inner_join() <a href="#section-dplyr-daten-zusammenführen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Mit `inner_join()` werden beide Datensätze anhand des gemeinsamen ID `student_id` kombiniert.
 Es werden nur die Zeilen (Studierende) zurückgegeben, bei denen die ID in beiden Datensätzen vorhanden ist.
@@ -1045,7 +1062,7 @@ inner_join(students, enrollments,
 Die ID 2 (Sophie) wird zwei Mal angezeigt, da sie sich zu zwei Klausuren angemeldet hat.
 
 
-**left_join()**
+#### left_join() <a href="#section-dplyr-daten-zusammenführen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 `left_join()` liefert alle Zeilen aus dem linken Datensatz (hier: "students") und ergänzt, falls vorhanden, die zugehörigen Informationen aus dem rechten Datensatz (hier:"enrollments").
 Falls ein Student keine Kursanmeldung hat (keinen Eintrag in "enrollments" existiert), erscheinen in den entsprechenden Spalten `NA`.
@@ -1059,7 +1076,7 @@ Da Lukas und Mia keine Anmeldung in "enrollments" haben, werden die fehlenden In
 Studenten, die in mehreren Kursen angemeldet sind (wie Sophie), erscheinen mehrfach.
 Beatrice wird nicht angezeigt, da sie nicht offiziell immatrikuliert ist.
 
-**semi_join()**
+#### semi_join() <a href="#section-dplyr-daten-zusammenführen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Diese Funktionen behält alle Zeilen (Personen) des ersten Datensatzes ("students"), welche sich auch im zweiten Datensatz befinden ("enrollments") und es fügt zusätzliche Spalten des zweiten Datensatzes **nicht** hinzu.
 
@@ -1081,7 +1098,7 @@ Es werden alle immatrikulierten Studierenden angezeigt, welche sich auch zu eine
 Die Informationen des Kurses werden nicht zusätzlich mit angezeigt.
 
 
-**anti_join()**
+#### anti_join() <a href="#section-dplyr-daten-zusammenführen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Gibt die Zeilen aus dem "enrollments"-Datensatz zurück, für die **kein** passender Eintrag im "students"-Datensatz gefunden wird.
 
@@ -1091,10 +1108,19 @@ anti_join(enrollments, students, by = "student_id", suffix = c("_stud", "_enroll
 
 Hier handelt es sich um alle Personen (Zeilen), die sich zu einer Klausur angemeldet haben, obwohl sie nicht offiziell immatrikuliert sind.
 
+<div class="uebung">
+#### Übungen
 
-### bind Funktionen
+text
 
-**Zeilen zusammenfügen mit bind_rows()**
+</div>
+
+### bind Funktionen <a href="#section-dplyr-daten-zusammenführen"> <i class="fa-solid fa-arrow-up"></i></a>
+
+Die bind-Funktionen ermöglichen es unkompliziert Datensätze miteinander zu verbinden.
+Die Daten können anhand der Spalten oder der Zeilen zusammengefügt werden.
+
+#### Zeilen zusammenfügen mit bind_rows() <a href="#section-dplyr-daten-zusammenführen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Mit *bind_rows()* kannst du mehrere Datensätze vertikal (also zeilenweise) zusammenführen.
 Dies ist nützlich, wenn du beispielsweise Daten aus verschiedenen Quellen hast, die dieselbe Struktur haben (ähnliche oder identische Spalten) beinhalten, und diese in einen einzigen Datensatz integrieren möchtest.
@@ -1121,7 +1147,7 @@ Alle Spalten werden übernommen.
 Fehlende Werte werden mit `NA` aufgefüllt.
 
 
-**Spalten zusammenfügen mit bind_cols()**
+#### Spalten zusammenfügen mit bind_cols() <a href="#section-dplyr-daten-zusammenführen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Mit `bind_cols()` kannst du Data Frames spaltenweise (also horizontal) zusammenführen.
 Dabei werden die Datensätze nebeneinander angeordnet.
@@ -1144,10 +1170,134 @@ df2 <- data.frame(
 bind_cols(df1, df2)
 ```
 
+## tidyr -- Pivoting
 
+### pivot_longer(): Umwandeln von breiten in lange Datensätze
 
-- `pivot_longer()`: Umwandeln von breiten in lange Datensätze
-- `pivot_wider()`: Umwandeln von langen in breite Datensätze
+In diesem Tutorial lernst du, wie du einen Datensatz zum Thema Säugetiere im Wide-Format mithilfe der Funktion `pivot_longer()` aus dem `tidyr`-Paket in das Long-Format überführst.
+Im Wide-Format werden verschiedene Messgrößen in separaten Spalten dargestellt, während im Long-Format jede Beobachtung in einer eigenen Zeile erscheint.
+Dieses Format ist häufig vorteilhaft für Datenanalysen und Visualisierungen (insbesondere auch `ggplot2`).
+
+#### Einfaches Beispiel
+
+Zunächst erstellen wir einen Datensatz, in dem für jedes Tier das Gewicht in den Jahren 2010, 2020 und 2030 festgehalten wird.
+
+```{r setup-pivot-longer, exercise=FALSE, eval=TRUE, echo=FALSE}
+# Beispieldatensatz im Wide-Format erstellen
+mammals <- data.frame(
+  Animal = c("Elephant", "Lion", "Rhinoceros"),
+  Weight_2010 = c(4800, 180, 2200),
+  Weight_2020 = c(5000, 190, 2300),
+  Weight_2030 = c(5200, 195, 2400)
+)
+```
+```{r, ref.label=I('setup-pivot-longer'), eval=TRUE, echo=TRUE, exercise.eval=FALSE, exercise.lines = 16}
+```
+
+**Datensatz "mammals"**
+
+```{r pivot-longer-01, exercise.setup = "setup-pivot-longer", exercise=FALSE, results ='hold', eval=TRUE, echo=FALSE}
+mammals
+```
+
+**Umwandeln in das Long-Format mit pivot_longer()**
+
+Wir transformieren nun den Datensatz, sodass die Spalten mit den Gewichtsangaben in zwei Spalten umgewandelt werden::
+
+  - `Year`: Enthält das Jahr (z. B. "2010", "2020", "2030").
+
+  - `Weight_kg`: Enthält das Gewicht des Tieres in Kilogramm.
+
+```{r pivot-longer-02, exercise.setup = "setup-pivot-longer", exercise=FALSE, results ='hold', eval=TRUE, echo=TRUE}
+mammals_long <- mammals %>%
+  pivot_longer(
+    cols = starts_with("Weight_"),
+    names_to = "Year",
+    values_to = "Weight_kg"
+  ) %>%
+  # Entferne den Präfix "Weight_" aus der Year-Spalte
+  mutate(Year = sub("Weight_", "", Year))
+
+mammals_long
+```
+
+**Erklärungen:**
+
+  - `pivot_longer()`: Diese Funktion "schmilzt" die Spalten, die mit "Weight_" beginnen, in zwei neue Spalten um.
+
+  - `names_to = "Year"`: Speichert die ursprünglichen Spaltennamen (z. B. "Weight_2010") in der neuen Spalte Year.
+
+  - `values_to = "Weight_kg"`: Legt den Namen der neuen Spalte fest, in der die Gewichtswerte abgelegt werden.
+
+  - `mutate(Year = sub("Weight_", "", Year))`: Entfernt den Text "Weight_" aus den Werten in der Spalte Year, sodass nur noch das Jahr übrig bleibt.
+
+Das Ergebnis ist ein Long-Format-Datensatz, in dem jede Zeile eine Gewichtsmessung eines Tieres in einem bestimmten Jahr darstellt.
+
+#### Komplexeres Beispiel
+
+Jetzt schauen wir uns noch einen komplexeren Datensatz an in dem es mehr Spalten gibt.
+
+Die Komplexität des Pivoting hängt maßgeblich von der Konsistenz der Spaltennamen ab.
+Es wird dringend empfohlen, eine einheitliche Benennung zu verwenden und klare Trennzeichen wie den Unterstrich `_` einzusetzen.
+Falls die Spaltennamen inkonsistent sind, sollte dies vor dem Pivoting idealerweise mit Hilfe von `dplyr` bereinigt werden.
+
+```{r setup-pivot-longer-2, exercise=FALSE, eval=TRUE, echo=FALSE}
+mammals_2 <- data.frame(
+  Animal = c("Elephant", "Lion", "Rhinoceros"),
+  Region = c("Africa", "Africa", "Asia"),
+  Weight_2010 = c(4800, 180, 2200),
+  Height_2010 = c(300, 120, 170),
+  Weight_2020 = c(5000, 190, 2300),
+  Height_2020 = c(320, 130, 180),
+  Weight_2030 = c(5200, 195, 2400),
+  Height_2030 = c(340, 135, 190)
+)
+```
+```{r, ref.label=I('setup-pivot-longer-2'), eval=TRUE, echo=TRUE, exercise.eval=FALSE, exercise.lines = 16}
+```
+
+**Datensatz "mammals_2"**
+
+In diesem Beispiel enthält der Datensatz Informationen zu Gewicht und Höhe von Säugetieren in den Jahren 2010, 2020 und 2030 sowie Angaben zu Tierart und Region.
+
+```{r pivot-longer-03, exercise.setup = "setup-pivot-longer-2", exercise=FALSE, results ='hold', eval=TRUE, echo=FALSE}
+mammals_2
+```
+
+Wir fassen nun alle Spalten, außer Animal und Region, in zwei neue Spalten zusammen:
+
+  - `Measurement`: Enthält den Typ der Messgröße, z. B. "Weight" oder "Height".
+
+  - `Year`: Enthält das Jahr, das ursprünglich Teil des Spaltennamens war (z. B. "2030").
+
+Die eigentlichen Werte aus den ursprünglichen Spalten werden in der neuen Spalte "Value" abgelegt.
+Dadurch wird aus einer Vielzahl von Spalten (wie etwa "Height_2030", "Weight_2010" usw.) ein einheitlicher Datensatz, in dem jede Zeile eine einzelne Messung eines Tieres darstellt. 
+
+```{r pivot-longer-04, exercise.setup = "setup-pivot-longer-2", exercise=FALSE, results ='hold', eval=TRUE, echo=TRUE}
+mammals_long <- mammals_2 %>%
+  pivot_longer(
+    cols = -c(Animal, Region),
+    names_to = c("Measurement", "Year"),
+    names_sep = "_",
+    values_to = "Value"
+  )
+
+mammals_long
+```
+
+**Erklärung:**
+
+  - `pivot_longer()`: Diese Funktion wandelt mehrere Spalten in zwei Spalten um.
+
+  - `cols = -c(Animal, Region)`: Alle Spalten außer Animal und Region werden transformiert.
+
+  - `names_to = c("Measurement", "Year")`: Die ursprünglichen Spaltennamen werden in zwei Teile aufgespalten – den Messwert-Typ und das Jahr.
+
+  - `names_sep = "_"`: Der Unterstrich ("_") dient als Trennzeichen.
+
+  - `values_to = "Value"`: Die Messwerte werden in der neuen Spalte Value gespeichert.
+
+### pivot_wider(): Umwandeln von langen in breite Datensätze
 
 ## dplyr -- Übungen
 
