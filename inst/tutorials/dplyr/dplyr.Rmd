@@ -426,7 +426,7 @@ library(glue)
 # remotes::install_github("MeikeSteinhilber/otter")
 # remotes::install_github("rstudio/gradethis")
 # library(otter)
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
 feedback_message_wrong <- "Der Output stimmt nicht mit der Lösung überein. Eventuell hilft dir der Hinweis: {code_feedback()}"
 feedback_message_correct <- 'Richtig. {sample(c("Sehr gut gemacht!", "Perfekte Arbeit!", "Weiter so!", "Wunderbar gemacht!", "Klasse!", "Toller Job!",
 "Echt gut gemacht!", "Mega Arbeit, echt stark!",
@@ -553,7 +553,11 @@ df <- data.frame(
   life1 = rnorm(6),
   life2 = rnorm(6),
   life3 = rnorm(6),
-  life4 = rnorm(6)
+  life4 = rnorm(6),
+  x1_study = rnorm(6),
+  x2_study = rnorm(6),
+  x3_study = rnorm(6),
+  x_study_na = rnorm(6)
 )
 ```
 ```{r, ref.label=I('setup-base-df'), eval=TRUE, echo=TRUE, exercise.eval=FALSE, exercise.lines = 14}
@@ -643,10 +647,31 @@ Die Operatoren sind sich in vielen Funktionalitäten ähnlich, wir werden innerh
 #### Übungen
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
- *XXX*.
-```{r ex-piping, exercise=TRUE, results = "hold", exercise.eval=FALSE}
-
+ *Schreibe den Code um und verwende hier den Pipe Operator `%>%`. Ändere ansonsten so wenig, wie möglich*.
+```{r ex-piping-01, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
+df <- group_by(df, sex)
+df <- select(df, id, sex, age, intelligence)
+df <- filter(df, age <= 40)
+df <- rename(df, subjects = id)
+df 
 ```
+```{r ex-piping-01-solution, results = "hold", exercise.eval=FALSE}
+df <- df %>%
+  group_by(sex) %>% 
+  select(id, sex, age, intelligence) %>% 
+  filter(age <= 40) %>% 
+  rename(subjects = id)
+df
+```
+```{r ex-piping-01-check, ref.label=I('setup-base-df'), results = "hold", exercise.eval=FALSE}
+# grade_this({
+#   pass_if_equal(.solution, message = feedback_message_correct)
+#   fail_if_not_equal(.solution, message = feedback_message_wrong)
+# })
+grade_this_code()
+```
+
+
 </div>
 
 ### select() <a href="#section-dplyr-grundlagen"> <i class="fa-solid fa-arrow-up"></i></a>
@@ -764,10 +789,56 @@ df %>%
 #### Übungen
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
- *XXX*.
-```{r ex-select, exercise=TRUE, results = "hold", exercise.eval=FALSE}
+ *Wähle die Spalten "income", "id" und "school_years" aus*.
+```{r ex-select-01, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
 
 ```
+```{r ex-select-01-solution, results = "hold", exercise.eval=FALSE}
+df %>% select(income, id, school_years)
+```
+```{r ex-select-01-check, ref.label=I('setup-base-df'), results = "hold", exercise.eval=FALSE}
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
+
+# grade_this_code()
+```
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+ *Wähle alle Spalten aus, die mit "_study" enden*.
+```{r ex-select-02, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
+
+```
+```{r ex-select-02-solution, results = "hold", exercise.eval=FALSE}
+df %>% 
+  select(ends_with("_study"))
+```
+```{r ex-select-02-check, ref.label=I('setup-base-df'), results = "hold", exercise.eval=FALSE}
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
+
+# grade_this_code()
+```
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+ *Wähle alle Spalten aus, welche eine Ziffer enthalten*.
+```{r ex-select-03, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
+
+```
+```{r ex-select-03-solution, results = "hold", exercise.eval=FALSE}
+df %>% select(matches(".*[0-9]+.*"))
+```
+```{r ex-select-03-check, ref.label=I('setup-base-df'), results = "hold", exercise.eval=FALSE}
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
+
+# grade_this_code()
+```
+
 </div>
 
 ### filter() <a href="#section-dplyr-grundlagen"> <i class="fa-solid fa-arrow-up"></i></a>
@@ -804,8 +875,19 @@ df %>%
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
  *XXX*.
-```{r ex-filter, exercise=TRUE, results = "hold", exercise.eval=FALSE}
+```{r ex-filter-01, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
 
+```
+```{r ex-filter-01-solution, results = "hold", exercise.eval=FALSE}
+
+```
+```{r ex-filter-01-check, ref.label=I('setup-base-df'), results = "hold", exercise.eval=FALSE}
+# grade_this({
+#   pass_if_equal(.solution, message = feedback_message_correct)
+#   fail_if_not_equal(.solution, message = feedback_message_wrong)
+# })
+
+# grade_this_code()
 ```
 </div>
 
@@ -833,8 +915,19 @@ df %>%
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
  *XXX*.
-```{r ex-arrrange, exercise=TRUE, results = "hold", exercise.eval=FALSE}
+```{r ex-arrrange-01, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
 
+```
+```{r ex-arrrange-01-solution, results = "hold", exercise.eval=FALSE}
+
+```
+```{r ex-arrrange-01-check, ref.label=I('setup-base-df'), results = "hold", exercise.eval=FALSE}
+# grade_this({
+#   pass_if_equal(.solution, message = feedback_message_correct)
+#   fail_if_not_equal(.solution, message = feedback_message_wrong)
+# })
+
+# grade_this_code()
 ```
 </div>
 
@@ -857,8 +950,19 @@ df %>%
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
  *XXX*.
-```{r ex-rename, exercise=TRUE, results = "hold", exercise.eval=FALSE}
+```{r ex-rename-01, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
 
+```
+```{r ex-rename-01-solution, results = "hold", exercise.eval=FALSE}
+
+```
+```{r ex-rename-01-check, ref.label=I('setup-base-df'), results = "hold", exercise.eval=FALSE}
+# grade_this({
+#   pass_if_equal(.solution, message = feedback_message_correct)
+#   fail_if_not_equal(.solution, message = feedback_message_wrong)
+# })
+
+# grade_this_code()
 ```
 </div>
 
@@ -928,9 +1032,21 @@ df %>%
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
  *XXX*.
-```{r ex-mutate, exercise=TRUE, results = "hold", exercise.eval=FALSE}
+```{r ex-mutate-01, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
 
 ```
+```{r ex-mutate-01-solution, results = "hold", exercise.eval=FALSE}
+
+```
+```{r ex-mutate-01-check, ref.label=I('setup-base-df'), results = "hold", exercise.eval=FALSE}
+# grade_this({
+#   pass_if_equal(.solution, message = feedback_message_correct)
+#   fail_if_not_equal(.solution, message = feedback_message_wrong)
+# })
+
+# grade_this_code()
+```
+
 </div>
 
 ### summarize() <a href="#section-dplyr-grundlagen"> <i class="fa-solid fa-arrow-up"></i></a>
@@ -967,8 +1083,19 @@ Da alle Werte zu einer einzigen Zusammenfassung aggregiert werden, reduziert sic
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
  *XXX*.
-```{r ex-summarize, exercise=TRUE, results = "hold", exercise.eval=FALSE}
+```{r ex-summarize-01, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
 
+```
+```{r ex-summarize-01-solution, results = "hold", exercise.eval=FALSE}
+
+```
+```{r ex-summarize-01-check, ref.label=I('setup-base-df'), results = "hold", exercise.eval=FALSE}
+# grade_this({
+#   pass_if_equal(.solution, message = feedback_message_correct)
+#   fail_if_not_equal(.solution, message = feedback_message_wrong)
+# })
+
+# grade_this_code()
 ```
 </div>
 
@@ -1040,8 +1167,19 @@ In diesem Beispiel:
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
  *XXX*.
-```{r ex-groupby, exercise=TRUE, results = "hold", exercise.eval=FALSE}
+```{r ex-groupby-01, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
 
+```
+```{r ex-groupby-01-solution, results = "hold", exercise.eval=FALSE}
+
+```
+```{r ex-groupby-01-check, ref.label=I('setup-base-df'), results = "hold", exercise.eval=FALSE}
+# grade_this({
+#   pass_if_equal(.solution, message = feedback_message_correct)
+#   fail_if_not_equal(.solution, message = feedback_message_wrong)
+# })
+
+# grade_this_code()
 ```
 </div>
 
@@ -1142,6 +1280,27 @@ full_join(students, enrollments,
 
 Die Informationen werden sofern möglich zusammengeführt, wenn Werte fehlen werden `NA` Werte vergeben.
 
+<div class="uebungen">
+
+#### Übungen
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+ *XXX*.
+```{r ex-joyn-01, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
+
+```
+```{r ex-joyn-01-solution, results = "hold", exercise.eval=FALSE}
+
+```
+```{r ex-joyn-01-check, ref.label=I('setup-base-df'), results = "hold", exercise.eval=FALSE}
+# grade_this({
+#   pass_if_equal(.solution, message = feedback_message_correct)
+#   fail_if_not_equal(.solution, message = feedback_message_wrong)
+# })
+
+# grade_this_code()
+```
+</div>
 
 #### inner_join() <a href="#section-dplyr-daten-zusammenführen"> <i class="fa-solid fa-arrow-up"></i></a>
 
@@ -1270,7 +1429,12 @@ bind_cols(df1, df2)
 
 ## tidyr -- Pivoting
 
-### pivot_longer(): Umwandeln von breiten in lange Datensätze
+### Kapitel
+
+<a href="#section-pivot_longer-umwandeln-von-breiten-in-lange-datensätze"> <i class="fa-solid fa-arrow-down"></i>pivot_longer(): Umwandeln von breiten in lange Datensätze</a><br>
+<a href="#section-pivot_wider-umwandeln-von-langen-in-breite-datensätze"> <i class="fa-solid fa-arrow-down"></i>pivot_wider(): Umwandeln von langen in breite Datensätze</a><br>
+
+### pivot_longer(): Umwandeln von breiten in lange Datensätze <a href="#section-tidyr-pivoting"> <i class="fa-solid fa-arrow-up"></i></a>
 
 In diesem Tutorial lernst du, wie du einen Datensatz zum Thema Säugetiere im Wide-Format mithilfe der Funktion `pivot_longer()` aus dem `tidyr`-Paket in das Long-Format überführst.
 Im Wide-Format werden verschiedene Messgrößen in separaten Spalten dargestellt, während im Long-Format jede Beobachtung in einer eigenen Zeile erscheint.
@@ -1395,7 +1559,7 @@ mammals_long
 
   - `values_to = "Value"`: Die Messwerte werden in der neuen Spalte Value gespeichert.
 
-### pivot_wider(): Umwandeln von langen in breite Datensätze
+### pivot_wider(): Umwandeln von langen in breite Datensätze <a href="#section-tidyr-pivoting"> <i class="fa-solid fa-arrow-up"></i></a>
 
 ## dplyr -- Übungen
 
