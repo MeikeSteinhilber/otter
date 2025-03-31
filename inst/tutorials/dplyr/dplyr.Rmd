@@ -426,6 +426,9 @@ library(glue)
 # remotes::install_github("MeikeSteinhilber/otter")
 # remotes::install_github("rstudio/gradethis")
 # library(otter)
+
+set.seed(3)
+
 knitr::opts_chunk$set(echo = FALSE)
 feedback_message_wrong <- "Der Output stimmt nicht mit der Lösung überein. Eventuell hilft dir der Hinweis: {code_feedback()}"
 feedback_message_correct <- 'Richtig. {sample(c("Sehr gut gemacht!", "Perfekte Arbeit!", "Weiter so!", "Wunderbar gemacht!", "Klasse!", "Toller Job!",
@@ -469,9 +472,9 @@ Zu den Paketen im tidyverse gehören:
 
   - `dplyr` (Datenmanipulation),
   
-  - `ggplot2` (Datenvisualisierung),
-  
   - `tidyr` (Datenbereinigung),
+  
+  - `ggplot2` (Datenvisualisierung),
   
   - `readr` (Datenimport),
   
@@ -539,6 +542,8 @@ All diese Funktionen werden in diesem Kapitel näher erklärt:
 Der Datensatz `df` wird nachfolgend im Kapitel genutzt und ist in den jeweiligen R-Umgebungen hinterlegt.
 
 ```{r setup-base-df, exercise=FALSE, eval=TRUE, echo=TRUE}
+set.seed(3)
+
 df <- data.frame(
   id = 1:6,
   sex = c("M", "F", "M", "F", "M", "F"),
@@ -546,6 +551,7 @@ df <- data.frame(
   intelligence = c(110, 120, 130, 115, 125, 135),
   school_years = c(10, 7, 8, 12, 10, 8),
   income = sample(2000:5000, 6),
+  student = c(FALSE, TRUE, FALSE,TRUE, TRUE, FALSE),
   x_1 = rnorm(6),
   x_2 = rnorm(6),
   x_3 = rnorm(6),
@@ -670,7 +676,6 @@ df
 # })
 grade_this_code()
 ```
-
 
 </div>
 
@@ -874,21 +879,56 @@ df %>%
 #### Übungen
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
- *XXX*.
+ *Wähle alle Studenten aus*.
 ```{r ex-filter-01, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
 
 ```
 ```{r ex-filter-01-solution, results = "hold", exercise.eval=FALSE}
-
+df %>% filter(student == TRUE)
 ```
 ```{r ex-filter-01-check, ref.label=I('setup-base-df'), results = "hold", exercise.eval=FALSE}
-# grade_this({
-#   pass_if_equal(.solution, message = feedback_message_correct)
-#   fail_if_not_equal(.solution, message = feedback_message_wrong)
-# })
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
 
 # grade_this_code()
 ```
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+ *Wähle alle Studenten aus, die 30 Jahre oder älter sind*.
+```{r ex-filter-02, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
+
+```
+```{r ex-filter-02-solution, results = "hold", exercise.eval=FALSE}
+df %>% filter(student == TRUE & age >= 30)
+```
+```{r ex-filter-02-check, ref.label=I('setup-base-df'), results = "hold", exercise.eval=FALSE}
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
+
+# grade_this_code()
+```
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+ *Wähle Personen aus, die älter als 40 Jahre sind oder ein Einkommen über 4000€ haben*.
+```{r ex-filter-03, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
+
+```
+```{r ex-filter-03-solution, results = "hold", exercise.eval=FALSE}
+df %>% filter(age > 40 | income > 4000)
+```
+```{r ex-filter-03-check, ref.label=I('setup-base-df'), results = "hold", exercise.eval=FALSE}
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
+
+# grade_this_code()
+```
+
 </div>
 
 ### arrange() <a href="#section-dplyr-grundlagen"> <i class="fa-solid fa-arrow-up"></i></a>
@@ -914,18 +954,35 @@ df %>%
 #### Übungen
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
- *XXX*.
+ *Sortiere die Daten nach der Intelligenz*.
 ```{r ex-arrrange-01, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
 
 ```
 ```{r ex-arrrange-01-solution, results = "hold", exercise.eval=FALSE}
-
+df %>% arrange(intelligence)
 ```
 ```{r ex-arrrange-01-check, ref.label=I('setup-base-df'), results = "hold", exercise.eval=FALSE}
-# grade_this({
-#   pass_if_equal(.solution, message = feedback_message_correct)
-#   fail_if_not_equal(.solution, message = feedback_message_wrong)
-# })
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
+
+# grade_this_code()
+```
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+ *Sortiere die Daten nach dem Einkommen. Das höchste Einkommen soll in der ersten Zeile erscheinen *.
+```{r ex-arrrange-02, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
+
+```
+```{r ex-arrrange-02-solution, results = "hold", exercise.eval=FALSE}
+df %>% arrange(desc(income))
+```
+```{r ex-arrrange-02-check, ref.label=I('setup-base-df'), results = "hold", exercise.eval=FALSE}
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
 
 # grade_this_code()
 ```
@@ -949,18 +1006,19 @@ df %>%
 #### Übungen
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
- *XXX*.
+ *Benenne die Spalte "intelligence" in "iq_score" um*.
 ```{r ex-rename-01, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
 
 ```
 ```{r ex-rename-01-solution, results = "hold", exercise.eval=FALSE}
-
+df %>% 
+  rename(iq_score = intelligence)
 ```
 ```{r ex-rename-01-check, ref.label=I('setup-base-df'), results = "hold", exercise.eval=FALSE}
-# grade_this({
-#   pass_if_equal(.solution, message = feedback_message_correct)
-#   fail_if_not_equal(.solution, message = feedback_message_wrong)
-# })
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
 
 # grade_this_code()
 ```
@@ -1031,18 +1089,55 @@ df %>%
 #### Übungen
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
- *XXX*.
+ *Erstelle eine neue Spalte namens "name" und setze "unbekannt" als Wert*.
 ```{r ex-mutate-01, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
 
 ```
 ```{r ex-mutate-01-solution, results = "hold", exercise.eval=FALSE}
-
+df %>% 
+  mutate(name = "unbekannt", .after = id)
 ```
 ```{r ex-mutate-01-check, ref.label=I('setup-base-df'), results = "hold", exercise.eval=FALSE}
-# grade_this({
-#   pass_if_equal(.solution, message = feedback_message_correct)
-#   fail_if_not_equal(.solution, message = feedback_message_wrong)
-# })
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
+
+# grade_this_code()
+```
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+ *Überschreibe die Werte von "income", sodass R den Wert als fehlend ("not available") begreift*.
+```{r ex-mutate-02, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
+
+```
+```{r ex-mutate-02-solution, results = "hold", exercise.eval=FALSE}
+df %>% 
+  mutate(income = NA)
+```
+```{r ex-mutate-02-check, ref.label=I('setup-base-df'), results = "hold", exercise.eval=FALSE}
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
+
+# grade_this_code()
+```
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+ *Erstelle eine neue Spalte namens "mean_income" und berechne dort den Durchschnitt des Einkommens aller Personen*.
+```{r ex-mutate-03, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
+
+```
+```{r ex-mutate-03-solution, results = "hold", exercise.eval=FALSE}
+df %>% 
+  mutate(mean_income = mean(income), .after = id)
+```
+```{r ex-mutate-03-check, ref.label=I('setup-base-df'), results = "hold", exercise.eval=FALSE}
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
 
 # grade_this_code()
 ```
@@ -1082,21 +1177,46 @@ Da alle Werte zu einer einzigen Zusammenfassung aggregiert werden, reduziert sic
 #### Übungen
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
- *XXX*.
+ *Aggregiere die Tabelle: Erstelle dabei eine neue Spalte namens "mean_income" und berechne dort den Durchschnitt des Einkommens aller Personen*.
 ```{r ex-summarize-01, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
 
 ```
 ```{r ex-summarize-01-solution, results = "hold", exercise.eval=FALSE}
-
+df %>%
+  summarize(
+    mean_income = mean(income)
+  )
 ```
 ```{r ex-summarize-01-check, ref.label=I('setup-base-df'), results = "hold", exercise.eval=FALSE}
-# grade_this({
-#   pass_if_equal(.solution, message = feedback_message_correct)
-#   fail_if_not_equal(.solution, message = feedback_message_wrong)
-# })
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
 
 # grade_this_code()
 ```
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+ *Aggregiere die Tabelle: Erstelle dabei eine neue Spalte namens "mean_income" und berechne dort den Durchschnitt des Einkommens aller Personen. Berechne auch den Median der Schuljahre und benenne die Spalte "median_school"*.
+```{r ex-summarize-02, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
+
+```
+```{r ex-summarize-02-solution, results = "hold", exercise.eval=FALSE}
+df %>%
+  summarize(
+    mean_income = mean(income),
+    median_school = median(school_years)
+  )
+```
+```{r ex-summarize-02-check, ref.label=I('setup-base-df'), results = "hold", exercise.eval=FALSE}
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
+
+# grade_this_code()
+```
+
 </div>
 
 ### group_by() <a href="#section-dplyr-grundlagen"> <i class="fa-solid fa-arrow-up"></i></a>
@@ -1166,21 +1286,45 @@ In diesem Beispiel:
 #### Übungen
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
- *XXX*.
+ *Berechne in Abhängigkeit des Geschlechts das durchschnittliche Einkommen (aggregiere die Daten). Benenne die neue Spalte "mean_income"*.
 ```{r ex-groupby-01, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
 
 ```
 ```{r ex-groupby-01-solution, results = "hold", exercise.eval=FALSE}
-
+df %>% 
+  group_by(sex) %>% 
+  summarize(mean_income = mean(income))
 ```
 ```{r ex-groupby-01-check, ref.label=I('setup-base-df'), results = "hold", exercise.eval=FALSE}
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
+
+# grade_this_code()
+```
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+ *Berechne in Abhängigkeit des Geschlechts das durchschnittliche Einkommen (aggregiere die Daten). Benenne die neue Spalte "mean_income". Berechne danach noch das durchschnittliche Alter pro Geschlecht (speichere das Ergebnis in "mean_age") ab. Löse danach die Gruppenstruktur auf*.
+```{r ex-groupby-02, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
+
+```
+```{r ex-groupby-02-solution, results = "hold", exercise.eval=FALSE}
+df %>% 
+  group_by(sex) %>% 
+  summarize(mean_income = mean(income),
+            mean_age = mean(age)) %>% 
+  ungroup()
+```
+```{r ex-groupby-02-check, ref.label=I('setup-base-df'), results = "hold", exercise.eval=FALSE}
 # grade_this({
 #   pass_if_equal(.solution, message = feedback_message_correct)
 #   fail_if_not_equal(.solution, message = feedback_message_wrong)
 # })
 
-# grade_this_code()
+grade_this_code()
 ```
+
 </div>
 
 ## dplyr -- Daten zusammenführen
@@ -1431,8 +1575,8 @@ bind_cols(df1, df2)
 
 ### Kapitel
 
-<a href="#section-pivot_longer-umwandeln-von-breiten-in-lange-datensätze"> <i class="fa-solid fa-arrow-down"></i>pivot_longer(): Umwandeln von breiten in lange Datensätze</a><br>
-<a href="#section-pivot_wider-umwandeln-von-langen-in-breite-datensätze"> <i class="fa-solid fa-arrow-down"></i>pivot_wider(): Umwandeln von langen in breite Datensätze</a><br>
+<a href="#section-pivot_longer-umwandeln-von-breiten-in-lange-datensätze"> <i class="fa-solid fa-arrow-down"></i> pivot_longer(): Umwandeln von breiten in lange Datensätze</a><br>
+<a href="#section-pivot_wider-umwandeln-von-langen-in-breite-datensätze"> <i class="fa-solid fa-arrow-down"></i> pivot_wider(): Umwandeln von langen in breite Datensätze</a><br>
 
 ### pivot_longer(): Umwandeln von breiten in lange Datensätze <a href="#section-tidyr-pivoting"> <i class="fa-solid fa-arrow-up"></i></a>
 
@@ -1561,7 +1705,7 @@ mammals_long
 
 ### pivot_wider(): Umwandeln von langen in breite Datensätze <a href="#section-tidyr-pivoting"> <i class="fa-solid fa-arrow-up"></i></a>
 
-## dplyr -- Übungen
+## Datenaufbereitung -- Übungen
 
 ## ggplot2 -- Grundlagen
 
@@ -1569,5 +1713,5 @@ mammals_long
 
 ## ggplot2 -- Ausblick
 
-## ggplot -- Übungen
+## Visualisierungen -- Übungen
 
