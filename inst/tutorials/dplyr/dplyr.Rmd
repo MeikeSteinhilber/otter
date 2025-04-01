@@ -1424,27 +1424,6 @@ full_join(students, enrollments,
 
 Die Informationen werden sofern möglich zusammengeführt, wenn Werte fehlen werden `NA` Werte vergeben.
 
-<div class="uebungen">
-
-#### Übungen
-
-`r otter::colorize("Aufgabe:", "var(--blue)")`
- *XXX*.
-```{r ex-joyn-01, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
-
-```
-```{r ex-joyn-01-solution, results = "hold", exercise.eval=FALSE}
-
-```
-```{r ex-joyn-01-check, ref.label=I('setup-base-df'), results = "hold", exercise.eval=FALSE}
-# grade_this({
-#   pass_if_equal(.solution, message = feedback_message_correct)
-#   fail_if_not_equal(.solution, message = feedback_message_wrong)
-# })
-
-# grade_this_code()
-```
-</div>
 
 #### inner_join() <a href="#section-dplyr-daten-zusammenführen"> <i class="fa-solid fa-arrow-up"></i></a>
 
@@ -1509,10 +1488,124 @@ anti_join(enrollments, students, by = "student_id", suffix = c("_stud", "_enroll
 
 Hier handelt es sich um alle Personen (Zeilen), die sich zu einer Klausur angemeldet haben, obwohl sie nicht offiziell immatrikuliert sind.
 
-<div class="uebung">
+<div class="uebungen">
+
 #### Übungen
 
-text
+In unserem Beispiel gibt es zwei Datensätze:
+
+  - *df_id*: Die Übersicht über alle registrierten Proband*innen
+  
+  - *df_med*: Die erhobenen medizinischen Daten von fast allen registrierten Proband*innen
+
+In echte Studien kann es passieren, dass Probanden obwohl sie bereits für die Studie registriert sind nicht an der Studie teilnehmen und somit keine Daten vorliegen.
+
+```{r setup-join-ex, exercise=FALSE, eval=TRUE, echo=FALSE}
+df_id <- data.frame(
+  proband_id = 1:8,
+  first_name = randomNames::randomNames(8, which.names = "first"),
+  last_name = randomNames::randomNames(8, which.names = "last"),
+  insurance = sample(c(TRUE,FALSE),8, replace = TRUE),
+  age = sample(20:55, 8),
+  sex = rep(c("male", "female"))
+  
+)
+
+df_med <- data.frame(
+  proband_id = 3:8,
+  condition = rep(c("placebo", "medicine"), 3),
+  pain = sample(1:10, 6)
+)
+
+```
+```{r, ref.label=I('setup-join-ex'), eval=TRUE, echo=TRUE, exercise.eval=FALSE, exercise.lines = 16}
+```
+
+**Datensatz "df_id"**
+
+```{r ex-joyn-0, exercise.setup = "setup-join-ex", exercise=FALSE, results ='hold', eval=TRUE, echo=FALSE}
+df_id
+```
+
+**Datensatz "df_med"**
+
+```{r ex-joyn-00, exercise.setup = "setup-join-ex", exercise=FALSE, results = "hold", eval=TRUE, echo=FALSE}
+df_med
+```
+
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+ *Fülle den Datensatz "df_id" auf mit allen Infos aus "df_med"*.
+```{r ex-joyn-01, exercise.setup = "setup-join-ex", exercise=TRUE, results = "hold", exercise.eval=FALSE}
+
+```
+```{r ex-joyn-01-solution, results = "hold", exercise.eval=FALSE}
+left_join(df_id, df_med, by = "proband_id")
+```
+```{r ex-joyn-01-check, ref.label=I('setup-join-ex'), results = "hold", exercise.eval=FALSE}
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
+
+# grade_this_code()
+```
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+ *Zu welche Personen haben wir keine medizinischen Daten erhoben?*
+```{r ex-joyn-02, exercise.setup = "setup-join-ex", exercise=TRUE, results = "hold", exercise.eval=FALSE}
+
+```
+```{r ex-joyn-02-solution, results = "hold", exercise.eval=FALSE}
+anti_join(df_id, df_med, by = "proband_id")
+```
+```{r ex-joyn-02-check, ref.label=I('setup-join-ex'), results = "hold", exercise.eval=FALSE}
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
+
+# grade_this_code()
+```
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+ *Für die Analyse, erstelle einen Datensatz, welche alle vorhandenen Infos aus beiden Datensätzen enthält. Es sollen jedoch nur Personen erscheinen, für die auch medizinische Daten vorliegen.*
+```{r ex-joyn-03, exercise.setup = "setup-join-ex", exercise=TRUE, results = "hold", exercise.eval=FALSE}
+
+```
+```{r ex-joyn-03-solution, results = "hold", exercise.eval=FALSE}
+# Lösung 1 ----
+inner_join(df_id, df_med, by = "proband_id")
+
+# Lösung 2 ----
+# In diesem Beispiel kann man auch das machen
+right_join(df_id, df_med, by = "proband_id")
+```
+```{r ex-joyn-03-check, ref.label=I('setup-join-ex'), results = "hold", exercise.eval=FALSE}
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
+
+# grade_this_code()
+```
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+ *Wir möchten den Datensatz "df_id" reduzieren, sodass nur Personen enthalten sind, bei denen auch medizinische Daten vorliegen.*
+```{r ex-joyn-04, exercise.setup = "setup-join-ex", exercise=TRUE, results = "hold", exercise.eval=FALSE}
+
+```
+```{r ex-joyn-04-solution, results = "hold", exercise.eval=FALSE}
+semi_join(df_id, df_med, by = "proband_id")
+```
+```{r ex-joyn-04-check, ref.label=I('setup-join-ex'), results = "hold", exercise.eval=FALSE}
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
+
+# grade_this_code()
+```
 
 </div>
 
@@ -1709,7 +1802,124 @@ mammals_long
 
 ## ggplot2 -- Grundlagen
 
+### Kapitel
+
+`ggplot2` ist ein sehr mächtiges Werkzeug zur Visualisierung von Daten.
+
+Eine Visualisierung, also ein Bild, wird nachfolgend "Plot" genannt in Anlehnung an die englische Bezeichnung.
+Die nachfolgende Struktur ist wichtig um einen Plot zu programmieren mit `ggplot2`
+
+**Grundstruktur und Elemente eines Plots:**
+
+  - die verwendeten Daten
+
+  - die Daten müssen auf die grafischen Elemente abgebildet werden (x-Achse, y-Achse, Farben, Größen, ...)
+
+  - der Diagrammtyp wird festgelegt (Histogramm, Liniendiagramm, Balkendiagramm, Streudiagramm, ...)
+
+  - das Diagramm wird individuell angepasst (Themen/Designs, zusätzliche Linien, Größen, Farben, Beschriftungen, ...)
+
+  - `+` wird als eine Art Pipe-Operator verwendet, um weitere Ebenen zum Diagramm hinzuzufügen
+
+
+### Ideen & Literatur
+
+Buch: [ggplot2](https://ggplot2-book.org/)
+
+Plot Gallerie: 
+
+[![Kunst Galerie Vorschau](./images/plot_examples.png){.images-shadow width="15cm"}](https://r-graph-gallery.com/137-spring-shapes-data-art.html)
+
+
+Kunst: Gallerie von Danielle Navarro
+
+[![Kunst Galerie Vorschau](./images/art_screenshot.png){.images-shadow width="15cm"}](https://art.djnavarro.net/gallery/)
+
+### Beispieldatensatz
+
+```{r setup-ggplot-df, exercise=FALSE, eval=TRUE, echo=FALSE}
+set.seed(3)
+
+N = 140
+
+df <- sprtt::draw_sample_normal(2, f = 0.25, max_n = N/2, sd = c(0.8, 1.2), sample_ratio = c(1,1))
+df <- df %>% 
+  mutate(
+    group = factor(x, levels = c(1,2), labels = c("treatment", "placebo")),
+    sex = sample(c("female", "male", "unknown"), size = N, replace = TRUE, prob = c(0.50, 0.50, 0)),
+    age = sample(33:67, size = N, replace = TRUE),
+    life_satisfaction = round(10 + y*-0.9 + rnorm(N, sd = 3)),
+    depression = round(20 + life_satisfaction*-0.6 + rnorm(N, sd = 3.2)),
+    intelligence = round(rnorm(N, 100, 10))
+  ) %>% 
+  select(-x)
+
+```
+```{r, ref.label=I('setup-ggplot-df'), eval=TRUE, echo=FALSE, exercise.eval=FALSE}
+```
+Hier können wir uns den Datensatz anschauen, den wir visualisieren möchten:
+Der Datensatz befindet sich bereits im long-Format und das ist besonders hilfreich für `ggplot2`.
+
+Fall der Datensatz in einem anderen Format vorliegt, müssten wir zunächst den Datensatz mit pivoten.
+Siehe dazu das Kapitel "tidyr - Pivoting".
+
+```{r data-mapping-00,exercise.setup = "setup-ggplot-df", exercise=TRUE, results = "hold"}
+df
+```
+
 ### Piping mit `+`
+
+Man kann die einzelnen Ebenen eines Plots auch pipen - es wird hier jedoch das `+` Symbol genutzt und nicht `%>%`.
+
+
+### Data Mapping
+
+Der erste Schritt ist es die Daten zu definieren und auf die Bildachsen (x-Achse, y-Achse) zu "mappen" (zuzuweisen).
+Der Plot bleibt damit erst mal noch leer - wir legen hier aber bereits sehr wichtige Grundlagen des Plots fest.
+
+Hier ist ein Beispiel bei dem ein leerer Plot erstellt wird und die Daten zu den Achsen zugeordnet werden.
+Alle Funktionsargumente werden hier ausgeschrieben.
+Dies ist eine sehr ausführliche Schreibweise.
+Es hilft für das Verständnis es sich so zu merken.
+```{r data-mapping-01, exercise=TRUE, eval=FALSE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+ggplot(
+  data = df, # die Daten werden als Argument übergeben
+  mapping = aes(x = group, y = life_satisfaction)
+)
+```
+
+
+
+
+Meist sieht man eine verkürzte Schreibweise:
+```{r data-mapping-02, exercise=TRUE, eval=FALSE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+df %>% # die Daten werden mit dplyr übergeben
+  ggplot(
+    aes(x = group, y = life_satisfaction)
+    )
+```
+
+Oft wird mit `dplyr` davor der Datensatz noch angepasst und direkt an `ggplot2` übergeben.
+
+Hier werden z.B. nur die Daten der Frauen visualisiert:
+```{r data-mapping-03, exercise=TRUE, eval=FALSE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+df %>% 
+  filter(sex == "female") %>%
+  ggplot(
+    aes(x = group, y = life_satisfaction)
+    )
+```
+
+Wir können nun langsam damit beginnen den Plot nach unseren Wünschen anzupassen.
+Hier wurde noch eine weitere Ebene mit `+` gepiped in der das Design (Theme genannt) angepasst wird.
+```{r data-mapping-04, exercise=TRUE, eval=FALSE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+ggplot(
+  data = df,
+  mapping = aes(x = group, y = life_satisfaction)
+) +
+theme_bw(base_size = 20)
+```
+
 
 ## ggplot2 -- Ausblick
 
