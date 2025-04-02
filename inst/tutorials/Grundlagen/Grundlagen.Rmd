@@ -550,8 +550,9 @@ Je nachdem, wo die *working directory* gesetzt ist, werden hier unterschiedliche
 Wenn ein R-Skript geöffnet wird, wird ein weiteres Fenster für das Skript angezeigt.
 In einem R-Skript kann ein R Programmiercode abgespeichert werden.
 
-#### Übungen
 <div class="uebungen">
+#### Übungen
+
 
 <!-- `r otter::colorize("Aufgabe:", "var(--blue)")` -->
 
@@ -606,10 +607,10 @@ Man erhält eine große Anzahl an möglichen Formaten, unter anderem auch ein R-
 Das neu geöffnete R-Skript sieht nun so aus und kann direkt mit dem Disketten-Symbol abgespeichert werden.
 
 ![Ein neues, leeres R-Skript ist geöffnet. Das zum Speichern geeignete blaue Disketten-Symbol befindet sich über der ersten Zeile.](images/empty-rscript-open.png){.absolute .images-shadow left="100%" width="80%"}
-
+<div class="uebungen">
 
 #### Übungen
-<div class="uebungen">
+
 
 <!-- `r otter::colorize("Aufgabe:", "var(--blue)")` -->
 
@@ -636,11 +637,12 @@ Siehe dir die folgenden Bilder und Aufgaben an, um zu verstehen, wie in unseren 
 
 ![Zu sehen sind zwei Screenshots nebeneinander. Der linke Screenshot zeigt ein geöffnetes R-Skript. Der rechte Screenshot zeigt die Konsolen Ausgabe nach dem Ausführen des R-Skriptes in RStudio. Das R-Skript in R-Studio sowie der Konsolen-Output sind identisch mit den darunter stehenden Übungsaufgaben, die in Otter zu sehen sind. Daraus kann gefolgert werden, dass R-Studio-Umgebungen in Otter integriert sind und denselben Output ergeben.](images/r-vs-tutorial.png){.absolute left="100%" width="80%"}
 
+<div class="uebungen">
 
 #### Übungen
 So sieht derselbe R Code in unserem Tutorial-Format aus:
 
-<div class="uebungen">
+
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
  *Klicke auf den Button "Code ausführen" und vergleiche die Ausgabe mit den obrigen Bildern*.
@@ -731,9 +733,10 @@ variable <- 3
 variable
 ```
 
+<div class="uebungen">
 
 #### Übungen
-<div class="uebungen">
+
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Erstelle ein Variable mit dem Inhalt: "Sonne". Und gebe Dir den Inhalt der Variable auf der Console aus.*
@@ -852,9 +855,10 @@ buchstaben != "C"
 zahlen > 20
 ```
 
+<div class="uebungen">
 
 #### Übungen
-<div class="uebungen">
+
 
 `r otter::colorize("Vorbereitung:", "var(--blue)")`
 ```{r setup-logical, exercise.eval=FALSE}
@@ -982,9 +986,10 @@ Mit der Funktion `typeof()` können wir abfragen, um welchen Datentyp es sich ha
 typeof(5)
 ```
 
+<div class="uebungen">
 
 #### Übungen
-<div class="uebungen">
+
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Erzeuge einen integer-Vektor von 5 bis 12 in Einer-Schritten*
@@ -1088,8 +1093,10 @@ Oder auch für Hexcode, um Farben zu definieren.
 scales::show_col(c("#044a85", "#e28743", "#1F98B44D", "#1F98BC"))
 ```
 
-#### Übungen
 <div class="uebungen">
+
+#### Übungen
+
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Gebe Dir den Text "Hallo liebe R-Freunde" aus.*
@@ -1219,8 +1226,10 @@ variable <- NaN
 variable | TRUE
 ```
 
-#### Übungen
 <div class="uebungen">
+
+#### Übungen
+
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Prüfe, ob die Variable `variable` einen fehlenden Wert enthält. Korrigiere dazu den Fehler im Code.*
@@ -1340,8 +1349,10 @@ as.character(number) # -> Zahl wird in einen Text verwandelt
 as.logical(number) # -> 0 wird zu FALSE
 ```
 
-#### Übungen
 <div class="uebungen">
+
+#### Übungen
+
 
 ```{r quiz-datentyp}
 quiz(caption = "",
@@ -1491,8 +1502,10 @@ freunde <- freunde[!freunde == "Thorben"]
 freunde
 ```
 
-#### Übungen
 <div class="uebungen">
+
+#### Übungen
+
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Erstelle ein Variable mit dem Inhalt: Baum, Blume, Haus, Pferd. Und gebe Dir den Inhalt der Variable auf der Console aus.*
@@ -1550,8 +1563,10 @@ namen_freunde[c(TRUE, TRUE, TRUE)]
 namen_freunde[c(TRUE, FALSE, FALSE)]
 ```
 
-#### Übungen
 <div class="uebungen">
+
+#### Übungen
+
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Ändere den Inhalt der Variable: entferne die Einträge `Hund`.*
@@ -1657,8 +1672,9 @@ zahlen < 2
 ```
 
 
-#### Übungen
 <div class="uebungen">
+#### Übungen
+
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Addiere auf jedes Element im Vektor die Zahl 3.*
@@ -1777,8 +1793,9 @@ tage <- factor(
 sort(tage)
 ```
 
-#### Übungen
 <div class="uebungen">
+#### Übungen
+
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Erstelle einen Faktor aus der Variable `var_monate`. Sortiere danach die Monate innerhalb dieser Variable.*
@@ -1841,8 +1858,9 @@ matrix[1, ] # Gesamte Zeile 1
 matrix[ ,2] # Gesamte Spalte
 ```
 
-#### Übungen
 <div class="uebungen">
+#### Übungen
+
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Erstelle eine Matrix aus der Variable `farben`. Wähle eine inhaltlich sinnvolle Aufteilung für die Spalten.*
@@ -1961,9 +1979,9 @@ freunde$lieblingszahlen[2] # Im Datensatz die Spalte lieblingszahlen, die zweite
 freunde # gesamter Datensatz anzeigen lassen
 ```
 
-
-#### Übungen
 <div class="uebungen">
+#### Übungen
+
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Erstelle einen Datensatz `tiere` aus den Variablen und gebe den Datensatz aus.*
@@ -2139,8 +2157,10 @@ liste[[2]][1,2] # im ersten Element (Datensatz) die erste Ziele und zweite Spalt
 liste[[2]][1,] # im ersten Element (Datensatz) die erste Ziele
 ```
 
-#### Übungen
+
 <div class="uebungen">
+#### Übungen
+
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Erstelle eine Liste aus den drei Objekten.*
 <div class="tip">
@@ -2302,8 +2322,9 @@ add_numbers(5,80, custom_text = "The answer is")
 ```
 
 
-#### Übungen
 <div class="uebungen">
+#### Übungen
+
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Schreibe eine Funktion, die zwei Zahlen addiert. Nutze dazu den bereits angegebenen Code.*
@@ -2482,9 +2503,9 @@ Die wichtigsten Inhalte in der Hilfe-Seite sind:
 ![Der Help-Reiter wurde ausgewählt in RStudio. Die Inhalte der mean() Funktion werden wiedergegeben.](images/help_mean_long.png){height="600"}
 
 
-
-#### Übungen
 <div class="uebungen">
+#### Übungen
+
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Öffne hier die Hilfeseiten der Funktionen, um die folgenden Quiz-Fragen zu beantworten. Probiere auch gerne Code aus, um zu verstehen, wie die Funktionen funktionieren.*
@@ -2582,9 +2603,9 @@ mean(data, na.rm = TRUE)
 ```
 
 
-
-#### Übungen
 <div class="uebungen">
+#### Übungen
+
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Die Argumente werden im folgenden Code falsch übergeben. Korrigiere den Fehler.*
@@ -2673,9 +2694,9 @@ glue::glue("Hello {variable}! How are you?")
 cat("Hello", variable, "! How are you?")
 ```
 
-
-#### Übungen
 <div class="uebungen">
+#### Übungen
+
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Löse die Problemstellung mit einer Funktion.*
@@ -2790,9 +2811,9 @@ Tidyverse:
 -   Wird nicht weiter in diesem Tutorial behandelt.
 -    <https://www.tidyverse.org/>
 
-
-#### Übungen
 <div class="uebungen">
+#### Übungen
+
 
   1. *Öffne RStudio auf deinem Rechner und navigiere in den Reiter "Packages". Siehe dir dort die installierten Pakete an.*
 
@@ -3125,8 +3146,9 @@ Im Ordner `data` werden alle Datensätze gespeichert.
 Im Ordner `images` werden alle Grafiken gespeichert.
 Im Ordner `R` werden alle R-Skripte gespeichert.
 
-#### Übungen <a href="#section-r-projekte-und-working-directory"> <i class="fa-solid fa-arrow-up"></i></a>
 <div class="uebungen">
+#### Übungen <a href="#section-r-projekte-und-working-directory"> <i class="fa-solid fa-arrow-up"></i></a>
+
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Öffne RStudio auf deinem Rechner und gehe die folgenden Schritte durch:*
@@ -3269,8 +3291,9 @@ if (condition_1) {# -> 1
 
 -   `# -> 4`: `else` hier ist das Ende erreicht der Prüfungen und der "Code 4" wird ausgegeben.
 
-#### Übungen
 <div class="uebungen">
+#### Übungen
+
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Schreibe ein if-else-Statement, dass den ersten Satz ausgibt, wenn die Variable `tier` ein `Reptil` enthält. Der zweite Satz soll ausgegeben werden, wenn es sich nicht um ein `Reptil` handelt.*
@@ -3389,9 +3412,9 @@ for (position in 1:length(friends)) {
 friends_status
 ```
 
-
-#### Übungen
 <div class="uebungen">
+#### Übungen
+
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Schreibe eine For-Loop, die den Satz `Ich mag ____.` für alle Tiere ausgibt. Nutze dazu den Code, der bereits angegeben ist.*
@@ -3475,8 +3498,9 @@ while (counter <= stop_criteria) {
 }
 ```
 
-#### Übungen
 <div class="uebungen">
+#### Übungen
+
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Schreibe diese For-Loop in eine While-Loop um. Nutze dazu den Code, der bereits angegeben ist.*
@@ -3577,8 +3601,10 @@ divide_numbers <- function(number1, number2) {
 divide_numbers(8, 0)
 ```
 
-#### Übungen
+
 <div class="uebungen">
+#### Übungen
+
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Schreibe eine Warnung, die angezeigt wird, wenn die Variable `zahl` nicht numerisch ist. Nutze dazu den Code der bereits vorhanden ist.*
