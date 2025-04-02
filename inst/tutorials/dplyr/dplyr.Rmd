@@ -1,7 +1,7 @@
 ---
 title: "dplyr & ggplot2"
 tutorial:
-  version: 0.1.1
+  version: 0.1.0
 lang:   de
 output:
   learnr::tutorial:
@@ -16,7 +16,7 @@ runtime: shiny_prerendered
 ---
 <svg xmlns="http://www.w3.org/2000/svg" width="508.977" height="29.723" viewBox="0 0 134.667 7.864" class="followcursor"><path d="m96 117.136-3.889 3.315-2.208 1.882H30.167c-.831 0-1.5.595-1.5 1.334 0 .739.669 1.333 1.5 1.333h131.667c.83 0 1.5-.594 1.5-1.333s-.67-1.334-1.5-1.334h-59.736l-2.209-1.882z" style="fill:#000;stroke-width:.264583" transform="translate(-28.666 -117.136)"/></svg>
 <div class="accessibility"></div>
-<div class="offcanvas"><div class="title">Einstellungen für Barrierefreiheit</div><div class="button-container"><button data-setting="contrast"><span>Kontrast</span></button><button data-setting="links"><span>Links <wbr>hervorheben</span></button><button data-setting="letterspacing"><div>Schriftabstand</div><div class="indicators"><div data-num="1"></div><div data-num="2"></div><div data-num="3"></div></div></button><button data-setting="dyslexia"><span>Legasthenie&shy;freundlich</span></button><button data-setting="cursor"><span>Cursor</span></button><button data-setting="lineheight"><div>Zeilenhöhe</div><div class="indicators"><div data-num="1"></div><div data-num="2"></div><div data-num="3"></div></div></button><button data-setting="fontsize"><div>Schriftgröße</div><div class="indicators"><div data-num="1"></div><div data-num="2"></div><div data-num="3"></div><div data-num="4"></div><div data-num="5"></div></div></button></div>
+<div class="offcanvas"><div class="title">Einstellungen für Barrierefreiheit</div><div class="button-container"><button data-setting="contrast"><span>Kontrast</span></button><button data-setting="links"><span>Links <wbr>hervorheben</span></button><button data-setting="letterspacing"><div>Schriftabstand</div><div class="indicators"><div data-num="1"></div><div data-num="2"></div><div data-num="3"></div></div></button><button data-setting="dyslexia"><span>Legasthenie&shy;freundlich</span></button><button data-setting="cursor"><span>Cursor</span></button><button data-setting="lineheight"><div>Zeilenhöhe</div><div class="indicators"><div data-num="1"></div><div data-num="2"></div><div data-num="3"></div></div></button><button data-setting="fontsize"><div>Schriftgröße</div><div class="indicators"><div data-num="1"></div><div data-num="2"></div><div data-num="3"></div><div data-num="4"></div><div data-num="5"></div><div data-num="6"></div></div></button></div>
 </div>
 <script>
 $(document).ready(function() {
@@ -59,7 +59,7 @@ $(document).ready(function() {
       if(currentIndicator != 0) {
         $("html").addClass(setting + currentIndicator.toString());
       } else {
-        [1,2,3,4,5].map(function(i) {
+        [1,2,3,4,5,6].map(function(i) {
           $("html").removeClass(setting + i.toString());
         });
       }
@@ -566,7 +566,7 @@ df <- data.frame(
   x_study_na = rnorm(6)
 )
 ```
-```{r, ref.label=I('setup-base-df'), eval=TRUE, echo=TRUE, exercise.eval=FALSE, exercise.lines = 14}
+```{r, ref.label=I('setup-base-df'), eval=TRUE, echo=TRUE, exercise.eval=FALSE, exercise.lines = 25}
 
 ```
 
@@ -579,7 +579,7 @@ Der Shortcut für ein schnelles Erstellen des Operators ist `Strg + Shift + M ` 
 Betrachten wir folgendes Beispiel, in dem wir Daten mit vier Funktionen manipulieren.
 Was die einzelnen Funktionen machen, werden wir uns später im Detail anschauen.
 
-```{r dplyr-pipe-1, exercise.setup = "setup-base-df", exercise=FALSE, eval=FALSE}
+```{r dplyr-pipe-1, exercise.setup = "setup-base-df", exercise=FALSE, eval=FALSE, echo=TRUE}
 # Option 1
 # Zergliederung der Schritte und Speicherung der Zwischenschritte
 df <- select(df, X, sex, age, intelligence)
@@ -591,7 +591,7 @@ df <- rename(df, subjects = X)
 Die erste Optione ist zwar gut leserlich, aber sehr umständlich gecoded, da sie einige Wiederholungen enthält.
 So wird der einzelne Bearbeitungsschritt jedes Mal zwischen gespeichert und der Datensatz muss jedes Mal neu übergeben werden.
 
-```{r dplyr-pipe-2, exercise.setup = "setup-base-df", exercise=FALSE, eval=FALSE}
+```{r dplyr-pipe-2, exercise.setup = "setup-base-df", exercise=FALSE, eval=FALSE, echo=TRUE}
 # Option 2
 # Verschachtelung der Funktionen ineinander
 df <- rename(
@@ -611,7 +611,9 @@ Der Pipe-Operator `%>%` hilft nun, genaus diese Verarbeitungs-Ketten besser darz
 Anstatt den Datensatz in jeder Funktion explizit zu nennen, wird der Datensatz implizit an die nachfolgende Funktionen weitergegeben.
 So sieht der Code mit Pipe-Operator aus:
 
-```{r dplyr-pipe-3, exercise.setup = "setup-base-df", exercise=FALSE, eval=FALSE}
+```{r dplyr-pipe-3, exercise.setup = "setup-base-df", exercise=FALSE, eval=FALSE, echo=TRUE}
+# Option 3
+# empfohlene Variante
 df %>% 
   # der Originaldatensatz wird nun weitergeleitet an die select Funktion
   select(id, sex, age, intelligence) %>%  
@@ -1809,29 +1811,28 @@ mammals_long
 Eine Visualisierung, also ein Bild, wird nachfolgend "Plot" genannt in Anlehnung an die englische Bezeichnung.
 Die nachfolgende Struktur ist wichtig um einen Plot zu programmieren mit `ggplot2`
 
-**Grundstruktur und Elemente eines Plots:**
+**Schritte zur Erstellung eines Plots:**
 
-  - die verwendeten Daten
+  1. die Daten müssen definiert werden
 
-  - die Daten müssen auf die grafischen Elemente abgebildet werden (x-Achse, y-Achse, Farben, Größen, ...)
+  2. Spalten im Datensatz müssen zu grafischen Elementen zugeordnet werden (x-Achse, y-Achse, Farben, Größen, ...)
 
-  - der Diagrammtyp wird festgelegt (Histogramm, Liniendiagramm, Balkendiagramm, Streudiagramm, ...)
+  3. der Diagrammtyp muss festgelegt werden (Histogramm, Liniendiagramm, Balkendiagramm, Streudiagramm, ...)
 
-  - das Diagramm wird individuell angepasst (Themen/Designs, zusätzliche Linien, Größen, Farben, Beschriftungen, ...)
+  4. das Diagramm kann individuell angepasst werden (Themen/Designs, zusätzliche Linien, Größen, Farben, Beschriftungen, ...)
 
-  - `+` wird als eine Art Pipe-Operator verwendet, um weitere Ebenen zum Diagramm hinzuzufügen
 
 
 ### Ideen & Literatur
 
-Buch: [ggplot2](https://ggplot2-book.org/)
+Weiterführende Literatur: [ggplot2 Buch](https://ggplot2-book.org/)
 
-Plot Gallerie: 
+Plot Galerie zur Inspiration: 
 
 [![Kunst Galerie Vorschau](./images/plot_examples.png){.images-shadow width="15cm"}](https://r-graph-gallery.com/137-spring-shapes-data-art.html)
 
 
-Kunst: Gallerie von Danielle Navarro
+Kunst Galerie von Danielle Navarro
 
 [![Kunst Galerie Vorschau](./images/art_screenshot.png){.images-shadow width="15cm"}](https://art.djnavarro.net/gallery/)
 
@@ -1850,7 +1851,8 @@ df <- df %>%
     age = sample(33:67, size = N, replace = TRUE),
     life_satisfaction = round(10 + y*-0.9 + rnorm(N, sd = 3)),
     depression = round(20 + life_satisfaction*-0.6 + rnorm(N, sd = 3.2)),
-    intelligence = round(rnorm(N, 100, 10))
+    intelligence = round(rnorm(N, 100, 10)),
+    finances = cumsum(rnorm(N, 0.1, 1)) + 100
   ) %>% 
   select(-x)
 
@@ -1860,8 +1862,8 @@ df <- df %>%
 Hier können wir uns den Datensatz anschauen, den wir visualisieren möchten:
 Der Datensatz befindet sich bereits im long-Format und das ist besonders hilfreich für `ggplot2`.
 
-Fall der Datensatz in einem anderen Format vorliegt, müssten wir zunächst den Datensatz mit pivoten.
-Siehe dazu das Kapitel "tidyr - Pivoting".
+Fall der Datensatz in einem anderen Format vorliegt, müssten wir zunächst den Datensatz umstrukturieren.
+Siehe dazu das Otter Kapitel <a href="#section-tidyr-pivoting">tidyr - Pivoting</a>.
 
 ```{r data-mapping-00,exercise.setup = "setup-ggplot-df", exercise=TRUE, results = "hold"}
 df
@@ -1869,13 +1871,27 @@ df
 
 ### Piping mit `+`
 
-Man kann die einzelnen Ebenen eines Plots auch pipen - es wird hier jedoch das `+` Symbol genutzt und nicht `%>%`.
+Man kann die einzelnen Ebenen eines Plots auch pipen - es wird hier jedoch das `+` Symbol genutzt und nicht wie wir es von `dplyr` kennen `%>%`.
+```{r data-pipe-plus, exercise=FALSE, eval=FALSE, echo=TRUE, exercise.lines = 5}
+df %>% # die Daten werden mit der dplyr Pipe übergeben
+  filter() %>% 
+  ggplot() + # aber hier wird in die + Pipe gewechselt
+  geom_point() +
+  theme_bw()
+```
+
+In diesem Beispiel werden die Daten zunächst mit `dplyr` gepiped und noch gefiltert.
+Nach dem die `ggplot()` Funktion aufgerufen wurde wird zu `+` gewechselt.
+Danach wird jede Ebene desd Plots mit `+` hinzugefügt.
 
 
 ### Data Mapping
 
+
 Der erste Schritt ist es die Daten zu definieren und auf die Bildachsen (x-Achse, y-Achse) zu "mappen" (zuzuweisen).
 Der Plot bleibt damit erst mal noch leer - wir legen hier aber bereits sehr wichtige Grundlagen des Plots fest.
+
+#### Leere Plots erstellen
 
 Hier ist ein Beispiel bei dem ein leerer Plot erstellt wird und die Daten zu den Achsen zugeordnet werden.
 Alle Funktionsargumente werden hier ausgeschrieben.
@@ -1887,7 +1903,6 @@ ggplot(
   mapping = aes(x = group, y = life_satisfaction)
 )
 ```
-
 
 
 
@@ -1920,8 +1935,466 @@ ggplot(
 theme_bw(base_size = 20)
 ```
 
+#### aesthetics
 
-## ggplot2 -- Ausblick
+Wir haben bereits in den oberen Beispielen gesehen, dass die Funktion `aes()` genutzt wird, um die x- und y-Achsen zu definieren.
+`aes()` ist die Kurzschreibweise für `aesthetics()`.
+Hier wird definiert, welche Spalten im Datensatz zu welchen Elementen im Plot zugeordnet werden sollen.
+
+```{r data-mapping-05, exercise=TRUE, eval=FALSE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+ggplot(
+  df,
+  aes(x = group,        # x-Achse
+      y = intelligence, # y-Achse
+      colour = age,     # Umrandungsfarbe
+      shape = age,      # Form (Kreis, Viereck, ...)
+      size = age,       # Größe der Formen
+      fill = age,       # Füllfarbe
+      alpha = age,      # Transparenz
+      group = age,      # Gruppenzuordnung
+      linetype = age,   # Linienart
+      linewidth = age   # Liniendicke
+      )
+)
+```
+
+x- und oder y-Achse sind Pflichtargumente, um ein Plot erstellen zu können.
+Damit können die Daten von 1 bis 2 Variablen (Spalten im Datensatz) innerhalb eines Plots visualisiert werden.
+Die anderen Argumente wie `color` oder `shape` ermöglichen es noch komplexere Zusammenhänge mit weiteren Variablen darzustellen.
+
+**Hinweis:** Man kann visuell auch mehrere aes-Argumente nutzen für dieselbe Variable.
+So werden z.B. `color` und `shape` oft gleichzeitig einer Variable zugeordnet.
+Dies hat den Vorteil, dass man auch als schwarz-weiß-Grafik die Gruppen unterscheiden kann.
+
+```{r data-mapping-06, exercise=TRUE, eval=FALSE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+df %>% 
+  ggplot(
+    aes(x = group,
+        y = life_satisfaction,
+        colour = sex,
+        shape = sex)
+    )
+```
+
+Im nächsten Schritt wählen wir die Art des Plots aus - damit können wir dann auch endlich unsere Daten sehen!
+
+### Plot Art
+
+Die Art des Plots wird bestimmt durch die `geom_*`-Funktion also z. B. `geom_point`.
+
+Hier ist eine Übersicht über die verschiedenen
+
+| Geom-Funktion       | Diagrammtyp                  | Beschreibung (Deutsch)                                               |
+|---------------------|------------------------------|----------------------------------------------------------------------|
+| `geom_point()`      | Punktdiagramm (Scatterplot)  | Zeigt einzelne Datenpunkte – ideal für Zusammenhänge/Verteilungen.  |
+| `geom_line()`       | Liniendiagramm               | Verbindet Datenpunkte mit Linien – gut für zeitliche Entwicklungen. |
+| `geom_smooth()`     | Trendlinie                   | Fügt eine geglättete Linie (z. B. LOESS oder linear) hinzu.          |
+| `geom_bar()`        | Balkendiagramm (zähle)       | Erzeugt Balken basierend auf Häufigkeiten.                          |
+| `geom_col()`        | Balkendiagramm (direkt)      | Wie `geom_bar()`, aber mit vorgegebenen y-Werten.                   |
+| `geom_histogram()`  | Histogramm                   | Zeigt die Verteilung numerischer Daten (automatisch gebinnt).       |
+| `geom_boxplot()`    | Boxplot                      | Visualisiert Median, Quartile, Ausreißer.                           |
+| `geom_violin()`     | Violinplot                   | Kombination aus Boxplot & Dichtekurve.                             |
+| `geom_density()`    | Dichtekurve                  | Schätzung der Wahrscheinlichkeitsdichte einer Verteilung.           |
+| `geom_area()`       | Flächendiagramm              | Wie Liniendiagramm, aber mit Fläche unter der Linie gefüllt.        |
+| `geom_ribbon()`     | Banddiagramm                 | Zeigt Unsicherheitsbereiche (z. B. Konfidenzintervalle).             |
+| `geom_tile()`       | Heatmap                      | Farbige Kacheln – gut für z. B. Korrelationsmatrizen.               |
+| `geom_hex()`        | Hexbin-Diagramm              | Alternative zu Scatterplot mit großen Datenmengen.                  |
+| `geom_jitter()`     | Streudiagramm mit Jitter     | Punktdiagramm mit zufälligem Versatz gegen Überlagerung.            |
+| `geom_text()`       | Textbeschriftungen           | Fügt Textlabels an Datenpunkten hinzu.                             |
+| `geom_label()`      | Beschriftungen mit Rahmen    | Wie `geom_text()`, aber mit Hintergrundrahmen.                      |
+| `geom_segment()`    | Liniensegmente               | Zeichnet Linien zwischen zwei Koordinaten.                         |
+| `geom_abline()`     | Gerade (Achsenabschnitt + Steigung) | Fügt einfache Gerade (z. B. Regressionslinie) hinzu.        |
+| `geom_vline()`      | Vertikale Linie              | Fügt eine vertikale Linie bei einem festen x-Wert ein.              |
+| `geom_hline()`      | Horizontale Linie            | Fügt eine horizontale Linie bei einem festen y-Wert ein.            |
+| `geom_path()`       | Pfad                         | Wie `geom_line()`, aber beachtet die Reihenfolge der Punkte.        |
+| `geom_polygon()`    | Polygon                      | Zeichnet geschlossene Formen – z. B. Karten.                        |
+| `geom_map()`        | Kartendarstellung            | Für geografische Karten mit Regionen.                              |
+| `geom_sf()`         | Simple Features (Karten)     | Für räumliche Daten im `sf`-Format.                                |
+
+#### Entscheidungshilfe für Plottypen
+
+| Anzahl Variablen | Art der Variable(n)                      | Empfohlene Plots                            |
+|------------------|------------------------------------------|---------------------------------------------|
+| 1                | kontinuierlich                           | Histogramm, Dichtekurve (`geom_histogram`, `geom_density`) |
+| 1                | kategorisch (diskret)                    | Balkendiagramm (`geom_bar`)                |
+| 2                | kontinuierlich & kontinuierlich         | Punktdiagramm, Liniendiagramm (`geom_point`, `geom_line`) |
+| 2                | kategorisch & kontinuierlich            | Boxplot, Violinplot, Jitter (`geom_boxplot`, `geom_violin`, `geom_jitter`) |
+| 2                | kategorisch & kategorisch               | Gruppierte Balken, Mosaikplots             |
+| >2               | Kombinationen                           | Zusätzliche Variablen über Farbe, Form, Facets |
+
+#### geom_point()
+
+
+Ein Punktdiagramm (Scatterplot) stellt zwei kontinuierliche Variablen gegenüber. Es eignet sich gut zur Darstellung von Zusammenhängen oder Korrelationen. 
+
+```{r geom-point-01, exercise=TRUE, exercise.eval=TRUE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+ggplot(df, aes(x = life_satisfaction, y = depression)) + 
+  geom_point()
+```
+
+**Wichtige Argumente:**
+
+- `alpha` für Transparenz
+
+- `color`, `size`, `shape` zur Darstellung von Zusatzinformationen
+
+```{r geom-point-02, exercise=TRUE, exercise.eval=TRUE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+ggplot(df,
+       aes(x = life_satisfaction,
+           y = depression,
+           colour = sex,
+           shape = sex)) + 
+  geom_point()
+```
+
+#### geom_line()
+
+Ein Liniendiagramm verbindet Datenpunkte entsprechend ihrer Reihenfolge. Besonders nützlich für Zeitreihen oder Trends über eine kontinuierliche Achse.
+
+```{r geom-line-01, exercise=TRUE, exercise.eval=TRUE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+ggplot(df, aes(x = 1:nrow(df), y = finances)) + 
+  geom_line() 
+```
+
+**Wichtige Argumente:**
+
+- `color`, `linetype`, `size`
+
+```{r geom-line-02, exercise=TRUE, exercise.eval=TRUE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+ggplot(df,
+       aes(x = 1:nrow(df),
+           y = finances,
+           colour = sex)) + 
+  geom_line() 
+```
+
+#### geom_smooth()
+
+Zeichnet eine geglättete Linie zur Darstellung von Trends.
+Standardmäßig wird eine LOESS-Kurve oder lineares Modell gewählt
+
+```{r geom-smooth-01, exercise=TRUE, exercise.eval=TRUE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+ggplot(df, aes(x = 1:nrow(df), y = finances)) + 
+  geom_smooth() 
+```
+
+
+**Wichtige Argumente:**
+
+- `method = "lm"` wählt die smoothing-Funktion aus, hier z.B. lineares Modell
+
+- `formula = "y ~ x"` Formel, welche das Modell definiert
+
+- `se = TRUE` zum Aktivieren/Deaktivieren des Konfidenzbandes
+
+```{r geom-smooth-02, exercise=TRUE, exercise.eval=TRUE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+ggplot(df,aes(x = 1:nrow(df), y = finances)) + 
+  geom_smooth(method = "lm",
+              formula = "y ~ x",
+              se = TRUE) 
+```
+
+#### geom_bar()
+
+Ein Balkendiagramm zählt Häufigkeiten einer kategorialen Variable.
+
+```{r geom-bar-01, exercise=TRUE, exercise.eval=TRUE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+ggplot(df, aes(x = sex)) + 
+  geom_bar()  
+```
+
+**Wichtige Argumente:**
+
+- `fill`, `color` zur Gestaltung
+
+- `position = "dodge"` für gruppierte Balken
+
+```{r geom-bar-02, exercise=TRUE, exercise.eval=TRUE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+ggplot(df, aes(x = sex, fill = group)) + 
+  geom_bar()  
+```
+
+
+```{r geom-bar-03, exercise=TRUE, exercise.eval=TRUE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+ggplot(df, aes(x = sex, fill = group)) + 
+  geom_bar(position = "dodge")  
+```
+
+#### geom_col()
+
+
+Im Gegensatz zu `geom_bar()` verwendet `geom_col()` vorgegebene y-Werte (z. B. Mittelwerte). Ideal für gruppierte oder aggregierte Daten.
+
+```{r geom-col-01, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+# Daten werden aufbereitet
+df %>% 
+  group_by(group) %>% 
+  summarise(mean_dep = mean(depression)) %>% 
+  # Plot
+  ggplot(aes(x = group, y = mean_dep)) + 
+  geom_col()
+```
+
+**Wichtige Argumente:**
+
+- `fill`, `width`, `position` zur Gestaltung
+
+```{r geom-col-02, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+# Daten werden aufbereitet
+df %>% 
+  group_by(group) %>% 
+  summarise(mean_dep = mean(depression)) %>% 
+  # Plot
+  ggplot(aes(x = group, y = mean_dep, fill = group)) + 
+  geom_col(width = 0.5)
+```
+
+#### geom_histogram()
+
+Ein Histogramm visualisiert die Verteilung einer kontinuierlichen Variable durch Bins.
+
+```{r geom-histogramm-01, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+ggplot(df, aes(x = depression)) + 
+  geom_histogram()
+```
+
+**Wichtige Argumente:**
+
+- `bins` oder `binwidth` zum Steuern der Auflösung
+
+- `fill`, `color` zur Gestaltung
+
+```{r geom-histogramm-02, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+ggplot(df, aes(x = depression, group = sex, fill = sex)) + 
+  geom_histogram(bins = 20)
+```
+
+#### geom_boxplot()
+
+Boxplots zeigen Median, Quartile, und Ausreißer – sehr nützlich zum Vergleich von Gruppen.
+
+```{r geom-boxplot-01, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+ggplot(df, aes(x = group, y = depression)) + 
+  geom_boxplot() 
+```
+
+**Wichtige Argumente:**
+
+- `notch = TRUE` für Konfidenzintervall des Medians
+
+- `outlier.shape`, `outlier.colour`
+
+```{r geom-boxplot-02, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+ggplot(df, aes(x = group, y = depression, fill = sex)) + 
+  geom_boxplot(notch = TRUE) 
+```
+
+#### geom_violin()
+
+Eine Kombination aus Boxplot und Dichtekurve – stellt die Verteilung je Gruppe anschaulich dar.
+
+```{r geom-violin-01, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+ggplot(df, aes(x = group, y = depression)) + 
+  geom_violin()
+```
+
+**Wichtige Argumente:**
+
+- `draw_quantiles` zum Einzeichnen bestimmter Quantile
+
+- `scale = "count"` zeigt die Fläche der Violins in Abhängigkeit der Beobachtungen
+
+```{r geom-violin-02, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+ggplot(df, aes(x = group, y = depression, fill = sex)) + 
+  geom_violin(scale = "count",
+              draw_quantiles = c(0.25, 0.5, 0.75))
+```
+
+#### geom_density()
+
+Zeigt die geschätzte Dichteverteilung einer kontinuierlichen Variable – alternative zum Histogramm.
+
+**Wichtige Argumente:**
+
+- `adjust` beeinflusst die Glättung
+
+- `alpha` für Transparenz bei Gruppenvergleichen
+
+```{r geom-density-01, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+ggplot(df, aes(x = depression, fill = group)) + 
+  geom_density(alpha = 0.5) 
+```
+
+#### geom_area()
+
+Stellt eine kumulative Fläche unter einer Linie dar – ideal für Verläufe mit Gesamtmengen.
+
+
+```{r geom-area-01, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+# Daten werden aufbereitet
+df %>%
+  count(life_satisfaction) %>% 
+  arrange(life_satisfaction) %>% 
+# Plot
+  ggplot(aes(x = life_satisfaction, y = n)) + 
+  geom_area()
+```
+
+
+
+#### geom_ribbon()
+
+Zeigt Konfidenz- oder Streubereiche um eine Linie. Benötigt untere (`ymin`) und obere (`ymax`) Grenze.
+
+```{r geom-ribbon-01, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+# Daten werden aufbereitet
+df %>%
+  group_by(life_satisfaction) %>%
+  summarise(m = mean(depression), sd = sd(depression)) %>% 
+  mutate(ymin = m - sd, ymax = m + sd) %>% 
+# Plot
+  ggplot(aes(x = life_satisfaction, y = m)) + 
+  geom_ribbon(aes(ymin = ymin, ymax = ymax), alpha = 0.3) + 
+  geom_line()
+```
+
+#### geom_jitter()
+
+Vermeidet Überlagerung diskreter Punkte durch zufälliges Versetzen.
+
+
+**Wichtige Argumente:**
+
+- `width`, `height` zur Steuerung der Streuung
+
+```{r geom-jitter-01, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+ggplot(df, aes(x = group, y = depression)) + 
+  geom_jitter(width = 0.1)
+```
+
+
+#### geom_*line()
+
+```{r geom-abline-01, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+ggplot(df, aes(x = life_satisfaction, y = depression)) + 
+  geom_point() + 
+  geom_abline(intercept = 0, slope = 1, color = "red") +
+  geom_hline(yintercept = mean(df$depression), color = "blue") +
+  geom_vline(xintercept = mean(df$life_satisfaction), color = "green")
+```
+
+
+## ggplot2 -- Customizations
+
+### Beschriftungen
+
+#### `labs()`
+
+```{r custom-labs-01, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+df %>%
+  ggplot(
+    aes(x = group,
+        y = depression,
+        fill = sex)
+    ) +
+  geom_boxplot() +
+  labs(
+  title = "Title of the plot",
+  subtitle = "Subtitle of the plot",
+  x = "x axis",
+  y = "y axis",
+  tag = "tag",
+  caption = "This is the caption",
+  alt = "plot description" # für Screenreader
+) 
+```
+
+#### geom_text()
+
+Fügt numerische oder kategoriale Labels an Positionen hinzu – z. B. zur Beschriftung von Mittelwerten oder Punkten.
+
+**Wichtige Argumente:**
+
+- `vjust`, `hjust` für die Platzierung
+
+- `check_overlap = TRUE` vermeidet Überschneidungen
+
+```{r geom-text-01, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+# Daten werden aufbereitet
+df_avg <- df %>% group_by(group) %>% summarise(mean_dep = mean(depression))
+
+# Plot
+ggplot(df, aes(x = group, y = depression)) + 
+  geom_boxplot() +
+  geom_text(
+    data = df_avg, # anderer Datensatz wird ausgewählt
+    aes(x = group,
+        y = mean_dep + 1,
+        label = round(mean_dep, 1)),
+    color = "red")
+```
+
+
+#### geom_label()
+
+Wie `geom_text()`, aber mit Rahmen um das Label – nützlich für deutlichere Hervorhebung.
+
+**Wichtige Argumente:**
+
+- `label.size`, `label.r` (Eckenradius)
+
+- `fill`, `color` zur Gestaltung
+
+
+```{r geom-label-01, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+# Daten werden aufbereitet
+df_medians <- df %>% group_by(group) %>% summarise(median_dep = median(depression))
+
+# Plot
+ggplot(df, aes(x = group, y = depression)) + 
+  geom_violin(fill = "lightblue") +
+  geom_label(data = df_medians,
+             aes(x = group,
+                 y = median_dep,
+                 label = paste0("Median: ", median_dep)))
+```
+
+### Themes (Designs)
+
+### Farbskalen
+
+
+```{r, echo=FALSE, eval=FALSE}
+library(patchwork)
+plot <- df %>%
+  ggplot(
+    aes(x = group,
+        y = depression,
+        fill = sex)
+    ) +
+  geom_boxplot() +
+  # labels 
+  labs(
+    title = "Effect on depression",
+    subtitle = "Separate by sex",
+    x = "",
+    y = "Depression"
+  ) +
+  # change legend title
+  scale_fill_discrete(name = "Sex")
+base_size <- 12
+wrap_plots(
+plot + theme_bw(base_size = base_size) + labs(title = "theme_bw", subtitle = ""),
+plot + theme_light(base_size = base_size) + labs(title = "theme_light", subtitle = ""),
+plot + theme_classic(base_size = base_size) + labs(title = "theme_classic", subtitle = ""),
+plot + theme_minimal(base_size = base_size) + labs(title = "theme_minimal", subtitle = ""),
+plot + theme_dark(base_size = base_size) + labs(title = "theme_dark", subtitle = ""),
+plot + theme_grey(base_size = base_size) + labs(title = "theme_grey", subtitle = "")
+)
+ggsave("inst/tutorials/dplyr/images/themes.png", width = 30, height = 15, units = "cm")
+```
+
+![Themes](images/themes.png){.absolute .images-shadow  width="35%"}
 
 ## Visualisierungen -- Übungen
 

@@ -229,9 +229,10 @@ body, button, input, textarea {
 body {
   background-color: #ffffff;
   color: #404040;
-  font-size: 17px;
+  font-size: 20px;
   line-height: 1.6em;
 }
+
 
 /*-------- White Space --------*/
 
@@ -285,7 +286,7 @@ h2 {
 
 .topicsList .topic {
   color: #1a162d99;
-  font-size: 15px;
+  font-size: 20px;
   letter-spacing: 1pt;
   line-height: 1.25em;
   padding: 0.75em 0;
@@ -496,19 +497,35 @@ html.dyslexic *:not(.fa-solid):not(.ace_editor):not(.fa) {
 }
 
 html.fontsize1 *:not(.offcanvas *) {
-  font-size: 1.5rem  !important;
+  font-size: 2.25rem  !important;
 }
 html.fontsize2 *:not(.offcanvas *) {
-  font-size: 1.75rem !important;
+  font-size: 2.5rem !important;
 }
 html.fontsize3 *:not(.offcanvas *) {
-  font-size: 2rem !important;
+  font-size: 2.75rem !important;
 }
 html.fontsize4 *:not(.offcanvas *) {
-  font-size: 2.25rem !important;
+  font-size: 34px !important;
 }
 html.fontsize5 *:not(.offcanvas *) {
-  font-size: 2.5rem !important;
+  font-size: 40px !important;
+}
+html.fontsize6 *:not(.offcanvas *) {
+  font-size: 44px !important;
+}
+
+html.fontsize2 .bandContent {
+  max-width: 1300px;
+}
+html.fontsize3 .bandContent {
+  max-width: 1400px;
+}
+html.fontsize4 .bandContent {
+  max-width: 1500px;
+}
+html.fontsize5 .bandContent {
+  max-width: 1600px;
 }
 
 html.lineheight1 *:not(.offcanvas *) {
