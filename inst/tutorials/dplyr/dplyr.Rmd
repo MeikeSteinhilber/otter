@@ -1800,9 +1800,99 @@ mammals_long
 
 ### pivot_wider(): Umwandeln von langen in breite Datensätze <a href="#section-tidyr-pivoting"> <i class="fa-solid fa-arrow-up"></i></a>
 
+In diesem Tutorial lernst du, wie du einen Datensatz zum Thema Pflanzenwachstum im Long-Format mithilfe der Funktion `pivot_wider()` aus dem `tidyr`-Paket in das Wide-Format überführst.
+Im Long-Format erscheinen Beobachtungen in einzelnen Zeilen, während das Wide-Format verschiedene Messgrößen oder Beobachtungszeitpunkte in separaten Spalten darstellt.
+Dieses Format kann vorteilhaft für bestimmte Datenanalysen und Tabellenübersichten sein.
+
+#### Einfaches Beispiel
+
+Zunächst erstellen wir einen Datensatz, der für verschiedene Pflanzenarten Höhenmessungen in verschiedenen Jahren enthält:
+
+```{r setup-pivot-wider, exercise=FALSE, eval=TRUE, echo=FALSE}
+plants_long <- data.frame(
+  Species = rep(c("Oak", "Pine", "Birch"), each = 3),
+  Year = rep(c("2010", "2020", "2030"), times = 3),
+  Height_cm = c(150, 180, 210, 200, 250, 290, 170, 210, 240)
+)
+```
+
+```{r, ref.label=I('setup-pivot-wider'), eval=TRUE, echo=TRUE, exercise.eval=FALSE, exercise.lines = 10}
+```
+
+**Datensatz "plants_long"**
+
+```{r pivot-wider-01, exercise.setup = "setup-pivot-wider", exercise=FALSE, results ='hold', eval=TRUE, echo=FALSE}
+plants_long
+```
+
+**Umwandeln in das Wide-Format mit pivot_wider()**
+
+Wir transformieren nun den Datensatz, sodass jedes Jahr eine eigene Spalte bildet:
+
+- `2010`, `2020`, `2030`: Enthalten die gemessenen Pflanzenhöhen je Jahr.
+
+```{r pivot-wider-02, exercise.setup = "setup-pivot-wider", exercise=FALSE, results ='hold', eval=TRUE, echo=TRUE}
+plants_wide <- plants_long %>%
+  pivot_wider(
+    names_from = Year,
+    values_from = Height_cm
+  )
+
+plants_wide
+```
+
+**Erklärungen:**
+
+- `pivot_wider()`: Wandelt die Werte aus der Spalte Year in separate Spaltennamen um.
+- `names_from = Year`: Definiert, welche Spalte als neue Spaltenüberschrift verwendet wird.
+- `values_from = Height_cm`: Definiert, welche Werte in den neuen Spalten erscheinen.
+
+#### Komplexeres Beispiel
+
+Wir betrachten nun einen Datensatz, der neben der Höhe auch die Blattgröße verschiedener Pflanzen in unterschiedlichen Jahren enthält:
+
+```{r setup-pivot-wider-2, exercise=FALSE, eval=TRUE, echo=FALSE}
+plants_long_2 <- data.frame(
+  Species = rep(c("Oak", "Pine", "Birch"), each = 6),
+  Year = rep(c("2010", "2020", "2030"), each = 2, times = 3),
+  Measurement = rep(c("Height_cm", "Leaf_cm"), times = 9),
+  Value = c(150, 10, 180, 12, 210, 14, 200, 8, 250, 9, 290, 11, 170, 7, 210, 8, 240, 9)
+)
+```
+
+```{r, ref.label=I('setup-pivot-wider-2'), eval=TRUE, echo=TRUE, exercise.eval=FALSE, exercise.lines = 12}
+```
+
+**Datensatz "plants_long_2"**
+
+Dieser Datensatz enthält zwei Messgrößen pro Pflanze und Jahr: Höhe (`Height_cm`) und Blattgröße (`Leaf_cm`).
+
+```{r pivot-wider-03, exercise.setup = "setup-pivot-wider-2", exercise=FALSE, results ='hold', eval=TRUE, echo=FALSE}
+plants_long_2
+```
+
+Jetzt wandeln wir diesen komplexeren Datensatz um, sodass jede Kombination aus Jahr und Messgröße eine eigene Spalte bildet:
+
+```{r pivot-wider-04, exercise.setup = "setup-pivot-wider-2", exercise=FALSE, results ='hold', eval=TRUE, echo=TRUE}
+plants_wide_2 <- plants_long_2 %>%
+  pivot_wider(
+    names_from = c(Measurement, Year),
+    values_from = Value
+  )
+
+plants_wide_2
+```
+
+**Erklärung:**
+
+- `names_from = c(Measurement, Year)`: Hier werden die neuen Spalten aus der Kombination von Messgrößen (Measurement) und Jahren (Year) gebildet.
+- `values_from = Value`: Die Werte der neuen Spalten stammen aus der ursprünglichen Spalte "Value".
+
+
+
 ## Datenaufbereitung -- Übungen
 
-## ggplot2 -- Grundlagen
+## ggplot2 -- Plot erstellen
 
 ### Kapitel
 
@@ -1847,7 +1937,7 @@ df <- sprtt::draw_sample_normal(2, f = 0.25, max_n = N/2, sd = c(0.8, 1.2), samp
 df <- df %>% 
   mutate(
     group = factor(x, levels = c(1,2), labels = c("treatment", "placebo")),
-    sex = sample(c("female", "male", "unknown"), size = N, replace = TRUE, prob = c(0.50, 0.50, 0)),
+    sex = sample(c("female", "male", "unknown"), size = N, replace = TRUE, prob = c(0.50, 0.40, 0.10)),
     age = sample(33:67, size = N, replace = TRUE),
     life_satisfaction = round(10 + y*-0.9 + rnorm(N, sd = 3)),
     depression = round(20 + life_satisfaction*-0.6 + rnorm(N, sd = 3.2)),
@@ -2284,11 +2374,18 @@ ggplot(df, aes(x = life_satisfaction, y = depression)) +
 ```
 
 
-## ggplot2 -- Customizations
+## ggplot2 -- Plot anpassen
 
 ### Beschriftungen
 
-#### `labs()`
+Sehr häufig möchte man Beschriftungen hinzufügen.
+
+mit `labs()` kann man die üblichen Textbereiche beshriften: Titel, Achsen-Beschriftungen und weiteres.
+
+Manchmal möchte man im Plot selbst Beschriftungen hinzufügen und deren Position selbst bestimmen - dazu eignet sich `geom_text()`.
+Eine Umrandung des Textes kann man einfach mit `geom_label()` umsetzen.
+
+#### labs()
 
 ```{r custom-labs-01, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
 df %>%
@@ -2328,6 +2425,8 @@ ggplot(df, aes(x = group, y = depression)) +
   geom_boxplot() +
   geom_text(
     data = df_avg, # anderer Datensatz wird ausgewählt
+    # die Position wird in Abhängigkeit des
+    # Mittelwertes gesetzt
     aes(x = group,
         y = mean_dep + 1,
         label = round(mean_dep, 1)),
@@ -2337,7 +2436,8 @@ ggplot(df, aes(x = group, y = depression)) +
 
 #### geom_label()
 
-Wie `geom_text()`, aber mit Rahmen um das Label – nützlich für deutlichere Hervorhebung.
+Ist wie `geom_text()`, aber mit Rahmen um den Text.
+Dies ist nützlich für deutlichere Hervorhebung.
 
 **Wichtige Argumente:**
 
@@ -2359,10 +2459,13 @@ ggplot(df, aes(x = group, y = depression)) +
                  label = paste0("Median: ", median_dep)))
 ```
 
+
 ### Themes (Designs)
 
-### Farbskalen
+Das Standarddesign von `ggplot2` wird nicht unbedingt als schön wahrgenommen.😉
+Zum Glück geht es ganz schnell ein neues Design auszuwählen.
 
+Hier ist eine Übersicht über die vorgefertigten Themes.
 
 ```{r, echo=FALSE, eval=FALSE}
 library(patchwork)
@@ -2370,7 +2473,7 @@ plot <- df %>%
   ggplot(
     aes(x = group,
         y = depression,
-        fill = sex)
+        fill = group)
     ) +
   geom_boxplot() +
   # labels 
@@ -2384,17 +2487,538 @@ plot <- df %>%
   scale_fill_discrete(name = "Sex")
 base_size <- 12
 wrap_plots(
-plot + theme_bw(base_size = base_size) + labs(title = "theme_bw", subtitle = ""),
-plot + theme_light(base_size = base_size) + labs(title = "theme_light", subtitle = ""),
-plot + theme_classic(base_size = base_size) + labs(title = "theme_classic", subtitle = ""),
-plot + theme_minimal(base_size = base_size) + labs(title = "theme_minimal", subtitle = ""),
-plot + theme_dark(base_size = base_size) + labs(title = "theme_dark", subtitle = ""),
-plot + theme_grey(base_size = base_size) + labs(title = "theme_grey", subtitle = "")
+  plot <- plot + theme_void(base_size = base_size) + labs(title = "theme_void()", subtitle = ""),
+  plot <- plot + theme_classic(base_size = base_size) + labs(title = "theme_classic()", subtitle = ""),
+  plot <- plot + theme_minimal(base_size = base_size) + labs(title = "theme_minimal()", subtitle = ""),
+  plot <- plot + theme_light(base_size = base_size) + labs(title = "theme_light()", subtitle = ""),
+  plot <- plot + theme_bw(base_size = base_size) + labs(title = "theme_bw()", subtitle = ""),
+  plot <- plot + theme_linedraw(base_size = base_size) + labs(title = "theme_linedraw()", subtitle = ""),
+  plot <- plot + theme_grey(base_size = base_size) + labs(title = "theme_grey()", subtitle = ""),
+  plot <- plot + theme_dark(base_size = base_size) + labs(title = "theme_dark()", subtitle = "")
 )
-ggsave("inst/tutorials/dplyr/images/themes.png", width = 30, height = 15, units = "cm")
+ggsave("inst/tutorials/dplyr/images/themes.png", width = 30, height = 20, units = "cm")
+```
+![Themes](images/themes.png){.images-shadow width="90%"}
+
+Wenn dir diese Themes nicht ganz gefallen gefallen, nutze `theme()`, um Details zu ändern.
+
+In diesem Beispiel kannst du gerne mal verschiedene Themes ausprobieren!
+Ändere einfach den Code und führe es aus.
+Als erstes Beispiel ist das Design `theme_bw()` ausgewählt.
+
+```{r geom-theme-01, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+ggplot(df, aes(x = group, y = depression)) + 
+  geom_boxplot() +
+  theme_bw() # hier wird das Theme ausgewählt
 ```
 
-![Themes](images/themes.png){.absolute .images-shadow  width="35%"}
+### Schriftgröße
+
+Die Schriftgröße (`base_size`) ist ein Argument innerhalb der Theme-Funktionen.
+Damit kann man schnell alle Schriften vergrößern oder verkleinern.
+
+```{r geom-textsize-01, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+ggplot(df, aes(x = group, y = depression)) + 
+  geom_violin(fill = "lightblue") +
+  # Beschriftungen
+  labs(x = "Behandlung",
+  y = "Depression",
+  title = "Wirksamkeit der Behandlung") +
+  # Anpassung des Designs und der Schriftgröße
+  theme_bw(base_size = 20)
+```
+
+### Farbskalen
+
+Wenn das Argumnet `aes(fill = variable)` genutzt wird, werden automatisch Farben vergeben.
+Diese Farben gefallen auch nicht jedem und können ausgetauscht werden mit anderen Farbskalen.
+
+Es gibt sehr viele Farbpakete in R, wir stellen hier eins der bekanntesten vor: `viridis`
+
+Das `viridis` R Paket enthält diese Skalen.
+
+![](images/colour_scales_label.png){.images-shadow width="50%"}
+
+Abhängig davon, ob deine Variable dem fill oder dem color Argument zugeordnet ist oder ob deine Variable kontinuierlich oder diskret ist, musst du eine andere Funktion wählen.
+
+**Achtung**: der letzte Buchstabe des Funktionsnamens bestimmt, ob es sich um `d` eine diskrete oder um `c` eine kontinuierliche Funktion handelt:
+
+**color**:
+
+-   diskret: `scale_color_viridis_d()`
+-   kontinuierlich: `scale_color_viridis_c()`
+
+**fill**:
+
+-   diskret: `scale_fill_viridis_d()`
+
+
+Hier ist ein Beispiel mit den Standardeinstellungen:
+
+```{r geom-viridis-01, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+ggplot(df, aes(x = group, y = depression, fill = sex)) + 
+  geom_boxplot() +
+  scale_fill_viridis_d()
+```
+Die dunkle Farbe ist doch sehr dunkel, wir können nun durch weitere Argumente bestimmen, wo die Farbskala beginnen und enden soll.
+
+Hier wird der Beginn der Skala mehr in die Mitte verschoben, damit wird die Farbe ein wenig heller.
+
+```{r geom-viridis-02, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+ggplot(df, aes(x = group, y = depression, fill = sex)) + 
+  geom_boxplot() +
+  scale_fill_viridis_d(
+    option = "viridis",
+    begin = 0.3, # 0 ist der Standard
+    end = 1      # 1 ist der Standard
+  )
+```
+Probiere hier gerne andere Werte für `end` und `begin` aus und schaue, wie sich die Farben verändern!
+
+Hier haben wir noch eine andere Skala `inferno`:
+
+```{r geom-viridis-03, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+ggplot(df, aes(x = group, y = depression, fill = sex)) + 
+  geom_boxplot() +
+  scale_fill_viridis_d(
+    option = "inferno",
+    begin = 0.5, # 0 ist der Standard
+    end = 1      # 1 ist der Standard
+  )
+```
+
+### Farben
+
+```{r, eval=FALSE, echo=FALSE}
+library(ggplot2)
+library(dplyr)
+library(colorspace)  # for HCL conversion
+
+plot_color_table_ggplot <- function(cols = 8, text_size = 3, tile_padding = 0.1, fixed_aspect = FALSE) {
+  color_names <- colors()
+  
+  # Convert to RGB and then to HCL
+  rgb_matrix <- t(col2rgb(color_names)) / 255
+  hcl_vals <- as(hex2RGB(rgb(rgb_matrix)), "polarLUV")@coords
+  
+  # Build dataframe
+  color_df <- data.frame(
+    color = color_names,
+    H = hcl_vals[, "H"],
+    C = hcl_vals[, "C"],
+    L = hcl_vals[, "L"]
+  )
+  
+  # Separate colorful and grayish colors
+  chroma_threshold <- 5  # tweak this if needed
+  colorful <- color_df %>% filter(C > chroma_threshold) %>% arrange(H, C, L)
+  grays <- color_df %>% filter(C <= chroma_threshold) %>% arrange(L)
+
+  # Combine
+  color_df <- bind_rows(colorful, grays)
+  
+  # Layout positions
+  n <- nrow(color_df)
+  rows <- ceiling(n / cols)
+  
+  color_df <- color_df %>%
+    mutate(
+      col = rep(1:cols, length.out = n),
+      row = rep(rows:1, each = cols)[1:n],
+      text_color = sapply(color, function(clr) {
+        rgb_vals <- col2rgb(clr)
+        brightness <- sum(rgb_vals * c(0.299, 0.587, 0.114)) / 255
+        if (brightness < 0.6) "white" else "black"
+      })
+    )
+
+  # Plot
+  p <- ggplot(color_df, aes(x = col, y = row)) +
+    geom_tile(aes(fill = color), color = "black", 
+              width = 1 - tile_padding, height = 1 - tile_padding) +
+    geom_text(aes(label = color, color = text_color), size = text_size) +
+    scale_fill_identity() +
+    scale_color_identity() +
+    theme_void() +
+    theme(legend.position = "none")
+  
+  if (fixed_aspect) {
+    p <- p + coord_fixed()
+  }
+
+  return(p)
+}
+
+# Example usage
+p <- plot_color_table_ggplot(cols = 8, text_size = 10, tile_padding = 0.05, fixed_aspect = FALSE)
+
+ggsave(
+  "inst/tutorials/dplyr/images/colors.png",
+  plot = p,
+  width = 80,
+  height = 100,  # make it tall to avoid crowding
+  units = "cm",
+  dpi = 300
+)
+
+```
+
+Hier ist eine Übersicht über alle Standardfarben, die es in R gibt!
+
+![](images/colors.png){.images-shadow width="90%"}
+
+Damit kann man auch eigene Farbskalen festlegen!
+Nutze dafür die Funktionen `scale_color_manual` oder `scale_fill_manual`.
+
+```{r geom-color-01, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+ggplot(df, aes(x = group,
+               y = depression,
+               fill = sex)) + # wir definieren fill
+  geom_boxplot() +
+  # wir müssen fill auswählen
+  scale_fill_manual(values = c("female" = "firebrick", "male" = "gold", "unknown" = "darkcyan"))
+```
+
+### Plot speichern
+
+
+Mit `ggsave()` können wir ganz einfach unsere Plots speichern.
+Die Funktion speichert immer das zuletzt erstellte Plot.
+
+Wichtig ist den Pfad anzugeben, wo das Bild gespeichert werden soll - dabei muss auch der Dateiname vollständig angegeben werden.
+
+
+```{r geom-ggsave-01, exercise=FALSE, echo=TRUE, eval=FALSE, exercise.setup = "setup-ggplot-df"}
+# Erstellung des Plots
+ggplot(df, aes(x = group, y = depression, fill = sex)) + 
+  geom_boxplot()
+# Speicherung
+ggsave(
+  "images/plot_example.png",
+  width = 35,
+  height = 30,
+  units = "cm",
+  dpi = 300 # Auflösung
+)
+
+```
+Praktisch ist auch, dass man ganz leicht die Größe und die Auflösung des Plots bestimmen kann.
 
 ## Visualisierungen -- Übungen
+<div class="uebungen">
 
+### Datensatz
+```{r setup-ex-ggplot-df, exercise=FALSE, eval=TRUE, echo=FALSE}
+set.seed(33)
+
+N = 252
+
+df <- sprtt::draw_sample_normal(3, f = 0.25, max_n = N/3, sd = c(0.8, 1.2, 1))
+df <- df %>% 
+  rename(health_value = y) %>% 
+  mutate(
+    health_value = round(health_value,2),
+    animals = factor(x, levels = c(1,2,3), labels = c("dog", "cat", "bird")),
+    sex = sample(c("female", "male", "unknown"), size = N, replace = TRUE, prob = c(0.45, 0.45, 0.10)),
+    age = sample(1:15, size = N, replace = TRUE),
+    training = factor(sample(1:5, size = N, replace = TRUE), levels = 1:5, labels = c("very intense", "intense", "normal", "little training", "no training")),
+    blood_value = round(10 + health_value*-0.9 + rnorm(N, sd = 3)),
+    blood_value = if_else(sex == "male", (blood_value + 2)-0.4*blood_value, blood_value),
+    blood_value = if_else(sex == "female", blood_value - 2, blood_value),
+    diet_value = round(20 + blood_value*-0.6 + rnorm(N, sd = 3.2))
+  ) %>% 
+  select(-x)
+
+```
+```{r, ref.label=I('setup-ex-ggplot-df'), eval=TRUE, echo=FALSE, exercise.eval=FALSE}
+```
+Hier können wir uns den Datensatz anschauen, den wir visualisieren möchten:
+
+
+```{r data-ex-ggplot,exercise.setup = "setup-ex-ggplot-df", exercise=TRUE, results = "hold"}
+df
+```
+
+### Boxplots
+
+Wir möchten die Gesundheit der Tiere (`health_value`) darstellen.
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Versuche den angezeigten Plot so ähnlich wie möglich nachzubauen.*
+
+```{r ex-ggplot-1-0, exercise=FALSE, echo=TRUE, exercise.setup = "setup-ex-ggplot-df", eval=TRUE, echo=FALSE}
+ggplot(df, aes(y = health_value)) + 
+  geom_boxplot() +
+  labs(title = "Heath of the animals",
+       y = "health score") +
+  theme_classic(base_size = 14)
+```
+
+<div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Nutze die Funktion `geom_boxplot()`.</div>
+  <div class="tip-content"> Definiere `aes(y=health_value)`.</div>
+  <div class="tip-content"> Bearbeite die Beschriftungen mit `labs()`.</div>
+  <div class="tip-content"> Setze die Schriftgröße auf 14.</div>
+  <div class="tip-content"> Nutze diesen Aufbau: 
+  <pre>ggplot(df, aes()) + 
+  geom_violin() + 
+  theme_classic()`.</pre></div>
+  
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
+
+```{r ex-ggplot-1-1, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "setup-ex-ggplot-df", exercise.lines=15}
+
+```
+```{r ex-ggplot-1-1-solution, ref.label=I('ex-ggplot-1-0')}
+
+```
+
+<br> 
+
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Versuche den angezeigten Plot so ähnlich wie möglich nachzubauen.*
+
+```{r ex-ggplot-2-0, exercise=FALSE, echo=TRUE, exercise.setup = "setup-ex-ggplot-df", eval=TRUE, echo=FALSE}
+ggplot(df, aes(x = animals, y = health_value, fill = animals)) + 
+  geom_boxplot() +
+  labs(title = "Heath of the animals",
+       y = "health score") +
+  scale_fill_viridis_d(
+    option = "viridis",
+    begin = 0.3
+  ) +
+  theme_classic(base_size = 14)
+```
+
+<div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Nutze die Funktion `geom_boxplot()`.</div>
+  <div class="tip-content"> Nutze die Variable `animals`für `x` und auch für `fill`.</div>
+  <div class="tip-content"> Bearbeite die Beschriftungen mit `labs()`.</div>
+  <div class="tip-content"> Nutze `scale_fill_viridis_d()` für die Farben.</div>
+  <div class="tip-content"> Nutze die Farbskala "viridis" und beginne mit 0.3.</div>
+  <div class="tip-content"> Setze die Schriftgröße auf 14.</div>
+  <div class="tip-content"> Nutze diesen Aufbau: 
+  <pre>ggplot(df, aes()) + 
+  geom_boxplot() + 
+  labs() +
+  scale_fill_viridis_d() +
+  theme_classic()`.</pre></div>
+  
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
+
+```{r ex-ggplot-2-1, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "setup-ex-ggplot-df", exercise.lines=15}
+
+```
+```{r ex-ggplot-2-1-solution, ref.label=I('ex-ggplot-2-0')}
+
+```
+
+### Balkendiagramme
+
+Wie sieht die Verteilung der Trainings aus? Dabei interessiert uns auch die Geschlechterverteilung.
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Versuche den angezeigten Plot so ähnlich wie möglich nachzubauen.*
+
+```{r ex-ggplot-3-0, exercise=FALSE, echo=TRUE, exercise.setup = "setup-ex-ggplot-df", eval=TRUE, echo=FALSE}
+df %>% 
+  mutate(training = as.factor(training)) %>% 
+  ggplot(aes(x = training)) + 
+    geom_bar() +
+    theme_light(base_size = 12)
+```
+
+<div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Nutze die Funktion `geom_bar()`.</div>
+  <div class="tip-content"> Bearbeite die Beschriftungen mit `labs()`.</div>
+  <div class="tip-content"> Nutze `scale_fill_viridis_d()` für die Farben.</div>
+  <div class="tip-content"> Nutze die Farbskala "inferno" und beginne mit 0.2.</div>
+  <div class="tip-content"> Setze die Schriftgröße auf 14.</div>
+  <div class="tip-content"> Nutze diesen Aufbau: 
+  <pre>ggplot(df, aes()) + 
+  geom_bar() + 
+  theme_light()`.</pre></div>
+  
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
+
+```{r ex-ggplot-3-1, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "setup-ex-ggplot-df", exercise.lines=15}
+
+```
+```{r ex-ggplot-3-1-solution, ref.label=I('ex-ggplot-3-0')}
+
+```
+
+<br> 
+
+
+Wir möchten den Plot noch ein wenig schöner machen und auch noch das Geschlecht als Variable hinzunehmen.
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Versuche den angezeigten Plot so ähnlich wie möglich nachzubauen.*
+
+```{r ex-ggplot-4-0, exercise=FALSE, echo=TRUE, exercise.setup = "setup-ex-ggplot-df", eval=TRUE, echo=FALSE}
+df %>% 
+  mutate(training = as.factor(training)) %>% 
+  ggplot(aes(x = training, fill = sex)) + 
+    geom_bar() +
+    labs(title = "Distribution of the training") +
+    scale_fill_viridis_d(
+      option = "inferno",
+      begin = 0.2
+    ) +
+    theme_light(base_size = 12)
+```
+
+<div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Nutze die Funktion `geom_bar()`.</div>
+  <div class="tip-content"> Bearbeite die Beschriftungen mit `labs()`.</div>
+  <div class="tip-content"> Nutze `scale_fill_viridis_d()` für die Farben.</div>
+  <div class="tip-content"> Nutze die Farbskala "inferno" und beginne mit 0.2.</div>
+  <div class="tip-content"> Setze die Schriftgröße auf 14.</div>
+  <div class="tip-content"> Nutze diesen Aufbau: 
+  <pre>ggplot(df, aes()) + 
+  geom_bar() + 
+  labs() +
+  scale_fill_viridis_d() +
+  theme_light()`.</pre></div>
+  
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
+
+```{r ex-ggplot-4-1, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "setup-ex-ggplot-df", exercise.lines=15}
+
+```
+```{r ex-ggplot-4-1-solution, ref.label=I('ex-ggplot-4-0')}
+
+```
+
+
+### Punkte & Linien
+
+Wir möchten nun sehen, wie die Gesundheit (`health_value`) mit dem Blutwert (`blood_value`) zusammenhängt.
+Dabei soll auch direkt das Geschlecht noch berücksichtigt werden.
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Versuche den angezeigten Plot so ähnlich wie möglich nachzubauen.*
+
+```{r ex-ggplot-5-0, exercise=FALSE, echo=TRUE, exercise.setup = "setup-ex-ggplot-df", eval=TRUE, echo=FALSE}
+ggplot(df, aes(x = health_value, y = blood_value, color = sex)) + 
+  geom_point() +
+  labs(title = "Distribution of the training") +
+  scale_color_viridis_d(
+    option = "inferno",
+    begin = 0.2,
+    end = 0.8
+  ) +
+  theme_classic(base_size = 12)
+```
+
+<div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Nutze die Funktion `geom_point()`.</div>
+  <div class="tip-content"> Nutze hier `color` und nicht `fill` für das Geschlecht</div>
+  <div class="tip-content"> Bearbeite die Beschriftungen mit `labs()`.</div>
+  <div class="tip-content"> Nutze `scale_color_viridis_d()` für die Farben. Achte hierbei auf `color`.</div>
+  <div class="tip-content"> Nutze die Farbskala "inferno" und beginne mit 0.2 und definiere als Ende 0.8.</div>
+  <div class="tip-content"> Setze die Schriftgröße auf 12.</div>
+  <div class="tip-content"> Nutze diesen Aufbau: 
+  <pre>ggplot(df, aes()) + 
+  geom_bar() + 
+  labs() +
+  scale_color_viridis_d() +
+  theme_classic()`.</pre></div>
+  
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
+
+```{r ex-ggplot-5-1, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "setup-ex-ggplot-df", exercise.lines=15}
+
+```
+```{r ex-ggplot-5-1-solution, ref.label=I('ex-ggplot-5-0')}
+
+```
+
+In einem nächsten Schritt möchten wir noch lineare Modelle fitten und als Linien für die Geschlechter getrennt hinzufügen.
+Damit es übersichtlicher wird, entfernen wir alle Datenpunkte, bei denen das Geschlecht unbekannt ist.
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Versuche den angezeigten Plot so ähnlich wie möglich nachzubauen.*
+
+```{r ex-ggplot-6-0, exercise=FALSE, echo=TRUE, exercise.setup = "setup-ex-ggplot-df", eval=TRUE, echo=FALSE}
+df %>% 
+  filter(sex != "unknown") %>% 
+ggplot(aes(x = health_value, y = blood_value, color = sex)) + 
+  geom_point() +
+  geom_smooth(method = "lm",
+              formula = "y ~ x",
+              se = TRUE) +
+  labs(title = "Distribution of the training") +
+  scale_color_viridis_d(
+    option = "inferno",
+    begin = 0.4,
+    end = 0.8
+  ) +
+  theme_classic(base_size = 12)
+```
+
+<div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Nutze die Funktion `geom_point()`.</div>
+  <div class="tip-content"> Nutze die Funktion `geom_smooth()`.</div>
+  <div class="tip-content"> Nutze ein lineares Modell `geom_smooth(method = "lm")`.</div>
+  <div class="tip-content"> Nutze hier `color` und nicht `fill` für das Geschlecht</div>
+  <div class="tip-content"> Bearbeite die Beschriftungen mit `labs()`.</div>
+  <div class="tip-content"> Nutze `scale_color_viridis_d()` für die Farben. Achte hierbei auf `color`.</div>
+  <div class="tip-content"> Nutze die Farbskala "inferno" und beginne mit 0.4 und definiere als Ende 0.8.</div>
+  <div class="tip-content"> Setze die Schriftgröße auf 12.</div>
+  <div class="tip-content"> Nutze diesen Aufbau: 
+  <pre>ggplot(df, aes()) + 
+  geom_point() + 
+  geom_smooth() +
+  labs() +
+  scale_color_viridis_d() +
+  theme_classic()`.</pre></div>
+  
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
+
+```{r ex-ggplot-6-1, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "setup-ex-ggplot-df", exercise.lines=15}
+
+```
+```{r ex-ggplot-6-1-solution, ref.label=I('ex-ggplot-6-0')}
+
+```
+
+</div>
