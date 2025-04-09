@@ -649,6 +649,7 @@ h4 {
   color: #CA225E;
   text-transform: none;
   margin-top: 50px;
+  font-weight: inherit;
 }
 
 .uebungen h4 {

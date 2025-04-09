@@ -460,9 +460,15 @@ options(
 blue <- "#00c4e6"
 ```
 
-## Einführung
+## Start
 
 ### Ziele dieses Tutorials
+
+  - Hier werden die Grundlagen der Datentranformation mit `dplyr` und `tidyr` gelehrt, sowie die Visualisierung von Daten mit `ggplot2`.
+  
+  - Hier werden keine allgemeine Grundlagen der R-Programmierung gelehrt! Bitte schaue dir das R & RStudio Grundlagen Tutorial an.
+  
+  <!-- - Wenn du dir nicht sicher bist, ob du die Grundlagen kannst - schaue doch im Kapitel XXX vorbei! -->
 
 ### Tidyverse
 
@@ -511,6 +517,41 @@ Zu den Paketen im tidyverse gehören:
 
 Insgesamt bietet das tidyverse eine kohärente, mächtige und weit verbreitete Ergänzung zu *base*-R.
 
+
+<!-- ## Grundlagen Quiz -->
+
+<!-- Dieses Tutorial behandelt bereits Fortgeschrittene R-Inhalte und basiert auf dem Hintergrundwissen von XXX. -->
+<!-- Falls du dir nicht sicher bist, ob du diese gut beherrschst probiere dich an dem Quiz! -->
+
+<!-- ```{r quiz-basic} -->
+<!-- quiz(caption = "", -->
+<!--   question("Was bedeutet das `#` Symbol überlicherweise in R-ode?", -->
+<!--     answer("0"), -->
+<!--     answer("Es handelt sich um eine"), -->
+<!--     answer("Es handelt sich um eine kommentierte Zeile. Der Code wird nicht ausgeführt.", correct = TRUE), -->
+<!--     answer("Es gibt keine sinnvolle Antwort auf diese Frage."), -->
+<!--      random_answer_order = TRUE, -->
+<!--      allow_retry = TRUE, -->
+<!--      try_again = "Leider falsch!", -->
+<!--      correct = "Richtig!", -->
+<!--      incorrect = "Leider falsch!", -->
+<!--      submit_button = "Antwort einreichen" -->
+<!--   ), -->
+<!--   question("Was passiert, wenn dieser Befehl ausgeführt wird: `NaN < 0`?", -->
+<!--     answer("Es gibt eine Fehlermeldung."), -->
+<!--     answer("FALSE"), -->
+<!--     answer("TRUE"), -->
+<!--     answer("Es gibt einen fehlenden Wert aus.", correct = TRUE), -->
+<!--      random_answer_order = TRUE, -->
+<!--      allow_retry = TRUE, -->
+<!--      try_again = "Leider falsch!", -->
+<!--      correct = "Richtig!", -->
+<!--      incorrect = "Leider falsch!", -->
+<!--      submit_button = "Antwort einreichen" -->
+<!--   ) -->
+<!-- ) -->
+<!-- ``` -->
+
 ## dplyr-- Grundlagen
 
 ### Kapitel
@@ -541,6 +582,10 @@ All diese Funktionen werden in diesem Kapitel näher erklärt:
 
 Der Datensatz `df` wird nachfolgend im Kapitel genutzt und ist in den jeweiligen R-Umgebungen hinterlegt.
 
+<details class="hiddendetails-container"> <summary>
+    <p class="hiddendetails-button"><i class="fa-solid fa-arrow-down"></i> Zeige die Erstellung der Daten <i class="fa-solid fa-arrow-down"></i> </p>
+  </summary> <div class="hiddendetails-body"> <div class="uebungen">
+
 ```{r setup-base-df, exercise=FALSE, eval=TRUE, echo=TRUE}
 set.seed(3)
 
@@ -566,8 +611,13 @@ df <- data.frame(
   x_study_na = rnorm(6)
 )
 ```
-```{r, ref.label=I('setup-base-df'), eval=TRUE, echo=TRUE, exercise.eval=FALSE, exercise.lines = 25}
+```{r, ref.label=I('setup-base-df'), eval=TRUE, echo=TRUE, exercise.eval=TRUE, exercise.lines = 25}
 
+```
+</div></div></details>
+
+```{r setup-base-df-00, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold"}
+df 
 ```
 
 ### Piping mit `%>%` <a href="#section-dplyr-grundlagen"> <i class="fa-solid fa-arrow-up"></i></a>
@@ -633,7 +683,7 @@ Die Pipe-Schreibweise verbindet die Übersichtlichkeit von Option 1 und die Effi
 3. *Effizienz bei komplexen Prozessen*: Die Verkettung macht besonders bei vielen Verarbeitungsschritten Sinn.
 
 
-Hier ist ein Beispiel mit einem fiktiven Datensatz:
+Hier ist ein Beispiel mit dem Beispieldatensatz:
 
 ```{r dplyr-pipe-4, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.lines = 7}
 # Datenmanipulation mit Pipe-Operator
@@ -646,7 +696,8 @@ df %>%
 
 Der Pipe-Operator (`%>%`) ist ein mächtiges Werkzeug, das den Code übersichtlicher macht und oft näher am menschlichen Denken dran ist.
 Diese Art zu Programmieren ist so beliebt geworden, dass es inzwischen auch einen Pipe-Operator in *base*-R gibt, welcher so aussieht: `|>`.
-Die Operatoren sind sich in vielen Funktionalitäten ähnlich, wir werden innerhalb dieses Tutorials wegen der Einfachheit immer den `%>%` Operator verwenden.
+Die Operatoren sind sich in vielen Funktionalitäten ähnlich.
+Wir werden innerhalb dieses Tutorials wegen der Einfachheit immer den `%>%` Operator verwenden.
 
 
 
@@ -1343,7 +1394,7 @@ grade_this_code()
 <a href="#section-bind-funktionen"> <i class="fa-solid fa-arrow-down"></i> bind Funktionen </a><br>
 <div style="padding-left: 2em;">
 <a href="#section-zeilen-zusammenfügen-mit-bind_rows"> <i class="fa-solid fa-arrow-down"></i> Zeilen zusammenfügen mit bind_rows </a><br>
-<a href="#section-spalte-zusammenfügen-mit-row_cols"> <i class="fa-solid fa-arrow-down"></i> Spalten zusammenfügen mit bin_cols </a><br>
+<a href="#section-spalten-zusammenfügen-mit-bind_cols"> <i class="fa-solid fa-arrow-down"></i> Spalten zusammenfügen mit bin_cols </a><br>
 </div><br>
 
 Wir stellen hier zwei verschiedene Varianten vor Daten zusammenzuführen.
@@ -1619,23 +1670,26 @@ Die Daten können anhand der Spalten oder der Zeilen zusammengefügt werden.
 #### Zeilen zusammenfügen mit bind_rows() <a href="#section-dplyr-daten-zusammenführen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Mit *bind_rows()* kannst du mehrere Datensätze vertikal (also zeilenweise) zusammenführen.
-Dies ist nützlich, wenn du beispielsweise Daten aus verschiedenen Quellen hast, die dieselbe Struktur haben (ähnliche oder identische Spalten) beinhalten, und diese in einen einzigen Datensatz integrieren möchtest.
+Dies ist nützlich, wenn du beispielsweise Daten aus verschiedenen Quellen hast, welche dieselbe Struktur haben (ähnliche oder identische Spalten) beinhalten, und diese in einen einzigen Datensatz integrieren möchtest.
 
 ```{r bind-1, exercise.setup = "setup-join-df", exercise=TRUE, results = "hold"}
+# Datensatz 1
 df1 <- data.frame(
   id = c(1, 2),
   name = c("Alice", "Bob"),
   hobby = c( "sport", "baking")
 )
-
+df1
+# Datensatz 2
 df2 <- data.frame(
   id = c(3, 4),
   name = c("Claudia", "Dieter"),
   allergy = c(TRUE, FALSE)
 )
-
+df2
 # Zusammenführen der Zeilen
-bind_rows(df1, df2)
+df <- bind_rows(df1, df2)
+df
 ```
 
 Alle Zeilen aus df1 und df2 werden untereinander angeordnet.
@@ -1652,19 +1706,135 @@ Im besten Fall gibt es auch keine Überlappung der Spaltennamen.
 
 
 ```{r bind-2, exercise.setup = "setup-join-df", exercise=TRUE, results = "hold"}
+# Datensatz 1
 df1 <- data.frame(
   id = c(3, 4),
   name = c("Claudia", "Dieter")
 )
-
+df1
+# Datensatz 2
 df2 <- data.frame(
   hobby = c( "sport", "baking"),
-    allergy = c(TRUE, FALSE)
+  allergy = c(TRUE, FALSE)
 )
-
-# Zusammenführen der Zeilen
-bind_cols(df1, df2)
+df2
+# Zusammenführen der Spalten
+df <- bind_cols(df1, df2)
+df
 ```
+
+<div class="uebungen">
+
+#### Übungen
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+ *Füge die zwei Datensätze zusammen mit einer bind-Funktion. Gebe den Datensatz aus.*
+ <div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Stimmen die Spalten überein? Dann verwende `bind_rows()`. Oder möchtest du neue Spalten ergänzen? Dann nutze `bind_cols()`.</div>
+  <div class="tip-content"> Denke daran, den fertigen Datensatz abzuspeichern und auszugeben.</div>
+  
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
+```{r ex-bind-01, exercise.setup = "setup-base-df", exercise=TRUE, exercise.lines=19, results = "hold", exercise.eval=FALSE}
+# Datensatz 1
+df_A <- data.frame(
+  id = c("x1", "x2"),
+  name = c("Alice", "Bob"),
+  hobby = c( "sport", "baking")
+)
+# Datensatz 2
+df_B <- data.frame(
+  id = c("x3", "x4"),
+  name = c("Claudia", "Dieter"),
+  hobby = c( "dancing", "singing")
+)
+# Schreibe ab hier deinen Code:
+
+```
+```{r ex-bind-01-solution, results = "hold", exercise.eval=FALSE}
+# Datensatz 1
+df_A <- data.frame(
+  id = c("x1", "x2"),
+  name = c("Alice", "Bob"),
+  hobby = c( "sport", "baking")
+)
+# Datensatz 2
+df_B <- data.frame(
+  id = c("x3", "x4"),
+  name = c("Claudia", "Dieter"),
+  hobby = c( "dancing", "singing")
+)
+# Schreibe ab hier deinen Code:
+df <- bind_rows(df_A, df_B)
+df
+```
+```{r ex-bind-01-check, ref.label=I('setup-base-df'), results = "hold", exercise.eval=FALSE}
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
+# grade_this_code()
+```
+
+
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+ *Füge die zwei Datensätze zusammen mit einer bind-Funktion. Gebe den Datensatz aus.*
+ <div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Stimmen die Spalten überein? Dann verwende `bind_rows()`. Oder möchtest du neue Spalten ergänzen? Dann nutze `bind_cols()`.</div>
+  <div class="tip-content"> Denke daran, den fertigen Datensatz abzuspeichern und auszugeben.</div>
+  
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
+```{r ex-bind-02, exercise=TRUE, exercise.lines=19, results = "hold", exercise.eval=FALSE}
+# Datensatz 1
+df_A <- data.frame(
+  sport_types = c("tennis", "dancing", "football"),
+  hobby_types = c( "sport", "cooking", "art")
+)
+# Datensatz 2
+df_B <- data.frame(
+  animals = c("tiger", "bird", "snake"),
+  colors = c( "red", "green", "yellow")
+)
+# Schreibe ab hier deinen Code:
+
+```
+```{r ex-bind-02-solution, results = "hold", exercise.eval=FALSE}
+# Datensatz 1
+df_A <- data.frame(
+  sport_types = c("tennis", "dancing", "football"),
+  hobby_types = c( "sport", "cooking", "art")
+)
+# Datensatz 2
+df_B <- data.frame(
+  animals = c("tiger", "bird", "snake"),
+  colors = c( "red", "green", "yellow")
+)
+# Schreibe ab hier deinen Code:
+df <- bind_cols(df_A, df_B)
+df
+```
+```{r ex-bind-02-check, results = "hold", exercise.eval=FALSE}
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
+# grade_this_code()
+```
+
+</div>
+
 
 ## tidyr -- Pivoting
 
@@ -1676,12 +1846,16 @@ bind_cols(df1, df2)
 ### pivot_longer(): Umwandeln von breiten in lange Datensätze <a href="#section-tidyr-pivoting"> <i class="fa-solid fa-arrow-up"></i></a>
 
 In diesem Tutorial lernst du, wie du einen Datensatz zum Thema Säugetiere im Wide-Format mithilfe der Funktion `pivot_longer()` aus dem `tidyr`-Paket in das Long-Format überführst.
-Im Wide-Format werden verschiedene Messgrößen in separaten Spalten dargestellt, während im Long-Format jede Beobachtung in einer eigenen Zeile erscheint.
-Dieses Format ist häufig vorteilhaft für Datenanalysen und Visualisierungen (insbesondere auch `ggplot2`).
+Im Wide-Format werden verschiedene Messgrößen in separaten Spalten dargestellt, während im long-Format jede Beobachtung in einer eigenen Zeile erscheint.
+Das long-Format ist häufig vorteilhaft für Visualisierungen (insbesondere auch `ggplot2`).
 
 #### Einfaches Beispiel
 
 Zunächst erstellen wir einen Datensatz, in dem für jedes Tier das Gewicht in den Jahren 2010, 2020 und 2030 festgehalten wird.
+
+<details class="hiddendetails-container"> <summary>
+    <p class="hiddendetails-button"><i class="fa-solid fa-arrow-down"></i> Zeige die Erstellung der Daten <i class="fa-solid fa-arrow-down"></i> </p>
+  </summary> <div class="hiddendetails-body"> <div class="uebungen">
 
 ```{r setup-pivot-longer, exercise=FALSE, eval=TRUE, echo=FALSE}
 # Beispieldatensatz im Wide-Format erstellen
@@ -1689,11 +1863,15 @@ mammals <- data.frame(
   Animal = c("Elephant", "Lion", "Rhinoceros"),
   Weight_2010 = c(4800, 180, 2200),
   Weight_2020 = c(5000, 190, 2300),
-  Weight_2030 = c(5200, 195, 2400)
+  Weight_2030 = c(5200, 195, 2400),
+  Weight_2040 = c(4900, 185, 2220)
 )
 ```
 ```{r, ref.label=I('setup-pivot-longer'), eval=TRUE, echo=TRUE, exercise.eval=FALSE, exercise.lines = 16}
 ```
+Hier können wir uns den Datensatz anschauen:
+
+</div></div></details>
 
 **Datensatz "mammals"**
 
@@ -1701,9 +1879,9 @@ mammals <- data.frame(
 mammals
 ```
 
-**Umwandeln in das Long-Format mit pivot_longer()**
+**Umwandeln in das Long-Format mit `pivot_longer()`**
 
-Wir transformieren nun den Datensatz, sodass die Spalten mit den Gewichtsangaben in zwei Spalten umgewandelt werden::
+Wir transformieren nun den Datensatz, sodass die Spalten mit den Gewichtsangaben in zwei Spalten umgewandelt werden:
 
   - `Year`: Enthält das Jahr (z. B. "2010", "2020", "2030").
 
@@ -1726,6 +1904,8 @@ mammals_long
 
   - `pivot_longer()`: Diese Funktion "schmilzt" die Spalten, die mit "Weight_" beginnen, in zwei neue Spalten um.
 
+  - `cols = starts_with("Weight_")`: Wählt alle Spalten aus, die nun umgewandelt werden sollen.
+  
   - `names_to = "Year"`: Speichert die ursprünglichen Spaltennamen (z. B. "Weight_2010") in der neuen Spalte Year.
 
   - `values_to = "Weight_kg"`: Legt den Namen der neuen Spalte fest, in der die Gewichtswerte abgelegt werden.
@@ -1733,15 +1913,21 @@ mammals_long
   - `mutate(Year = sub("Weight_", "", Year))`: Entfernt den Text "Weight_" aus den Werten in der Spalte Year, sodass nur noch das Jahr übrig bleibt.
 
 Das Ergebnis ist ein Long-Format-Datensatz, in dem jede Zeile eine Gewichtsmessung eines Tieres in einem bestimmten Jahr darstellt.
+Der Datensatz ist nun länger geworden (hat mehr Zeilen) und schmaler (hat wneiger Spalten).
 
 #### Komplexeres Beispiel
 
-Jetzt schauen wir uns noch einen komplexeren Datensatz an in dem es mehr Spalten gibt.
+Jetzt schauen wir uns noch einen komplexeren Datensatz an bei dem es zwei verschiedene inhaltliche Spalten gibt (die Größe und das Gewicht).
 
 Die Komplexität des Pivoting hängt maßgeblich von der Konsistenz der Spaltennamen ab.
 Es wird dringend empfohlen, eine einheitliche Benennung zu verwenden und klare Trennzeichen wie den Unterstrich `_` einzusetzen.
-Falls die Spaltennamen inkonsistent sind, sollte dies vor dem Pivoting idealerweise mit Hilfe von `dplyr` bereinigt werden.
+Falls die Spaltennamen inkonsistent sind, sollte dies vor dem Pivoting idealerweise mit Hilfe von `dplyr::rename()` bereinigt werden.
 
+
+<details class="hiddendetails-container"> <summary>
+    <p class="hiddendetails-button"><i class="fa-solid fa-arrow-down"></i> Zeige die Erstellung der Daten <i class="fa-solid fa-arrow-down"></i> </p>
+  </summary> <div class="hiddendetails-body"> <div class="uebungen">
+  
 ```{r setup-pivot-longer-2, exercise=FALSE, eval=TRUE, echo=FALSE}
 mammals_2 <- data.frame(
   Animal = c("Elephant", "Lion", "Rhinoceros"),
@@ -1756,6 +1942,7 @@ mammals_2 <- data.frame(
 ```
 ```{r, ref.label=I('setup-pivot-longer-2'), eval=TRUE, echo=TRUE, exercise.eval=FALSE, exercise.lines = 16}
 ```
+</div></div></details>
 
 **Datensatz "mammals_2"**
 
@@ -1794,9 +1981,75 @@ mammals_long
 
   - `names_to = c("Measurement", "Year")`: Die ursprünglichen Spaltennamen werden in zwei Teile aufgespalten – den Messwert-Typ und das Jahr.
 
-  - `names_sep = "_"`: Der Unterstrich ("_") dient als Trennzeichen.
+  - `names_sep = "_"`: Der Unterstrich ("_") dient als Trennzeichen für die Spaltennamen und deren Separierung.
 
   - `values_to = "Value"`: Die Messwerte werden in der neuen Spalte Value gespeichert.
+
+<div class="uebungen">
+
+#### Übungen
+
+In diesem Beispiel hast du einen Datensatz über Früchte, der die Anzahl verkaufter Früchte in verschiedenen Monaten enthält.
+
+
+<details class="hiddendetails-container"> <summary>
+    <p class="hiddendetails-button"><i class="fa-solid fa-arrow-down"></i> Zeige die Erstellung der Daten <i class="fa-solid fa-arrow-down"></i> </p>
+  </summary> <div class="hiddendetails-body"> <div class="uebungen">
+
+```{r setup-ex-wide, eval=TRUE, echo=FALSE}
+fruits_wide <- data.frame(
+  fruit = c("appel", "banana", "orange"),
+  sales_jan = c(120, 150, 100),
+  sales_feb = c(140, 170, 110),
+  sales_mar = c(130, 160, 105)
+)
+```
+```{r, ref.label=I('setup-ex-wide'), eval=TRUE, echo=TRUE, exercise.eval=FALSE, exercise.lines = 10}
+```
+</div></div></details>
+
+```{r ex-wide-00, exercise.setup = "setup-ex-wide", exercise=FALSE, results = "hold", eval=TRUE, echo=FALSE}
+fruits_wide
+```
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+ *Verwandle diesen Datensatz ins Long-Format, sodass du eine Spalte `Monat` erhältst (mit den Werten "Jan", "Feb", "Mar") und eine Spalte `Verkauf` für die Verkaufszahlen.*
+ 
+ <div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Nutze `pivot_longer()`.</div>
+  <div class="tip-content"> Du kannst `names_to` und `values_to` verwenden, um passende Spaltennamen zu erzeugen.</div>
+  <div class="tip-content"> Nutze `mutate(Monat = sub(___))` innerhalb von um den Präfix „Sales_“ aus den Monatsnamen zu entfernen.</div>
+  
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
+```{r ex-wide-01, exercise.setup = "setup-ex-wide", exercise.lines=10, exercise=TRUE, results = "hold", exercise.eval=FALSE}
+
+```
+```{r ex-wide-01-solution, results = "hold", exercise.eval=FALSE}
+fruits_long <- fruits_wide %>%
+  pivot_longer(
+    cols = starts_with("sales_"),
+    names_to = "month",
+    values_to = "sales"
+  ) %>%
+  mutate(month = sub("sales_", "", month))
+fruits_long
+```
+```{r ex-wide-01-check, ref.label=I('setup-ex-wide'), results = "hold", exercise.eval=FALSE}
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
+
+# grade_this_code()
+```
+
+</div>
 
 ### pivot_wider(): Umwandeln von langen in breite Datensätze <a href="#section-tidyr-pivoting"> <i class="fa-solid fa-arrow-up"></i></a>
 
@@ -1806,7 +2059,11 @@ Dieses Format kann vorteilhaft für bestimmte Datenanalysen und Tabellenübersic
 
 #### Einfaches Beispiel
 
-Zunächst erstellen wir einen Datensatz, der für verschiedene Pflanzenarten Höhenmessungen in verschiedenen Jahren enthält:
+Zunächst schauen wir uns den Datensatz `plants_long` an, der für verschiedene Pflanzenarten Höhenmessungen in verschiedenen Jahren enthält:
+
+<details class="hiddendetails-container"> <summary>
+    <p class="hiddendetails-button"><i class="fa-solid fa-arrow-down"></i> Zeige die Erstellung der Daten <i class="fa-solid fa-arrow-down"></i> </p>
+  </summary> <div class="hiddendetails-body"> <div class="uebungen">
 
 ```{r setup-pivot-wider, exercise=FALSE, eval=TRUE, echo=FALSE}
 plants_long <- data.frame(
@@ -1818,6 +2075,8 @@ plants_long <- data.frame(
 
 ```{r, ref.label=I('setup-pivot-wider'), eval=TRUE, echo=TRUE, exercise.eval=FALSE, exercise.lines = 10}
 ```
+</div></div></details>
+
 
 **Datensatz "plants_long"**
 
@@ -1835,6 +2094,7 @@ Wir transformieren nun den Datensatz, sodass jedes Jahr eine eigene Spalte bilde
 plants_wide <- plants_long %>%
   pivot_wider(
     names_from = Year,
+    names_prefix = "height_cm_",
     values_from = Height_cm
   )
 
@@ -1845,11 +2105,18 @@ plants_wide
 
 - `pivot_wider()`: Wandelt die Werte aus der Spalte Year in separate Spaltennamen um.
 - `names_from = Year`: Definiert, welche Spalte als neue Spaltenüberschrift verwendet wird.
+- `names_prefix = "height_cm_"`: Die Spaltennamen werden noch mit dem Prefix "height_cm_" ausgestattet.
 - `values_from = Height_cm`: Definiert, welche Werte in den neuen Spalten erscheinen.
+
+Der Datensatz ist nun im wide-Format: der Datensatz ist breiter geworden (mehr Spalten) und weniger lang (weniger Zeilen).
 
 #### Komplexeres Beispiel
 
 Wir betrachten nun einen Datensatz, der neben der Höhe auch die Blattgröße verschiedener Pflanzen in unterschiedlichen Jahren enthält:
+
+<details class="hiddendetails-container"> <summary>
+    <p class="hiddendetails-button"><i class="fa-solid fa-arrow-down"></i> Zeige die Erstellung der Daten <i class="fa-solid fa-arrow-down"></i> </p>
+  </summary> <div class="hiddendetails-body"> <div class="uebungen">
 
 ```{r setup-pivot-wider-2, exercise=FALSE, eval=TRUE, echo=FALSE}
 plants_long_2 <- data.frame(
@@ -1862,6 +2129,7 @@ plants_long_2 <- data.frame(
 
 ```{r, ref.label=I('setup-pivot-wider-2'), eval=TRUE, echo=TRUE, exercise.eval=FALSE, exercise.lines = 12}
 ```
+</div></div></details>
 
 **Datensatz "plants_long_2"**
 
@@ -1888,9 +2156,209 @@ plants_wide_2
 - `names_from = c(Measurement, Year)`: Hier werden die neuen Spalten aus der Kombination von Messgrößen (Measurement) und Jahren (Year) gebildet.
 - `values_from = Value`: Die Werte der neuen Spalten stammen aus der ursprünglichen Spalte "Value".
 
+<div class="uebungen">
 
+#### Übungen
 
+In diesem Beispiel erhältst du einen Datensatz über Niederschlagsmengen, gemessen in zwei Städten (Berlin und Hamburg) über drei Monate.
+
+<details class="hiddendetails-container"> <summary>
+    <p class="hiddendetails-button"><i class="fa-solid fa-arrow-down"></i> Zeige die Erstellung der Daten <i class="fa-solid fa-arrow-down"></i> </p>
+  </summary> <div class="hiddendetails-body"> <div class="uebungen">
+
+```{r setup-ex-long, eval=TRUE, echo=FALSE}
+rainfall_long <- data.frame(
+  city = rep(c("Berlin", "Hamburg"), each = 3),
+  month = rep(c("january", "february", "march"), times = 2),
+  rainfall_mm = c(35, 30, 40, 50, 45, 55)
+)
+```
+```{r, ref.label=I('setup-ex-long'), eval=TRUE, echo=TRUE, exercise.eval=FALSE, exercise.lines = 10}
+```
+</div></div></details>
+
+```{r ex-long-00, exercise.setup = "setup-ex-long", exercise=FALSE, results = "hold", eval=TRUE, echo=FALSE}
+rainfall_long
+```
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+ *Wandle diesen Datensatz ins Wide-Format um, sodass jeder Monat eine eigene Spalte bildet, welche die Niederschlagswerte enthält.*
+ 
+ <div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Verwende `pivot_wider()`.</div>
+  <div class="tip-content"> Die neuen Spaltennamen sollten die Namen der Monate sein.</div>
+  <div class="tip-content"> Achte darauf, dass die Werte aus der Spalte `Niederschlag_mm` übernommen werden.</div>
+  <div class="tip-content"> Nutze `names_to =` und `values_to =`.</div>
+  
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
+```{r ex-long-01, exercise.setup = "setup-ex-long", exercise.lines=10, exercise=TRUE, results = "hold", exercise.eval=FALSE}
+
+```
+```{r ex-long-01-solution, results = "hold", exercise.eval=FALSE}
+rainfall_wide <- rainfall_long %>%
+  pivot_wider(
+    names_from = month,
+    values_from = rainfall_mm
+  )
+rainfall_wide
+```
+```{r ex-long-01-check, ref.label=I('setup-ex-long'), results = "hold", exercise.eval=FALSE}
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
+# grade_this_code()
+```
+</div>
+  
 ## Datenaufbereitung -- Übungen
+<div class="uebungen">
+
+### Datensatz
+
+Wir haben hier einen Datensatz, der Informationen über Studierende sowie ihre Testergebnisse aus verschiedenen Semestern enthält:
+
+```{r setup-ex-wrangling-df, exercise=FALSE, eval=TRUE, echo=FALSE}
+students_data <- data.frame(
+  stud_id = c("101","102","103","104","105"),
+  name = c("Alex", "Ben", "Clara", "Dana", "Chris"),
+  course = c("Biology", "Biology", "Psychology", "Physics", "Medicine"),
+  test_Sem1 = c(80, 70, 90, 85, 80),
+  test_Sem2 = c(85, 78, 92, 88, 92),
+  test_Sem3 = c(88, 82, 94, 91, 70),
+  test_Sem4 = c(99, 83, 92, 81, 88),
+  attendance_Sem1 = c(90, 88, 95, 93, 79),
+  attendance_Sem2 = c(92, 89, 96, 94, 98),
+  attendance_Sem3 = c(94, 90, 97, 95, 85)
+)
+```
+```{r, ref.label=I('setup-ex-wrangling-df'), eval=TRUE, echo=FALSE, exercise.eval=FALSE}
+```
+Hier können wir uns den Datensatz anschauen, den wir bearbieten möchten:
+
+
+```{r data-ex-wrangling,exercise.setup = "setup-ex-wrangling-df", exercise=TRUE, results = "hold"}
+students_data
+```
+
+### Datenaufbereitung dplyr
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Erstelle eine dplyr Pipe und speichere den Datensatz in einem neuen Objekt ab:*
+
+*1. Wähle nur die ID, den Namen, den Kurs und die Testergebnisse aller Semester aus (aber keine Anwesenheitswerte).*
+
+*2. Benenne die Spalte "stud_id" in "student_id" um.*
+
+*4. Überschreibe die Inhalte in "student_id": die Spalte sollen den Datentyp "numeric" haben.*
+
+*5. Danach filtere alle Studierenden heraus, die im Fach "Physics" sind.*
+
+*Zeige dir den Datensatz am Ende an.*
+
+```{r ex-wrangling-1-0, exercise=FALSE, echo=TRUE, exercise.setup = "setup-ex-wrangling-df", eval=TRUE, echo=FALSE}
+
+```
+
+<div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Nutze die Funktion `select()`.</div>
+  <div class="tip-content"> Nutze die Funktion `rename()`.</div>
+  <div class="tip-content"> Nutze die Funktion `mutate()`.</div>
+  <div class="tip-content"> Nutze die Funktion `filter()`.</div>
+  <div class="tip-content"> Nutze diesen Aufbau: 
+  <pre>df <- students_data %>%
+  select() %>% 
+  rename() %>% 
+  mutate() %>% 
+  filter()
+df</pre></div>
+  
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
+
+```{r ex-wrangling-1-1, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "setup-ex-wrangling-df", exercise.lines=10}
+
+```
+```{r ex-wrangling-1-1-solution, results = "hold", exercise.eval=FALSE}
+df <- students_data %>%
+  select(stud_id, name, course, starts_with("test_")) %>% 
+  rename(student_id = stud_id) %>% 
+  mutate(student_id) %>% 
+  filter(course != "Physics")
+df
+```
+```{r ex-wrangling-1-1-check, ref.label=I('setup-ex-wrangling2'), results = "hold", exercise.eval=FALSE}
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
+```
+
+### Pivoting
+
+```{r setup-ex-wrangling2-df, exercise=FALSE, eval=TRUE, echo=FALSE}
+df <- students_data %>%
+  select(stud_id, name, course, starts_with("test_")) %>% 
+  rename(student_id = stud_id) %>% 
+  mutate(student_id) %>% 
+  filter(course != "Physics")
+```
+
+`r otter::colorize("Aufgabe:", "var(--blue)")`
+*Verwandle den Datensatz so, dass eine Spalte "Semester" entsteht (mit Werten "Sem1", "Sem2", "Sem3") und eine Spalte "Test_Score", in der die Testergebnisse gespeichert sind.*
+
+
+```{r ex-wrangling-2-0, exercise=FALSE, echo=TRUE, exercise.setup = "setup-ex-wrangling-df", eval=TRUE, echo=FALSE}
+
+```
+
+<div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Nutze die Funktion `pivot_longer()`.</div>
+  <div class="tip-content"> Die Semester-Informationen stehen aktuell am Ende der Spaltennamen (z.B. "test_Sem1"), nutze das Trennzeichen `_` sinnvoll.</div>
+  
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
+
+```{r ex-wrangling-2-1, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "ex-wrangling-1-1-solution", exercise.lines=10}
+
+```
+```{r ex-wrangling-2-1-solution}
+df <- df %>%
+  pivot_longer(
+    cols = starts_with("test_"),
+    names_to = c(".value", "Semester"),
+    names_sep = "_"
+  )
+```
+```{r ex-wrangling-2-1-check, ref.label=I('setup-ex-wide'), results = "hold", exercise.eval=FALSE}
+grade_this({
+  pass_if_equal(.solution, message = feedback_message_correct)
+  fail_if_not_equal(.solution, message = feedback_message_wrong)
+})
+
+# grade_this_code()
+```
+
+
+
+
+</div>
 
 ## ggplot2 -- Plot erstellen
 
@@ -1928,6 +2396,9 @@ Kunst Galerie von Danielle Navarro
 
 ### Beispieldatensatz
 
+<details class="hiddendetails-container"> <summary>
+    <p class="hiddendetails-button"><i class="fa-solid fa-arrow-down"></i> Zeige die Erstellung der Daten <i class="fa-solid fa-arrow-down"></i> </p>
+  </summary> <div class="hiddendetails-body"> <div class="uebungen">
 ```{r setup-ggplot-df, exercise=FALSE, eval=TRUE, echo=FALSE}
 set.seed(3)
 
@@ -1949,6 +2420,8 @@ df <- df %>%
 ```
 ```{r, ref.label=I('setup-ggplot-df'), eval=TRUE, echo=FALSE, exercise.eval=FALSE}
 ```
+</div></div></details>
+
 Hier können wir uns den Datensatz anschauen, den wir visualisieren möchten:
 Der Datensatz befindet sich bereits im long-Format und das ist besonders hilfreich für `ggplot2`.
 
