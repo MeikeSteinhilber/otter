@@ -2363,6 +2363,31 @@ grade_this({
 ## ggplot2 -- Plot erstellen
 
 ### Kapitel
+<a href="#section-ideen-literatur"> <i class="fa-solid fa-arrow-down"></i> Ideen & Literatur </a><br>
+<a href="#section-beispieldatensatz-1"> <i class="fa-solid fa-arrow-down"></i> full_join </a><br>
+<a href="#section-data-mapping"> <i class="fa-solid fa-arrow-down"></i> Data Mapping </a><br>
+<div style="padding-left: 2em;">
+<a href="#section-leere-plots-erstellen> <i class="fa-solid fa-arrow-down"></i> Leere Plots erstellen </a><br>
+<a href="#section-aesthetics"> <i class="fa-solid fa-arrow-down"></i> Leere Plots erstellen </a><br>
+</div>
+
+<a href="#section-plot-erstellen"> <i class="fa-solid fa-arrow-down"></i> Plot erstellen </a><br>
+<div style="padding-left: 2em;">
+<a href="#section-entscheidungshilfe-für-plottypen"> <i class="fa-solid fa-arrow-down"></i> Entscheidungshilfe für Plottypen </a><br>
+<a href="#section-geom_point()"> <i class="fa-solid fa-arrow-down"></i> geom_point() </a><br>
+<a href="#section-geom_line()"> <i class="fa-solid fa-arrow-down"></i> geom_line() </a><br>
+<a href="#section-geom_smooth()"> <i class="fa-solid fa-arrow-down"></i> geom_smooth() </a><br>
+<a href="#section-geom_bar()"> <i class="fa-solid fa-arrow-down"></i> geom_bar() </a><br>
+<a href="#section-geom_col()"> <i class="fa-solid fa-arrow-down"></i> geom_col() </a><br>
+<a href="#section-geom_histogram()"> <i class="fa-solid fa-arrow-down"></i> geom_histogram() </a><br>
+<a href="#section-geom_boxplot()"> <i class="fa-solid fa-arrow-down"></i> geom_boxplot() </a><br>
+<a href="#section-geom_violin()"> <i class="fa-solid fa-arrow-down"></i> geom_violin() </a><br>
+<a href="#section-geom_density()"> <i class="fa-solid fa-arrow-down"></i> geom_density() </a><br>
+<a href="#section-geom_area()"> <i class="fa-solid fa-arrow-down"></i> geom_area() </a><br>
+<a href="#section-geom_ribbon()"> <i class="fa-solid fa-arrow-down"></i> geom_ribbon() </a><br>
+<a href="#section-geom_jitter()"> <i class="fa-solid fa-arrow-down"></i> geom_jitter() </a><br>
+<a href="#section-geom_line()"> <i class="fa-solid fa-arrow-down"></i> geom_line() </a><br>
+</div>
 
 `ggplot2` ist ein sehr mächtiges Werkzeug zur Visualisierung von Daten.
 
@@ -2541,7 +2566,7 @@ df %>%
 
 Im nächsten Schritt wählen wir die Art des Plots aus - damit können wir dann auch endlich unsere Daten sehen!
 
-### Plot Art
+### Plot erstellen
 
 Die Art des Plots wird bestimmt durch die `geom_*`-Funktion also z. B. `geom_point`.
 
