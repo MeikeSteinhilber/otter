@@ -197,12 +197,12 @@ $(document).ready(function() {
   <a href="https://meikesteinhilber.github.io/otter/"> <i class="fa-solid fa-house" aria-label="Link zur otter Homepage" aria-hidden="false"></i>
   </a>
   </div>`);
-  
+
   $(".accessibility").on("click", function() {
     $(".offcanvas").toggleClass("show");
   });
   $(".offcanvas button").on("click", function() {
-    
+
     const setting = $(this).attr("data-setting");
     const numIndicators = $(".indicators > div", this).length || 0;
     var currentIndicator = 0;
@@ -221,13 +221,13 @@ $(document).ready(function() {
 
     if(setting == "contrast") {
       $("html").toggleClass("invert");
-      
+
     } else if(setting == "links") {
       $("html").toggleClass("highlightlinks");
-      
+
     } else if(setting == "dyslexia") {
       $("html").toggleClass("dyslexic");
-      
+
     } else if(setting == "fontsize" || setting == "lineheight" || setting == "letterspacing") {
       if(currentIndicator != 0) {
         $("html").addClass(setting + currentIndicator.toString());
@@ -239,7 +239,7 @@ $(document).ready(function() {
     } else if(setting == "cursor") {
       const hasCursor = $("html").hasClass("cursor");
       $("html").toggleClass("cursor");
-      
+
       if(hasCursor) {
         $("html").off("mousemove");
       } else {
@@ -247,37 +247,37 @@ $(document).ready(function() {
           const ev = e.originalEvent;
           var x = ev.clientX;
           var y = ev.clientY;
-          
+
           $(".followcursor").css({top: y, left: x});
-        });      
+        });
       }
     }
-    
+
   });
-  
+
   $(document).ready(function() {
   $('.menu-button').click(function() {
     $('.topicsContainer').toggleClass('menu-open');
     $(this).toggleClass('menu-open');
   });
   });
-  
+
   $("#learnr-tutorial-content.topics").prepend(
   `<div class="logo">
-  <img class="logo" src="images/corporate_logos_small.jpg" alt="Digtell Logo" style="width:30.0%"/>
+  <img class="logo" src="images/corporate_logos_small.png" alt="Digtell Logo" style="width:30.0%"/>
     <img class="logo" src="images/logo.png" alt="Otter Logo" style="width:10.0%"/>
   </div>`);
-  
+
 
   $("a[href^='#']").on("click", function(event) {
-    
+
   <!-- var target = event.currentTarget.href.toString(); -->
   <!--  if(!!~target.indexOf("#")) { -->
   <!--    target = target.split("#")[1]; -->
   <!--     _paq.push(['trackEvent', 'Click', 'Jump', target]); -->
   <!--   } -->
   <!-- console.log(target); -->
-        
+
     const currentSection = $(".section.current");
     var href = $(this).attr("href");
 
@@ -297,27 +297,27 @@ $(document).ready(function() {
       behavior: "smooth",
     });
   });
-  
+
   $("button[data-i18n-attr-title='button.submitanswertitle']").on("click", function(event) {
     _paq.push(['trackGoal', 2]);
   });
-  
+
   $("button[data-i18n-attr-title='button.runcodetitle']").on("click", function(event) {
     _paq.push(['trackGoal', 1]);
   });
-  
+
   $("button[data-i18n-attr-title='button.solutiontitle']").on("click", function(event) {
     _paq.push(['trackGoal', 3]);
   });
-  
+
   $("button[data-i18n-attr-title='button.hinttitle']").on("click", function(event) {
     _paq.push(['trackGoal', 4]);
   });
-  
+
   $(".tutorial-question-container button").on("click", function(event) {
     _paq.push(['trackGoal', 5]);
   });
-  
+
 });
 
 
@@ -482,7 +482,7 @@ jQuery(document).ready(function() {
             <a type="button" class="btn btn-light" href="https://meikesteinhilber.github.io/otter/">Ich m&ouml;chte Otter nicht nutzen.</a>
             <button type="button" class="btn btn-success" id="cookie-okay">Ich bin einverstanden.</button>
         </div>
-        </div>  
+        </div>
     </div>
     </div>`;
 
@@ -761,12 +761,12 @@ tutorial_options(exercise.reveal_solution = TRUE,
                  exercise.blanks = "___",
                  exercise.eval = FALSE)
 options(
-  gradethis_glue_correct = "{ .message } { .correct }",  
+  gradethis_glue_correct = "{ .message } { .correct }",
   gradethis_glue_incorrect = "{ .message } { .incorrect }"
 )
 blue <- "#00c4e6"
 </script>
- 
+
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::register_http_handlers(session, metadata = list(version = 0.1))
 </script>
@@ -775,7 +775,7 @@ learnr:::register_http_handlers(session, metadata = list(version = 0.1))
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::prepare_tutorial_state(session)
 </script>
- 
+
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::i18n_observe_tutorial_language(input, session)
 </script>
@@ -786,7 +786,7 @@ session$onSessionEnded(function() {
         learnr:::event_trigger(session, "session_stop")
       })
 </script>
- 
+
 <script type="application/shiny-prerendered" data-context="server">
 `tutorial-exercise-character-1-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-character-1-code-editor`)), session)
 output$`tutorial-exercise-character-1-output` <- renderUI({
@@ -796,48 +796,48 @@ output$`tutorial-exercise-character-1-output` <- renderUI({
 
 
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(label = "character-1", global_setup = structure(c("library(testthat)", 
-"library(learnr)", "library(gradethis)", "# devtools::load_all()", 
-"# remotes::install_github(\"MeikeSteinhilber/otter\") # Otter muss installiert sein!", 
-"# remotes::install_github(\"rstudio/gradethis\")      # Gradethis muss installiert sein!", 
-"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
-"  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
-"  code_correct = \"Richtig!\",", "  fail = \"Das ist leider falsch.\",", 
-"  code_incorrect = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
-"                 exercise.blanks = \"___\",", "                 exercise.eval = FALSE)", 
-"options(", "  gradethis_glue_correct = \"{ .message } { .correct }\",  ", 
-"  gradethis_glue_incorrect = \"{ .message } { .incorrect }\"", 
-")", "blue <- \"#00c4e6\""), chunk_opts = list(label = "setup", 
-    echo = FALSE, message = FALSE, warning = FALSE)), setup = NULL, 
-    chunks = list(list(label = "character-1", code = "\"Hallo Welt\"", 
-        opts = list(label = "\"character-1\"", exercise = "TRUE", 
-            results = "\"hold\""), engine = "r")), code_check = NULL, 
-    error_check = NULL, check = NULL, solution = NULL, tests = NULL, 
-    options = list(eval = FALSE, echo = TRUE, results = "hold", 
-        tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
-        comment = NA, highlight = FALSE, size = "normalsize", 
-        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
-        cache.path = "template_cache/html/", cache.vars = NULL, 
-        cache.lazy = TRUE, dependson = NULL, autodep = FALSE, 
-        cache.rebuild = FALSE, fig.keep = "high", fig.show = "asis", 
-        fig.align = "default", fig.path = "template_files/figure-html/", 
-        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
-        fig.width = 6.5, fig.height = 4, fig.env = "figure", 
-        fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
-        fig.pos = "", out.width = 624, out.height = NULL, out.extra = NULL, 
-        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
-        aniopts = "controls,loop", warning = TRUE, error = FALSE, 
-        message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
-        engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
-        max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, stage = NULL, ..., \n    solution_eval_fn = NULL) \n{\n    (utils::getFromNamespace(\"check_exercise\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, stage = stage, ...)\n}", 
-        exercise.error.check.code = "gradethis_error_checker()", 
-        exercise.eval = FALSE, exercise.blanks = "___", exercise.reveal_solution = TRUE, 
-        label = "character-1", exercise = TRUE, code = "\"Hallo Welt\"", 
-        out.width.px = 624, out.height.px = 384, params.src = "character-1, exercise=TRUE, results = \"hold\"", 
-        fig.num = 0, exercise.df_print = "paged"), engine = "r", 
+learnr:::store_exercise_cache(structure(list(label = "character-1", global_setup = structure(c("library(testthat)",
+"library(learnr)", "library(gradethis)", "# devtools::load_all()",
+"# remotes::install_github(\"MeikeSteinhilber/otter\") # Otter muss installiert sein!",
+"# remotes::install_github(\"rstudio/gradethis\")      # Gradethis muss installiert sein!",
+"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(",
+"  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",",
+"  code_correct = \"Richtig!\",", "  fail = \"Das ist leider falsch.\",",
+"  code_incorrect = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,",
+"                 exercise.blanks = \"___\",", "                 exercise.eval = FALSE)",
+"options(", "  gradethis_glue_correct = \"{ .message } { .correct }\",  ",
+"  gradethis_glue_incorrect = \"{ .message } { .incorrect }\"",
+")", "blue <- \"#00c4e6\""), chunk_opts = list(label = "setup",
+    echo = FALSE, message = FALSE, warning = FALSE)), setup = NULL,
+    chunks = list(list(label = "character-1", code = "\"Hallo Welt\"",
+        opts = list(label = "\"character-1\"", exercise = "TRUE",
+            results = "\"hold\""), engine = "r")), code_check = NULL,
+    error_check = NULL, check = NULL, solution = NULL, tests = NULL,
+    options = list(eval = FALSE, echo = TRUE, results = "hold",
+        tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE,
+        comment = NA, highlight = FALSE, size = "normalsize",
+        background = "#F7F7F7", strip.white = TRUE, cache = 0,
+        cache.path = "template_cache/html/", cache.vars = NULL,
+        cache.lazy = TRUE, dependson = NULL, autodep = FALSE,
+        cache.rebuild = FALSE, fig.keep = "high", fig.show = "asis",
+        fig.align = "default", fig.path = "template_files/figure-html/",
+        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png",
+        fig.width = 6.5, fig.height = 4, fig.env = "figure",
+        fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL,
+        fig.pos = "", out.width = 624, out.height = NULL, out.extra = NULL,
+        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1,
+        aniopts = "controls,loop", warning = TRUE, error = FALSE,
+        message = TRUE, render = NULL, ref.label = NULL, child = NULL,
+        engine = "r", split = FALSE, include = TRUE, purl = TRUE,
+        max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, stage = NULL, ..., \n    solution_eval_fn = NULL) \n{\n    (utils::getFromNamespace(\"check_exercise\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, stage = stage, ...)\n}",
+        exercise.error.check.code = "gradethis_error_checker()",
+        exercise.eval = FALSE, exercise.blanks = "___", exercise.reveal_solution = TRUE,
+        label = "character-1", exercise = TRUE, code = "\"Hallo Welt\"",
+        out.width.px = 624, out.height.px = 384, params.src = "character-1, exercise=TRUE, results = \"hold\"",
+        fig.num = 0, exercise.df_print = "paged"), engine = "r",
     version = "4"), class = c("r", "tutorial_exercise")))
 </script>
- 
+
 <script type="application/shiny-prerendered" data-context="server">
 `tutorial-exercise-ex-char-01-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-ex-char-01-code-editor`)), session)
 output$`tutorial-exercise-ex-char-01-output` <- renderUI({
@@ -847,53 +847,53 @@ output$`tutorial-exercise-ex-char-01-output` <- renderUI({
 
 
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(label = "ex-char-01", global_setup = structure(c("library(testthat)", 
-"library(learnr)", "library(gradethis)", "# devtools::load_all()", 
-"# remotes::install_github(\"MeikeSteinhilber/otter\") # Otter muss installiert sein!", 
-"# remotes::install_github(\"rstudio/gradethis\")      # Gradethis muss installiert sein!", 
-"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
-"  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
-"  code_correct = \"Richtig!\",", "  fail = \"Das ist leider falsch.\",", 
-"  code_incorrect = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
-"                 exercise.blanks = \"___\",", "                 exercise.eval = FALSE)", 
-"options(", "  gradethis_glue_correct = \"{ .message } { .correct }\",  ", 
-"  gradethis_glue_incorrect = \"{ .message } { .incorrect }\"", 
-")", "blue <- \"#00c4e6\""), chunk_opts = list(label = "setup", 
-    echo = FALSE, message = FALSE, warning = FALSE)), setup = NULL, 
+learnr:::store_exercise_cache(structure(list(label = "ex-char-01", global_setup = structure(c("library(testthat)",
+"library(learnr)", "library(gradethis)", "# devtools::load_all()",
+"# remotes::install_github(\"MeikeSteinhilber/otter\") # Otter muss installiert sein!",
+"# remotes::install_github(\"rstudio/gradethis\")      # Gradethis muss installiert sein!",
+"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(",
+"  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",",
+"  code_correct = \"Richtig!\",", "  fail = \"Das ist leider falsch.\",",
+"  code_incorrect = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,",
+"                 exercise.blanks = \"___\",", "                 exercise.eval = FALSE)",
+"options(", "  gradethis_glue_correct = \"{ .message } { .correct }\",  ",
+"  gradethis_glue_incorrect = \"{ .message } { .incorrect }\"",
+")", "blue <- \"#00c4e6\""), chunk_opts = list(label = "setup",
+    echo = FALSE, message = FALSE, warning = FALSE)), setup = NULL,
     chunks = list(list(label = "ex-char-01", code = "", opts = list(
-        label = "\"ex-char-01\"", exercise = "TRUE", results = "\"hold\""), 
-        engine = "r")), code_check = NULL, error_check = NULL, 
-    check = structure(c("grade_result(", "  pass_if(~identical(.result, ", 
-    "                     \"Hallo liebe R-Freunde\"", "                     )),", 
-    "  glue_correct = \"Richtig!\",", "  glue_incorrect = \"Leider noch nicht ganz richtig!\"", 
-    ")"), chunk_opts = list(label = "ex-char-01-check", results = "hold")), 
+        label = "\"ex-char-01\"", exercise = "TRUE", results = "\"hold\""),
+        engine = "r")), code_check = NULL, error_check = NULL,
+    check = structure(c("grade_result(", "  pass_if(~identical(.result, ",
+    "                     \"Hallo liebe R-Freunde\"", "                     )),",
+    "  glue_correct = \"Richtig!\",", "  glue_incorrect = \"Leider noch nicht ganz richtig!\"",
+    ")"), chunk_opts = list(label = "ex-char-01-check", results = "hold")),
     solution = structure("\"Hallo liebe R-Freunde\"", chunk_opts = list(
-        label = "ex-char-01-solution", results = "hold")), tests = NULL, 
-    options = list(eval = FALSE, echo = TRUE, results = "hold", 
-        tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
-        comment = NA, highlight = FALSE, size = "normalsize", 
-        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
-        cache.path = "template_cache/html/", cache.vars = NULL, 
-        cache.lazy = TRUE, dependson = NULL, autodep = FALSE, 
-        cache.rebuild = FALSE, fig.keep = "high", fig.show = "asis", 
-        fig.align = "default", fig.path = "template_files/figure-html/", 
-        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
-        fig.width = 6.5, fig.height = 4, fig.env = "figure", 
-        fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
-        fig.pos = "", out.width = 624, out.height = NULL, out.extra = NULL, 
-        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
-        aniopts = "controls,loop", warning = TRUE, error = FALSE, 
-        message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
-        engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
-        max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, stage = NULL, ..., \n    solution_eval_fn = NULL) \n{\n    (utils::getFromNamespace(\"check_exercise\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, stage = stage, ...)\n}", 
-        exercise.error.check.code = "gradethis_error_checker()", 
-        exercise.eval = FALSE, exercise.blanks = "___", exercise.reveal_solution = TRUE, 
-        label = "ex-char-01", exercise = TRUE, code = "", out.width.px = 624, 
-        out.height.px = 384, params.src = "ex-char-01, exercise=TRUE, results = \"hold\"", 
-        fig.num = 0L, exercise.df_print = "paged"), engine = "r", 
+        label = "ex-char-01-solution", results = "hold")), tests = NULL,
+    options = list(eval = FALSE, echo = TRUE, results = "hold",
+        tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE,
+        comment = NA, highlight = FALSE, size = "normalsize",
+        background = "#F7F7F7", strip.white = TRUE, cache = 0,
+        cache.path = "template_cache/html/", cache.vars = NULL,
+        cache.lazy = TRUE, dependson = NULL, autodep = FALSE,
+        cache.rebuild = FALSE, fig.keep = "high", fig.show = "asis",
+        fig.align = "default", fig.path = "template_files/figure-html/",
+        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png",
+        fig.width = 6.5, fig.height = 4, fig.env = "figure",
+        fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL,
+        fig.pos = "", out.width = 624, out.height = NULL, out.extra = NULL,
+        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1,
+        aniopts = "controls,loop", warning = TRUE, error = FALSE,
+        message = TRUE, render = NULL, ref.label = NULL, child = NULL,
+        engine = "r", split = FALSE, include = TRUE, purl = TRUE,
+        max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, stage = NULL, ..., \n    solution_eval_fn = NULL) \n{\n    (utils::getFromNamespace(\"check_exercise\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, stage = stage, ...)\n}",
+        exercise.error.check.code = "gradethis_error_checker()",
+        exercise.eval = FALSE, exercise.blanks = "___", exercise.reveal_solution = TRUE,
+        label = "ex-char-01", exercise = TRUE, code = "", out.width.px = 624,
+        out.height.px = 384, params.src = "ex-char-01, exercise=TRUE, results = \"hold\"",
+        fig.num = 0L, exercise.df_print = "paged"), engine = "r",
     version = "4"), class = c("r", "tutorial_exercise")))
 </script>
- 
+
 <script type="application/shiny-prerendered" data-context="server">
 `tutorial-exercise-ex-logical-1-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-ex-logical-1-code-editor`)), session)
 output$`tutorial-exercise-ex-logical-1-output` <- renderUI({
@@ -903,55 +903,55 @@ output$`tutorial-exercise-ex-logical-1-output` <- renderUI({
 
 
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(label = "ex-logical-1", global_setup = structure(c("library(testthat)", 
-"library(learnr)", "library(gradethis)", "# devtools::load_all()", 
-"# remotes::install_github(\"MeikeSteinhilber/otter\") # Otter muss installiert sein!", 
-"# remotes::install_github(\"rstudio/gradethis\")      # Gradethis muss installiert sein!", 
-"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
-"  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
-"  code_correct = \"Richtig!\",", "  fail = \"Das ist leider falsch.\",", 
-"  code_incorrect = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
-"                 exercise.blanks = \"___\",", "                 exercise.eval = FALSE)", 
-"options(", "  gradethis_glue_correct = \"{ .message } { .correct }\",  ", 
-"  gradethis_glue_incorrect = \"{ .message } { .incorrect }\"", 
-")", "blue <- \"#00c4e6\""), chunk_opts = list(label = "setup", 
-    echo = FALSE, message = FALSE, warning = FALSE)), setup = "namen <- c(\"Lisa Müller\", \"Peter Bauer\", \"Hannah Schmidt\")\nangemeldet <- c(TRUE, FALSE, TRUE)\nalter <- c(18, 22, 16)", 
-    chunks = list(list(label = "setup-logical", code = "namen <- c(\"Lisa Müller\", \"Peter Bauer\", \"Hannah Schmidt\")\nangemeldet <- c(TRUE, FALSE, TRUE)\nalter <- c(18, 22, 16)", 
-        opts = list(label = "\"setup-logical\"", exercise.eval = "FALSE"), 
-        engine = "r"), list(label = "ex-logical-1", code = "# Wer von den Personen heißt NICHT Lisa Müller?\n", 
-        opts = list(label = "\"ex-logical-1\"", exercise = "TRUE", 
-            results = "\"hold\"", exercise.setup = "\"setup-logical\"", 
-            exercise.eval = "FALSE"), engine = "r")), code_check = NULL, 
-    error_check = NULL, check = structure(c("grade_this({", "  pass_if_equal()", 
-    "  fail()", "})"), chunk_opts = list(label = "ex-logical-1-check")), 
-    solution = structure(c("# Wer von den Personen heißt NICHT Lisa Müller?", 
-    "namen != \"Lisa Müller\""), chunk_opts = list(label = "ex-logical-1-solution", 
+learnr:::store_exercise_cache(structure(list(label = "ex-logical-1", global_setup = structure(c("library(testthat)",
+"library(learnr)", "library(gradethis)", "# devtools::load_all()",
+"# remotes::install_github(\"MeikeSteinhilber/otter\") # Otter muss installiert sein!",
+"# remotes::install_github(\"rstudio/gradethis\")      # Gradethis muss installiert sein!",
+"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(",
+"  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",",
+"  code_correct = \"Richtig!\",", "  fail = \"Das ist leider falsch.\",",
+"  code_incorrect = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,",
+"                 exercise.blanks = \"___\",", "                 exercise.eval = FALSE)",
+"options(", "  gradethis_glue_correct = \"{ .message } { .correct }\",  ",
+"  gradethis_glue_incorrect = \"{ .message } { .incorrect }\"",
+")", "blue <- \"#00c4e6\""), chunk_opts = list(label = "setup",
+    echo = FALSE, message = FALSE, warning = FALSE)), setup = "namen <- c(\"Lisa Müller\", \"Peter Bauer\", \"Hannah Schmidt\")\nangemeldet <- c(TRUE, FALSE, TRUE)\nalter <- c(18, 22, 16)",
+    chunks = list(list(label = "setup-logical", code = "namen <- c(\"Lisa Müller\", \"Peter Bauer\", \"Hannah Schmidt\")\nangemeldet <- c(TRUE, FALSE, TRUE)\nalter <- c(18, 22, 16)",
+        opts = list(label = "\"setup-logical\"", exercise.eval = "FALSE"),
+        engine = "r"), list(label = "ex-logical-1", code = "# Wer von den Personen heißt NICHT Lisa Müller?\n",
+        opts = list(label = "\"ex-logical-1\"", exercise = "TRUE",
+            results = "\"hold\"", exercise.setup = "\"setup-logical\"",
+            exercise.eval = "FALSE"), engine = "r")), code_check = NULL,
+    error_check = NULL, check = structure(c("grade_this({", "  pass_if_equal()",
+    "  fail()", "})"), chunk_opts = list(label = "ex-logical-1-check")),
+    solution = structure(c("# Wer von den Personen heißt NICHT Lisa Müller?",
+    "namen != \"Lisa Müller\""), chunk_opts = list(label = "ex-logical-1-solution",
         exercise.eval = FALSE)), tests = NULL, options = list(
-        eval = FALSE, echo = TRUE, results = "hold", tidy = FALSE, 
-        tidy.opts = NULL, collapse = FALSE, prompt = FALSE, comment = NA, 
-        highlight = FALSE, size = "normalsize", background = "#F7F7F7", 
-        strip.white = TRUE, cache = 0, cache.path = "template_cache/html/", 
-        cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
-        autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
-        fig.show = "asis", fig.align = "default", fig.path = "template_files/figure-html/", 
-        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
-        fig.width = 6.5, fig.height = 4, fig.env = "figure", 
-        fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
-        fig.pos = "", out.width = 624, out.height = NULL, out.extra = NULL, 
-        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
-        aniopts = "controls,loop", warning = TRUE, error = FALSE, 
-        message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
-        engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
-        max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, stage = NULL, ..., \n    solution_eval_fn = NULL) \n{\n    (utils::getFromNamespace(\"check_exercise\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, stage = stage, ...)\n}", 
-        exercise.error.check.code = "gradethis_error_checker()", 
-        exercise.eval = FALSE, exercise.blanks = "___", exercise.reveal_solution = TRUE, 
-        label = "ex-logical-1", exercise = TRUE, exercise.setup = "setup-logical", 
-        code = c("# Wer von den Personen heißt NICHT Lisa Müller?", 
-        ""), out.width.px = 624, out.height.px = 384, params.src = "ex-logical-1, exercise=TRUE, results = \"hold\", exercise.setup = \"setup-logical\", exercise.eval=FALSE", 
-        fig.num = 0, exercise.df_print = "paged"), engine = "r", 
+        eval = FALSE, echo = TRUE, results = "hold", tidy = FALSE,
+        tidy.opts = NULL, collapse = FALSE, prompt = FALSE, comment = NA,
+        highlight = FALSE, size = "normalsize", background = "#F7F7F7",
+        strip.white = TRUE, cache = 0, cache.path = "template_cache/html/",
+        cache.vars = NULL, cache.lazy = TRUE, dependson = NULL,
+        autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high",
+        fig.show = "asis", fig.align = "default", fig.path = "template_files/figure-html/",
+        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png",
+        fig.width = 6.5, fig.height = 4, fig.env = "figure",
+        fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL,
+        fig.pos = "", out.width = 624, out.height = NULL, out.extra = NULL,
+        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1,
+        aniopts = "controls,loop", warning = TRUE, error = FALSE,
+        message = TRUE, render = NULL, ref.label = NULL, child = NULL,
+        engine = "r", split = FALSE, include = TRUE, purl = TRUE,
+        max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, stage = NULL, ..., \n    solution_eval_fn = NULL) \n{\n    (utils::getFromNamespace(\"check_exercise\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, stage = stage, ...)\n}",
+        exercise.error.check.code = "gradethis_error_checker()",
+        exercise.eval = FALSE, exercise.blanks = "___", exercise.reveal_solution = TRUE,
+        label = "ex-logical-1", exercise = TRUE, exercise.setup = "setup-logical",
+        code = c("# Wer von den Personen heißt NICHT Lisa Müller?",
+        ""), out.width.px = 624, out.height.px = 384, params.src = "ex-logical-1, exercise=TRUE, results = \"hold\", exercise.setup = \"setup-logical\", exercise.eval=FALSE",
+        fig.num = 0, exercise.df_print = "paged"), engine = "r",
     version = "4"), class = c("r", "tutorial_exercise")))
 </script>
- 
+
 <script type="application/shiny-prerendered" data-context="server">
 `tutorial-exercise-ex-na-01-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-ex-na-01-code-editor`)), session)
 output$`tutorial-exercise-ex-na-01-output` <- renderUI({
@@ -961,51 +961,51 @@ output$`tutorial-exercise-ex-na-01-output` <- renderUI({
 
 
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(label = "ex-na-01", global_setup = structure(c("library(testthat)", 
-"library(learnr)", "library(gradethis)", "# devtools::load_all()", 
-"# remotes::install_github(\"MeikeSteinhilber/otter\") # Otter muss installiert sein!", 
-"# remotes::install_github(\"rstudio/gradethis\")      # Gradethis muss installiert sein!", 
-"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
-"  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
-"  code_correct = \"Richtig!\",", "  fail = \"Das ist leider falsch.\",", 
-"  code_incorrect = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
-"                 exercise.blanks = \"___\",", "                 exercise.eval = FALSE)", 
-"options(", "  gradethis_glue_correct = \"{ .message } { .correct }\",  ", 
-"  gradethis_glue_incorrect = \"{ .message } { .incorrect }\"", 
-")", "blue <- \"#00c4e6\""), chunk_opts = list(label = "setup", 
-    echo = FALSE, message = FALSE, warning = FALSE)), setup = NULL, 
-    chunks = list(list(label = "ex-na-01", code = "variable <- 0/0\nvariable == NaN", 
-        opts = list(label = "\"ex-na-01\"", exercise = "TRUE", 
-            results = "\"hold\"", error = "TRUE"), engine = "r")), 
+learnr:::store_exercise_cache(structure(list(label = "ex-na-01", global_setup = structure(c("library(testthat)",
+"library(learnr)", "library(gradethis)", "# devtools::load_all()",
+"# remotes::install_github(\"MeikeSteinhilber/otter\") # Otter muss installiert sein!",
+"# remotes::install_github(\"rstudio/gradethis\")      # Gradethis muss installiert sein!",
+"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(",
+"  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",",
+"  code_correct = \"Richtig!\",", "  fail = \"Das ist leider falsch.\",",
+"  code_incorrect = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,",
+"                 exercise.blanks = \"___\",", "                 exercise.eval = FALSE)",
+"options(", "  gradethis_glue_correct = \"{ .message } { .correct }\",  ",
+"  gradethis_glue_incorrect = \"{ .message } { .incorrect }\"",
+")", "blue <- \"#00c4e6\""), chunk_opts = list(label = "setup",
+    echo = FALSE, message = FALSE, warning = FALSE)), setup = NULL,
+    chunks = list(list(label = "ex-na-01", code = "variable <- 0/0\nvariable == NaN",
+        opts = list(label = "\"ex-na-01\"", exercise = "TRUE",
+            results = "\"hold\"", error = "TRUE"), engine = "r")),
     code_check = NULL, error_check = NULL, check = structure("grade_this_code()", chunk_opts = list(
-        label = "ex-na-01-check", results = "hold")), solution = structure(c("variable <- 0/0", 
-    "is.na(variable)"), chunk_opts = list(label = "ex-na-01-solution", 
-        results = "hold")), tests = NULL, options = list(eval = FALSE, 
-        echo = TRUE, results = "hold", tidy = FALSE, tidy.opts = NULL, 
-        collapse = FALSE, prompt = FALSE, comment = NA, highlight = FALSE, 
-        size = "normalsize", background = "#F7F7F7", strip.white = TRUE, 
-        cache = 0, cache.path = "template_cache/html/", cache.vars = NULL, 
-        cache.lazy = TRUE, dependson = NULL, autodep = FALSE, 
-        cache.rebuild = FALSE, fig.keep = "high", fig.show = "asis", 
-        fig.align = "default", fig.path = "template_files/figure-html/", 
-        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
-        fig.width = 6.5, fig.height = 4, fig.env = "figure", 
-        fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
-        fig.pos = "", out.width = 624, out.height = NULL, out.extra = NULL, 
-        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
-        aniopts = "controls,loop", warning = TRUE, error = TRUE, 
-        message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
-        engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
-        max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, stage = NULL, ..., \n    solution_eval_fn = NULL) \n{\n    (utils::getFromNamespace(\"check_exercise\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, stage = stage, ...)\n}", 
-        exercise.error.check.code = "gradethis_error_checker()", 
-        exercise.eval = FALSE, exercise.blanks = "___", exercise.reveal_solution = TRUE, 
-        label = "ex-na-01", exercise = TRUE, code = c("variable <- 0/0", 
-        "variable == NaN"), out.width.px = 624, out.height.px = 384, 
-        params.src = "ex-na-01, exercise=TRUE, results = \"hold\", error=TRUE", 
-        fig.num = 0, exercise.df_print = "paged"), engine = "r", 
+        label = "ex-na-01-check", results = "hold")), solution = structure(c("variable <- 0/0",
+    "is.na(variable)"), chunk_opts = list(label = "ex-na-01-solution",
+        results = "hold")), tests = NULL, options = list(eval = FALSE,
+        echo = TRUE, results = "hold", tidy = FALSE, tidy.opts = NULL,
+        collapse = FALSE, prompt = FALSE, comment = NA, highlight = FALSE,
+        size = "normalsize", background = "#F7F7F7", strip.white = TRUE,
+        cache = 0, cache.path = "template_cache/html/", cache.vars = NULL,
+        cache.lazy = TRUE, dependson = NULL, autodep = FALSE,
+        cache.rebuild = FALSE, fig.keep = "high", fig.show = "asis",
+        fig.align = "default", fig.path = "template_files/figure-html/",
+        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png",
+        fig.width = 6.5, fig.height = 4, fig.env = "figure",
+        fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL,
+        fig.pos = "", out.width = 624, out.height = NULL, out.extra = NULL,
+        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1,
+        aniopts = "controls,loop", warning = TRUE, error = TRUE,
+        message = TRUE, render = NULL, ref.label = NULL, child = NULL,
+        engine = "r", split = FALSE, include = TRUE, purl = TRUE,
+        max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, stage = NULL, ..., \n    solution_eval_fn = NULL) \n{\n    (utils::getFromNamespace(\"check_exercise\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, stage = stage, ...)\n}",
+        exercise.error.check.code = "gradethis_error_checker()",
+        exercise.eval = FALSE, exercise.blanks = "___", exercise.reveal_solution = TRUE,
+        label = "ex-na-01", exercise = TRUE, code = c("variable <- 0/0",
+        "variable == NaN"), out.width.px = 624, out.height.px = 384,
+        params.src = "ex-na-01, exercise=TRUE, results = \"hold\", error=TRUE",
+        fig.num = 0, exercise.df_print = "paged"), engine = "r",
     version = "4"), class = c("r", "tutorial_exercise")))
 </script>
- 
+
 <script type="application/shiny-prerendered" data-context="server">
 `tutorial-exercise-ifelse-4-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-ifelse-4-code-editor`)), session)
 output$`tutorial-exercise-ifelse-4-output` <- renderUI({
@@ -1015,108 +1015,108 @@ output$`tutorial-exercise-ifelse-4-output` <- renderUI({
 
 
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(label = "ifelse-4", global_setup = structure(c("library(testthat)", 
-"library(learnr)", "library(gradethis)", "# devtools::load_all()", 
-"# remotes::install_github(\"MeikeSteinhilber/otter\") # Otter muss installiert sein!", 
-"# remotes::install_github(\"rstudio/gradethis\")      # Gradethis muss installiert sein!", 
-"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(", 
-"  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",", 
-"  code_correct = \"Richtig!\",", "  fail = \"Das ist leider falsch.\",", 
-"  code_incorrect = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,", 
-"                 exercise.blanks = \"___\",", "                 exercise.eval = FALSE)", 
-"options(", "  gradethis_glue_correct = \"{ .message } { .correct }\",  ", 
-"  gradethis_glue_incorrect = \"{ .message } { .incorrect }\"", 
-")", "blue <- \"#00c4e6\""), chunk_opts = list(label = "setup", 
-    echo = FALSE, message = FALSE, warning = FALSE)), setup = NULL, 
-    chunks = list(list(label = "ifelse-4", code = "condition_1 <- FALSE\ncondition_1_1 <- FALSE\ncondition_2 <-TRUE\ncondition_2_1 <- FALSE\n\nif (condition_1) {# -> 1\n  if (condition_1_1) {\n    \"Code 1\"\n  } else{\n    \"Code 2\"\n  }\n} else if (condition_2) { # -> 2\n    if (condition_2_1) { # -> 3\n    \"Code 3\"\n  } else{ # -> 4\n    \"Code 4\"\n  }\n} else{\n  \"Code 5\"\n}", 
-        opts = list(label = "\"ifelse-4\"", exercise = "TRUE", 
-            results = "\"hold\"", exercise.lines = "20"), engine = "r")), 
-    code_check = NULL, error_check = NULL, check = NULL, solution = NULL, 
-    tests = NULL, options = list(eval = FALSE, echo = TRUE, results = "hold", 
-        tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
-        comment = NA, highlight = FALSE, size = "normalsize", 
-        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
-        cache.path = "template_cache/html/", cache.vars = NULL, 
-        cache.lazy = TRUE, dependson = NULL, autodep = FALSE, 
-        cache.rebuild = FALSE, fig.keep = "high", fig.show = "asis", 
-        fig.align = "default", fig.path = "template_files/figure-html/", 
-        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
-        fig.width = 6.5, fig.height = 4, fig.env = "figure", 
-        fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
-        fig.pos = "", out.width = 624, out.height = NULL, out.extra = NULL, 
-        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
-        aniopts = "controls,loop", warning = TRUE, error = FALSE, 
-        message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
-        engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
-        max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, stage = NULL, ..., \n    solution_eval_fn = NULL) \n{\n    (utils::getFromNamespace(\"check_exercise\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, stage = stage, ...)\n}", 
-        exercise.error.check.code = "gradethis_error_checker()", 
-        exercise.eval = FALSE, exercise.blanks = "___", exercise.reveal_solution = TRUE, 
-        label = "ifelse-4", exercise = TRUE, exercise.lines = 20, 
-        code = c("condition_1 <- FALSE", "condition_1_1 <- FALSE", 
-        "condition_2 <-TRUE", "condition_2_1 <- FALSE", "", "if (condition_1) {# -> 1", 
-        "  if (condition_1_1) {", "    \"Code 1\"", "  } else{", 
-        "    \"Code 2\"", "  }", "} else if (condition_2) { # -> 2", 
-        "    if (condition_2_1) { # -> 3", "    \"Code 3\"", 
-        "  } else{ # -> 4", "    \"Code 4\"", "  }", "} else{", 
-        "  \"Code 5\"", "}"), out.width.px = 624, out.height.px = 384, 
-        params.src = "ifelse-4, exercise=TRUE, results = \"hold\", exercise.lines = 20", 
-        fig.num = 0, exercise.df_print = "paged"), engine = "r", 
+learnr:::store_exercise_cache(structure(list(label = "ifelse-4", global_setup = structure(c("library(testthat)",
+"library(learnr)", "library(gradethis)", "# devtools::load_all()",
+"# remotes::install_github(\"MeikeSteinhilber/otter\") # Otter muss installiert sein!",
+"# remotes::install_github(\"rstudio/gradethis\")      # Gradethis muss installiert sein!",
+"# library(otter)", "knitr::opts_chunk$set(echo = FALSE)", "gradethis::gradethis_setup(",
+"  pass.praise = FALSE,", "  fail.encourage = FALSE,", "  pass = \"Richtig!\",",
+"  code_correct = \"Richtig!\",", "  fail = \"Das ist leider falsch.\",",
+"  code_incorrect = \"Das ist leider falsch.\"", "  )", "tutorial_options(exercise.reveal_solution = TRUE,",
+"                 exercise.blanks = \"___\",", "                 exercise.eval = FALSE)",
+"options(", "  gradethis_glue_correct = \"{ .message } { .correct }\",  ",
+"  gradethis_glue_incorrect = \"{ .message } { .incorrect }\"",
+")", "blue <- \"#00c4e6\""), chunk_opts = list(label = "setup",
+    echo = FALSE, message = FALSE, warning = FALSE)), setup = NULL,
+    chunks = list(list(label = "ifelse-4", code = "condition_1 <- FALSE\ncondition_1_1 <- FALSE\ncondition_2 <-TRUE\ncondition_2_1 <- FALSE\n\nif (condition_1) {# -> 1\n  if (condition_1_1) {\n    \"Code 1\"\n  } else{\n    \"Code 2\"\n  }\n} else if (condition_2) { # -> 2\n    if (condition_2_1) { # -> 3\n    \"Code 3\"\n  } else{ # -> 4\n    \"Code 4\"\n  }\n} else{\n  \"Code 5\"\n}",
+        opts = list(label = "\"ifelse-4\"", exercise = "TRUE",
+            results = "\"hold\"", exercise.lines = "20"), engine = "r")),
+    code_check = NULL, error_check = NULL, check = NULL, solution = NULL,
+    tests = NULL, options = list(eval = FALSE, echo = TRUE, results = "hold",
+        tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE,
+        comment = NA, highlight = FALSE, size = "normalsize",
+        background = "#F7F7F7", strip.white = TRUE, cache = 0,
+        cache.path = "template_cache/html/", cache.vars = NULL,
+        cache.lazy = TRUE, dependson = NULL, autodep = FALSE,
+        cache.rebuild = FALSE, fig.keep = "high", fig.show = "asis",
+        fig.align = "default", fig.path = "template_files/figure-html/",
+        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png",
+        fig.width = 6.5, fig.height = 4, fig.env = "figure",
+        fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL,
+        fig.pos = "", out.width = 624, out.height = NULL, out.extra = NULL,
+        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1,
+        aniopts = "controls,loop", warning = TRUE, error = FALSE,
+        message = TRUE, render = NULL, ref.label = NULL, child = NULL,
+        engine = "r", split = FALSE, include = TRUE, purl = TRUE,
+        max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, stage = NULL, ..., \n    solution_eval_fn = NULL) \n{\n    (utils::getFromNamespace(\"check_exercise\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, stage = stage, ...)\n}",
+        exercise.error.check.code = "gradethis_error_checker()",
+        exercise.eval = FALSE, exercise.blanks = "___", exercise.reveal_solution = TRUE,
+        label = "ifelse-4", exercise = TRUE, exercise.lines = 20,
+        code = c("condition_1 <- FALSE", "condition_1_1 <- FALSE",
+        "condition_2 <-TRUE", "condition_2_1 <- FALSE", "", "if (condition_1) {# -> 1",
+        "  if (condition_1_1) {", "    \"Code 1\"", "  } else{",
+        "    \"Code 2\"", "  }", "} else if (condition_2) { # -> 2",
+        "    if (condition_2_1) { # -> 3", "    \"Code 3\"",
+        "  } else{ # -> 4", "    \"Code 4\"", "  }", "} else{",
+        "  \"Code 5\"", "}"), out.width.px = 624, out.height.px = 384,
+        params.src = "ifelse-4, exercise=TRUE, results = \"hold\", exercise.lines = 20",
+        fig.num = 0, exercise.df_print = "paged"), engine = "r",
     version = "4"), class = c("r", "tutorial_exercise")))
 </script>
- 
+
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-na-1", question = structure("Was ist die Länge der Variable <code>variable = logical(3)<\u002fcode>?", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_3044284", 
-    option = "0", value = "0", label = structure("0", html = TRUE, class = c("html", 
-    "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_7356fa0", 
-    option = "1", value = "1", label = structure("1", html = TRUE, class = c("html", 
-    "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_3da7a3d", 
-    option = "3", value = "3", label = structure("3", html = TRUE, class = c("html", 
-    "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_c8a6410", 
-    option = "Es gibt keine sinnvolle Antwort auf diese Frage.", 
-    value = "Es gibt keine sinnvolle Antwort auf diese Frage.", 
-    label = structure("Es gibt keine sinnvolle Antwort auf diese Frage.", html = TRUE, class = c("html", 
-    "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer"))), button_labels = list(submit = structure("Antwort einreichen", html = TRUE, class = c("html", 
-"character")), try_again = structure("<span data-i18n=\"button.questiontryagain\">Try Again<\u002fspan>", html = TRUE, class = c("html", 
-"character"))), messages = list(correct = structure("Richtig!", html = TRUE, class = c("html", 
-"character")), try_again = structure("Leider falsch!", html = TRUE, class = c("html", 
-"character")), incorrect = structure("Leider falsch!", html = TRUE, class = c("html", 
+learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-na-1", question = structure("Was ist die Länge der Variable <code>variable = logical(3)<\u002fcode>?", html = TRUE, class = c("html",
+"character")), answers = list(structure(list(id = "lnr_ans_3044284",
+    option = "0", value = "0", label = structure("0", html = TRUE, class = c("html",
+    "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer",
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_7356fa0",
+    option = "1", value = "1", label = structure("1", html = TRUE, class = c("html",
+    "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer",
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_3da7a3d",
+    option = "3", value = "3", label = structure("3", html = TRUE, class = c("html",
+    "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer",
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_c8a6410",
+    option = "Es gibt keine sinnvolle Antwort auf diese Frage.",
+    value = "Es gibt keine sinnvolle Antwort auf diese Frage.",
+    label = structure("Es gibt keine sinnvolle Antwort auf diese Frage.", html = TRUE, class = c("html",
+    "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer",
+"tutorial_quiz_answer"))), button_labels = list(submit = structure("Antwort einreichen", html = TRUE, class = c("html",
+"character")), try_again = structure("<span data-i18n=\"button.questiontryagain\">Try Again<\u002fspan>", html = TRUE, class = c("html",
+"character"))), messages = list(correct = structure("Richtig!", html = TRUE, class = c("html",
+"character")), try_again = structure("Leider falsch!", html = TRUE, class = c("html",
+"character")), incorrect = structure("Leider falsch!", html = TRUE, class = c("html",
 "character")), message = NULL, post_message = NULL), ids = list(
-    answer = "quiz-na-1-answer", question = "quiz-na-1"), loading = NULL, 
-    random_answer_order = TRUE, allow_retry = TRUE, seed = 76885046.4641976, 
+    answer = "quiz-na-1-answer", question = "quiz-na-1"), loading = NULL,
+    random_answer_order = TRUE, allow_retry = TRUE, seed = 76885046.4641976,
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
 
 
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-na-2", question = structure("Was passiert, wenn dieser Befehl ausgeführt wird: <code>NaN &lt; 0<\u002fcode>?", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_cf52b67", 
-    option = "Es gibt eine Fehlermeldung.", value = "Es gibt eine Fehlermeldung.", 
-    label = structure("Es gibt eine Fehlermeldung.", html = TRUE, class = c("html", 
-    "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_c095be9", 
-    option = "FALSE", value = "FALSE", label = structure("FALSE", html = TRUE, class = c("html", 
-    "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_d52e7ac", 
-    option = "TRUE", value = "TRUE", label = structure("TRUE", html = TRUE, class = c("html", 
-    "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_ceef8e5", 
-    option = "Es gibt einen fehlenden Wert aus.", value = "Es gibt einen fehlenden Wert aus.", 
-    label = structure("Es gibt einen fehlenden Wert aus.", html = TRUE, class = c("html", 
-    "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer"))), button_labels = list(submit = structure("Antwort einreichen", html = TRUE, class = c("html", 
-"character")), try_again = structure("<span data-i18n=\"button.questiontryagain\">Try Again<\u002fspan>", html = TRUE, class = c("html", 
-"character"))), messages = list(correct = structure("Richtig!", html = TRUE, class = c("html", 
-"character")), try_again = structure("Leider falsch!", html = TRUE, class = c("html", 
-"character")), incorrect = structure("Leider falsch!", html = TRUE, class = c("html", 
+learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-na-2", question = structure("Was passiert, wenn dieser Befehl ausgeführt wird: <code>NaN &lt; 0<\u002fcode>?", html = TRUE, class = c("html",
+"character")), answers = list(structure(list(id = "lnr_ans_cf52b67",
+    option = "Es gibt eine Fehlermeldung.", value = "Es gibt eine Fehlermeldung.",
+    label = structure("Es gibt eine Fehlermeldung.", html = TRUE, class = c("html",
+    "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer",
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_c095be9",
+    option = "FALSE", value = "FALSE", label = structure("FALSE", html = TRUE, class = c("html",
+    "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer",
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_d52e7ac",
+    option = "TRUE", value = "TRUE", label = structure("TRUE", html = TRUE, class = c("html",
+    "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer",
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_ceef8e5",
+    option = "Es gibt einen fehlenden Wert aus.", value = "Es gibt einen fehlenden Wert aus.",
+    label = structure("Es gibt einen fehlenden Wert aus.", html = TRUE, class = c("html",
+    "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer",
+"tutorial_quiz_answer"))), button_labels = list(submit = structure("Antwort einreichen", html = TRUE, class = c("html",
+"character")), try_again = structure("<span data-i18n=\"button.questiontryagain\">Try Again<\u002fspan>", html = TRUE, class = c("html",
+"character"))), messages = list(correct = structure("Richtig!", html = TRUE, class = c("html",
+"character")), try_again = structure("Leider falsch!", html = TRUE, class = c("html",
+"character")), incorrect = structure("Leider falsch!", html = TRUE, class = c("html",
 "character")), message = NULL, post_message = NULL), ids = list(
-    answer = "quiz-na-2-answer", question = "quiz-na-2"), loading = NULL, 
-    random_answer_order = TRUE, allow_retry = TRUE, seed = 1999136178.06908, 
+    answer = "quiz-na-2-answer", question = "quiz-na-2"), loading = NULL,
+    random_answer_order = TRUE, allow_retry = TRUE, seed = 1999136178.06908,
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>

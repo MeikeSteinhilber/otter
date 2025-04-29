@@ -19,7 +19,7 @@ authors:
   Wanja Hemmerich:
     href: https://methoden.amd.psychologie.uni-mainz.de/hemmerich/
   digitell:
-    html: "gefördert durch <a href='https://www.uni-frankfurt.de/digitell' target='_blank'><img src='man/figures/corporate_logos_small.jpg' height=72 alt='Stiftung Innovation in der Hochschullehre'/a>"
+    html: "gefördert durch <a href='https://www.uni-frankfurt.de/digitell' target='_blank'><img src='man/figures/corporate_logos_small.jpg' height=50 alt='Stiftung Innovation in der Hochschullehre'/a>"
   footer:
     roles: [cre, fnd]
     text: "Entwickelt von"
@@ -80,19 +80,12 @@ navbar:
     text: Datenschutz
     href: articles/Datenschutz.html
 
-   feedback:
-    text: Feedback
-    menu:
-    - text: Fehler berichten
-      href: https://www.soscisurvey.de/Otter-Fehler/
-    - text: Feedback zu Otter geben
-      href: https://www.soscisurvey.de/Otter-Feedback/
-
-
    tutorials:
-    text: Tutorials
+    text: zu Otter
     menu:
-    - text: R & RStudio Grundlagen (Frankfurter Server)
+    - text: Otter (Mainzer Server)
+      href: https://otter.uni-mainz.de
+    - text: Otter (Frankfurter Server)
       href: http://otter.uni-frankfurt.de
     - text: Entwicklungsversion (Frankfurter Server)
       href: http://otter-test.uni-frankfurt.de

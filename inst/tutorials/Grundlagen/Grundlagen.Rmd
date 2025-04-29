@@ -21,7 +21,7 @@ runtime: shiny_prerendered
 <script>
 $(document).ready(function() {
   $("#tutorial-topic").prepend(`<div class="img-right">
-  <a href="https://meikesteinhilber.github.io/otter/"> <i class="fa-solid fa-house" aria-label="Link zur otter Homepage" aria-hidden="false"></i>
+  <a href="https://otter.uni-mainz.de/"> <i class="fa-solid fa-bars" aria-label="Link zur otter Homepage" aria-hidden="false"></i>
   </a>
   </div>`);
   
@@ -91,7 +91,7 @@ $(document).ready(function() {
   
   $("#learnr-tutorial-content.topics").prepend(
   `<div class="logo">
-  <img class="logo" src="images/corporate_logos_small.jpg" alt="Digtell Logo" style="width:30.0%"/>
+  <img class="logo" src="images/corporate_logos_small.jpg" alt="Digtell Logo" style="width:70.0%"/>
     <img class="logo" src="images/logo.png" alt="Otter Logo" style="width:10.0%"/>
   </div>`);
   
