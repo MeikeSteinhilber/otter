@@ -864,7 +864,7 @@ grade_this({
 ```
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
- *Wähle alle Spalten aus, die mit "_study" enden*.
+*Wähle alle Spalten aus, die mit "_study" enden.*
 ```{r ex-select-02, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
 
 ```
@@ -986,7 +986,7 @@ grade_this({
 
 ### arrange() <a href="#section-dplyr-grundlagen"> <i class="fa-solid fa-arrow-up"></i></a>
 
-Die Funktion `arrange()` verändert die Zeilen eines Datensatzes basierend auf einer oder mehreren Variablen.
+Die Funktion `arrange()` verändert die Zeilen eines Datensatzes basierend auf einer oder mehreren Spalten.
 Standardmäßig erfolgt die Sortierung aufsteigend, aber mit der Funktion `desc()` kann auch absteigend sortiert werden.
 
 ```{r arrange-1, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold"}
@@ -1024,7 +1024,7 @@ grade_this({
 ```
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
- *Sortiere die Daten nach dem Einkommen. Das höchste Einkommen soll in der ersten Zeile erscheinen *.
+ *Sortiere die Daten nach dem Einkommen. Das höchste Einkommen soll in der ersten Zeile erscheinen.*
 ```{r ex-arrrange-02, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
 
 ```
@@ -1043,8 +1043,8 @@ grade_this({
 
 ### rename() <a href="#section-dplyr-grundlagen"> <i class="fa-solid fa-arrow-up"></i></a>
 
-Die `rename()`-Funktion hilft dabei Spalten eines Datensatzes umzubenennen.
-Sie unterstützt sowohl die Umbenennung einzelner Spalten als auch mehrere Umbenennungen auf einmal.
+Die `rename()`-Funktion hilft dabei, Spalten eines Datensatzes umzubenennen.
+Sie unterstützt sowohl die Umbenennung einzelner Spalten, als auch mehrere Umbenennungen auf einmal.
 
 Die Syntaxlogik ist: `rename(neuer_name = alter_name)`
 
@@ -1397,7 +1397,7 @@ grade_this_code()
 <a href="#section-spalten-zusammenfügen-mit-bind_cols"> <i class="fa-solid fa-arrow-down"></i> Spalten zusammenfügen mit bin_cols </a><br>
 </div><br>
 
-Wir stellen hier zwei verschiedene Varianten vor Daten zusammenzuführen.
+Wir stellen hier zwei verschiedene Varianten vor, Daten zusammenzuführen.
 
 Die `join`-Funktionen sind dazu geeignet Datensätze anhand von verknüpften IDs miteinander zu verbinden.
 `bin_col` ermöglicht es auch Spalten zusammen zu "kleben" - hier findet jedoch keine Zuordnung oder logische Prüfung der Zeilen statt.
@@ -1444,7 +1444,7 @@ enrollments <- data.frame(
 )
 
 ```
-```{r, ref.label=I('setup-join-df'), eval=TRUE, echo=TRUE, exercise.eval=FALSE, exercise.lines = 16}
+```{r, ref.label=I('setup-join-df'), eval=TRUE, echo=FALSE, exercise.eval=FALSE, exercise.lines = 16}
 ```
 
 **Datensatz "students"**
@@ -1571,7 +1571,7 @@ df_med <- data.frame(
 )
 
 ```
-```{r, ref.label=I('setup-join-ex'), eval=TRUE, echo=TRUE, exercise.eval=FALSE, exercise.lines = 16}
+```{r, ref.label=I('setup-join-ex'), eval=TRUE, echo=FALSE, exercise.eval=FALSE, exercise.lines = 16}
 ```
 
 **Datensatz "df_id"**
@@ -2013,7 +2013,7 @@ fruits_wide
 ```
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
- *Verwandle diesen Datensatz ins Long-Format, sodass du eine Spalte `Monat` erhältst (mit den Werten "Jan", "Feb", "Mar") und eine Spalte `Verkauf` für die Verkaufszahlen.*
+ *Verwandle den Datensatz "fruits_wide" ins Long-Format, sodass du eine Spalte `Monat` erhältst (mit den Werten "Jan", "Feb", "Mar") und eine Spalte `Verkauf` für die Verkaufszahlen.*
  
  <div class="tip">
   <details>
@@ -2182,7 +2182,7 @@ rainfall_long
 ```
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
- *Wandle diesen Datensatz ins Wide-Format um, sodass jeder Monat eine eigene Spalte bildet, welche die Niederschlagswerte enthält.*
+ *Wandle den Datensatz "rainfall_long" ins Wide-Format um, sodass jeder Monat eine eigene Spalte bildet, welche die Niederschlagswerte enthält.*
  
  <div class="tip">
   <details>
@@ -2362,31 +2362,32 @@ grade_this({
 
 ## ggplot2 -- Plot erstellen
 
+*Hinweis:* Die Übungen zu dem Kapitel sind im Kapitel **Visualisierungen -- Übungen**
+
 ### Kapitel
 <a href="#section-ideen-literatur"> <i class="fa-solid fa-arrow-down"></i> Ideen & Literatur </a><br>
 <a href="#section-beispieldatensatz-1"> <i class="fa-solid fa-arrow-down"></i> full_join </a><br>
 <a href="#section-data-mapping"> <i class="fa-solid fa-arrow-down"></i> Data Mapping </a><br>
 <div style="padding-left: 2em;">
-<a href="#section-leere-plots-erstellen> <i class="fa-solid fa-arrow-down"></i> Leere Plots erstellen </a><br>
-<a href="#section-aesthetics"> <i class="fa-solid fa-arrow-down"></i> Leere Plots erstellen </a><br>
+<a href="#section-leere-plots-erstellen"> <i class="fa-solid fa-arrow-down"></i> Leere Plots erstellen </a><br>
+<a href="#section-aesthetics"> <i class="fa-solid fa-arrow-down"></i> aesthetics </a><br>
 </div>
-
 <a href="#section-plot-erstellen"> <i class="fa-solid fa-arrow-down"></i> Plot erstellen </a><br>
 <div style="padding-left: 2em;">
 <a href="#section-entscheidungshilfe-für-plottypen"> <i class="fa-solid fa-arrow-down"></i> Entscheidungshilfe für Plottypen </a><br>
-<a href="#section-geom_point()"> <i class="fa-solid fa-arrow-down"></i> geom_point() </a><br>
-<a href="#section-geom_line()"> <i class="fa-solid fa-arrow-down"></i> geom_line() </a><br>
-<a href="#section-geom_smooth()"> <i class="fa-solid fa-arrow-down"></i> geom_smooth() </a><br>
-<a href="#section-geom_bar()"> <i class="fa-solid fa-arrow-down"></i> geom_bar() </a><br>
-<a href="#section-geom_col()"> <i class="fa-solid fa-arrow-down"></i> geom_col() </a><br>
-<a href="#section-geom_histogram()"> <i class="fa-solid fa-arrow-down"></i> geom_histogram() </a><br>
-<a href="#section-geom_boxplot()"> <i class="fa-solid fa-arrow-down"></i> geom_boxplot() </a><br>
-<a href="#section-geom_violin()"> <i class="fa-solid fa-arrow-down"></i> geom_violin() </a><br>
-<a href="#section-geom_density()"> <i class="fa-solid fa-arrow-down"></i> geom_density() </a><br>
-<a href="#section-geom_area()"> <i class="fa-solid fa-arrow-down"></i> geom_area() </a><br>
-<a href="#section-geom_ribbon()"> <i class="fa-solid fa-arrow-down"></i> geom_ribbon() </a><br>
-<a href="#section-geom_jitter()"> <i class="fa-solid fa-arrow-down"></i> geom_jitter() </a><br>
-<a href="#section-geom_line()"> <i class="fa-solid fa-arrow-down"></i> geom_line() </a><br>
+<a href="#section-geom_point"> <i class="fa-solid fa-arrow-down"></i> geom_point() </a><br>
+<a href="#section-geom_line"> <i class="fa-solid fa-arrow-down"></i> geom_line() </a><br>
+<a href="#section-weitere-linien"> <i class="fa-solid fa-arrow-down"></i> Weitere Linien </a><br>
+<a href="#section-geom_smooth"> <i class="fa-solid fa-arrow-down"></i> geom_smooth() </a><br>
+<a href="#section-geom_bar"> <i class="fa-solid fa-arrow-down"></i> geom_bar() </a><br>
+<a href="#section-geom_col"> <i class="fa-solid fa-arrow-down"></i> geom_col() </a><br>
+<a href="#section-geom_histogram"> <i class="fa-solid fa-arrow-down"></i> geom_histogram() </a><br>
+<a href="#section-geom_boxplot"> <i class="fa-solid fa-arrow-down"></i> geom_boxplot() </a><br>
+<a href="#section-geom_violin"> <i class="fa-solid fa-arrow-down"></i> geom_violin() </a><br>
+<a href="#section-geom_density"> <i class="fa-solid fa-arrow-down"></i> geom_density() </a><br>
+<a href="#section-geom_area"> <i class="fa-solid fa-arrow-down"></i> geom_area() </a><br>
+<a href="#section-geom_ribbon"> <i class="fa-solid fa-arrow-down"></i> geom_ribbon() </a><br>
+<a href="#section-geom_jitter"> <i class="fa-solid fa-arrow-down"></i> geom_jitter() </a><br>
 </div>
 
 `ggplot2` ist ein sehr mächtiges Werkzeug zur Visualisierung von Daten.
@@ -2406,7 +2407,7 @@ Die nachfolgende Struktur ist wichtig um einen Plot zu programmieren mit `ggplot
 
 
 
-### Ideen & Literatur
+### Ideen & Literatur <a href="#section-ggplot2-plot-erstellen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Weiterführende Literatur: [ggplot2 Buch](https://ggplot2-book.org/)
 
@@ -2419,7 +2420,7 @@ Kunst Galerie von Danielle Navarro
 
 [![Kunst Galerie Vorschau](./images/art_screenshot.png){.images-shadow width="15cm"}](https://art.djnavarro.net/gallery/)
 
-### Beispieldatensatz
+### Beispieldatensatz <a href="#section-ggplot2-plot-erstellen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 <details class="hiddendetails-container"> <summary>
     <p class="hiddendetails-button"><i class="fa-solid fa-arrow-down"></i> Zeige die Erstellung der Daten <i class="fa-solid fa-arrow-down"></i> </p>
@@ -2443,7 +2444,7 @@ df <- df %>%
   select(-x)
 
 ```
-```{r, ref.label=I('setup-ggplot-df'), eval=TRUE, echo=FALSE, exercise.eval=FALSE}
+```{r, ref.label=I('setup-ggplot-df'), eval=TRUE, echo=TRUE, exercise.eval=FALSE}
 ```
 </div></div></details>
 
@@ -2457,7 +2458,7 @@ Siehe dazu das Otter Kapitel <a href="#section-tidyr-pivoting">tidyr - Pivoting<
 df
 ```
 
-### Piping mit `+`
+### Piping mit `+` <a href="#section-ggplot2-plot-erstellen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Man kann die einzelnen Ebenen eines Plots auch pipen - es wird hier jedoch das `+` Symbol genutzt und nicht wie wir es von `dplyr` kennen `%>%`.
 ```{r data-pipe-plus, exercise=FALSE, eval=FALSE, echo=TRUE, exercise.lines = 5}
@@ -2473,13 +2474,13 @@ Nach dem die `ggplot()` Funktion aufgerufen wurde wird zu `+` gewechselt.
 Danach wird jede Ebene desd Plots mit `+` hinzugefügt.
 
 
-### Data Mapping
+### Data Mapping <a href="#section-ggplot2-plot-erstellen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 
 Der erste Schritt ist es die Daten zu definieren und auf die Bildachsen (x-Achse, y-Achse) zu "mappen" (zuzuweisen).
 Der Plot bleibt damit erst mal noch leer - wir legen hier aber bereits sehr wichtige Grundlagen des Plots fest.
 
-#### Leere Plots erstellen
+#### Leere Plots erstellen <a href="#section-ggplot2-plot-erstellen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Hier ist ein Beispiel bei dem ein leerer Plot erstellt wird und die Daten zu den Achsen zugeordnet werden.
 Alle Funktionsargumente werden hier ausgeschrieben.
@@ -2523,13 +2524,13 @@ ggplot(
 theme_bw(base_size = 20)
 ```
 
-#### aesthetics
+#### aesthetics <a href="#section-ggplot2-plot-erstellen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Wir haben bereits in den oberen Beispielen gesehen, dass die Funktion `aes()` genutzt wird, um die x- und y-Achsen zu definieren.
 `aes()` ist die Kurzschreibweise für `aesthetics()`.
 Hier wird definiert, welche Spalten im Datensatz zu welchen Elementen im Plot zugeordnet werden sollen.
 
-```{r data-mapping-05, exercise=TRUE, eval=FALSE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+```{r data-mapping-05, exercise=FALSE, eval=FALSE, echo=TRUE, exercise.setup = "setup-ggplot-df", error=TRUE}
 ggplot(
   df,
   aes(x = group,        # x-Achse
@@ -2566,7 +2567,7 @@ df %>%
 
 Im nächsten Schritt wählen wir die Art des Plots aus - damit können wir dann auch endlich unsere Daten sehen!
 
-### Plot erstellen
+### Plot erstellen <a href="#section-ggplot2-plot-erstellen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Die Art des Plots wird bestimmt durch die `geom_*`-Funktion also z. B. `geom_point`.
 
@@ -2599,7 +2600,7 @@ Hier ist eine Übersicht über die verschiedenen
 | `geom_map()`        | Kartendarstellung            | Für geografische Karten mit Regionen.                              |
 | `geom_sf()`         | Simple Features (Karten)     | Für räumliche Daten im `sf`-Format.                                |
 
-#### Entscheidungshilfe für Plottypen
+#### Entscheidungshilfe für Plottypen <a href="#section-ggplot2-plot-erstellen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 | Anzahl Variablen | Art der Variable(n)                      | Empfohlene Plots                            |
 |------------------|------------------------------------------|---------------------------------------------|
@@ -2609,8 +2610,8 @@ Hier ist eine Übersicht über die verschiedenen
 | 2                | kategorisch & kontinuierlich            | Boxplot, Violinplot, Jitter (`geom_boxplot`, `geom_violin`, `geom_jitter`) |
 | 2                | kategorisch & kategorisch               | Gruppierte Balken, Mosaikplots             |
 | >2               | Kombinationen                           | Zusätzliche Variablen über Farbe, Form, Facets |
-
-#### geom_point()
+ 
+#### geom_point() <a href="#section-ggplot2-plot-erstellen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 
 Ein Punktdiagramm (Scatterplot) stellt zwei kontinuierliche Variablen gegenüber. Es eignet sich gut zur Darstellung von Zusammenhängen oder Korrelationen. 
@@ -2635,7 +2636,7 @@ ggplot(df,
   geom_point()
 ```
 
-#### geom_line()
+#### geom_line() <a href="#section-ggplot2-plot-erstellen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Ein Liniendiagramm verbindet Datenpunkte entsprechend ihrer Reihenfolge. Besonders nützlich für Zeitreihen oder Trends über eine kontinuierliche Achse.
 
@@ -2656,7 +2657,35 @@ ggplot(df,
   geom_line() 
 ```
 
-#### geom_smooth()
+#### Weitere Linien <a href="#section-ggplot2-plot-erstellen"> <i class="fa-solid fa-arrow-up"></i></a>
+
+Es gibt verschiedene Möglichkeiten Linien zu einem Plot hinzuzufügen:
+
+  - `geom_abline`: diagonale Linien mit einer Steigung (slope) und einem y-Achsenabschnitt (intercept)
+  
+  - `geom_hline`: horizontale Linien mit einem y-Achsenabschnitt
+  
+  - `geom_vline`: vertikale Linien mit einem x-Achsenabschnitt
+
+```{r geom-abline-01, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+ggplot(df, aes(x = life_satisfaction, y = depression)) + 
+  geom_point() + 
+  geom_abline(intercept = 0, slope = 1, color = "red")
+```
+
+```{r geom-hline-02, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+ggplot(df, aes(x = life_satisfaction, y = depression)) + 
+  geom_point() + 
+  geom_hline(yintercept = mean(df$depression), color = "blue")
+```
+
+```{r geom-vline-03, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
+ggplot(df, aes(x = life_satisfaction, y = depression)) + 
+  geom_point() + 
+  geom_vline(xintercept = mean(df$depression), color = "green")
+```
+
+#### geom_smooth() <a href="#section-ggplot2-plot-erstellen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Zeichnet eine geglättete Linie zur Darstellung von Trends.
 Standardmäßig wird eine LOESS-Kurve oder lineares Modell gewählt
@@ -2682,7 +2711,7 @@ ggplot(df,aes(x = 1:nrow(df), y = finances)) +
               se = TRUE) 
 ```
 
-#### geom_bar()
+#### geom_bar() <a href="#section-ggplot2-plot-erstellen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Ein Balkendiagramm zählt Häufigkeiten einer kategorialen Variable.
 
@@ -2708,7 +2737,7 @@ ggplot(df, aes(x = sex, fill = group)) +
   geom_bar(position = "dodge")  
 ```
 
-#### geom_col()
+#### geom_col() <a href="#section-ggplot2-plot-erstellen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 
 Im Gegensatz zu `geom_bar()` verwendet `geom_col()` vorgegebene y-Werte (z. B. Mittelwerte). Ideal für gruppierte oder aggregierte Daten.
@@ -2737,7 +2766,7 @@ df %>%
   geom_col(width = 0.5)
 ```
 
-#### geom_histogram()
+#### geom_histogram() <a href="#section-ggplot2-plot-erstellen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Ein Histogramm visualisiert die Verteilung einer kontinuierlichen Variable durch Bins.
 
@@ -2757,7 +2786,7 @@ ggplot(df, aes(x = depression, group = sex, fill = sex)) +
   geom_histogram(bins = 20)
 ```
 
-#### geom_boxplot()
+#### geom_boxplot() <a href="#section-ggplot2-plot-erstellen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Boxplots zeigen Median, Quartile, und Ausreißer – sehr nützlich zum Vergleich von Gruppen.
 
@@ -2777,7 +2806,7 @@ ggplot(df, aes(x = group, y = depression, fill = sex)) +
   geom_boxplot(notch = TRUE) 
 ```
 
-#### geom_violin()
+#### geom_violin() <a href="#section-ggplot2-plot-erstellen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Eine Kombination aus Boxplot und Dichtekurve – stellt die Verteilung je Gruppe anschaulich dar.
 
@@ -2798,7 +2827,7 @@ ggplot(df, aes(x = group, y = depression, fill = sex)) +
               draw_quantiles = c(0.25, 0.5, 0.75))
 ```
 
-#### geom_density()
+#### geom_density() <a href="#section-ggplot2-plot-erstellen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Zeigt die geschätzte Dichteverteilung einer kontinuierlichen Variable – alternative zum Histogramm.
 
@@ -2813,7 +2842,7 @@ ggplot(df, aes(x = depression, fill = group)) +
   geom_density(alpha = 0.5) 
 ```
 
-#### geom_area()
+#### geom_area() <a href="#section-ggplot2-plot-erstellen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Stellt eine kumulative Fläche unter einer Linie dar – ideal für Verläufe mit Gesamtmengen.
 
@@ -2828,9 +2857,7 @@ df %>%
   geom_area()
 ```
 
-
-
-#### geom_ribbon()
+#### geom_ribbon() <a href="#section-ggplot2-plot-erstellen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Zeigt Konfidenz- oder Streubereiche um eine Linie. Benötigt untere (`ymin`) und obere (`ymax`) Grenze.
 
@@ -2846,7 +2873,7 @@ df %>%
   geom_line()
 ```
 
-#### geom_jitter()
+#### geom_jitter() <a href="#section-ggplot2-plot-erstellen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Vermeidet Überlagerung diskreter Punkte durch zufälliges Versetzen.
 
@@ -2861,20 +2888,24 @@ ggplot(df, aes(x = group, y = depression)) +
 ```
 
 
-#### geom_*line()
-
-```{r geom-abline-01, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
-ggplot(df, aes(x = life_satisfaction, y = depression)) + 
-  geom_point() + 
-  geom_abline(intercept = 0, slope = 1, color = "red") +
-  geom_hline(yintercept = mean(df$depression), color = "blue") +
-  geom_vline(xintercept = mean(df$life_satisfaction), color = "green")
-```
-
-
 ## ggplot2 -- Plot anpassen
 
-### Beschriftungen
+*Hinweis:* Die Übungen zu dem Kapitel sind im Kapitel **Visualisierungen -- Übungen**
+
+### Kapitel
+<a href="#section-beschriftungen"> <i class="fa-solid fa-arrow-down"></i> Beschriftungen </a><br>
+<div style="padding-left: 2em;">
+<a href="#section-labs"> <i class="fa-solid fa-arrow-down"></i> labs() </a><br>
+<a href="#section-geom_text"> <i class="fa-solid fa-arrow-down"></i> geom_text() </a><br>
+<a href="#section-geom_label"> <i class="fa-solid fa-arrow-down"></i> geom_label() </a><br>
+</div>
+<a href="#section-themes-designs"> <i class="fa-solid fa-arrow-down"></i> Themes (Designs) </a><br>
+<a href="#section-schriftgröße"> <i class="fa-solid fa-arrow-down"></i> Schriftgröße </a><br>
+<a href="#section-farbskalen"> <i class="fa-solid fa-arrow-down"></i> Farbskalen </a><br>
+<a href="#section-farben"> <i class="fa-solid fa-arrow-down"></i> Farben </a><br>
+<a href="#section-plot-speichern"> <i class="fa-solid fa-arrow-down"></i> Plot speichern </a><br>
+
+### Beschriftungen <a href="#section-ggplot2-plot-anpassen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Sehr häufig möchte man Beschriftungen hinzufügen.
 
@@ -2883,7 +2914,7 @@ mit `labs()` kann man die üblichen Textbereiche beshriften: Titel, Achsen-Besch
 Manchmal möchte man im Plot selbst Beschriftungen hinzufügen und deren Position selbst bestimmen - dazu eignet sich `geom_text()`.
 Eine Umrandung des Textes kann man einfach mit `geom_label()` umsetzen.
 
-#### labs()
+#### labs() <a href="#section-ggplot2-plot-anpassen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 ```{r custom-labs-01, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
 df %>%
@@ -2904,7 +2935,7 @@ df %>%
 ) 
 ```
 
-#### geom_text()
+#### geom_text() <a href="#section-ggplot2-plot-anpassen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Fügt numerische oder kategoriale Labels an Positionen hinzu – z. B. zur Beschriftung von Mittelwerten oder Punkten.
 
@@ -2932,7 +2963,7 @@ ggplot(df, aes(x = group, y = depression)) +
 ```
 
 
-#### geom_label()
+#### geom_label() <a href="#section-ggplot2-plot-anpassen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Ist wie `geom_text()`, aber mit Rahmen um den Text.
 Dies ist nützlich für deutlichere Hervorhebung.
@@ -2958,7 +2989,7 @@ ggplot(df, aes(x = group, y = depression)) +
 ```
 
 
-### Themes (Designs)
+### Themes (Designs) <a href="#section-ggplot2-plot-anpassen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Das Standarddesign von `ggplot2` wird nicht unbedingt als schön wahrgenommen.😉
 Zum Glück geht es ganz schnell ein neues Design auszuwählen.
@@ -3010,7 +3041,7 @@ ggplot(df, aes(x = group, y = depression)) +
   theme_bw() # hier wird das Theme ausgewählt
 ```
 
-### Schriftgröße
+### Schriftgröße <a href="#section-ggplot2-plot-anpassen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Die Schriftgröße (`base_size`) ist ein Argument innerhalb der Theme-Funktionen.
 Damit kann man schnell alle Schriften vergrößern oder verkleinern.
@@ -3026,7 +3057,7 @@ ggplot(df, aes(x = group, y = depression)) +
   theme_bw(base_size = 20)
 ```
 
-### Farbskalen
+### Farbskalen <a href="#section-ggplot2-plot-anpassen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Wenn das Argumnet `aes(fill = variable)` genutzt wird, werden automatisch Farben vergeben.
 Diese Farben gefallen auch nicht jedem und können ausgetauscht werden mit anderen Farbskalen.
@@ -3085,7 +3116,7 @@ ggplot(df, aes(x = group, y = depression, fill = sex)) +
   )
 ```
 
-### Farben
+### Farben <a href="#section-ggplot2-plot-anpassen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 ```{r, eval=FALSE, echo=FALSE}
 library(ggplot2)
@@ -3177,7 +3208,7 @@ ggplot(df, aes(x = group,
   scale_fill_manual(values = c("female" = "firebrick", "male" = "gold", "unknown" = "darkcyan"))
 ```
 
-### Plot speichern
+### Plot speichern <a href="#section-ggplot2-plot-anpassen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 
 Mit `ggsave()` können wir ganz einfach unsere Plots speichern.
@@ -3241,7 +3272,39 @@ df
 
 Wir möchten die Gesundheit der Tiere (`health_value`) darstellen.
 
-`r otter::colorize("Aufgabe:", "var(--blue)")`
+`r otter::colorize("Aufgabe 1:", "var(--blue)")`
+*Versuche den angezeigten Plot so ähnlich wie möglich nachzubauen.*
+
+```{r ex-ggplot-0-0, exercise=FALSE, echo=TRUE, exercise.setup = "setup-ex-ggplot-df", eval=TRUE, echo=FALSE}
+ggplot(df, aes(y = health_value)) + 
+  geom_boxplot()
+```
+
+<div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Nutze die Funktion `geom_boxplot()`.</div>
+  <div class="tip-content"> Definiere `aes(y=health_value)`.</div>
+  <div class="tip-content"> Nutze diesen Aufbau: 
+  <pre>ggplot(df, aes()) + 
+  geom_boxplot().</pre></div>
+  
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
+
+```{r ex-ggplot-0-1, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "setup-ex-ggplot-df", exercise.lines=15}
+
+```
+```{r ex-ggplot-0-1-solution, ref.label=I('ex-ggplot-0-0')}
+
+```
+
+<br> 
+
+`r otter::colorize("Aufgabe 2:", "var(--blue)")`
 *Versuche den angezeigten Plot so ähnlich wie möglich nachzubauen.*
 
 ```{r ex-ggplot-1-0, exercise=FALSE, echo=TRUE, exercise.setup = "setup-ex-ggplot-df", eval=TRUE, echo=FALSE}
@@ -3263,7 +3326,7 @@ ggplot(df, aes(y = health_value)) +
   <div class="tip-content"> Setze die Schriftgröße auf 14.</div>
   <div class="tip-content"> Nutze diesen Aufbau: 
   <pre>ggplot(df, aes()) + 
-  geom_violin() + 
+  geom_boxplot() + 
   theme_classic()`.</pre></div>
   
   <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
@@ -3280,7 +3343,7 @@ ggplot(df, aes(y = health_value)) +
 <br> 
 
 
-`r otter::colorize("Aufgabe:", "var(--blue)")`
+`r otter::colorize("Aufgabe 3:", "var(--blue)")`
 *Versuche den angezeigten Plot so ähnlich wie möglich nachzubauen.*
 
 ```{r ex-ggplot-2-0, exercise=FALSE, echo=TRUE, exercise.setup = "setup-ex-ggplot-df", eval=TRUE, echo=FALSE}
@@ -3328,7 +3391,7 @@ ggplot(df, aes(x = animals, y = health_value, fill = animals)) +
 
 Wie sieht die Verteilung der Trainings aus? Dabei interessiert uns auch die Geschlechterverteilung.
 
-`r otter::colorize("Aufgabe:", "var(--blue)")`
+`r otter::colorize("Aufgabe 1:", "var(--blue)")`
 *Versuche den angezeigten Plot so ähnlich wie möglich nachzubauen.*
 
 ```{r ex-ggplot-3-0, exercise=FALSE, echo=TRUE, exercise.setup = "setup-ex-ggplot-df", eval=TRUE, echo=FALSE}
@@ -3370,7 +3433,7 @@ df %>%
 
 Wir möchten den Plot noch ein wenig schöner machen und auch noch das Geschlecht als Variable hinzunehmen.
 
-`r otter::colorize("Aufgabe:", "var(--blue)")`
+`r otter::colorize("Aufgabe 2:", "var(--blue)")`
 *Versuche den angezeigten Plot so ähnlich wie möglich nachzubauen.*
 
 ```{r ex-ggplot-4-0, exercise=FALSE, echo=TRUE, exercise.setup = "setup-ex-ggplot-df", eval=TRUE, echo=FALSE}
@@ -3420,7 +3483,7 @@ df %>%
 Wir möchten nun sehen, wie die Gesundheit (`health_value`) mit dem Blutwert (`blood_value`) zusammenhängt.
 Dabei soll auch direkt das Geschlecht noch berücksichtigt werden.
 
-`r otter::colorize("Aufgabe:", "var(--blue)")`
+`r otter::colorize("Aufgabe 1:", "var(--blue)")`
 *Versuche den angezeigten Plot so ähnlich wie möglich nachzubauen.*
 
 ```{r ex-ggplot-5-0, exercise=FALSE, echo=TRUE, exercise.setup = "setup-ex-ggplot-df", eval=TRUE, echo=FALSE}
@@ -3467,7 +3530,7 @@ ggplot(df, aes(x = health_value, y = blood_value, color = sex)) +
 In einem nächsten Schritt möchten wir noch lineare Modelle fitten und als Linien für die Geschlechter getrennt hinzufügen.
 Damit es übersichtlicher wird, entfernen wir alle Datenpunkte, bei denen das Geschlecht unbekannt ist.
 
-`r otter::colorize("Aufgabe:", "var(--blue)")`
+`r otter::colorize("Aufgabe 2:", "var(--blue)")`
 *Versuche den angezeigten Plot so ähnlich wie möglich nachzubauen.*
 
 ```{r ex-ggplot-6-0, exercise=FALSE, echo=TRUE, exercise.setup = "setup-ex-ggplot-df", eval=TRUE, echo=FALSE}
@@ -3493,6 +3556,7 @@ ggplot(aes(x = health_value, y = blood_value, color = sex)) +
   <div class="tip-carousel">
   
   <div class="tip-content"> Nutze die Funktion `geom_point()`.</div>
+  <div class="tip-content"> Nutze die Funktion `filter()`, um die Daten zu ändern.</div>
   <div class="tip-content"> Nutze die Funktion `geom_smooth()`.</div>
   <div class="tip-content"> Nutze ein lineares Modell `geom_smooth(method = "lm")`.</div>
   <div class="tip-content"> Nutze hier `color` und nicht `fill` für das Geschlecht</div>
