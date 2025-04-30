@@ -707,6 +707,26 @@ Wir werden innerhalb dieses Tutorials wegen der Einfachheit immer den `%>%` Oper
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
  *Schreibe den Code um und verwende hier den Pipe Operator `%>%`. Ändere ansonsten so wenig, wie möglich*.
+ 
+ <div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Entferne alle Zuweisungen `<-`, welche durch die Pipe ersetzt werden.</div>
+
+  <div class="tip-content"> Nutze diesen Aufbau: 
+  <pre>df <- df %>%
+  group_by() %>% 
+  select() %>% 
+  filter() %>% 
+  rename()
+df</pre></div>
+  
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
+ 
 ```{r ex-piping-01, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
 df <- group_by(df, sex)
 df <- select(df, id, sex, age, intelligence)
@@ -848,6 +868,19 @@ df %>%
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
  *Wähle die Spalten "income", "id" und "school_years" aus*.
+ 
+ <div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Nutze `select()`.</div>
+  <div class="tip-content"> Wähle die Spaltennamen aus, Anführungszeichen sind dabei nicht notwendig.</div>
+  
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
+
 ```{r ex-select-01, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
 
 ```
@@ -865,6 +898,19 @@ grade_this({
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
 *Wähle alle Spalten aus, die mit "_study" enden.*
+
+<div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Nutze `select()`.</div>
+  <div class="tip-content"> Nutze `ends_with()`.</div>
+
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
+
 ```{r ex-select-02, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
 
 ```
@@ -880,8 +926,23 @@ grade_this({
 
 # grade_this_code()
 ```
+
 `r otter::colorize("Aufgabe:", "var(--blue)")`
  *Wähle alle Spalten aus, welche eine Ziffer enthalten*.
+ 
+ <div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Nutze `matches()`.</div>
+  <div class="tip-content"> Verwende eine Regex-Syntax für `matches()`.</div>
+  <div class="tip-content"> Nutze `".*[0-9]+.*"` als Regex-Syntax.</div>
+
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
+ 
 ```{r ex-select-03, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
 
 ```
@@ -933,6 +994,18 @@ df %>%
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
  *Wähle alle Studenten aus*.
+ 
+ <div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Nutze `filter()`.</div>
+
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
+ 
 ```{r ex-filter-01, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
 
 ```
@@ -965,8 +1038,21 @@ grade_this({
 # grade_this_code()
 ```
 
+
 `r otter::colorize("Aufgabe:", "var(--blue)")`
  *Wähle Personen aus, die älter als 40 Jahre sind oder ein Einkommen über 4000€ haben*.
+ 
+ <div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Nutze das Symbol `|` für eine oder-Logik.</div>
+
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
+ 
 ```{r ex-filter-03, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
 
 ```
@@ -1025,6 +1111,18 @@ grade_this({
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
  *Sortiere die Daten nach dem Einkommen. Das höchste Einkommen soll in der ersten Zeile erscheinen.*
+ 
+ <div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Nutze `desc()`.</div>
+
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
+ 
 ```{r ex-arrrange-02, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
 
 ```
@@ -1060,6 +1158,18 @@ df %>%
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
  *Benenne die Spalte "intelligence" in "iq_score" um*.
+ 
+ <div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Die Zuweisungsreihenfolge ist: `alter_name = neuer_name`.</div>
+
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
+ 
 ```{r ex-rename-01, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
 
 ```
@@ -1143,6 +1253,19 @@ df %>%
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
  *Erstelle eine neue Spalte namens "name" und setze "unbekannt" als Wert*.
+ 
+ <div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Nutze `mutate()`.</div>
+  <div class="tip-content"> Nutze `.after = id`.</div>
+
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
+ 
 ```{r ex-mutate-01, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
 
 ```
@@ -1159,8 +1282,22 @@ grade_this({
 # grade_this_code()
 ```
 
+
 `r otter::colorize("Aufgabe:", "var(--blue)")`
  *Überschreibe die Werte von "income", sodass R den Wert als fehlend ("not available") begreift*.
+ 
+ <div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Nutze `mutate()`.</div>
+  <div class="tip-content"> Nutze die Zuweisungen zu NA.</div>
+
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
+ 
 ```{r ex-mutate-02, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
 
 ```
@@ -1177,8 +1314,23 @@ grade_this({
 # grade_this_code()
 ```
 
+
 `r otter::colorize("Aufgabe:", "var(--blue)")`
  *Erstelle eine neue Spalte namens "mean_income" und berechne dort den Durchschnitt des Einkommens aller Personen*.
+ 
+ <div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Nutze `mutate()`.</div>
+  <div class="tip-content"> Nutze `.after = id`.</div>
+  <div class="tip-content"> Nutze `mean()`.</div>
+
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
+ 
 ```{r ex-mutate-03, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
 
 ```
@@ -1231,6 +1383,19 @@ Da alle Werte zu einer einzigen Zusammenfassung aggregiert werden, reduziert sic
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
  *Aggregiere die Tabelle: Erstelle dabei eine neue Spalte namens "mean_income" und berechne dort den Durchschnitt des Einkommens aller Personen*.
+ 
+ <div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Nutze `summarize()`.</div>
+  <div class="tip-content"> Nutze `mean()`.</div>
+
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
+ 
 ```{r ex-summarize-01, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
 
 ```
@@ -1340,6 +1505,24 @@ In diesem Beispiel:
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
  *Berechne in Abhängigkeit des Geschlechts das durchschnittliche Einkommen (aggregiere die Daten). Benenne die neue Spalte "mean_income"*.
+ 
+ <div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Nutze die Funktion `group_by()`.</div>
+  <div class="tip-content"> Nutze die Funktion `summarize()`.</div>
+  <div class="tip-content"> Nutze die Funktion `mean()`.</div>
+  <div class="tip-content"> Nutze diesen Aufbau: 
+  <pre>df %>% 
+  group_by() %>% 
+  summarize()</pre></div>
+  
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
+ 
 ```{r ex-groupby-01, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
 
 ```
@@ -1359,6 +1542,26 @@ grade_this({
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
  *Berechne in Abhängigkeit des Geschlechts das durchschnittliche Einkommen (aggregiere die Daten). Benenne die neue Spalte "mean_income". Berechne danach noch das durchschnittliche Alter pro Geschlecht (speichere das Ergebnis in "mean_age") ab. Löse danach die Gruppenstruktur auf*.
+ 
+  <div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Nutze die Funktion `group_by()`.</div>
+  <div class="tip-content"> Nutze die Funktion `summarize()`.</div>
+  <div class="tip-content"> Nutze die Funktion `mean()`.</div>
+  <div class="tip-content"> Nutze die Funktion `ungroup()`.</div>
+  <div class="tip-content"> Nutze diesen Aufbau: 
+  <pre>df %>% 
+  group_by() %>% 
+  summarize() %>% 
+  ungroup()</pre></div>
+  
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
+ 
 ```{r ex-groupby-02, exercise.setup = "setup-base-df", exercise=TRUE, results = "hold", exercise.eval=FALSE}
 
 ```
@@ -1589,6 +1792,20 @@ df_med
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
  *Fülle den Datensatz "df_id" auf mit allen Infos aus "df_med"*.
+ 
+   <div class="tip">
+  <details>
+  <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
+  <div class="tip-carousel">
+  
+  <div class="tip-content"> Nutze eine join Funktion `*_join(df_id, df_med,____)`.</div>
+  <div class="tip-content"> Nutze `left_join(____)`.</div>
+  <div class="tip-content"> Nutze `by = "proband_id"`.</div>
+  
+  <button class="prev-tip"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
+</div> </details> </div>
+ 
 ```{r ex-joyn-01, exercise.setup = "setup-join-ex", exercise=TRUE, results = "hold", exercise.eval=FALSE}
 
 ```
@@ -2240,17 +2457,17 @@ students_data <- data.frame(
 ```
 ```{r, ref.label=I('setup-ex-wrangling-df'), eval=TRUE, echo=FALSE, exercise.eval=FALSE}
 ```
-Hier können wir uns den Datensatz anschauen, den wir bearbieten möchten:
+Hier können wir uns den Datensatz anschauen, den wir bearbeiten möchten:
 
 
-```{r data-ex-wrangling,exercise.setup = "setup-ex-wrangling-df", exercise=TRUE, results = "hold"}
+```{r data-ex-wrangling, exercise.setup = "setup-ex-wrangling-df", exercise=TRUE, results = "hold"}
 students_data
 ```
 
 ### Datenaufbereitung dplyr
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
-*Erstelle eine dplyr Pipe und speichere den Datensatz in einem neuen Objekt ab:*
+*Erstelle eine dplyr Pipe und überschreibe den Datensatz:*
 
 *1. Wähle nur die ID, den Namen, den Kurs und die Testergebnisse aller Semester aus (aber keine Anwesenheitswerte).*
 
@@ -2262,15 +2479,13 @@ students_data
 
 *Zeige dir den Datensatz am Ende an.*
 
-```{r ex-wrangling-1-0, exercise=FALSE, echo=TRUE, exercise.setup = "setup-ex-wrangling-df", eval=TRUE, echo=FALSE}
-
-```
 
 <div class="tip">
   <details>
   <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
   <div class="tip-carousel">
   
+  <div class="tip-content"> Weise den veränderten Datensatz wieder `students_data` zu.</div>
   <div class="tip-content"> Nutze die Funktion `select()`.</div>
   <div class="tip-content"> Nutze die Funktion `rename()`.</div>
   <div class="tip-content"> Nutze die Funktion `mutate()`.</div>
@@ -2291,14 +2506,14 @@ df</pre></div>
 
 ```
 ```{r ex-wrangling-1-1-solution, results = "hold", exercise.eval=FALSE}
-df <- students_data %>%
+students_data <- students_data %>%
   select(stud_id, name, course, starts_with("test_")) %>% 
   rename(student_id = stud_id) %>% 
   mutate(student_id) %>% 
   filter(course != "Physics")
-df
+students_data
 ```
-```{r ex-wrangling-1-1-check, ref.label=I('setup-ex-wrangling2'), results = "hold", exercise.eval=FALSE}
+```{r ex-wrangling-1-1-check, ref.label=I('setup-ex-wrangling-df'), results = "hold", exercise.eval=FALSE}
 grade_this({
   pass_if_equal(.solution, message = feedback_message_correct)
   fail_if_not_equal(.solution, message = feedback_message_wrong)
@@ -2307,27 +2522,45 @@ grade_this({
 
 ### Pivoting
 
-```{r setup-ex-wrangling2-df, exercise=FALSE, eval=TRUE, echo=FALSE}
-df <- students_data %>%
+<!-- necessary to transfer the changes from the previous task -->
+```{r setup-ex-wrangling-df2, results = "hold", exercise.eval=FALSE}
+students_data <- data.frame(
+  stud_id = c("101","102","103","104","105"),
+  name = c("Alex", "Ben", "Clara", "Dana", "Chris"),
+  course = c("Biology", "Biology", "Psychology", "Physics", "Medicine"),
+  test_Sem1 = c(80, 70, 90, 85, 80),
+  test_Sem2 = c(85, 78, 92, 88, 92),
+  test_Sem3 = c(88, 82, 94, 91, 70),
+  test_Sem4 = c(99, 83, 92, 81, 88),
+  attendance_Sem1 = c(90, 88, 95, 93, 79),
+  attendance_Sem2 = c(92, 89, 96, 94, 98),
+  attendance_Sem3 = c(94, 90, 97, 95, 85)
+)
+students_data <- students_data %>%
   select(stud_id, name, course, starts_with("test_")) %>% 
   rename(student_id = stud_id) %>% 
   mutate(student_id) %>% 
   filter(course != "Physics")
 ```
+```{r, ref.label=I('setup-ex-wrangling-df2'), eval=TRUE, echo=FALSE, exercise.eval=FALSE}
+```
+Hier können wir uns den Datensatz anschauen, den wir bearbeiten möchten:
+
+
+```{r data-ex-wrangling2, exercise.setup = "setup-ex-wrangling-df2", exercise=TRUE, results = "hold"}
+students_data
+```
 
 `r otter::colorize("Aufgabe:", "var(--blue)")`
-*Verwandle den Datensatz so, dass eine Spalte "Semester" entsteht (mit Werten "Sem1", "Sem2", "Sem3") und eine Spalte "Test_Score", in der die Testergebnisse gespeichert sind.*
+*Verwandle den Datensatz "students_data" so, dass eine Spalte "Semester" entsteht (mit Werten "Sem1", "Sem2", "Sem3") und eine Spalte "Test_Score", in der die Testergebnisse gespeichert sind.*
 
-
-```{r ex-wrangling-2-0, exercise=FALSE, echo=TRUE, exercise.setup = "setup-ex-wrangling-df", eval=TRUE, echo=FALSE}
-
-```
 
 <div class="tip">
   <details>
   <summary><img src="images/small_otter.png" alt="Otter Icon" class="icon-small">Tipp</summary>
   <div class="tip-carousel">
   
+  <div class="tip-content"> Weise den veränderten Datensatz wieder `students_data` zu.</div>
   <div class="tip-content"> Nutze die Funktion `pivot_longer()`.</div>
   <div class="tip-content"> Die Semester-Informationen stehen aktuell am Ende der Spaltennamen (z.B. "test_Sem1"), nutze das Trennzeichen `_` sinnvoll.</div>
   
@@ -2335,18 +2568,19 @@ df <- students_data %>%
   <button class="next-tip"><i class="fa-solid fa-arrow-right"></i></button>
 </div> </details> </div>
 
-```{r ex-wrangling-2-1, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "ex-wrangling-1-1-solution", exercise.lines=10}
+```{r ex-wrangling-2-1, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "setup-ex-wrangling-df2", exercise.lines=10}
 
 ```
 ```{r ex-wrangling-2-1-solution}
-df <- df %>%
+students_data <- students_data %>%
   pivot_longer(
     cols = starts_with("test_"),
     names_to = c(".value", "Semester"),
     names_sep = "_"
   )
+students_data
 ```
-```{r ex-wrangling-2-1-check, ref.label=I('setup-ex-wide'), results = "hold", exercise.eval=FALSE}
+```{r ex-wrangling-2-1-check, ref.label=I('setup-ex-wrangling-df2'), results = "hold", exercise.eval=FALSE}
 grade_this({
   pass_if_equal(.solution, message = feedback_message_correct)
   fail_if_not_equal(.solution, message = feedback_message_wrong)
