@@ -21,7 +21,7 @@ runtime: shiny_prerendered
 <script>
 $(document).ready(function() {
   $("#tutorial-topic").prepend(`<div class="img-right">
-  <a href="https://otter.uni-mainz.de/"> <i class="fa-solid fa-bars" aria-label="Link zur otter Homepage" aria-hidden="false"></i>
+  <a href="/"> <i class="fa-solid fa-bars" aria-label="Link zur otter Homepage" aria-hidden="false"></i>
   </a>
   </div>`);
   
@@ -2787,7 +2787,7 @@ seq_anova(y ~ x, f = 0.4, data = data, verbose = FALSE)
 
 ```
 
-
+</br>
 
 ### Übersicht wichtiger R Pakete
 
