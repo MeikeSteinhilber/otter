@@ -91,6 +91,22 @@ original is from: https://github.com/tidymodels/learntidymodels/tree/main/inst/t
   cursor: not-allowed;
 }
 
+button:hover {
+  cursor: pointer !important;
+  opacity: 1 !important;
+}
+
+.btn-tutorial-run.btn-success.disabled:not([disabled]) {
+  opacity: 1 !important;
+  background-color: var(--red) !important;
+  border-color: var(--red) !important;
+  color: white !important;
+  cursor: pointer !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+
 .tip-carousel .tip-content {
     /*margin: 23px 0; */
     font-size: 14px;
@@ -189,6 +205,7 @@ details summary:hover {
   border: none;
 }
 
+
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary:focus:active, .btn-primary:focus:active:hover {
   opacity: 0.65;
   background-color: #CA225E80;
@@ -212,6 +229,25 @@ details summary:hover {
   border-color: var(--blue) !important;
   background-color: var(--blue) !important;
   background-image: none !important;
+}
+
+.uebungen .btn-tutorial-run.btn-primary {
+  background-color: var(--blue) !important;
+  border-color: var(--blue) !important;
+  color: white !important;
+  opacity: 1 !important;
+}
+
+
+.uebungen .btn-tutorial-run.btn-primary:focus,
+.uebungen .btn-tutorial-run.btn-primary:active,
+.uebungen .btn-tutorial-run.btn-primary:focus:active,
+.uebungen .btn-tutorial-run.btn-primary:focus:active:hover {
+  background-color: var(--blue) !important;
+  border-color: var(--blue) !important;
+  color: white !important;
+  box-shadow: none !important;
+  outline: none !important;
 }
 
 

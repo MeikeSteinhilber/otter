@@ -91,6 +91,22 @@ original is from: https://github.com/tidymodels/learntidymodels/tree/main/inst/t
   cursor: not-allowed;
 }
 
+button:hover {
+  cursor: pointer !important;
+  opacity: 1 !important;
+}
+
+.btn-tutorial-run.btn-success.disabled:not([disabled]) {
+  opacity: 1 !important;
+  background-color: var(--red) !important;
+  border-color: var(--red) !important;
+  color: white !important;
+  cursor: pointer !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+
 .tip-carousel .tip-content {
     /*margin: 23px 0; */
     font-size: 14px;
@@ -189,6 +205,7 @@ details summary:hover {
   border: none;
 }
 
+
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary:focus:active, .btn-primary:focus:active:hover {
   opacity: 0.65;
   background-color: #CA225E80;
@@ -214,6 +231,25 @@ details summary:hover {
   background-image: none !important;
 }
 
+.uebungen .btn-tutorial-run.btn-primary {
+  background-color: var(--blue) !important;
+  border-color: var(--blue) !important;
+  color: white !important;
+  opacity: 1 !important;
+}
+
+
+.uebungen .btn-tutorial-run.btn-primary:focus,
+.uebungen .btn-tutorial-run.btn-primary:active,
+.uebungen .btn-tutorial-run.btn-primary:focus:active,
+.uebungen .btn-tutorial-run.btn-primary:focus:active:hover {
+  background-color: var(--blue) !important;
+  border-color: var(--blue) !important;
+  color: white !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
 
 /*-------- Google font imports --------*/
 
@@ -232,7 +268,6 @@ body {
   font-size: 20px;
   line-height: 1.6em;
 }
-
 
 /*-------- White Space --------*/
 
@@ -644,13 +679,13 @@ h3 {
   color: #1a162d99;*/
 }
 
-
 h4 {
   font-family: 'Lato', sans-serif;
   font-size: 1.15em;
   color: #CA225E;
   text-transform: none;
   margin-top: 50px;
+  font-weight: inherit;
 }
 
 .uebungen h4 {
@@ -662,13 +697,11 @@ h4 {
 
 
 
-/*
 h5 {
   font-family: 'Lato', sans-serif;
   color: #1a162d99;
   text-transform: none;
 }
-*/
 
 h2 code,
 h3 code {
@@ -797,7 +830,16 @@ h2.tutorialTitle,
   margin-bottom: 1em;
 }
 
-/*--Name, Date etc.--*/
+/*--Name, Date etc.--
+#doc-metadata h3,
+#doc-metadata h4 {
+  text-transform: uppercase;
+  letter-spacing: 2pt;
+  line-height: 1.6em;
+}
+
+
+*/
 
 #doc-metadata {
   margin-bottom: 1.5em;
@@ -805,12 +847,6 @@ h2.tutorialTitle,
   border-bottom: solid 0pt #f2f2f2;
 }
 
-#doc-metadata h3,
-#doc-metadata h4 {
-  text-transform: uppercase;
-  letter-spacing: 2pt;
-  line-height: 1.6em;
-}
 
 
 
