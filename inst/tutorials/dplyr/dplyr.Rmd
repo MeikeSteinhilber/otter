@@ -422,6 +422,7 @@ library(testthat)
 library(learnr)
 library(gradethis)
 library(glue)
+library(randomNames)
 # devtools::load_all()
 # remotes::install_github("MeikeSteinhilber/otter")
 # remotes::install_github("rstudio/gradethis")
@@ -1774,7 +1775,7 @@ df_med <- data.frame(
 )
 
 ```
-```{r, ref.label=I('setup-join-ex'), eval=TRUE, echo=FALSE, exercise.eval=FALSE, exercise.lines = 16}
+```{r, ref.label=I('setup-join-ex'), eval=TRUE, echo=FALSE, exercise.eval=FALSE}
 ```
 
 **Datensatz "df_id"**
@@ -1809,6 +1810,7 @@ df_med
 ```{r ex-joyn-01, exercise.setup = "setup-join-ex", exercise=TRUE, results = "hold", exercise.eval=FALSE}
 
 ```
+
 ```{r ex-joyn-01-solution, results = "hold", exercise.eval=FALSE}
 left_join(df_id, df_med, by = "proband_id")
 ```
