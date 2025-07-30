@@ -1760,8 +1760,8 @@ In echte Studien kann es passieren, dass Probanden obwohl sie bereits für die S
 ```{r setup-join-ex, exercise=FALSE, eval=TRUE, echo=FALSE}
 df_id <- data.frame(
   proband_id = 1:8,
-  first_name = randomNames::randomNames(8, which.names = "first"),
-  last_name = randomNames::randomNames(8, which.names = "last"),
+  first_name = c("Anna", "Ben", "Chris", "Dana", "Eva", "Felix", "Gina", "Hans"),
+  last_name = c("Müller", "Schmidt", "Weber", "Fischer", "Meier", "Becker", "Hoffmann", "Schneider"),
   insurance = sample(c(TRUE,FALSE),8, replace = TRUE),
   age = sample(20:55, 8),
   sex = rep(c("male", "female"))
