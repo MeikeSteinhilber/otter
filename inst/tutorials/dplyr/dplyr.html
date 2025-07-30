@@ -603,7 +603,7 @@ an.</p></li>
 <h3>Tidyverse</h3>
 <p>Das <a href="https://www.tidyverse.org/"><em>tidyverse</em></a> ist
 eine Sammlung von open-source R-Paketen, die speziell für die
-Datenaufbereitung und -visualisierung entwickelt wurde. Alle Pakete
+Datenaufbereitung und -visualisierung entwickelt wurden. Alle Pakete
 basieren auf einer konsistenten Design-Philosophie, Grammatik und auch
 Datenstruktur, welche innerhalb des tidyverse-Universums einheitlich
 ist, aber z.T auch sehr stark von <em>base</em>-R abweicht. Zu den
@@ -614,14 +614,14 @@ Paketen im tidyverse gehören:</p>
 <li><p><code>ggplot2</code> (Datenvisualisierung),</p></li>
 <li><p><code>readr</code> (Datenimport),</p></li>
 <li><p><code>stringr</code> (Umgang mit Strings/Text),</p></li>
-<li><p><code>forcats</code> (Umgang mit kategorialen daten),</p></li>
+<li><p><code>forcats</code> (Umgang mit kategorialen Daten),</p></li>
 <li><p><code>purrr</code> (funktionales Programmieren) und</p></li>
 <li><p><code>tibble</code> (Alternative zu
 <code>data.frames</code>).</p></li>
 </ul>
 <p><strong>Warum ist das tidyverse sinnvoll als Ergänzung zu base
 R?</strong></p>
-<p><em>Benutzerfreundlichkeit und Lesbarkeit:</em> Der tidyverse bietet
+<p><em>Benutzerfreundlichkeit und Lesbarkeit:</em> Das tidyverse bietet
 eine intuitive Syntax, die mit Pipes (%&gt;%) arbeitet. Dies ermöglicht
 eine klare und lesbare Darstellung von Datenmanipulationsprozessen,
 wodurch auch komplexe Analysen nachvollziehbar bleiben.</p>
@@ -639,7 +639,7 @@ von Daten oder das Erstellen aussagekräftiger Visualisierungen.</p>
 Community, hervorragende Dokumentationen und Tutorials, die den Einstieg
 und die Weiterentwicklung erleichtern.</p>
 <p><strong>Kritische Punkte und Herausforderungen</strong></p>
-<p><em>Häufige Änderungen:</em> Der tidyverse entwickelt sich
+<p><em>Häufige Änderungen:</em> Das tidyverse entwickelt sich
 kontinuierlich weiter, und Funktionen werden mitunter angepasst oder
 durch neue ersetzt. Dies kann dazu führen, dass älterer Code schnell
 veraltet und nachträglich angepasst werden muss. Viele Pakete enthalten
@@ -784,7 +784,7 @@ data-lines="0" data-pipe="|&gt;">
 <p>Der Pipe-Operator (<code>%&gt;%</code>) ist ein zentrales Werkzeug im
 <em>tidyverse</em> und hilft dabei, Datenmanipulationen in einer klaren
 und lesbaren Weise zu verketten. Er ermöglicht es, mehrere Funktionen
-nacheinander auf einen Datensatz anzuwenden, ohne dabei den
+nacheinander auf einen Datensatz anzuwenden, ohne dabei das
 Datensatz-Objekt in jedem Funktionsaufruf explizit wiederholen zu
 müssen. Der Shortcut für ein schnelles Erstellen des Operators ist
 <code>Strg + Shift + M</code> für Windows und
@@ -855,8 +855,8 @@ df %&gt;%
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
 <p>Der Pipe-Operator (<code>%&gt;%</code>) ist ein mächtiges Werkzeug,
-das den Code übersichtlicher macht und oft näher am menschlichen Denken
-dran ist. Diese Art zu Programmieren ist so beliebt geworden, dass es
+das den Code übersichtlicher macht und mehr der Denkweise des Menschen
+entspricht. Diese Art zu Programmieren ist so beliebt geworden, dass es
 inzwischen auch einen Pipe-Operator in <em>base</em>-R gibt, welcher so
 aussieht: <code>|&gt;</code>. Die Operatoren sind sich in vielen
 Funktionalitäten ähnlich. Wir werden innerhalb dieses Tutorials wegen
@@ -2023,7 +2023,7 @@ existiert), erscheinen in den entsprechenden Spalten
 <div class="tutorial-exercise" data-label="joyn-4" data-completion="1"
 data-diagnostics="1" data-startover="1" data-lines="0"
 data-pipe="|&gt;">
-<pre class="text"><code>right_join(students, enrollments, by = &quot;student_id&quot;, suffix = c(&quot;_stud&quot;, &quot;_enroll&quot;))</code></pre>
+<pre class="text"><code>left_join(students, enrollments, by = &quot;student_id&quot;, suffix = c(&quot;_stud&quot;, &quot;_enroll&quot;))</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
 <p>Alle immatrikulierten Studenten werden angezeigt mit der Information
@@ -2071,7 +2071,7 @@ wird.</p>
 <div class="tutorial-exercise" data-label="joyn-5" data-completion="1"
 data-diagnostics="1" data-startover="1" data-lines="0"
 data-pipe="|&gt;">
-<pre class="text"><code>anti_join(enrollments, students, by = &quot;student_id&quot;, suffix = c(&quot;_stud&quot;, &quot;_enroll&quot;))</code></pre>
+<pre class="text"><code>anti_join(enrollments, students, by = &quot;student_id&quot;)</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
 <p>Hier handelt es sich um alle Personen (Zeilen), die sich zu einer
@@ -2468,7 +2468,7 @@ das Jahr übrig bleibt.</p></li>
 <p>Das Ergebnis ist ein Long-Format-Datensatz, in dem jede Zeile eine
 Gewichtsmessung eines Tieres in einem bestimmten Jahr darstellt. Der
 Datensatz ist nun länger geworden (hat mehr Zeilen) und schmaler (hat
-wneiger Spalten).</p>
+weniger Spalten).</p>
 </div>
 <div id="section-komplexeres-beispiel" class="section level4">
 <h4>Komplexeres Beispiel</h4>
@@ -2832,10 +2832,10 @@ rainfall_wide</code></pre>
 <div class="uebungen">
 <div id="section-datensatz" class="section level3">
 <h3>Datensatz</h3>
-<p>Wir haben hier einen Datensatz, der Informationen über Studierende
-sowie ihre Testergebnisse aus verschiedenen Semestern enthält:</p>
-<p>Hier können wir uns den Datensatz anschauen, den wir bearbeiten
-möchten:</p>
+<p>In diesem Abschnitt arbeiten wir mit einem Datensatz, der
+Informationen über Studierende sowie ihre Testergebnisse aus
+verschiedenen Semestern enthält.</p>
+<p>Wir können uns den Datensatz anzeigen mit:</p>
 <div class="tutorial-exercise" data-label="data-ex-wrangling"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
@@ -3009,25 +3009,25 @@ geom_ribbon() </a><br> <a href="#section-geom_jitter">
 </div>
 <p><code>ggplot2</code> ist ein sehr mächtiges Werkzeug zur
 Visualisierung von Daten.</p>
-<p>Eine Visualisierung, also ein Bild, wird nachfolgend “Plot” genannt
+<p>Eine Visualisierung, also ein Bild, wird nachfolgend “Plot” genannt,
 in Anlehnung an die englische Bezeichnung. Die nachfolgende Struktur ist
-wichtig um einen Plot zu programmieren mit <code>ggplot2</code></p>
+wichtig, um einen Plot zu programmieren mit <code>ggplot2</code></p>
 <p><strong>Schritte zur Erstellung eines Plots:</strong></p>
 <ol style="list-style-type: decimal">
-<li><p>die Daten müssen definiert werden</p></li>
-<li><p>Spalten im Datensatz müssen zu grafischen Elementen zugeordnet
-werden (x-Achse, y-Achse, Farben, Größen, …)</p></li>
-<li><p>der Diagrammtyp muss festgelegt werden (Histogramm,
-Liniendiagramm, Balkendiagramm, Streudiagramm, …)</p></li>
-<li><p>das Diagramm kann individuell angepasst werden (Themen/Designs,
-zusätzliche Linien, Größen, Farben, Beschriftungen, …)</p></li>
+<li><p>Die Daten müssen definiert werden.</p></li>
+<li><p>Die Spalten im Datensatz müssen den grafischen Elementen
+zugeordnet werden (x-Achse, y-Achse, Farben, Größen, …).</p></li>
+<li><p>Der Diagrammtyp muss festgelegt werden (Histogramm,
+Liniendiagramm, Balkendiagramm, Streudiagramm, …).</p></li>
+<li><p>Das Diagramm kann individuell angepasst werden (Themen/Designs,
+zusätzliche Linien, Größen, Farben, Beschriftungen, …).</p></li>
 </ol>
 </div>
 <div id="section-ideen-literatur" class="section level3">
 <h3>Ideen &amp; Literatur <a href="#section-ggplot2-plot-erstellen">
 <i class="fa-solid fa-arrow-up"></i></a></h3>
-<p>Weiterführende Literatur: <a href="https://ggplot2-book.org/">ggplot2
-Buch</a></p>
+<p>Weiterführende Literatur: <a href="https://ggplot2-book.org/">Das
+ggplot2 Buch</a></p>
 <p>Plot Galerie zur Inspiration:</p>
 <p><a
 href="https://r-graph-gallery.com/137-spring-shapes-data-art.html"><img
@@ -3094,9 +3094,9 @@ jedoch das <code>+</code> Symbol genutzt und nicht wie wir es von
   geom_point() +
   theme_bw()</code></pre>
 <p>In diesem Beispiel werden die Daten zunächst mit <code>dplyr</code>
-gepiped und noch gefiltert. Nach dem die <code>ggplot()</code> Funktion
-aufgerufen wurde wird zu <code>+</code> gewechselt. Danach wird jede
-Ebene desd Plots mit <code>+</code> hinzugefügt.</p>
+gepiped und noch gefiltert. Nachdem die <code>ggplot()</code> Funktion
+aufgerufen wurde, wird zu <code>+</code> gewechselt. Danach wird jede
+Ebene des Plots mit <code>+</code> hinzugefügt.</p>
 </div>
 <div id="section-data-mapping" class="section level3">
 <h3>Data Mapping <a href="#section-ggplot2-plot-erstellen">
@@ -3108,10 +3108,13 @@ Grundlagen des Plots fest.</p>
 <div id="section-leere-plots-erstellen" class="section level4">
 <h4>Leere Plots erstellen <a href="#section-ggplot2-plot-erstellen">
 <i class="fa-solid fa-arrow-up"></i></a></h4>
-Hier ist ein Beispiel bei dem ein leerer Plot erstellt wird und die
-Daten zu den Achsen zugeordnet werden. Alle Funktionsargumente werden
-hier ausgeschrieben. Dies ist eine sehr ausführliche Schreibweise. Es
-hilft für das Verständnis es sich so zu merken.
+<p>Hier ist ein Beispiel bei dem ein <strong>leerer Plot</strong>
+erstellt wird und die Daten zu den Achsen zugeordnet werden. Alle
+Funktionsargumente werden hier ausgeschrieben. Dies ist eine sehr
+ausführliche Schreibweise. Es hilft für das Verständnis es sich so zu
+merken.</p>
+Es ist hier noch kein klassischer Inhalt zu sehen, sondern nur der leere
+Plot und die Achsen-Beschriftungen:
 <div class="tutorial-exercise" data-label="data-mapping-01"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
@@ -3817,8 +3820,6 @@ Schriftgröße </a><br> <a href="#section-farbskalen">
 <h3>Beschriftungen <a href="#section-ggplot2-plot-anpassen">
 <i class="fa-solid fa-arrow-up"></i></a></h3>
 <p>Sehr häufig möchte man Beschriftungen hinzufügen.</p>
-<p>mit <code>labs()</code> kann man die üblichen Textbereiche
-beshriften: Titel, Achsen-Beschriftungen und weiteres.</p>
 <p>Manchmal möchte man im Plot selbst Beschriftungen hinzufügen und
 deren Position selbst bestimmen - dazu eignet sich
 <code>geom_text()</code>. Eine Umrandung des Textes kann man einfach mit
@@ -3826,6 +3827,8 @@ deren Position selbst bestimmen - dazu eignet sich
 <div id="section-labs" class="section level4">
 <h4>labs() <a href="#section-ggplot2-plot-anpassen">
 <i class="fa-solid fa-arrow-up"></i></a></h4>
+<p>Mit <code>labs()</code> kann man die üblichen Textbereiche
+beschriften: Titel, Achsen-Beschriftungen und weiteres.</p>
 <div class="tutorial-exercise" data-label="custom-labs-01"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
@@ -3852,7 +3855,7 @@ data-lines="0" data-pipe="|&gt;">
 <div id="section-geom_text" class="section level4">
 <h4>geom_text() <a href="#section-ggplot2-plot-anpassen">
 <i class="fa-solid fa-arrow-up"></i></a></h4>
-<p>Fügt numerische oder kategoriale Labels an Positionen hinzu – z. B.
+<p>Fügt numerische oder kategoriale Labels an Positionen hinzu, z. B.
 zur Beschriftung von Mittelwerten oder Punkten.</p>
 <p><strong>Wichtige Argumente:</strong></p>
 <ul>
@@ -3920,8 +3923,8 @@ auszuwählen.</p>
 <p>Hier ist eine Übersicht über die vorgefertigten Themes.</p>
 <p><img src="images/themes.png" class="images-shadow"
 style="width:90.0%" alt="Themes" /></p>
-<p>Wenn dir diese Themes nicht ganz gefallen gefallen, nutze
-<code>theme()</code>, um Details zu ändern.</p>
+<p>Wenn dir diese Themes nicht gefallen, nutze <code>theme()</code>, um
+Details zu ändern.</p>
 <p>In diesem Beispiel kannst du gerne mal verschiedene Themes
 ausprobieren! Ändere einfach den Code und führe es aus. Als erstes
 Beispiel ist das Design <code>theme_bw()</code> ausgewählt.</p>
@@ -3941,6 +3944,8 @@ data-lines="0" data-pipe="|&gt;">
 <p>Die Schriftgröße (<code>base_size</code>) ist ein Argument innerhalb
 der Theme-Funktionen. Damit kann man schnell alle Schriften vergrößern
 oder verkleinern.</p>
+<p>Ändere doch einfach Mal die Schriftgröße <code>base_size = 10</code>
+und führe den Code aus!</p>
 <div class="tutorial-exercise" data-label="geom-textsize-01"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
@@ -4053,7 +4058,7 @@ data-lines="0" data-pipe="|&gt;">
 <h3>Plot speichern <a href="#section-ggplot2-plot-anpassen">
 <i class="fa-solid fa-arrow-up"></i></a></h3>
 <p>Mit <code>ggsave()</code> können wir ganz einfach unsere Plots
-speichern. Die Funktion speichert immer das zuletzt erstellte Plot.</p>
+speichern. Die Funktion speichert immer den zuletzt erstellten Plot.</p>
 <p>Wichtig ist den Pfad anzugeben, wo das Bild gespeichert werden soll -
 dabei muss auch der Dateiname vollständig angegeben werden.</p>
 <pre class="r"><code># Erstellung des Plots
@@ -4074,6 +4079,12 @@ des Plots bestimmen kann.</p>
 <div id="section-visualisierungen-übungen" class="section level2">
 <h2>Visualisierungen – Übungen</h2>
 <div class="uebungen">
+<p>Hier findest du umfassende Übungen, welche die zentralen Inhalte der
+vorangegangenen Kapitel zum Thema Visualisierungen zusammenführen. Die
+Aufgaben sind entsprechend anspruchsvoller gestaltet –
+selbstverständlich aber wie immer mit hilfreichen Tipps und Lösungen
+versehen.</p>
+<p>Viel Erfolg beim Bearbeiten!</p>
 <div id="section-datensatz-1" class="section level3">
 <h3>Datensatz</h3>
 <p>Hier können wir uns den Datensatz anschauen, den wir visualisieren
@@ -4256,12 +4267,6 @@ Nutze die Funktion <code>geom_bar()</code>.
 Bearbeite die Beschriftungen mit <code>labs()</code>.
 </div>
 <div class="tip-content">
-Nutze <code>scale_fill_viridis_d()</code> für die Farben.
-</div>
-<div class="tip-content">
-Nutze die Farbskala “inferno” und beginne mit 0.2.
-</div>
-<div class="tip-content">
 Setze die Schriftgröße auf 14.
 </div>
 <div class="tip-content">
@@ -4285,7 +4290,6 @@ data-label="ex-ggplot-3-1-solution" data-completion="1"
 data-diagnostics="1" data-startover="1" data-lines="0"
 data-pipe="|&gt;">
 <pre class="text"><code>df %&gt;% 
-  mutate(training = as.factor(training)) %&gt;% 
   ggplot(aes(x = training)) + 
     geom_bar() +
     theme_light(base_size = 12)</code></pre>
@@ -4340,7 +4344,6 @@ data-label="ex-ggplot-4-1-solution" data-completion="1"
 data-diagnostics="1" data-startover="1" data-lines="0"
 data-pipe="|&gt;">
 <pre class="text"><code>df %&gt;% 
-  mutate(training = as.factor(training)) %&gt;% 
   ggplot(aes(x = training, fill = sex)) + 
     geom_bar() +
     labs(title = &quot;Distribution of the training&quot;) +
@@ -4444,8 +4447,8 @@ Nutze die Funktion <code>geom_smooth()</code>.
 Nutze ein lineares Modell <code>geom_smooth(method = "lm")</code>.
 </div>
 <div class="tip-content">
-Nutze hier <code>color</code> und nicht <code>fill</code> für das
-Geschlecht
+Nutze hier <code>color</code> und nicht <code>fill</code> für die
+Variable des Geschlechts
 </div>
 <div class="tip-content">
 Bearbeite die Beschriftungen mit <code>labs()</code>.
@@ -4463,7 +4466,10 @@ Setze die Schriftgröße auf 12.
 </div>
 <div class="tip-content">
 Nutze diesen Aufbau:
-<pre>ggplot(df, aes()) + 
+<pre>
+  df %>% 
+  filter(sex != "unknown") %>% 
+  ggplot(df, aes()) + 
   geom_point() + 
   geom_smooth() +
   labs() +
@@ -7405,7 +7411,7 @@ learnr:::store_exercise_cache(structure(list(label = "joyn-4", global_setup = st
     chunks = list(list(label = "setup-join-df", code = "# Datensatz: immatrikulierte Studenten\nstudents <- data.frame(\n  student_id = c(1, 2, 3, 4),\n  name = c(\"Max, S.\", \"Sophie, K.\", \"Lukas, L.\", \"Mia, N.\"),\n  semester = c(3, 5, 2, 7)\n)\n\n# Datensatz: Kursanmeldungen\nenrollments <- data.frame(\n  student_id = c(1, 2, 2, 5),\n  course_id = c(\"MAT101\", \"PHY102\", \"CHE103\", \"BIO104\"),\n  course_name = c(\"Mathematik\", \"Physik\", \"Chemie\", \"Biologie\"),\n  name = c(\"Max\", \"Sophie\", NA, \"Beatrice\")\n)\n", 
         opts = list(label = "\"setup-join-df\"", exercise = "FALSE", 
             eval = "TRUE", echo = "FALSE"), engine = "r"), list(
-        label = "joyn-4", code = "right_join(students, enrollments, by = \"student_id\", suffix = c(\"_stud\", \"_enroll\"))", 
+        label = "joyn-4", code = "left_join(students, enrollments, by = \"student_id\", suffix = c(\"_stud\", \"_enroll\"))", 
         opts = list(label = "\"joyn-4\"", exercise.setup = "\"setup-join-df\"", 
             exercise = "TRUE", results = "\"hold\""), engine = "r")), 
     code_check = NULL, error_check = NULL, check = NULL, solution = NULL, 
@@ -7429,7 +7435,7 @@ learnr:::store_exercise_cache(structure(list(label = "joyn-4", global_setup = st
         exercise.error.check.code = "gradethis_error_checker()", 
         exercise.eval = FALSE, exercise.blanks = "___", exercise.reveal_solution = TRUE, 
         label = "joyn-4", exercise.setup = "setup-join-df", exercise = TRUE, 
-        code = "right_join(students, enrollments, by = \"student_id\", suffix = c(\"_stud\", \"_enroll\"))", 
+        code = "left_join(students, enrollments, by = \"student_id\", suffix = c(\"_stud\", \"_enroll\"))", 
         out.width.px = 624, out.height.px = 384, params.src = "joyn-4, exercise.setup = \"setup-join-df\", exercise=TRUE, results = \"hold\"", 
         fig.num = 0, exercise.df_print = "paged"), engine = "r", 
     version = "4"), class = c("r", "tutorial_exercise")))
@@ -7535,7 +7541,7 @@ learnr:::store_exercise_cache(structure(list(label = "joyn-5", global_setup = st
     chunks = list(list(label = "setup-join-df", code = "# Datensatz: immatrikulierte Studenten\nstudents <- data.frame(\n  student_id = c(1, 2, 3, 4),\n  name = c(\"Max, S.\", \"Sophie, K.\", \"Lukas, L.\", \"Mia, N.\"),\n  semester = c(3, 5, 2, 7)\n)\n\n# Datensatz: Kursanmeldungen\nenrollments <- data.frame(\n  student_id = c(1, 2, 2, 5),\n  course_id = c(\"MAT101\", \"PHY102\", \"CHE103\", \"BIO104\"),\n  course_name = c(\"Mathematik\", \"Physik\", \"Chemie\", \"Biologie\"),\n  name = c(\"Max\", \"Sophie\", NA, \"Beatrice\")\n)\n", 
         opts = list(label = "\"setup-join-df\"", exercise = "FALSE", 
             eval = "TRUE", echo = "FALSE"), engine = "r"), list(
-        label = "joyn-5", code = "anti_join(enrollments, students, by = \"student_id\", suffix = c(\"_stud\", \"_enroll\"))", 
+        label = "joyn-5", code = "anti_join(enrollments, students, by = \"student_id\")", 
         opts = list(label = "\"joyn-5\"", exercise.setup = "\"setup-join-df\"", 
             exercise = "TRUE", results = "\"hold\""), engine = "r")), 
     code_check = NULL, error_check = NULL, check = NULL, solution = NULL, 
@@ -7559,7 +7565,7 @@ learnr:::store_exercise_cache(structure(list(label = "joyn-5", global_setup = st
         exercise.error.check.code = "gradethis_error_checker()", 
         exercise.eval = FALSE, exercise.blanks = "___", exercise.reveal_solution = TRUE, 
         label = "joyn-5", exercise.setup = "setup-join-df", exercise = TRUE, 
-        code = "anti_join(enrollments, students, by = \"student_id\", suffix = c(\"_stud\", \"_enroll\"))", 
+        code = "anti_join(enrollments, students, by = \"student_id\")", 
         out.width.px = 624, out.height.px = 384, params.src = "joyn-5, exercise.setup = \"setup-join-df\", exercise=TRUE, results = \"hold\"", 
         fig.num = 0, exercise.df_print = "paged"), engine = "r", 
     version = "4"), class = c("r", "tutorial_exercise")))
@@ -8351,7 +8357,7 @@ learnr:::store_exercise_cache(structure(list(label = "data-ex-wrangling", global
         exercise.eval = FALSE, exercise.blanks = "___", exercise.reveal_solution = TRUE, 
         label = "data-ex-wrangling", exercise.setup = "setup-ex-wrangling-df", 
         exercise = TRUE, code = "students_data", out.width.px = 624, 
-        out.height.px = 384, params.src = "data-ex-wrangling, exercise.setup = \"setup-ex-wrangling-df\", exercise=TRUE, results = \"hold\"", 
+        out.height.px = 384, params.src = "data-ex-wrangling, exercise.setup = \"setup-ex-wrangling-df\", exercise=TRUE, results ='hold'", 
         fig.num = 0, exercise.df_print = "paged"), engine = "r", 
     version = "4"), class = c("r", "tutorial_exercise")))
 </script>
@@ -11751,7 +11757,7 @@ learnr:::store_exercise_cache(structure(list(label = "ex-ggplot-6-1", global_set
 <!--/html_preserve-->
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="execution_dependencies">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88]}},"value":[{"type":"character","attributes":{},"value":["backports","base","brio","bslib","cachem","checkmate","cli","colorspace","compiler","crayon","data.table","datasets","digest","dplyr","evaluate","farver","fastmap","fontawesome","forcats","generics","ggplot2","glue","gradethis","graphics","grDevices","grid","gtable","hms","htmltools","htmlwidgets","httpuv","jquerylib","jsonlite","knitr","labeling","later","lattice","learnr","lifecycle","lubridate","magrittr","Matrix","MBESS","methods","mgcv","mime","mnormt","munsell","nlme","otter","parallel","pillar","pkgconfig","promises","psych","purrr","R6","randomNames","Rcpp","readr","rlang","rmarkdown","rprojroot","rstudioapi","sass","scales","shiny","splines","sprtt","stats","stringi","stringr","testthat","tibble","tidyr","tidyselect","tidyverse","timechange","tools","toOrdinal","tzdb","utils","vctrs","viridisLite","withr","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["1.5.0","4.4.3","1.1.5","0.9.0","1.1.0","2.3.2","3.6.4","2.1-1","4.4.3","1.5.3","1.17.0","4.4.3","0.6.37","1.1.4","1.0.3","2.1.2","1.2.0","0.5.3","1.0.0","0.1.3","3.5.1","1.8.0","0.2.14","4.4.3","4.4.3","4.4.3","0.3.6","1.1.3","0.5.8.1","1.6.4","1.6.15","0.1.4","2.0.0","1.50","0.4.3","1.4.1","0.22-6","0.11.5.9000","1.0.4","1.9.4","2.0.3","1.7-2","4.9.3","4.4.3","1.9-1","0.13","2.1.1","0.5.1","3.1-167","0.1.0","4.4.3","1.10.2","2.0.3","1.3.2","2.5.3","1.0.4","2.6.1","1.6-0.0","1.0.14","2.1.5","1.1.5","2.29","2.0.4","0.17.1","0.4.10","1.3.0","1.10.0","4.4.3","0.2.0","4.4.3","1.8.7","1.5.1","3.2.3","3.2.1","1.3.1","1.2.1","2.0.0","0.3.0","4.4.3","1.3-0.0","0.5.0","4.4.3","0.6.5","0.4.2","3.0.2","0.51","1.8-4","2.3.10"]}]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88]}},"value":[{"type":"character","attributes":{},"value":["backports","base","brio","bslib","cachem","checkmate","cli","colorspace","compiler","crayon","data.table","datasets","digest","dplyr","evaluate","farver","fastmap","fontawesome","forcats","generics","ggplot2","glue","gradethis","graphics","grDevices","grid","gtable","hms","htmltools","htmlwidgets","httpuv","jquerylib","jsonlite","knitr","labeling","later","lattice","learnr","lifecycle","lubridate","magrittr","Matrix","MBESS","methods","mgcv","mime","mnormt","munsell","nlme","otter","parallel","pillar","pkgconfig","promises","psych","purrr","R6","randomNames","Rcpp","readr","rlang","rmarkdown","rprojroot","rstudioapi","sass","scales","shiny","splines","sprtt","stats","stringi","stringr","testthat","tibble","tidyr","tidyselect","tidyverse","timechange","tools","toOrdinal","tzdb","utils","vctrs","viridisLite","withr","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["1.5.0","4.4.2","1.1.5","0.9.0","1.1.0","2.3.2","3.6.3","2.1-1","4.4.2","1.5.3","1.16.4","4.4.2","0.6.37","1.1.4","1.0.3","2.1.2","1.2.0","0.5.3","1.0.0","0.1.3","3.5.1","1.8.0","0.2.14","4.4.2","4.4.2","4.4.2","0.3.6","1.1.3","0.5.8.1","1.6.4","1.6.15","0.1.4","1.9.1","1.49","0.4.3","1.4.1","0.22-6","0.11.5.9000","1.0.4","1.9.4","2.0.3","1.7-1","4.9.3","4.4.2","1.9-1","0.12","2.1.1","0.5.1","3.1-166","0.1.0","4.4.2","1.10.1","2.0.3","1.3.2","2.4.12","1.0.2","2.6.1","1.6-0.0","1.0.13-1","2.1.5","1.1.4","2.29","2.0.4","0.17.1","0.4.9","1.3.0","1.10.0","4.4.2","0.2.0","4.4.2","1.8.4","1.5.1","3.2.2","3.2.1","1.3.1","1.2.1","2.0.0","0.3.0","4.4.2","1.3-0.0","0.4.0","4.4.2","0.6.5","0.4.2","3.0.2","0.49","1.8-4","2.3.10"]}]}]}
 </script>
 <!--/html_preserve-->
 </div>

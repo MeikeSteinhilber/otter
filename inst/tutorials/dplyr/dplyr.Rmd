@@ -472,7 +472,7 @@ blue <- "#00c4e6"
 
 ### Tidyverse
 
-Das [*tidyverse*](https://www.tidyverse.org/) ist eine Sammlung von open-source R-Paketen, die speziell für die Datenaufbereitung und -visualisierung entwickelt wurde.
+Das [*tidyverse*](https://www.tidyverse.org/) ist eine Sammlung von open-source R-Paketen, die speziell für die Datenaufbereitung und -visualisierung entwickelt wurden.
 Alle Pakete basieren auf einer konsistenten Design-Philosophie, Grammatik und auch Datenstruktur, welche innerhalb des tidyverse-Universums einheitlich ist, aber z.T auch sehr stark von *base*-R abweicht.
 Zu den Paketen im tidyverse gehören:
 
@@ -486,7 +486,7 @@ Zu den Paketen im tidyverse gehören:
   
   - `stringr` (Umgang mit Strings/Text),
   
-  - `forcats` (Umgang mit kategorialen daten),
+  - `forcats` (Umgang mit kategorialen Daten),
   
   - `purrr` (funktionales Programmieren) und
   
@@ -495,7 +495,7 @@ Zu den Paketen im tidyverse gehören:
 
 **Warum ist das tidyverse sinnvoll als Ergänzung zu base R?**
 
-*Benutzerfreundlichkeit und Lesbarkeit:* Der tidyverse bietet eine intuitive Syntax, die mit Pipes (%>%) arbeitet. Dies ermöglicht eine klare und lesbare Darstellung von Datenmanipulationsprozessen, wodurch auch komplexe Analysen nachvollziehbar bleiben.
+*Benutzerfreundlichkeit und Lesbarkeit:* Das tidyverse bietet eine intuitive Syntax, die mit Pipes (%>%) arbeitet. Dies ermöglicht eine klare und lesbare Darstellung von Datenmanipulationsprozessen, wodurch auch komplexe Analysen nachvollziehbar bleiben.
 
 *Konsistenz:* Alle Pakete im tidyverse folgen gemeinsamen Designprinzipien und Funktionen, was den Lernaufwand reduziert und eine nahtlose Integration zwischen den Paketen ermöglicht.
 
@@ -507,7 +507,7 @@ Zu den Paketen im tidyverse gehören:
 
 **Kritische Punkte und Herausforderungen**
 
-*Häufige Änderungen:* Der tidyverse entwickelt sich kontinuierlich weiter, und Funktionen werden mitunter angepasst oder durch neue ersetzt. Dies kann dazu führen, dass älterer Code schnell veraltet und nachträglich angepasst werden muss. Viele Pakete enthalten daher einen [Lifecycle-Status](https://lifecycle.r-lib.org/articles/stages.html), der angibt, ob eine Funktion stabil ist oder zukünftig durch andere ersetzt wird.
+*Häufige Änderungen:* Das tidyverse entwickelt sich kontinuierlich weiter, und Funktionen werden mitunter angepasst oder durch neue ersetzt. Dies kann dazu führen, dass älterer Code schnell veraltet und nachträglich angepasst werden muss. Viele Pakete enthalten daher einen [Lifecycle-Status](https://lifecycle.r-lib.org/articles/stages.html), der angibt, ob eine Funktion stabil ist oder zukünftig durch andere ersetzt wird.
 
 *Lernaufwand:* Wer an die Arbeitsweise von *base*-R gewöhnt ist, muss sich zunächst an die andere Syntax und Denkweise des tidyverse gewöhnen.
 
@@ -623,7 +623,7 @@ df
 ### Piping mit `%>%` <a href="#section-dplyr-grundlagen"> <i class="fa-solid fa-arrow-up"></i></a>
 
 Der Pipe-Operator (`%>%`) ist ein zentrales Werkzeug im *tidyverse* und hilft dabei, Datenmanipulationen in einer klaren und lesbaren Weise zu verketten.
-Er ermöglicht es, mehrere Funktionen nacheinander auf einen Datensatz anzuwenden, ohne dabei den Datensatz-Objekt in jedem Funktionsaufruf explizit wiederholen zu müssen.
+Er ermöglicht es, mehrere Funktionen nacheinander auf einen Datensatz anzuwenden, ohne dabei das Datensatz-Objekt in jedem Funktionsaufruf explizit wiederholen zu müssen.
 Der Shortcut für ein schnelles Erstellen des Operators ist `Strg + Shift + M ` für Windows und `Cmd + Shift + M` für MacOS.
 
 Betrachten wir folgendes Beispiel, in dem wir Daten mit vier Funktionen manipulieren.
@@ -694,7 +694,7 @@ df %>%
   rename(subjects = id)
 ```
 
-Der Pipe-Operator (`%>%`) ist ein mächtiges Werkzeug, das den Code übersichtlicher macht und oft näher am menschlichen Denken dran ist.
+Der Pipe-Operator (`%>%`) ist ein mächtiges Werkzeug, das den Code übersichtlicher macht und mehr der Denkweise des Menschen entspricht.
 Diese Art zu Programmieren ist so beliebt geworden, dass es inzwischen auch einen Pipe-Operator in *base*-R gibt, welcher so aussieht: `|>`.
 Die Operatoren sind sich in vielen Funktionalitäten ähnlich.
 Wir werden innerhalb dieses Tutorials wegen der Einfachheit immer den `%>%` Operator verwenden.
@@ -1704,7 +1704,7 @@ Die ID 2 (Sophie) wird zwei Mal angezeigt, da sie sich zu zwei Klausuren angemel
 Falls ein Student keine Kursanmeldung hat (keinen Eintrag in "enrollments" existiert), erscheinen in den entsprechenden Spalten `NA`.
 
 ```{r joyn-4, exercise.setup = "setup-join-df", exercise=TRUE, results = "hold"}
-right_join(students, enrollments, by = "student_id", suffix = c("_stud", "_enroll"))
+left_join(students, enrollments, by = "student_id", suffix = c("_stud", "_enroll"))
 ```
 
 Alle immatrikulierten Studenten werden angezeigt mit der Information der angemeldeten Klausuren.
@@ -1739,7 +1739,7 @@ Die Informationen des Kurses werden nicht zusätzlich mit angezeigt.
 Gibt die Zeilen aus dem "enrollments"-Datensatz zurück, für die **kein** passender Eintrag im "students"-Datensatz gefunden wird.
 
 ```{r joyn-5, exercise.setup = "setup-join-df", exercise=TRUE, results = "hold"}
-anti_join(enrollments, students, by = "student_id", suffix = c("_stud", "_enroll"))
+anti_join(enrollments, students, by = "student_id")
 ```
 
 Hier handelt es sich um alle Personen (Zeilen), die sich zu einer Klausur angemeldet haben, obwohl sie nicht offiziell immatrikuliert sind.
@@ -2130,7 +2130,7 @@ mammals_long
   - `mutate(Year = sub("Weight_", "", Year))`: Entfernt den Text "Weight_" aus den Werten in der Spalte Year, sodass nur noch das Jahr übrig bleibt.
 
 Das Ergebnis ist ein Long-Format-Datensatz, in dem jede Zeile eine Gewichtsmessung eines Tieres in einem bestimmten Jahr darstellt.
-Der Datensatz ist nun länger geworden (hat mehr Zeilen) und schmaler (hat wneiger Spalten).
+Der Datensatz ist nun länger geworden (hat mehr Zeilen) und schmaler (hat weniger Spalten).
 
 #### Komplexeres Beispiel
 
@@ -2439,7 +2439,7 @@ grade_this({
 
 ### Datensatz
 
-Wir haben hier einen Datensatz, der Informationen über Studierende sowie ihre Testergebnisse aus verschiedenen Semestern enthält:
+In diesem Abschnitt arbeiten wir mit einem Datensatz, der Informationen über Studierende sowie ihre Testergebnisse aus verschiedenen Semestern enthält.
 
 ```{r setup-ex-wrangling-df, exercise=FALSE, eval=TRUE, echo=FALSE}
 students_data <- data.frame(
@@ -2457,10 +2457,10 @@ students_data <- data.frame(
 ```
 ```{r, ref.label=I('setup-ex-wrangling-df'), eval=TRUE, echo=FALSE, exercise.eval=FALSE}
 ```
-Hier können wir uns den Datensatz anschauen, den wir bearbeiten möchten:
 
+Wir können uns den Datensatz anzeigen mit:
 
-```{r data-ex-wrangling, exercise.setup = "setup-ex-wrangling-df", exercise=TRUE, results = "hold"}
+```{r data-ex-wrangling, exercise.setup = "setup-ex-wrangling-df", exercise=TRUE, results ='hold'}
 students_data
 ```
 
@@ -2626,24 +2626,23 @@ grade_this({
 
 `ggplot2` ist ein sehr mächtiges Werkzeug zur Visualisierung von Daten.
 
-Eine Visualisierung, also ein Bild, wird nachfolgend "Plot" genannt in Anlehnung an die englische Bezeichnung.
-Die nachfolgende Struktur ist wichtig um einen Plot zu programmieren mit `ggplot2`
+Eine Visualisierung, also ein Bild, wird nachfolgend "Plot" genannt, in Anlehnung an die englische Bezeichnung.
+Die nachfolgende Struktur ist wichtig, um einen Plot zu programmieren mit `ggplot2`
 
 **Schritte zur Erstellung eines Plots:**
 
-  1. die Daten müssen definiert werden
+  1. Die Daten müssen definiert werden.
 
-  2. Spalten im Datensatz müssen zu grafischen Elementen zugeordnet werden (x-Achse, y-Achse, Farben, Größen, ...)
+  2. Die Spalten im Datensatz müssen den grafischen Elementen zugeordnet werden (x-Achse, y-Achse, Farben, Größen, ...).
 
-  3. der Diagrammtyp muss festgelegt werden (Histogramm, Liniendiagramm, Balkendiagramm, Streudiagramm, ...)
+  3. Der Diagrammtyp muss festgelegt werden (Histogramm, Liniendiagramm, Balkendiagramm, Streudiagramm, ...).
 
-  4. das Diagramm kann individuell angepasst werden (Themen/Designs, zusätzliche Linien, Größen, Farben, Beschriftungen, ...)
-
+  4. Das Diagramm kann individuell angepasst werden (Themen/Designs, zusätzliche Linien, Größen, Farben, Beschriftungen, ...).
 
 
 ### Ideen & Literatur <a href="#section-ggplot2-plot-erstellen"> <i class="fa-solid fa-arrow-up"></i></a>
 
-Weiterführende Literatur: [ggplot2 Buch](https://ggplot2-book.org/)
+Weiterführende Literatur: [Das ggplot2 Buch](https://ggplot2-book.org/)
 
 Plot Galerie zur Inspiration: 
 
@@ -2704,8 +2703,8 @@ df %>% # die Daten werden mit der dplyr Pipe übergeben
 ```
 
 In diesem Beispiel werden die Daten zunächst mit `dplyr` gepiped und noch gefiltert.
-Nach dem die `ggplot()` Funktion aufgerufen wurde wird zu `+` gewechselt.
-Danach wird jede Ebene desd Plots mit `+` hinzugefügt.
+Nachdem die `ggplot()` Funktion aufgerufen wurde, wird zu `+` gewechselt.
+Danach wird jede Ebene des Plots mit `+` hinzugefügt.
 
 
 ### Data Mapping <a href="#section-ggplot2-plot-erstellen"> <i class="fa-solid fa-arrow-up"></i></a>
@@ -2716,10 +2715,12 @@ Der Plot bleibt damit erst mal noch leer - wir legen hier aber bereits sehr wich
 
 #### Leere Plots erstellen <a href="#section-ggplot2-plot-erstellen"> <i class="fa-solid fa-arrow-up"></i></a>
 
-Hier ist ein Beispiel bei dem ein leerer Plot erstellt wird und die Daten zu den Achsen zugeordnet werden.
+Hier ist ein Beispiel bei dem ein **leerer Plot** erstellt wird und die Daten zu den Achsen zugeordnet werden.
 Alle Funktionsargumente werden hier ausgeschrieben.
 Dies ist eine sehr ausführliche Schreibweise.
 Es hilft für das Verständnis es sich so zu merken.
+
+Es ist hier noch kein klassischer Inhalt zu sehen, sondern nur der leere Plot und die Achsen-Beschriftungen:
 ```{r data-mapping-01, exercise=TRUE, eval=FALSE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
 ggplot(
   data = df, # die Daten werden als Argument übergeben
@@ -3143,12 +3144,12 @@ ggplot(df, aes(x = group, y = depression)) +
 
 Sehr häufig möchte man Beschriftungen hinzufügen.
 
-mit `labs()` kann man die üblichen Textbereiche beshriften: Titel, Achsen-Beschriftungen und weiteres.
-
 Manchmal möchte man im Plot selbst Beschriftungen hinzufügen und deren Position selbst bestimmen - dazu eignet sich `geom_text()`.
 Eine Umrandung des Textes kann man einfach mit `geom_label()` umsetzen.
 
 #### labs() <a href="#section-ggplot2-plot-anpassen"> <i class="fa-solid fa-arrow-up"></i></a>
+
+Mit `labs()` kann man die üblichen Textbereiche beschriften: Titel, Achsen-Beschriftungen und weiteres.
 
 ```{r custom-labs-01, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
 df %>%
@@ -3171,7 +3172,7 @@ df %>%
 
 #### geom_text() <a href="#section-ggplot2-plot-anpassen"> <i class="fa-solid fa-arrow-up"></i></a>
 
-Fügt numerische oder kategoriale Labels an Positionen hinzu – z. B. zur Beschriftung von Mittelwerten oder Punkten.
+Fügt numerische oder kategoriale Labels an Positionen hinzu, z. B. zur Beschriftung von Mittelwerten oder Punkten.
 
 **Wichtige Argumente:**
 
@@ -3263,7 +3264,7 @@ ggsave("inst/tutorials/dplyr/images/themes.png", width = 30, height = 20, units 
 ```
 ![Themes](images/themes.png){.images-shadow width="90%"}
 
-Wenn dir diese Themes nicht ganz gefallen gefallen, nutze `theme()`, um Details zu ändern.
+Wenn dir diese Themes nicht gefallen, nutze `theme()`, um Details zu ändern.
 
 In diesem Beispiel kannst du gerne mal verschiedene Themes ausprobieren!
 Ändere einfach den Code und führe es aus.
@@ -3279,6 +3280,8 @@ ggplot(df, aes(x = group, y = depression)) +
 
 Die Schriftgröße (`base_size`) ist ein Argument innerhalb der Theme-Funktionen.
 Damit kann man schnell alle Schriften vergrößern oder verkleinern.
+
+Ändere doch einfach Mal die Schriftgröße `base_size = 10` und führe den Code aus!
 
 ```{r geom-textsize-01, exercise=TRUE, exercise.eval = TRUE, echo=TRUE, exercise.setup = "setup-ggplot-df"}
 ggplot(df, aes(x = group, y = depression)) + 
@@ -3446,7 +3449,7 @@ ggplot(df, aes(x = group,
 
 
 Mit `ggsave()` können wir ganz einfach unsere Plots speichern.
-Die Funktion speichert immer das zuletzt erstellte Plot.
+Die Funktion speichert immer den zuletzt erstellten Plot.
 
 Wichtig ist den Pfad anzugeben, wo das Bild gespeichert werden soll - dabei muss auch der Dateiname vollständig angegeben werden.
 
@@ -3469,6 +3472,11 @@ Praktisch ist auch, dass man ganz leicht die Größe und die Auflösung des Plot
 
 ## Visualisierungen -- Übungen
 <div class="uebungen">
+
+Hier findest du umfassende Übungen, welche die zentralen Inhalte der vorangegangenen Kapitel zum Thema Visualisierungen zusammenführen.
+Die Aufgaben sind entsprechend anspruchsvoller gestaltet – selbstverständlich aber wie immer mit hilfreichen Tipps und Lösungen versehen.
+
+Viel Erfolg beim Bearbeiten!
 
 ### Datensatz
 ```{r setup-ex-ggplot-df, exercise=FALSE, eval=TRUE, echo=FALSE}
@@ -3630,7 +3638,6 @@ Wie sieht die Verteilung der Trainings aus? Dabei interessiert uns auch die Gesc
 
 ```{r ex-ggplot-3-0, exercise=FALSE, echo=TRUE, exercise.setup = "setup-ex-ggplot-df", eval=TRUE, echo=FALSE}
 df %>% 
-  mutate(training = as.factor(training)) %>% 
   ggplot(aes(x = training)) + 
     geom_bar() +
     theme_light(base_size = 12)
@@ -3643,8 +3650,6 @@ df %>%
   
   <div class="tip-content"> Nutze die Funktion `geom_bar()`.</div>
   <div class="tip-content"> Bearbeite die Beschriftungen mit `labs()`.</div>
-  <div class="tip-content"> Nutze `scale_fill_viridis_d()` für die Farben.</div>
-  <div class="tip-content"> Nutze die Farbskala "inferno" und beginne mit 0.2.</div>
   <div class="tip-content"> Setze die Schriftgröße auf 14.</div>
   <div class="tip-content"> Nutze diesen Aufbau: 
   <pre>ggplot(df, aes()) + 
@@ -3672,7 +3677,6 @@ Wir möchten den Plot noch ein wenig schöner machen und auch noch das Geschlech
 
 ```{r ex-ggplot-4-0, exercise=FALSE, echo=TRUE, exercise.setup = "setup-ex-ggplot-df", eval=TRUE, echo=FALSE}
 df %>% 
-  mutate(training = as.factor(training)) %>% 
   ggplot(aes(x = training, fill = sex)) + 
     geom_bar() +
     labs(title = "Distribution of the training") +
@@ -3793,13 +3797,16 @@ ggplot(aes(x = health_value, y = blood_value, color = sex)) +
   <div class="tip-content"> Nutze die Funktion `filter()`, um die Daten zu ändern.</div>
   <div class="tip-content"> Nutze die Funktion `geom_smooth()`.</div>
   <div class="tip-content"> Nutze ein lineares Modell `geom_smooth(method = "lm")`.</div>
-  <div class="tip-content"> Nutze hier `color` und nicht `fill` für das Geschlecht</div>
+  <div class="tip-content"> Nutze hier `color` und nicht `fill` für die Variable des Geschlechts</div>
   <div class="tip-content"> Bearbeite die Beschriftungen mit `labs()`.</div>
   <div class="tip-content"> Nutze `scale_color_viridis_d()` für die Farben. Achte hierbei auf `color`.</div>
   <div class="tip-content"> Nutze die Farbskala "inferno" und beginne mit 0.4 und definiere als Ende 0.8.</div>
   <div class="tip-content"> Setze die Schriftgröße auf 12.</div>
   <div class="tip-content"> Nutze diesen Aufbau: 
-  <pre>ggplot(df, aes()) + 
+  <pre>
+  df %>% 
+  filter(sex != "unknown") %>% 
+  ggplot(df, aes()) + 
   geom_point() + 
   geom_smooth() +
   labs() +
