@@ -314,8 +314,8 @@ jQuery(document).ready(function() {
             <p>Wir verwenden Cookies und andere Technologien auf unserer Webseite. Einige von ihnen sind technisch essenziell, w&auml;hrend andere uns helfen Nutzerstatistiken zu erstellen, um das Otter Produkt weiterzuentwickeln. Weitere Informationen &uuml;ber die Verwendung Ihrer Daten finden Sie in unserer Datenschutzerkl&auml;rung auf der Otter Homepage.</p>
         </div>
         <div class="modal-footer">
-            <a type="button" class="btn btn-light" href="https://meikesteinhilber.github.io/otter/">Ich m&ouml;chte Otter nicht nutzen.</a>
             <button type="button" class="btn btn-success" id="cookie-okay">Ich bin einverstanden.</button>
+            <button type="button" class="btn btn-light" id="cookie-notrack">Ich bin nicht einverstanden.</button>
         </div>
         </div>  
     </div>
@@ -353,6 +353,11 @@ jQuery(document).ready(function() {
         jQuery('#cookie-nokay').on("click", function() {
             Cookies.set('cnsnt', '0', { expires: 30, sameSite: 'strict' });
         });
+        
+        jQuery('#cookie-notrack').on("click", function() {
+            Cookies.set('cnsnt', '2', { expires: 30, sameSite: 'strict' });
+            jQuery('#staticBackdrop').modal("hide");
+        });
 
         jQuery('#staticBackdrop').on('hidden.bs.show', function (event) {
             jQuery(this).css('display', 'flex');
@@ -363,6 +368,7 @@ jQuery(document).ready(function() {
         loadScripts();
     }
 });
+
 
 
 

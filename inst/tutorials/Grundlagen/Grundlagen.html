@@ -488,8 +488,8 @@ jQuery(document).ready(function() {
             <p>Wir verwenden Cookies und andere Technologien auf unserer Webseite. Einige von ihnen sind technisch essenziell, w&auml;hrend andere uns helfen Nutzerstatistiken zu erstellen, um das Otter Produkt weiterzuentwickeln. Weitere Informationen &uuml;ber die Verwendung Ihrer Daten finden Sie in unserer Datenschutzerkl&auml;rung auf der Otter Homepage.</p>
         </div>
         <div class="modal-footer">
-            <a type="button" class="btn btn-light" href="https://meikesteinhilber.github.io/otter/">Ich m&ouml;chte Otter nicht nutzen.</a>
             <button type="button" class="btn btn-success" id="cookie-okay">Ich bin einverstanden.</button>
+            <button type="button" class="btn btn-light" id="cookie-notrack">Ich bin nicht einverstanden.</button>
         </div>
         </div>  
     </div>
@@ -527,6 +527,11 @@ jQuery(document).ready(function() {
         jQuery('#cookie-nokay').on("click", function() {
             Cookies.set('cnsnt', '0', { expires: 30, sameSite: 'strict' });
         });
+        
+        jQuery('#cookie-notrack').on("click", function() {
+            Cookies.set('cnsnt', '2', { expires: 30, sameSite: 'strict' });
+            jQuery('#staticBackdrop').modal("hide");
+        });
 
         jQuery('#staticBackdrop').on('hidden.bs.show', function (event) {
             jQuery(this).css('display', 'flex');
@@ -537,6 +542,7 @@ jQuery(document).ready(function() {
         loadScripts();
     }
 });
+
 
 
 
@@ -6558,16 +6564,16 @@ learnr:::store_exercise_cache(structure(list(label = "ex-na-01", global_setup = 
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-na-1", question = structure("Was ist die Länge der Variable <code>variable &lt;- logical(3)<\u002fcode>?", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_953765c", 
+"character")), answers = list(structure(list(id = "lnr_ans_bc63cf6", 
     option = "0", value = "0", label = structure("0", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_c2a9e3a", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_602e627", 
     option = "1", value = "1", label = structure("1", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_a722f30", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_e506b9", 
     option = "3", value = "3", label = structure("3", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_8df89a0", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_b862c50", 
     option = "Es gibt keine sinnvolle Antwort auf diese Frage.", 
     value = "Es gibt keine sinnvolle Antwort auf diese Frage.", 
     label = structure("Es gibt keine sinnvolle Antwort auf diese Frage.", html = TRUE, class = c("html", 
@@ -6579,7 +6585,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), incorrect = structure("Leider falsch!", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "quiz-na-1-answer", question = "quiz-na-1"), loading = NULL, 
-    random_answer_order = TRUE, allow_retry = TRUE, seed = 494667483.269652, 
+    random_answer_order = TRUE, allow_retry = TRUE, seed = 2000475992.06846, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
@@ -6587,17 +6593,17 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-na-2", question = structure("Was passiert, wenn dieser Befehl ausgeführt wird: <code>NaN &lt; 0<\u002fcode>?", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_3ce8428", 
+"character")), answers = list(structure(list(id = "lnr_ans_10bfc40", 
     option = "Es gibt eine Fehlermeldung.", value = "Es gibt eine Fehlermeldung.", 
     label = structure("Es gibt eine Fehlermeldung.", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_5bb27f2", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_a12e61", 
     option = "FALSE", value = "FALSE", label = structure("FALSE", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_1483c62", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_2b677a4", 
     option = "TRUE", value = "TRUE", label = structure("TRUE", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_24f975e", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_34b322e", 
     option = "Es gibt einen fehlenden Wert aus.", value = "Es gibt einen fehlenden Wert aus.", 
     label = structure("Es gibt einen fehlenden Wert aus.", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
@@ -6608,7 +6614,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), incorrect = structure("Leider falsch!", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "quiz-na-2-answer", question = "quiz-na-2"), loading = NULL, 
-    random_answer_order = TRUE, allow_retry = TRUE, seed = 1469179632.81586, 
+    random_answer_order = TRUE, allow_retry = TRUE, seed = 978389227.044402, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
@@ -6866,16 +6872,16 @@ learnr:::store_exercise_cache(structure(list(label = "data-functions3", global_s
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-datentyp-1", 
     question = structure("In welchem Datentyp könnte ein solcher Smiley gespeichert werden: <code>:-)<\u002fcode>?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_4553dde", 
+    "character")), answers = list(structure(list(id = "lnr_ans_a20e0a", 
         option = "numeric", value = "numeric", label = structure("numeric", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_cce3b1e", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7f420b5", 
         option = "logical", value = "logical", label = structure("logical", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_31219d6", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b5fc4c0", 
         option = "integer", value = "integer", label = structure("integer", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_758155e", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_6bb4731", 
         option = "character", value = "character", label = structure("character", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("Antwort einreichen", html = TRUE, class = c("html", 
@@ -6886,7 +6892,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "quiz-datentyp-1-answer", question = "quiz-datentyp-1"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1006818314.03116, options = list()), class = c("learnr_radio", 
+    seed = 1572774213.76762, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -6894,22 +6900,22 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", label = "quiz-datentyp-2", 
     question = structure("Wie werden Zahlen mit dem Datentyp <code>integer<\u002fcode> erstellt?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_fb9416a", 
+    "character")), answers = list(structure(list(id = "lnr_ans_d5486eb", 
         option = "Mit einem L, z.B. `3L`", value = "Mit einem L, z.B. `3L`", 
         label = structure("Mit einem L, z.B. <code>3L<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_989f263", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e52d40f", 
         option = "`as.integer(3)`", value = "`as.integer(3)`", 
         label = structure("<code>as.integer(3)<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_826d1b1", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_2f00698", 
         option = "`1:3`", value = "`1:3`", label = structure("<code>1:3<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ac158f2", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ad55b26", 
         option = "Mit einem I, z.B. `3I`", value = "Mit einem I, z.B. `3I`", 
         label = structure("Mit einem I, z.B. <code>3I<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ad14f2d", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_d0f2ef2", 
         option = "Mit dem Eintippen der Zahl `3`", value = "Mit dem Eintippen der Zahl `3`", 
         label = structure("Mit dem Eintippen der Zahl <code>3<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
@@ -6921,28 +6927,28 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", lab
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "quiz-datentyp-2-answer", question = "quiz-datentyp-2"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 94745255.9558808, options = list()), class = c("learnr_checkbox", 
+    seed = 36136222.4831728, options = list()), class = c("learnr_checkbox", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", label = "quiz-datentyp-3", 
     question = structure("Welche Aussagen sind richtig?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_c129d82", 
+    "character")), answers = list(structure(list(id = "lnr_ans_d79674e", 
         option = "`is.double()` prüft, ob es sich um den Datenyp double handelt", 
         value = "`is.double()` prüft, ob es sich um den Datenyp double handelt", 
         label = structure("<code>is.double()<\u002fcode> prüft, ob es sich um den Datenyp double handelt", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8d54c8b", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e06349c", 
         option = "`as.integer(3)` erstellt 3 Zahlen", value = "`as.integer(3)` erstellt 3 Zahlen", 
         label = structure("<code>as.integer(3)<\u002fcode> erstellt 3 Zahlen", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_75a3d1c", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_fe0b1bd", 
         option = "`double(3)` erstellt die Zahl 3 im Datentyp double", 
         value = "`double(3)` erstellt die Zahl 3 im Datentyp double", 
         label = structure("<code>double(3)<\u002fcode> erstellt die Zahl 3 im Datentyp double", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_da65fe1", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_a8ac32c", 
         option = "Man kann 5 Nullen mit `integer(5)` erstellen", 
         value = "Man kann 5 Nullen mit `integer(5)` erstellen", 
         label = structure("Man kann 5 Nullen mit <code>integer(5)<\u002fcode> erstellen", html = TRUE, class = c("html", 
@@ -6955,7 +6961,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", lab
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "quiz-datentyp-3-answer", question = "quiz-datentyp-3"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 315921075.352888, options = list()), class = c("learnr_checkbox", 
+    seed = 6667251.49689532, options = list()), class = c("learnr_checkbox", 
 "tutorial_question")), session = session)
 </script>
 
@@ -9980,16 +9986,16 @@ learnr:::store_exercise_cache(structure(list(label = "ex-help-00", global_setup 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-help-1", 
     question = structure("Was macht die <code>floor()<\u002fcode> Funktion?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_3ddc7c2", 
+    "character")), answers = list(structure(list(id = "lnr_ans_e218ae5", 
         option = "Sie rundet eine Zahl auf.", value = "Sie rundet eine Zahl auf.", 
         label = structure("Sie rundet eine Zahl auf.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_28be10f", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_71389a6", 
         option = "Sie berechnet einen mathematischen Grenzwert.", 
         value = "Sie berechnet einen mathematischen Grenzwert.", 
         label = structure("Sie berechnet einen mathematischen Grenzwert.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_46c913c", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_695ce72", 
         option = "Sie rundet Zahlen ab.", value = "Sie rundet Zahlen ab.", 
         label = structure("Sie rundet Zahlen ab.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
@@ -10001,28 +10007,28 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "quiz-help-1-answer", question = "quiz-help-1"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 461955306.284885, options = list()), class = c("learnr_radio", 
+    seed = 113728827.947041, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", label = "quiz-help-2", 
     question = structure("Welche Aussagen stimmen zu über die <code>all()<\u002fcode> Funktion?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_c909972", 
+    "character")), answers = list(structure(list(id = "lnr_ans_bc5b1a2", 
         option = "Die Funktion prüft, ob alle Argumente in einer Funktion vorhanden sind.", 
         value = "Die Funktion prüft, ob alle Argumente in einer Funktion vorhanden sind.", 
         label = structure("Die Funktion prüft, ob alle Argumente in einer Funktion vorhanden sind.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_6c8f546", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_479a871", 
         option = "Die Funktion prüft, ob alle Werte in einem Vektor `TRUE` sind.", 
         value = "Die Funktion prüft, ob alle Werte in einem Vektor `TRUE` sind.", 
         label = structure("Die Funktion prüft, ob alle Werte in einem Vektor <code>TRUE<\u002fcode> sind.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_440876", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_867b011", 
         option = "Die Funktion hat zwei Pflicht-Argumente", value = "Die Funktion hat zwei Pflicht-Argumente", 
         label = structure("Die Funktion hat zwei Pflicht-Argumente", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_590342b", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_608d576", 
         option = "Die Funktion hat ein Pflicht-Argument und ein Default-Argument.", 
         value = "Die Funktion hat ein Pflicht-Argument und ein Default-Argument.", 
         label = structure("Die Funktion hat ein Pflicht-Argument und ein Default-Argument.", html = TRUE, class = c("html", 
@@ -10035,7 +10041,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", lab
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "quiz-help-2-answer", question = "quiz-help-2"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 941276302.561684, options = list()), class = c("learnr_checkbox", 
+    seed = 1668672592.22296, options = list()), class = c("learnr_checkbox", 
 "tutorial_question")), session = session)
 </script>
 
@@ -10043,22 +10049,22 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", lab
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-help-3", 
     question = structure("Welche Aussagen stimmen zu über das <code>na.rm<\u002fcode> Argument (Bsp. <code>all()<\u002fcode>)?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_c2b95f9", 
+    "character")), answers = list(structure(list(id = "lnr_ans_6af29e2", 
         option = "Das `na.rm` Argument entfernt alle `NA` Werte in einem Vektor vor der Berechnung.", 
         value = "Das `na.rm` Argument entfernt alle `NA` Werte in einem Vektor vor der Berechnung.", 
         label = structure("Das <code>na.rm<\u002fcode> Argument entfernt alle <code>NA<\u002fcode> Werte in einem Vektor vor der Berechnung.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_77d1938", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_a2ebc85", 
         option = "Das Argument ist in allen mathematischen Funktionen enthalten.", 
         value = "Das Argument ist in allen mathematischen Funktionen enthalten.", 
         label = structure("Das Argument ist in allen mathematischen Funktionen enthalten.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_baab25", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_5d24a3", 
         option = "Das Argument ist meist auf `TRUE` gesetzt.", 
         value = "Das Argument ist meist auf `TRUE` gesetzt.", 
         label = structure("Das Argument ist meist auf <code>TRUE<\u002fcode> gesetzt.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9245905", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_284baa6", 
         option = "Das `na.rm` Argument ist in der log() Funktion enthalten.", 
         value = "Das `na.rm` Argument ist in der log() Funktion enthalten.", 
         label = structure("Das <code>na.rm<\u002fcode> Argument ist in der log() Funktion enthalten.", html = TRUE, class = c("html", 
@@ -10071,7 +10077,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "quiz-help-3-answer", question = "quiz-help-3"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1334889493.37839, options = list()), class = c("learnr_radio", 
+    seed = 1825672444.14986, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
